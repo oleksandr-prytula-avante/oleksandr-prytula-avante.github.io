@@ -12,7 +12,6 @@ import logoUrl from "../assets/images/logo.webp";
 
 const LOCALE_LABEL_KEYS: Record<ELocale, ETranslationKey> = {
   [ELocale.En]: ETranslationKey.LocaleEn,
-  [ELocale.Ukr]: ETranslationKey.LocaleUkr,
   [ELocale.Ru]: ETranslationKey.LocaleRu,
   [ELocale.Sp]: ETranslationKey.LocaleSp,
   [ELocale.De]: ETranslationKey.LocaleDe,
@@ -76,35 +75,43 @@ export function Header() {
       handleSelectLocale(nextLocale);
     };
 
-  const languageDropdown = languageMenu.isOpen ? (
-    <div
-      className="absolute right-0 top-[calc(100%-1.33px)] z-20 w-[3.36rem] overflow-hidden rounded-md border border-white/15 bg-[color:var(--color-bg)]"
-      role="listbox"
-      aria-label="Language"
-    >
-      {i18n.languageOptions.map((nextLocale) => {
-        const isActive = nextLocale === i18n.locale;
+  let languageDropdown = null;
 
-        return (
-          <button
-            key={nextLocale}
-            type="button"
-            role="option"
-            aria-selected={isActive}
-            data-locale={nextLocale}
-            className={
-              isActive
-                ? "flex h-12 w-full cursor-pointer items-center bg-white/12 px-3 text-left text-lg text-[color:var(--color-accent)]"
-                : "flex h-12 w-full cursor-pointer items-center px-3 text-left text-lg text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
-            }
-            onClick={handleLocaleOptionClick}
-          >
-            <span>{i18n.t(LOCALE_LABEL_KEYS[nextLocale as ELocale])}</span>
-          </button>
-        );
-      })}
-    </div>
-  ) : null;
+  if (languageMenu.isOpen) {
+    languageDropdown = (
+      <div
+        className="absolute right-0 top-[calc(100%-1.33px)] z-20 w-10"
+        role="listbox"
+        aria-label="Language"
+      >
+        <span className="pointer-events-none absolute left-1/2 top-[-8px] h-0 w-0 -translate-x-1/2 border-x-[7.5px] border-x-transparent border-b-[9px] border-b-[color:var(--color-accent)]" />
+
+        <div className="overflow-hidden rounded-md border border-[color:var(--color-accent)] bg-[color:var(--color-bg)]">
+          {i18n.languageOptions.map((nextLocale) => {
+            const isActive = nextLocale === i18n.locale;
+
+            return (
+              <button
+                key={nextLocale}
+                type="button"
+                role="option"
+                aria-selected={isActive}
+                data-locale={nextLocale}
+                className={
+                  isActive
+                    ? "flex h-12 w-full cursor-pointer items-center justify-center bg-white/12 text-center text-lg text-white"
+                    : "flex h-12 w-full cursor-pointer items-center justify-center text-center text-lg text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
+                }
+                onClick={handleLocaleOptionClick}
+              >
+                <span>{i18n.t(LOCALE_LABEL_KEYS[nextLocale as ELocale])}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <header className="flex h-24 w-full items-center justify-between">
@@ -117,10 +124,12 @@ export function Header() {
               return (
                 <span
                   key={href}
-                  className="inline-flex w-[9rem] cursor-not-allowed justify-center border-b-[1.33px] border-transparent py-3 text-white/40"
+                  className="inline-flex w-[9rem] cursor-not-allowed justify-center text-white/40"
                   aria-disabled="true"
                 >
-                  {label}
+                  <span className="inline-flex border-b-[1.33px] border-transparent py-3">
+                    {label}
+                  </span>
                 </span>
               );
             }
@@ -132,36 +141,42 @@ export function Header() {
                 key={href}
                 className={
                   isActive
-                    ? "inline-flex w-[9rem] justify-center border-b-[1.33px] border-[color:var(--color-accent)] py-3 no-underline"
-                    : "inline-flex w-[9rem] justify-center border-b-[1.33px] border-transparent py-3 no-underline transition-colors duration-200 ease-out hover:border-[color:rgb(var(--color-accent-rgb)/0.8)] hover:text-white/80 focus-visible:border-[color:rgb(var(--color-accent-rgb)/0.8)] focus-visible:text-white/80"
+                    ? "inline-flex w-[9rem] justify-center no-underline"
+                    : "group inline-flex w-[9rem] justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
                 }
                 href={href}
                 aria-current={isActive ? "page" : undefined}
               >
-                {label}
+                <span
+                  className={
+                    isActive
+                      ? "inline-flex border-b-[1.33px] border-[color:var(--color-accent)] py-3"
+                      : "inline-flex border-b-[1.33px] border-transparent py-3 transition-colors duration-200 ease-out group-hover:border-[color:rgb(var(--color-accent-rgb)/0.8)] group-focus-visible:border-[color:rgb(var(--color-accent-rgb)/0.8)]"
+                  }
+                >
+                  {label}
+                </span>
               </a>
             );
           })}
         </nav>
 
-        <div className="relative ml-12" ref={languageMenu.containerRef}>
+        <div
+          className="relative border-b-[1.33px] border-transparent py-3"
+          ref={languageMenu.containerRef}
+        >
           <button
             type="button"
-            className="flex w-[6rem] cursor-pointer items-center justify-between border-b-[1.33px] border-transparent px-2 py-3 text-lg text-white outline-none transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
+            className={
+              languageMenu.isOpen
+                ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-lg text-white outline-none transition-colors duration-200 ease-out"
+                : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-lg text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
+            }
             onClick={handleLanguageMenuToggle}
             aria-haspopup="listbox"
             aria-expanded={languageMenu.isOpen}
           >
-            <span className="flex-1 text-center">{currentLocaleLabel}</span>
-            <span
-              className={
-                languageMenu.isOpen
-                  ? "shrink-0 translate-y-[1px] rotate-180 transition-transform duration-200 ease-out"
-                  : "shrink-0 translate-y-[1px] transition-transform duration-200 ease-out"
-              }
-            >
-              ▾
-            </span>
+            <span className="text-center">{currentLocaleLabel}</span>
           </button>
 
           {languageDropdown}
