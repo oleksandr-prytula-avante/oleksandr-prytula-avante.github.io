@@ -28,7 +28,7 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.NavGithub]: "GitHub",
     [ETranslationKey.NavLinkedIn]: "LinkedIn",
     [ETranslationKey.NavLeetCode]: "LeetCode",
-    [ETranslationKey.NavEmail]: "GGmail",
+    [ETranslationKey.NavEmail]: "Gmail",
   },
   [ELocale.Sp]: {
     [ETranslationKey.LocaleEn]: "EN",

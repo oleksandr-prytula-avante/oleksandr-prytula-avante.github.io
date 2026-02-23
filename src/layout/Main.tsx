@@ -4,6 +4,8 @@ import { Header } from "../components/Header";
 import { Links } from "../components/Links";
 import { SectionDots } from "../components/SectionDots";
 
+import "./Main.css";
+
 export function Main() {
   // const i18n = useI18n();
 

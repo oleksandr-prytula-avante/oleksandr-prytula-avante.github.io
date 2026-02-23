@@ -4,7 +4,7 @@ import { ELocale } from "./types";
 import type { ETranslationKey } from "./types";
 import { TRANSLATIONS } from "./translations";
 
-export const STORAGE_KEY = "resume.locale";
+export const STORAGE_KEY = "locale";
 export const ELOCALE_VALUES = [ELocale.En, ELocale.De, ELocale.Ru, ELocale.Sp];
 
 function isLocale(value: string | null): value is ELocale {

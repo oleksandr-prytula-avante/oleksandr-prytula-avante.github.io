@@ -84,9 +84,9 @@ export function Header() {
         role="listbox"
         aria-label="Language"
       >
-        <span className="pointer-events-none absolute left-1/2 top-[-8px] h-0 w-0 -translate-x-1/2 border-x-[7.5px] border-x-transparent border-b-[9px] border-b-[color:var(--color-accent)]" />
+        <span className="pointer-events-none absolute left-1/2 top-0 h-0 w-0 -translate-x-1/2 border-x-[7.5px] border-x-transparent border-b-[9px] border-b-[color:var(--color-accent)]" />
 
-        <div className="overflow-hidden rounded-md border border-[color:var(--color-accent)] bg-[color:var(--color-bg)]">
+        <div className="mt-[8px] overflow-hidden rounded-md border border-[color:var(--color-accent)] bg-[color:var(--color-bg)]">
           {i18n.languageOptions.map((nextLocale) => {
             const isActive = nextLocale === i18n.locale;
 
@@ -99,8 +99,8 @@ export function Header() {
                 data-locale={nextLocale}
                 className={
                   isActive
-                    ? "flex h-12 w-full cursor-pointer items-center justify-center bg-white/12 text-center text-lg text-white"
-                    : "flex h-12 w-full cursor-pointer items-center justify-center text-center text-lg text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
+                    ? "flex h-10 w-full cursor-pointer items-center justify-center bg-white/12 text-center text-[14px] text-white"
+                    : "flex h-10 w-full cursor-pointer items-center justify-center text-center text-[14px] text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
                 }
                 onClick={handleLocaleOptionClick}
               >
@@ -117,8 +117,8 @@ export function Header() {
     <header className="flex h-24 w-full items-center justify-between">
       <img src={logoUrl} alt="Logo" className="h-12 w-auto" />
 
-      <div className="flex items-center gap-8 whitespace-nowrap">
-        <nav className="flex items-center gap-8 text-lg uppercase">
+      <div className="flex items-center gap-1 whitespace-nowrap">
+        <nav className="flex items-center gap-1 text-[16px] uppercase">
           {navItems.map(({ href, label, disabled }) => {
             if (disabled) {
               return (
@@ -169,8 +169,8 @@ export function Header() {
             type="button"
             className={
               languageMenu.isOpen
-                ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-lg text-white outline-none transition-colors duration-200 ease-out"
-                : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-lg text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
+                ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-[14px] text-white outline-none transition-colors duration-200 ease-out"
+                : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-[14px] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
             }
             onClick={handleLanguageMenuToggle}
             aria-haspopup="listbox"
