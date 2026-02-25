@@ -15,15 +15,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.NavLeetCode]: "LeetCode",
     [ETranslationKey.NavEmail]: "Gmail",
     [ETranslationKey.HeroHiIm]: "HI, IM",
-    [ETranslationKey.HeroRole]: "Software Engineer | WEB Developer",
-    [ETranslationKey.HeroNeedMoreDetails]: "NEED MORE DETAILS?",
+    [ETranslationKey.HeroName]: "Oleksandr",
+    [ETranslationKey.HeroSurname]: "Prytula",
+    [ETranslationKey.HeroRole]: "Software Engineer | Full Stack WEB Developer",
+    [ETranslationKey.HeroNeedMoreDetails]: "Need more details?",
     [ETranslationKey.HeroCvDownload]: "Download CV (PDF)",
     [ETranslationKey.AboutParagraph1]:
       "I’m a Software Engineer with over 10 years of hands-on experience in WEB development across next domains: e-Learning, e-Commerce / Marketplaces, Trading, Insurance and Health Care. I’ve contributed to products in various delivery models - from out-staffing to startups - adapting quickly to diverse workflows, business goals, and team dynamics. I’ve worked both independently and in teams of 3 to 20 engineers, often within international, distributed environments.",
     [ETranslationKey.AboutParagraph2]:
-      "As a FULL-STACK developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST / GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI/CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
+      "As a Full-Stack WEB developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST / GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI /CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
     [ETranslationKey.AboutParagraph3]:
-      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile/SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
+      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile / SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
     [ETranslationKey.AboutParagraph4]:
       "I’m committed to continuous learning and staying current with evolving technologies. I continue applying and expanding this knowledge through challenging production engineering tasks. I regularly solve complex programming and system design problems to sharpen my algorithmic thinking and technical skills.",
     [ETranslationKey.AboutParagraph5]:
@@ -42,15 +44,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.NavLeetCode]: "LeetCode",
     [ETranslationKey.NavEmail]: "Gmail",
     [ETranslationKey.HeroHiIm]: "HI, IM",
+    [ETranslationKey.HeroName]: "Александр",
+    [ETranslationKey.HeroSurname]: "Притула",
     [ETranslationKey.HeroRole]: "Инженер-программист | WEB-разработчик",
     [ETranslationKey.HeroNeedMoreDetails]: "НУЖНО БОЛЬШЕ ДЕТАЛЕЙ?",
     [ETranslationKey.HeroCvDownload]: "Скачать CV (PDF)",
     [ETranslationKey.AboutParagraph1]:
       "I’m a Software Engineer with over 10 years of hands-on experience in WEB development across next domains: e-Learning, e-Commerce / Marketplaces, Trading, Insurance and Health Care. I’ve contributed to products in various delivery models - from out-staffing to startups - adapting quickly to diverse workflows, business goals, and team dynamics. I’ve worked both independently and in teams of 3 to 20 engineers, often within international, distributed environments.",
     [ETranslationKey.AboutParagraph2]:
-      "As a FULL-STACK developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST/GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI/CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
+      "As a Full-Stack WEB developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST/GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI /CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
     [ETranslationKey.AboutParagraph3]:
-      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile/SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
+      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile / SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
     [ETranslationKey.AboutParagraph4]:
       "I’m committed to continuous learning and staying current with evolving technologies. I continue applying and expanding this knowledge through challenging production engineering tasks. I regularly solve complex programming and system design problems to sharpen my algorithmic thinking and technical skills.",
     [ETranslationKey.AboutParagraph5]:
@@ -69,15 +73,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.NavLeetCode]: "LeetCode",
     [ETranslationKey.NavEmail]: "Correo",
     [ETranslationKey.HeroHiIm]: "HI, IM",
+    [ETranslationKey.HeroName]: "Oleksandr",
+    [ETranslationKey.HeroSurname]: "Prytula",
     [ETranslationKey.HeroRole]: "Ingeniero de software | Desarrollador WEB",
     [ETranslationKey.HeroNeedMoreDetails]: "¿NECESITAS MÁS DETALLES?",
     [ETranslationKey.HeroCvDownload]: "Descargar CV (PDF)",
     [ETranslationKey.AboutParagraph1]:
       "I’m a Software Engineer with over 10 years of hands-on experience in WEB development across next domains: e-Learning, e-Commerce / Marketplaces, Trading, Insurance and Health Care. I’ve contributed to products in various delivery models - from out-staffing to startups - adapting quickly to diverse workflows, business goals, and team dynamics. I’ve worked both independently and in teams of 3 to 20 engineers, often within international, distributed environments.",
     [ETranslationKey.AboutParagraph2]:
-      "As a FULL-STACK developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST/GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI/CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
+      "As a Full-Stack WEB developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST/GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI /CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
     [ETranslationKey.AboutParagraph3]:
-      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile/SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
+      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile / SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
     [ETranslationKey.AboutParagraph4]:
       "I’m committed to continuous learning and staying current with evolving technologies. I continue applying and expanding this knowledge through challenging production engineering tasks. I regularly solve complex programming and system design problems to sharpen my algorithmic thinking and technical skills.",
     [ETranslationKey.AboutParagraph5]:
@@ -96,15 +102,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.NavLeetCode]: "LeetCode",
     [ETranslationKey.NavEmail]: "Gmail",
     [ETranslationKey.HeroHiIm]: "HI, IM",
+    [ETranslationKey.HeroName]: "Oleksandr",
+    [ETranslationKey.HeroSurname]: "Prytula",
     [ETranslationKey.HeroRole]: "Softwareingenieur | WEB-Entwickler",
     [ETranslationKey.HeroNeedMoreDetails]: "MEHR DETAILS NÖTIG?",
     [ETranslationKey.HeroCvDownload]: "CV (PDF) herunterladen",
     [ETranslationKey.AboutParagraph1]:
       "I’m a Software Engineer with over 10 years of hands-on experience in WEB development across next domains: e-Learning, e-Commerce / Marketplaces, Trading, Insurance and Health Care. I’ve contributed to products in various delivery models - from out-staffing to startups - adapting quickly to diverse workflows, business goals, and team dynamics. I’ve worked both independently and in teams of 3 to 20 engineers, often within international, distributed environments.",
     [ETranslationKey.AboutParagraph2]:
-      "As a FULL-STACK developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST/GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI/CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
+      "As a Full-Stack WEB developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST/GraphQL APIs, databases like MySQL and MongoDB. I actively use Docker and implement CI /CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
     [ETranslationKey.AboutParagraph3]:
-      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile/SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
+      "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding. I follow Agile / SCRUM methodologies to enable iterative delivery and maintain high team velocity.",
     [ETranslationKey.AboutParagraph4]:
       "I’m committed to continuous learning and staying current with evolving technologies. I continue applying and expanding this knowledge through challenging production engineering tasks. I regularly solve complex programming and system design problems to sharpen my algorithmic thinking and technical skills.",
     [ETranslationKey.AboutParagraph5]:

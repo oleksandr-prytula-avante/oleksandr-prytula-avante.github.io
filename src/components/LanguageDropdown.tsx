@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import type { MouseEventHandler } from "react";
 
 import { useI18n } from "../hooks/useI18n";
 import { useDropdownMenu } from "../hooks/useDropdownMenu";
@@ -29,26 +28,26 @@ export function LanguageDropdown() {
     languageMenu.close();
   }
 
-  const handleLanguageMenuToggle: MouseEventHandler<HTMLButtonElement> =
-    function (event) {
-      event.preventDefault();
-      languageMenu.toggle();
-    };
+  function handleLanguageMenuToggle(
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) {
+    event.preventDefault();
+    languageMenu.toggle();
+  }
 
-  const handleLocaleOptionClick: MouseEventHandler<HTMLButtonElement> =
-    function (event) {
-      event.preventDefault();
+  function handleLocaleOptionClick(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
 
-      const nextLocale = event.currentTarget.dataset.locale as
-        | ELocale
-        | undefined;
+    const nextLocale = event.currentTarget.dataset.locale as
+      | ELocale
+      | undefined;
 
-      if (!nextLocale) {
-        return;
-      }
+    if (!nextLocale) {
+      return;
+    }
 
-      handleSelectLocale(nextLocale);
-    };
+    handleSelectLocale(nextLocale);
+  }
 
   let languageDropdown = null;
 

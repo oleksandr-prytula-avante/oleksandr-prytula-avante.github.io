@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { Tooltip } from "./Tooltip";
 import { GmailIcon } from "./icons/GmailIcon";
 import { LeetCodeIcon } from "./icons/LeetCodeIcon";
@@ -8,29 +10,38 @@ import { ETranslationKey } from "../i18n/types";
 
 export function Links() {
   const i18n = useI18n();
+  const navGithub = i18n.t(ETranslationKey.NavGithub);
+  const navLinkedIn = i18n.t(ETranslationKey.NavLinkedIn);
+  const navLeetCode = i18n.t(ETranslationKey.NavLeetCode);
+  const navEmail = i18n.t(ETranslationKey.NavEmail);
 
-  const LINKS = [
-    {
-      component: GithubIcon,
-      href: "https://github.com/oleksandr-prytula-avante",
-      text: i18n.t(ETranslationKey.NavGithub),
+  const LINKS = useMemo(
+    function () {
+      return [
+        {
+          component: GithubIcon,
+          href: "https://github.com/oleksandr-prytula-avante",
+          text: navGithub,
+        },
+        {
+          component: LinkedInIcon,
+          href: "https://www.linkedin.com/in/oleksandr-prytula-avante",
+          text: navLinkedIn,
+        },
+        {
+          component: LeetCodeIcon,
+          href: "https://leetcode.com/u/oleksandr-prytula-avante/",
+          text: navLeetCode,
+        },
+        {
+          component: GmailIcon,
+          href: "mailto:oleksandr.prytula.avante@gmail.com",
+          text: navEmail,
+        },
+      ];
     },
-    {
-      component: LinkedInIcon,
-      href: "https://www.linkedin.com/in/oleksandr-prytula-avante",
-      text: i18n.t(ETranslationKey.NavLinkedIn),
-    },
-    {
-      component: LeetCodeIcon,
-      href: "https://leetcode.com/u/oleksandr-prytula-avante/",
-      text: i18n.t(ETranslationKey.NavLeetCode),
-    },
-    {
-      component: GmailIcon,
-      href: "mailto:oleksandr.prytula.avante@gmail.com",
-      text: i18n.t(ETranslationKey.NavEmail),
-    },
-  ];
+    [navEmail, navGithub, navLeetCode, navLinkedIn],
+  );
 
   return (
     <div className="absolute bottom-4 flex flex-col gap-4">

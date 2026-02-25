@@ -20,6 +20,8 @@ export const enum ETranslationKey {
   NavEmail = "nav.email",
 
   HeroHiIm = "hero.hiIm",
+  HeroName = "hero.name",
+  HeroSurname = "hero.surname",
   HeroRole = "hero.role",
   HeroNeedMoreDetails = "hero.needMoreDetails",
   HeroCvDownload = "hero.cvDownload",

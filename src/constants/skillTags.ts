@@ -19,6 +19,6 @@ export const SKILL_TAGS = [
   { label: "Playwright", href: "https://playwright.dev" },
   { label: "MySQL", href: "https://www.mysql.com" },
   { label: "MongoDB", href: "https://www.mongodb.com" },
-  { label: "CI/CD", href: "https://en.wikipedia.org/wiki/CI/CD" },
+  { label: "CI / CD", href: "https://en.wikipedia.org/wiki/CI/CD" },
   { label: "Git", href: "https://git-scm.com" },
 ];

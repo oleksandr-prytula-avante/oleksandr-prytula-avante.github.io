@@ -36,6 +36,7 @@ export function useActiveSectionHash(
 
         if (isSectionHash(currentHash)) {
           setHash(currentHash);
+
           return;
         }
 

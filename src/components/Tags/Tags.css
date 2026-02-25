@@ -1,0 +1,16 @@
+@keyframes tag-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tag-reveal {
+  opacity: 0;
+  animation: tag-reveal 320ms ease-out forwards;
+}
