@@ -279,6 +279,104 @@ export function Main() {
     ],
   );
 
+  let hiTypingCursor = null;
+
+  if (isHiTyping) {
+    hiTypingCursor = <span className="typing-cursor ml-1" aria-hidden="true">|</span>;
+  }
+
+  let nameTypingCursor = null;
+
+  if (isNameTyping && isTypingNameRow) {
+    nameTypingCursor = <span className="typing-cursor ml-1" aria-hidden="true">|</span>;
+  }
+
+  let surnameTypingCursor = null;
+
+  if (isNameTyping && !isTypingNameRow) {
+    surnameTypingCursor = <span className="typing-cursor ml-1" aria-hidden="true">|</span>;
+  }
+
+  let roleTypingCursor = null;
+
+  if (isRoleTyping) {
+    roleTypingCursor = (
+      <span
+        className="typing-cursor ml-1"
+        style={{ color: "var(--color-accent)" }}
+        aria-hidden="true"
+      >
+        |
+      </span>
+    );
+  }
+
+  let needMoreDetailsTypingCursor = null;
+
+  if (
+    isNeedMoreDetailsTypingStarted &&
+    visibleNeedMoreDetailsChars < needMoreDetailsText.length
+  ) {
+    needMoreDetailsTypingCursor = (
+      <span className="typing-cursor ml-1" aria-hidden="true">
+        |
+      </span>
+    );
+  }
+
+  let cvDownloadTypingCursor = null;
+
+  if (isCvDownloadTypingStarted && visibleCvDownloadChars < cvDownloadText.length) {
+    cvDownloadTypingCursor = (
+      <span
+        className="typing-cursor ml-1"
+        style={{ color: "var(--color-accent)" }}
+        aria-hidden="true"
+      >
+        |
+      </span>
+    );
+  }
+
+  let secondaryContent = null;
+
+  if (showSecondaryContent) {
+    secondaryContent = (
+      <>
+        <Tags
+          hoveredSkill={hoveredSkill}
+          onSkillEnter={setHoveredSkill}
+          onSkillLeave={function () {
+            setHoveredSkill(null);
+          }}
+        />
+
+        <div className="mt-4 flex items-center gap-2">
+          <p className="text-sm uppercase text-white">
+            {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
+            {needMoreDetailsTypingCursor}
+          </p>
+          <a
+            className="inline-flex cursor-pointer items-center py-1 text-[14px] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white"
+            href={ATS_CV_PATH}
+            target="_blank"
+            rel="noreferrer"
+            aria-hidden={!isCvDownloadTypingStarted}
+            tabIndex={isCvDownloadTypingStarted ? 0 : -1}
+          >
+            <span className="relative inline-block">
+              <span className="invisible">{cvDownloadText}</span>
+              <span className="absolute left-0 top-0 whitespace-nowrap">
+                {cvDownloadText.slice(0, visibleCvDownloadChars)}
+                {cvDownloadTypingCursor}
+              </span>
+            </span>
+          </a>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className="relative flex h-full flex-col overflow-hidden px-16 pb-8 text-white">
       <LinesBackground />
@@ -295,11 +393,7 @@ export function Main() {
                 <div className="mb-2 flex items-center">
                   <span className="text-xl font-bold uppercase text-white">
                     {hiText.slice(0, visibleHiChars)}
-                    {isHiTyping ? (
-                      <span className="typing-cursor ml-1" aria-hidden="true">
-                        |
-                      </span>
-                    ) : null}
+                    {hiTypingCursor}
                   </span>
                   <span
                     className="ml-6 inline-block h-[4px] flex-1 origin-left bg-[color:var(--color-accent)] transition-transform duration-500 ease-out"
@@ -312,90 +406,20 @@ export function Main() {
                 <h1 className="text-6xl font-bold uppercase leading-none text-white">
                   <span className="block">
                     {visibleName}
-                    {isNameTyping && isTypingNameRow ? (
-                      <span className="typing-cursor ml-1" aria-hidden="true">
-                        |
-                      </span>
-                    ) : null}
+                    {nameTypingCursor}
                   </span>
                   <span className="mt-1 block">
                     {visibleSurname}
-                    {isNameTyping && !isTypingNameRow ? (
-                      <span className="typing-cursor ml-1" aria-hidden="true">
-                        |
-                      </span>
-                    ) : null}
+                    {surnameTypingCursor}
                   </span>
                 </h1>
 
                 <p className="mt-4 text-base uppercase text-[color:var(--color-accent)]">
                   {roleText.slice(0, visibleRoleChars)}
-                  {isRoleTyping ? (
-                    <span
-                      className="typing-cursor ml-1"
-                      style={{ color: "var(--color-accent)" }}
-                      aria-hidden="true"
-                    >
-                      |
-                    </span>
-                  ) : null}
+                  {roleTypingCursor}
                 </p>
 
-                {showSecondaryContent ? (
-                  <>
-                    <Tags
-                      hoveredSkill={hoveredSkill}
-                      onSkillEnter={setHoveredSkill}
-                      onSkillLeave={function () {
-                        setHoveredSkill(null);
-                      }}
-                    />
-
-                    <div className="mt-4 flex items-center gap-2">
-                      <p className="text-sm uppercase text-white">
-                        {needMoreDetailsText.slice(
-                          0,
-                          visibleNeedMoreDetailsChars,
-                        )}
-                        {isNeedMoreDetailsTypingStarted &&
-                        visibleNeedMoreDetailsChars <
-                          needMoreDetailsText.length ? (
-                          <span
-                            className="typing-cursor ml-1"
-                            aria-hidden="true"
-                          >
-                            |
-                          </span>
-                        ) : null}
-                      </p>
-                      <a
-                        className="inline-flex cursor-pointer items-center py-1 text-[14px] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white"
-                        href={ATS_CV_PATH}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-hidden={!isCvDownloadTypingStarted}
-                        tabIndex={isCvDownloadTypingStarted ? 0 : -1}
-                      >
-                        <span className="relative inline-block">
-                          <span className="invisible">{cvDownloadText}</span>
-                          <span className="absolute left-0 top-0 whitespace-nowrap">
-                            {cvDownloadText.slice(0, visibleCvDownloadChars)}
-                            {isCvDownloadTypingStarted &&
-                            visibleCvDownloadChars < cvDownloadText.length ? (
-                              <span
-                                className="typing-cursor ml-1"
-                                style={{ color: "var(--color-accent)" }}
-                                aria-hidden="true"
-                              >
-                                |
-                              </span>
-                            ) : null}
-                          </span>
-                        </span>
-                      </a>
-                    </div>
-                  </>
-                ) : null}
+                {secondaryContent}
               </div>
             </section>
 
