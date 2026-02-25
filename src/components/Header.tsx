@@ -7,7 +7,11 @@ import { LanguageDropdown } from "./LanguageDropdown";
 
 import logoUrl from "../assets/images/logo.webp";
 
-export function Header() {
+type HeaderProps = {
+  isLanguageDisabled?: boolean;
+};
+
+export function Header({ isLanguageDisabled = false }: HeaderProps) {
   const i18n = useI18n();
   const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
 
@@ -46,7 +50,7 @@ export function Header() {
           })}
         </nav>
         <div className="ml-12">
-          <LanguageDropdown />
+          <LanguageDropdown isDisabled={isLanguageDisabled} />
         </div>
       </div>
     </header>

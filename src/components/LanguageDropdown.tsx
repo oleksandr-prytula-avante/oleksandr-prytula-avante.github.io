@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import { useI18n } from "../hooks/useI18n";
 import { useDropdownMenu } from "../hooks/useDropdownMenu";
@@ -12,7 +12,11 @@ const LOCALE_LABEL_KEYS: Record<ELocale, ETranslationKey> = {
   [ELocale.De]: ETranslationKey.LocaleDe,
 };
 
-export function LanguageDropdown() {
+type LanguageDropdownProps = {
+  isDisabled?: boolean;
+};
+
+export function LanguageDropdown({ isDisabled = false }: LanguageDropdownProps) {
   const i18n = useI18n();
   const languageMenu = useDropdownMenu();
 
@@ -32,11 +36,20 @@ export function LanguageDropdown() {
     event: React.MouseEvent<HTMLButtonElement>,
   ) {
     event.preventDefault();
+
+    if (isDisabled) {
+      return;
+    }
+
     languageMenu.toggle();
   }
 
   function handleLocaleOptionClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
+
+    if (isDisabled) {
+      return;
+    }
 
     const nextLocale = event.currentTarget.dataset.locale as
       | ELocale
@@ -48,6 +61,15 @@ export function LanguageDropdown() {
 
     handleSelectLocale(nextLocale);
   }
+
+  useEffect(
+    function () {
+      if (isDisabled) {
+        languageMenu.close();
+      }
+    },
+    [isDisabled],
+  );
 
   let languageDropdown = null;
 
@@ -95,13 +117,16 @@ export function LanguageDropdown() {
       <button
         type="button"
         className={
-          languageMenu.isOpen
-            ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-[14px] text-white outline-none transition-colors duration-200 ease-out"
-            : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-[14px] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
+          isDisabled
+            ? "flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border border-white/10 bg-white/5 text-[14px] text-white/50 outline-none"
+            : languageMenu.isOpen
+              ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-[14px] text-white outline-none transition-colors duration-200 ease-out"
+              : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-[14px] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
         }
         onClick={handleLanguageMenuToggle}
         aria-haspopup="listbox"
-        aria-expanded={languageMenu.isOpen}
+        aria-expanded={isDisabled ? false : languageMenu.isOpen}
+        disabled={isDisabled}
       >
         <span className="text-center">{currentLocaleLabel}</span>
       </button>

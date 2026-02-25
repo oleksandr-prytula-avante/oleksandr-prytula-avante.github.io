@@ -50,6 +50,7 @@ export function Main() {
   const [visibleCvDownloadChars, setVisibleCvDownloadChars] = useState(0);
   const [isCvDownloadTypingStarted, setIsCvDownloadTypingStarted] =
     useState(false);
+  const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(true);
 
   const hiText = i18n.t(ETranslationKey.HeroHiIm);
   const nameText = i18n.t(ETranslationKey.HeroName);
@@ -75,9 +76,27 @@ export function Main() {
     visibleRoleChars < roleText.length;
   const isNeedMoreDetailsPrinted =
     visibleNeedMoreDetailsChars >= needMoreDetailsText.length;
+  const isCvDownloadPrinted = visibleCvDownloadChars >= cvDownloadText.length;
+  const isHeroPrintingInProgress =
+    !showSecondaryContent || !isNeedMoreDetailsPrinted || !isCvDownloadPrinted;
 
   useEffect(
     function () {
+      if (!shouldPlayHeroAnimation) {
+        setVisibleHiChars(hiText.length);
+        setIsLineVisible(true);
+        setVisibleNameChars(fullNameLength);
+        setIsNameTypingStarted(true);
+        setVisibleRoleChars(roleText.length);
+        setShowSecondaryContent(true);
+        setVisibleNeedMoreDetailsChars(needMoreDetailsText.length);
+        setIsNeedMoreDetailsTypingStarted(true);
+        setVisibleCvDownloadChars(cvDownloadText.length);
+        setIsCvDownloadTypingStarted(true);
+
+        return;
+      }
+
       setVisibleHiChars(0);
       setIsLineVisible(false);
       setVisibleNameChars(0);
@@ -158,11 +177,22 @@ export function Main() {
         });
       };
     },
-    [fullNameLength, hiText, roleText],
+    [
+      cvDownloadText.length,
+      fullNameLength,
+      hiText,
+      needMoreDetailsText.length,
+      roleText,
+      shouldPlayHeroAnimation,
+    ],
   );
 
   useEffect(
     function () {
+      if (!shouldPlayHeroAnimation) {
+        return;
+      }
+
       if (!showSecondaryContent) {
         setVisibleNeedMoreDetailsChars(0);
         setIsNeedMoreDetailsTypingStarted(false);
@@ -206,11 +236,15 @@ export function Main() {
         }
       };
     },
-    [needMoreDetailsText, showSecondaryContent],
+    [needMoreDetailsText, shouldPlayHeroAnimation, showSecondaryContent],
   );
 
   useEffect(
     function () {
+      if (!shouldPlayHeroAnimation) {
+        return;
+      }
+
       if (!showSecondaryContent || !isNeedMoreDetailsPrinted) {
         setVisibleCvDownloadChars(0);
         setIsCvDownloadTypingStarted(false);
@@ -226,6 +260,7 @@ export function Main() {
 
           if (nextValue >= cvDownloadText.length) {
             window.clearInterval(intervalId);
+            setShouldPlayHeroAnimation(false);
           }
 
           return nextValue;
@@ -236,14 +271,19 @@ export function Main() {
         window.clearInterval(intervalId);
       };
     },
-    [cvDownloadText, isNeedMoreDetailsPrinted, showSecondaryContent],
+    [
+      cvDownloadText,
+      isNeedMoreDetailsPrinted,
+      shouldPlayHeroAnimation,
+      showSecondaryContent,
+    ],
   );
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden px-16 pb-8 text-white">
       <LinesBackground />
       <div className="relative z-10 flex h-full flex-col">
-        <Header />
+        <Header isLanguageDisabled={isHeroPrintingInProgress} />
         <main className="w-full flex-1 overflow-hidden">
           <div className="grid h-full grid-cols-[5%_35%_60%]">
             <section className="relative">
