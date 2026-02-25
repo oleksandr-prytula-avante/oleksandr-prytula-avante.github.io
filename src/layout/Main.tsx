@@ -27,7 +27,7 @@ export function Main() {
       <div className="relative z-10 flex h-full flex-col">
         <Header />
         <main className="w-full flex-1 overflow-hidden">
-          <div className="grid h-full grid-cols-[6%_34%_55%]">
+          <div className="grid h-full grid-cols-[6%_34%_60%]">
             <section className="relative">
               <Links />
             </section>

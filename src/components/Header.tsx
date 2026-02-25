@@ -26,8 +26,8 @@ export function Header() {
                 key={href}
                 className={
                   isActive
-                    ? "inline-flex w-[9rem] cursor-pointer justify-center no-underline"
-                    : "group inline-flex w-[9rem] cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
+                    ? "inline-flex w-[8rem] cursor-pointer justify-center no-underline"
+                    : "group inline-flex w-[8rem] cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
                 }
                 href={href}
                 aria-current={isActive ? "page" : undefined}
@@ -45,8 +45,9 @@ export function Header() {
             );
           })}
         </nav>
-
-        <LanguageDropdown />
+        <div className="ml-12">
+          <LanguageDropdown />
+        </div>
       </div>
     </header>
   );
