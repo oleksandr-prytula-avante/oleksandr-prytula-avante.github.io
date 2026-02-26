@@ -4,12 +4,12 @@ import {
   EXPERIENCE_TIMELINE_ITEMS,
   type ExperienceTimelineItem,
 } from "../constants/experienceTimeline";
+import { ExperienceCompanyIcon } from "../components/icons/ExperienceCompanyIcon";
+import { ExperienceExpandIcon } from "../components/icons/ExperienceExpandIcon";
+import { ExperienceJobTitleIcon } from "../components/icons/ExperienceJobTitleIcon";
+import { ExperienceLocationIcon } from "../components/icons/ExperienceLocationIcon";
 import { useI18n } from "../hooks/useI18n";
 import { ELocale, ETranslationKey } from "../i18n/types";
-
-type RowIconProps = {
-  className?: string;
-};
 
 type YearMonth = {
   year: number;
@@ -185,72 +185,6 @@ function PipeSeparatedText({
   );
 }
 
-function CompanyIcon({ className }: RowIconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M3 20h18M5 20V9l7-4 7 4v11M9 20v-5h6v5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function JobTitleIcon({ className }: RowIconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <rect
-        x="3"
-        y="6"
-        width="18"
-        height="14"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M9 6V4h6v2M3 12h18"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function LocationIcon({ className }: RowIconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function ExpandIcon({ className }: RowIconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="m6 9 6 6 6-6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 type ExperienceItemProps = {
   item: ExperienceTimelineItem;
   isExpanded: boolean;
@@ -299,7 +233,7 @@ function ExperienceItem({
 
       <div className="space-y-2 pb-8 text-sm text-white/95">
         <div className="flex items-center gap-2">
-          <CompanyIcon className="h-5 w-5 shrink-0 text-white" />
+          <ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />
           <a
             href={item.companyUrl}
             target="_blank"
@@ -311,7 +245,7 @@ function ExperienceItem({
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <JobTitleIcon className="h-5 w-5 shrink-0 text-white" />
+          <ExperienceJobTitleIcon className="h-5 w-5 shrink-0 text-white" />
           <span>{i18n.t(textKeys.jobTitle)}</span>
           <span className="text-white/60">|</span>
           <span>{periodLabel.dateRange}</span>
@@ -321,7 +255,7 @@ function ExperienceItem({
 
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-2">
-            <LocationIcon className="h-5 w-5 shrink-0 text-white" />
+            <ExperienceLocationIcon className="h-5 w-5 shrink-0 text-white" />
             <PipeSeparatedText
               value={locationText}
               className="inline-flex items-center gap-2 truncate"
@@ -344,7 +278,7 @@ function ExperienceItem({
                 ? i18n.t(ETranslationKey.ExperienceHideDetails)
                 : i18n.t(ETranslationKey.ExperienceExpandDetails)}
             </span>
-            <ExpandIcon
+            <ExperienceExpandIcon
               className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
             />
           </button>
