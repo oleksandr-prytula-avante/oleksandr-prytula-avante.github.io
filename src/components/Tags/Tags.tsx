@@ -12,6 +12,7 @@ type TagsProps = {
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
 };
+
 export function Tags({ hoveredSkill, onSkillEnter, onSkillLeave }: TagsProps) {
   function onTagClick(label: string) {
     return function (event: MouseEvent<HTMLAnchorElement>) {

@@ -23,6 +23,7 @@ export const enum ETranslationKey {
   HeroName = "hero.name",
   HeroSurname = "hero.surname",
   HeroRole = "hero.role",
+  HeroEngineeringToolkit = "hero.engineeringToolkit",
   HeroNeedMoreDetails = "hero.needMoreDetails",
   HeroCvDownload = "hero.cvDownload",
 
@@ -31,6 +32,11 @@ export const enum ETranslationKey {
   AboutParagraph3 = "about.paragraph3",
   AboutParagraph4 = "about.paragraph4",
   AboutParagraph5 = "about.paragraph5",
+
+  EducationDuetUniversityName = "education.duet.universityName",
+  EducationDuetDegree = "education.duet.degree",
+  EducationKnuUniversityName = "education.knu.universityName",
+  EducationKnuDegree = "education.knu.degree",
 
   ExperiencePresent = "experience.present",
   ExperienceExpandDetails = "experience.expandDetails",

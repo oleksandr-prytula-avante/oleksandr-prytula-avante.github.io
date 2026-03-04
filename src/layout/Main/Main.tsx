@@ -26,6 +26,7 @@ const ORANGE_LINE_REVEAL_DURATION_MS = 500;
 const NAME_TYPING_START_EXTRA_DELAY_MS = 20;
 const HI_TYPING_INTERVAL_MS = 70;
 const ROLE_TYPING_INTERVAL_MS = 70;
+const ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS = 45;
 const NAME_TYPING_INTERVAL_MS = 75;
 const NEED_MORE_DETAILS_TYPING_INTERVAL_MS = 45;
 const CV_DOWNLOAD_TYPING_INTERVAL_MS = 38;
@@ -42,6 +43,10 @@ export function Main() {
   const [visibleNameChars, setVisibleNameChars] = useState(0);
   const [isNameTypingStarted, setIsNameTypingStarted] = useState(false);
   const [visibleRoleChars, setVisibleRoleChars] = useState(0);
+  const [visibleEngineeringToolkitChars, setVisibleEngineeringToolkitChars] =
+    useState(0);
+  const [isEngineeringToolkitTypingStarted, setIsEngineeringToolkitTypingStarted] =
+    useState(false);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [visibleNeedMoreDetailsChars, setVisibleNeedMoreDetailsChars] =
     useState(0);
@@ -65,6 +70,17 @@ export function Main() {
     Math.max(visibleNameChars - nameText.length, 0),
   );
   const roleText = i18n.t(ETranslationKey.HeroRole);
+  const engineeringToolkitText = i18n.t(ETranslationKey.HeroEngineeringToolkit);
+  const engineeringToolkitBaseText = engineeringToolkitText.endsWith(":")
+    ? engineeringToolkitText.slice(0, -1)
+    : engineeringToolkitText;
+  const engineeringToolkitTotalLength = engineeringToolkitBaseText.length + 1;
+  const visibleEngineeringToolkitBaseChars = Math.min(
+    visibleEngineeringToolkitChars,
+    engineeringToolkitBaseText.length,
+  );
+  const isEngineeringToolkitColonVisible =
+    visibleEngineeringToolkitChars > engineeringToolkitBaseText.length;
   const needMoreDetailsText = i18n.t(ETranslationKey.HeroNeedMoreDetails);
   const cvDownloadText = i18n.t(ETranslationKey.HeroCvDownload);
   const isHiTyping = visibleHiChars < hiText.length;
@@ -74,6 +90,9 @@ export function Main() {
     !isHiTyping &&
     visibleNameChars >= fullNameLength &&
     visibleRoleChars < roleText.length;
+  const isEngineeringToolkitTyping =
+    isEngineeringToolkitTypingStarted &&
+    visibleEngineeringToolkitChars < engineeringToolkitTotalLength;
   const isNeedMoreDetailsPrinted =
     visibleNeedMoreDetailsChars >= needMoreDetailsText.length;
   const isCvDownloadPrinted = visibleCvDownloadChars >= cvDownloadText.length;
@@ -88,6 +107,8 @@ export function Main() {
         setVisibleNameChars(fullNameLength);
         setIsNameTypingStarted(true);
         setVisibleRoleChars(roleText.length);
+        setVisibleEngineeringToolkitChars(engineeringToolkitTotalLength);
+        setIsEngineeringToolkitTypingStarted(true);
         setShowSecondaryContent(true);
         setVisibleNeedMoreDetailsChars(needMoreDetailsText.length);
         setIsNeedMoreDetailsTypingStarted(true);
@@ -102,6 +123,8 @@ export function Main() {
       setVisibleNameChars(0);
       setIsNameTypingStarted(false);
       setVisibleRoleChars(0);
+      setVisibleEngineeringToolkitChars(0);
+      setIsEngineeringToolkitTypingStarted(false);
       setShowSecondaryContent(false);
       setVisibleNeedMoreDetailsChars(0);
       setIsNeedMoreDetailsTypingStarted(false);
@@ -118,7 +141,30 @@ export function Main() {
 
             if (nextValue >= roleText.length) {
               window.clearInterval(roleIntervalId);
-              setShowSecondaryContent(true);
+
+              if (engineeringToolkitTotalLength === 0) {
+                setShowSecondaryContent(true);
+              } else {
+                setIsEngineeringToolkitTypingStarted(true);
+
+                const engineeringToolkitIntervalId = window.setInterval(function () {
+                  setVisibleEngineeringToolkitChars(function (toolkitCurrentValue) {
+                    const toolkitNextValue = Math.min(
+                      toolkitCurrentValue + 1,
+                      engineeringToolkitTotalLength,
+                    );
+
+                    if (toolkitNextValue >= engineeringToolkitTotalLength) {
+                      window.clearInterval(engineeringToolkitIntervalId);
+                      setShowSecondaryContent(true);
+                    }
+
+                    return toolkitNextValue;
+                  });
+                }, ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS);
+
+                intervalIds.push(engineeringToolkitIntervalId);
+              }
             }
 
             return nextValue;
@@ -183,6 +229,7 @@ export function Main() {
       hiText,
       needMoreDetailsText.length,
       roleText,
+      engineeringToolkitTotalLength,
       shouldPlayHeroAnimation,
     ],
   );
@@ -313,6 +360,16 @@ export function Main() {
 
   let needMoreDetailsTypingCursor = null;
 
+  let engineeringToolkitTypingCursor = null;
+
+  if (isEngineeringToolkitTyping) {
+    engineeringToolkitTypingCursor = (
+      <span className="typing-cursor ml-1" aria-hidden="true">
+        |
+      </span>
+    );
+  }
+
   if (
     isNeedMoreDetailsTypingStarted &&
     visibleNeedMoreDetailsChars < needMoreDetailsText.length
@@ -352,12 +409,12 @@ export function Main() {
         />
 
         <div className="mt-8 flex items-center gap-2">
-          <p className="text-[17.5px] uppercase text-white">
+          <p className="text-[17.5px] uppercase text-white max-[1366px]:text-sm">
             {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
             {needMoreDetailsTypingCursor}
           </p>
           <a
-            className="inline-flex cursor-pointer items-center py-1 text-[17.5px] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white"
+            className="inline-flex cursor-pointer items-center py-1 text-[17.5px] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white max-[1366px]:text-sm"
             href={ATS_CV_PATH}
             target="_blank"
             rel="noreferrer"
@@ -380,18 +437,18 @@ export function Main() {
   return (
     <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white">
       <LinesBackground />
-      <div className="relative z-10 flex h-full min-h-screen flex-col">
+      <div className="relative z-10 flex h-full min-h-screen min-h-0 flex-col">
         <Header isLanguageDisabled={isHeroPrintingInProgress} />
-        <main className="w-full flex-1 overflow-hidden">
-          <div className="grid h-full grid-cols-[7%_38%_55%]">
+        <main className="w-full min-h-0 flex-1 overflow-hidden">
+          <div className="grid h-full min-h-0 grid-cols-[7%_38%_55%]">
             <section className="relative">
               <Links />
             </section>
 
             <section className="relative">
-              <div className="flex h-full flex-col px-16 pt-8">
+              <div className="flex h-full flex-col pl-6 pr-10 pt-8 min-[1280px]:pl-8 min-[1280px]:pr-12 min-[1366px]:pl-10 min-[1366px]:pr-14 min-[1440px]:pl-12 min-[1440px]:pr-16 min-[1600px]:pl-16 min-[1600px]:pr-20">
                 <div className="mb-2 flex items-center">
-                  <span className="text-xl font-bold uppercase text-white">
+                  <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
                     {hiText.slice(0, visibleHiChars)}
                     {hiTypingCursor}
                   </span>
@@ -403,7 +460,7 @@ export function Main() {
                   />
                 </div>
 
-                <h1 className="text-6xl font-bold uppercase leading-none text-white">
+                <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl">
                   <span className="block">
                     {visibleName}
                     {nameTypingCursor}
@@ -414,18 +471,24 @@ export function Main() {
                   </span>
                 </h1>
 
-                <p className="mt-4 text-[17.5px] uppercase text-[color:var(--color-accent)]">
+                <p className="mt-4 text-[17.5px] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
                   {roleText.slice(0, visibleRoleChars)}
                   {roleTypingCursor}
+                </p>
+
+                <p className="mt-2 text-[17.5px] uppercase text-white max-[1366px]:text-sm">
+                  {engineeringToolkitBaseText.slice(0, visibleEngineeringToolkitBaseChars)}
+                  {isEngineeringToolkitColonVisible ? <span className="pl-1">:</span> : null}
+                  {engineeringToolkitTypingCursor}
                 </p>
 
                 {secondaryContent}
               </div>
             </section>
 
-            <section className="relative">
+            <section className="relative min-h-0">
               <div
-                className={`h-full transition-all duration-500 ease-out ${showSecondaryContent ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
+                className={`flex h-full min-h-0 flex-col transition-all duration-500 ease-out ${showSecondaryContent ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
               >
                 <SectionCarousel>
                   {SECTION_NAV_ITEMS.map(function ({ href }) {

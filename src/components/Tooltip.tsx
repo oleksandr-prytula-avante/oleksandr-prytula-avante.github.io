@@ -13,14 +13,14 @@ export function Tooltip({
     <span className="relative inline-flex group ml-[8px]">
       {children}
       <span
-        className="pointer-events-none absolute left-full top-1/2 z-10 ml-[15px] -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-white/10 px-2 py-1 text-[14px] text-white opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100 group-hover:border-[color:var(--color-accent)] group-focus-within:opacity-100 group-focus-within:border-[color:var(--color-accent)]"
+        className="pointer-events-none absolute left-full top-1/2 z-10 ml-[15px] -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-white/10 px-2 py-1 text-[14px] text-white opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100 group-hover:border-[color:var(--color-accent)] group-focus-within:opacity-100 group-focus-within:border-[color:var(--color-accent)] max-[1366px]:border-white max-[1366px]:bg-white max-[1366px]:text-[color:var(--color-bg)] max-[1023px]:hidden"
         role="tooltip"
       >
         <span
           className="absolute left-[-7px] top-1/2 z-0 -translate-y-1/2"
           aria-hidden="true"
         >
-          <span className="block h-0 w-0 border-b-[6px] border-r-[6px] border-t-[6px] border-b-transparent border-r-white/20 border-t-transparent group-hover:border-r-[color:var(--color-accent)] group-focus-within:border-r-[color:var(--color-accent)]" />
+          <span className="block h-0 w-0 border-b-[6px] border-r-[6px] border-t-[6px] border-b-transparent border-r-white/20 border-t-transparent group-hover:border-r-[color:var(--color-accent)] group-focus-within:border-r-[color:var(--color-accent)] max-[1366px]:border-r-white max-[1023px]:hidden" />
         </span>
         <span className="relative z-12">{content}</span>
       </span>

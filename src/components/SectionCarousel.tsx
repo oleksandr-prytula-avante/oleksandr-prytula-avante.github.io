@@ -43,15 +43,20 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
   );
 
   return (
-    <div className="flex h-full flex-col px-10 pr-20">
-      <div className="relative h-full overflow-hidden">
+    <div className="flex h-full min-h-0 flex-col px-10">
+      <div className="relative h-full min-h-0 overflow-hidden">
         <div
-          className="flex h-full transition-transform duration-500 ease-in-out"
+          className="flex h-full min-h-0 transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {slides.map(function ({ href, children }) {
+            const sectionClassName =
+              href === toSectionHash(ESectionId.About)
+                ? "h-full w-full shrink-0 overflow-hidden py-8 px-2 max-[1366px]:px-0"
+                : "h-full w-full shrink-0 overflow-y-auto py-8 px-2";
+
             return (
-              <section key={href} className="h-full w-full shrink-0 overflow-y-auto p-8">
+              <section key={href} className={sectionClassName}>
                 {children}
               </section>
             );

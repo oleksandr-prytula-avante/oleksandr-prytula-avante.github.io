@@ -5,14 +5,7 @@ import "./LinesBackgorund.css";
 export const VERTICAL_LINE_POSITIONS = [5, 21, 37, 53, 69, 85];
 export const HORIZONTAL_LINE_POSITIONS = [10, 26, 42, 58, 74, 90];
 
-type VerticalLineStyle = {
-  left: string;
-  top: string;
-  width: string;
-  height: string;
-};
-
-type HorizontalLineStyle = {
+type LineStyle = {
   left: string;
   top: string;
   width: string;
@@ -30,7 +23,7 @@ export function LinesBackground() {
       const maxHeight = Math.max(1, 90 - top);
       const height = randomBetween(35, maxHeight);
 
-      const style: VerticalLineStyle = {
+      const style: LineStyle = {
         left: `${left}%`,
         top: `${top}%`,
         width: `2px`,
@@ -47,7 +40,7 @@ export function LinesBackground() {
       const maxWidth = 90 - left;
       const width = randomBetween(20, maxWidth);
 
-      const style: HorizontalLineStyle = {
+      const style: LineStyle = {
         left: `${left}%`,
         top: `${top}%`,
         width: `${width}%`,
@@ -67,7 +60,6 @@ export function LinesBackground() {
           style={style}
         />
       ))}
-
       {horizontalLines.map((style, index) => (
         <div
           key={`h-${index}`}

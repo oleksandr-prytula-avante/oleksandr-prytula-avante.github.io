@@ -35,7 +35,7 @@ export function About({
   );
 
   return (
-    <article className="h-full overflow-y-auto pr-2 text-[0.9625rem] leading-relaxed text-white">
+    <article className="h-full min-h-0 max-h-full overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] leading-relaxed text-white max-[1366px]:text-[14px]">
       <div className="space-y-4">
         {paragraphValues.map(function (paragraphText, index) {
           return (
