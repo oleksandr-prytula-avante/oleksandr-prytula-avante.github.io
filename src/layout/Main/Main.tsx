@@ -446,7 +446,7 @@ export function Main() {
             </section>
 
             <section className="relative">
-              <div className="flex h-full flex-col pl-6 pr-10 pt-8 min-[1280px]:pl-8 min-[1280px]:pr-12 min-[1366px]:pl-10 min-[1366px]:pr-14 min-[1440px]:pl-12 min-[1440px]:pr-16 min-[1600px]:pl-16 min-[1600px]:pr-20">
+              <div className="flex h-full flex-col px-12 pt-8">
                 <div className="mb-2 flex items-center">
                   <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
                     {hiText.slice(0, visibleHiChars)}
