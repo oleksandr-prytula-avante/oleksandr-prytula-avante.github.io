@@ -5,10 +5,9 @@ type TooltipProps = {
   children: React.ReactNode;
 };
 
-export function Tooltip({
-  content,
-  children,
-}: TooltipProps): React.ReactElement {
+export function Tooltip(props: TooltipProps): React.ReactElement {
+  const { content, children } = props;
+
   return (
     <span className="relative inline-flex group">
       {children}

@@ -18,7 +18,7 @@ import { ETranslationKey } from "../../i18n/types";
 import { ESectionId, toSectionHash } from "../../utils/sections";
 import { About } from "../About";
 import { Education } from "../Education";
-import { Experience } from "../Experience";
+import { Experience } from "../Experience/Experience";
 
 import "./Main.css";
 

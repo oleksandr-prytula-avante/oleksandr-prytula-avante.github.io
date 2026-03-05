@@ -29,6 +29,7 @@ export function installPaletteCssVars() {
   }
 
   const style = document.createElement("style");
+
   style.id = styleId;
 
   const accentRgb = hexToRgbChannels(EPaletteColor.Accent);

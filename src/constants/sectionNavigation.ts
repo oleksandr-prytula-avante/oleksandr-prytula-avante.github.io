@@ -14,4 +14,4 @@ export const SECTION_NAV_ITEMS = [
     href: toSectionHash(ESectionId.Education),
     labelKey: ETranslationKey.NavEducation,
   },
-];
+] as const;

@@ -1,5 +1,5 @@
-import { SECTION_NAV_ITEMS } from "../constants/sectionNavigation";
 import { useI18n } from "../hooks/useI18n";
+import { SECTION_NAV_ITEMS } from "../constants/sectionNavigation";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { ESectionId, toSectionHash } from "../utils/sections";
 

@@ -4,15 +4,16 @@ import type { CSSProperties } from "react";
 import {
   EXPERIENCE_TIMELINE_ITEMS,
   type ExperienceTimelineItem,
-} from "../constants/experienceTimeline";
-import { ExperienceCompanyIcon } from "../components/icons/ExperienceCompanyIcon";
-import { ExperienceExpandIcon } from "../components/icons/ExperienceExpandIcon";
-import { ExperienceJobTitleIcon } from "../components/icons/ExperienceJobTitleIcon";
-import { ExperienceLocationIcon } from "../components/icons/ExperienceLocationIcon";
-import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
-import { useI18n } from "../hooks/useI18n";
-import { ELocale, ETranslationKey } from "../i18n/types";
-import { ESectionId, toSectionHash } from "../utils/sections";
+} from "../../constants/experienceTimeline";
+import { Tag } from "../../components/Tags/Tag";
+import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
+import { ExperienceExpandIcon } from "../../components/icons/ExperienceExpandIcon";
+import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
+import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocationIcon";
+import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
+import { useI18n } from "../../hooks/useI18n";
+import { ELocale, ETranslationKey } from "../../i18n/types";
+import { ESectionId, toSectionHash } from "../../utils/sections";
 
 import "./Experience.css";
 
@@ -275,7 +276,7 @@ function ExperienceItem({
 
   return (
     <li
-      className={`experience-item relative pl-32 ${isInFocusedMode ? "h-auto" : "h-[25%]"} ${isFocused ? "experience-item--focused" : ""} ${isDimmed ? "experience-item--hidden" : ""}`}
+      className={`experience-item relative pl-32 ${isInFocusedMode ? "h-full" : "h-[25%]"} ${isFocused ? "experience-item--focused" : ""} ${isDimmed ? "experience-item--hidden" : ""}`}
       data-experience-item-id={item.id}
       style={
         {
@@ -300,8 +301,8 @@ function ExperienceItem({
         />
       </a>
 
-      <div className="pb-8 text-sm text-white/95">
-        <div className="flex min-h-[100px] flex-col justify-center space-y-2">
+      <div className="flex h-full min-h-0 flex-col pb-8 text-sm text-white/95">
+        <div className="shrink-0 space-y-2">
           <div className="flex items-center gap-2">
             <ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />
             <a
@@ -361,28 +362,29 @@ function ExperienceItem({
         {isExpanded ? (
           <div
             id={descriptionId}
-            className="overflow-y-auto pt-3 text-sm text-white/90"
+            className="mt-3 min-h-0 flex-1 overflow-y-auto pr-2 text-sm text-white/90"
           >
-            {localizedHighlights.length > 0 ? (
-              <ul className="mt-3 space-y-2 leading-relaxed">
-                {localizedHighlights.map(function (highlight, highlightIndex) {
+            {item.technologyTags.length > 0 ? (
+              <ul className="flex flex-wrap gap-2">
+                {item.technologyTags.map(function (tag) {
                   return (
-                    <li key={`${item.id}-highlight-${highlightIndex}`}>
-                      {`- ${highlight}`}
+                    <li key={`${item.id}-${tag}`}>
+                      <Tag
+                        label={tag}
+                        className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs uppercase tracking-[0.06em] text-white/90 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
+                      />
                     </li>
                   );
                 })}
               </ul>
             ) : null}
 
-            {item.technologyTags.length > 0 ? (
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {item.technologyTags.map(function (tag) {
+            {localizedHighlights.length > 0 ? (
+              <ul className="mt-3 space-y-2 leading-relaxed">
+                {localizedHighlights.map(function (highlight, highlightIndex) {
                   return (
-                    <li key={`${item.id}-${tag}`}>
-                      <span className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs uppercase tracking-[0.06em] text-white/90">
-                        #{tag}
-                      </span>
+                    <li key={`${item.id}-highlight-${highlightIndex}`}>
+                      {`- ${highlight}`}
                     </li>
                   );
                 })}

@@ -21,4 +21,38 @@ export const SKILL_TAGS = [
   { label: "MongoDB", href: "https://www.mongodb.com" },
   { label: "CI / CD", href: "https://en.wikipedia.org/wiki/CI/CD" },
   { label: "Git", href: "https://git-scm.com" },
-];
+] as const;
+
+export const SKILL_HREF_BY_LABEL = SKILL_TAGS.reduce(
+  function (acc, skill) {
+    acc[skill.label] = skill.href;
+
+    return acc;
+  },
+  {} as Record<string, string>,
+);
+
+export const SKILL_HIGHLIGHT_TERMS = Array.from(
+  new Set(
+    SKILL_TAGS.map(function ({ label }) {
+      return label;
+    }),
+  ),
+);
+
+export const TERM_TO_TAG_MAP = new Map(
+  SKILL_HIGHLIGHT_TERMS.map(function (term) {
+    return [term.toLowerCase(), term];
+  }),
+);
+
+export const SKILL_REGEX = new RegExp(
+  `(?<![\\p{L}\\p{N}])(${SKILL_HIGHLIGHT_TERMS.map(function (term) {
+    return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  })
+    .sort(function (left, right) {
+      return right.length - left.length;
+    })
+    .join("|")})(?![\\p{L}\\p{N}])`,
+  "giu",
+);

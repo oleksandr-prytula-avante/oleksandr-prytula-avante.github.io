@@ -1,6 +1,5 @@
-import type { MouseEvent } from "react";
-
 import { SKILL_TAGS } from "../../constants/skillTags";
+import { Tag } from "./Tag";
 
 import "./Tags.css";
 
@@ -8,30 +7,13 @@ export const TAG_REVEAL_STAGGER_MS = 140;
 export const TAG_REVEAL_DURATION_MS = 640;
 
 type TagsProps = {
-  hoveredSkill: string | null;
+  hoveredSkill?: string | null;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
 };
 
-export function Tags({ hoveredSkill, onSkillEnter, onSkillLeave }: TagsProps) {
-  function onTagClick(label: string) {
-    return function (event: MouseEvent<HTMLAnchorElement>) {
-      event.preventDefault();
-      onSkillEnter(label);
-    };
-  }
-
-  function onTagMouseEnter(label: string) {
-    return function (event: MouseEvent<HTMLAnchorElement>) {
-      event.preventDefault();
-      onSkillEnter(label);
-    };
-  }
-
-  function onTagMouseLeave(event: MouseEvent<HTMLAnchorElement>) {
-    event.preventDefault();
-    onSkillLeave();
-  }
+export function Tags(props: TagsProps) {
+  const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
 
   return (
     <ul className="mt-4 flex flex-wrap gap-x-[9.25px] gap-y-[17.25px]">
@@ -47,21 +29,13 @@ export function Tags({ hoveredSkill, onSkillEnter, onSkillLeave }: TagsProps) {
               animationDuration: `${TAG_REVEAL_DURATION_MS}ms`,
             }}
           >
-            <a
-              className={
-                isActive
-                  ? "rounded-full border border-[color:var(--color-accent)] px-4 py-1.5 text-[14px] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out"
-                  : "rounded-full border border-white/50 px-4 py-1.5 text-[14px] uppercase text-white transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
-              }
+            <Tag
+              label={label}
               href={href}
-              target="_blank"
-              rel="noreferrer"
-              onClick={onTagClick(label)}
-              onMouseEnter={onTagMouseEnter(label)}
-              onMouseLeave={onTagMouseLeave}
-            >
-              #{label}
-            </a>
+              isActive={isActive}
+              onSelectSkill={onSkillEnter}
+              onClearSkill={onSkillLeave}
+            />
           </li>
         );
       })}

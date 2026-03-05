@@ -5,16 +5,17 @@ import { useI18n } from "../hooks/useI18n";
 import { ETranslationKey } from "../i18n/types";
 
 type AboutProps = {
-  hoveredSkill: string | null;
+  hoveredSkill?: string | null;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
 };
 
-export function About({
-  hoveredSkill,
-  onSkillEnter,
-  onSkillLeave,
-}: AboutProps) {
+export function About(props: AboutProps) {
+  const {
+    hoveredSkill,
+    onSkillEnter,
+    onSkillLeave,
+  } = props;
   const i18n = useI18n();
 
   const paragraphs = [

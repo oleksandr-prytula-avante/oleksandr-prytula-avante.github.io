@@ -3,22 +3,14 @@ import { useEffect, useMemo } from "react";
 import { useI18n } from "../hooks/useI18n";
 import { useDropdownMenu } from "../hooks/useDropdownMenu";
 
-import { ELocale, ETranslationKey } from "../i18n/types";
-
-const LOCALE_LABEL_KEYS: Record<ELocale, ETranslationKey> = {
-  [ELocale.En]: ETranslationKey.LocaleEn,
-  [ELocale.Ru]: ETranslationKey.LocaleRu,
-  [ELocale.Sp]: ETranslationKey.LocaleSp,
-  [ELocale.De]: ETranslationKey.LocaleDe,
-};
+import { ELocale, LOCALE_LABEL_KEYS } from "../i18n/types";
 
 type LanguageDropdownProps = {
   isDisabled?: boolean;
 };
 
-export function LanguageDropdown({
-  isDisabled = false,
-}: LanguageDropdownProps) {
+export function LanguageDropdown(props: LanguageDropdownProps) {
+  const { isDisabled = false } = props;
   const i18n = useI18n();
   const languageMenu = useDropdownMenu();
 
