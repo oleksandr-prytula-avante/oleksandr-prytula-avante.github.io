@@ -146,7 +146,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
         <img
           src={item.companyLogoSrc}
           alt={`${companyName} logo`}
-          className={`${item.id === EExperience.Digitalsuits ? "w-1/2" : "h-12 w-12"} object-contain`}
+          className={`${item.id === EExperience.Digitalsuits ? "w-1/3" : "h-12 w-12"} object-contain`}
           loading="lazy"
         />
       </a>
