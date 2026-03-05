@@ -330,6 +330,29 @@ export function Experience() {
     focusPhase === EFocusPhase.Entering ||
     focusPhase === EFocusPhase.Exiting;
 
+  function createHandleExperienceItemToggle(
+    itemId: string,
+    isTargetItem: boolean,
+    isToggleLocked: boolean,
+  ) {
+    return function handleExperienceItemToggle() {
+      if (isToggleLocked) {
+        return;
+      }
+
+      if (focusPhase === EFocusPhase.Idle) {
+        measureFocusShiftFromLayout();
+        setFocusedItemId(itemId);
+        setFocusPhase(EFocusPhase.Preparing);
+        return;
+      }
+
+      if (focusPhase === EFocusPhase.Focused && isTargetItem) {
+        setFocusPhase(EFocusPhase.Exiting);
+      }
+    };
+  }
+
   return (
     <article ref={articleRef} className="relative h-full px-5 text-white">
       <span
@@ -362,22 +385,11 @@ export function Experience() {
               focusShiftPx={focusShiftById?.[item.id] ?? 0}
               animationDelayMs={index * EXPERIENCE_REVEAL_STAGGER_MS}
               isToggleDisabled={isToggleLocked}
-              onToggle={function () {
-                if (isToggleLocked) {
-                  return;
-                }
-
-                if (focusPhase === EFocusPhase.Idle) {
-                  measureFocusShiftFromLayout();
-                  setFocusedItemId(item.id);
-                  setFocusPhase(EFocusPhase.Preparing);
-                  return;
-                }
-
-                if (focusPhase === EFocusPhase.Focused && isTargetItem) {
-                  setFocusPhase(EFocusPhase.Exiting);
-                }
-              }}
+              onToggle={createHandleExperienceItemToggle(
+                item.id,
+                isTargetItem,
+                isToggleLocked,
+              )}
             />
           );
         })}
