@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 
+import { PipeSeparator } from "./PipeSeparator";
+
 type PipeSeparatedTextProps = {
   value: string;
   className?: string;
@@ -20,11 +22,15 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
   return (
     <span className={className}>
       {parts.map(function (part, index) {
+        let separator = null;
+
+        if (index > 0) {
+          separator = <PipeSeparator className={separatorClassName} />;
+        }
+
         return (
           <Fragment key={`${part}-${index}`}>
-            {index > 0 ? (
-              <span className={separatorClassName ?? "text-white/60"}>|</span>
-            ) : null}
+            {separator}
             <span>{part}</span>
           </Fragment>
         );
