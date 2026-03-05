@@ -45,8 +45,10 @@ export function Main() {
   const [visibleRoleChars, setVisibleRoleChars] = useState(0);
   const [visibleEngineeringToolkitChars, setVisibleEngineeringToolkitChars] =
     useState(0);
-  const [isEngineeringToolkitTypingStarted, setIsEngineeringToolkitTypingStarted] =
-    useState(false);
+  const [
+    isEngineeringToolkitTypingStarted,
+    setIsEngineeringToolkitTypingStarted,
+  ] = useState(false);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [visibleNeedMoreDetailsChars, setVisibleNeedMoreDetailsChars] =
     useState(0);
@@ -147,21 +149,26 @@ export function Main() {
               } else {
                 setIsEngineeringToolkitTypingStarted(true);
 
-                const engineeringToolkitIntervalId = window.setInterval(function () {
-                  setVisibleEngineeringToolkitChars(function (toolkitCurrentValue) {
-                    const toolkitNextValue = Math.min(
-                      toolkitCurrentValue + 1,
-                      engineeringToolkitTotalLength,
+                const engineeringToolkitIntervalId = window.setInterval(
+                  function () {
+                    setVisibleEngineeringToolkitChars(
+                      function (toolkitCurrentValue) {
+                        const toolkitNextValue = Math.min(
+                          toolkitCurrentValue + 1,
+                          engineeringToolkitTotalLength,
+                        );
+
+                        if (toolkitNextValue >= engineeringToolkitTotalLength) {
+                          window.clearInterval(engineeringToolkitIntervalId);
+                          setShowSecondaryContent(true);
+                        }
+
+                        return toolkitNextValue;
+                      },
                     );
-
-                    if (toolkitNextValue >= engineeringToolkitTotalLength) {
-                      window.clearInterval(engineeringToolkitIntervalId);
-                      setShowSecondaryContent(true);
-                    }
-
-                    return toolkitNextValue;
-                  });
-                }, ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS);
+                  },
+                  ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS,
+                );
 
                 intervalIds.push(engineeringToolkitIntervalId);
               }
@@ -329,19 +336,31 @@ export function Main() {
   let hiTypingCursor = null;
 
   if (isHiTyping) {
-    hiTypingCursor = <span className="typing-cursor ml-1" aria-hidden="true">|</span>;
+    hiTypingCursor = (
+      <span className="typing-cursor ml-1" aria-hidden="true">
+        |
+      </span>
+    );
   }
 
   let nameTypingCursor = null;
 
   if (isNameTyping && isTypingNameRow) {
-    nameTypingCursor = <span className="typing-cursor ml-1" aria-hidden="true">|</span>;
+    nameTypingCursor = (
+      <span className="typing-cursor ml-1" aria-hidden="true">
+        |
+      </span>
+    );
   }
 
   let surnameTypingCursor = null;
 
   if (isNameTyping && !isTypingNameRow) {
-    surnameTypingCursor = <span className="typing-cursor ml-1" aria-hidden="true">|</span>;
+    surnameTypingCursor = (
+      <span className="typing-cursor ml-1" aria-hidden="true">
+        |
+      </span>
+    );
   }
 
   let roleTypingCursor = null;
@@ -383,7 +402,10 @@ export function Main() {
 
   let cvDownloadTypingCursor = null;
 
-  if (isCvDownloadTypingStarted && visibleCvDownloadChars < cvDownloadText.length) {
+  if (
+    isCvDownloadTypingStarted &&
+    visibleCvDownloadChars < cvDownloadText.length
+  ) {
     cvDownloadTypingCursor = (
       <span
         className="typing-cursor ml-1"
@@ -477,8 +499,13 @@ export function Main() {
                 </p>
 
                 <p className="mt-2 text-[17.5px] uppercase text-white max-[1366px]:text-sm">
-                  {engineeringToolkitBaseText.slice(0, visibleEngineeringToolkitBaseChars)}
-                  {isEngineeringToolkitColonVisible ? <span className="pl-1">:</span> : null}
+                  {engineeringToolkitBaseText.slice(
+                    0,
+                    visibleEngineeringToolkitBaseChars,
+                  )}
+                  {isEngineeringToolkitColonVisible ? (
+                    <span className="pl-1">:</span>
+                  ) : null}
                   {engineeringToolkitTypingCursor}
                 </p>
 

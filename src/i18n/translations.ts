@@ -42,12 +42,12 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperiencePresent]: "Present",
     [ETranslationKey.ExperienceExpandDetails]: "Show more",
     [ETranslationKey.ExperienceHideDetails]: "Show less",
-    
+
     [ETranslationKey.ExperienceOmnoraCompanyName]:
       "Omnora (fka SlidePresenter) | Startup / Product",
-    [ETranslationKey.ExperienceOmnoraJobTitle]:
-      "Web Developer",
-    [ETranslationKey.ExperienceOmnoraLocation]: "Germany and Frankfurt | Remote",
+    [ETranslationKey.ExperienceOmnoraJobTitle]: "Web Developer",
+    [ETranslationKey.ExperienceOmnoraLocation]:
+      "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
@@ -58,17 +58,16 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
-    [ETranslationKey.ExperienceCodeAndCareCompanyName]: "Code & Care | Outstaff",
-    [ETranslationKey.ExperienceCodeAndCareJobTitle]:
-      "WEB & Mobile Developer",
+    [ETranslationKey.ExperienceCodeAndCareCompanyName]:
+      "Code & Care | Outstaff",
+    [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
     [ETranslationKey.ExperienceCodeAndCareLocation]:
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
-    [ETranslationKey.ExperienceLanarsJobTitle]:
-      "WEB Developer",
+    [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
     [ETranslationKey.ExperienceLanarsLocation]:
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:
@@ -89,7 +88,8 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.HeroHiIm]: "КУ-КУ!",
     [ETranslationKey.HeroName]: "Александр",
     [ETranslationKey.HeroSurname]: "Притула",
-    [ETranslationKey.HeroRole]: "Инженер-программист | Full-Stack WEB-разработчик",
+    [ETranslationKey.HeroRole]:
+      "Инженер-программист | Full-Stack WEB-разработчик",
     [ETranslationKey.HeroEngineeringToolkit]: "Мой инженерный стек:",
     [ETranslationKey.HeroNeedMoreDetails]: "НУЖНО БОЛЬШЕ ДЕТАЛЕЙ?",
     [ETranslationKey.HeroCvDownload]: "Скачать CV (PDF)",
@@ -116,9 +116,9 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceHideDetails]: "Show less",
     [ETranslationKey.ExperienceOmnoraCompanyName]:
       "Omnora (fka SlidePresenter) | Startup / Product",
-    [ETranslationKey.ExperienceOmnoraJobTitle]:
-      "Web Developer",
-    [ETranslationKey.ExperienceOmnoraLocation]: "Germany and Frankfurt | Remote",
+    [ETranslationKey.ExperienceOmnoraJobTitle]: "Web Developer",
+    [ETranslationKey.ExperienceOmnoraLocation]:
+      "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
@@ -129,17 +129,16 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
-    [ETranslationKey.ExperienceCodeAndCareCompanyName]: "Code & Care | Outstaff",
-    [ETranslationKey.ExperienceCodeAndCareJobTitle]:
-      "WEB & Mobile Developer",
+    [ETranslationKey.ExperienceCodeAndCareCompanyName]:
+      "Code & Care | Outstaff",
+    [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
     [ETranslationKey.ExperienceCodeAndCareLocation]:
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
-    [ETranslationKey.ExperienceLanarsJobTitle]:
-      "WEB Developer",
+    [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
     [ETranslationKey.ExperienceLanarsLocation]:
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:
@@ -160,7 +159,8 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.HeroHiIm]: "HOLA!",
     [ETranslationKey.HeroName]: "Oleksandr",
     [ETranslationKey.HeroSurname]: "Prytula",
-    [ETranslationKey.HeroRole]: "Ingeniero de software | Desarrollador Full Stack WEB",
+    [ETranslationKey.HeroRole]:
+      "Ingeniero de software | Desarrollador Full Stack WEB",
     [ETranslationKey.HeroEngineeringToolkit]: "Mi stack de ingeniería:",
     [ETranslationKey.HeroNeedMoreDetails]: "¿NECESITAS MÁS DETALLES?",
     [ETranslationKey.HeroCvDownload]: "Descargar CV (PDF)",
@@ -187,9 +187,9 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceHideDetails]: "Show less",
     [ETranslationKey.ExperienceOmnoraCompanyName]:
       "Omnora (fka SlidePresenter) | Startup / Product",
-    [ETranslationKey.ExperienceOmnoraJobTitle]:
-      "Web Developer",
-    [ETranslationKey.ExperienceOmnoraLocation]: "Germany and Frankfurt | Remote",
+    [ETranslationKey.ExperienceOmnoraJobTitle]: "Web Developer",
+    [ETranslationKey.ExperienceOmnoraLocation]:
+      "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
@@ -200,17 +200,16 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
-    [ETranslationKey.ExperienceCodeAndCareCompanyName]: "Code & Care | Outstaff",
-    [ETranslationKey.ExperienceCodeAndCareJobTitle]:
-      "WEB & Mobile Developer",
+    [ETranslationKey.ExperienceCodeAndCareCompanyName]:
+      "Code & Care | Outstaff",
+    [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
     [ETranslationKey.ExperienceCodeAndCareLocation]:
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
-    [ETranslationKey.ExperienceLanarsJobTitle]:
-      "WEB Developer",
+    [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
     [ETranslationKey.ExperienceLanarsLocation]:
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:
@@ -258,9 +257,9 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceHideDetails]: "Show less",
     [ETranslationKey.ExperienceOmnoraCompanyName]:
       "Omnora (fka SlidePresenter) | Startup / Product",
-    [ETranslationKey.ExperienceOmnoraJobTitle]:
-      "Web Developer",
-    [ETranslationKey.ExperienceOmnoraLocation]: "Germany and Frankfurt | Remote",
+    [ETranslationKey.ExperienceOmnoraJobTitle]: "Web Developer",
+    [ETranslationKey.ExperienceOmnoraLocation]:
+      "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
@@ -271,17 +270,16 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
-    [ETranslationKey.ExperienceCodeAndCareCompanyName]: "Code & Care | Outstaff",
-    [ETranslationKey.ExperienceCodeAndCareJobTitle]:
-      "WEB & Mobile Developer",
+    [ETranslationKey.ExperienceCodeAndCareCompanyName]:
+      "Code & Care | Outstaff",
+    [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
     [ETranslationKey.ExperienceCodeAndCareLocation]:
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
-    [ETranslationKey.ExperienceLanarsJobTitle]:
-      "WEB Developer",
+    [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
     [ETranslationKey.ExperienceLanarsLocation]:
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:

@@ -1,12 +1,73 @@
 .experience-item {
   opacity: 0;
   transform: translateY(26px);
-  transition: opacity 460ms ease-out, transform 460ms ease-out;
+  max-height: 520px;
+  overflow: hidden;
+  transition:
+    opacity 460ms ease-out,
+    transform 460ms ease-out,
+    max-height 460ms ease-out,
+    margin 460ms ease-out,
+    padding 460ms ease-out;
   transition-delay: var(--experience-delay, 0ms);
-  will-change: opacity, transform;
+  will-change: opacity, transform, max-height;
 }
 
 .experience-list.experience-list--active .experience-item {
   opacity: 1;
   transform: translateY(0);
+}
+
+.experience-list.experience-list--focused .experience-item {
+  transition-delay: 0ms;
+}
+
+.experience-list.experience-list--focus-entering .experience-item {
+  transition-delay: 0ms;
+  transform: translateY(calc(-1 * var(--focus-shift, 0px)));
+}
+
+.experience-list.experience-list--focus-exiting .experience-item {
+  transition-delay: 0ms;
+  opacity: 1;
+  transform: translateY(calc(-1 * var(--focus-shift, 0px)));
+  max-height: 520px;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: auto;
+}
+
+.experience-list.experience-list--focus-exiting.experience-list--focus-exit-active
+  .experience-item {
+  transform: translateY(0);
+}
+
+.experience-item.experience-item--hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  max-height: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+
+.experience-list.experience-list--focused .experience-item.experience-item--hidden {
+  /* Hide non-selected items in-place after they reach the stacked top position. */
+  opacity: 0;
+  transition: none;
+  transform: translateY(calc(-1 * var(--focus-shift, 0px)));
+  max-height: 520px;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.experience-list.experience-list--focused .experience-item.experience-item--focused {
+  transform: translateY(calc(-1 * var(--focus-shift, 0px)));
+}
+
+.experience-item.experience-item--focused {
+  z-index: 20;
 }

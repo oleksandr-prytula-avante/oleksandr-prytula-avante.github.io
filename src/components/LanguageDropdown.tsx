@@ -16,7 +16,9 @@ type LanguageDropdownProps = {
   isDisabled?: boolean;
 };
 
-export function LanguageDropdown({ isDisabled = false }: LanguageDropdownProps) {
+export function LanguageDropdown({
+  isDisabled = false,
+}: LanguageDropdownProps) {
   const i18n = useI18n();
   const languageMenu = useDropdownMenu();
 

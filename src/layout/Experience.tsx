@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
 import {
@@ -16,7 +16,9 @@ import { ESectionId, toSectionHash } from "../utils/sections";
 
 import "./Experience.css";
 
-const EXPERIENCE_REVEAL_STAGGER_MS = 120;
+const EXPERIENCE_REVEAL_STAGGER_MS = 240;
+const EXPERIENCE_REVEAL_DURATION_MS = 460;
+const EXPERIENCE_FOCUS_TRANSITION_MS = 460;
 
 type YearMonth = {
   year: number;
@@ -88,7 +90,12 @@ function parseYearMonth(value: string): YearMonth {
   const year = Number(yearPart);
   const month = Number(monthPart);
 
-  if (!Number.isInteger(year) || !Number.isInteger(month) || month < 1 || month > 12) {
+  if (
+    !Number.isInteger(year) ||
+    !Number.isInteger(month) ||
+    month < 1 ||
+    month > 12
+  ) {
     throw new Error(`Invalid date format: ${value}. Expected YYYY-MM.`);
   }
 
@@ -150,7 +157,8 @@ function buildPeriodLabel(
 
   const safeMonthDiff = Math.max(monthDiff, 0);
   const startLabel = formatMonthYear(parsedStart, locale);
-  const endLabel = endDate === null ? presentLabel : formatMonthYear(parsedEnd, locale);
+  const endLabel =
+    endDate === null ? presentLabel : formatMonthYear(parsedEnd, locale);
 
   return {
     dateRange: `${startLabel} - ${endLabel}`,
@@ -195,18 +203,24 @@ function PipeSeparatedText({
 type ExperienceItemProps = {
   item: ExperienceTimelineItem;
   isExpanded: boolean;
-  isFirst: boolean;
-  isLast: boolean;
+  isFocused: boolean;
+  isDimmed: boolean;
+  isInFocusedMode: boolean;
+  focusShiftPx: number;
   animationDelayMs: number;
+  isToggleDisabled: boolean;
   onToggle: () => void;
 };
 
 function ExperienceItem({
   item,
   isExpanded,
-  isFirst,
-  isLast,
+  isFocused,
+  isDimmed,
+  isInFocusedMode,
+  focusShiftPx,
   animationDelayMs,
+  isToggleDisabled,
   onToggle,
 }: ExperienceItemProps) {
   const i18n = useI18n();
@@ -223,26 +237,21 @@ function ExperienceItem({
 
   return (
     <li
-      className="experience-item relative h-[22.5%] pl-32"
-      style={{ "--experience-delay": `${animationDelayMs}ms` } as CSSProperties}
+      className={`experience-item relative pl-32 ${isInFocusedMode ? "h-auto" : "h-[25%]"} ${isFocused ? "experience-item--focused" : ""} ${isDimmed ? "experience-item--hidden" : ""}`}
+      data-experience-item-id={item.id}
+      style={
+        {
+          "--experience-delay": `${animationDelayMs}ms`,
+          "--focus-shift": `${focusShiftPx}px`,
+        } as CSSProperties
+      }
     >
-      {isFirst ? (
-        <span className="pointer-events-none absolute left-[50px] top-[-25px] h-[25px] w-[2px] bg-[color:var(--color-accent)]/70" />
-      ) : null}
-
-      {!isLast ? (
-        <span className="pointer-events-none absolute left-[50px] top-[100px] h-[calc(100%-2.5rem)] w-[2px] bg-[color:var(--color-accent)]/70" />
-      ) : null}
-
-      {isLast ? (
-        <span className="pointer-events-none absolute left-[50px] top-[100px] h-[25px] w-[2px] bg-[color:var(--color-accent)]/70" />
-      ) : null}
-
       <a
         href={item.companyUrl}
         target="_blank"
         rel="noreferrer"
         aria-label={`${companyName} website`}
+        data-experience-circle
         className="absolute left-0 top-0 z-10 flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-full border-2 border-[color:var(--color-accent)] bg-white"
       >
         <img
@@ -263,7 +272,10 @@ function ExperienceItem({
               rel="noreferrer"
               className="truncate text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)]"
             >
-              <PipeSeparatedText value={companyName} className="inline-flex items-center gap-2" />
+              <PipeSeparatedText
+                value={companyName}
+                className="inline-flex items-center gap-2"
+              />
             </a>
           </div>
 
@@ -287,9 +299,14 @@ function ExperienceItem({
             <button
               type="button"
               onClick={onToggle}
+              disabled={isToggleDisabled}
               aria-expanded={isExpanded}
               aria-controls={descriptionId}
-              className="inline-flex cursor-pointer items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white"
+              className={`inline-flex items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
+                isToggleDisabled
+                  ? "cursor-not-allowed opacity-60"
+                  : "cursor-pointer hover:text-white"
+              }`}
             >
               <span>
                 {isExpanded
@@ -304,7 +321,10 @@ function ExperienceItem({
         </div>
 
         {isExpanded ? (
-          <p id={descriptionId} className="pt-1 text-sm leading-relaxed text-white/90">
+          <p
+            id={descriptionId}
+            className="pt-3 text-sm leading-relaxed text-white/90"
+          >
             {i18n.t(textKeys.description)}
           </p>
         ) : null}
@@ -313,50 +333,329 @@ function ExperienceItem({
   );
 }
 
+type FocusPhase = "idle" | "entering" | "focused" | "exiting";
+
 export function Experience() {
-  const [expandedItemId, setExpandedItemId] = useState<string | null>(null);
+  const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
+  const [focusPhase, setFocusPhase] = useState<FocusPhase>("idle");
+  const [isFocusExitActive, setIsFocusExitActive] = useState(false);
   const [shouldRevealItems, setShouldRevealItems] = useState(false);
+  const [isInitialRevealComplete, setIsInitialRevealComplete] = useState(false);
+  const [lineHeight, setLineHeight] = useState(0);
+  const [focusShiftById, setFocusShiftById] = useState<Record<string, number>>(
+    {},
+  );
+  const articleRef = useRef<HTMLElement | null>(null);
+  const listRef = useRef<HTMLUListElement | null>(null);
   const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
-  const isExperienceActive = activeHash === toSectionHash(ESectionId.Expirience);
+  const isExperienceActive =
+    activeHash === toSectionHash(ESectionId.Expirience);
+  const hasFocusedItem = focusedItemId !== null;
 
   useEffect(
     function () {
       if (!isExperienceActive) {
         setShouldRevealItems(false);
+        setIsInitialRevealComplete(false);
+        setFocusedItemId(null);
+        setFocusPhase("idle");
+        setIsFocusExitActive(false);
         return;
       }
 
-      const animationFrameId = window.requestAnimationFrame(function () {
-        setShouldRevealItems(true);
-      });
+      const listElement = listRef.current;
+
+      if (!listElement) {
+        setShouldRevealItems(false);
+        setIsInitialRevealComplete(false);
+        setFocusedItemId(null);
+        setFocusPhase("idle");
+        setIsFocusExitActive(false);
+        return;
+      }
+
+      const observedList = listElement;
+
+      setShouldRevealItems(false);
+      setIsInitialRevealComplete(false);
+
+      function isActuallyVisible(element: HTMLElement): boolean {
+        const rect = element.getBoundingClientRect();
+
+        if (rect.width <= 0 || rect.height <= 0) {
+          return false;
+        }
+
+        let node: HTMLElement | null = element;
+
+        while (node) {
+          const style = window.getComputedStyle(node);
+          const opacity = Number(style.opacity);
+
+          if (
+            style.display === "none" ||
+            style.visibility === "hidden" ||
+            style.pointerEvents === "none" ||
+            Number.isNaN(opacity) ||
+            opacity < 0.35
+          ) {
+            return false;
+          }
+
+          node = node.parentElement;
+        }
+
+        return true;
+      }
+
+      let animationFrameId = 0;
+      let isCancelled = false;
+
+      function waitUntilVisible() {
+        if (isCancelled || !observedList.isConnected) {
+          return;
+        }
+
+        if (isActuallyVisible(observedList)) {
+          setShouldRevealItems(true);
+          return;
+        }
+
+        animationFrameId = window.requestAnimationFrame(waitUntilVisible);
+      }
+
+      animationFrameId = window.requestAnimationFrame(waitUntilVisible);
 
       return function () {
+        isCancelled = true;
         window.cancelAnimationFrame(animationFrameId);
       };
     },
     [isExperienceActive],
   );
 
+  useEffect(
+    function () {
+      if (!shouldRevealItems) {
+        return;
+      }
+
+      const lastItemDelay =
+        (EXPERIENCE_TIMELINE_ITEMS.length - 1) * EXPERIENCE_REVEAL_STAGGER_MS;
+      const totalRevealDuration = lastItemDelay + EXPERIENCE_REVEAL_DURATION_MS;
+
+      const timeoutId = window.setTimeout(function () {
+        setIsInitialRevealComplete(true);
+      }, totalRevealDuration);
+
+      return function () {
+        window.clearTimeout(timeoutId);
+      };
+    },
+    [shouldRevealItems],
+  );
+
+  useEffect(
+    function () {
+      if (!focusedItemId || focusPhase !== "entering") {
+        return;
+      }
+
+      const timeoutId = window.setTimeout(function () {
+        setFocusPhase("focused");
+      }, EXPERIENCE_FOCUS_TRANSITION_MS);
+
+      return function () {
+        window.clearTimeout(timeoutId);
+      };
+    },
+    [focusedItemId, focusPhase],
+  );
+
+  useEffect(
+    function () {
+      if (!focusedItemId || focusPhase !== "exiting") {
+        return;
+      }
+
+      setIsFocusExitActive(false);
+      const rafId = window.requestAnimationFrame(function () {
+        setIsFocusExitActive(true);
+      });
+
+      const timeoutId = window.setTimeout(function () {
+        setFocusedItemId(null);
+        setFocusPhase("idle");
+        setIsFocusExitActive(false);
+      }, EXPERIENCE_FOCUS_TRANSITION_MS);
+
+      return function () {
+        window.cancelAnimationFrame(rafId);
+        window.clearTimeout(timeoutId);
+      };
+    },
+    [focusedItemId, focusPhase],
+  );
+
+  useEffect(
+    function () {
+      const listElement = listRef.current;
+
+      if (!listElement) {
+        setFocusShiftById({});
+        return;
+      }
+
+      const observedList = listElement;
+
+      function measureFocusShift() {
+        const itemElements = Array.from(
+          observedList.querySelectorAll<HTMLElement>("[data-experience-item-id]"),
+        );
+
+        if (itemElements.length === 0) {
+          setFocusShiftById({});
+          return;
+        }
+
+        const firstTop = itemElements[0].getBoundingClientRect().top;
+        const nextShiftById: Record<string, number> = {};
+
+        itemElements.forEach(function (itemElement) {
+          const itemId = itemElement.dataset.experienceItemId;
+
+          if (!itemId) {
+            return;
+          }
+
+          const itemTop = itemElement.getBoundingClientRect().top;
+          nextShiftById[itemId] = itemTop - firstTop;
+        });
+
+        setFocusShiftById(nextShiftById);
+      }
+
+      measureFocusShift();
+      const rafId = window.requestAnimationFrame(measureFocusShift);
+      window.addEventListener("resize", measureFocusShift);
+
+      return function () {
+        window.cancelAnimationFrame(rafId);
+        window.removeEventListener("resize", measureFocusShift);
+      };
+    },
+    [shouldRevealItems],
+  );
+
+  useEffect(
+    function () {
+      const articleElement = articleRef.current;
+      const listElement = listRef.current;
+
+      if (!articleElement || !listElement) {
+        setLineHeight(0);
+        return;
+      }
+
+      const observedArticle = articleElement;
+      const observedList = listElement;
+
+      function measureLineGeometry() {
+        const circleElements = Array.from(
+          observedList.querySelectorAll<HTMLElement>(
+            ".experience-item [data-experience-circle]",
+          ),
+        );
+
+        if (circleElements.length === 0) {
+          setLineHeight(0);
+          return;
+        }
+
+        const articleRect = observedArticle.getBoundingClientRect();
+        const firstRect = circleElements[0].getBoundingClientRect();
+        const lastRect =
+          circleElements[circleElements.length - 1].getBoundingClientRect();
+        const bottom = lastRect.bottom - articleRect.top + 25;
+        const top = firstRect.top - articleRect.top - 25;
+        const nextLineHeight = Math.max(bottom - top, 0);
+
+        setLineHeight(nextLineHeight);
+      }
+
+      measureLineGeometry();
+      const rafId = window.requestAnimationFrame(measureLineGeometry);
+      window.addEventListener("resize", measureLineGeometry);
+
+      return function () {
+        window.cancelAnimationFrame(rafId);
+        window.removeEventListener("resize", measureLineGeometry);
+      };
+    },
+    [shouldRevealItems],
+  );
+
+  const focusListClass =
+    focusPhase === "entering"
+      ? "experience-list--focus-entering"
+      : focusPhase === "focused"
+        ? "experience-list--focused"
+        : focusPhase === "exiting"
+          ? `experience-list--focus-exiting ${isFocusExitActive ? "experience-list--focus-exit-active" : ""}`
+          : "";
+
   return (
-    <article className="h-full overflow-y-auto pr-2 text-white">
+    <article
+      ref={articleRef}
+      className="relative h-full overflow-y-auto pr-2 text-white"
+    >
+      <span
+        className="pointer-events-none absolute top-0 left-[calc(50px+0.25rem)] z-0 w-[2px] bg-[color:var(--color-accent)]/70"
+        style={{ height: `${lineHeight}px` }}
+      />
+
       <ul
-        className={`experience-list h-full px-1 pt-[25px] pb-[25px] ${shouldRevealItems ? "experience-list--active" : ""} flex flex-col justify-start gap-2`}
+        ref={listRef}
+        className={`experience-list relative z-10 h-full px-1 pt-[25px] pb-[25px] ${shouldRevealItems ? "experience-list--active" : ""} ${focusListClass} flex flex-col justify-start gap-2`}
       >
         {EXPERIENCE_TIMELINE_ITEMS.map(function (item, index) {
-          const isExpanded = expandedItemId === item.id;
+          const isTargetItem = hasFocusedItem && focusedItemId === item.id;
+          const isFocused = focusPhase === "focused" && isTargetItem;
+          const isExpanded = focusPhase === "focused" && isTargetItem;
+          const isDimmed =
+            focusPhase === "focused" && hasFocusedItem && !isTargetItem;
+          const isAnimationLocked =
+            focusPhase === "entering" || focusPhase === "exiting";
+          const isToggleLocked =
+            !isInitialRevealComplete ||
+            isAnimationLocked ||
+            (focusPhase === "focused" && !isTargetItem);
 
           return (
             <ExperienceItem
               key={item.id}
               item={item}
               isExpanded={isExpanded}
-              isFirst={index === 0}
-              isLast={index === EXPERIENCE_TIMELINE_ITEMS.length - 1}
+              isFocused={isFocused}
+              isDimmed={isDimmed}
+              isInFocusedMode={focusPhase === "focused"}
+              focusShiftPx={focusShiftById[item.id] ?? 0}
               animationDelayMs={index * EXPERIENCE_REVEAL_STAGGER_MS}
+              isToggleDisabled={isToggleLocked}
               onToggle={function () {
-                setExpandedItemId(function (currentValue) {
-                  return currentValue === item.id ? null : item.id;
-                });
+                if (isToggleLocked) {
+                  return;
+                }
+
+                if (focusPhase === "idle") {
+                  setFocusedItemId(item.id);
+                  setFocusPhase("entering");
+                  return;
+                }
+
+                if (focusPhase === "focused" && isTargetItem) {
+                  setFocusPhase("exiting");
+                }
               }}
             />
           );
