@@ -50,6 +50,24 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
+    [ETranslationKey.ExperienceOmnoraHighlight1]:
+      "Took part in building the portal that serves over 650 companies in the German market, delivering interactive content with seamless LMS integration.",
+    [ETranslationKey.ExperienceOmnoraHighlight2]:
+      "Contributed to the development of an enterprise-grade learning platform as part of a cross-functional team of 20 engineers, collaborating with designers, product managers, and QA specialists.",
+    [ETranslationKey.ExperienceOmnoraHighlight3]:
+      "Played a key role in building a custom multimedia player using Canvas API and WebRTC, enabling real-time streaming, multi-layer annotations, and embedding into third-party platforms.",
+    [ETranslationKey.ExperienceOmnoraHighlight4]:
+      "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks, add overlays, and generate training content directly in the browser.",
+    [ETranslationKey.ExperienceOmnoraHighlight5]:
+      "Led implementation of SCORM and xAPI standards for detailed tracking of learner progress and interactions within external LMS platforms, ensuring e-learning compliance.",
+    [ETranslationKey.ExperienceOmnoraHighlight6]:
+      "Integrated AI APIs to enable features such as AI avatars, text-to-speech, and interactive video generation, improving automation and personalization.",
+    [ETranslationKey.ExperienceOmnoraHighlight7]:
+      "Directed FE modernization by refactoring the codebase into a reactive programming architecture and upgrading to the latest React and TypeScript, improving maintainability and performance.",
+    [ETranslationKey.ExperienceOmnoraHighlight8]:
+      "Enhanced testing by increasing unit test coverage and adding automated tests integrated into CI/CD pipelines for reliable, faster releases.",
+    [ETranslationKey.ExperienceOmnoraHighlight9]:
+      "Mentored junior developers, supported onboarding, and promoted best practices within the team.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
       "DigitalSuits | Outsource / Dedicated Team",
     [ETranslationKey.ExperienceDigitalsuitsJobTitle]:
@@ -58,6 +76,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
+      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
+      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -65,6 +87,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight1]:
+      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight2]:
+      "Supported iterative delivery and product stability through regular testing and technical improvements.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -72,6 +98,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
+    [ETranslationKey.ExperienceLanarsHighlight1]:
+      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+    [ETranslationKey.ExperienceLanarsHighlight2]:
+      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
   },
   [ELocale.Ru]: {
     [ETranslationKey.LocaleEn]: "EN",
@@ -121,6 +151,24 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
+    [ETranslationKey.ExperienceOmnoraHighlight1]:
+      "Took part in building the portal that serves over 650 companies in the German market, delivering interactive content with seamless LMS integration.",
+    [ETranslationKey.ExperienceOmnoraHighlight2]:
+      "Contributed to the development of an enterprise-grade learning platform as part of a cross-functional team of 20 engineers, collaborating with designers, product managers, and QA specialists.",
+    [ETranslationKey.ExperienceOmnoraHighlight3]:
+      "Played a key role in building a custom multimedia player using Canvas API and WebRTC, enabling real-time streaming, multi-layer annotations, and embedding into third-party platforms.",
+    [ETranslationKey.ExperienceOmnoraHighlight4]:
+      "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks, add overlays, and generate training content directly in the browser.",
+    [ETranslationKey.ExperienceOmnoraHighlight5]:
+      "Led implementation of SCORM and xAPI standards for detailed tracking of learner progress and interactions within external LMS platforms, ensuring e-learning compliance.",
+    [ETranslationKey.ExperienceOmnoraHighlight6]:
+      "Integrated AI APIs to enable features such as AI avatars, text-to-speech, and interactive video generation, improving automation and personalization.",
+    [ETranslationKey.ExperienceOmnoraHighlight7]:
+      "Directed FE modernization by refactoring the codebase into a reactive programming architecture and upgrading to the latest React and TypeScript, improving maintainability and performance.",
+    [ETranslationKey.ExperienceOmnoraHighlight8]:
+      "Enhanced testing by increasing unit test coverage and adding automated tests integrated into CI/CD pipelines for reliable, faster releases.",
+    [ETranslationKey.ExperienceOmnoraHighlight9]:
+      "Mentored junior developers, supported onboarding, and promoted best practices within the team.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
       "DigitalSuits | Outsource / Dedicated Team",
     [ETranslationKey.ExperienceDigitalsuitsJobTitle]:
@@ -129,6 +177,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
+      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
+      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -136,6 +188,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight1]:
+      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight2]:
+      "Supported iterative delivery and product stability through regular testing and technical improvements.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -143,6 +199,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
+    [ETranslationKey.ExperienceLanarsHighlight1]:
+      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+    [ETranslationKey.ExperienceLanarsHighlight2]:
+      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
   },
   [ELocale.Sp]: {
     [ETranslationKey.LocaleEn]: "EN",
@@ -192,6 +252,24 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
+    [ETranslationKey.ExperienceOmnoraHighlight1]:
+      "Took part in building the portal that serves over 650 companies in the German market, delivering interactive content with seamless LMS integration.",
+    [ETranslationKey.ExperienceOmnoraHighlight2]:
+      "Contributed to the development of an enterprise-grade learning platform as part of a cross-functional team of 20 engineers, collaborating with designers, product managers, and QA specialists.",
+    [ETranslationKey.ExperienceOmnoraHighlight3]:
+      "Played a key role in building a custom multimedia player using Canvas API and WebRTC, enabling real-time streaming, multi-layer annotations, and embedding into third-party platforms.",
+    [ETranslationKey.ExperienceOmnoraHighlight4]:
+      "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks, add overlays, and generate training content directly in the browser.",
+    [ETranslationKey.ExperienceOmnoraHighlight5]:
+      "Led implementation of SCORM and xAPI standards for detailed tracking of learner progress and interactions within external LMS platforms, ensuring e-learning compliance.",
+    [ETranslationKey.ExperienceOmnoraHighlight6]:
+      "Integrated AI APIs to enable features such as AI avatars, text-to-speech, and interactive video generation, improving automation and personalization.",
+    [ETranslationKey.ExperienceOmnoraHighlight7]:
+      "Directed FE modernization by refactoring the codebase into a reactive programming architecture and upgrading to the latest React and TypeScript, improving maintainability and performance.",
+    [ETranslationKey.ExperienceOmnoraHighlight8]:
+      "Enhanced testing by increasing unit test coverage and adding automated tests integrated into CI/CD pipelines for reliable, faster releases.",
+    [ETranslationKey.ExperienceOmnoraHighlight9]:
+      "Mentored junior developers, supported onboarding, and promoted best practices within the team.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
       "DigitalSuits | Outsource / Dedicated Team",
     [ETranslationKey.ExperienceDigitalsuitsJobTitle]:
@@ -200,6 +278,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
+      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
+      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -207,6 +289,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight1]:
+      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight2]:
+      "Supported iterative delivery and product stability through regular testing and technical improvements.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -214,6 +300,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
+    [ETranslationKey.ExperienceLanarsHighlight1]:
+      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+    [ETranslationKey.ExperienceLanarsHighlight2]:
+      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
   },
   [ELocale.De]: {
     [ETranslationKey.LocaleEn]: "EN",
@@ -262,6 +352,24 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Germany and Frankfurt | Remote",
     [ETranslationKey.ExperienceOmnoraDescription]:
       "Web Developer | Startup / Product. Full-time.",
+    [ETranslationKey.ExperienceOmnoraHighlight1]:
+      "Took part in building the portal that serves over 650 companies in the German market, delivering interactive content with seamless LMS integration.",
+    [ETranslationKey.ExperienceOmnoraHighlight2]:
+      "Contributed to the development of an enterprise-grade learning platform as part of a cross-functional team of 20 engineers, collaborating with designers, product managers, and QA specialists.",
+    [ETranslationKey.ExperienceOmnoraHighlight3]:
+      "Played a key role in building a custom multimedia player using Canvas API and WebRTC, enabling real-time streaming, multi-layer annotations, and embedding into third-party platforms.",
+    [ETranslationKey.ExperienceOmnoraHighlight4]:
+      "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks, add overlays, and generate training content directly in the browser.",
+    [ETranslationKey.ExperienceOmnoraHighlight5]:
+      "Led implementation of SCORM and xAPI standards for detailed tracking of learner progress and interactions within external LMS platforms, ensuring e-learning compliance.",
+    [ETranslationKey.ExperienceOmnoraHighlight6]:
+      "Integrated AI APIs to enable features such as AI avatars, text-to-speech, and interactive video generation, improving automation and personalization.",
+    [ETranslationKey.ExperienceOmnoraHighlight7]:
+      "Directed FE modernization by refactoring the codebase into a reactive programming architecture and upgrading to the latest React and TypeScript, improving maintainability and performance.",
+    [ETranslationKey.ExperienceOmnoraHighlight8]:
+      "Enhanced testing by increasing unit test coverage and adding automated tests integrated into CI/CD pipelines for reliable, faster releases.",
+    [ETranslationKey.ExperienceOmnoraHighlight9]:
+      "Mentored junior developers, supported onboarding, and promoted best practices within the team.",
     [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
       "DigitalSuits | Outsource / Dedicated Team",
     [ETranslationKey.ExperienceDigitalsuitsJobTitle]:
@@ -270,6 +378,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
+      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
+      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -277,6 +389,10 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Kharkiv, Ukraine | On-site",
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight1]:
+      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight2]:
+      "Supported iterative delivery and product stability through regular testing and technical improvements.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -284,5 +400,9 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
       "Dnipropetrovsk, Ukraine | On-site",
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
+    [ETranslationKey.ExperienceLanarsHighlight1]:
+      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+    [ETranslationKey.ExperienceLanarsHighlight2]:
+      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
   },
 };

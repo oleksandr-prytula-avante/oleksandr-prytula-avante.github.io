@@ -30,6 +30,7 @@ type ExperienceTextKeys = {
   jobTitle: ETranslationKey;
   location: ETranslationKey;
   description: ETranslationKey;
+  highlights: ETranslationKey[];
 };
 
 function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
@@ -40,6 +41,17 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         jobTitle: ETranslationKey.ExperienceOmnoraJobTitle,
         location: ETranslationKey.ExperienceOmnoraLocation,
         description: ETranslationKey.ExperienceOmnoraDescription,
+        highlights: [
+          ETranslationKey.ExperienceOmnoraHighlight1,
+          ETranslationKey.ExperienceOmnoraHighlight2,
+          ETranslationKey.ExperienceOmnoraHighlight3,
+          ETranslationKey.ExperienceOmnoraHighlight4,
+          ETranslationKey.ExperienceOmnoraHighlight5,
+          ETranslationKey.ExperienceOmnoraHighlight6,
+          ETranslationKey.ExperienceOmnoraHighlight7,
+          ETranslationKey.ExperienceOmnoraHighlight8,
+          ETranslationKey.ExperienceOmnoraHighlight9,
+        ],
       };
     case "digitalsuits":
       return {
@@ -47,6 +59,10 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         jobTitle: ETranslationKey.ExperienceDigitalsuitsJobTitle,
         location: ETranslationKey.ExperienceDigitalsuitsLocation,
         description: ETranslationKey.ExperienceDigitalsuitsDescription,
+        highlights: [
+          ETranslationKey.ExperienceDigitalsuitsHighlight1,
+          ETranslationKey.ExperienceDigitalsuitsHighlight2,
+        ],
       };
     case "code-and-care":
       return {
@@ -54,6 +70,10 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         jobTitle: ETranslationKey.ExperienceCodeAndCareJobTitle,
         location: ETranslationKey.ExperienceCodeAndCareLocation,
         description: ETranslationKey.ExperienceCodeAndCareDescription,
+        highlights: [
+          ETranslationKey.ExperienceCodeAndCareHighlight1,
+          ETranslationKey.ExperienceCodeAndCareHighlight2,
+        ],
       };
     case "lanars":
       return {
@@ -61,6 +81,10 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         jobTitle: ETranslationKey.ExperienceLanarsJobTitle,
         location: ETranslationKey.ExperienceLanarsLocation,
         description: ETranslationKey.ExperienceLanarsDescription,
+        highlights: [
+          ETranslationKey.ExperienceLanarsHighlight1,
+          ETranslationKey.ExperienceLanarsHighlight2,
+        ],
       };
     default:
       return {
@@ -68,6 +92,17 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         jobTitle: ETranslationKey.ExperienceOmnoraJobTitle,
         location: ETranslationKey.ExperienceOmnoraLocation,
         description: ETranslationKey.ExperienceOmnoraDescription,
+        highlights: [
+          ETranslationKey.ExperienceOmnoraHighlight1,
+          ETranslationKey.ExperienceOmnoraHighlight2,
+          ETranslationKey.ExperienceOmnoraHighlight3,
+          ETranslationKey.ExperienceOmnoraHighlight4,
+          ETranslationKey.ExperienceOmnoraHighlight5,
+          ETranslationKey.ExperienceOmnoraHighlight6,
+          ETranslationKey.ExperienceOmnoraHighlight7,
+          ETranslationKey.ExperienceOmnoraHighlight8,
+          ETranslationKey.ExperienceOmnoraHighlight9,
+        ],
       };
   }
 }
@@ -234,6 +269,9 @@ function ExperienceItem({
     getDateLocale(i18n.locale),
   );
   const locationText = i18n.t(textKeys.location);
+  const localizedHighlights = textKeys.highlights.map(function (highlightKey) {
+    return i18n.t(highlightKey);
+  });
 
   return (
     <li
@@ -321,19 +359,43 @@ function ExperienceItem({
         </div>
 
         {isExpanded ? (
-          <p
+          <div
             id={descriptionId}
-            className="pt-3 text-sm leading-relaxed text-white/90"
+            className="overflow-y-auto pt-3 text-sm text-white/90"
           >
-            {i18n.t(textKeys.description)}
-          </p>
+            {localizedHighlights.length > 0 ? (
+              <ul className="mt-3 space-y-2 leading-relaxed">
+                {localizedHighlights.map(function (highlight, highlightIndex) {
+                  return (
+                    <li key={`${item.id}-highlight-${highlightIndex}`}>
+                      {`- ${highlight}`}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+
+            {item.technologyTags.length > 0 ? (
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {item.technologyTags.map(function (tag) {
+                  return (
+                    <li key={`${item.id}-${tag}`}>
+                      <span className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs uppercase tracking-[0.06em] text-white/90">
+                        #{tag}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+          </div>
         ) : null}
       </div>
     </li>
   );
 }
 
-type FocusPhase = "idle" | "entering" | "focused" | "exiting";
+type FocusPhase = "idle" | "preparing" | "entering" | "focused" | "exiting";
 
 export function Experience() {
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
@@ -351,6 +413,45 @@ export function Experience() {
   const isExperienceActive =
     activeHash === toSectionHash(ESectionId.Expirience);
   const hasFocusedItem = focusedItemId !== null;
+
+  function measureFocusShiftFromLayout() {
+    const listElement = listRef.current;
+
+    if (!listElement) {
+      setFocusShiftById({});
+      return;
+    }
+
+    const itemElements = Array.from(
+      listElement.querySelectorAll<HTMLElement>("[data-experience-item-id]"),
+    );
+
+    if (itemElements.length === 0) {
+      setFocusShiftById({});
+      return;
+    }
+
+    const firstTop = itemElements[0].getBoundingClientRect().top;
+    const firstItemId = itemElements[0].dataset.experienceItemId;
+    const nextShiftById: Record<string, number> = {};
+
+    itemElements.forEach(function (itemElement) {
+      const itemId = itemElement.dataset.experienceItemId;
+
+      if (!itemId) {
+        return;
+      }
+
+      const itemTop = itemElement.getBoundingClientRect().top;
+      nextShiftById[itemId] = Math.round(itemTop - firstTop);
+    });
+
+    if (firstItemId) {
+      nextShiftById[firstItemId] = 0;
+    }
+
+    setFocusShiftById(nextShiftById);
+  }
 
   useEffect(
     function () {
@@ -457,6 +558,30 @@ export function Experience() {
 
   useEffect(
     function () {
+      if (!focusedItemId || focusPhase !== "preparing") {
+        return;
+      }
+
+      measureFocusShiftFromLayout();
+
+      let secondRafId = 0;
+      const firstRafId = window.requestAnimationFrame(function () {
+        measureFocusShiftFromLayout();
+        secondRafId = window.requestAnimationFrame(function () {
+          setFocusPhase("entering");
+        });
+      });
+
+      return function () {
+        window.cancelAnimationFrame(firstRafId);
+        window.cancelAnimationFrame(secondRafId);
+      };
+    },
+    [focusedItemId, focusPhase],
+  );
+
+  useEffect(
+    function () {
       if (!focusedItemId || focusPhase !== "entering") {
         return;
       }
@@ -506,42 +631,13 @@ export function Experience() {
         return;
       }
 
-      const observedList = listElement;
-
-      function measureFocusShift() {
-        const itemElements = Array.from(
-          observedList.querySelectorAll<HTMLElement>("[data-experience-item-id]"),
-        );
-
-        if (itemElements.length === 0) {
-          setFocusShiftById({});
-          return;
-        }
-
-        const firstTop = itemElements[0].getBoundingClientRect().top;
-        const nextShiftById: Record<string, number> = {};
-
-        itemElements.forEach(function (itemElement) {
-          const itemId = itemElement.dataset.experienceItemId;
-
-          if (!itemId) {
-            return;
-          }
-
-          const itemTop = itemElement.getBoundingClientRect().top;
-          nextShiftById[itemId] = itemTop - firstTop;
-        });
-
-        setFocusShiftById(nextShiftById);
-      }
-
-      measureFocusShift();
-      const rafId = window.requestAnimationFrame(measureFocusShift);
-      window.addEventListener("resize", measureFocusShift);
+      measureFocusShiftFromLayout();
+      const rafId = window.requestAnimationFrame(measureFocusShiftFromLayout);
+      window.addEventListener("resize", measureFocusShiftFromLayout);
 
       return function () {
         window.cancelAnimationFrame(rafId);
-        window.removeEventListener("resize", measureFocusShift);
+        window.removeEventListener("resize", measureFocusShiftFromLayout);
       };
     },
     [shouldRevealItems],
@@ -605,12 +701,9 @@ export function Experience() {
           : "";
 
   return (
-    <article
-      ref={articleRef}
-      className="relative h-full overflow-y-auto pr-2 text-white"
-    >
+    <article ref={articleRef} className="relative h-full px-5 text-white">
       <span
-        className="pointer-events-none absolute top-0 left-[calc(50px+0.25rem)] z-0 w-[2px] bg-[color:var(--color-accent)]/70"
+        className="pointer-events-none absolute top-0 left-[calc(70px+0.25rem)] z-0 w-[2px] bg-[color:var(--color-accent)]/70"
         style={{ height: `${lineHeight}px` }}
       />
 
@@ -625,7 +718,9 @@ export function Experience() {
           const isDimmed =
             focusPhase === "focused" && hasFocusedItem && !isTargetItem;
           const isAnimationLocked =
-            focusPhase === "entering" || focusPhase === "exiting";
+            focusPhase === "preparing" ||
+            focusPhase === "entering" ||
+            focusPhase === "exiting";
           const isToggleLocked =
             !isInitialRevealComplete ||
             isAnimationLocked ||
@@ -638,7 +733,7 @@ export function Experience() {
               isExpanded={isExpanded}
               isFocused={isFocused}
               isDimmed={isDimmed}
-              isInFocusedMode={focusPhase === "focused"}
+              isInFocusedMode={focusPhase === "focused" && isTargetItem}
               focusShiftPx={focusShiftById[item.id] ?? 0}
               animationDelayMs={index * EXPERIENCE_REVEAL_STAGGER_MS}
               isToggleDisabled={isToggleLocked}
@@ -648,8 +743,9 @@ export function Experience() {
                 }
 
                 if (focusPhase === "idle") {
+                  measureFocusShiftFromLayout();
                   setFocusedItemId(item.id);
-                  setFocusPhase("entering");
+                  setFocusPhase("preparing");
                   return;
                 }
 

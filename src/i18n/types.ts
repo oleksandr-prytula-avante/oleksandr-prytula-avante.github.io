@@ -46,21 +46,36 @@ export const enum ETranslationKey {
   ExperienceOmnoraJobTitle = "experience.omnora.jobTitle",
   ExperienceOmnoraLocation = "experience.omnora.location",
   ExperienceOmnoraDescription = "experience.omnora.description",
+  ExperienceOmnoraHighlight1 = "experience.omnora.highlight1",
+  ExperienceOmnoraHighlight2 = "experience.omnora.highlight2",
+  ExperienceOmnoraHighlight3 = "experience.omnora.highlight3",
+  ExperienceOmnoraHighlight4 = "experience.omnora.highlight4",
+  ExperienceOmnoraHighlight5 = "experience.omnora.highlight5",
+  ExperienceOmnoraHighlight6 = "experience.omnora.highlight6",
+  ExperienceOmnoraHighlight7 = "experience.omnora.highlight7",
+  ExperienceOmnoraHighlight8 = "experience.omnora.highlight8",
+  ExperienceOmnoraHighlight9 = "experience.omnora.highlight9",
 
   ExperienceDigitalsuitsCompanyName = "experience.digitalsuits.companyName",
   ExperienceDigitalsuitsJobTitle = "experience.digitalsuits.jobTitle",
   ExperienceDigitalsuitsLocation = "experience.digitalsuits.location",
   ExperienceDigitalsuitsDescription = "experience.digitalsuits.description",
+  ExperienceDigitalsuitsHighlight1 = "experience.digitalsuits.highlight1",
+  ExperienceDigitalsuitsHighlight2 = "experience.digitalsuits.highlight2",
 
   ExperienceCodeAndCareCompanyName = "experience.codeAndCare.companyName",
   ExperienceCodeAndCareJobTitle = "experience.codeAndCare.jobTitle",
   ExperienceCodeAndCareLocation = "experience.codeAndCare.location",
   ExperienceCodeAndCareDescription = "experience.codeAndCare.description",
+  ExperienceCodeAndCareHighlight1 = "experience.codeAndCare.highlight1",
+  ExperienceCodeAndCareHighlight2 = "experience.codeAndCare.highlight2",
 
   ExperienceLanarsCompanyName = "experience.lanars.companyName",
   ExperienceLanarsJobTitle = "experience.lanars.jobTitle",
   ExperienceLanarsLocation = "experience.lanars.location",
   ExperienceLanarsDescription = "experience.lanars.description",
+  ExperienceLanarsHighlight1 = "experience.lanars.highlight1",
+  ExperienceLanarsHighlight2 = "experience.lanars.highlight2",
 }
 
 export type Translations = Record<ETranslationKey, string>;
