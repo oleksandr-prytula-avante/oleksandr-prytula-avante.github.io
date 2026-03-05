@@ -21,7 +21,7 @@ export function Header({ isLanguageDisabled = false }: HeaderProps) {
 
       <div className="flex items-center gap-1 whitespace-nowrap">
         <nav className="flex items-center gap-1 text-[16px] uppercase">
-          {SECTION_NAV_ITEMS.map(({ href, labelKey }) => {
+          {SECTION_NAV_ITEMS.map(function ({ href, labelKey }) {
             const label = i18n.t(labelKey);
             const isActive = href === activeHash;
 

@@ -77,7 +77,7 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
         <span className="pointer-events-none absolute left-1/2 top-0 h-0 w-0 -translate-x-1/2 border-x-[7.5px] border-x-transparent border-b-[9px] border-b-[color:var(--color-accent)]" />
 
         <div className="mt-[8px] overflow-hidden rounded-md border border-[color:var(--color-accent)] bg-[color:var(--color-bg)]">
-          {i18n.languageOptions.map((nextLocale) => {
+          {i18n.languageOptions.map(function (nextLocale) {
             const isActive = nextLocale === i18n.locale;
 
             return (

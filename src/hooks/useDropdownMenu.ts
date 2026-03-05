@@ -41,7 +41,9 @@ export function useDropdownMenu() {
   }
 
   function toggle() {
-    setIsOpen((prev) => !prev);
+    setIsOpen(function (prev) {
+      return !prev;
+    });
   }
 
   return {

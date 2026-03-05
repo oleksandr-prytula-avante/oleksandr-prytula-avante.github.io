@@ -12,7 +12,7 @@ export function SectionDots() {
       className="absolute right-4 top-1/2 flex -translate-y-1/2 flex-col items-center gap-3 max-[1280px]:right-5"
       aria-label="Section navigation"
     >
-      {SECTION_NAV_ITEMS.map(({ href, labelKey }) => {
+      {SECTION_NAV_ITEMS.map(function ({ href, labelKey }) {
         const label = i18n.t(labelKey);
         const isActive = href === activeHash;
 

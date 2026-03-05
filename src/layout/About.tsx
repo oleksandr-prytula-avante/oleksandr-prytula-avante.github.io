@@ -11,11 +11,7 @@ type AboutProps = {
 };
 
 export function About(props: AboutProps) {
-  const {
-    hoveredSkill,
-    onSkillEnter,
-    onSkillLeave,
-  } = props;
+  const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
   const i18n = useI18n();
 
   const paragraphs = [

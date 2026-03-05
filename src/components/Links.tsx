@@ -20,7 +20,7 @@ export function Links() {
 
   return (
     <div className="absolute bottom-12 flex flex-col gap-5">
-      {LINKS.map(({ id, href, labelKey }) => {
+      {LINKS.map(function ({ id, href, labelKey }) {
         const text = i18n.t(labelKey);
         const IconComponent = ICON_BY_LINK_ID[id];
 

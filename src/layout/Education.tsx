@@ -5,8 +5,6 @@ export function Education() {
   // const i18n = useI18n();
 
   return (
-    <article className="h-full overflow-y-auto pr-2 text-white">
-      -
-    </article>
+    <article className="h-full overflow-y-auto pr-2 text-white">-</article>
   );
 }
