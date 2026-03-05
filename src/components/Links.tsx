@@ -5,14 +5,14 @@ import { GmailIcon } from "./icons/GmailIcon";
 import { LeetCodeIcon } from "./icons/LeetCodeIcon";
 import { LinkedInIcon } from "./icons/LinkedInIcon";
 import { GithubIcon } from "./icons/GithubIcon";
-import { LINKS } from "../constants/links";
+import { ELink, LINKS } from "../constants/links";
 import { useI18n } from "../hooks/useI18n";
 
-const ICON_BY_LINK_ID: Record<string, ComponentType<{ className?: string }>> = {
-  github: GithubIcon,
-  linkedin: LinkedInIcon,
-  leetcode: LeetCodeIcon,
-  gmail: GmailIcon,
+const ICON_BY_LINK_ID: Record<ELink, ComponentType<{ className?: string }>> = {
+  [ELink.Github]: GithubIcon,
+  [ELink.LinkedIn]: LinkedInIcon,
+  [ELink.LeetCode]: LeetCodeIcon,
+  [ELink.Gmail]: GmailIcon,
 };
 
 export function Links() {

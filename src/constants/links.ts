@@ -1,24 +1,37 @@
 import { ETranslationKey } from "../i18n/types";
 
-export const LINKS = [
+export enum ELink {
+  Github = "github",
+  LinkedIn = "linkedin",
+  LeetCode = "leetcode",
+  Gmail = "gmail",
+}
+
+type LinkItem = {
+  id: ELink;
+  href: string;
+  labelKey: ETranslationKey;
+};
+
+export const LINKS: LinkItem[] = [
   {
-    id: "github",
+    id: ELink.Github,
     href: "https://github.com/oleksandr-prytula-avante",
     labelKey: ETranslationKey.NavGithub,
   },
   {
-    id: "linkedin",
+    id: ELink.LinkedIn,
     href: "https://www.linkedin.com/in/oleksandr-prytula-avante",
     labelKey: ETranslationKey.NavLinkedIn,
   },
   {
-    id: "leetcode",
+    id: ELink.LeetCode,
     href: "https://leetcode.com/u/oleksandr-prytula-avante/",
     labelKey: ETranslationKey.NavLeetCode,
   },
   {
-    id: "gmail",
+    id: ELink.Gmail,
     href: "mailto:oleksandr.prytula.avante@gmail.com",
     labelKey: ETranslationKey.NavEmail,
   },
-] as const;
+];
