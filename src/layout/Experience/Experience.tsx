@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
 import {
@@ -10,21 +10,18 @@ import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyI
 import { ExperienceExpandIcon } from "../../components/icons/ExperienceExpandIcon";
 import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
 import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocationIcon";
+import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
 import { useI18n } from "../../hooks/useI18n";
 import { ELocale, ETranslationKey } from "../../i18n/types";
 import { ESectionId, toSectionHash } from "../../utils/sections";
+import { buildPeriodLabel } from "../../utils/time";
 
 import "./Experience.css";
 
 const EXPERIENCE_REVEAL_STAGGER_MS = 240;
 const EXPERIENCE_REVEAL_DURATION_MS = 460;
 const EXPERIENCE_FOCUS_TRANSITION_MS = 460;
-
-type YearMonth = {
-  year: number;
-  month: number;
-};
 
 type ExperienceTextKeys = {
   companyName: ETranslationKey;
@@ -63,6 +60,12 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         highlights: [
           ETranslationKey.ExperienceDigitalsuitsHighlight1,
           ETranslationKey.ExperienceDigitalsuitsHighlight2,
+          ETranslationKey.ExperienceDigitalsuitsHighlight3,
+          ETranslationKey.ExperienceDigitalsuitsHighlight4,
+          ETranslationKey.ExperienceDigitalsuitsHighlight5,
+          ETranslationKey.ExperienceDigitalsuitsHighlight6,
+          ETranslationKey.ExperienceDigitalsuitsHighlight7,
+          ETranslationKey.ExperienceDigitalsuitsHighlight8,
         ],
       };
     case "code-and-care":
@@ -74,6 +77,10 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         highlights: [
           ETranslationKey.ExperienceCodeAndCareHighlight1,
           ETranslationKey.ExperienceCodeAndCareHighlight2,
+          ETranslationKey.ExperienceCodeAndCareHighlight3,
+          ETranslationKey.ExperienceCodeAndCareHighlight4,
+          ETranslationKey.ExperienceCodeAndCareHighlight5,
+          ETranslationKey.ExperienceCodeAndCareHighlight6,
         ],
       };
     case "lanars":
@@ -85,6 +92,10 @@ function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
         highlights: [
           ETranslationKey.ExperienceLanarsHighlight1,
           ETranslationKey.ExperienceLanarsHighlight2,
+          ETranslationKey.ExperienceLanarsHighlight3,
+          ETranslationKey.ExperienceLanarsHighlight4,
+          ETranslationKey.ExperienceLanarsHighlight5,
+          ETranslationKey.ExperienceLanarsHighlight6,
         ],
       };
     default:
@@ -121,121 +132,6 @@ function getDateLocale(locale: ELocale): string {
   }
 }
 
-function parseYearMonth(value: string): YearMonth {
-  const [yearPart, monthPart] = value.split("-");
-  const year = Number(yearPart);
-  const month = Number(monthPart);
-
-  if (
-    !Number.isInteger(year) ||
-    !Number.isInteger(month) ||
-    month < 1 ||
-    month > 12
-  ) {
-    throw new Error(`Invalid date format: ${value}. Expected YYYY-MM.`);
-  }
-
-  return { year, month };
-}
-
-function formatMonthYear(value: YearMonth, locale: string): string {
-  const date = new Date(value.year, value.month - 1, 1);
-  return new Intl.DateTimeFormat(locale, {
-    month: "short",
-    year: "numeric",
-  }).format(date);
-}
-
-function formatDuration(totalMonths: number): string {
-  if (totalMonths <= 0) {
-    return "0 mos";
-  }
-
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-  const parts: string[] = [];
-
-  if (years > 0) {
-    parts.push(`${years} ${years === 1 ? "yr" : "yrs"}`);
-  }
-
-  if (months > 0) {
-    parts.push(`${months} ${months === 1 ? "mo" : "mos"}`);
-  }
-
-  return parts.join(" ");
-}
-
-function buildPeriodLabel(
-  startDate: string,
-  endDate: string | null,
-  presentLabel: string,
-  locale: string,
-): { dateRange: string; duration: string } {
-  const parsedStart = parseYearMonth(startDate);
-
-  let parsedEnd: YearMonth;
-
-  if (endDate === null) {
-    const now = new Date();
-    parsedEnd = {
-      year: now.getFullYear(),
-      month: now.getMonth() + 1,
-    };
-  } else {
-    parsedEnd = parseYearMonth(endDate);
-  }
-
-  const monthDiff =
-    (parsedEnd.year - parsedStart.year) * 12 +
-    (parsedEnd.month - parsedStart.month) +
-    1;
-
-  const safeMonthDiff = Math.max(monthDiff, 0);
-  const startLabel = formatMonthYear(parsedStart, locale);
-  const endLabel =
-    endDate === null ? presentLabel : formatMonthYear(parsedEnd, locale);
-
-  return {
-    dateRange: `${startLabel} - ${endLabel}`,
-    duration: formatDuration(safeMonthDiff),
-  };
-}
-
-function PipeSeparatedText({
-  value,
-  className,
-  separatorClassName,
-}: {
-  value: string;
-  className?: string;
-  separatorClassName?: string;
-}) {
-  const parts = value
-    .split("|")
-    .map(function (part) {
-      return part.trim();
-    })
-    .filter(function (part) {
-      return part.length > 0;
-    });
-
-  return (
-    <span className={className}>
-      {parts.map(function (part, index) {
-        return (
-          <Fragment key={`${part}-${index}`}>
-            {index > 0 ? (
-              <span className={separatorClassName ?? "text-white/60"}>|</span>
-            ) : null}
-            <span>{part}</span>
-          </Fragment>
-        );
-      })}
-    </span>
-  );
-}
-
 type ExperienceItemProps = {
   item: ExperienceTimelineItem;
   isExpanded: boolean;
@@ -248,17 +144,18 @@ type ExperienceItemProps = {
   onToggle: () => void;
 };
 
-function ExperienceItem({
-  item,
-  isExpanded,
-  isFocused,
-  isDimmed,
-  isInFocusedMode,
-  focusShiftPx,
-  animationDelayMs,
-  isToggleDisabled,
-  onToggle,
-}: ExperienceItemProps) {
+function ExperienceItem(props: ExperienceItemProps) {
+  const {
+    item,
+    isExpanded,
+    isFocused,
+    isDimmed,
+    isInFocusedMode,
+    focusShiftPx,
+    animationDelayMs,
+    isToggleDisabled,
+    onToggle,
+  } = props;
   const i18n = useI18n();
   const textKeys = getExperienceTextKeys(item.id);
   const companyName = i18n.t(textKeys.companyName);
@@ -372,6 +269,10 @@ function ExperienceItem({
                       <Tag
                         label={tag}
                         className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs uppercase tracking-[0.06em] text-white/90 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
+                        onSelectSkill={function (skill: string): void {
+                          void skill;
+                        }}
+                        onClearSkill={function (): void {}}
                       />
                     </li>
                   );

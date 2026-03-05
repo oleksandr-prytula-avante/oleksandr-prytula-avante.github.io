@@ -62,6 +62,12 @@ export const enum ETranslationKey {
   ExperienceDigitalsuitsDescription = "experience.digitalsuits.description",
   ExperienceDigitalsuitsHighlight1 = "experience.digitalsuits.highlight1",
   ExperienceDigitalsuitsHighlight2 = "experience.digitalsuits.highlight2",
+  ExperienceDigitalsuitsHighlight3 = "experience.digitalsuits.highlight3",
+  ExperienceDigitalsuitsHighlight4 = "experience.digitalsuits.highlight4",
+  ExperienceDigitalsuitsHighlight5 = "experience.digitalsuits.highlight5",
+  ExperienceDigitalsuitsHighlight6 = "experience.digitalsuits.highlight6",
+  ExperienceDigitalsuitsHighlight7 = "experience.digitalsuits.highlight7",
+  ExperienceDigitalsuitsHighlight8 = "experience.digitalsuits.highlight8",
 
   ExperienceCodeAndCareCompanyName = "experience.codeAndCare.companyName",
   ExperienceCodeAndCareJobTitle = "experience.codeAndCare.jobTitle",
@@ -69,6 +75,10 @@ export const enum ETranslationKey {
   ExperienceCodeAndCareDescription = "experience.codeAndCare.description",
   ExperienceCodeAndCareHighlight1 = "experience.codeAndCare.highlight1",
   ExperienceCodeAndCareHighlight2 = "experience.codeAndCare.highlight2",
+  ExperienceCodeAndCareHighlight3 = "experience.codeAndCare.highlight3",
+  ExperienceCodeAndCareHighlight4 = "experience.codeAndCare.highlight4",
+  ExperienceCodeAndCareHighlight5 = "experience.codeAndCare.highlight5",
+  ExperienceCodeAndCareHighlight6 = "experience.codeAndCare.highlight6",
 
   ExperienceLanarsCompanyName = "experience.lanars.companyName",
   ExperienceLanarsJobTitle = "experience.lanars.jobTitle",
@@ -76,6 +86,10 @@ export const enum ETranslationKey {
   ExperienceLanarsDescription = "experience.lanars.description",
   ExperienceLanarsHighlight1 = "experience.lanars.highlight1",
   ExperienceLanarsHighlight2 = "experience.lanars.highlight2",
+  ExperienceLanarsHighlight3 = "experience.lanars.highlight3",
+  ExperienceLanarsHighlight4 = "experience.lanars.highlight4",
+  ExperienceLanarsHighlight5 = "experience.lanars.highlight5",
+  ExperienceLanarsHighlight6 = "experience.lanars.highlight6",
 }
 
 export const LOCALE_LABEL_KEYS: Record<ELocale, ETranslationKey> = {

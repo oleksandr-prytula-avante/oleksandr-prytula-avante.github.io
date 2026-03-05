@@ -51,7 +51,9 @@ export function LinesBackground() {
   return (
     <div className="lines" aria-hidden="true">
       {verticalLines.map(function (style, index) {
-        return <div key={`v-${index}`} className="line-vertical" style={style} />;
+        return (
+          <div key={`v-${index}`} className="line-vertical" style={style} />
+        );
       })}
       {horizontalLines.map(function (style, index) {
         return (

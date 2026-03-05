@@ -77,9 +77,21 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+      "Developed an admin panel for managing an interactive chatbots (before active AI agent integrations) used in B2B insurance applications, enabling business users to configure flows, monitor interactions and manage customer communication scenarios.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
-      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
+      "Developed a real estate platform tailored for the UK market, providing tools for property listing management, search and client interactions, with a focus on scalability, performance and regulatory compliance.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
+      "Led the development of several web applications from scratch in a cross-functional team of 5 engineers, working in close collaboration with product management and DevOps engineers to ensure smooth delivery, infrastructure readiness and alignment with business priorities.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight4]:
+      "Defined and implemented effective team workflows, including task breakdown, prioritization, code review processes and release planning.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight5]:
+      "Conducted effort estimation for features and overall project scope, balancing delivery timelines with technical feasibility.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight6]:
+      "Designed the overall application architecture, selected the technology stack and was responsible for key technical decisions throughout the project lifecycle.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight7]:
+      "Maintained daily communication with business stakeholders, ensuring alignment between technical implementation and product goals.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight8]:
+      "Provided technical mentorship, with a strong focus on FE quality, helping coworkers to improve code maintainability, performance and UI consistency.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -88,9 +100,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+      "Designed and developed web and mobile applications from scratch, covering architecture on FE and BE parts.",
     [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-      "Supported iterative delivery and product stability through regular testing and technical improvements.",
+      "Participated in application complexity assessment, effort estimation and architectural planning to ensure scalable and maintainable solutions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight3]:
+      "Acted as a mentor for junior developers, supporting their growth through code reviews, technical guidance and onboarding sessions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight4]:
+      "Created a real-time monitoring platform for medical sensors for French market, enabling continuous tracking and alerting based on live data streams.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight5]:
+      "Built and maintained cryptocurrency platforms and wallets, with a strong focus on security, performance and scalability.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight6]:
+      "Closely collaborated with core teams of crypto platform Bitfinex (https://www.bitfinex.com/) to deliver high-impact features, implement landing pages and mobile applications and ensure protocol compliance.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -99,9 +119,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
     [ETranslationKey.ExperienceLanarsHighlight1]:
-      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+      "Worked as a Full-Stack Developer, delivering both FE and BE solutions across several commercial projects.",
     [ETranslationKey.ExperienceLanarsHighlight2]:
-      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
+      "Participated in project planning and estimation, providing accurate assessments of required development hours.",
+    [ETranslationKey.ExperienceLanarsHighlight3]:
+      "Took part in technical discussions and feature breakdowns with team members and stakeholders.",
+    [ETranslationKey.ExperienceLanarsHighlight4]:
+      "Built responsive landing pages for various products with a focus on performance and maintainability.",
+    [ETranslationKey.ExperienceLanarsHighlight5]:
+      "Developed backend APIs for mobile applications, including a pet walking service and a marketplace platform.",
+    [ETranslationKey.ExperienceLanarsHighlight6]:
+      "Implemented an admin panel for a marketplace and a CRM system for a gaming company, enabling operational teams to manage content, users and workflows.",
   },
   [ELocale.Ru]: {
     [ETranslationKey.LocaleEn]: "EN",
@@ -178,9 +206,21 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+      "Developed an admin panel for managing an interactive chatbots (before active AI agent integrations) used in B2B insurance applications, enabling business users to configure flows, monitor interactions and manage customer communication scenarios.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
-      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
+      "Developed a real estate platform tailored for the UK market, providing tools for property listing management, search and client interactions, with a focus on scalability, performance and regulatory compliance.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
+      "Led the development of several web applications from scratch in a cross-functional team of 5 engineers, working in close collaboration with product management and DevOps engineers to ensure smooth delivery, infrastructure readiness and alignment with business priorities.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight4]:
+      "Defined and implemented effective team workflows, including task breakdown, prioritization, code review processes and release planning.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight5]:
+      "Conducted effort estimation for features and overall project scope, balancing delivery timelines with technical feasibility.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight6]:
+      "Designed the overall application architecture, selected the technology stack and was responsible for key technical decisions throughout the project lifecycle.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight7]:
+      "Maintained daily communication with business stakeholders, ensuring alignment between technical implementation and product goals.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight8]:
+      "Provided technical mentorship, with a strong focus on FE quality, helping coworkers to improve code maintainability, performance and UI consistency.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -189,9 +229,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+      "Designed and developed web and mobile applications from scratch, covering architecture on FE and BE parts.",
     [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-      "Supported iterative delivery and product stability through regular testing and technical improvements.",
+      "Participated in application complexity assessment, effort estimation and architectural planning to ensure scalable and maintainable solutions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight3]:
+      "Acted as a mentor for junior developers, supporting their growth through code reviews, technical guidance and onboarding sessions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight4]:
+      "Created a real-time monitoring platform for medical sensors for French market, enabling continuous tracking and alerting based on live data streams.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight5]:
+      "Built and maintained cryptocurrency platforms and wallets, with a strong focus on security, performance and scalability.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight6]:
+      "Closely collaborated with core teams of crypto platform Bitfinex (https://www.bitfinex.com/) to deliver high-impact features, implement landing pages and mobile applications and ensure protocol compliance.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -200,9 +248,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
     [ETranslationKey.ExperienceLanarsHighlight1]:
-      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+      "Worked as a Full-Stack Developer, delivering both FE and BE solutions across several commercial projects.",
     [ETranslationKey.ExperienceLanarsHighlight2]:
-      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
+      "Participated in project planning and estimation, providing accurate assessments of required development hours.",
+    [ETranslationKey.ExperienceLanarsHighlight3]:
+      "Took part in technical discussions and feature breakdowns with team members and stakeholders.",
+    [ETranslationKey.ExperienceLanarsHighlight4]:
+      "Built responsive landing pages for various products with a focus on performance and maintainability.",
+    [ETranslationKey.ExperienceLanarsHighlight5]:
+      "Developed backend APIs for mobile applications, including a pet walking service and a marketplace platform.",
+    [ETranslationKey.ExperienceLanarsHighlight6]:
+      "Implemented an admin panel for a marketplace and a CRM system for a gaming company, enabling operational teams to manage content, users and workflows.",
   },
   [ELocale.Sp]: {
     [ETranslationKey.LocaleEn]: "EN",
@@ -279,9 +335,21 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+      "Developed an admin panel for managing an interactive chatbots (before active AI agent integrations) used in B2B insurance applications, enabling business users to configure flows, monitor interactions and manage customer communication scenarios.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
-      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
+      "Developed a real estate platform tailored for the UK market, providing tools for property listing management, search and client interactions, with a focus on scalability, performance and regulatory compliance.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
+      "Led the development of several web applications from scratch in a cross-functional team of 5 engineers, working in close collaboration with product management and DevOps engineers to ensure smooth delivery, infrastructure readiness and alignment with business priorities.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight4]:
+      "Defined and implemented effective team workflows, including task breakdown, prioritization, code review processes and release planning.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight5]:
+      "Conducted effort estimation for features and overall project scope, balancing delivery timelines with technical feasibility.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight6]:
+      "Designed the overall application architecture, selected the technology stack and was responsible for key technical decisions throughout the project lifecycle.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight7]:
+      "Maintained daily communication with business stakeholders, ensuring alignment between technical implementation and product goals.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight8]:
+      "Provided technical mentorship, with a strong focus on FE quality, helping coworkers to improve code maintainability, performance and UI consistency.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -290,9 +358,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+      "Designed and developed web and mobile applications from scratch, covering architecture on FE and BE parts.",
     [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-      "Supported iterative delivery and product stability through regular testing and technical improvements.",
+      "Participated in application complexity assessment, effort estimation and architectural planning to ensure scalable and maintainable solutions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight3]:
+      "Acted as a mentor for junior developers, supporting their growth through code reviews, technical guidance and onboarding sessions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight4]:
+      "Created a real-time monitoring platform for medical sensors for French market, enabling continuous tracking and alerting based on live data streams.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight5]:
+      "Built and maintained cryptocurrency platforms and wallets, with a strong focus on security, performance and scalability.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight6]:
+      "Closely collaborated with core teams of crypto platform Bitfinex (https://www.bitfinex.com/) to deliver high-impact features, implement landing pages and mobile applications and ensure protocol compliance.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -301,9 +377,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
     [ETranslationKey.ExperienceLanarsHighlight1]:
-      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+      "Worked as a Full-Stack Developer, delivering both FE and BE solutions across several commercial projects.",
     [ETranslationKey.ExperienceLanarsHighlight2]:
-      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
+      "Participated in project planning and estimation, providing accurate assessments of required development hours.",
+    [ETranslationKey.ExperienceLanarsHighlight3]:
+      "Took part in technical discussions and feature breakdowns with team members and stakeholders.",
+    [ETranslationKey.ExperienceLanarsHighlight4]:
+      "Built responsive landing pages for various products with a focus on performance and maintainability.",
+    [ETranslationKey.ExperienceLanarsHighlight5]:
+      "Developed backend APIs for mobile applications, including a pet walking service and a marketplace platform.",
+    [ETranslationKey.ExperienceLanarsHighlight6]:
+      "Implemented an admin panel for a marketplace and a CRM system for a gaming company, enabling operational teams to manage content, users and workflows.",
   },
   [ELocale.De]: {
     [ETranslationKey.LocaleEn]: "EN",
@@ -379,9 +463,21 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceDigitalsuitsDescription]:
       "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-      "Delivered full-stack web features in a dedicated team model while coordinating implementation quality and release scope.",
+      "Developed an admin panel for managing an interactive chatbots (before active AI agent integrations) used in B2B insurance applications, enabling business users to configure flows, monitor interactions and manage customer communication scenarios.",
     [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
-      "Contributed to architecture decisions, mentored developers, and supported cross-team delivery processes.",
+      "Developed a real estate platform tailored for the UK market, providing tools for property listing management, search and client interactions, with a focus on scalability, performance and regulatory compliance.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
+      "Led the development of several web applications from scratch in a cross-functional team of 5 engineers, working in close collaboration with product management and DevOps engineers to ensure smooth delivery, infrastructure readiness and alignment with business priorities.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight4]:
+      "Defined and implemented effective team workflows, including task breakdown, prioritization, code review processes and release planning.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight5]:
+      "Conducted effort estimation for features and overall project scope, balancing delivery timelines with technical feasibility.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight6]:
+      "Designed the overall application architecture, selected the technology stack and was responsible for key technical decisions throughout the project lifecycle.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight7]:
+      "Maintained daily communication with business stakeholders, ensuring alignment between technical implementation and product goals.",
+    [ETranslationKey.ExperienceDigitalsuitsHighlight8]:
+      "Provided technical mentorship, with a strong focus on FE quality, helping coworkers to improve code maintainability, performance and UI consistency.",
     [ETranslationKey.ExperienceCodeAndCareCompanyName]:
       "Code & Care | Outstaff",
     [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
@@ -390,9 +486,17 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceCodeAndCareDescription]:
       "WEB & Mobile Developer | Outstaff. Full-time.",
     [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-      "Built and maintained web and mobile product features in an outstaff model with direct client collaboration.",
+      "Designed and developed web and mobile applications from scratch, covering architecture on FE and BE parts.",
     [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-      "Supported iterative delivery and product stability through regular testing and technical improvements.",
+      "Participated in application complexity assessment, effort estimation and architectural planning to ensure scalable and maintainable solutions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight3]:
+      "Acted as a mentor for junior developers, supporting their growth through code reviews, technical guidance and onboarding sessions.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight4]:
+      "Created a real-time monitoring platform for medical sensors for French market, enabling continuous tracking and alerting based on live data streams.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight5]:
+      "Built and maintained cryptocurrency platforms and wallets, with a strong focus on security, performance and scalability.",
+    [ETranslationKey.ExperienceCodeAndCareHighlight6]:
+      "Closely collaborated with core teams of crypto platform Bitfinex (https://www.bitfinex.com/) to deliver high-impact features, implement landing pages and mobile applications and ensure protocol compliance.",
     [ETranslationKey.ExperienceLanarsCompanyName]:
       "LANARS | Outsource / Dedicated team",
     [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -401,8 +505,16 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.ExperienceLanarsDescription]:
       "WEB Developer | Outsource / Dedicated team. Full-time.",
     [ETranslationKey.ExperienceLanarsHighlight1]:
-      "Implemented web interfaces and backend integrations for client-facing products in outsource delivery workflows.",
+      "Worked as a Full-Stack Developer, delivering both FE and BE solutions across several commercial projects.",
     [ETranslationKey.ExperienceLanarsHighlight2]:
-      "Collaborated with distributed teams to deliver maintainable features and improve project reliability.",
+      "Participated in project planning and estimation, providing accurate assessments of required development hours.",
+    [ETranslationKey.ExperienceLanarsHighlight3]:
+      "Took part in technical discussions and feature breakdowns with team members and stakeholders.",
+    [ETranslationKey.ExperienceLanarsHighlight4]:
+      "Built responsive landing pages for various products with a focus on performance and maintainability.",
+    [ETranslationKey.ExperienceLanarsHighlight5]:
+      "Developed backend APIs for mobile applications, including a pet walking service and a marketplace platform.",
+    [ETranslationKey.ExperienceLanarsHighlight6]:
+      "Implemented an admin panel for a marketplace and a CRM system for a gaming company, enabling operational teams to manage content, users and workflows.",
   },
 };
