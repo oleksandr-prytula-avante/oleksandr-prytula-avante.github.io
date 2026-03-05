@@ -34,7 +34,7 @@ export function Tags({ hoveredSkill, onSkillEnter, onSkillLeave }: TagsProps) {
   }
 
   return (
-    <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-4">
+    <ul className="mt-4 flex flex-wrap gap-x-[9.25px] gap-y-[17.25px]">
       {SKILL_TAGS.map(function ({ label, href }, index) {
         const isActive = hoveredSkill === label;
 

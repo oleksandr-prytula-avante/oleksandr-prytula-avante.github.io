@@ -1,0 +1,12 @@
+.experience-item {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 460ms ease-out, transform 460ms ease-out;
+  transition-delay: var(--experience-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.experience-list.experience-list--active .experience-item {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -52,7 +52,7 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
           {slides.map(function ({ href, children }) {
             const sectionClassName =
               href === toSectionHash(ESectionId.About)
-                ? "h-full w-full shrink-0 overflow-hidden py-8 px-2 max-[1366px]:px-0"
+                ? "h-full w-full shrink-0 overflow-hidden py-8 pb-12 px-2 max-[1366px]:px-0"
                 : "h-full w-full shrink-0 overflow-y-auto py-8 px-2";
 
             return (

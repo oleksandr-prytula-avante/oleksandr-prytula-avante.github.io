@@ -18,7 +18,7 @@ export const TRANSLATIONS: Record<ELocale, Translations> = {
     [ETranslationKey.HeroName]: "Oleksandr",
     [ETranslationKey.HeroSurname]: "Prytula",
     [ETranslationKey.HeroRole]: "Software Engineer | WEB Developer",
-    [ETranslationKey.HeroEngineeringToolkit]: "My Engineering Toolkit:",
+    [ETranslationKey.HeroEngineeringToolkit]: "My Core Engineering Toolkit:",
     [ETranslationKey.HeroNeedMoreDetails]: "Need more details?",
     [ETranslationKey.HeroCvDownload]: "Download CV (PDF)",
     [ETranslationKey.AboutParagraph1]:

@@ -408,7 +408,7 @@ export function Main() {
           }}
         />
 
-        <div className="mt-8 flex items-center gap-2">
+        <div className="mt-8 flex items-center justify-end gap-2">
           <p className="text-[17.5px] uppercase text-white max-[1366px]:text-sm">
             {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
             {needMoreDetailsTypingCursor}
@@ -435,18 +435,18 @@ export function Main() {
   }
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white">
+    <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1280px]:px-12">
       <LinesBackground />
       <div className="relative z-10 flex h-full min-h-screen min-h-0 flex-col">
         <Header isLanguageDisabled={isHeroPrintingInProgress} />
         <main className="w-full min-h-0 flex-1 overflow-hidden">
-          <div className="grid h-full min-h-0 grid-cols-[7%_38%_55%]">
+          <div className="grid h-full min-h-0 grid-cols-[5%_40%_55%]">
             <section className="relative">
               <Links />
             </section>
 
             <section className="relative">
-              <div className="flex h-full flex-col px-12 pt-8">
+              <div className="flex h-full flex-col px-10 pt-8 pb-12">
                 <div className="mb-2 flex items-center">
                   <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
                     {hiText.slice(0, visibleHiChars)}
@@ -471,7 +471,7 @@ export function Main() {
                   </span>
                 </h1>
 
-                <p className="mt-4 text-[17.5px] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
+                <p className="mt-4 text-[20px] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
                   {roleText.slice(0, visibleRoleChars)}
                   {roleTypingCursor}
                 </p>

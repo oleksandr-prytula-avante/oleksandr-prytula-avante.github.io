@@ -1,4 +1,5 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import type { CSSProperties } from "react";
 
 import {
   EXPERIENCE_TIMELINE_ITEMS,
@@ -8,8 +9,14 @@ import { ExperienceCompanyIcon } from "../components/icons/ExperienceCompanyIcon
 import { ExperienceExpandIcon } from "../components/icons/ExperienceExpandIcon";
 import { ExperienceJobTitleIcon } from "../components/icons/ExperienceJobTitleIcon";
 import { ExperienceLocationIcon } from "../components/icons/ExperienceLocationIcon";
+import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
 import { ELocale, ETranslationKey } from "../i18n/types";
+import { ESectionId, toSectionHash } from "../utils/sections";
+
+import "./Experience.css";
+
+const EXPERIENCE_REVEAL_STAGGER_MS = 120;
 
 type YearMonth = {
   year: number;
@@ -188,14 +195,18 @@ function PipeSeparatedText({
 type ExperienceItemProps = {
   item: ExperienceTimelineItem;
   isExpanded: boolean;
+  isFirst: boolean;
   isLast: boolean;
+  animationDelayMs: number;
   onToggle: () => void;
 };
 
 function ExperienceItem({
   item,
   isExpanded,
+  isFirst,
   isLast,
+  animationDelayMs,
   onToggle,
 }: ExperienceItemProps) {
   const i18n = useI18n();
@@ -211,9 +222,20 @@ function ExperienceItem({
   const locationText = i18n.t(textKeys.location);
 
   return (
-    <li className="relative h-[22.5%] pl-32">
+    <li
+      className="experience-item relative h-[22.5%] pl-32"
+      style={{ "--experience-delay": `${animationDelayMs}ms` } as CSSProperties}
+    >
+      {isFirst ? (
+        <span className="pointer-events-none absolute left-[50px] top-[-25px] h-[25px] w-[2px] bg-[color:var(--color-accent)]/70" />
+      ) : null}
+
       {!isLast ? (
-        <span className="pointer-events-none absolute left-[2.625rem] top-[5.25rem] h-[calc(100%-2.5rem)] w-[2px] bg-[color:var(--color-accent)]/70" />
+        <span className="pointer-events-none absolute left-[50px] top-[100px] h-[calc(100%-2.5rem)] w-[2px] bg-[color:var(--color-accent)]/70" />
+      ) : null}
+
+      {isLast ? (
+        <span className="pointer-events-none absolute left-[50px] top-[100px] h-[25px] w-[2px] bg-[color:var(--color-accent)]/70" />
       ) : null}
 
       <a
@@ -221,7 +243,7 @@ function ExperienceItem({
         target="_blank"
         rel="noreferrer"
         aria-label={`${companyName} website`}
-        className="absolute left-0 top-0 z-10 flex h-[5.25rem] w-[5.25rem] cursor-pointer items-center justify-center rounded-full border-2 border-[color:var(--color-accent)] bg-white"
+        className="absolute left-0 top-0 z-10 flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-full border-2 border-[color:var(--color-accent)] bg-white"
       >
         <img
           src={item.companyLogoSrc}
@@ -231,57 +253,54 @@ function ExperienceItem({
         />
       </a>
 
-      <div className="space-y-2 pb-8 text-sm text-white/95">
-        <div className="flex items-center gap-2">
-          <ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />
-          <a
-            href={item.companyUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="truncate text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)]"
-          >
-            <PipeSeparatedText value={companyName} className="inline-flex items-center gap-2" />
-          </a>
-        </div>
+      <div className="pb-8 text-sm text-white/95">
+        <div className="flex min-h-[100px] flex-col justify-center space-y-2">
+          <div className="flex items-center gap-2">
+            <ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />
+            <a
+              href={item.companyUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="truncate text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)]"
+            >
+              <PipeSeparatedText value={companyName} className="inline-flex items-center gap-2" />
+            </a>
+          </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <ExperienceJobTitleIcon className="h-5 w-5 shrink-0 text-white" />
-          <span>{i18n.t(textKeys.jobTitle)}</span>
-          <span className="text-white/60">|</span>
-          <span>{periodLabel.dateRange}</span>
-          <span className="text-white/60">|</span>
-          <span>{periodLabel.duration}</span>
-        </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <ExperienceJobTitleIcon className="h-5 w-5 shrink-0 text-white" />
+            <span>{i18n.t(textKeys.jobTitle)}</span>
+            <span className="text-white/60">|</span>
+            <span>{periodLabel.dateRange}</span>
+            <span className="text-white/60">|</span>
+            <span>{periodLabel.duration}</span>
+          </div>
 
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <ExperienceLocationIcon className="h-5 w-5 shrink-0 text-white" />
             <PipeSeparatedText
               value={locationText}
-              className="inline-flex items-center gap-2 truncate"
+              className="inline-flex items-center gap-2"
             />
-          </div>
+            <span className="text-white/60">|</span>
 
-          <button
-            type="button"
-            onClick={onToggle}
-            aria-expanded={isExpanded}
-            aria-controls={descriptionId}
-            className={`inline-flex w-[8.5rem] shrink-0 cursor-pointer items-center justify-between gap-2 px-1 py-1 text-xs uppercase tracking-wide transition-colors duration-200 ease-out ${
-              isExpanded
-                ? "mr-[5%] text-[color:var(--color-accent)]"
-                : "mr-[5%] text-white hover:text-[color:var(--color-accent)]"
-            }`}
-          >
-            <span className="text-left">
-              {isExpanded
-                ? i18n.t(ETranslationKey.ExperienceHideDetails)
-                : i18n.t(ETranslationKey.ExperienceExpandDetails)}
-            </span>
-            <ExperienceExpandIcon
-              className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
-            />
-          </button>
+            <button
+              type="button"
+              onClick={onToggle}
+              aria-expanded={isExpanded}
+              aria-controls={descriptionId}
+              className="inline-flex cursor-pointer items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white"
+            >
+              <span>
+                {isExpanded
+                  ? i18n.t(ETranslationKey.ExperienceHideDetails)
+                  : i18n.t(ETranslationKey.ExperienceExpandDetails)}
+              </span>
+              <ExperienceExpandIcon
+                className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
+              />
+            </button>
+          </div>
         </div>
 
         {isExpanded ? (
@@ -295,13 +314,34 @@ function ExperienceItem({
 }
 
 export function Experience() {
-  const [expandedItemId, setExpandedItemId] = useState<string | null>(
-    EXPERIENCE_TIMELINE_ITEMS[0]?.id ?? null,
+  const [expandedItemId, setExpandedItemId] = useState<string | null>(null);
+  const [shouldRevealItems, setShouldRevealItems] = useState(false);
+  const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
+  const isExperienceActive = activeHash === toSectionHash(ESectionId.Expirience);
+
+  useEffect(
+    function () {
+      if (!isExperienceActive) {
+        setShouldRevealItems(false);
+        return;
+      }
+
+      const animationFrameId = window.requestAnimationFrame(function () {
+        setShouldRevealItems(true);
+      });
+
+      return function () {
+        window.cancelAnimationFrame(animationFrameId);
+      };
+    },
+    [isExperienceActive],
   );
 
   return (
     <article className="h-full overflow-y-auto pr-2 text-white">
-      <ul className="h-full space-y-2 px-1 py-2">
+      <ul
+        className={`experience-list h-full px-1 pt-[25px] pb-[25px] ${shouldRevealItems ? "experience-list--active" : ""} flex flex-col justify-start gap-2`}
+      >
         {EXPERIENCE_TIMELINE_ITEMS.map(function (item, index) {
           const isExpanded = expandedItemId === item.id;
 
@@ -310,7 +350,9 @@ export function Experience() {
               key={item.id}
               item={item}
               isExpanded={isExpanded}
+              isFirst={index === 0}
               isLast={index === EXPERIENCE_TIMELINE_ITEMS.length - 1}
+              animationDelayMs={index * EXPERIENCE_REVEAL_STAGGER_MS}
               onToggle={function () {
                 setExpandedItemId(function (currentValue) {
                   return currentValue === item.id ? null : item.id;
