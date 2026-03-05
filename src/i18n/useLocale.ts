@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { ELocale } from "./types";
 import type { ETranslationKey } from "./types";
@@ -6,6 +6,7 @@ import { TRANSLATIONS } from "./translations";
 
 export const STORAGE_KEY = "locale";
 export const ELOCALE_VALUES = [ELocale.En, ELocale.De, ELocale.Ru, ELocale.Sp];
+const BROWSER_LOCALE_FALLBACK_ORDER = [ELocale.Ru, ELocale.De, ELocale.Sp];
 
 function isLocale(value: string | null): value is ELocale {
   return value !== null && ELOCALE_VALUES.includes(value as ELocale);
@@ -20,16 +21,14 @@ function getInitialLocale(): ELocale {
 
   const lang = navigator.language.toLowerCase();
 
-  if (lang.startsWith(ELocale.Ru)) {
-    return ELocale.Ru;
-  }
+  const matchedBrowserLocale = BROWSER_LOCALE_FALLBACK_ORDER.find(
+    function (locale) {
+      return lang.startsWith(locale);
+    },
+  );
 
-  if (lang.startsWith(ELocale.De)) {
-    return ELocale.De;
-  }
-
-  if (lang.startsWith(ELocale.Sp)) {
-    return ELocale.Sp;
+  if (matchedBrowserLocale) {
+    return matchedBrowserLocale;
   }
 
   return ELocale.En;
@@ -62,9 +61,5 @@ export function useLocale() {
     [locale],
   );
 
-  const languageOptions = useMemo(function () {
-    return ELOCALE_VALUES;
-  }, []);
-
-  return { locale, setLocale, t, languageOptions };
+  return { locale, setLocale, t, languageOptions: ELOCALE_VALUES };
 }

@@ -26,9 +26,10 @@ export function Experience() {
   const [shouldRevealItems, setShouldRevealItems] = useState(false);
   const [isInitialRevealComplete, setIsInitialRevealComplete] = useState(false);
   const [lineHeight, setLineHeight] = useState(0);
-  const [focusShiftById, setFocusShiftById] = useState<Record<string, number>>(
-    {},
-  );
+  const [focusShiftById, setFocusShiftById] = useState<Record<
+    string,
+    number
+  > | null>(null);
   const articleRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
   const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
@@ -36,11 +37,19 @@ export function Experience() {
     activeHash === toSectionHash(ESectionId.Expirience);
   const hasFocusedItem = focusedItemId !== null;
 
+  function resetExperienceState() {
+    setShouldRevealItems(false);
+    setIsInitialRevealComplete(false);
+    setFocusedItemId(null);
+    setFocusPhase(EFocusPhase.Idle);
+    setIsFocusExitActive(false);
+  }
+
   function measureFocusShiftFromLayout() {
     const listElement = listRef.current;
 
     if (!listElement) {
-      setFocusShiftById({});
+      setFocusShiftById(null);
       return;
     }
 
@@ -49,7 +58,7 @@ export function Experience() {
     );
 
     if (itemElements.length === 0) {
-      setFocusShiftById({});
+      setFocusShiftById(null);
       return;
     }
 
@@ -78,22 +87,14 @@ export function Experience() {
   useEffect(
     function () {
       if (!isExperienceActive) {
-        setShouldRevealItems(false);
-        setIsInitialRevealComplete(false);
-        setFocusedItemId(null);
-        setFocusPhase(EFocusPhase.Idle);
-        setIsFocusExitActive(false);
+        resetExperienceState();
         return;
       }
 
       const listElement = listRef.current;
 
       if (!listElement) {
-        setShouldRevealItems(false);
-        setIsInitialRevealComplete(false);
-        setFocusedItemId(null);
-        setFocusPhase(EFocusPhase.Idle);
-        setIsFocusExitActive(false);
+        resetExperienceState();
         return;
       }
 
@@ -249,7 +250,7 @@ export function Experience() {
       const listElement = listRef.current;
 
       if (!listElement) {
-        setFocusShiftById({});
+        setFocusShiftById(null);
         return;
       }
 
@@ -358,7 +359,7 @@ export function Experience() {
               isFocused={isFocused}
               isDimmed={isDimmed}
               isInFocusedMode={isFocused}
-              focusShiftPx={focusShiftById[item.id] ?? 0}
+              focusShiftPx={focusShiftById?.[item.id] ?? 0}
               animationDelayMs={index * EXPERIENCE_REVEAL_STAGGER_MS}
               isToggleDisabled={isToggleLocked}
               onToggle={function () {

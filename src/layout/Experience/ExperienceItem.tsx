@@ -1,6 +1,10 @@
 import type { CSSProperties } from "react";
 
-import type { ExperienceTimelineItem } from "../../constants/experienceTimeline";
+import {
+  EExperience,
+  type ExperienceTimelineItem,
+} from "../../constants/experienceTimeline";
+import { getExperienceTextKeys } from "../../constants/experienceTextKeys";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { PipeSeparator } from "../../components/PipeSeparator";
 import { Tag } from "../../components/Tags/Tag";
@@ -11,102 +15,6 @@ import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocatio
 import { useI18n } from "../../hooks/useI18n";
 import { ELocale, ETranslationKey } from "../../i18n/types";
 import { buildPeriodLabel } from "../../utils/time";
-
-type ExperienceTextKeys = {
-  companyName: ETranslationKey;
-  jobTitle: ETranslationKey;
-  location: ETranslationKey;
-  description: ETranslationKey;
-  highlights: ETranslationKey[];
-};
-
-function getExperienceTextKeys(itemId: string): ExperienceTextKeys {
-  switch (itemId) {
-    case "omnora":
-      return {
-        companyName: ETranslationKey.ExperienceOmnoraCompanyName,
-        jobTitle: ETranslationKey.ExperienceOmnoraJobTitle,
-        location: ETranslationKey.ExperienceOmnoraLocation,
-        description: ETranslationKey.ExperienceOmnoraDescription,
-        highlights: [
-          ETranslationKey.ExperienceOmnoraHighlight1,
-          ETranslationKey.ExperienceOmnoraHighlight2,
-          ETranslationKey.ExperienceOmnoraHighlight3,
-          ETranslationKey.ExperienceOmnoraHighlight4,
-          ETranslationKey.ExperienceOmnoraHighlight5,
-          ETranslationKey.ExperienceOmnoraHighlight6,
-          ETranslationKey.ExperienceOmnoraHighlight7,
-          ETranslationKey.ExperienceOmnoraHighlight8,
-          ETranslationKey.ExperienceOmnoraHighlight9,
-        ],
-      };
-    case "digitalsuits":
-      return {
-        companyName: ETranslationKey.ExperienceDigitalsuitsCompanyName,
-        jobTitle: ETranslationKey.ExperienceDigitalsuitsJobTitle,
-        location: ETranslationKey.ExperienceDigitalsuitsLocation,
-        description: ETranslationKey.ExperienceDigitalsuitsDescription,
-        highlights: [
-          ETranslationKey.ExperienceDigitalsuitsHighlight1,
-          ETranslationKey.ExperienceDigitalsuitsHighlight2,
-          ETranslationKey.ExperienceDigitalsuitsHighlight3,
-          ETranslationKey.ExperienceDigitalsuitsHighlight4,
-          ETranslationKey.ExperienceDigitalsuitsHighlight5,
-          ETranslationKey.ExperienceDigitalsuitsHighlight6,
-          ETranslationKey.ExperienceDigitalsuitsHighlight7,
-          ETranslationKey.ExperienceDigitalsuitsHighlight8,
-        ],
-      };
-    case "code-and-care":
-      return {
-        companyName: ETranslationKey.ExperienceCodeAndCareCompanyName,
-        jobTitle: ETranslationKey.ExperienceCodeAndCareJobTitle,
-        location: ETranslationKey.ExperienceCodeAndCareLocation,
-        description: ETranslationKey.ExperienceCodeAndCareDescription,
-        highlights: [
-          ETranslationKey.ExperienceCodeAndCareHighlight1,
-          ETranslationKey.ExperienceCodeAndCareHighlight2,
-          ETranslationKey.ExperienceCodeAndCareHighlight3,
-          ETranslationKey.ExperienceCodeAndCareHighlight4,
-          ETranslationKey.ExperienceCodeAndCareHighlight5,
-          ETranslationKey.ExperienceCodeAndCareHighlight6,
-        ],
-      };
-    case "lanars":
-      return {
-        companyName: ETranslationKey.ExperienceLanarsCompanyName,
-        jobTitle: ETranslationKey.ExperienceLanarsJobTitle,
-        location: ETranslationKey.ExperienceLanarsLocation,
-        description: ETranslationKey.ExperienceLanarsDescription,
-        highlights: [
-          ETranslationKey.ExperienceLanarsHighlight1,
-          ETranslationKey.ExperienceLanarsHighlight2,
-          ETranslationKey.ExperienceLanarsHighlight3,
-          ETranslationKey.ExperienceLanarsHighlight4,
-          ETranslationKey.ExperienceLanarsHighlight5,
-          ETranslationKey.ExperienceLanarsHighlight6,
-        ],
-      };
-    default:
-      return {
-        companyName: ETranslationKey.ExperienceOmnoraCompanyName,
-        jobTitle: ETranslationKey.ExperienceOmnoraJobTitle,
-        location: ETranslationKey.ExperienceOmnoraLocation,
-        description: ETranslationKey.ExperienceOmnoraDescription,
-        highlights: [
-          ETranslationKey.ExperienceOmnoraHighlight1,
-          ETranslationKey.ExperienceOmnoraHighlight2,
-          ETranslationKey.ExperienceOmnoraHighlight3,
-          ETranslationKey.ExperienceOmnoraHighlight4,
-          ETranslationKey.ExperienceOmnoraHighlight5,
-          ETranslationKey.ExperienceOmnoraHighlight6,
-          ETranslationKey.ExperienceOmnoraHighlight7,
-          ETranslationKey.ExperienceOmnoraHighlight8,
-          ETranslationKey.ExperienceOmnoraHighlight9,
-        ],
-      };
-  }
-}
 
 function getDateLocale(locale: ELocale): string {
   switch (locale) {
@@ -132,6 +40,12 @@ type ExperienceItemProps = {
   isToggleDisabled: boolean;
   onToggle: () => void;
 };
+
+function handleTagSelect(skill: string): void {
+  void skill;
+}
+
+function handleTagClear(): void {}
 
 export function ExperienceItem(props: ExperienceItemProps) {
   const {
@@ -186,10 +100,8 @@ export function ExperienceItem(props: ExperienceItemProps) {
               <Tag
                 label={tag}
                 className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs uppercase tracking-[0.06em] text-white/90 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
-                onSelectSkill={function (skill: string): void {
-                  void skill;
-                }}
-                onClearSkill={function (): void {}}
+                onSelectSkill={handleTagSelect}
+                onClearSkill={handleTagClear}
               />
             </li>
           );
@@ -234,7 +146,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
         <img
           src={item.companyLogoSrc}
           alt={`${companyName} logo`}
-          className={`${item.id === "digitalsuits" ? "w-1/2" : "h-12 w-12"} object-contain`}
+          className={`${item.id === EExperience.Digitalsuits ? "w-1/2" : "h-12 w-12"} object-contain`}
           loading="lazy"
         />
       </a>

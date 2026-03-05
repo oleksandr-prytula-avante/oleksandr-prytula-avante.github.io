@@ -104,6 +104,33 @@ export function Info(props: InfoProps) {
   const isHeroPrintingInProgress =
     !showSecondaryContent || !isNeedMoreDetailsPrinted || !isCvDownloadPrinted;
 
+  function setHeroTypingState(isCompleted: boolean) {
+    setVisibleHiChars(isCompleted ? hiText.length : 0);
+    setIsLineVisible(isCompleted);
+    setVisibleNameChars(isCompleted ? fullNameLength : 0);
+    setIsNameTypingStarted(isCompleted);
+    setVisibleRoleChars(isCompleted ? roleText.length : 0);
+    setVisibleEngineeringToolkitChars(
+      isCompleted ? engineeringToolkitTotalLength : 0,
+    );
+    setIsEngineeringToolkitTypingStarted(isCompleted);
+    setShowSecondaryContent(isCompleted);
+    setVisibleNeedMoreDetailsChars(
+      isCompleted ? needMoreDetailsText.length : 0,
+    );
+    setIsNeedMoreDetailsTypingStarted(isCompleted);
+    setVisibleCvDownloadChars(isCompleted ? cvDownloadText.length : 0);
+    setIsCvDownloadTypingStarted(isCompleted);
+  }
+
+  function renderTypingCursor(shouldRender: boolean, color?: string) {
+    if (!shouldRender) {
+      return null;
+    }
+
+    return <TypingCursor color={color} />;
+  }
+
   useEffect(
     function () {
       onSecondaryContentVisibilityChange(showSecondaryContent);
@@ -121,34 +148,12 @@ export function Info(props: InfoProps) {
   useEffect(
     function () {
       if (!shouldPlayHeroAnimation) {
-        setVisibleHiChars(hiText.length);
-        setIsLineVisible(true);
-        setVisibleNameChars(fullNameLength);
-        setIsNameTypingStarted(true);
-        setVisibleRoleChars(roleText.length);
-        setVisibleEngineeringToolkitChars(engineeringToolkitTotalLength);
-        setIsEngineeringToolkitTypingStarted(true);
-        setShowSecondaryContent(true);
-        setVisibleNeedMoreDetailsChars(needMoreDetailsText.length);
-        setIsNeedMoreDetailsTypingStarted(true);
-        setVisibleCvDownloadChars(cvDownloadText.length);
-        setIsCvDownloadTypingStarted(true);
+        setHeroTypingState(true);
 
         return;
       }
 
-      setVisibleHiChars(0);
-      setIsLineVisible(false);
-      setVisibleNameChars(0);
-      setIsNameTypingStarted(false);
-      setVisibleRoleChars(0);
-      setVisibleEngineeringToolkitChars(0);
-      setIsEngineeringToolkitTypingStarted(false);
-      setShowSecondaryContent(false);
-      setVisibleNeedMoreDetailsChars(0);
-      setIsNeedMoreDetailsTypingStarted(false);
-      setVisibleCvDownloadChars(0);
-      setIsCvDownloadTypingStarted(false);
+      setHeroTypingState(false);
 
       const timeoutIds: number[] = [];
       const intervalIds: number[] = [];
@@ -350,53 +355,26 @@ export function Info(props: InfoProps) {
     ],
   );
 
-  let hiTypingCursor = null;
-
-  if (isHiTyping) {
-    hiTypingCursor = <TypingCursor />;
-  }
-
-  let nameTypingCursor = null;
-
-  if (isNameTyping && isTypingNameRow) {
-    nameTypingCursor = <TypingCursor />;
-  }
-
-  let surnameTypingCursor = null;
-
-  if (isNameTyping && !isTypingNameRow) {
-    surnameTypingCursor = <TypingCursor />;
-  }
-
-  let roleTypingCursor = null;
-
-  if (isRoleTyping) {
-    roleTypingCursor = <TypingCursor color="var(--color-accent)" />;
-  }
-
-  let needMoreDetailsTypingCursor = null;
-
-  let engineeringToolkitTypingCursor = null;
-
-  if (isEngineeringToolkitTyping) {
-    engineeringToolkitTypingCursor = <TypingCursor />;
-  }
-
-  if (
+  const hiTypingCursor = renderTypingCursor(isHiTyping);
+  const nameTypingCursor = renderTypingCursor(isNameTyping && isTypingNameRow);
+  const surnameTypingCursor = renderTypingCursor(
+    isNameTyping && !isTypingNameRow,
+  );
+  const roleTypingCursor = renderTypingCursor(
+    isRoleTyping,
+    "var(--color-accent)",
+  );
+  const engineeringToolkitTypingCursor = renderTypingCursor(
+    isEngineeringToolkitTyping,
+  );
+  const needMoreDetailsTypingCursor = renderTypingCursor(
     isNeedMoreDetailsTypingStarted &&
-    visibleNeedMoreDetailsChars < needMoreDetailsText.length
-  ) {
-    needMoreDetailsTypingCursor = <TypingCursor />;
-  }
-
-  let cvDownloadTypingCursor = null;
-
-  if (
-    isCvDownloadTypingStarted &&
-    visibleCvDownloadChars < cvDownloadText.length
-  ) {
-    cvDownloadTypingCursor = <TypingCursor color="var(--color-accent)" />;
-  }
+      visibleNeedMoreDetailsChars < needMoreDetailsText.length,
+  );
+  const cvDownloadTypingCursor = renderTypingCursor(
+    isCvDownloadTypingStarted && visibleCvDownloadChars < cvDownloadText.length,
+    "var(--color-accent)",
+  );
 
   let description = null;
 
