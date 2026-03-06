@@ -9,8 +9,6 @@ npm install
 npm run dev
 ```
 
-Edit your content in `src/resume/data.ts`.
-
 ## Build
 
 ```bash
