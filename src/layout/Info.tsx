@@ -68,9 +68,8 @@ export function Info(props: InfoProps) {
     useState(DEFAULT_CHAR_COUNT);
   const [isNeedMoreDetailsTypingStarted, setIsNeedMoreDetailsTypingStarted] =
     useState(false);
-  const [visibleCvDownloadChars, setVisibleCvDownloadChars] = useState(
-    DEFAULT_CHAR_COUNT,
-  );
+  const [visibleCvDownloadChars, setVisibleCvDownloadChars] =
+    useState(DEFAULT_CHAR_COUNT);
   const [isCvDownloadTypingStarted, setIsCvDownloadTypingStarted] =
     useState(false);
   const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(true);
@@ -185,7 +184,10 @@ export function Info(props: InfoProps) {
             if (nextValue >= roleText.length) {
               window.clearInterval(roleIntervalId);
 
-              if (engineeringToolkitTotalLength === ENGINEERING_TOOLKIT_EMPTY_LENGTH) {
+              if (
+                engineeringToolkitTotalLength ===
+                ENGINEERING_TOOLKIT_EMPTY_LENGTH
+              ) {
                 setShowSecondaryContent(true);
               } else {
                 setIsEngineeringToolkitTypingStarted(true);

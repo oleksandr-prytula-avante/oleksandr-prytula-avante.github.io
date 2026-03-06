@@ -321,7 +321,9 @@ export function Experience(props: ExperienceProps) {
         const firstRect =
           circleElements[EXPERIENCE_FIRST_ITEM_INDEX].getBoundingClientRect();
         const lastRect =
-          circleElements[circleElements.length - EXPERIENCE_LAST_ITEM_OFFSET].getBoundingClientRect();
+          circleElements[
+            circleElements.length - EXPERIENCE_LAST_ITEM_OFFSET
+          ].getBoundingClientRect();
         const bottom =
           lastRect.bottom - articleRect.top + EXPERIENCE_LINE_CIRCLE_OFFSET_PX;
         const top =

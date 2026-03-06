@@ -40,7 +40,10 @@ function generateVerticalLineStyles(): LineStyle[] {
 
 function generateHorizontalLineStyles(): LineStyle[] {
   return HORIZONTAL_LINE_POSITIONS.map(function (top) {
-    const left = randomBetween(HORIZONTAL_LINE_LEFT_MIN, HORIZONTAL_LINE_LEFT_MAX);
+    const left = randomBetween(
+      HORIZONTAL_LINE_LEFT_MIN,
+      HORIZONTAL_LINE_LEFT_MAX,
+    );
     const maxWidth = LINE_PERCENT_CAP - left;
     const width = randomBetween(HORIZONTAL_LINE_WIDTH_MIN, maxWidth);
 

@@ -51,7 +51,9 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
       <div className="relative h-full min-h-0 overflow-hidden">
         <div
           className="flex h-full min-h-0 transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${activeIndex * SLIDE_WIDTH_PERCENT}%)` }}
+          style={{
+            transform: `translateX(-${activeIndex * SLIDE_WIDTH_PERCENT}%)`,
+          }}
         >
           {slides.map(function ({ href, children }) {
             const sectionClassName =
