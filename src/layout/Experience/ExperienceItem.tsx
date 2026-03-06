@@ -8,6 +8,7 @@ import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
 import { getExperienceTextKeys } from "../../constants/experienceTextKeys";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { PipeSeparator } from "../../components/PipeSeparator";
+import { ExternalLink } from "../../components/ExternalLink";
 import { Tag } from "../../components/Tags/Tag";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
 import { ExperienceExpandIcon } from "../../components/icons/ExperienceExpandIcon";
@@ -36,15 +37,13 @@ function renderTextWithLinks(value: string): ReactNode[] {
   return value.split(urlRegex).map(function (part, index) {
     if (/^https?:\/\/[^\s)]+$/.test(part)) {
       return (
-        <a
+        <ExternalLink
           key={`link-${part}-${index}`}
           href={part}
-          target="_blank"
-          rel="noreferrer"
           className="underline decoration-white/40 underline-offset-4 transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] hover:decoration-[color:var(--color-accent)]"
         >
           {part}
-        </a>
+        </ExternalLink>
       );
     }
 
@@ -147,7 +146,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
               <li key={`${item.id}-${tag}`}>
                 <Tag
                   label={tag}
-                  className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs normal-case tracking-normal text-white/90 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
+                  variant="experience"
                   onSelectSkill={onSkillEnter}
                   onClearSkill={onSkillLeave}
                 />

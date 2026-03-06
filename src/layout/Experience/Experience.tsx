@@ -393,7 +393,7 @@ export function Experience(props: ExperienceProps) {
 
       <ul
         ref={listRef}
-        className={`experience-list relative z-10 h-full px-1 pt-[25px] pb-[25px] ${shouldRevealItems ? "experience-list--active" : ""} ${focusListClass} flex flex-col justify-start gap-2`}
+        className={`experience-list relative z-10 h-full px-1 pt-[25px] pb-[25px] ${shouldRevealItems ? "experience-list--active" : ""} ${focusListClass} flex flex-col justify-start`}
       >
         {EXPERIENCE_TIMELINE_ITEMS.map(function (item, index) {
           const isTargetItem = hasFocusedItem && focusedItemId === item.id;
