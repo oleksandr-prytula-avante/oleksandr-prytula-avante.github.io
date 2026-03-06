@@ -9,6 +9,10 @@ type SectionCarouselProps = {
   children: ReactNode;
 };
 
+const NOT_FOUND_INDEX = -1;
+const FIRST_SLIDE_INDEX = 0;
+const SLIDE_WIDTH_PERCENT = 100;
+
 export function SectionCarousel({ children }: SectionCarouselProps) {
   const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
 
@@ -37,7 +41,7 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
         return href === activeHash;
       });
 
-      return index === -1 ? 0 : index;
+      return index === NOT_FOUND_INDEX ? FIRST_SLIDE_INDEX : index;
     },
     [activeHash, slides],
   );
@@ -47,7 +51,7 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
       <div className="relative h-full min-h-0 overflow-hidden">
         <div
           className="flex h-full min-h-0 transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          style={{ transform: `translateX(-${activeIndex * SLIDE_WIDTH_PERCENT}%)` }}
         >
           {slides.map(function ({ href, children }) {
             const sectionClassName =

@@ -19,6 +19,16 @@ const ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS = 45;
 const NAME_TYPING_INTERVAL_MS = 75;
 const NEED_MORE_DETAILS_TYPING_INTERVAL_MS = 45;
 const CV_DOWNLOAD_TYPING_INTERVAL_MS = 38;
+const HERO_TYPING_STEP_SINGLE_CHAR = 1;
+const HERO_TYPING_STEP_DOUBLE_CHARS = 2;
+const ENGINEERING_TOOLKIT_COLON_TRIM_INDEX = -1;
+const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
+const DEFAULT_CHAR_COUNT = 0;
+const ENABLED_TAB_INDEX = 0;
+const DISABLED_TAB_INDEX = -1;
+const SCALE_X_VISIBLE = "scaleX(1)";
+const SCALE_X_HIDDEN = "scaleX(0)";
+const ENGINEERING_TOOLKIT_EMPTY_LENGTH = 0;
 const NAME_TYPING_START_DELAY_MS =
   ORANGE_LINE_REVEAL_DURATION_MS + NAME_TYPING_START_EXTRA_DELAY_MS;
 const NEED_MORE_DETAILS_START_DELAY_MS =
@@ -42,23 +52,25 @@ export function Info(props: InfoProps) {
     onHeroPrintingStateChange,
   } = props;
   const i18n = useI18n();
-  const [visibleHiChars, setVisibleHiChars] = useState(0);
+  const [visibleHiChars, setVisibleHiChars] = useState(DEFAULT_CHAR_COUNT);
   const [isLineVisible, setIsLineVisible] = useState(false);
-  const [visibleNameChars, setVisibleNameChars] = useState(0);
+  const [visibleNameChars, setVisibleNameChars] = useState(DEFAULT_CHAR_COUNT);
   const [isNameTypingStarted, setIsNameTypingStarted] = useState(false);
-  const [visibleRoleChars, setVisibleRoleChars] = useState(0);
+  const [visibleRoleChars, setVisibleRoleChars] = useState(DEFAULT_CHAR_COUNT);
   const [visibleEngineeringToolkitChars, setVisibleEngineeringToolkitChars] =
-    useState(0);
+    useState(DEFAULT_CHAR_COUNT);
   const [
     isEngineeringToolkitTypingStarted,
     setIsEngineeringToolkitTypingStarted,
   ] = useState(false);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [visibleNeedMoreDetailsChars, setVisibleNeedMoreDetailsChars] =
-    useState(0);
+    useState(DEFAULT_CHAR_COUNT);
   const [isNeedMoreDetailsTypingStarted, setIsNeedMoreDetailsTypingStarted] =
     useState(false);
-  const [visibleCvDownloadChars, setVisibleCvDownloadChars] = useState(0);
+  const [visibleCvDownloadChars, setVisibleCvDownloadChars] = useState(
+    DEFAULT_CHAR_COUNT,
+  );
   const [isCvDownloadTypingStarted, setIsCvDownloadTypingStarted] =
     useState(false);
   const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(true);
@@ -68,19 +80,20 @@ export function Info(props: InfoProps) {
   const surnameText = i18n.t(ETranslationKey.HeroSurname);
   const fullNameLength = nameText.length + surnameText.length;
   const visibleName = nameText.slice(
-    0,
+    DEFAULT_CHAR_COUNT,
     Math.min(visibleNameChars, nameText.length),
   );
   const visibleSurname = surnameText.slice(
     0,
-    Math.max(visibleNameChars - nameText.length, 0),
+    Math.max(visibleNameChars - nameText.length, DEFAULT_CHAR_COUNT),
   );
   const roleText = i18n.t(ETranslationKey.HeroRole);
   const engineeringToolkitText = i18n.t(ETranslationKey.HeroEngineeringToolkit);
   const engineeringToolkitBaseText = engineeringToolkitText.endsWith(":")
-    ? engineeringToolkitText.slice(0, -1)
+    ? engineeringToolkitText.slice(0, ENGINEERING_TOOLKIT_COLON_TRIM_INDEX)
     : engineeringToolkitText;
-  const engineeringToolkitTotalLength = engineeringToolkitBaseText.length + 1;
+  const engineeringToolkitTotalLength =
+    engineeringToolkitBaseText.length + ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH;
   const visibleEngineeringToolkitBaseChars = Math.min(
     visibleEngineeringToolkitChars,
     engineeringToolkitBaseText.length,
@@ -106,21 +119,23 @@ export function Info(props: InfoProps) {
     !showSecondaryContent || !isNeedMoreDetailsPrinted || !isCvDownloadPrinted;
 
   function setHeroTypingState(isCompleted: boolean) {
-    setVisibleHiChars(isCompleted ? hiText.length : 0);
+    setVisibleHiChars(isCompleted ? hiText.length : DEFAULT_CHAR_COUNT);
     setIsLineVisible(isCompleted);
-    setVisibleNameChars(isCompleted ? fullNameLength : 0);
+    setVisibleNameChars(isCompleted ? fullNameLength : DEFAULT_CHAR_COUNT);
     setIsNameTypingStarted(isCompleted);
-    setVisibleRoleChars(isCompleted ? roleText.length : 0);
+    setVisibleRoleChars(isCompleted ? roleText.length : DEFAULT_CHAR_COUNT);
     setVisibleEngineeringToolkitChars(
-      isCompleted ? engineeringToolkitTotalLength : 0,
+      isCompleted ? engineeringToolkitTotalLength : DEFAULT_CHAR_COUNT,
     );
     setIsEngineeringToolkitTypingStarted(isCompleted);
     setShowSecondaryContent(isCompleted);
     setVisibleNeedMoreDetailsChars(
-      isCompleted ? needMoreDetailsText.length : 0,
+      isCompleted ? needMoreDetailsText.length : DEFAULT_CHAR_COUNT,
     );
     setIsNeedMoreDetailsTypingStarted(isCompleted);
-    setVisibleCvDownloadChars(isCompleted ? cvDownloadText.length : 0);
+    setVisibleCvDownloadChars(
+      isCompleted ? cvDownloadText.length : DEFAULT_CHAR_COUNT,
+    );
     setIsCvDownloadTypingStarted(isCompleted);
   }
 
@@ -162,12 +177,15 @@ export function Info(props: InfoProps) {
       function typeRole() {
         const roleIntervalId = window.setInterval(function () {
           setVisibleRoleChars(function (currentValue) {
-            const nextValue = Math.min(currentValue + 1, roleText.length);
+            const nextValue = Math.min(
+              currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
+              roleText.length,
+            );
 
             if (nextValue >= roleText.length) {
               window.clearInterval(roleIntervalId);
 
-              if (engineeringToolkitTotalLength === 0) {
+              if (engineeringToolkitTotalLength === ENGINEERING_TOOLKIT_EMPTY_LENGTH) {
                 setShowSecondaryContent(true);
               } else {
                 setIsEngineeringToolkitTypingStarted(true);
@@ -177,7 +195,7 @@ export function Info(props: InfoProps) {
                     setVisibleEngineeringToolkitChars(
                       function (toolkitCurrentValue) {
                         const toolkitNextValue = Math.min(
-                          toolkitCurrentValue + 1,
+                          toolkitCurrentValue + HERO_TYPING_STEP_SINGLE_CHAR,
                           engineeringToolkitTotalLength,
                         );
 
@@ -207,7 +225,10 @@ export function Info(props: InfoProps) {
       function typeName() {
         const nameIntervalId = window.setInterval(function () {
           setVisibleNameChars(function (currentValue) {
-            const nextValue = Math.min(currentValue + 1, fullNameLength);
+            const nextValue = Math.min(
+              currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
+              fullNameLength,
+            );
 
             if (nextValue >= fullNameLength) {
               window.clearInterval(nameIntervalId);
@@ -223,7 +244,10 @@ export function Info(props: InfoProps) {
 
       const hiIntervalId = window.setInterval(function () {
         setVisibleHiChars(function (currentValue) {
-          const nextValue = Math.min(currentValue + 2, hiText.length);
+          const nextValue = Math.min(
+            currentValue + HERO_TYPING_STEP_DOUBLE_CHARS,
+            hiText.length,
+          );
 
           if (nextValue >= hiText.length) {
             window.clearInterval(hiIntervalId);
@@ -271,14 +295,14 @@ export function Info(props: InfoProps) {
       }
 
       if (!showSecondaryContent) {
-        setVisibleNeedMoreDetailsChars(0);
+        setVisibleNeedMoreDetailsChars(DEFAULT_CHAR_COUNT);
         setIsNeedMoreDetailsTypingStarted(false);
-        setVisibleCvDownloadChars(0);
+        setVisibleCvDownloadChars(DEFAULT_CHAR_COUNT);
         setIsCvDownloadTypingStarted(false);
         return;
       }
 
-      setVisibleNeedMoreDetailsChars(0);
+      setVisibleNeedMoreDetailsChars(DEFAULT_CHAR_COUNT);
       setIsNeedMoreDetailsTypingStarted(false);
 
       let typingIntervalId: number | undefined;
@@ -289,7 +313,7 @@ export function Info(props: InfoProps) {
         typingIntervalId = window.setInterval(function () {
           setVisibleNeedMoreDetailsChars(function (currentValue) {
             const nextValue = Math.min(
-              currentValue + 1,
+              currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
               needMoreDetailsText.length,
             );
 
@@ -323,17 +347,20 @@ export function Info(props: InfoProps) {
       }
 
       if (!showSecondaryContent || !isNeedMoreDetailsPrinted) {
-        setVisibleCvDownloadChars(0);
+        setVisibleCvDownloadChars(DEFAULT_CHAR_COUNT);
         setIsCvDownloadTypingStarted(false);
         return;
       }
 
-      setVisibleCvDownloadChars(0);
+      setVisibleCvDownloadChars(DEFAULT_CHAR_COUNT);
       setIsCvDownloadTypingStarted(true);
 
       const intervalId = window.setInterval(function () {
         setVisibleCvDownloadChars(function (currentValue) {
-          const nextValue = Math.min(currentValue + 1, cvDownloadText.length);
+          const nextValue = Math.min(
+            currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
+            cvDownloadText.length,
+          );
 
           if (nextValue >= cvDownloadText.length) {
             window.clearInterval(intervalId);
@@ -399,7 +426,9 @@ export function Info(props: InfoProps) {
             target="_blank"
             rel="noreferrer"
             aria-hidden={!isCvDownloadTypingStarted}
-            tabIndex={isCvDownloadTypingStarted ? 0 : -1}
+            tabIndex={
+              isCvDownloadTypingStarted ? ENABLED_TAB_INDEX : DISABLED_TAB_INDEX
+            }
           >
             <span className="relative inline-block">
               <span className="invisible">{cvDownloadText}</span>
@@ -424,7 +453,7 @@ export function Info(props: InfoProps) {
         <span
           className="ml-6 inline-block h-[4px] flex-1 origin-left bg-[color:var(--color-accent)] transition-transform duration-500 ease-out"
           style={{
-            transform: isLineVisible ? "scaleX(1)" : "scaleX(0)",
+            transform: isLineVisible ? SCALE_X_VISIBLE : SCALE_X_HIDDEN,
           }}
         />
       </div>
@@ -447,7 +476,7 @@ export function Info(props: InfoProps) {
 
       <p className="mt-2 text-[17.5px] uppercase text-white max-[1366px]:text-sm">
         {engineeringToolkitBaseText.slice(
-          0,
+          DEFAULT_CHAR_COUNT,
           visibleEngineeringToolkitBaseChars,
         )}
         {isEngineeringToolkitColonVisible ? (

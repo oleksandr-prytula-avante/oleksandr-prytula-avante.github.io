@@ -52,12 +52,19 @@ function renderTextWithLinks(value: string): ReactNode[] {
 }
 
 const COMMON_SKILL_TAG_SET = new Set(COMMON_SKILL_TAGS);
+const ACTIVE_ITEM_Z_INDEX = 30;
+const INACTIVE_ITEM_Z_INDEX = 0;
+const SORT_EQUAL = 0;
+const SORT_LEFT_FIRST = -1;
+const SORT_RIGHT_FIRST = 1;
 
 type ExperienceItemProps = {
   item: ExperienceTimelineItem;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
   shouldHideRightContent: boolean;
+  hasActiveItem: boolean;
+  isActiveItem: boolean;
   isExpanded: boolean;
   isFocused: boolean;
   isDimmed: boolean;
@@ -75,6 +82,8 @@ export function ExperienceItem(props: ExperienceItemProps) {
     onSkillEnter,
     onSkillLeave,
     shouldHideRightContent,
+    hasActiveItem,
+    isActiveItem,
     isExpanded,
     isFocused,
     isDimmed,
@@ -86,6 +95,11 @@ export function ExperienceItem(props: ExperienceItemProps) {
     onToggle,
   } = props;
   const i18n = useI18n();
+  const itemZIndex = hasActiveItem
+    ? isActiveItem
+      ? ACTIVE_ITEM_Z_INDEX
+      : INACTIVE_ITEM_Z_INDEX
+    : undefined;
   const textKeys = getExperienceTextKeys(item.id);
   const companyName = i18n.t(textKeys.companyName);
   const descriptionId = `${item.id}-description`;
@@ -106,10 +120,10 @@ export function ExperienceItem(props: ExperienceItemProps) {
       const rightIsCommon = COMMON_SKILL_TAG_SET.has(right);
 
       if (leftIsCommon === rightIsCommon) {
-        return 0;
+        return SORT_EQUAL;
       }
 
-      return leftIsCommon ? -1 : 1;
+      return leftIsCommon ? SORT_LEFT_FIRST : SORT_RIGHT_FIRST;
     });
   let localizedHighlightsList = null;
 
@@ -183,6 +197,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
           "--experience-delay": `${animationDelayMs}ms`,
           "--focus-shift": `${focusShiftPx}px`,
           "--expanded-order": itemIndex,
+          zIndex: itemZIndex,
         } as CSSProperties
       }
     >

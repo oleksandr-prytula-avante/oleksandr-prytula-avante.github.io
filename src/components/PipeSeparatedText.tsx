@@ -8,15 +8,19 @@ type PipeSeparatedTextProps = {
   separatorClassName?: string;
 };
 
+const PIPE_TEXT_DELIMITER = "|";
+const FIRST_PART_INDEX = 0;
+const MIN_PART_LENGTH = 0;
+
 export function PipeSeparatedText(props: PipeSeparatedTextProps) {
   const { value, className, separatorClassName } = props;
   const parts = value
-    .split("|")
+    .split(PIPE_TEXT_DELIMITER)
     .map(function (part) {
       return part.trim();
     })
     .filter(function (part) {
-      return part.length > 0;
+      return part.length > MIN_PART_LENGTH;
     });
 
   return (
@@ -24,7 +28,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
       {parts.map(function (part, index) {
         let separator = null;
 
-        if (index > 0) {
+        if (index > FIRST_PART_INDEX) {
           separator = <PipeSeparator className={separatorClassName} />;
         }
 

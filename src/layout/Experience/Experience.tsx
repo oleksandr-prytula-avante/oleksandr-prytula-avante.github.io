@@ -10,6 +10,11 @@ import "./Experience.css";
 const EXPERIENCE_REVEAL_STAGGER_MS = 240;
 const EXPERIENCE_REVEAL_DURATION_MS = 460;
 const EXPERIENCE_FOCUS_TRANSITION_MS = 460;
+const EXPERIENCE_VISIBILITY_OPACITY_THRESHOLD = 0.35;
+const EXPERIENCE_LINE_CIRCLE_OFFSET_PX = 25;
+const EXPERIENCE_EMPTY_STATE_VALUE = 0;
+const EXPERIENCE_FIRST_ITEM_INDEX = 0;
+const EXPERIENCE_LAST_ITEM_OFFSET = 1;
 
 enum EFocusPhase {
   Idle = "idle",
@@ -31,7 +36,7 @@ export function Experience(props: ExperienceProps) {
   const [isFocusExitActive, setIsFocusExitActive] = useState(false);
   const [shouldRevealItems, setShouldRevealItems] = useState(false);
   const [isInitialRevealComplete, setIsInitialRevealComplete] = useState(false);
-  const [lineHeight, setLineHeight] = useState(0);
+  const [lineHeight, setLineHeight] = useState(EXPERIENCE_EMPTY_STATE_VALUE);
   const [focusShiftById, setFocusShiftById] = useState<Record<
     string,
     number
@@ -63,13 +68,15 @@ export function Experience(props: ExperienceProps) {
       listElement.querySelectorAll<HTMLElement>("[data-experience-item-id]"),
     );
 
-    if (itemElements.length === 0) {
+    if (itemElements.length === EXPERIENCE_EMPTY_STATE_VALUE) {
       setFocusShiftById(null);
       return;
     }
 
-    const firstTop = itemElements[0].getBoundingClientRect().top;
-    const firstItemId = itemElements[0].dataset.experienceItemId;
+    const firstTop =
+      itemElements[EXPERIENCE_FIRST_ITEM_INDEX].getBoundingClientRect().top;
+    const firstItemId =
+      itemElements[EXPERIENCE_FIRST_ITEM_INDEX].dataset.experienceItemId;
     const nextShiftById: Record<string, number> = {};
 
     itemElements.forEach(function (itemElement) {
@@ -84,7 +91,7 @@ export function Experience(props: ExperienceProps) {
     });
 
     if (firstItemId) {
-      nextShiftById[firstItemId] = 0;
+      nextShiftById[firstItemId] = EXPERIENCE_EMPTY_STATE_VALUE;
     }
 
     setFocusShiftById(nextShiftById);
@@ -127,7 +134,7 @@ export function Experience(props: ExperienceProps) {
             style.visibility === "hidden" ||
             style.pointerEvents === "none" ||
             Number.isNaN(opacity) ||
-            opacity < 0.35
+            opacity < EXPERIENCE_VISIBILITY_OPACITY_THRESHOLD
           ) {
             return false;
           }
@@ -138,7 +145,7 @@ export function Experience(props: ExperienceProps) {
         return true;
       }
 
-      let animationFrameId = 0;
+      let animationFrameId = EXPERIENCE_EMPTY_STATE_VALUE;
       let isCancelled = false;
 
       function waitUntilVisible() {
@@ -193,7 +200,7 @@ export function Experience(props: ExperienceProps) {
 
       measureFocusShiftFromLayout();
 
-      let secondRafId = 0;
+      let secondRafId = EXPERIENCE_EMPTY_STATE_VALUE;
       const firstRafId = window.requestAnimationFrame(function () {
         measureFocusShiftFromLayout();
         secondRafId = window.requestAnimationFrame(function () {
@@ -291,7 +298,7 @@ export function Experience(props: ExperienceProps) {
       const listElement = listRef.current;
 
       if (!articleElement || !listElement) {
-        setLineHeight(0);
+        setLineHeight(EXPERIENCE_EMPTY_STATE_VALUE);
         return;
       }
 
@@ -305,18 +312,24 @@ export function Experience(props: ExperienceProps) {
           ),
         );
 
-        if (circleElements.length === 0) {
-          setLineHeight(0);
+        if (circleElements.length === EXPERIENCE_EMPTY_STATE_VALUE) {
+          setLineHeight(EXPERIENCE_EMPTY_STATE_VALUE);
           return;
         }
 
         const articleRect = observedArticle.getBoundingClientRect();
-        const firstRect = circleElements[0].getBoundingClientRect();
+        const firstRect =
+          circleElements[EXPERIENCE_FIRST_ITEM_INDEX].getBoundingClientRect();
         const lastRect =
-          circleElements[circleElements.length - 1].getBoundingClientRect();
-        const bottom = lastRect.bottom - articleRect.top + 25;
-        const top = firstRect.top - articleRect.top - 25;
-        const nextLineHeight = Math.max(bottom - top, 0);
+          circleElements[circleElements.length - EXPERIENCE_LAST_ITEM_OFFSET].getBoundingClientRect();
+        const bottom =
+          lastRect.bottom - articleRect.top + EXPERIENCE_LINE_CIRCLE_OFFSET_PX;
+        const top =
+          firstRect.top - articleRect.top - EXPERIENCE_LINE_CIRCLE_OFFSET_PX;
+        const nextLineHeight = Math.max(
+          bottom - top,
+          EXPERIENCE_EMPTY_STATE_VALUE,
+        );
 
         setLineHeight(nextLineHeight);
       }
@@ -413,12 +426,16 @@ export function Experience(props: ExperienceProps) {
               onSkillEnter={onSkillEnter}
               onSkillLeave={onSkillLeave}
               shouldHideRightContent={shouldHideRightContent}
+              hasActiveItem={hasFocusedItem}
+              isActiveItem={isTargetItem}
               isExpanded={isExpanded}
               isFocused={isFocused}
               isDimmed={isDimmed}
               isInFocusedMode={isFocused}
               itemIndex={index}
-              focusShiftPx={focusShiftById?.[item.id] ?? 0}
+              focusShiftPx={
+                focusShiftById?.[item.id] ?? EXPERIENCE_EMPTY_STATE_VALUE
+              }
               animationDelayMs={index * EXPERIENCE_REVEAL_STAGGER_MS}
               isToggleDisabled={isToggleLocked}
               onToggle={createHandleExperienceItemToggle(

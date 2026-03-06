@@ -3,16 +3,31 @@ export const enum EPaletteColor {
   Accent = "#ff652e",
 }
 
-function hexToRgbChannels(hex: string): string {
-  const normalized = hex.startsWith("#") ? hex.slice(1) : hex;
+const HEX_PREFIX = "#";
+const HEX_PREFIX_LENGTH = 1;
+const HEX_COLOR_LENGTH = 6;
+const HEX_CHANNEL_LENGTH = 2;
+const HEX_RADIX = 16;
+const PALETTE_STYLE_ID = "app-palette-vars";
 
-  if (normalized.length !== 6) {
+function hexToRgbChannels(hex: string): string {
+  const normalized = hex.startsWith(HEX_PREFIX)
+    ? hex.slice(HEX_PREFIX_LENGTH)
+    : hex;
+
+  if (normalized.length !== HEX_COLOR_LENGTH) {
     throw new Error(`Invalid hex color: ${hex}`);
   }
 
-  const red = parseInt(normalized.slice(0, 2), 16);
-  const green = parseInt(normalized.slice(2, 4), 16);
-  const blue = parseInt(normalized.slice(4, 6), 16);
+  const red = parseInt(normalized.slice(0, HEX_CHANNEL_LENGTH), HEX_RADIX);
+  const green = parseInt(
+    normalized.slice(HEX_CHANNEL_LENGTH, HEX_CHANNEL_LENGTH * 2),
+    HEX_RADIX,
+  );
+  const blue = parseInt(
+    normalized.slice(HEX_CHANNEL_LENGTH * 2, HEX_CHANNEL_LENGTH * 3),
+    HEX_RADIX,
+  );
 
   return `${red} ${green} ${blue}`;
 }
@@ -22,7 +37,7 @@ export function installPaletteCssVars() {
     return;
   }
 
-  const styleId = "app-palette-vars";
+  const styleId = PALETTE_STYLE_ID;
 
   if (document.getElementById(styleId)) {
     return;
