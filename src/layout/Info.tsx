@@ -423,12 +423,12 @@ export function Info(props: InfoProps) {
         />
 
         <div className="mt-8 flex items-center justify-end gap-2">
-          <p className="text-[17.5px] uppercase text-white max-[1366px]:text-sm">
+          <p className="text-[1.09375rem] uppercase text-white max-[1366px]:text-sm">
             {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
             {needMoreDetailsTypingCursor}
           </p>
           <a
-            className="inline-flex cursor-pointer items-center py-1 text-[17.5px] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white max-[1366px]:text-sm"
+            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white max-[1366px]:text-sm"
             href={ATS_CV_PATH}
             target="_blank"
             rel="noreferrer"
@@ -476,12 +476,12 @@ export function Info(props: InfoProps) {
         </span>
       </h1>
 
-      <p className="mt-4 text-[20px] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
+      <p className="mt-4 text-[1.25rem] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
         {roleText.slice(0, visibleRoleChars)}
         {roleTypingCursor}
       </p>
 
-      <p className="mt-2 text-[17.5px] uppercase text-white max-[1366px]:text-sm">
+      <p className="mt-2 text-[1.09375rem] uppercase text-white max-[1366px]:text-sm">
         {engineeringToolkitBaseText.slice(
           DEFAULT_CHAR_COUNT,
           visibleEngineeringToolkitBaseChars,

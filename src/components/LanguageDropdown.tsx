@@ -89,8 +89,8 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
                 data-locale={nextLocale}
                 className={
                   isActive
-                    ? "flex h-10 w-full cursor-pointer items-center justify-center bg-white/12 text-center text-[14px] text-white"
-                    : "flex h-10 w-full cursor-pointer items-center justify-center text-center text-[14px] text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
+                    ? "flex h-10 w-full cursor-pointer items-center justify-center bg-white/12 text-center text-[0.875rem] text-white"
+                    : "flex h-10 w-full cursor-pointer items-center justify-center text-center text-[0.875rem] text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
                 }
                 onClick={handleLocaleOptionClick}
               >
@@ -112,10 +112,10 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
         type="button"
         className={
           isDisabled
-            ? "flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border border-white/10 bg-white/5 text-[14px] text-white/50 outline-none"
+            ? "flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border border-white/10 bg-white/5 text-[0.875rem] text-white/50 outline-none"
             : languageMenu.isOpen
-              ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-[14px] text-white outline-none transition-colors duration-200 ease-out"
-              : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-[14px] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
+              ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out"
+              : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
         }
         onClick={handleLanguageMenuToggle}
         aria-haspopup="listbox"

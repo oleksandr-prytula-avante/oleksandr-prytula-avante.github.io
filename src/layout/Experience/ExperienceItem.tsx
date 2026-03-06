@@ -122,7 +122,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
   if (item.technologyTags.length > 0) {
     technologyTagsList = (
       <>
-        <p className="mt-4 mb-4 text-[16px] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
+        <p className="mt-4 mb-4 text-[1rem] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
           {i18n.t(ETranslationKey.ExperienceToolsAndTechnologies)} :
         </p>
         <ul className="flex flex-wrap gap-2">

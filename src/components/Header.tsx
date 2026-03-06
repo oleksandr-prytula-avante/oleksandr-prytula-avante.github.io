@@ -17,10 +17,10 @@ export function Header({ isLanguageDisabled = false }: HeaderProps) {
 
   return (
     <header className="flex h-24 w-full items-center justify-between">
-      <img src={logoUrl} alt="Logo" className="h-12 w-auto" />
+      <img src={logoUrl} alt="Logo" className="h-16 w-auto" />
 
       <div className="flex items-center gap-1 whitespace-nowrap">
-        <nav className="flex items-center gap-1 text-[16px] uppercase">
+        <nav className="flex items-center gap-1 text-[1rem] uppercase">
           {SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
             const label = i18n.t(labelKey);
             const isActive = href === activeHash;
