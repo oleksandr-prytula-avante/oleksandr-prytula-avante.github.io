@@ -218,10 +218,10 @@ export function ExperienceItem(props: ExperienceItemProps) {
       </a>
 
       <div
-        className={`flex h-full min-h-0 flex-col pb-8 text-sm text-white/95 transition-opacity duration-200 ease-out ${
+        className={`flex h-full min-h-0 flex-col pb-8 text-sm text-white/95 ${
           shouldHideRightContent
-            ? "pointer-events-none opacity-0"
-            : "pointer-events-auto opacity-100"
+            ? "pointer-events-none invisible opacity-0 transition-none"
+            : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out"
         }`}
       >
         <div className="shrink-0 space-y-2">

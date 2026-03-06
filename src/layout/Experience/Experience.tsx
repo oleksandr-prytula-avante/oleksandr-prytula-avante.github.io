@@ -413,7 +413,9 @@ export function Experience(props: ExperienceProps) {
           const isFocused = isFocusedPhase && isTargetItem;
           const isExpanded = isFocused;
           const isDimmed = isFocusedPhase && hasFocusedItem && !isTargetItem;
-          const shouldHideRightContent = hasFocusedItem && !isTargetItem;
+          const isTargetItemMoving = isTargetItem && isTransitionPhase;
+          const shouldHideRightContent =
+            (hasFocusedItem && !isTargetItem) || isTargetItemMoving;
           const isToggleLocked =
             !isInitialRevealComplete ||
             isTransitionPhase ||
