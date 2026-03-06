@@ -62,6 +62,7 @@ type ExperienceItemProps = {
   isFocused: boolean;
   isDimmed: boolean;
   isInFocusedMode: boolean;
+  itemIndex: number;
   focusShiftPx: number;
   animationDelayMs: number;
   isToggleDisabled: boolean;
@@ -78,6 +79,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
     isFocused,
     isDimmed,
     isInFocusedMode,
+    itemIndex,
     focusShiftPx,
     animationDelayMs,
     isToggleDisabled,
@@ -174,12 +176,13 @@ export function ExperienceItem(props: ExperienceItemProps) {
 
   return (
     <li
-      className={`experience-item relative pl-32 ${isInFocusedMode ? "h-full" : "h-[25%]"} ${isFocused ? "experience-item--focused" : ""} ${isDimmed ? "experience-item--hidden" : ""}`}
+      className={`experience-item relative pl-32 ${isInFocusedMode ? "h-full" : "h-[25%]"} ${isFocused ? "experience-item--focused" : ""} ${isDimmed ? "experience-item--hidden" : ""} ${isExpanded ? "experience-item--expanded" : ""}`}
       data-experience-item-id={item.id}
       style={
         {
           "--experience-delay": `${animationDelayMs}ms`,
           "--focus-shift": `${focusShiftPx}px`,
+          "--expanded-order": itemIndex,
         } as CSSProperties
       }
     >

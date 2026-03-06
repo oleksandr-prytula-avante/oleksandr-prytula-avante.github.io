@@ -417,6 +417,7 @@ export function Experience(props: ExperienceProps) {
               isFocused={isFocused}
               isDimmed={isDimmed}
               isInFocusedMode={isFocused}
+              itemIndex={index}
               focusShiftPx={focusShiftById?.[item.id] ?? 0}
               animationDelayMs={index * EXPERIENCE_REVEAL_STAGGER_MS}
               isToggleDisabled={isToggleLocked}

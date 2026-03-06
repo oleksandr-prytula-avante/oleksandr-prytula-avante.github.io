@@ -67,3 +67,7 @@
 .experience-item.experience-item--focused {
   z-index: 20;
 }
+
+.experience-item.experience-item--expanded {
+  top: calc(var(--expanded-order, 0) * 50px);
+}
