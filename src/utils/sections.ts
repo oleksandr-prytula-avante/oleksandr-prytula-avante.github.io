@@ -1,6 +1,6 @@
 export const enum ESectionId {
   About = "about",
-  Expirience = "expirience",
+  Experience = "experience",
   Education = "education",
   Projects = "projects",
 }

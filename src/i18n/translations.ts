@@ -7,7 +7,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.LocaleSp]: "SP",
   [ETranslationKey.LocaleDe]: "DE",
   [ETranslationKey.NavAbout]: "About",
-  [ETranslationKey.NavExpirience]: "Expirience",
+  [ETranslationKey.NavExperience]: "Experience",
   [ETranslationKey.NavEducation]: "Education",
   [ETranslationKey.NavProjects]: "Projects",
   [ETranslationKey.NavGithub]: "GitHub",
@@ -133,7 +133,7 @@ const EN_TRANSLATIONS: Translations = {
 const RU_TRANSLATIONS: Translations = {
   ...EN_TRANSLATIONS,
   [ETranslationKey.NavAbout]: "О себе",
-  [ETranslationKey.NavExpirience]: "Опыт",
+  [ETranslationKey.NavExperience]: "Опыт",
   [ETranslationKey.NavEducation]: "Образование",
   [ETranslationKey.NavProjects]: "Проекты",
   [ETranslationKey.HeroHiIm]: "Дратути!",
@@ -254,7 +254,7 @@ const RU_TRANSLATIONS: Translations = {
 const SP_TRANSLATIONS: Translations = {
   ...EN_TRANSLATIONS,
   [ETranslationKey.NavAbout]: "Sobre mí",
-  [ETranslationKey.NavExpirience]: "Experiencia",
+  [ETranslationKey.NavExperience]: "Experiencia",
   [ETranslationKey.NavEducation]: "Educación",
   [ETranslationKey.NavProjects]: "Proyectos",
   [ETranslationKey.HeroHiIm]: "HOLA!",
@@ -374,7 +374,7 @@ const SP_TRANSLATIONS: Translations = {
 const DE_TRANSLATIONS: Translations = {
   ...EN_TRANSLATIONS,
   [ETranslationKey.NavAbout]: "Über mich",
-  [ETranslationKey.NavExpirience]: "Erfahrung",
+  [ETranslationKey.NavExperience]: "Erfahrung",
   [ETranslationKey.NavEducation]: "Ausbildung",
   [ETranslationKey.NavProjects]: "Projekte",
   [ETranslationKey.HeroHiIm]: "Hallo!",

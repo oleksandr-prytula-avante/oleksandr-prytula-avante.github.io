@@ -45,7 +45,7 @@ export function Experience(props: ExperienceProps) {
   const listRef = useRef<HTMLUListElement | null>(null);
   const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
   const isExperienceActive =
-    activeHash === toSectionHash(ESectionId.Expirience);
+    activeHash === toSectionHash(ESectionId.Experience);
   const hasFocusedItem = focusedItemId !== null;
 
   function resetExperienceState() {

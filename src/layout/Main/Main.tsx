@@ -65,7 +65,7 @@ export function Main() {
                       );
                     }
 
-                    if (href === toSectionHash(ESectionId.Expirience)) {
+                    if (href === toSectionHash(ESectionId.Experience)) {
                       return (
                         <Experience
                           key={href}

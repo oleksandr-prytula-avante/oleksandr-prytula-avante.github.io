@@ -5,7 +5,7 @@ import type { SectionHash } from "../utils/sections";
 
 const VALID_HASHES = [
   toSectionHash(ESectionId.About),
-  toSectionHash(ESectionId.Expirience),
+  toSectionHash(ESectionId.Experience),
   toSectionHash(ESectionId.Education),
   toSectionHash(ESectionId.Projects),
 ];
