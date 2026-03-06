@@ -36,6 +36,7 @@ export function Experience(props: ExperienceProps) {
   const [isFocusExitActive, setIsFocusExitActive] = useState(false);
   const [shouldRevealItems, setShouldRevealItems] = useState(false);
   const [isInitialRevealComplete, setIsInitialRevealComplete] = useState(false);
+  const [hasPlayedInitialReveal, setHasPlayedInitialReveal] = useState(false);
   const [lineHeight, setLineHeight] = useState(EXPERIENCE_EMPTY_STATE_VALUE);
   const [focusShiftById, setFocusShiftById] = useState<Record<
     string,
@@ -48,9 +49,7 @@ export function Experience(props: ExperienceProps) {
     activeHash === toSectionHash(ESectionId.Experience);
   const hasFocusedItem = focusedItemId !== null;
 
-  function resetExperienceState() {
-    setShouldRevealItems(false);
-    setIsInitialRevealComplete(false);
+  function resetFocusState() {
     setFocusedItemId(null);
     setFocusPhase(EFocusPhase.Idle);
     setIsFocusExitActive(false);
@@ -100,21 +99,24 @@ export function Experience(props: ExperienceProps) {
   useEffect(
     function () {
       if (!isExperienceActive) {
-        resetExperienceState();
+        resetFocusState();
         return;
       }
 
       const listElement = listRef.current;
 
       if (!listElement) {
-        resetExperienceState();
+        resetFocusState();
+        return;
+      }
+
+      if (hasPlayedInitialReveal) {
+        setShouldRevealItems(true);
+        setIsInitialRevealComplete(true);
         return;
       }
 
       const observedList = listElement;
-
-      setShouldRevealItems(false);
-      setIsInitialRevealComplete(false);
 
       function isActuallyVisible(element: HTMLElement): boolean {
         const rect = element.getBoundingClientRect();
@@ -155,6 +157,7 @@ export function Experience(props: ExperienceProps) {
 
         if (isActuallyVisible(observedList)) {
           setShouldRevealItems(true);
+          setHasPlayedInitialReveal(true);
           return;
         }
 
@@ -168,12 +171,16 @@ export function Experience(props: ExperienceProps) {
         window.cancelAnimationFrame(animationFrameId);
       };
     },
-    [isExperienceActive],
+    [hasPlayedInitialReveal, isExperienceActive],
   );
 
   useEffect(
     function () {
       if (!shouldRevealItems) {
+        return;
+      }
+
+      if (isInitialRevealComplete) {
         return;
       }
 
@@ -189,7 +196,7 @@ export function Experience(props: ExperienceProps) {
         window.clearTimeout(timeoutId);
       };
     },
-    [shouldRevealItems],
+    [isInitialRevealComplete, shouldRevealItems],
   );
 
   useEffect(
