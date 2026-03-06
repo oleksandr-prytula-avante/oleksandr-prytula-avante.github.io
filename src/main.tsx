@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { installPaletteCssVars } from "./theme/palette";
 
-import "./index.css";
+import "./main.css";
 
 installPaletteCssVars();
 

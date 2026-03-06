@@ -4,8 +4,8 @@ import { randomBetween } from "../../utils/random";
 
 import "./LinesBackgorund.css";
 
-export const VERTICAL_LINE_POSITIONS = [5, 21, 37, 53, 69, 85];
-export const HORIZONTAL_LINE_POSITIONS = [10, 26, 42, 58, 74, 90];
+const VERTICAL_LINE_POSITIONS = [5, 21, 37, 53, 69, 85];
+const HORIZONTAL_LINE_POSITIONS = [10, 26, 42, 58, 74, 90];
 const VERTICAL_LINE_TOP_MIN = 5;
 const VERTICAL_LINE_TOP_MAX = 55;
 const MIN_LINE_PERCENT = 1;
