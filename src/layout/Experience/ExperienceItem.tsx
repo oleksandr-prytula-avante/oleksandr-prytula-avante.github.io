@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
 
 import {
   EExperience,
@@ -8,48 +8,15 @@ import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
 import { getExperienceTextKeys } from "../../constants/experienceTextKeys";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { PipeSeparator } from "../../components/PipeSeparator";
-import { ExternalLink } from "../../components/ExternalLink";
+import { TextWithLinks } from "../../components/TextWithLinks";
 import { Tag } from "../../components/Tags/Tag";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
 import { ExperienceExpandIcon } from "../../components/icons/ExperienceExpandIcon";
 import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
 import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocationIcon";
 import { useI18n } from "../../hooks/useI18n";
-import { ELocale, ETranslationKey } from "../../i18n/types";
+import { ETranslationKey } from "../../i18n/types";
 import { buildPeriodLabel } from "../../utils/time";
-
-function getDateLocale(locale: ELocale): string {
-  switch (locale) {
-    case ELocale.Ru:
-      return "ru";
-    case ELocale.De:
-      return "de";
-    case ELocale.Sp:
-      return "es";
-    default:
-      return "en";
-  }
-}
-
-function renderTextWithLinks(value: string): ReactNode[] {
-  const urlRegex = /(https?:\/\/[^\s)]+)/g;
-
-  return value.split(urlRegex).map(function (part, index) {
-    if (/^https?:\/\/[^\s)]+$/.test(part)) {
-      return (
-        <ExternalLink
-          key={`link-${part}-${index}`}
-          href={part}
-          className="underline decoration-white/40 underline-offset-4 transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] hover:decoration-[color:var(--color-accent)]"
-        >
-          {part}
-        </ExternalLink>
-      );
-    }
-
-    return <span key={`text-${index}`}>{part}</span>;
-  });
-}
 
 const COMMON_SKILL_TAG_SET = new Set(COMMON_SKILL_TAGS);
 const ACTIVE_ITEM_Z_INDEX = 30;
@@ -107,7 +74,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
     item.startDate,
     item.endDate,
     i18n.t(ETranslationKey.ExperiencePresent),
-    getDateLocale(i18n.locale),
+    String(i18n.locale),
   );
   const locationText = i18n.t(textKeys.location);
   const localizedHighlights = textKeys.highlights.map(function (highlightKey) {
@@ -140,7 +107,9 @@ export function ExperienceItem(props: ExperienceItemProps) {
                 aria-hidden="true"
                 className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[color:var(--color-accent)]"
               />
-              <span>{renderTextWithLinks(highlight)}</span>
+              <span>
+                <TextWithLinks value={highlight} />
+              </span>
             </li>
           );
         })}

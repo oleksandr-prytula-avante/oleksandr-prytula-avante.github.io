@@ -6,7 +6,6 @@ import { TRANSLATIONS } from "./translations";
 
 export const STORAGE_KEY = "locale";
 export const ELOCALE_VALUES = [ELocale.En, ELocale.De, ELocale.Ru, ELocale.Sp];
-const BROWSER_LOCALE_FALLBACK_ORDER = [ELocale.Ru, ELocale.De, ELocale.Sp];
 
 function isLocale(value: string | null): value is ELocale {
   return value !== null && ELOCALE_VALUES.includes(value as ELocale);
@@ -21,7 +20,7 @@ function getInitialLocale(): ELocale {
 
   const lang = navigator.language.toLowerCase();
 
-  const matchedBrowserLocale = BROWSER_LOCALE_FALLBACK_ORDER.find(
+  const matchedBrowserLocale = ELOCALE_VALUES.find(
     function (locale) {
       return lang.startsWith(locale);
     },
