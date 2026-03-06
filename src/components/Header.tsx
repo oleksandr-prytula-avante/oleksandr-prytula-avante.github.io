@@ -21,24 +21,31 @@ export function Header({ isLanguageDisabled = false }: HeaderProps) {
 
       <div className="flex items-center gap-1 whitespace-nowrap">
         <nav className="flex items-center gap-1 text-[16px] uppercase">
-          {SECTION_NAV_ITEMS.map(function ({ href, labelKey }) {
+          {SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
             const label = i18n.t(labelKey);
             const isActive = href === activeHash;
+            const isItemDisabled = isDisabled ?? false;
 
             return (
               <a
                 key={href}
                 className={
-                  isActive
+                  isItemDisabled
+                    ? "inline-flex w-[8rem] cursor-not-allowed justify-center text-white/40 no-underline"
+                    : isActive
                     ? "inline-flex w-[8rem] cursor-pointer justify-center no-underline"
                     : "group inline-flex w-[8rem] cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
                 }
-                href={href}
-                aria-current={isActive ? "page" : undefined}
+                href={isItemDisabled ? undefined : href}
+                aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
+                aria-disabled={isItemDisabled || undefined}
+                tabIndex={isItemDisabled ? -1 : undefined}
               >
                 <span
                   className={
-                    isActive
+                    isItemDisabled
+                      ? "inline-flex border-b-[1.33px] border-transparent py-3"
+                      : isActive
                       ? "inline-flex border-b-[1.33px] border-[color:var(--color-accent)] py-3"
                       : "inline-flex border-b-[1.33px] border-transparent py-3 transition-colors duration-200 ease-out group-hover:border-[color:rgb(var(--color-accent-rgb)/0.8)] group-focus-visible:border-[color:rgb(var(--color-accent-rgb)/0.8)]"
                   }

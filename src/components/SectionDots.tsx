@@ -12,18 +12,23 @@ export function SectionDots() {
       className="absolute right-4 top-1/2 flex -translate-y-1/2 flex-col items-center gap-3 max-[1280px]:right-5"
       aria-label="Section navigation"
     >
-      {SECTION_NAV_ITEMS.map(function ({ href, labelKey }) {
+      {SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
         const label = i18n.t(labelKey);
         const isActive = href === activeHash;
+        const isItemDisabled = isDisabled ?? false;
 
         return (
           <a
             key={href}
-            href={href}
+            href={isItemDisabled ? undefined : href}
             aria-label={label}
-            aria-current={isActive ? "page" : undefined}
+            aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
+            aria-disabled={isItemDisabled || undefined}
+            tabIndex={isItemDisabled ? -1 : undefined}
             className={
-              isActive
+              isItemDisabled
+                ? "h-[15px] w-[15px] cursor-not-allowed rounded-full border border-white/40 bg-transparent"
+                : isActive
                 ? "h-[15px] w-[15px] cursor-pointer rounded-full border-2 border-white bg-[color:var(--color-accent)]"
                 : "h-[15px] w-[15px] cursor-pointer rounded-full border border-white bg-transparent transition-colors duration-200 ease-out hover:border-[color:rgb(var(--color-accent-rgb)/0.85)] focus-visible:border-[color:rgb(var(--color-accent-rgb)/0.85)]"
             }

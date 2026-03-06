@@ -9,6 +9,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.NavAbout]: "About",
   [ETranslationKey.NavExpirience]: "Expirience",
   [ETranslationKey.NavEducation]: "Education",
+  [ETranslationKey.NavProjects]: "Projects",
   [ETranslationKey.NavGithub]: "GitHub",
   [ETranslationKey.NavLinkedIn]: "LinkedIn",
   [ETranslationKey.NavLeetCode]: "LeetCode",
@@ -23,7 +24,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutParagraph1]:
     "I’m a Software Engineer with over 10 years of hands-on experience in WEB development across next domains: e-Learning, e-Commerce / Marketplaces, Trading, Insurance and Health Care. I’ve contributed to products in various delivery models - from out-staffing to startups - adapting quickly to diverse workflows, business goals, and team dynamics. I’ve worked both independently and in teams of 3 to 20 engineers, often within international, distributed environments.",
   [ETranslationKey.AboutParagraph2]:
-    "As a Full-Stack developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST / GraphQL APIs, databases like SQL and MongoDB. I actively use Docker and implement CI / CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
+    "As a Full-Stack WEB Developer, I deliver solutions from frontend interfaces to backend services and infrastructure. I’m experienced with monolithic and microservice architectures, REST / GraphQL APIs, databases like SQL (MySQL, SQLite and PostrgeSQL) and MongoDB. I actively use Docker and implement CI / CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
   [ETranslationKey.AboutParagraph3]:
     "My responsibilities include product evaluation and planning, technical estimations, architecture design, and MVP scoping. I collaborate closely with stakeholders to define requirements, select appropriate technologies, and ensure maintainability. I also mentor junior developers, conduct code reviews, and support onboarding.",
   [ETranslationKey.AboutParagraph4]:
@@ -134,6 +135,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.NavAbout]: "О себе",
   [ETranslationKey.NavExpirience]: "Опыт",
   [ETranslationKey.NavEducation]: "Образование",
+  [ETranslationKey.NavProjects]: "Проекты",
   [ETranslationKey.HeroHiIm]: "КУ-КУ!",
   [ETranslationKey.HeroName]: "Александр",
   [ETranslationKey.HeroSurname]: "Притула",
@@ -250,6 +252,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.NavAbout]: "Sobre mí",
   [ETranslationKey.NavExpirience]: "Experiencia",
   [ETranslationKey.NavEducation]: "Educación",
+  [ETranslationKey.NavProjects]: "Proyectos",
   [ETranslationKey.HeroHiIm]: "HOLA!",
   [ETranslationKey.HeroRole]:
     "Ingeniero de software | Desarrollador Full Stack WEB",
@@ -365,6 +368,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.NavAbout]: "Über mich",
   [ETranslationKey.NavExpirience]: "Erfahrung",
   [ETranslationKey.NavEducation]: "Ausbildung",
+  [ETranslationKey.NavProjects]: "Projekte",
   [ETranslationKey.HeroHiIm]: "HALLO",
   [ETranslationKey.HeroRole]: "Softwareingenieur | Full-Stack WEB-Entwickler",
   [ETranslationKey.HeroEngineeringToolkit]: "Mein Engineering-Toolkit",

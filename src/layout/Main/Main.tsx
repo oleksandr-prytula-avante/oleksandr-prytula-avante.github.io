@@ -11,6 +11,7 @@ import { About } from "../About";
 import { Education } from "../Education";
 import { Experience } from "../Experience/Experience";
 import { Info } from "../Info";
+import { Projects } from "../Projects";
 
 import "./Main.css";
 
@@ -76,6 +77,10 @@ export function Main() {
 
                     if (href === toSectionHash(ESectionId.Education)) {
                       return <Education key={href} />;
+                    }
+
+                    if (href === toSectionHash(ESectionId.Projects)) {
+                      return <Projects key={href} />;
                     }
 
                     return null;

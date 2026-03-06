@@ -37,6 +37,8 @@ export const ALL_SKILL_TAGS = [
   { label: "Kubernetes", href: "https://kubernetes.io", common: true },
   { label: "SQL", href: "https://en.wikipedia.org/wiki/SQL", common: true },
   { label: "MySQL", href: "https://www.mysql.com" },
+  { label: "SQLite", href: "https://www.sqlite.org" },
+  { label: "PostrgeSQL", href: "https://www.postgresql.org" },
   { label: "MongoDB", href: "https://www.mongodb.com", common: true },
   {
     label: "CI / CD",

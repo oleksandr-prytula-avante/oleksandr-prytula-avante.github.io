@@ -14,6 +14,7 @@ export const enum ETranslationKey {
   NavAbout = "nav.about",
   NavExpirience = "nav.expirience",
   NavEducation = "nav.education",
+  NavProjects = "nav.projects",
   NavGithub = "nav.github",
   NavLinkedIn = "nav.linkedin",
   NavLeetCode = "nav.leetcode",
