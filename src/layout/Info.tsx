@@ -97,7 +97,7 @@ export function Info(props: InfoProps) {
     visibleEngineeringToolkitChars,
     engineeringToolkitBaseText.length,
   );
-  let isEngineeringToolkitColonVisible =
+  const isEngineeringToolkitColonVisible =
     visibleEngineeringToolkitChars > engineeringToolkitBaseText.length;
   const needMoreDetailsText = i18n.t(ETranslationKey.HeroNeedMoreDetails);
   const cvDownloadText = i18n.t(ETranslationKey.HeroCvDownload);
@@ -405,6 +405,11 @@ export function Info(props: InfoProps) {
     isCvDownloadTypingStarted && visibleCvDownloadChars < cvDownloadText.length,
     "var(--color-accent)",
   );
+  let engineeringToolkitColon = null;
+
+  if (isEngineeringToolkitColonVisible) {
+    engineeringToolkitColon = <span className="pl-1">:</span>;
+  }
 
   let description = null;
 
@@ -481,9 +486,7 @@ export function Info(props: InfoProps) {
           DEFAULT_CHAR_COUNT,
           visibleEngineeringToolkitBaseChars,
         )}
-        {isEngineeringToolkitColonVisible ? (
-          <span className="pl-1">:</span>
-        ) : null}
+        {engineeringToolkitColon}
         {engineeringToolkitTypingCursor}
       </p>
 
