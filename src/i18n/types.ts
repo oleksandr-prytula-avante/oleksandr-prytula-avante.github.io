@@ -41,6 +41,7 @@ export const enum ETranslationKey {
   ExperiencePresent = "experience.present",
   ExperienceExpandDetails = "experience.expandDetails",
   ExperienceHideDetails = "experience.hideDetails",
+  ExperienceToolsAndTechnologies = "experience.toolsAndTechnologies",
 
   ExperienceOmnoraCompanyName = "experience.omnora.companyName",
   ExperienceOmnoraJobTitle = "experience.omnora.jobTitle",

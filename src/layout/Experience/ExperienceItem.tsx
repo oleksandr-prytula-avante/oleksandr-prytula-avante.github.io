@@ -1,9 +1,10 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import {
   EExperience,
   type ExperienceTimelineItem,
 } from "../../constants/experienceTimeline";
+import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
 import { getExperienceTextKeys } from "../../constants/experienceTextKeys";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { PipeSeparator } from "../../components/PipeSeparator";
@@ -29,8 +30,35 @@ function getDateLocale(locale: ELocale): string {
   }
 }
 
+function renderTextWithLinks(value: string): ReactNode[] {
+  const urlRegex = /(https?:\/\/[^\s)]+)/g;
+
+  return value.split(urlRegex).map(function (part, index) {
+    if (/^https?:\/\/[^\s)]+$/.test(part)) {
+      return (
+        <a
+          key={`link-${part}-${index}`}
+          href={part}
+          target="_blank"
+          rel="noreferrer"
+          className="underline decoration-white/40 underline-offset-4 transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] hover:decoration-[color:var(--color-accent)]"
+        >
+          {part}
+        </a>
+      );
+    }
+
+    return <span key={`text-${index}`}>{part}</span>;
+  });
+}
+
+const COMMON_SKILL_TAG_SET = new Set(COMMON_SKILL_TAGS);
+
 type ExperienceItemProps = {
   item: ExperienceTimelineItem;
+  onSkillEnter: (skill: string) => void;
+  onSkillLeave: () => void;
+  shouldHideRightContent: boolean;
   isExpanded: boolean;
   isFocused: boolean;
   isDimmed: boolean;
@@ -41,15 +69,12 @@ type ExperienceItemProps = {
   onToggle: () => void;
 };
 
-function handleTagSelect(skill: string): void {
-  void skill;
-}
-
-function handleTagClear(): void {}
-
 export function ExperienceItem(props: ExperienceItemProps) {
   const {
     item,
+    onSkillEnter,
+    onSkillLeave,
+    shouldHideRightContent,
     isExpanded,
     isFocused,
     isDimmed,
@@ -73,6 +98,18 @@ export function ExperienceItem(props: ExperienceItemProps) {
   const localizedHighlights = textKeys.highlights.map(function (highlightKey) {
     return i18n.t(highlightKey);
   });
+  const prioritizedTechnologyTags = item.technologyTags
+    .slice()
+    .sort(function (left, right) {
+      const leftIsCommon = COMMON_SKILL_TAG_SET.has(left);
+      const rightIsCommon = COMMON_SKILL_TAG_SET.has(right);
+
+      if (leftIsCommon === rightIsCommon) {
+        return 0;
+      }
+
+      return leftIsCommon ? -1 : 1;
+    });
   let localizedHighlightsList = null;
 
   if (localizedHighlights.length > 0) {
@@ -80,8 +117,15 @@ export function ExperienceItem(props: ExperienceItemProps) {
       <ul className="mt-3 space-y-2 leading-relaxed">
         {localizedHighlights.map(function (highlight, highlightIndex) {
           return (
-            <li key={`${item.id}-highlight-${highlightIndex}`}>
-              {`- ${highlight}`}
+            <li
+              key={`${item.id}-highlight-${highlightIndex}`}
+              className="relative pl-4"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[color:var(--color-accent)]"
+              />
+              <span>{renderTextWithLinks(highlight)}</span>
             </li>
           );
         })}
@@ -93,20 +137,25 @@ export function ExperienceItem(props: ExperienceItemProps) {
 
   if (item.technologyTags.length > 0) {
     technologyTagsList = (
-      <ul className="flex flex-wrap gap-2">
-        {item.technologyTags.map(function (tag) {
-          return (
-            <li key={`${item.id}-${tag}`}>
-              <Tag
-                label={tag}
-                className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs uppercase tracking-[0.06em] text-white/90 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
-                onSelectSkill={handleTagSelect}
-                onClearSkill={handleTagClear}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <>
+        <p className="mt-4 mb-4 text-[16px] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
+          {i18n.t(ETranslationKey.ExperienceToolsAndTechnologies)} :
+        </p>
+        <ul className="flex flex-wrap gap-2">
+          {prioritizedTechnologyTags.map(function (tag) {
+            return (
+              <li key={`${item.id}-${tag}`}>
+                <Tag
+                  label={tag}
+                  className="inline-flex rounded-full border border-white/40 px-3 py-1 text-xs normal-case tracking-normal text-white/90 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
+                  onSelectSkill={onSkillEnter}
+                  onClearSkill={onSkillLeave}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </>
     );
   }
 
@@ -116,10 +165,10 @@ export function ExperienceItem(props: ExperienceItemProps) {
     expandedContent = (
       <div
         id={descriptionId}
-        className="mt-3 min-h-0 flex-1 overflow-y-auto pr-2 text-sm text-white/90"
+        className="mt-3 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90"
       >
-        {technologyTagsList}
         {localizedHighlightsList}
+        {technologyTagsList}
       </div>
     );
   }
@@ -151,7 +200,13 @@ export function ExperienceItem(props: ExperienceItemProps) {
         />
       </a>
 
-      <div className="flex h-full min-h-0 flex-col pb-8 text-sm text-white/95">
+      <div
+        className={`flex h-full min-h-0 flex-col pb-8 text-sm text-white/95 transition-opacity duration-200 ease-out ${
+          shouldHideRightContent
+            ? "pointer-events-none opacity-0"
+            : "pointer-events-auto opacity-100"
+        }`}
+      >
         <div className="shrink-0 space-y-2">
           <div className="flex items-center gap-2">
             <ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />

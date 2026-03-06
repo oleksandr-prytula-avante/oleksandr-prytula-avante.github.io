@@ -1,4 +1,7 @@
-import { SKILL_TAGS } from "../../constants/skillTags";
+import {
+  COMMON_SKILL_TAGS,
+  SKILL_HREF_BY_LABEL,
+} from "../../constants/skillTags";
 import { Tag } from "./Tag";
 
 import "./Tags.css";
@@ -17,8 +20,9 @@ export function Tags(props: TagsProps) {
 
   return (
     <ul className="mt-4 flex flex-wrap gap-x-[9.25px] gap-y-[17.25px]">
-      {SKILL_TAGS.map(function ({ label, href }, index) {
+      {COMMON_SKILL_TAGS.map(function (label, index) {
         const isActive = hoveredSkill === label;
+        const href = SKILL_HREF_BY_LABEL[label];
 
         return (
           <li

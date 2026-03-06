@@ -19,7 +19,13 @@ enum EFocusPhase {
   Exiting = "exiting",
 }
 
-export function Experience() {
+type ExperienceProps = {
+  onSkillEnter: (skill: string) => void;
+  onSkillLeave: () => void;
+};
+
+export function Experience(props: ExperienceProps) {
+  const { onSkillEnter, onSkillLeave } = props;
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
   const [focusPhase, setFocusPhase] = useState<EFocusPhase>(EFocusPhase.Idle);
   const [isFocusExitActive, setIsFocusExitActive] = useState(false);
@@ -256,11 +262,24 @@ export function Experience() {
 
       measureFocusShiftFromLayout();
       const rafId = window.requestAnimationFrame(measureFocusShiftFromLayout);
-      window.addEventListener("resize", measureFocusShiftFromLayout);
+      let previousViewportHeight = window.innerHeight;
+
+      function handleVerticalResize() {
+        const nextViewportHeight = window.innerHeight;
+
+        if (nextViewportHeight === previousViewportHeight) {
+          return;
+        }
+
+        previousViewportHeight = nextViewportHeight;
+        measureFocusShiftFromLayout();
+      }
+
+      window.addEventListener("resize", handleVerticalResize);
 
       return function () {
         window.cancelAnimationFrame(rafId);
-        window.removeEventListener("resize", measureFocusShiftFromLayout);
+        window.removeEventListener("resize", handleVerticalResize);
       };
     },
     [shouldRevealItems],
@@ -305,12 +324,24 @@ export function Experience() {
       measureLineGeometry();
 
       const rafId = window.requestAnimationFrame(measureLineGeometry);
+      let previousViewportHeight = window.innerHeight;
 
-      window.addEventListener("resize", measureLineGeometry);
+      function handleVerticalResize() {
+        const nextViewportHeight = window.innerHeight;
+
+        if (nextViewportHeight === previousViewportHeight) {
+          return;
+        }
+
+        previousViewportHeight = nextViewportHeight;
+        measureLineGeometry();
+      }
+
+      window.addEventListener("resize", handleVerticalResize);
 
       return function () {
         window.cancelAnimationFrame(rafId);
-        window.removeEventListener("resize", measureLineGeometry);
+        window.removeEventListener("resize", handleVerticalResize);
       };
     },
     [shouldRevealItems],
@@ -369,6 +400,7 @@ export function Experience() {
           const isFocused = isFocusedPhase && isTargetItem;
           const isExpanded = isFocused;
           const isDimmed = isFocusedPhase && hasFocusedItem && !isTargetItem;
+          const shouldHideRightContent = hasFocusedItem && !isTargetItem;
           const isToggleLocked =
             !isInitialRevealComplete ||
             isTransitionPhase ||
@@ -378,6 +410,9 @@ export function Experience() {
             <ExperienceItem
               key={item.id}
               item={item}
+              onSkillEnter={onSkillEnter}
+              onSkillLeave={onSkillLeave}
+              shouldHideRightContent={shouldHideRightContent}
               isExpanded={isExpanded}
               isFocused={isFocused}
               isDimmed={isDimmed}

@@ -1,29 +1,100 @@
-export const SKILL_TAGS = [
+export const ALL_SKILL_TAGS = [
   { label: "React", href: "https://react.dev" },
   { label: "Angular", href: "https://angular.dev" },
   { label: "HTML", href: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
   { label: "CSS", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
   { label: "Python", href: "https://www.python.org" },
   { label: "Django", href: "https://www.djangoproject.com" },
+  { label: "Expo", href: "https://expo.dev" },
   { label: "Node.js", href: "https://nodejs.org" },
   { label: "Express", href: "https://expressjs.com" },
   { label: "Nest.js", href: "https://nestjs.com" },
   { label: "GraphQL", href: "https://graphql.org" },
+  { label: "JQuery", href: "https://jquery.com" },
   { label: "Go", href: "https://go.dev" },
   { label: "Gin", href: "https://gin-gonic.com" },
-  { label: "Docker", href: "https://www.docker.com" },
-  { label: "Kubernetes", href: "https://kubernetes.io" },
   { label: "Redis", href: "https://redis.io" },
   { label: "RabbitMQ", href: "https://www.rabbitmq.com" },
   { label: "Jest", href: "https://jestjs.io" },
+  { label: "JIRA", href: "https://www.atlassian.com/software/jira" },
+  { label: "Trello", href: "https://trello.com" },
   { label: "Playwright", href: "https://playwright.dev" },
+  { label: "Docker", href: "https://www.docker.com" },
+  { label: "AWS", href: "https://aws.amazon.com" },
+  { label: "Azure", href: "https://azure.microsoft.com" },
+  { label: "Kubernetes", href: "https://kubernetes.io" },
+  { label: "SQL", href: "https://en.wikipedia.org/wiki/SQL" },
   { label: "MySQL", href: "https://www.mysql.com" },
   { label: "MongoDB", href: "https://www.mongodb.com" },
   { label: "CI / CD", href: "https://en.wikipedia.org/wiki/CI/CD" },
   { label: "Git", href: "https://git-scm.com" },
+  { label: "Figma", href: "https://www.figma.com" },
+  { label: "Cursor", href: "https://www.cursor.com" },
+  { label: "Bash", href: "https://www.gnu.org/software/bash" },
+  { label: "WebRTC", href: "https://webrtc.org" },
+  {
+    label: "WebSockets",
+    href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+  },
+  { label: "RxJS", href: "https://rxjs.dev" },
+  { label: "Webpack", href: "https://webpack.js.org" },
+  { label: "Konva", href: "https://konvajs.org" },
+  { label: "MobX", href: "https://mobx.js.org" },
+  { label: "Redux-Saga", href: "https://redux-saga.js.org" },
+  { label: "Material UI", href: "https://mui.com" },
+  { label: "NPM", href: "https://www.npmjs.com" },
+  {
+    label: "Canvas",
+    href: "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API",
+  },
+  { label: "xAPI", href: "https://xapi.com" },
+  {
+    label: "SCORM",
+    href: "https://en.wikipedia.org/wiki/Sharable_Content_Object_Reference_Model",
+  },
+  { label: "Swagger", href: "https://swagger.io" },
+  { label: "S3", href: "https://aws.amazon.com/s3" },
+  { label: "Tesmo", href: "https://www.testmo.com" },
+  { label: "coa", href: "https://www.npmjs.com/package/coa" },
+  { label: "Bootstrap", href: "https://getbootstrap.com" },
+  { label: "Wordpress", href: "https://wordpress.org" },
+  { label: "Feathers", href: "https://feathersjs.com" },
+  { label: "React Native", href: "https://reactnative.dev" },
+  { label: "Redux", href: "https://redux.js.org" },
 ] as const;
 
-export const SKILL_HREF_BY_LABEL = SKILL_TAGS.reduce(
+export type SkillTagLabel = (typeof ALL_SKILL_TAGS)[number]["label"];
+
+export const COMMON_SKILL_TAGS: SkillTagLabel[] = [
+  "React",
+  "Angular",
+  "HTML",
+  "CSS",
+  "Python",
+  "Django",
+  "Expo",
+  "Node.js",
+  "Express",
+  "Nest.js",
+  "GraphQL",
+  "Go",
+  "Gin",
+  "Redis",
+  "RabbitMQ",
+  "Jest",
+  "Playwright",
+  "Docker",
+  "Kubernetes",
+  "SQL",
+  "MongoDB",
+  "CI / CD",
+  "Git",
+  "Figma",
+  "Cursor",
+  "Bash",
+];
+
+export const SKILL_HREF_BY_LABEL = ALL_SKILL_TAGS.reduce(
   function (acc, skill) {
     acc[skill.label] = skill.href;
 
@@ -34,7 +105,7 @@ export const SKILL_HREF_BY_LABEL = SKILL_TAGS.reduce(
 
 export const SKILL_HIGHLIGHT_TERMS = Array.from(
   new Set(
-    SKILL_TAGS.map(function ({ label }) {
+    ALL_SKILL_TAGS.map(function ({ label }) {
       return label;
     }),
   ),

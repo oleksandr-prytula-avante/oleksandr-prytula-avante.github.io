@@ -1,6 +1,10 @@
 import type { MouseEvent } from "react";
 
-import { SKILL_REGEX, TERM_TO_TAG_MAP } from "../constants/skillTags";
+import {
+  SKILL_HREF_BY_LABEL,
+  SKILL_REGEX,
+  TERM_TO_TAG_MAP,
+} from "../constants/skillTags";
 
 type SkillHighlightsProps = {
   value: string;
@@ -14,14 +18,12 @@ export function SkillHighlights(props: SkillHighlightsProps) {
   const parts = value.split(SKILL_REGEX);
 
   function onHighlightedTermMouseEnter(tag: string) {
-    return function (event: MouseEvent<HTMLSpanElement>) {
-      event.preventDefault();
+    return function (_event: MouseEvent<HTMLAnchorElement>) {
       onSkillEnter(tag);
     };
   }
 
-  function onHighlightedTermMouseLeave(event: MouseEvent<HTMLSpanElement>) {
-    event.preventDefault();
+  function onHighlightedTermMouseLeave() {
     onSkillLeave();
   }
 
@@ -33,20 +35,24 @@ export function SkillHighlights(props: SkillHighlightsProps) {
     }
 
     const isActive = hoveredSkill === tag;
+    const href = SKILL_HREF_BY_LABEL[tag];
 
     return (
-      <span
+      <a
         key={`${part}-${index}`}
         className={
           isActive
             ? "text-[color:var(--color-accent)]"
             : "hover:text-[color:var(--color-accent)]"
         }
+        href={href}
+        target="_blank"
+        rel="noreferrer"
         onMouseEnter={onHighlightedTermMouseEnter(tag)}
         onMouseLeave={onHighlightedTermMouseLeave}
       >
         {part}
-      </span>
+      </a>
     );
   });
 }

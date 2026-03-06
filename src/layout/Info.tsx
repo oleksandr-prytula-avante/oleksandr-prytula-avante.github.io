@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Tags } from "../components/Tags/Tags";
 import { ATS_CV_PATH } from "../constants/paths";
-import { SKILL_TAGS } from "../constants/skillTags";
+import { COMMON_SKILL_TAGS } from "../constants/skillTags";
 import {
   TAG_REVEAL_DURATION_MS,
   TAG_REVEAL_STAGGER_MS,
@@ -22,7 +22,8 @@ const CV_DOWNLOAD_TYPING_INTERVAL_MS = 38;
 const NAME_TYPING_START_DELAY_MS =
   ORANGE_LINE_REVEAL_DURATION_MS + NAME_TYPING_START_EXTRA_DELAY_MS;
 const NEED_MORE_DETAILS_START_DELAY_MS =
-  (SKILL_TAGS.length - 1) * TAG_REVEAL_STAGGER_MS + TAG_REVEAL_DURATION_MS;
+  (COMMON_SKILL_TAGS.length - 1) * TAG_REVEAL_STAGGER_MS +
+  TAG_REVEAL_DURATION_MS;
 
 type InfoProps = {
   hoveredSkill?: string | null;

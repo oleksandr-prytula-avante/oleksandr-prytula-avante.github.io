@@ -65,7 +65,13 @@ export function Main() {
                     }
 
                     if (href === toSectionHash(ESectionId.Expirience)) {
-                      return <Experience key={href} />;
+                      return (
+                        <Experience
+                          key={href}
+                          onSkillEnter={setHoveredSkill}
+                          onSkillLeave={handleSkillLeave}
+                        />
+                      );
                     }
 
                     if (href === toSectionHash(ESectionId.Education)) {
