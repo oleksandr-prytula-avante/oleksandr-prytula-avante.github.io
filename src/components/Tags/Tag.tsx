@@ -24,7 +24,7 @@ export function Tag(props: TagProps) {
   const resolvedHref = href ?? SKILL_HREF_BY_LABEL[label];
   const baseClassName =
     variant === "experience"
-      ? "rounded-full border px-3 py-1 text-xs normal-case tracking-normal transition-colors duration-200 ease-out"
+      ? "my-1 rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out"
       : "rounded-full border px-4 py-1.5 text-[14px] uppercase transition-colors duration-200 ease-out";
   const activeClassName =
     variant === "experience"
