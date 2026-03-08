@@ -422,13 +422,13 @@ export function Info(props: InfoProps) {
           onSkillLeave={onSkillLeave}
         />
 
-        <div className="mt-8 flex items-center justify-end gap-2">
-          <p className="text-[1.09375rem] uppercase text-white max-[1366px]:text-sm">
+        <div className="mt-8 flex items-center justify-end gap-2 max-[1024px]:justify-start max-[639px]:flex-col max-[639px]:items-start max-[639px]:gap-1">
+          <p className="text-[1.09375rem] uppercase text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
             {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
             {needMoreDetailsTypingCursor}
           </p>
           <a
-            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white max-[1366px]:text-sm"
+            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
             href={ATS_CV_PATH}
             target="_blank"
             rel="noreferrer"
@@ -451,8 +451,8 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="flex h-full flex-col px-10 pt-8 pb-12">
-      <div className="mb-2 flex items-center">
+    <div className="flex h-full flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
+      <div className="mb-4 flex items-center">
         <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
           {hiText.slice(0, visibleHiChars)}
           {hiTypingCursor}
@@ -465,23 +465,23 @@ export function Info(props: InfoProps) {
         />
       </div>
 
-      <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl">
-        <span className="block">
+      <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl max-[1024px]:whitespace-nowrap max-[639px]:whitespace-normal">
+        <span className="block max-[1024px]:inline max-[639px]:block">
           {visibleName}
           {nameTypingCursor}
         </span>
-        <span className="mt-1 block">
+        <span className="mt-1 block max-[1024px]:mt-0 max-[1024px]:ml-3 max-[1024px]:inline max-[639px]:mt-1 max-[639px]:ml-0 max-[639px]:block">
           {visibleSurname}
           {surnameTypingCursor}
         </span>
       </h1>
 
-      <p className="mt-4 text-[1.25rem] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
+      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.75rem]">
         {roleText.slice(0, visibleRoleChars)}
         {roleTypingCursor}
       </p>
 
-      <p className="mt-2 text-[1.09375rem] uppercase text-white max-[1366px]:text-sm">
+      <p className="mt-4 text-[1.09375rem] uppercase text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
         {engineeringToolkitBaseText.slice(
           DEFAULT_CHAR_COUNT,
           visibleEngineeringToolkitBaseChars,

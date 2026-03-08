@@ -15,6 +15,11 @@ type LinkItem = {
 
 export const LINKS: LinkItem[] = [
   {
+    id: ELink.Gmail,
+    href: "mailto:oleksandr.prytula.avante@gmail.com",
+    labelKey: ETranslationKey.NavEmail,
+  },
+  {
     id: ELink.Github,
     href: "https://github.com/oleksandr-prytula-avante",
     labelKey: ETranslationKey.NavGithub,
@@ -28,10 +33,5 @@ export const LINKS: LinkItem[] = [
     id: ELink.LeetCode,
     href: "https://leetcode.com/u/oleksandr-prytula-avante/",
     labelKey: ETranslationKey.NavLeetCode,
-  },
-  {
-    id: ELink.Gmail,
-    href: "mailto:oleksandr.prytula.avante@gmail.com",
-    labelKey: ETranslationKey.NavEmail,
   },
 ];
