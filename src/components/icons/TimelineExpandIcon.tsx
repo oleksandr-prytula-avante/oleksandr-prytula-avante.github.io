@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function ExperienceExpandIcon(
+export function TimelineExpandIcon(
   props: React.SVGProps<SVGSVGElement>,
 ): React.ReactElement {
   return (

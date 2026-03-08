@@ -1,4 +1,5 @@
 export const ALL_SKILL_TAGS = [
+  { label: "Typescript", href: "https://www.typescriptlang.org", common: true },
   { label: "React", href: "https://react.dev", common: true },
   { label: "Angular", href: "https://angular.dev", common: true },
   {
@@ -79,6 +80,52 @@ export const ALL_SKILL_TAGS = [
   { label: "Feathers", href: "https://feathersjs.com" },
   { label: "React Native", href: "https://reactnative.dev" },
   { label: "Redux", href: "https://redux.js.org" },
+  { label: "Flutter", href: "https://flutter.dev" },
+  { label: "npm", href: "https://www.npmjs.com" },
+  {
+    label: "HTML5",
+    href: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5",
+  },
+  {
+    label: "OOP",
+    href: "https://en.wikipedia.org/wiki/Object-oriented_programming",
+  },
+  { label: "MATLAB", href: "https://www.mathworks.com/products/matlab.html" },
+  { label: "Vuetify", href: "https://vuetifyjs.com" },
+  {
+    label: "Web Development",
+    href: "https://en.wikipedia.org/wiki/Web_development",
+  },
+  {
+    label: "React (Redux)",
+    href: "https://react-redux.js.org",
+  },
+  {
+    label: "JSON",
+    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+  },
+  { label: "Vue.js", href: "https://vuejs.org" },
+  {
+    label: "Front-end Development",
+    href: "https://en.wikipedia.org/wiki/Front-end_web_development",
+  },
+  { label: "Node.js (Express)", href: "https://expressjs.com" },
+  { label: "Dart", href: "https://dart.dev" },
+  { label: "Heroku", href: "https://www.heroku.com" },
+  {
+    label: "Javascript (ES2015)",
+    href: "https://262.ecma-international.org/6.0/",
+  },
+  {
+    label: "CSS3",
+    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  },
+  { label: "Apollo GraphQL", href: "https://www.apollographql.com" },
+  { label: "GitHub", href: "https://github.com" },
+  { label: "Three.js", href: "https://threejs.org" },
+  { label: "UI/UX", href: "https://en.wikipedia.org/wiki/User_experience_design" },
+  { label: "Snap.svg/Raphael.js", href: "https://dmitrybaranovskiy.github.io/raphael/" },
+  { label: "XML", href: "https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction" },
 ] as const;
 
 export type SkillTagLabel = (typeof ALL_SKILL_TAGS)[number]["label"];

@@ -4,17 +4,18 @@ import { useI18n } from "../hooks/useI18n";
 type HeaderNavigationProps = {
   layout: "desktop" | "mobile";
   activeHash: string;
+  isAllItemsDisabled?: boolean;
   onItemClick?: () => void;
 };
 
 export function HeaderNavigation(props: HeaderNavigationProps) {
-  const { layout, activeHash, onItemClick } = props;
+  const { layout, activeHash, isAllItemsDisabled = false, onItemClick } = props;
   const i18n = useI18n();
 
   return SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
     const label = i18n.t(labelKey);
     const isActive = href === activeHash;
-    const isItemDisabled = isDisabled ?? false;
+    const isItemDisabled = isAllItemsDisabled || (isDisabled ?? false);
 
     if (layout === "mobile") {
       return (
@@ -31,7 +32,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
           aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
           aria-disabled={isItemDisabled || undefined}
           tabIndex={isItemDisabled ? -1 : undefined}
-          onClick={onItemClick}
+          onClick={isItemDisabled ? undefined : onItemClick}
         >
           {label}
         </a>

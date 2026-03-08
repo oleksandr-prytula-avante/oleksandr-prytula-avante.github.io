@@ -1,10 +1,10 @@
-import { Timeline } from "../components/Timeline/Timeline";
-import { EDUCATION_TIMELINE_ITEMS } from "../constants/educationTimeline";
-import { ESectionId, toSectionHash } from "../utils/sections";
+import { Timeline } from "../../components/Timeline/Timeline";
+import { EDUCATION_TIMELINE_ITEMS } from "../../constants/educationTimeline";
+import { ESectionId, toSectionHash } from "../../utils/sections";
 
-import { EducationCompanyRow } from "./Education/EducationCompanyRow";
-import { EducationJobRow } from "./Education/EducationJobRow";
-import { EducationThirdRow } from "./Education/EducationThirdRow";
+import { EducationCompanyRow } from "./EducationCompanyRow";
+import { EducationJobRow } from "./EducationJobRow";
+import { EducationThirdRow } from "./EducationThirdRow";
 
 export function Education() {
   return (

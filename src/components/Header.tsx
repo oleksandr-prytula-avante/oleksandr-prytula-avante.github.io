@@ -12,9 +12,13 @@ import logoUrl from "../assets/images/logo.webp";
 
 type HeaderProps = {
   isLanguageDisabled?: boolean;
+  isNavigationDisabled?: boolean;
 };
 
-export function Header({ isLanguageDisabled = false }: HeaderProps) {
+export function Header({
+  isLanguageDisabled = false,
+  isNavigationDisabled = false,
+}: HeaderProps) {
   const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -78,6 +82,7 @@ export function Header({ isLanguageDisabled = false }: HeaderProps) {
           <HeaderNavigation
             layout="mobile"
             activeHash={activeHash}
+            isAllItemsDisabled={isNavigationDisabled}
             onItemClick={handleMobileMenuClose}
           />
         </nav>
@@ -116,7 +121,11 @@ export function Header({ isLanguageDisabled = false }: HeaderProps) {
 
         <div className="hidden items-center gap-1 whitespace-nowrap min-[1025px]:flex">
           <nav className="flex items-center gap-1 text-[1.125rem] uppercase">
-            <HeaderNavigation layout="desktop" activeHash={activeHash} />
+            <HeaderNavigation
+              layout="desktop"
+              activeHash={activeHash}
+              isAllItemsDisabled={isNavigationDisabled}
+            />
           </nav>
           <div className="ml-12">
             <LanguageDropdown isDisabled={isLanguageDisabled} />

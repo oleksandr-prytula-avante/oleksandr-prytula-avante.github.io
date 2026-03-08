@@ -1,32 +1,35 @@
 import type { CSSProperties } from "react";
 
-import {
-  EExperience,
-  type ExperienceTimelineItem,
-} from "../../constants/experienceTimeline";
 import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
 import { getExperienceTextKeys } from "../../constants/experienceTextKeys";
-import { PipeSeparatedText } from "../../components/PipeSeparatedText";
-import { PipeSeparator } from "../../components/PipeSeparator";
-import { TextWithLinks } from "../../components/TextWithLinks";
-import { Tag } from "../../components/Tags/Tag";
-import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
-import { ExperienceExpandIcon } from "../../components/icons/ExperienceExpandIcon";
-import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
-import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocationIcon";
+import { TextWithLinks } from "../TextWithLinks";
+import { Tag } from "../Tags/Tag";
+import { TimelineExpandIcon } from "../icons/TimelineExpandIcon";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
-import { buildPeriodLabel } from "../../utils/time";
 
-const COMMON_SKILL_TAG_SET = new Set(COMMON_SKILL_TAGS);
+const COMMON_SKILL_TAG_SET = new Set<string>(COMMON_SKILL_TAGS);
 const ACTIVE_ITEM_Z_INDEX = 30;
 const INACTIVE_ITEM_Z_INDEX = 0;
 const SORT_EQUAL = 0;
 const SORT_LEFT_FIRST = -1;
 const SORT_RIGHT_FIRST = 1;
 
-type ExperienceItemProps = {
-  item: ExperienceTimelineItem;
+export type TimelineDataItem = {
+  id: string;
+  companyUrl: string;
+  companyLogoSrc: string;
+  startDate: string;
+  endDate: string | null;
+  technologyTags: string[];
+};
+
+type TimelineItemProps<TItem extends TimelineDataItem> = {
+  item: TItem;
+  renderFirstRow: (item: TItem) => React.ReactNode;
+  renderSecondRow: (item: TItem) => React.ReactNode;
+  renderThirdRow: (item: TItem) => React.ReactNode;
+  showToggle?: boolean;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
   shouldHideRightContent: boolean;
@@ -43,9 +46,15 @@ type ExperienceItemProps = {
   onToggle: () => void;
 };
 
-export function ExperienceItem(props: ExperienceItemProps) {
+export function TimelineItem<TItem extends TimelineDataItem>(
+  props: TimelineItemProps<TItem>,
+) {
   const {
     item,
+    renderFirstRow,
+    renderSecondRow,
+    renderThirdRow,
+    showToggle = true,
     onSkillEnter,
     onSkillLeave,
     shouldHideRightContent,
@@ -67,19 +76,21 @@ export function ExperienceItem(props: ExperienceItemProps) {
       ? ACTIVE_ITEM_Z_INDEX
       : INACTIVE_ITEM_Z_INDEX
     : undefined;
+  const itemHeightClass = showToggle
+    ? isInFocusedMode
+      ? "h-full"
+      : "h-[25%]"
+    : "h-auto";
+
   const textKeys = getExperienceTextKeys(item.id);
-  const companyName = i18n.t(textKeys.companyName);
+  const isEducationItem = item.id.startsWith("education-");
+  const companyName = isEducationItem ? item.id : i18n.t(textKeys.companyName);
   const descriptionId = `${item.id}-description`;
-  const periodLabel = buildPeriodLabel(
-    item.startDate,
-    item.endDate,
-    i18n.t(ETranslationKey.ExperiencePresent),
-    String(i18n.locale),
-  );
-  const locationText = i18n.t(textKeys.location);
-  const localizedHighlights = textKeys.highlights.map(function (highlightKey) {
-    return i18n.t(highlightKey);
-  });
+  const localizedHighlights = isEducationItem
+    ? []
+    : textKeys.highlights.map(function (highlightKey) {
+        return i18n.t(highlightKey);
+      });
   const prioritizedTechnologyTags = item.technologyTags
     .slice()
     .sort(function (left, right) {
@@ -125,7 +136,7 @@ export function ExperienceItem(props: ExperienceItemProps) {
         <p className="mt-4 mb-4 text-[1rem] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
           {i18n.t(ETranslationKey.ExperienceToolsAndTechnologies)} :
         </p>
-        <ul className="flex flex-wrap gap-2">
+        <ul className="flex flex-wrap gap-x-2 gap-y-3">
           {prioritizedTechnologyTags.map(function (tag) {
             return (
               <li key={`${item.id}-${tag}`}>
@@ -159,13 +170,13 @@ export function ExperienceItem(props: ExperienceItemProps) {
 
   return (
     <li
-      className={`experience-item relative pl-32 ${isInFocusedMode ? "h-full" : "h-[25%]"} ${isFocused ? "experience-item--focused" : ""} ${isDimmed ? "experience-item--hidden" : ""} ${isExpanded ? "experience-item--expanded" : ""}`}
-      data-experience-item-id={item.id}
+      className={`timeline-item relative pl-32 ${itemHeightClass} ${isFocused ? "timeline-item--focused" : ""} ${isDimmed ? "timeline-item--hidden" : ""} ${isExpanded ? "timeline-item--expanded" : ""}`}
+      data-timeline-item-id={item.id}
       style={
         {
-          "--experience-delay": `${animationDelayMs}ms`,
-          "--focus-shift": `${focusShiftPx}px`,
-          "--expanded-order": itemIndex,
+          "--timeline-delay": `${animationDelayMs}ms`,
+          "--timeline-shift": `${focusShiftPx}px`,
+          "--timeline-expanded-order": itemIndex,
           zIndex: itemZIndex,
         } as CSSProperties
       }
@@ -175,13 +186,13 @@ export function ExperienceItem(props: ExperienceItemProps) {
         target="_blank"
         rel="noreferrer"
         aria-label={`${companyName} website`}
-        data-experience-circle
+        data-timeline-circle
         className="absolute left-0 top-0 z-10 flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-full border-2 border-[color:var(--color-accent)] bg-white"
       >
         <img
           src={item.companyLogoSrc}
           alt={`${companyName} logo`}
-          className={`${item.id === EExperience.Digitalsuits ? "w-1/3" : "h-12 w-12"} object-contain`}
+          className={`h-12 w-12 object-contain`}
           loading="lazy"
         />
       </a>
@@ -194,63 +205,40 @@ export function ExperienceItem(props: ExperienceItemProps) {
         }`}
       >
         <div className="shrink-0 space-y-2">
-          <div className="flex items-center gap-2">
-            <ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />
-            <a
-              href={item.companyUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="truncate text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)]"
-            >
-              <PipeSeparatedText
-                value={companyName}
-                className="inline-flex items-center gap-2"
-              />
-            </a>
-          </div>
+          {renderFirstRow(item)}
+
+          {renderSecondRow(item)}
 
           <div className="flex flex-wrap items-center gap-2">
-            <ExperienceJobTitleIcon className="h-5 w-5 shrink-0 text-white" />
-            <span>{i18n.t(textKeys.jobTitle)}</span>
-            <PipeSeparator />
-            <span>{periodLabel.dateRange}</span>
-            <PipeSeparator />
-            <span>{periodLabel.duration}</span>
-          </div>
+            {renderThirdRow(item)}
 
-          <div className="flex flex-wrap items-center gap-2">
-            <ExperienceLocationIcon className="h-5 w-5 shrink-0 text-white" />
-            <PipeSeparatedText
-              value={locationText}
-              className="inline-flex items-center gap-2"
-            />
-            <PipeSeparator />
-
-            <button
-              type="button"
-              onClick={onToggle}
-              disabled={isToggleDisabled}
-              aria-expanded={isExpanded}
-              aria-controls={descriptionId}
-              className={`inline-flex items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
-                isToggleDisabled
-                  ? "cursor-not-allowed opacity-60"
-                  : "cursor-pointer hover:text-white"
-              }`}
-            >
-              <span>
-                {isExpanded
-                  ? i18n.t(ETranslationKey.ExperienceHideDetails)
-                  : i18n.t(ETranslationKey.ExperienceExpandDetails)}
-              </span>
-              <ExperienceExpandIcon
-                className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
-              />
-            </button>
+            {showToggle ? (
+              <button
+                type="button"
+                onClick={onToggle}
+                disabled={isToggleDisabled}
+                aria-expanded={isExpanded}
+                aria-controls={descriptionId}
+                className={`inline-flex items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
+                  isToggleDisabled
+                    ? "cursor-not-allowed opacity-60"
+                    : "cursor-pointer hover:text-white"
+                }`}
+              >
+                <span>
+                  {isExpanded
+                    ? i18n.t(ETranslationKey.TimelineHideDetails)
+                    : i18n.t(ETranslationKey.TimelineExpandDetails)}
+                </span>
+                <TimelineExpandIcon
+                  className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
+                />
+              </button>
+            ) : null}
           </div>
         </div>
 
-        {expandedContent}
+        {showToggle ? expandedContent : null}
       </div>
     </li>
   );

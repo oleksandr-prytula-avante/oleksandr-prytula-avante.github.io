@@ -1,0 +1,73 @@
+.timeline-item {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 460ms ease-out,
+    transform 460ms ease-out,
+    margin 460ms ease-out,
+    padding 460ms ease-out;
+  transition-delay: var(--timeline-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.timeline-list.timeline-list--active .timeline-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-list.timeline-list--focused .timeline-item {
+  transition-delay: 0ms;
+}
+
+.timeline-list.timeline-list--focus-entering .timeline-item {
+  transition-delay: 0ms;
+  transform: translateY(calc(-1 * var(--timeline-shift, 0px)));
+}
+
+.timeline-list.timeline-list--focus-exiting .timeline-item {
+  transition-delay: 0ms;
+  opacity: 1;
+  transform: translateY(calc(-1 * var(--timeline-shift, 0px)));
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: auto;
+}
+
+.timeline-list.timeline-list--focus-exiting.timeline-list--focus-exit-active
+  .timeline-item {
+  transform: translateY(0);
+}
+
+.timeline-item.timeline-item--hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+
+.timeline-list.timeline-list--focused
+  .timeline-item.timeline-item--hidden {
+  /* Hide non-selected items in-place after they reach the stacked top position. */
+  opacity: 0;
+  transition: none;
+  transform: translateY(calc(-1 * var(--timeline-shift, 0px)));
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.timeline-list.timeline-list--focused
+  .timeline-item.timeline-item--focused {
+  transform: translateY(calc(-1 * var(--timeline-shift, 0px)));
+}
+
+.timeline-item.timeline-item--focused {
+  z-index: 20;
+}
+
+.timeline-item.timeline-item--expanded {
+  top: calc(var(--timeline-expanded-order, 0) * 50px);
+}

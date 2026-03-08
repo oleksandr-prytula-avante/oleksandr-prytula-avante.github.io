@@ -1,9 +1,9 @@
-import { EXPERIENCE_TIMELINE_ITEMS } from "../../constants/experienceTimeline";
-import { Timeline } from "../../components/Timeline/Timeline";
-import { ESectionId, toSectionHash } from "../../utils/sections";
-import { ExperienceCompanyRow } from "./ExperienceCompanyRow";
-import { ExperienceJobRow } from "./ExperienceJobRow";
-import { ExperienceLocationRow } from "./ExperienceLocationRow";
+import { EXPERIENCE_TIMELINE_ITEMS } from "../constants/experienceTimeline";
+import { Timeline } from "../components/Timeline/Timeline";
+import { ESectionId, toSectionHash } from "../utils/sections";
+import { ExperienceCompanyRow } from "./Experience/ExperienceCompanyRow";
+import { ExperienceJobRow } from "./Experience/ExperienceJobRow";
+import { ExperienceLocationRow } from "./Experience/ExperienceLocationRow";
 
 type ExperienceProps = {
   onSkillEnter: (skill: string) => void;

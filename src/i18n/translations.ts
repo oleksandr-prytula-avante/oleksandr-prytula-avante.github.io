@@ -35,13 +35,16 @@ const EN_TRANSLATIONS: Translations = {
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]:
     "Master's degree, Computer Software Engineering",
+  [ETranslationKey.EducationBinaryStudioTitle]: "Binary Studio Academy",
+  [ETranslationKey.EducationBinaryStudioProgram]:
+    "JS Full-Stack Developer Bootcamp & Internship",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]:
     "Bachelor's degree, Computer Software Engineering",
   [ETranslationKey.ExperiencePresent]: "Present",
-  [ETranslationKey.ExperienceExpandDetails]: "Show more",
-  [ETranslationKey.ExperienceHideDetails]: "Show less",
+  [ETranslationKey.TimelineExpandDetails]: "Show more",
+  [ETranslationKey.TimelineHideDetails]: "Show less",
   [ETranslationKey.ExperienceToolsAndTechnologies]: "Tools and technologies",
 
   [ETranslationKey.ExperienceOmnoraCompanyName]:
@@ -158,13 +161,15 @@ const RU_TRANSLATIONS: Translations = {
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]:
     "Магистр, инженерия программного обеспечения",
+  [ETranslationKey.EducationBinaryStudioProgram]:
+    "Буткемп JS Full-Stack разработчика и стажировка",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]:
     "Бакалавр, инженерия программного обеспечения",
   [ETranslationKey.ExperiencePresent]: "Настоящее время",
-  [ETranslationKey.ExperienceExpandDetails]: "Показать больше",
-  [ETranslationKey.ExperienceHideDetails]: "Скрыть",
+  [ETranslationKey.TimelineExpandDetails]: "Показать больше",
+  [ETranslationKey.TimelineHideDetails]: "Скрыть",
   [ETranslationKey.ExperienceToolsAndTechnologies]: "Инструменты и технологии",
   [ETranslationKey.ExperienceOmnoraCompanyName]:
     "Omnora (ранее SlidePresenter) | Стартап / Продукт",
@@ -276,12 +281,14 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Máster, Ingeniería de Software",
+  [ETranslationKey.EducationBinaryStudioProgram]:
+    "Bootcamp de Desarrollador Full-Stack JS y prácticas",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Grado, Ingeniería de Software",
   [ETranslationKey.ExperiencePresent]: "Presente",
-  [ETranslationKey.ExperienceExpandDetails]: "Mostrar más",
-  [ETranslationKey.ExperienceHideDetails]: "Mostrar menos",
+  [ETranslationKey.TimelineExpandDetails]: "Mostrar más",
+  [ETranslationKey.TimelineHideDetails]: "Mostrar menos",
   [ETranslationKey.ExperienceToolsAndTechnologies]:
     "Herramientas y tecnologias",
   [ETranslationKey.ExperienceOmnoraCompanyName]:
@@ -395,12 +402,14 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Masterabschluss, Softwaretechnik",
+  [ETranslationKey.EducationBinaryStudioProgram]:
+    "JS Full-Stack Developer Bootcamp und Praktikum",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Bachelorabschluss, Softwaretechnik",
   [ETranslationKey.ExperiencePresent]: "Heute",
-  [ETranslationKey.ExperienceExpandDetails]: "Mehr anzeigen",
-  [ETranslationKey.ExperienceHideDetails]: "Weniger anzeigen",
+  [ETranslationKey.TimelineExpandDetails]: "Mehr anzeigen",
+  [ETranslationKey.TimelineHideDetails]: "Weniger anzeigen",
   [ETranslationKey.ExperienceToolsAndTechnologies]: "Tools und Technologien",
   [ETranslationKey.ExperienceOmnoraCompanyName]:
     "Omnora (ehemals SlidePresenter) | Startup / Produkt",

@@ -8,7 +8,7 @@ import { SectionDots } from "../../components/SectionDots";
 import { SECTION_NAV_ITEMS } from "../../constants/sectionNavigation";
 import { ESectionId, toSectionHash } from "../../utils/sections";
 import { About } from "../About";
-import { Education } from "../Education";
+import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
 import { Info } from "../Info";
 import { Projects } from "../Projects";
@@ -64,7 +64,10 @@ export function Main() {
     <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1280px]:px-12 max-[1024px]:overflow-y-auto max-[1024px]:pb-10">
       <LinesBackground />
       <div className="relative z-10 flex h-full min-h-screen min-h-0 flex-col max-[1024px]:pt-24">
-        <Header isLanguageDisabled={isHeroPrintingInProgress} />
+        <Header
+          isLanguageDisabled={isHeroPrintingInProgress}
+          isNavigationDisabled={!showSecondaryContent}
+        />
         <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible">
           <div className="hidden h-full min-h-0 min-[1025px]:grid min-[1025px]:grid-cols-[5%_40%_55%]">
             <section className="relative">

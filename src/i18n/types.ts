@@ -36,12 +36,14 @@ export const enum ETranslationKey {
 
   EducationDuetUniversityName = "education.duet.universityName",
   EducationDuetDegree = "education.duet.degree",
+  EducationBinaryStudioTitle = "education.binaryStudio.title",
+  EducationBinaryStudioProgram = "education.binaryStudio.program",
   EducationKnuUniversityName = "education.knu.universityName",
   EducationKnuDegree = "education.knu.degree",
 
   ExperiencePresent = "experience.present",
-  ExperienceExpandDetails = "experience.expandDetails",
-  ExperienceHideDetails = "experience.hideDetails",
+  TimelineExpandDetails = "timeline.expandDetails",
+  TimelineHideDetails = "timeline.hideDetails",
   ExperienceToolsAndTechnologies = "experience.toolsAndTechnologies",
 
   ExperienceOmnoraCompanyName = "experience.omnora.companyName",
