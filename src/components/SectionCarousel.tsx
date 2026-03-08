@@ -1,7 +1,8 @@
-import { Children, useMemo } from "react";
+import { Children, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
 import { SECTION_NAV_ITEMS } from "../constants/sections";
+import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../constants/mediaQueries";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { ESection, toSectionHash } from "../utils/sections";
 
@@ -12,9 +13,35 @@ type SectionCarouselProps = {
 const NOT_FOUND_INDEX = -1;
 const FIRST_SLIDE_INDEX = 0;
 const SLIDE_WIDTH_PERCENT = 100;
-
 export function SectionCarousel({ children }: SectionCarouselProps) {
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
+  const [isCarouselAnimationEnabled, setIsCarouselAnimationEnabled] = useState(
+    function () {
+      if (typeof window === "undefined") {
+        return true;
+      }
+
+      return window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY).matches;
+    },
+  );
+
+  useEffect(function () {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY);
+
+    function handleViewportChange(event: MediaQueryListEvent) {
+      setIsCarouselAnimationEnabled(event.matches);
+    }
+
+    mediaQuery.addEventListener("change", handleViewportChange);
+
+    return function () {
+      mediaQuery.removeEventListener("change", handleViewportChange);
+    };
+  }, []);
 
   const slideChildren = useMemo(
     function () {
@@ -50,7 +77,7 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
     <div className="flex h-full min-h-0 flex-col px-10">
       <div className="relative h-full min-h-0 overflow-hidden">
         <div
-          className="flex h-full min-h-0 transition-transform duration-500 ease-in-out"
+          className={`flex h-full min-h-0 ${isCarouselAnimationEnabled ? "transition-transform duration-500 ease-in-out" : ""}`}
           style={{
             transform: `translateX(-${activeIndex * SLIDE_WIDTH_PERCENT}%)`,
           }}

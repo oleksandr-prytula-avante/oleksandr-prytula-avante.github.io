@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { ESection, toSectionHash } from "../utils/sections";
+import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../constants/mediaQueries";
 
 import { LanguageDropdown } from "./LanguageDropdown";
 import { Links } from "./Links";
@@ -24,7 +25,7 @@ export function Header(props: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(function () {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
 
     function handleViewportChange(event: MediaQueryListEvent) {
       if (event.matches) {

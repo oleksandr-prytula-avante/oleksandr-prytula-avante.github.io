@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 import { Header } from "../../components/Header";
@@ -6,6 +6,9 @@ import { LinesBackground } from "../../components/LinesBackground/LinesBackgroun
 import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
 import { SectionDots } from "../../components/SectionDots";
+import {
+  MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
+} from "../../constants/mediaQueries";
 import { SECTION_NAV_ITEMS } from "../../constants/sections";
 import { ESection, toSectionHash } from "../../utils/sections";
 import { About } from "../About";
@@ -22,12 +25,38 @@ const SECTION_IDS_IN_ORDER = [
   ESection.Education,
   ESection.Projects,
 ] as const;
-
 export function Main() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [isHeroPrintingInProgress, setIsHeroPrintingInProgress] =
     useState(true);
+  const [isRevealAnimationEnabled, setIsRevealAnimationEnabled] = useState(
+    function () {
+      if (typeof window === "undefined") {
+        return true;
+      }
+
+      return window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY).matches;
+    },
+  );
+
+  useEffect(function () {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY);
+
+    function handleViewportChange(event: MediaQueryListEvent) {
+      setIsRevealAnimationEnabled(event.matches);
+    }
+
+    mediaQuery.addEventListener("change", handleViewportChange);
+
+    return function () {
+      mediaQuery.removeEventListener("change", handleViewportChange);
+    };
+  }, []);
 
   function handleSkillLeave() {
     setHoveredSkill(null);
@@ -78,6 +107,21 @@ export function Main() {
       onHeroPrintingStateChange={setIsHeroPrintingInProgress}
     />
   );
+  const isSecondaryContentVisible = showSecondaryContent;
+  const sectionRevealClassName = isRevealAnimationEnabled
+    ? isSecondaryContentVisible
+      ? "flex h-full min-h-0 flex-col transition-all duration-500 ease-out translate-y-0 opacity-100"
+      : "flex h-full min-h-0 flex-col transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0"
+    : isSecondaryContentVisible
+      ? "flex h-full min-h-0 flex-col opacity-100"
+      : "flex h-full min-h-0 flex-col pointer-events-none opacity-0";
+  const mobileSectionRevealClassName = isRevealAnimationEnabled
+    ? isSecondaryContentVisible
+      ? "flex w-full flex-col gap-10 transition-all duration-500 ease-out translate-y-0 opacity-100"
+      : "flex w-full flex-col gap-10 transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0"
+    : isSecondaryContentVisible
+      ? "flex w-full flex-col gap-10 opacity-100"
+      : "flex w-full flex-col gap-10 pointer-events-none opacity-0";
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1280px]:px-12 max-[1024px]:overflow-y-auto max-[1024px]:pb-10">
@@ -85,7 +129,7 @@ export function Main() {
       <div className="relative z-10 flex h-full min-h-screen min-h-0 flex-col max-[1024px]:pt-24">
         <Header
           isLanguageDisabled={isHeroPrintingInProgress}
-          isNavigationDisabled={!showSecondaryContent}
+          isNavigationDisabled={!isSecondaryContentVisible}
         />
         <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible">
           <div className="hidden h-full min-h-0 min-[1025px]:grid min-[1025px]:grid-cols-[5%_40%_55%]">
@@ -93,13 +137,13 @@ export function Main() {
               <Links />
             </section>
 
-            <section className="relative">
+            <section className="relative min-h-[472px]">
               {infoContent}
             </section>
 
             <section className="relative min-h-0">
               <div
-                className={`flex h-full min-h-0 flex-col transition-all duration-500 ease-out ${showSecondaryContent ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
+                className={sectionRevealClassName}
               >
                 <SectionCarousel>
                   {SECTION_NAV_ITEMS.map(function ({ href }) {
@@ -112,11 +156,13 @@ export function Main() {
           </div>
 
           <div className="flex w-full flex-col gap-8 min-[1025px]:hidden">
-            <section className="relative w-full">{infoContent}</section>
+            <section className="relative w-full min-h-[472px]">
+              {infoContent}
+            </section>
 
             <section className="relative w-full">
               <div
-                className={`flex w-full flex-col gap-10 transition-all duration-500 ease-out ${showSecondaryContent ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
+                className={mobileSectionRevealClassName}
               >
                 {SECTION_IDS_IN_ORDER.map(function (sectionId) {
                   return (

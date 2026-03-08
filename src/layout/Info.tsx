@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 
 import { Tags } from "../components/Tags/Tags";
 import { ATS_CV_PATH } from "../constants/paths";
+import {
+  DESKTOP_MIN_WIDTH_MEDIA_QUERY,
+  MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
+} from "../constants/mediaQueries";
 import { COMMON_SKILL_TAGS } from "../constants/skillTags";
 import {
   TAG_REVEAL_DURATION_MS,
@@ -72,7 +76,22 @@ export function Info(props: InfoProps) {
     useState(DEFAULT_CHAR_COUNT);
   const [isCvDownloadTypingStarted, setIsCvDownloadTypingStarted] =
     useState(false);
-  const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(true);
+  const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(
+    function () {
+      if (typeof window === "undefined") {
+        return true;
+      }
+
+      return window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY).matches;
+    },
+  );
+  const [isDesktopViewport, setIsDesktopViewport] = useState(function () {
+    if (typeof window === "undefined") {
+      return true;
+    }
+
+    return window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY).matches;
+  });
 
   const hiText = i18n.t(ETranslationKey.HeroHiIm);
   const nameText = i18n.t(ETranslationKey.HeroName);
@@ -116,6 +135,13 @@ export function Info(props: InfoProps) {
   const isCvDownloadPrinted = visibleCvDownloadChars >= cvDownloadText.length;
   const isHeroPrintingInProgress =
     !showSecondaryContent || !isNeedMoreDetailsPrinted || !isCvDownloadPrinted;
+  const isDesktopSecondaryContentReady =
+    isEngineeringToolkitTypingStarted || showSecondaryContent;
+  const isMobileSecondaryContentReady =
+    showSecondaryContent && isCvDownloadPrinted;
+  const isSecondaryContentReady = isDesktopViewport
+    ? isDesktopSecondaryContentReady
+    : isMobileSecondaryContentReady;
 
   function setHeroTypingState(isCompleted: boolean) {
     setVisibleHiChars(isCompleted ? hiText.length : DEFAULT_CHAR_COUNT);
@@ -148,9 +174,9 @@ export function Info(props: InfoProps) {
 
   useEffect(
     function () {
-      onSecondaryContentVisibilityChange(showSecondaryContent);
+      onSecondaryContentVisibilityChange(isSecondaryContentReady);
     },
-    [onSecondaryContentVisibilityChange, showSecondaryContent],
+    [isSecondaryContentReady, onSecondaryContentVisibilityChange],
   );
 
   useEffect(
@@ -159,6 +185,44 @@ export function Info(props: InfoProps) {
     },
     [isHeroPrintingInProgress, onHeroPrintingStateChange],
   );
+
+  useEffect(function () {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY);
+
+    function handleViewportChange(event: MediaQueryListEvent) {
+      if (!event.matches) {
+        setShouldPlayHeroAnimation(false);
+      }
+    }
+
+    mediaQuery.addEventListener("change", handleViewportChange);
+
+    return function () {
+      mediaQuery.removeEventListener("change", handleViewportChange);
+    };
+  }, []);
+
+  useEffect(function () {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
+
+    function handleViewportChange(event: MediaQueryListEvent) {
+      setIsDesktopViewport(event.matches);
+    }
+
+    mediaQuery.addEventListener("change", handleViewportChange);
+
+    return function () {
+      mediaQuery.removeEventListener("change", handleViewportChange);
+    };
+  }, []);
 
   useEffect(
     function () {
