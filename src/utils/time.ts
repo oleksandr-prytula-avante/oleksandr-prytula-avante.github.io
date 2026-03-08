@@ -68,18 +68,15 @@ export function buildPeriodLabel(
   locale: string,
 ): { dateRange: string; duration: string } {
   const parsedStart = parseYearMonth(startDate);
+  const now = new Date();
 
-  let parsedEnd: YearMonth;
-
-  if (endDate === null) {
-    const now = new Date();
-    parsedEnd = {
-      year: now.getFullYear(),
-      month: now.getMonth() + MIN_MONTH,
-    };
-  } else {
-    parsedEnd = parseYearMonth(endDate);
-  }
+  const parsedEnd: YearMonth =
+    endDate === null
+      ? {
+          year: now.getFullYear(),
+          month: now.getMonth() + MIN_MONTH,
+        }
+      : parseYearMonth(endDate);
 
   const monthDiff =
     (parsedEnd.year - parsedStart.year) * MONTHS_PER_YEAR +

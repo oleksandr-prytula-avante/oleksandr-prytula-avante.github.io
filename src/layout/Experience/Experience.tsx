@@ -1,6 +1,6 @@
-import { EXPERIENCE_TIMELINE_ITEMS } from "../../constants/experienceTimeline";
+import { EXPERIENCE_TIMELINE_ITEMS } from "../../constants/experience";
 import { Timeline } from "../../components/Timeline/Timeline";
-import { ESectionId, toSectionHash } from "../../utils/sections";
+import { ESection, toSectionHash } from "../../utils/sections";
 import { ExperienceCompanyRow } from "./ExperienceCompanyRow";
 import { ExperienceJobRow } from "./ExperienceJobRow";
 import { ExperienceLocationRow } from "./ExperienceLocationRow";
@@ -16,16 +16,10 @@ export function Experience(props: ExperienceProps) {
   return (
     <Timeline
       items={EXPERIENCE_TIMELINE_ITEMS}
-      activeSectionHash={toSectionHash(ESectionId.Experience)}
-      renderFirstRow={function (item) {
-        return <ExperienceCompanyRow item={item} />;
-      }}
-      renderSecondRow={function (item) {
-        return <ExperienceJobRow item={item} />;
-      }}
-      renderThirdRow={function (item) {
-        return <ExperienceLocationRow item={item} />;
-      }}
+      activeSectionHash={toSectionHash(ESection.Experience)}
+      FirstRowComponent={ExperienceCompanyRow}
+      SecondRowComponent={ExperienceJobRow}
+      ThirdRowComponent={ExperienceLocationRow}
       onSkillEnter={onSkillEnter}
       onSkillLeave={onSkillLeave}
     />

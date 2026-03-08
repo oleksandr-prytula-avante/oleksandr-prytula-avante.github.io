@@ -20,11 +20,9 @@ function getInitialLocale(): ELocale {
 
   const lang = navigator.language.toLowerCase();
 
-  const matchedBrowserLocale = ELOCALE_VALUES.find(
-    function (locale) {
-      return lang.startsWith(locale);
-    },
-  );
+  const matchedBrowserLocale = ELOCALE_VALUES.find(function (locale) {
+    return lang.startsWith(locale);
+  });
 
   if (matchedBrowserLocale) {
     return matchedBrowserLocale;

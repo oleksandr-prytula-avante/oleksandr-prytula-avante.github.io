@@ -1,11 +1,11 @@
-import { SECTION_NAV_ITEMS } from "../constants/sectionNavigation";
+import { SECTION_NAV_ITEMS } from "../constants/sections";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
-import { ESectionId, toSectionHash } from "../utils/sections";
+import { ESection, toSectionHash } from "../utils/sections";
 
 export function SectionDots() {
   const i18n = useI18n();
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
+  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
 
   return (
     <nav
@@ -22,15 +22,17 @@ export function SectionDots() {
             key={href}
             href={isItemDisabled ? undefined : href}
             aria-label={label}
-            aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
+            aria-current={
+              isItemDisabled ? undefined : isActive ? "page" : undefined
+            }
             aria-disabled={isItemDisabled || undefined}
             tabIndex={isItemDisabled ? -1 : undefined}
             className={
               isItemDisabled
                 ? "h-[15px] w-[15px] cursor-not-allowed rounded-full border border-white/40 bg-transparent"
                 : isActive
-                ? "h-[15px] w-[15px] cursor-pointer rounded-full border-2 border-white bg-[color:var(--color-accent)]"
-                : "h-[15px] w-[15px] cursor-pointer rounded-full border border-white bg-transparent transition-colors duration-200 ease-out hover:border-[color:rgb(var(--color-accent-rgb)/0.85)] focus-visible:border-[color:rgb(var(--color-accent-rgb)/0.85)]"
+                  ? "h-[15px] w-[15px] cursor-pointer rounded-full border-2 border-white bg-[color:var(--color-accent)]"
+                  : "h-[15px] w-[15px] cursor-pointer rounded-full border border-white bg-transparent transition-colors duration-200 ease-out hover:border-[color:rgb(var(--color-accent-rgb)/0.85)] focus-visible:border-[color:rgb(var(--color-accent-rgb)/0.85)]"
             }
           />
         );

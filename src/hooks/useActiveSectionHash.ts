@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { ESectionId, toSectionHash } from "../utils/sections";
+import { ESection, toSectionHash } from "../utils/sections";
 import type { SectionHash } from "../utils/sections";
 
 const VALID_HASHES = [
-  toSectionHash(ESectionId.About),
-  toSectionHash(ESectionId.Experience),
-  toSectionHash(ESectionId.Education),
-  toSectionHash(ESectionId.Projects),
+  toSectionHash(ESection.About),
+  toSectionHash(ESection.Experience),
+  toSectionHash(ESection.Education),
+  toSectionHash(ESection.Projects),
 ];
 
 function isSectionHash(value: string): value is SectionHash {
@@ -23,7 +23,7 @@ function getCurrentHash(): string {
 }
 
 export function useActiveSectionHash(
-  defaultHash: SectionHash = toSectionHash(ESectionId.About),
+  defaultHash: SectionHash = toSectionHash(ESection.About),
 ) {
   const [hash, setHash] = useState<SectionHash>(function () {
     const currentHash = getCurrentHash();

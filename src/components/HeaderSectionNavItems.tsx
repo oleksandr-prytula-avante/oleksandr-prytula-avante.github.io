@@ -4,18 +4,17 @@ import { useI18n } from "../hooks/useI18n";
 type HeaderNavigationProps = {
   layout: "desktop" | "mobile";
   activeHash: string;
-  isAllItemsDisabled?: boolean;
   onItemClick?: () => void;
 };
 
 export function HeaderNavigation(props: HeaderNavigationProps) {
-  const { layout, activeHash, isAllItemsDisabled = false, onItemClick } = props;
+  const { layout, activeHash, onItemClick } = props;
   const i18n = useI18n();
 
   return SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
     const label = i18n.t(labelKey);
     const isActive = href === activeHash;
-    const isItemDisabled = isAllItemsDisabled || (isDisabled ?? false);
+    const isItemDisabled = isDisabled ?? false;
 
     if (layout === "mobile") {
       return (
@@ -29,12 +28,10 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
                 : "inline-flex w-full cursor-pointer py-2 no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
           }
           href={isItemDisabled ? undefined : href}
-          aria-current={
-            isItemDisabled ? undefined : isActive ? "page" : undefined
-          }
+          aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
           aria-disabled={isItemDisabled || undefined}
           tabIndex={isItemDisabled ? -1 : undefined}
-          onClick={isItemDisabled ? undefined : onItemClick}
+          onClick={onItemClick}
         >
           {label}
         </a>
@@ -52,9 +49,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
               : "group inline-flex w-[8rem] cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
         }
         href={isItemDisabled ? undefined : href}
-        aria-current={
-          isItemDisabled ? undefined : isActive ? "page" : undefined
-        }
+        aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
         aria-disabled={isItemDisabled || undefined}
         tabIndex={isItemDisabled ? -1 : undefined}
       >

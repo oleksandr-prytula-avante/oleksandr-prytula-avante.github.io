@@ -16,7 +16,11 @@ export function TextWithLinks(props: TextWithLinksProps) {
   return value.split(URL_SPLIT_REGEX).map(function (part, index) {
     if (URL_MATCH_REGEX.test(part)) {
       return (
-        <ExternalLink key={`link-${part}-${index}`} href={part} className={linkClassName}>
+        <ExternalLink
+          key={`link-${part}-${index}`}
+          href={part}
+          className={linkClassName}
+        >
           {part}
         </ExternalLink>
       );

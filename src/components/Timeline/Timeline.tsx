@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
+import { EFocusPhase } from "../../enums/timeline";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
-import { ESectionId, toSectionHash } from "../../utils/sections";
+import { ESection, toSectionHash } from "../../utils/sections";
 import { TimelineItem } from "./TimelineItem";
 import type { TimelineDataItem } from "./TimelineItem";
 
@@ -16,20 +17,12 @@ const TIMELINE_EMPTY_STATE_VALUE = 0;
 const TIMELINE_FIRST_ITEM_INDEX = 0;
 const TIMELINE_LAST_ITEM_OFFSET = 1;
 
-enum EFocusPhase {
-  Idle = "idle",
-  Preparing = "preparing",
-  Entering = "entering",
-  Focused = "focused",
-  Exiting = "exiting",
-}
-
 type TimelineProps<TItem extends TimelineDataItem> = {
   items: TItem[];
   activeSectionHash: string;
-  renderFirstRow: (item: TItem) => React.ReactNode;
-  renderSecondRow: (item: TItem) => React.ReactNode;
-  renderThirdRow: (item: TItem) => React.ReactNode;
+  FirstRowComponent: React.ComponentType<{ item: TItem }>;
+  SecondRowComponent: React.ComponentType<{ item: TItem }>;
+  ThirdRowComponent: React.ComponentType<{ item: TItem }>;
   showToggle?: boolean;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
@@ -43,9 +36,9 @@ export function Timeline<TItem extends TimelineDataItem>(
     items,
     onSkillEnter,
     onSkillLeave,
-    renderFirstRow,
-    renderSecondRow,
-    renderThirdRow,
+    FirstRowComponent,
+    SecondRowComponent,
+    ThirdRowComponent,
     showToggle = true,
   } = props;
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
@@ -61,7 +54,7 @@ export function Timeline<TItem extends TimelineDataItem>(
   > | null>(null);
   const articleRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
+  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const isTimelineActive = activeHash === activeSectionHash;
   const hasFocusedItem = focusedItemId !== null;
 
@@ -449,9 +442,9 @@ export function Timeline<TItem extends TimelineDataItem>(
             <TimelineItem
               key={item.id}
               item={item}
-              renderFirstRow={renderFirstRow}
-              renderSecondRow={renderSecondRow}
-              renderThirdRow={renderThirdRow}
+              FirstRowComponent={FirstRowComponent}
+              SecondRowComponent={SecondRowComponent}
+              ThirdRowComponent={ThirdRowComponent}
               showToggle={showToggle}
               onSkillEnter={onSkillEnter}
               onSkillLeave={onSkillLeave}
@@ -463,7 +456,9 @@ export function Timeline<TItem extends TimelineDataItem>(
               isDimmed={isDimmed}
               isInFocusedMode={isFocused}
               itemIndex={index}
-              focusShiftPx={focusShiftById?.[item.id] ?? TIMELINE_EMPTY_STATE_VALUE}
+              focusShiftPx={
+                focusShiftById?.[item.id] ?? TIMELINE_EMPTY_STATE_VALUE
+              }
               animationDelayMs={index * TIMELINE_REVEAL_STAGGER_MS}
               isToggleDisabled={isToggleLocked}
               onToggle={createHandleTimelineItemToggle(

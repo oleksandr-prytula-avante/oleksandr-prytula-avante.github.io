@@ -1,12 +1,9 @@
-export const enum ESectionId {
-  About = "about",
-  Experience = "experience",
-  Education = "education",
-  Projects = "projects",
-}
+import { ESection } from "../enums/sections";
 
-export type SectionHash = `#${ESectionId}`;
+export { ESection } from "../enums/sections";
 
-export function toSectionHash(sectionId: ESectionId): SectionHash {
+export type SectionHash = `#${ESection}`;
+
+export function toSectionHash(sectionId: ESection): SectionHash {
   return `#${sectionId}` as SectionHash;
 }

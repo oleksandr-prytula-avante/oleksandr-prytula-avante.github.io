@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
-import { ESectionId, toSectionHash } from "../utils/sections";
+import { ESection, toSectionHash } from "../utils/sections";
 
 import { LanguageDropdown } from "./LanguageDropdown";
 import { Links } from "./Links";
@@ -15,15 +15,16 @@ type HeaderProps = {
   isNavigationDisabled?: boolean;
 };
 
-export function Header({
-  isLanguageDisabled = false,
-  isNavigationDisabled = false,
-}: HeaderProps) {
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
+export function Header(props: HeaderProps) {
+  const {
+    isLanguageDisabled = false,
+    isNavigationDisabled = false,
+  } = props;
+  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(function () {
-    const mediaQuery = window.matchMedia("(min-width: 1025px)");
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
 
     function handleViewportChange(event: MediaQueryListEvent) {
       if (event.matches) {

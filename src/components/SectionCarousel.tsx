@@ -1,9 +1,9 @@
 import { Children, useMemo } from "react";
 import type { ReactNode } from "react";
 
-import { SECTION_NAV_ITEMS } from "../constants/sectionNavigation";
+import { SECTION_NAV_ITEMS } from "../constants/sections";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
-import { ESectionId, toSectionHash } from "../utils/sections";
+import { ESection, toSectionHash } from "../utils/sections";
 
 type SectionCarouselProps = {
   children: ReactNode;
@@ -14,7 +14,7 @@ const FIRST_SLIDE_INDEX = 0;
 const SLIDE_WIDTH_PERCENT = 100;
 
 export function SectionCarousel({ children }: SectionCarouselProps) {
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESectionId.About));
+  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
 
   const slideChildren = useMemo(
     function () {
@@ -57,7 +57,7 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
         >
           {slides.map(function ({ href, children }) {
             const sectionClassName =
-              href === toSectionHash(ESectionId.About)
+              href === toSectionHash(ESection.About)
                 ? "h-full w-full shrink-0 overflow-y-hidden py-8 pb-12 px-2 max-[1366px]:px-0"
                 : "h-full w-full shrink-0 overflow-hidden py-8 px-2";
 

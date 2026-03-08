@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
-import { getExperienceTextKeys } from "../../constants/experienceTextKeys";
+import { getExperienceTextKeys } from "../../utils/experience";
 import { TextWithLinks } from "../TextWithLinks";
 import { Tag } from "../Tags/Tag";
 import { TimelineExpandIcon } from "../icons/TimelineExpandIcon";
@@ -26,9 +26,9 @@ export type TimelineDataItem = {
 
 type TimelineItemProps<TItem extends TimelineDataItem> = {
   item: TItem;
-  renderFirstRow: (item: TItem) => React.ReactNode;
-  renderSecondRow: (item: TItem) => React.ReactNode;
-  renderThirdRow: (item: TItem) => React.ReactNode;
+  FirstRowComponent: React.ComponentType<{ item: TItem }>;
+  SecondRowComponent: React.ComponentType<{ item: TItem }>;
+  ThirdRowComponent: React.ComponentType<{ item: TItem }>;
   showToggle?: boolean;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
@@ -51,9 +51,9 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 ) {
   const {
     item,
-    renderFirstRow,
-    renderSecondRow,
-    renderThirdRow,
+    FirstRowComponent,
+    SecondRowComponent,
+    ThirdRowComponent,
     showToggle = true,
     onSkillEnter,
     onSkillLeave,
@@ -205,12 +205,12 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         }`}
       >
         <div className="shrink-0 space-y-2">
-          {renderFirstRow(item)}
+          <FirstRowComponent item={item} />
 
-          {renderSecondRow(item)}
+          <SecondRowComponent item={item} />
 
           <div className="flex flex-wrap items-center gap-2">
-            {renderThirdRow(item)}
+            <ThirdRowComponent item={item} />
 
             {showToggle ? (
               <button

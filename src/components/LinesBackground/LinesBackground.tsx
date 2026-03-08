@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import { randomBetween } from "../../utils/random";
 
-import "./LinesBackgorund.css";
+import "./LinesBackground.css";
 
 const VERTICAL_LINE_POSITIONS = [5, 21, 37, 53, 69, 85];
 const HORIZONTAL_LINE_POSITIONS = [10, 26, 42, 58, 74, 90];

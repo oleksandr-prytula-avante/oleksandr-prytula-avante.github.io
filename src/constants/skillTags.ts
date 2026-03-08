@@ -39,7 +39,7 @@ export const ALL_SKILL_TAGS = [
   { label: "SQL", href: "https://en.wikipedia.org/wiki/SQL", common: true },
   { label: "MySQL", href: "https://www.mysql.com" },
   { label: "SQLite", href: "https://www.sqlite.org" },
-  { label: "PostrgeSQL", href: "https://www.postgresql.org" },
+  { label: "PostgreSQL", href: "https://www.postgresql.org" },
   { label: "MongoDB", href: "https://www.mongodb.com", common: true },
   {
     label: "CI / CD",
@@ -123,9 +123,18 @@ export const ALL_SKILL_TAGS = [
   { label: "Apollo GraphQL", href: "https://www.apollographql.com" },
   { label: "GitHub", href: "https://github.com" },
   { label: "Three.js", href: "https://threejs.org" },
-  { label: "UI/UX", href: "https://en.wikipedia.org/wiki/User_experience_design" },
-  { label: "Snap.svg/Raphael.js", href: "https://dmitrybaranovskiy.github.io/raphael/" },
-  { label: "XML", href: "https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction" },
+  {
+    label: "UI/UX",
+    href: "https://en.wikipedia.org/wiki/User_experience_design",
+  },
+  {
+    label: "Snap.svg/Raphael.js",
+    href: "https://dmitrybaranovskiy.github.io/raphael/",
+  },
+  {
+    label: "XML",
+    href: "https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction",
+  },
 ] as const;
 
 export type SkillTagLabel = (typeof ALL_SKILL_TAGS)[number]["label"];

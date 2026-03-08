@@ -1,12 +1,13 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 
 import { Header } from "../../components/Header";
 import { LinesBackground } from "../../components/LinesBackground/LinesBackground";
 import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
 import { SectionDots } from "../../components/SectionDots";
-import { SECTION_NAV_ITEMS } from "../../constants/sectionNavigation";
-import { ESectionId, toSectionHash } from "../../utils/sections";
+import { SECTION_NAV_ITEMS } from "../../constants/sections";
+import { ESection, toSectionHash } from "../../utils/sections";
 import { About } from "../About";
 import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
@@ -14,6 +15,13 @@ import { Info } from "../Info";
 import { Projects } from "../Projects";
 
 import "./Main.css";
+
+const SECTION_IDS_IN_ORDER = [
+  ESection.About,
+  ESection.Experience,
+  ESection.Education,
+  ESection.Projects,
+] as const;
 
 export function Main() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -25,40 +33,51 @@ export function Main() {
     setHoveredSkill(null);
   }
 
-  function renderSectionContent(href: string) {
-    if (href === toSectionHash(ESectionId.About)) {
+  const timelineSkillHandlers = {
+    onSkillEnter: setHoveredSkill,
+    onSkillLeave: handleSkillLeave,
+  };
+  const aboutHash = toSectionHash(ESection.About);
+  const experienceHash = toSectionHash(ESection.Experience);
+  const educationHash = toSectionHash(ESection.Education);
+  const projectsHash = toSectionHash(ESection.Projects);
+
+  const sectionRendererByHash: Record<string, () => ReactNode> = {
+    [aboutHash]: function () {
       return (
         <About
-          key={href}
+          key={aboutHash}
           hoveredSkill={hoveredSkill}
-          onSkillEnter={setHoveredSkill}
-          onSkillLeave={function () {
-            setHoveredSkill(null);
-          }}
-        />
-      );
-    }
-
-    if (href === toSectionHash(ESectionId.Experience)) {
-      return (
-        <Experience
-          key={href}
           onSkillEnter={setHoveredSkill}
           onSkillLeave={handleSkillLeave}
         />
       );
-    }
+    },
+    [experienceHash]: function () {
+      return <Experience key={experienceHash} {...timelineSkillHandlers} />;
+    },
+    [educationHash]: function () {
+      return <Education key={educationHash} {...timelineSkillHandlers} />;
+    },
+    [projectsHash]: function () {
+      return <Projects key={projectsHash} />;
+    },
+  };
 
-    if (href === toSectionHash(ESectionId.Education)) {
-      return <Education key={href} />;
-    }
-
-    if (href === toSectionHash(ESectionId.Projects)) {
-      return <Projects key={href} />;
-    }
-
-    return null;
+  function renderSectionContent(href: string) {
+    const sectionRenderer = sectionRendererByHash[href];
+    return sectionRenderer ? sectionRenderer() : null;
   }
+
+  const infoContent = (
+    <Info
+      hoveredSkill={hoveredSkill}
+      onSkillEnter={setHoveredSkill}
+      onSkillLeave={handleSkillLeave}
+      onSecondaryContentVisibilityChange={setShowSecondaryContent}
+      onHeroPrintingStateChange={setIsHeroPrintingInProgress}
+    />
+  );
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1280px]:px-12 max-[1024px]:overflow-y-auto max-[1024px]:pb-10">
@@ -75,13 +94,7 @@ export function Main() {
             </section>
 
             <section className="relative">
-              <Info
-                hoveredSkill={hoveredSkill}
-                onSkillEnter={setHoveredSkill}
-                onSkillLeave={handleSkillLeave}
-                onSecondaryContentVisibilityChange={setShowSecondaryContent}
-                onHeroPrintingStateChange={setIsHeroPrintingInProgress}
-              />
+              {infoContent}
             </section>
 
             <section className="relative min-h-0">
@@ -99,35 +112,19 @@ export function Main() {
           </div>
 
           <div className="flex w-full flex-col gap-8 min-[1025px]:hidden">
-            <section className="relative w-full">
-              <Info
-                hoveredSkill={hoveredSkill}
-                onSkillEnter={setHoveredSkill}
-                onSkillLeave={handleSkillLeave}
-                onSecondaryContentVisibilityChange={setShowSecondaryContent}
-                onHeroPrintingStateChange={setIsHeroPrintingInProgress}
-              />
-            </section>
+            <section className="relative w-full">{infoContent}</section>
 
             <section className="relative w-full">
               <div
                 className={`flex w-full flex-col gap-10 transition-all duration-500 ease-out ${showSecondaryContent ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
               >
-                <section id={ESectionId.About} className="w-full">
-                  {renderSectionContent(toSectionHash(ESectionId.About))}
-                </section>
-
-                <section id={ESectionId.Experience} className="w-full">
-                  {renderSectionContent(toSectionHash(ESectionId.Experience))}
-                </section>
-
-                <section id={ESectionId.Education} className="w-full">
-                  {renderSectionContent(toSectionHash(ESectionId.Education))}
-                </section>
-
-                <section id={ESectionId.Projects} className="w-full">
-                  {renderSectionContent(toSectionHash(ESectionId.Projects))}
-                </section>
+                {SECTION_IDS_IN_ORDER.map(function (sectionId) {
+                  return (
+                    <section key={sectionId} id={sectionId} className="w-full">
+                      {renderSectionContent(toSectionHash(sectionId))}
+                    </section>
+                  );
+                })}
               </div>
             </section>
           </div>

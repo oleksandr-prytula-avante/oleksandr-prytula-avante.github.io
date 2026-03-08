@@ -1,11 +1,7 @@
 import { ETranslationKey } from "../i18n/types";
+import { ELink } from "../enums/links";
 
-export enum ELink {
-  Github = "github",
-  LinkedIn = "linkedin",
-  LeetCode = "leetcode",
-  Gmail = "gmail",
-}
+export { ELink } from "../enums/links";
 
 type LinkItem = {
   id: ELink;

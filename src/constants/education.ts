@@ -1,12 +1,10 @@
 import binaryStudioLogoUrl from "../assets/images/companies/binary-studio.webp";
 import duetLogoUrl from "../assets/images/companies/duet.webp";
 import knuLogoUrl from "../assets/images/companies/knu.webp";
+import { EEducation } from "../enums/education";
+import { ETranslationKey } from "../i18n/types";
 
-export enum EEducation {
-  Duet = "education-duet",
-  BinaryStudio = "education-binary-studio",
-  Knu = "education-knu",
-}
+export { EEducation } from "../enums/education";
 
 export type EducationTimelineItem = {
   id: EEducation;
@@ -16,6 +14,26 @@ export type EducationTimelineItem = {
   endDate: string | null;
   grade?: number;
   technologyTags: string[];
+};
+
+export type EducationTextKeys = {
+  institution: ETranslationKey;
+  program: ETranslationKey;
+};
+
+export const EDUCATION_TEXT_KEYS_BY_ID: Record<EEducation, EducationTextKeys> = {
+  [EEducation.Duet]: {
+    institution: ETranslationKey.EducationDuetUniversityName,
+    program: ETranslationKey.EducationDuetDegree,
+  },
+  [EEducation.BinaryStudio]: {
+    institution: ETranslationKey.EducationBinaryStudioTitle,
+    program: ETranslationKey.EducationBinaryStudioProgram,
+  },
+  [EEducation.Knu]: {
+    institution: ETranslationKey.EducationKnuUniversityName,
+    program: ETranslationKey.EducationKnuDegree,
+  },
 };
 
 export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [

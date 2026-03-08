@@ -1,4 +1,4 @@
-import { getExperienceTextKeys } from "../../constants/experienceTextKeys";
+import { getExperienceTextKeys } from "../../utils/experience";
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { useI18n } from "../../hooks/useI18n";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";

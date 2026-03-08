@@ -1,7 +1,4 @@
-const enum EPaletteColor {
-  Background = "#272727",
-  Accent = "#ff652e",
-}
+import { EPaletteColor } from "../enums/palette";
 
 const HEX_PREFIX = "#";
 const HEX_PREFIX_LENGTH = 1;

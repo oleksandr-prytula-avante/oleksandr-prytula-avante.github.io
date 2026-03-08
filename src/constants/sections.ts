@@ -1,24 +1,24 @@
 import { ETranslationKey } from "../i18n/types";
-import { ESectionId, toSectionHash } from "../utils/sections";
+import { ESection, toSectionHash } from "../utils/sections";
 
 export const SECTION_NAV_ITEMS = [
   {
-    href: toSectionHash(ESectionId.About),
+    href: toSectionHash(ESection.About),
     labelKey: ETranslationKey.NavAbout,
     isDisabled: false,
   },
   {
-    href: toSectionHash(ESectionId.Experience),
+    href: toSectionHash(ESection.Experience),
     labelKey: ETranslationKey.NavExperience,
     isDisabled: false,
   },
   {
-    href: toSectionHash(ESectionId.Education),
+    href: toSectionHash(ESection.Education),
     labelKey: ETranslationKey.NavEducation,
     isDisabled: false,
   },
   {
-    href: toSectionHash(ESectionId.Projects),
+    href: toSectionHash(ESection.Projects),
     labelKey: ETranslationKey.NavProjects,
     isDisabled: true,
   },

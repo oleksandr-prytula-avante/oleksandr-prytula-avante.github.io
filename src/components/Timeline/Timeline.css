@@ -48,8 +48,7 @@
   pointer-events: none;
 }
 
-.timeline-list.timeline-list--focused
-  .timeline-item.timeline-item--hidden {
+.timeline-list.timeline-list--focused .timeline-item.timeline-item--hidden {
   /* Hide non-selected items in-place after they reach the stacked top position. */
   opacity: 0;
   transition: none;
@@ -59,8 +58,7 @@
   padding-bottom: 0;
 }
 
-.timeline-list.timeline-list--focused
-  .timeline-item.timeline-item--focused {
+.timeline-list.timeline-list--focused .timeline-item.timeline-item--focused {
   transform: translateY(calc(-1 * var(--timeline-shift, 0px)));
 }
 
