@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { EFocusPhase } from "../../enums/timeline";
+import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
 import { ESection, toSectionHash } from "../../utils/sections";
 import { TimelineItem } from "./TimelineItem";
@@ -48,6 +49,13 @@ export function Timeline<TItem extends TimelineDataItem>(
   const [isInitialRevealComplete, setIsInitialRevealComplete] = useState(false);
   const [hasPlayedInitialReveal, setHasPlayedInitialReveal] = useState(false);
   const [lineHeight, setLineHeight] = useState(TIMELINE_EMPTY_STATE_VALUE);
+  const [isDesktopViewport, setIsDesktopViewport] = useState(function () {
+    if (typeof window === "undefined") {
+      return true;
+    }
+
+    return window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY).matches;
+  });
   const [focusShiftById, setFocusShiftById] = useState<Record<
     string,
     number
@@ -55,8 +63,27 @@ export function Timeline<TItem extends TimelineDataItem>(
   const articleRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
-  const isTimelineActive = activeHash === activeSectionHash;
+  const isTimelineActive =
+    !isDesktopViewport || activeHash === activeSectionHash;
   const hasFocusedItem = focusedItemId !== null;
+
+  useEffect(function () {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
+
+    function handleViewportChange(event: MediaQueryListEvent) {
+      setIsDesktopViewport(event.matches);
+    }
+
+    mediaQuery.addEventListener("change", handleViewportChange);
+
+    return function () {
+      mediaQuery.removeEventListener("change", handleViewportChange);
+    };
+  }, []);
 
   function resetFocusState() {
     setFocusedItemId(null);
