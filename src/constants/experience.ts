@@ -193,7 +193,7 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
       "Bootstrap",
       "JIRA",
       "MySQL",
-      "Wordpress",
+      "WordPress",
       "AWS",
       "Trello",
       "Node.js",
