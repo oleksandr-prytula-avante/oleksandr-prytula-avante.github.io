@@ -19,6 +19,11 @@ export const enum ETranslationKey {
   NavLinkedIn = "nav.linkedin",
   NavLeetCode = "nav.leetcode",
   NavEmail = "nav.email",
+  A11yLogo = "a11y.logo",
+  A11yOpenMenu = "a11y.openMenu",
+  A11yCloseMenu = "a11y.closeMenu",
+  A11ySectionNavigation = "a11y.sectionNavigation",
+  A11yLanguage = "a11y.language",
 
   HeroHiIm = "hero.hiIm",
   HeroName = "hero.name",

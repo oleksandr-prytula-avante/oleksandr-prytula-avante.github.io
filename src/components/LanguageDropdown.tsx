@@ -3,7 +3,7 @@ import { useEffect, useMemo } from "react";
 import { useI18n } from "../hooks/useI18n";
 import { useDropdownMenu } from "../hooks/useDropdownMenu";
 
-import { ELocale, LOCALE_LABEL_KEYS } from "../i18n/types";
+import { ELocale, ETranslationKey, LOCALE_LABEL_KEYS } from "../i18n/types";
 
 type LanguageDropdownProps = {
   isDisabled?: boolean;
@@ -72,7 +72,7 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
       <div
         className="absolute right-0 top-[calc(100%-1.33px)] z-20 w-10"
         role="listbox"
-        aria-label="Language"
+        aria-label={i18n.t(ETranslationKey.A11yLanguage)}
       >
         <span className="pointer-events-none absolute left-1/2 top-0 h-0 w-0 -translate-x-1/2 border-x-[7.5px] border-x-transparent border-b-[9px] border-b-[color:var(--color-accent)]" />
 

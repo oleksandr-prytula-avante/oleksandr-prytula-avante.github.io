@@ -23,7 +23,7 @@ export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
         href={item.companyUrl}
         target="_blank"
         rel="noreferrer"
-        className="block min-w-0 flex-1 truncate text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)]"
+        className="block min-w-0 flex-1 truncate text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] max-[640px]:text-sm"
       >
         <PipeSeparatedText
           value={companyName}

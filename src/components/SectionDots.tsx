@@ -1,6 +1,7 @@
 import { SECTION_NAV_ITEMS } from "../constants/sections";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
+import { ETranslationKey } from "../i18n/types";
 import { ESection, toSectionHash } from "../utils/sections";
 
 export function SectionDots() {
@@ -10,7 +11,7 @@ export function SectionDots() {
   return (
     <nav
       className="absolute right-4 top-1/2 flex -translate-y-1/2 flex-col items-center gap-3 max-[1280px]:right-5"
-      aria-label="Section navigation"
+      aria-label={i18n.t(ETranslationKey.A11ySectionNavigation)}
     >
       {SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
         const label = i18n.t(labelKey);

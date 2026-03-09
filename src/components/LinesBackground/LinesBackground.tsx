@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
+import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { randomBetween } from "../../utils/random";
 
 import "./LinesBackground.css";
@@ -57,8 +58,49 @@ function generateHorizontalLineStyles(): LineStyle[] {
 }
 
 export function LinesBackground() {
-  const verticalLines = useMemo(generateVerticalLineStyles, []);
-  const horizontalLines = useMemo(generateHorizontalLineStyles, []);
+  const [isDesktopViewport, setIsDesktopViewport] = useState(function () {
+    if (typeof window === "undefined") {
+      return true;
+    }
+
+    return window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY).matches;
+  });
+
+  useEffect(function () {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
+
+    function handleViewportChange(event: MediaQueryListEvent) {
+      setIsDesktopViewport(event.matches);
+    }
+
+    mediaQuery.addEventListener("change", handleViewportChange);
+
+    return function () {
+      mediaQuery.removeEventListener("change", handleViewportChange);
+    };
+  }, []);
+
+  const verticalLines = useMemo(
+    function () {
+      return isDesktopViewport ? generateVerticalLineStyles() : [];
+    },
+    [isDesktopViewport],
+  );
+  
+  const horizontalLines = useMemo(
+    function () {
+      return isDesktopViewport ? generateHorizontalLineStyles() : [];
+    },
+    [isDesktopViewport],
+  );
+
+  if (!isDesktopViewport) {
+    return null;
+  }
 
   return (
     <div className="lines" aria-hidden="true">

@@ -79,7 +79,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     : undefined;
   const itemHeightClass = showToggle
     ? isInFocusedMode
-      ? "h-full max-[1024px]:h-auto"
+      ? "h-full"
       : "h-[25%] max-[1024px]:h-auto"
     : "h-auto";
   const contentAlignmentClass = isFocused ? "justify-center" : "justify-start";
