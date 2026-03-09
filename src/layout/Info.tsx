@@ -15,6 +15,7 @@ import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
+import profilePhotoSrc from "../assets/images/profile.webp";
 
 const ORANGE_LINE_REVEAL_DURATION_MS = 500;
 const NAME_TYPING_START_EXTRA_DELAY_MS = 20;
@@ -133,6 +134,7 @@ export function Info(props: InfoProps) {
   const isSecondaryContentReady = isDesktopViewport
     ? isDesktopSecondaryContentReady
     : isMobileSecondaryContentReady;
+  const isProfilePhotoVisible = !shouldPlayHeroAnimation || isNameTypingStarted;
 
   function setHeroTypingState(isCompleted: boolean) {
     setVisibleHiChars(isCompleted ? hiText.length : DEFAULT_CHAR_COUNT);
@@ -491,23 +493,32 @@ export function Info(props: InfoProps) {
         />
       </div>
 
-      <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl max-[1024px]:whitespace-nowrap max-[639px]:whitespace-normal">
-        <span className="block max-[1024px]:inline max-[639px]:block">
-          {visibleName}
-          {nameTypingCursor}
-        </span>
-        <span className="mt-1 block max-[1024px]:mt-0 max-[1024px]:ml-3 max-[1024px]:inline max-[639px]:mt-1 max-[639px]:ml-0 max-[639px]:block">
-          {visibleSurname}
-          {surnameTypingCursor}
-        </span>
-      </h1>
+      <div className="mt-2 flex items-start gap-6 max-[639px]:gap-4">
+        <img
+          src={profilePhotoSrc}
+            alt="Profile photo"
+            className={`h-[calc(7.75rem)] w-[calc(7.75rem)] shrink-0 rounded-full border-2 border-[color:var(--color-accent)] object-cover transition-all duration-400 ease-out will-change-transform will-change-opacity max-[1366px]:h-[calc(6.25rem)] max-[1366px]:w-[calc(6.25rem)] max-[1024px]:h-20 max-[1024px]:w-20 max-[639px]:h-16 max-[639px]:w-16 ${isProfilePhotoVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}
+          loading="eager"
+        />
+
+        <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl max-[1024px]:whitespace-nowrap max-[639px]:whitespace-normal">
+          <span className="block max-[1024px]:inline max-[639px]:block">
+            {visibleName}
+            {nameTypingCursor}
+          </span>
+          <span className="mt-1 block max-[1024px]:mt-0 max-[1024px]:ml-3 max-[1024px]:inline max-[639px]:mt-1 max-[639px]:ml-0 max-[639px]:block">
+            {visibleSurname}
+            {surnameTypingCursor}
+          </span>
+        </h1>
+      </div>
 
       <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.75rem]">
         {roleText.slice(0, visibleRoleChars)}
         {roleTypingCursor}
       </p>
 
-      <p className="mt-4 text-[1.09375rem] uppercase text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
+      <p className="mt-4 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1024px]:text-[0.9375rem]">
         {engineeringToolkitBaseText.slice(
           DEFAULT_CHAR_COUNT,
           visibleEngineeringToolkitBaseChars,

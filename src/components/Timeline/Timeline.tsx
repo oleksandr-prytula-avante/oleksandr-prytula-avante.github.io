@@ -371,6 +371,10 @@ export function Timeline<TItem extends TimelineDataItem>(
           : "";
           
   const isFocusedPhase = focusPhase === EFocusPhase.Focused;
+  const isTargetFocusPhase =
+    focusPhase === EFocusPhase.Preparing ||
+    focusPhase === EFocusPhase.Entering ||
+    focusPhase === EFocusPhase.Focused;
   const isTransitionPhase =
     focusPhase === EFocusPhase.Preparing ||
     focusPhase === EFocusPhase.Entering ||
@@ -401,8 +405,8 @@ export function Timeline<TItem extends TimelineDataItem>(
 
   function getTimelineItemRenderState(itemId: string): TimelineItemRenderState {
     const isTargetItem = hasFocusedItem && focusedItemId === itemId;
-    const isFocused = isFocusedPhase && isTargetItem;
-    const isExpanded = isFocused;
+    const isFocused = isTargetFocusPhase && isTargetItem;
+    const isExpanded = isFocusedPhase && isTargetItem;
     const isDimmed = isFocusedPhase && hasFocusedItem && !isTargetItem;
     const isTargetItemMoving = isTargetItem && isTransitionPhase;
     const shouldHideRightContent =

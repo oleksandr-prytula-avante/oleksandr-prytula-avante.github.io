@@ -67,7 +67,8 @@
 }
 
 .timeline-list.timeline-list--focused .timeline-item.timeline-item--focused {
-  transform: translateY(calc(-1 * var(--timeline-shift, 0px)));
+  transition: none;
+  transform: translateY(0);
 }
 
 .timeline-item.timeline-item--focused {
