@@ -82,7 +82,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
       ? "h-full max-[1024px]:h-auto"
       : "h-[25%] max-[1024px]:h-auto"
     : "h-auto";
-  const contentAlignmentClass = isExpanded ? "justify-start" : "justify-center";
+  const contentAlignmentClass = isFocused ? "justify-center" : "justify-start";
 
   const isEducationItem = item.id.startsWith("education-");
   let companyName: string;
@@ -181,7 +181,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
   return (
     <li
-      className={`timeline-item relative min-h-[100px] pl-32 ${itemHeightClass} ${isFocused ? "timeline-item--focused" : ""} ${isDimmed ? "timeline-item--hidden" : ""} ${isExpanded ? "timeline-item--expanded" : ""}`}
+      className={`timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-22 ${itemHeightClass} ${isFocused ? "timeline-item--focused" : ""} ${isDimmed ? "timeline-item--hidden" : ""} ${isExpanded ? "timeline-item--expanded" : ""}`}
       data-timeline-item-id={item.id}
       style={
         {
@@ -198,12 +198,12 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         rel="noreferrer"
         aria-label={`${companyName} website`}
         data-timeline-circle
-        className="absolute left-0 top-0 z-10 flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-full border-2 border-[color:var(--color-accent)] bg-white"
+        className="absolute left-0 top-0 z-10 flex h-[100px] w-[100px] max-[640px]:h-[80px] max-[640px]:w-[80px] cursor-pointer items-center justify-center rounded-full border-2 border-[color:var(--color-accent)] bg-white"
       >
         <img
           src={item.companyLogoSrc}
           alt={`${companyName} logo`}
-          className={`h-12 w-12 object-contain`}
+          className="h-12 w-12 max-[640px]:h-10 max-[640px]:w-10 object-contain"
           loading="lazy"
         />
       </a>
@@ -220,7 +220,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
           <SecondRowComponent item={item} />
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
             <ThirdRowComponent item={item} />
 
             {showToggle ? (
@@ -234,7 +234,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
                   isToggleDisabled
                     ? "cursor-not-allowed opacity-60"
                     : "cursor-pointer hover:text-white"
-                }`}
+                } max-[640px]:hidden`}
               >
                 <span>
                   {isExpanded

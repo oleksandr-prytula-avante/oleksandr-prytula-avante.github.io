@@ -1,5 +1,5 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
-import { PipeSeparator } from "../../components/PipeSeparator";
+import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { EducationStatusIcon } from "../../components/icons/EducationStatusIcon";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
@@ -24,24 +24,17 @@ export function EducationStatusRow<
   );
 
   const gradeText = item.grade !== undefined ? `Grade: ${item.grade}` : null;
-  let gradeContent = null;
-
-  if (gradeText) {
-    gradeContent = (
-      <>
-        <PipeSeparator />
-        <span>{gradeText}</span>
-      </>
-    );
-  }
+  const statusText = gradeText
+    ? `${periodLabel.dateRange} | ${periodLabel.duration} | ${gradeText}`
+    : `${periodLabel.dateRange} | ${periodLabel.duration}`;
 
   return (
     <>
       <EducationStatusIcon className="h-5 w-5 shrink-0 text-white" />
-      <span>{periodLabel.dateRange}</span>
-      <PipeSeparator />
-      <span>{periodLabel.duration}</span>
-      {gradeContent}
+      <PipeSeparatedText
+        value={statusText}
+        className="inline-flex min-w-0 max-w-full items-center gap-2 truncate"
+      />
     </>
   );
 }

@@ -452,7 +452,7 @@ export function Timeline<TItem extends TimelineDataItem>(
       className={`relative px-5 max-[1024px]:px-0 text-white ${isDesktopViewport ? "h-full" : "h-auto"}`}
     >
       <span
-        className="pointer-events-none absolute top-0 left-[calc(70px+0.25rem)] max-[1024px]:left-[calc(50px+0.25rem)] z-0 w-[2px] bg-[color:var(--color-accent)]/70"
+        className="pointer-events-none absolute top-0 left-[calc(70px+0.25rem)] max-[1024px]:left-[calc(50px+0.25rem)] max-[640px]:left-[calc(40px+0.25rem)] z-0 w-[2px] bg-[color:var(--color-accent)]/70"
         style={{ height: `${lineHeight}px` }}
       />
 

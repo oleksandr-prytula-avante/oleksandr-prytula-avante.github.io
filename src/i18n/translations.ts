@@ -86,7 +86,8 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraCompanyName]:
     "Omnora (fka SlidePresenter) | Startup / Product",
   [ETranslationKey.ExperienceOmnoraJobTitle]: "Web Developer",
-  [ETranslationKey.ExperienceOmnoraLocation]: "Germany and Frankfurt | Remote",
+  [ETranslationKey.ExperienceOmnoraLocation]:
+    "Frankfurt am Main, Hesse, Germany | Remote",
   [ETranslationKey.ExperienceOmnoraDescription]:
     "Web Developer | Startup / Product. Full-time.",
   [ETranslationKey.ExperienceOmnoraHighlight1]:
@@ -245,7 +246,8 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraCompanyName]:
     "Omnora (ранее SlidePresenter) | Стартап / Продукт",
   [ETranslationKey.ExperienceOmnoraJobTitle]: "WEB-разработчик",
-  [ETranslationKey.ExperienceOmnoraLocation]: "Германия, Франкфурт | Удаленно",
+  [ETranslationKey.ExperienceOmnoraLocation]:
+    "Франкфурт-на-Майне, Гессен, Германия | Удаленно",
   [ETranslationKey.ExperienceOmnoraDescription]:
     "WEB-разработчик | Стартап / Продукт. Полная занятость.",
   [ETranslationKey.ExperienceOmnoraHighlight1]:
@@ -400,7 +402,8 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraCompanyName]:
     "Omnora (antes SlidePresenter) | Startup / Producto",
   [ETranslationKey.ExperienceOmnoraJobTitle]: "Desarrollador WEB",
-  [ETranslationKey.ExperienceOmnoraLocation]: "Alemania y Fráncfort | Remoto",
+  [ETranslationKey.ExperienceOmnoraLocation]:
+    "Fráncfort del Meno, Hesse, Alemania | Remoto",
   [ETranslationKey.ExperienceOmnoraDescription]:
     "Desarrollador WEB | Startup / Producto. Tiempo completo.",
   [ETranslationKey.ExperienceOmnoraHighlight1]:
@@ -557,7 +560,7 @@ const DE_TRANSLATIONS: Translations = {
     "Omnora (ehemals SlidePresenter) | Startup / Produkt",
   [ETranslationKey.ExperienceOmnoraJobTitle]: "WEB-Entwickler",
   [ETranslationKey.ExperienceOmnoraLocation]:
-    "Deutschland und Frankfurt | Remote",
+    "Frankfurt am Main, Hessen, Deutschland | Remote",
   [ETranslationKey.ExperienceOmnoraDescription]:
     "WEB-Entwickler | Startup / Produkt. Vollzeit.",
   [ETranslationKey.ExperienceOmnoraHighlight1]:

@@ -63,7 +63,7 @@ export function Header(props: HeaderProps) {
     mobileMenu = (
       <div
         id="mobile-header-menu"
-        className="fixed inset-0 z-[100] flex h-dvh w-screen flex-col overflow-y-auto bg-[color:var(--color-bg)] px-12 pb-10 pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]"
+        className="fixed inset-0 z-[100] flex h-dvh w-screen flex-col overflow-y-auto bg-[color:var(--color-bg)] px-24 max-[1024px]:px-18 max-[768px]:px-12 max-[640px]:px-8 pb-10 pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]"
       >
         <div className="flex h-24 items-center justify-between">
           <img src={logoUrl} alt="Logo" className="h-16 w-auto" />
@@ -99,7 +99,7 @@ export function Header(props: HeaderProps) {
 
   return (
     <>
-      <header className="flex h-24 w-full items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 max-[1024px]:bg-[color:var(--color-bg)] max-[1024px]:px-12">
+      <header className="flex h-24 w-full items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 max-[1024px]:bg-[color:var(--color-bg)] max-[1024px]:px-18 max-[768px]:px-12 max-[640px]:px-8">
         <img src={logoUrl} alt="Logo" className="h-16 w-auto" />
 
         <button

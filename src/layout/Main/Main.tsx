@@ -6,10 +6,13 @@ import { LinesBackground } from "../../components/LinesBackground/LinesBackgroun
 import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
 import { SectionDots } from "../../components/SectionDots";
+import { SectionHeading } from "../../components/SectionHeading";
 import {
   MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
 } from "../../constants/mediaQueries";
 import { SECTION_NAV_ITEMS } from "../../constants/sections";
+import { useI18n } from "../../hooks/useI18n";
+import { ETranslationKey } from "../../i18n/types";
 import { ESection, toSectionHash } from "../../utils/sections";
 import { About } from "../About";
 import { Education } from "../Education/Education";
@@ -25,6 +28,7 @@ const SECTION_IDS_IN_ORDER = [
   ESection.Projects,
 ] as const;
 export function Main() {
+  const i18n = useI18n();
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [isHeroPrintingInProgress, setIsHeroPrintingInProgress] =
@@ -97,6 +101,22 @@ export function Main() {
     return sectionRenderer ? sectionRenderer() : null;
   }
 
+  function getSectionTitleKey(sectionId: ESection): ETranslationKey {
+    if (sectionId === ESection.About) {
+      return ETranslationKey.NavAbout;
+    }
+
+    if (sectionId === ESection.Experience) {
+      return ETranslationKey.NavExperience;
+    }
+
+    if (sectionId === ESection.Education) {
+      return ETranslationKey.NavEducation;
+    }
+
+    return ETranslationKey.NavProjects;
+  }
+
   const infoContent = (
     <Info
       hoveredSkill={hoveredSkill}
@@ -123,7 +143,7 @@ export function Main() {
       : "flex w-full flex-col gap-10 max-[1024px]:gap-0 pointer-events-none opacity-0";
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1280px]:px-12 max-[1024px]:overflow-y-auto max-[1024px]:pb-10">
+    <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1024px]:overflow-y-auto max-[1024px]:px-18 max-[1024px]:pb-10 max-[768px]:px-12 max-[640px]:px-8">
       <LinesBackground />
       <div className="relative z-10 flex h-full min-h-screen min-h-0 flex-col max-[1024px]:pt-24">
         <Header
@@ -154,7 +174,7 @@ export function Main() {
             </section>
           </div>
 
-          <div className="flex w-full flex-col gap-8 max-[1024px]:gap-0 min-[1025px]:hidden">
+          <div className="flex w-full flex-col gap-8 max-[1024px]:gap-0 max-[768px]:gap-4 min-[1025px]:hidden">
             <section className="relative w-full min-h-[472px] max-[1024px]:min-h-0">
               {infoContent}
             </section>
@@ -174,8 +194,16 @@ export function Main() {
                     <section
                       key={sectionId}
                       id={sectionId}
-                      className="w-full max-[1024px]:py-8"
+                      className="w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-8"
                     >
+                      <SectionHeading
+                        className="mb-4 hidden max-[1024px]:flex"
+                        animateLine
+                        isLineVisible={
+                          isSecondaryContentVisible || !isRevealAnimationEnabled
+                        }
+                        title={i18n.t(getSectionTitleKey(sectionId))}
+                      />
                       {section}
                     </section>
                   );

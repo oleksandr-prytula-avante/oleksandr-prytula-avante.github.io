@@ -15,7 +15,7 @@ export function EducationCompanyRow<TItem extends TimelineDataItem>(
   const textKeys = getEducationTextKeys(item.id);
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex min-w-0 items-center gap-2">
       <EducationCompanyIcon className="h-5 w-5 shrink-0 text-white" />
       <a
         href={item.companyUrl}

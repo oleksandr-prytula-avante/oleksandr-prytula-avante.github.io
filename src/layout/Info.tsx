@@ -14,6 +14,7 @@ import {
 import { useI18n } from "../hooks/useI18n";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
+import { SectionHeading } from "../components/SectionHeading";
 
 const ORANGE_LINE_REVEAL_DURATION_MS = 500;
 const NAME_TYPING_START_EXTRA_DELAY_MS = 20;
@@ -30,8 +31,6 @@ const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
 const DEFAULT_CHAR_COUNT = 0;
 const ENABLED_TAB_INDEX = 0;
 const DISABLED_TAB_INDEX = -1;
-const SCALE_X_VISIBLE = "scaleX(1)";
-const SCALE_X_HIDDEN = "scaleX(0)";
 const ENGINEERING_TOOLKIT_EMPTY_LENGTH = 0;
 const NAME_TYPING_START_DELAY_MS =
   ORANGE_LINE_REVEAL_DURATION_MS + NAME_TYPING_START_EXTRA_DELAY_MS;
@@ -516,18 +515,17 @@ export function Info(props: InfoProps) {
 
   return (
     <div className="flex h-full flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
-      <div className="mb-4 flex items-center">
-        <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
-          {hiText.slice(0, visibleHiChars)}
-          {hiTypingCursor}
-        </span>
-        <span
-          className="ml-6 inline-block h-[4px] flex-1 origin-left bg-[color:var(--color-accent)] transition-transform duration-500 ease-out"
-          style={{
-            transform: isLineVisible ? SCALE_X_VISIBLE : SCALE_X_HIDDEN,
-          }}
-        />
-      </div>
+      <SectionHeading
+        className="mb-4"
+        animateLine
+        isLineVisible={isLineVisible}
+        title={
+          <>
+            {hiText.slice(0, visibleHiChars)}
+            {hiTypingCursor}
+          </>
+        }
+      />
 
       <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl max-[1024px]:whitespace-nowrap max-[639px]:whitespace-normal">
         <span className="block max-[1024px]:inline max-[639px]:block">

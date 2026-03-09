@@ -32,7 +32,7 @@ export function About(props: AboutProps) {
   );
 
   return (
-    <article className="h-full min-h-0 max-h-full overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] leading-relaxed text-white max-[1366px]:text-[0.875rem] max-[1024px]:pr-0 max-[1024px]:text-[1.09375rem]">
+    <article className="h-full min-h-0 max-h-full overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] leading-relaxed text-white max-[1366px]:text-[0.875rem] max-[1024px]:pr-0 max-[1024px]:text-[1.09375rem] max-[768px]:text-[0.9375rem]">
       <div className="space-y-4">
         {paragraphValues.map(function (paragraphText, index) {
           return (
