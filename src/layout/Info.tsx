@@ -497,7 +497,7 @@ export function Info(props: InfoProps) {
         <img
           src={profilePhotoSrc}
             alt="Profile photo"
-            className={`h-[calc(7.75rem)] w-[calc(7.75rem)] shrink-0 rounded-full border-2 border-[color:var(--color-accent)] object-cover transition-all duration-400 ease-out will-change-transform will-change-opacity max-[1366px]:h-[calc(6.25rem)] max-[1366px]:w-[calc(6.25rem)] max-[1024px]:h-20 max-[1024px]:w-20 max-[639px]:h-16 max-[639px]:w-16 ${isProfilePhotoVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}
+            className={`h-[calc(7.75rem)] w-[calc(7.75rem)] shrink-0 rounded-full border-2 border-[color:var(--color-accent)] object-cover transition-all duration-400 ease-out will-change-transform will-change-opacity max-[1366px]:h-[calc(6.25rem)] max-[1366px]:w-[calc(6.25rem)] max-[1023px]:hidden ${isProfilePhotoVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}
           loading="eager"
         />
 
