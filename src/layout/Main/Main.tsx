@@ -15,7 +15,6 @@ import { About } from "../About";
 import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
 import { Info } from "../Info";
-import { Projects } from "../Projects";
 
 import "./Main.css";
 
@@ -89,7 +88,7 @@ export function Main() {
       return <Education key={educationHash} {...timelineSkillHandlers} />;
     },
     [projectsHash]: function () {
-      return <Projects key={projectsHash} />;
+      return null;
     },
   };
 
@@ -117,11 +116,11 @@ export function Main() {
       : "flex h-full min-h-0 flex-col pointer-events-none opacity-0";
   const mobileSectionRevealClassName = isRevealAnimationEnabled
     ? isSecondaryContentVisible
-      ? "flex w-full flex-col gap-10 transition-all duration-500 ease-out translate-y-0 opacity-100"
-      : "flex w-full flex-col gap-10 transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0"
+      ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out translate-y-0 opacity-100"
+      : "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0"
     : isSecondaryContentVisible
-      ? "flex w-full flex-col gap-10 opacity-100"
-      : "flex w-full flex-col gap-10 pointer-events-none opacity-0";
+      ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 opacity-100"
+      : "flex w-full flex-col gap-10 max-[1024px]:gap-0 pointer-events-none opacity-0";
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1280px]:px-12 max-[1024px]:overflow-y-auto max-[1024px]:pb-10">
@@ -155,8 +154,8 @@ export function Main() {
             </section>
           </div>
 
-          <div className="flex w-full flex-col gap-8 min-[1025px]:hidden">
-            <section className="relative w-full min-h-[472px]">
+          <div className="flex w-full flex-col gap-8 max-[1024px]:gap-0 min-[1025px]:hidden">
+            <section className="relative w-full min-h-[472px] max-[1024px]:min-h-0">
               {infoContent}
             </section>
 
@@ -165,9 +164,19 @@ export function Main() {
                 className={mobileSectionRevealClassName}
               >
                 {SECTION_IDS_IN_ORDER.map(function (sectionId) {
+                  const section = renderSectionContent(toSectionHash(sectionId));
+
+                  if (!section) {
+                    return null;
+                  }
+
                   return (
-                    <section key={sectionId} id={sectionId} className="w-full">
-                      {renderSectionContent(toSectionHash(sectionId))}
+                    <section
+                      key={sectionId}
+                      id={sectionId}
+                      className="w-full max-[1024px]:py-8"
+                    >
+                      {section}
                     </section>
                   );
                 })}

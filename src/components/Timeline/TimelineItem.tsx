@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
+import { getEducationTextKeys } from "../../utils/education";
 import { getExperienceTextKeys } from "../../utils/experience";
 import { TextWithLinks } from "../TextWithLinks";
 import { Tag } from "../Tags/Tag";
@@ -78,19 +79,29 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     : undefined;
   const itemHeightClass = showToggle
     ? isInFocusedMode
-      ? "h-full"
-      : "h-[25%]"
+      ? "h-full max-[1024px]:h-auto"
+      : "h-[25%] max-[1024px]:h-auto"
     : "h-auto";
+  const contentAlignmentClass = isExpanded ? "justify-start" : "justify-center";
 
-  const textKeys = getExperienceTextKeys(item.id);
   const isEducationItem = item.id.startsWith("education-");
-  const companyName = isEducationItem ? item.id : i18n.t(textKeys.companyName);
+  let companyName: string;
+  let highlightKeys: ETranslationKey[];
+
+  if (isEducationItem) {
+    const educationTextKeys = getEducationTextKeys(item.id);
+    companyName = i18n.t(educationTextKeys.institution);
+    highlightKeys = educationTextKeys.highlights ?? [];
+  } else {
+    const experienceTextKeys = getExperienceTextKeys(item.id);
+    companyName = i18n.t(experienceTextKeys.companyName);
+    highlightKeys = experienceTextKeys.highlights;
+  }
+
   const descriptionId = `${item.id}-description`;
-  const localizedHighlights = isEducationItem
-    ? []
-    : textKeys.highlights.map(function (highlightKey) {
-        return i18n.t(highlightKey);
-      });
+  const localizedHighlights = highlightKeys.map(function (highlightKey) {
+    return i18n.t(highlightKey);
+  });
   const prioritizedTechnologyTags = item.technologyTags
     .slice()
     .sort(function (left, right) {
@@ -160,7 +171,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     expandedContent = (
       <div
         id={descriptionId}
-        className="mt-3 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90"
+        className="mt-3 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90 max-[1024px]:overflow-visible max-[1024px]:pr-0"
       >
         {localizedHighlightsList}
         {technologyTagsList}
@@ -170,7 +181,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
   return (
     <li
-      className={`timeline-item relative pl-32 ${itemHeightClass} ${isFocused ? "timeline-item--focused" : ""} ${isDimmed ? "timeline-item--hidden" : ""} ${isExpanded ? "timeline-item--expanded" : ""}`}
+      className={`timeline-item relative min-h-[100px] pl-32 ${itemHeightClass} ${isFocused ? "timeline-item--focused" : ""} ${isDimmed ? "timeline-item--hidden" : ""} ${isExpanded ? "timeline-item--expanded" : ""}`}
       data-timeline-item-id={item.id}
       style={
         {
@@ -198,7 +209,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
       </a>
 
       <div
-        className={`flex h-full min-h-0 flex-col pb-8 text-sm text-white/95 ${
+        className={`flex h-full min-h-0 flex-col ${contentAlignmentClass} pb-8 text-sm text-white/95 max-[1024px]:h-auto ${
           shouldHideRightContent
             ? "pointer-events-none invisible opacity-0 transition-none"
             : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out"

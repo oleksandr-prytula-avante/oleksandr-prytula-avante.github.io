@@ -35,13 +35,49 @@ const EN_TRANSLATIONS: Translations = {
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]:
     "Master's degree, Computer Software Engineering",
+  [ETranslationKey.EducationDuetHighlight1]:
+    "Advanced study of mathematical modeling tools and algorithm design, focusing on computational problem-solving and applied modeling techniques.",
+  [ETranslationKey.EducationDuetHighlight2]:
+    "Gained deeper experience with 3D graphics technologies (OpenGL) for the development of scientific and high-performance software applications.",
+  [ETranslationKey.EducationDuetHighlight3]:
+    "Completed coursework in Scientific Research Methodology, covering research design, academic writing, and analytical methods.",
+  [ETranslationKey.EducationDuetHighlight4]:
+    "Studied IT Law, including legal aspects of software development, digital technologies, and intellectual property.",
+  [ETranslationKey.EducationDuetHighlight5]:
+    "Mentored fellow students, providing academic and technical guidance in programming and related subjects.",
+  [ETranslationKey.EducationDuetHighlight6]:
+    "Participated in student governance, contributing to academic initiatives and student community activities.",
   [ETranslationKey.EducationBinaryStudioTitle]: "Binary Studio Academy",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "JS Full-Stack Developer Bootcamp & Internship",
+  [ETranslationKey.EducationBinaryStudioHighlight1]:
+    "Successfully passed the competitive selection process for the internship program.",
+  [ETranslationKey.EducationBinaryStudioHighlight2]:
+    "Attended technical lectures and completed practical assignments, consistently delivering strong results.",
+  [ETranslationKey.EducationBinaryStudioHighlight3]:
+    "Collaborated with a team of interns on the development of an internal CRM system for HR corporate processes, under the guidance of experienced mentors.",
+  [ETranslationKey.EducationBinaryStudioHighlight4]:
+    "Gained a solid foundation in software development practices, teamwork, and real-world project collaboration.",
+  [ETranslationKey.EducationBinaryStudioHighlight5]:
+    "Received positive feedback and professional referrals, enabling the start of a professional career in the IT industry.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]:
     "Bachelor's degree, Computer Software Engineering",
+  [ETranslationKey.EducationKnuHighlight1]:
+    "Studied fundamentals of software development, including programming principles, algorithms, and data structures.",
+  [ETranslationKey.EducationKnuHighlight2]:
+    "Gained knowledge in systems programming concepts, computer architecture basics, and low-level software interaction.",
+  [ETranslationKey.EducationKnuHighlight3]:
+    "Learned web development fundamentals, including client-server architecture and building web applications.",
+  [ETranslationKey.EducationKnuHighlight4]:
+    "Worked with database systems, covering relational databases, data modeling, and query design.",
+  [ETranslationKey.EducationKnuHighlight5]:
+    "Explored 3D graphics libraries and tools for developing interactive applications and web-based graphical solutions.",
+  [ETranslationKey.EducationKnuHighlight6]:
+    "Participated in local student programming competitions and IT olympiads, developing problem-solving and algorithmic thinking skills.",
+  [ETranslationKey.EducationKnuHighlight7]:
+    "Studied practical aspects of enterprise software systems, including work with 1C platforms and business applications.",
   [ETranslationKey.ExperiencePresent]: "Present",
   [ETranslationKey.TimelineExpandDetails]: "Show more",
   [ETranslationKey.TimelineHideDetails]: "Show less",
@@ -160,12 +196,48 @@ const RU_TRANSLATIONS: Translations = {
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]:
     "Магистр, инженерия программного обеспечения",
+  [ETranslationKey.EducationDuetHighlight1]:
+    "Углубленно изучал инструменты математического моделирования и проектирование алгоритмов с фокусом на вычислительное решение задач и прикладные методы моделирования.",
+  [ETranslationKey.EducationDuetHighlight2]:
+    "Получил более глубокий опыт работы с технологиями 3D-графики (OpenGL) для разработки научных и высокопроизводительных программных приложений.",
+  [ETranslationKey.EducationDuetHighlight3]:
+    "Прошел курс по методологии научных исследований, включая дизайн исследования, академическое письмо и аналитические методы.",
+  [ETranslationKey.EducationDuetHighlight4]:
+    "Изучал IT-право, включая правовые аспекты разработки ПО, цифровых технологий и интеллектуальной собственности.",
+  [ETranslationKey.EducationDuetHighlight5]:
+    "Менторил одногруппников, предоставляя академическую и техническую поддержку по программированию и смежным дисциплинам.",
+  [ETranslationKey.EducationDuetHighlight6]:
+    "Участвовал в студенческом самоуправлении, внося вклад в академические инициативы и деятельность студенческого сообщества.",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "Буткемп JS Full-Stack разработчика и стажировка",
+  [ETranslationKey.EducationBinaryStudioHighlight1]:
+    "Успешно прошел конкурентный отбор в программу стажировки.",
+  [ETranslationKey.EducationBinaryStudioHighlight2]:
+    "Посещал технические лекции и выполнял практические задания, стабильно показывая сильные результаты.",
+  [ETranslationKey.EducationBinaryStudioHighlight3]:
+    "Сотрудничал с командой стажеров над разработкой внутренней CRM-системы для корпоративных HR-процессов под руководством опытных менторов.",
+  [ETranslationKey.EducationBinaryStudioHighlight4]:
+    "Получил прочную базу в практиках разработки ПО, командной работе и взаимодействии в реальных проектах.",
+  [ETranslationKey.EducationBinaryStudioHighlight5]:
+    "Получил позитивную обратную связь и профессиональные рекомендации, что позволило начать карьеру в IT-индустрии.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]:
     "Бакалавр, инженерия программного обеспечения",
+  [ETranslationKey.EducationKnuHighlight1]:
+    "Изучал основы разработки программного обеспечения, включая принципы программирования, алгоритмы и структуры данных.",
+  [ETranslationKey.EducationKnuHighlight2]:
+    "Получил знания по системному программированию, базам компьютерной архитектуры и взаимодействию с ПО на низком уровне.",
+  [ETranslationKey.EducationKnuHighlight3]:
+    "Освоил основы веб-разработки, включая клиент-серверную архитектуру и создание веб-приложений.",
+  [ETranslationKey.EducationKnuHighlight4]:
+    "Работал с системами баз данных: реляционные БД, моделирование данных и проектирование запросов.",
+  [ETranslationKey.EducationKnuHighlight5]:
+    "Изучал библиотеки и инструменты 3D-графики для разработки интерактивных приложений и web-решений с графикой.",
+  [ETranslationKey.EducationKnuHighlight6]:
+    "Участвовал в локальных студенческих соревнованиях по программированию и IT-олимпиадах, развивая навыки решения задач и алгоритмическое мышление.",
+  [ETranslationKey.EducationKnuHighlight7]:
+    "Изучал практические аспекты корпоративных программных систем, включая работу с платформами 1C и бизнес-приложениями.",
   [ETranslationKey.ExperiencePresent]: "Настоящее время",
   [ETranslationKey.TimelineExpandDetails]: "Показать больше",
   [ETranslationKey.TimelineHideDetails]: "Скрыть",
@@ -279,11 +351,47 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Máster, Ingeniería de Software",
+  [ETranslationKey.EducationDuetHighlight1]:
+    "Realicé un estudio avanzado de herramientas de modelado matemático y diseño de algoritmos, con enfoque en resolución computacional de problemas y técnicas de modelado aplicado.",
+  [ETranslationKey.EducationDuetHighlight2]:
+    "Adquirí experiencia más profunda con tecnologías de gráficos 3D (OpenGL) para el desarrollo de aplicaciones de software científicas y de alto rendimiento.",
+  [ETranslationKey.EducationDuetHighlight3]:
+    "Completé cursos de Metodología de Investigación Científica, cubriendo diseño de investigación, redacción académica y métodos analíticos.",
+  [ETranslationKey.EducationDuetHighlight4]:
+    "Estudié Derecho Informático, incluyendo aspectos legales del desarrollo de software, tecnologías digitales y propiedad intelectual.",
+  [ETranslationKey.EducationDuetHighlight5]:
+    "Mentoricé a compañeros de estudios, brindando orientación académica y técnica en programación y materias relacionadas.",
+  [ETranslationKey.EducationDuetHighlight6]:
+    "Participé en el gobierno estudiantil, contribuyendo a iniciativas académicas y actividades de la comunidad estudiantil.",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "Bootcamp de Desarrollador Full-Stack JS y prácticas",
+  [ETranslationKey.EducationBinaryStudioHighlight1]:
+    "Superé con éxito el proceso de selección competitivo para el programa de prácticas.",
+  [ETranslationKey.EducationBinaryStudioHighlight2]:
+    "Asistí a conferencias técnicas y completé tareas prácticas, manteniendo resultados sólidos de forma constante.",
+  [ETranslationKey.EducationBinaryStudioHighlight3]:
+    "Colaboré con un equipo de practicantes en el desarrollo de un sistema CRM interno para procesos corporativos de RR. HH., bajo la guía de mentores experimentados.",
+  [ETranslationKey.EducationBinaryStudioHighlight4]:
+    "Obtuve una base sólida en prácticas de desarrollo de software, trabajo en equipo y colaboración en proyectos reales.",
+  [ETranslationKey.EducationBinaryStudioHighlight5]:
+    "Recibí comentarios positivos y referencias profesionales, lo que permitió iniciar una carrera profesional en la industria de TI.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Grado, Ingeniería de Software",
+  [ETranslationKey.EducationKnuHighlight1]:
+    "Estudié los fundamentos del desarrollo de software, incluidos principios de programación, algoritmos y estructuras de datos.",
+  [ETranslationKey.EducationKnuHighlight2]:
+    "Adquirí conocimientos sobre conceptos de programación de sistemas, bases de arquitectura de computadoras e interacción de software a bajo nivel.",
+  [ETranslationKey.EducationKnuHighlight3]:
+    "Aprendí fundamentos de desarrollo web, incluyendo arquitectura cliente-servidor y construcción de aplicaciones web.",
+  [ETranslationKey.EducationKnuHighlight4]:
+    "Trabajé con sistemas de bases de datos, cubriendo bases de datos relacionales, modelado de datos y diseño de consultas.",
+  [ETranslationKey.EducationKnuHighlight5]:
+    "Exploré bibliotecas y herramientas de gráficos 3D para desarrollar aplicaciones interactivas y soluciones gráficas basadas en web.",
+  [ETranslationKey.EducationKnuHighlight6]:
+    "Participé en competiciones locales estudiantiles de programación y olimpiadas de TI, desarrollando habilidades de resolución de problemas y pensamiento algorítmico.",
+  [ETranslationKey.EducationKnuHighlight7]:
+    "Estudié aspectos prácticos de sistemas de software empresariales, incluyendo trabajo con plataformas 1C y aplicaciones de negocio.",
   [ETranslationKey.ExperiencePresent]: "Presente",
   [ETranslationKey.TimelineExpandDetails]: "Mostrar más",
   [ETranslationKey.TimelineHideDetails]: "Mostrar menos",
@@ -400,11 +508,47 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Masterabschluss, Softwaretechnik",
+  [ETranslationKey.EducationDuetHighlight1]:
+    "Ich absolvierte ein vertieftes Studium von Werkzeugen der mathematischen Modellierung und des Algorithmendesigns mit Fokus auf computergestützte Problemlösung und angewandte Modellierungstechniken.",
+  [ETranslationKey.EducationDuetHighlight2]:
+    "Ich sammelte tiefere Erfahrung mit 3D-Grafiktechnologien (OpenGL) für die Entwicklung wissenschaftlicher und hochperformanter Softwareanwendungen.",
+  [ETranslationKey.EducationDuetHighlight3]:
+    "Ich absolvierte Lehrveranstaltungen zur Methodik wissenschaftlicher Forschung, einschließlich Forschungsdesign, akademischem Schreiben und analytischen Methoden.",
+  [ETranslationKey.EducationDuetHighlight4]:
+    "Ich studierte IT-Recht, einschließlich rechtlicher Aspekte der Softwareentwicklung, digitaler Technologien und des geistigen Eigentums.",
+  [ETranslationKey.EducationDuetHighlight5]:
+    "Ich mentorierte Mitstudierende und bot akademische sowie technische Unterstützung in Programmierung und verwandten Fachgebieten.",
+  [ETranslationKey.EducationDuetHighlight6]:
+    "Ich beteiligte mich an der studentischen Selbstverwaltung und trug zu akademischen Initiativen sowie Aktivitäten der Studierendengemeinschaft bei.",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "JS Full-Stack Developer Bootcamp und Praktikum",
+  [ETranslationKey.EducationBinaryStudioHighlight1]:
+    "Ich habe den wettbewerbsintensiven Auswahlprozess für das Praktikumsprogramm erfolgreich bestanden.",
+  [ETranslationKey.EducationBinaryStudioHighlight2]:
+    "Ich besuchte technische Vorlesungen und absolvierte praktische Aufgaben mit durchgehend starken Ergebnissen.",
+  [ETranslationKey.EducationBinaryStudioHighlight3]:
+    "Ich arbeitete mit einem Team von Praktikanten an der Entwicklung eines internen CRM-Systems für unternehmensweite HR-Prozesse, unter Anleitung erfahrener Mentoren.",
+  [ETranslationKey.EducationBinaryStudioHighlight4]:
+    "Ich erwarb eine solide Grundlage in Softwareentwicklungspraktiken, Teamarbeit und der Zusammenarbeit an realen Projekten.",
+  [ETranslationKey.EducationBinaryStudioHighlight5]:
+    "Ich erhielt positives Feedback und professionelle Empfehlungen, die den Einstieg in eine berufliche Laufbahn in der IT-Branche ermöglichten.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Bachelorabschluss, Softwaretechnik",
+  [ETranslationKey.EducationKnuHighlight1]:
+    "Ich studierte die Grundlagen der Softwareentwicklung, einschließlich Programmierprinzipien, Algorithmen und Datenstrukturen.",
+  [ETranslationKey.EducationKnuHighlight2]:
+    "Ich erwarb Kenntnisse in der Systemprogrammierung, den Grundlagen der Rechnerarchitektur und der Interaktion mit Software auf Low-Level-Ebene.",
+  [ETranslationKey.EducationKnuHighlight3]:
+    "Ich lernte die Grundlagen der Webentwicklung, einschließlich Client-Server-Architektur und dem Aufbau von Webanwendungen.",
+  [ETranslationKey.EducationKnuHighlight4]:
+    "Ich arbeitete mit Datenbanksystemen und befasste mich mit relationalen Datenbanken, Datenmodellierung und Query-Design.",
+  [ETranslationKey.EducationKnuHighlight5]:
+    "Ich erkundete 3D-Grafikbibliotheken und Tools zur Entwicklung interaktiver Anwendungen und webbasierter grafischer Lösungen.",
+  [ETranslationKey.EducationKnuHighlight6]:
+    "Ich nahm an lokalen studentischen Programmierwettbewerben und IT-Olympiaden teil und entwickelte dabei Problemlösungsfähigkeiten sowie algorithmisches Denken.",
+  [ETranslationKey.EducationKnuHighlight7]:
+    "Ich studierte praktische Aspekte von Enterprise-Softwaresystemen, einschließlich der Arbeit mit 1C-Plattformen und Business-Anwendungen.",
   [ETranslationKey.ExperiencePresent]: "Heute",
   [ETranslationKey.TimelineExpandDetails]: "Mehr anzeigen",
   [ETranslationKey.TimelineHideDetails]: "Weniger anzeigen",

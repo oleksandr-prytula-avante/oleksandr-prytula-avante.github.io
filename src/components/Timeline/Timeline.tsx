@@ -348,6 +348,11 @@ export function Timeline<TItem extends TimelineDataItem>(
       const observedList = listElement;
 
       function measureLineGeometry() {
+        if (!isDesktopViewport) {
+          setLineHeight(observedList.scrollHeight);
+          return;
+        }
+
         const circleElements = Array.from(
           observedList.querySelectorAll<HTMLElement>(
             ".timeline-item [data-timeline-circle]",
@@ -401,7 +406,7 @@ export function Timeline<TItem extends TimelineDataItem>(
         window.removeEventListener("resize", handleVerticalResize);
       };
     },
-    [shouldRevealItems],
+    [focusedItemId, focusPhase, isDesktopViewport, shouldRevealItems],
   );
 
   const focusListClass =
@@ -442,15 +447,18 @@ export function Timeline<TItem extends TimelineDataItem>(
   }
 
   return (
-    <article ref={articleRef} className="relative h-full px-5 text-white">
+    <article
+      ref={articleRef}
+      className={`relative px-5 max-[1024px]:px-0 text-white ${isDesktopViewport ? "h-full" : "h-auto"}`}
+    >
       <span
-        className="pointer-events-none absolute top-0 left-[calc(70px+0.25rem)] z-0 w-[2px] bg-[color:var(--color-accent)]/70"
+        className="pointer-events-none absolute top-0 left-[calc(70px+0.25rem)] max-[1024px]:left-[calc(50px+0.25rem)] z-0 w-[2px] bg-[color:var(--color-accent)]/70"
         style={{ height: `${lineHeight}px` }}
       />
 
       <ul
         ref={listRef}
-        className={`timeline-list relative z-10 h-full px-1 pt-[25px] pb-[25px] ${shouldRevealItems ? "timeline-list--active" : ""} ${focusListClass} flex flex-col justify-start`}
+        className={`timeline-list relative z-10 px-1 pt-[25px] pb-[25px] ${isDesktopViewport ? "h-full" : "h-auto"} ${shouldRevealItems ? "timeline-list--active" : ""} ${focusListClass} flex flex-col justify-start max-[1024px]:gap-4`}
       >
         {items.map(function (item, index) {
           const isTargetItem = hasFocusedItem && focusedItemId === item.id;

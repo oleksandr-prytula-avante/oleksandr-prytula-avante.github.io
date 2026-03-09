@@ -20,20 +20,45 @@ export type EducationTimelineItem = {
 export type EducationTextKeys = {
   institution: ETranslationKey;
   program: ETranslationKey;
+  highlights?: ETranslationKey[];
 };
 
 export const EDUCATION_TEXT_KEYS_BY_ID: Record<EEducation, EducationTextKeys> = {
   [EEducation.Duet]: {
     institution: ETranslationKey.EducationDuetUniversityName,
     program: ETranslationKey.EducationDuetDegree,
+    highlights: [
+      ETranslationKey.EducationDuetHighlight1,
+      ETranslationKey.EducationDuetHighlight2,
+      ETranslationKey.EducationDuetHighlight3,
+      ETranslationKey.EducationDuetHighlight4,
+      ETranslationKey.EducationDuetHighlight5,
+      ETranslationKey.EducationDuetHighlight6,
+    ],
   },
   [EEducation.BinaryStudio]: {
     institution: ETranslationKey.EducationBinaryStudioTitle,
     program: ETranslationKey.EducationBinaryStudioProgram,
+    highlights: [
+      ETranslationKey.EducationBinaryStudioHighlight1,
+      ETranslationKey.EducationBinaryStudioHighlight2,
+      ETranslationKey.EducationBinaryStudioHighlight3,
+      ETranslationKey.EducationBinaryStudioHighlight4,
+      ETranslationKey.EducationBinaryStudioHighlight5,
+    ],
   },
   [EEducation.Knu]: {
     institution: ETranslationKey.EducationKnuUniversityName,
     program: ETranslationKey.EducationKnuDegree,
+    highlights: [
+      ETranslationKey.EducationKnuHighlight1,
+      ETranslationKey.EducationKnuHighlight2,
+      ETranslationKey.EducationKnuHighlight3,
+      ETranslationKey.EducationKnuHighlight4,
+      ETranslationKey.EducationKnuHighlight5,
+      ETranslationKey.EducationKnuHighlight6,
+      ETranslationKey.EducationKnuHighlight7,
+    ],
   },
 };
 
