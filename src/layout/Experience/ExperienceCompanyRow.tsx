@@ -2,6 +2,7 @@ import { getExperienceTextKeys } from "../../utils/experience";
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { useI18n } from "../../hooks/useI18n";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
 
 type ExperienceCompanyRowProps<TItem extends TimelineDataItem> = {
@@ -17,8 +18,9 @@ export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
   const companyName = i18n.t(textKeys.companyName);
 
   return (
-    <div className="flex min-w-0 items-center gap-2">
-      <ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />
+    <TimelineRow
+      icon={<ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />}
+    >
       <a
         href={item.companyUrl}
         target="_blank"
@@ -32,6 +34,6 @@ export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
           hideLastPartOnMobile
         />
       </a>
-    </div>
+    </TimelineRow>
   );
 }

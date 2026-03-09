@@ -1,9 +1,10 @@
-import { Children, useEffect, useMemo, useState } from "react";
+import { Children, useMemo } from "react";
 import type { ReactNode } from "react";
 
 import { SECTION_NAV_ITEMS } from "../constants/sections";
 import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../constants/mediaQueries";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ESection, toSectionHash } from "../utils/sections";
 
 type SectionCarouselProps = {
@@ -15,33 +16,10 @@ const FIRST_SLIDE_INDEX = 0;
 const SLIDE_WIDTH_PERCENT = 100;
 export function SectionCarousel({ children }: SectionCarouselProps) {
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
-  const [isCarouselAnimationEnabled, setIsCarouselAnimationEnabled] = useState(
-    function () {
-      if (typeof window === "undefined") {
-        return true;
-      }
-
-      return window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY).matches;
-    },
+  const isCarouselAnimationEnabled = useMediaQuery(
+    MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
+    true,
   );
-
-  useEffect(function () {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY);
-
-    function handleViewportChange(event: MediaQueryListEvent) {
-      setIsCarouselAnimationEnabled(event.matches);
-    }
-
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return function () {
-      mediaQuery.removeEventListener("change", handleViewportChange);
-    };
-  }, []);
 
   const slideChildren = useMemo(
     function () {

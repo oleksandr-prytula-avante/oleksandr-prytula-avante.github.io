@@ -1,4 +1,5 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { getEducationTextKeys } from "../../utils/education";
 import { useI18n } from "../../hooks/useI18n";
 import { EducationCompanyIcon } from "../../components/icons/EducationCompanyIcon";
@@ -15,8 +16,9 @@ export function EducationCompanyRow<TItem extends TimelineDataItem>(
   const textKeys = getEducationTextKeys(item.id);
 
   return (
-    <div className="flex min-w-0 items-center gap-2">
-      <EducationCompanyIcon className="h-5 w-5 shrink-0 text-white" />
+    <TimelineRow
+      icon={<EducationCompanyIcon className="h-5 w-5 shrink-0 text-white" />}
+    >
       <a
         href={item.companyUrl}
         target="_blank"
@@ -25,6 +27,6 @@ export function EducationCompanyRow<TItem extends TimelineDataItem>(
       >
         {i18n.t(textKeys.institution)}
       </a>
-    </div>
+    </TimelineRow>
   );
 }

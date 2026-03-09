@@ -1,5 +1,6 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
-import { PipeSeparatedText } from "../../components/PipeSeparatedText";
+import { PipeSeparator } from "../../components/PipeSeparator";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { EducationStatusIcon } from "../../components/icons/EducationStatusIcon";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
@@ -23,18 +24,27 @@ export function EducationStatusRow<
     String(i18n.locale),
   );
 
-  const gradeText = item.grade !== undefined ? `Grade: ${item.grade}` : null;
-  const statusText = gradeText
-    ? `${periodLabel.dateRange} | ${periodLabel.duration} | ${gradeText}`
-    : `${periodLabel.dateRange} | ${periodLabel.duration}`;
+  let gradeText: string | null = null;
+
+  if (item.grade !== undefined) {
+    gradeText = `${i18n.t(ETranslationKey.EducationGradeLabel)}: ${item.grade}`;
+  }
 
   return (
-    <>
-      <EducationStatusIcon className="h-5 w-5 shrink-0 text-white" />
-      <PipeSeparatedText
-        value={statusText}
-        className="inline-flex min-w-0 max-w-full items-center gap-2 truncate"
-      />
-    </>
+    <TimelineRow
+      icon={<EducationStatusIcon className="h-5 w-5 shrink-0 text-white" />}
+    >
+      <span className="inline-flex min-w-0 max-w-full items-center gap-2 truncate">
+        <span className="truncate">{periodLabel.dateRange}</span>
+        <PipeSeparator className="text-white/60" />
+        <span className="truncate">{periodLabel.duration}</span>
+        {gradeText ? (
+          <>
+            <PipeSeparator className="text-white/60" />
+            <span className="truncate">{gradeText}</span>
+          </>
+        ) : null}
+      </span>
+    </TimelineRow>
   );
 }

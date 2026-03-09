@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { randomBetween } from "../../utils/random";
 
 import "./LinesBackground.css";
@@ -58,31 +59,7 @@ function generateHorizontalLineStyles(): LineStyle[] {
 }
 
 export function LinesBackground() {
-  const [isDesktopViewport, setIsDesktopViewport] = useState(function () {
-    if (typeof window === "undefined") {
-      return true;
-    }
-
-    return window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY).matches;
-  });
-
-  useEffect(function () {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
-
-    function handleViewportChange(event: MediaQueryListEvent) {
-      setIsDesktopViewport(event.matches);
-    }
-
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return function () {
-      mediaQuery.removeEventListener("change", handleViewportChange);
-    };
-  }, []);
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
 
   const verticalLines = useMemo(
     function () {

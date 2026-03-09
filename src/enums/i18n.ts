@@ -63,6 +63,7 @@ export const enum ETranslationKey {
   EducationKnuHighlight5 = "education.knu.highlight5",
   EducationKnuHighlight6 = "education.knu.highlight6",
   EducationKnuHighlight7 = "education.knu.highlight7",
+  EducationGradeLabel = "education.gradeLabel",
 
   ExperiencePresent = "experience.present",
   TimelineExpandDetails = "timeline.expandDetails",

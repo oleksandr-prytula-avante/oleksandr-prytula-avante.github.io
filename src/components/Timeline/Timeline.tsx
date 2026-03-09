@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { EFocusPhase } from "../../enums/timeline";
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ESection, toSectionHash } from "../../utils/sections";
 import { TimelineItem } from "./TimelineItem";
 import type { TimelineDataItem } from "./TimelineItem";
@@ -13,10 +14,8 @@ const TIMELINE_REVEAL_STAGGER_MS = 240;
 const TIMELINE_REVEAL_DURATION_MS = 460;
 const TIMELINE_FOCUS_TRANSITION_MS = 460;
 const TIMELINE_VISIBILITY_OPACITY_THRESHOLD = 0.35;
-const TIMELINE_LINE_CIRCLE_OFFSET_PX = 25;
 const TIMELINE_EMPTY_STATE_VALUE = 0;
 const TIMELINE_FIRST_ITEM_INDEX = 0;
-const TIMELINE_LAST_ITEM_OFFSET = 1;
 
 type TimelineProps<TItem extends TimelineDataItem> = {
   items: TItem[];
@@ -27,6 +26,15 @@ type TimelineProps<TItem extends TimelineDataItem> = {
   showToggle?: boolean;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
+};
+
+type TimelineItemRenderState = {
+  isTargetItem: boolean;
+  isFocused: boolean;
+  isExpanded: boolean;
+  isDimmed: boolean;
+  shouldHideRightContent: boolean;
+  isToggleLocked: boolean;
 };
 
 export function Timeline<TItem extends TimelineDataItem>(
@@ -49,13 +57,7 @@ export function Timeline<TItem extends TimelineDataItem>(
   const [isInitialRevealComplete, setIsInitialRevealComplete] = useState(false);
   const [hasPlayedInitialReveal, setHasPlayedInitialReveal] = useState(false);
   const [lineHeight, setLineHeight] = useState(TIMELINE_EMPTY_STATE_VALUE);
-  const [isDesktopViewport, setIsDesktopViewport] = useState(function () {
-    if (typeof window === "undefined") {
-      return true;
-    }
-
-    return window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY).matches;
-  });
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
   const [focusShiftById, setFocusShiftById] = useState<Record<
     string,
     number
@@ -66,24 +68,6 @@ export function Timeline<TItem extends TimelineDataItem>(
   const isTimelineActive =
     !isDesktopViewport || activeHash === activeSectionHash;
   const hasFocusedItem = focusedItemId !== null;
-
-  useEffect(function () {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
-
-    function handleViewportChange(event: MediaQueryListEvent) {
-      setIsDesktopViewport(event.matches);
-    }
-
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return function () {
-      mediaQuery.removeEventListener("change", handleViewportChange);
-    };
-  }, []);
 
   function resetFocusState() {
     setFocusedItemId(null);
@@ -336,51 +320,19 @@ export function Timeline<TItem extends TimelineDataItem>(
 
   useEffect(
     function () {
-      const articleElement = articleRef.current;
       const listElement = listRef.current;
 
-      if (!articleElement || !listElement) {
+      if (!listElement) {
         setLineHeight(TIMELINE_EMPTY_STATE_VALUE);
         return;
       }
 
-      const observedArticle = articleElement;
       const observedList = listElement;
 
       function measureLineGeometry() {
-        if (!isDesktopViewport) {
-          setLineHeight(observedList.scrollHeight);
-          return;
-        }
-
-        const circleElements = Array.from(
-          observedList.querySelectorAll<HTMLElement>(
-            ".timeline-item [data-timeline-circle]",
-          ),
+        setLineHeight(
+          Math.max(observedList.scrollHeight, TIMELINE_EMPTY_STATE_VALUE),
         );
-
-        if (circleElements.length === TIMELINE_EMPTY_STATE_VALUE) {
-          setLineHeight(TIMELINE_EMPTY_STATE_VALUE);
-          return;
-        }
-
-        const articleRect = observedArticle.getBoundingClientRect();
-        const firstRect =
-          circleElements[TIMELINE_FIRST_ITEM_INDEX].getBoundingClientRect();
-        const lastRect =
-          circleElements[
-            circleElements.length - TIMELINE_LAST_ITEM_OFFSET
-          ].getBoundingClientRect();
-        const bottom =
-          lastRect.bottom - articleRect.top + TIMELINE_LINE_CIRCLE_OFFSET_PX;
-        const top =
-          firstRect.top - articleRect.top - TIMELINE_LINE_CIRCLE_OFFSET_PX;
-        const nextLineHeight = Math.max(
-          bottom - top,
-          TIMELINE_EMPTY_STATE_VALUE,
-        );
-
-        setLineHeight(nextLineHeight);
       }
 
       measureLineGeometry();
@@ -417,6 +369,7 @@ export function Timeline<TItem extends TimelineDataItem>(
         : focusPhase === EFocusPhase.Exiting
           ? `timeline-list--focus-exiting ${isFocusExitActive ? "timeline-list--focus-exit-active" : ""}`
           : "";
+          
   const isFocusedPhase = focusPhase === EFocusPhase.Focused;
   const isTransitionPhase =
     focusPhase === EFocusPhase.Preparing ||
@@ -446,6 +399,61 @@ export function Timeline<TItem extends TimelineDataItem>(
     };
   }
 
+  function getTimelineItemRenderState(itemId: string): TimelineItemRenderState {
+    const isTargetItem = hasFocusedItem && focusedItemId === itemId;
+    const isFocused = isFocusedPhase && isTargetItem;
+    const isExpanded = isFocused;
+    const isDimmed = isFocusedPhase && hasFocusedItem && !isTargetItem;
+    const isTargetItemMoving = isTargetItem && isTransitionPhase;
+    const shouldHideRightContent =
+      (hasFocusedItem && !isTargetItem) || isTargetItemMoving;
+    const isToggleLocked =
+      !isInitialRevealComplete ||
+      isTransitionPhase ||
+      (isFocusedPhase && !isTargetItem);
+
+    return {
+      isTargetItem,
+      isFocused,
+      isExpanded,
+      isDimmed,
+      shouldHideRightContent,
+      isToggleLocked,
+    };
+  }
+
+  function renderTimelineItem(item: TItem, index: number) {
+    const itemState = getTimelineItemRenderState(item.id);
+
+    return (
+      <TimelineItem
+        key={item.id}
+        item={item}
+        FirstRowComponent={FirstRowComponent}
+        SecondRowComponent={SecondRowComponent}
+        ThirdRowComponent={ThirdRowComponent}
+        showToggle={showToggle}
+        onSkillEnter={onSkillEnter}
+        onSkillLeave={onSkillLeave}
+        shouldHideRightContent={itemState.shouldHideRightContent}
+        hasActiveItem={hasFocusedItem}
+        isActiveItem={itemState.isTargetItem}
+        isExpanded={itemState.isExpanded}
+        isFocused={itemState.isFocused}
+        isDimmed={itemState.isDimmed}
+        itemIndex={index}
+        focusShiftPx={focusShiftById?.[item.id] ?? TIMELINE_EMPTY_STATE_VALUE}
+        animationDelayMs={index * TIMELINE_REVEAL_STAGGER_MS}
+        isToggleDisabled={itemState.isToggleLocked}
+        onToggle={createHandleTimelineItemToggle(
+          item.id,
+          itemState.isTargetItem,
+          itemState.isToggleLocked,
+        )}
+      />
+    );
+  }
+
   return (
     <article
       ref={articleRef}
@@ -460,50 +468,7 @@ export function Timeline<TItem extends TimelineDataItem>(
         ref={listRef}
         className={`timeline-list relative z-10 px-1 pt-[25px] pb-[25px] ${isDesktopViewport ? "h-full" : "h-auto"} ${shouldRevealItems ? "timeline-list--active" : ""} ${focusListClass} flex flex-col justify-start max-[1024px]:gap-4`}
       >
-        {items.map(function (item, index) {
-          const isTargetItem = hasFocusedItem && focusedItemId === item.id;
-          const isFocused = isFocusedPhase && isTargetItem;
-          const isExpanded = isFocused;
-          const isDimmed = isFocusedPhase && hasFocusedItem && !isTargetItem;
-          const isTargetItemMoving = isTargetItem && isTransitionPhase;
-          const shouldHideRightContent =
-            (hasFocusedItem && !isTargetItem) || isTargetItemMoving;
-          const isToggleLocked =
-            !isInitialRevealComplete ||
-            isTransitionPhase ||
-            (isFocusedPhase && !isTargetItem);
-
-          return (
-            <TimelineItem
-              key={item.id}
-              item={item}
-              FirstRowComponent={FirstRowComponent}
-              SecondRowComponent={SecondRowComponent}
-              ThirdRowComponent={ThirdRowComponent}
-              showToggle={showToggle}
-              onSkillEnter={onSkillEnter}
-              onSkillLeave={onSkillLeave}
-              shouldHideRightContent={shouldHideRightContent}
-              hasActiveItem={hasFocusedItem}
-              isActiveItem={isTargetItem}
-              isExpanded={isExpanded}
-              isFocused={isFocused}
-              isDimmed={isDimmed}
-              isInFocusedMode={isFocused}
-              itemIndex={index}
-              focusShiftPx={
-                focusShiftById?.[item.id] ?? TIMELINE_EMPTY_STATE_VALUE
-              }
-              animationDelayMs={index * TIMELINE_REVEAL_STAGGER_MS}
-              isToggleDisabled={isToggleLocked}
-              onToggle={createHandleTimelineItemToggle(
-                item.id,
-                isTargetItem,
-                isToggleLocked,
-              )}
-            />
-          );
-        })}
+        {items.map(renderTimelineItem)}
       </ul>
     </article>
   );

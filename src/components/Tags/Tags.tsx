@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 import {
   COMMON_SKILL_TAGS,
@@ -19,33 +19,10 @@ type TagsProps = {
 
 export function Tags(props: TagsProps) {
   const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
-  const [isTagAnimationEnabled, setIsTagAnimationEnabled] = useState(
-    function () {
-      if (typeof window === "undefined") {
-        return true;
-      }
-
-      return window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY).matches;
-    },
+  const isTagAnimationEnabled = useMediaQuery(
+    MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
+    true,
   );
-
-  useEffect(function () {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY);
-
-    function handleViewportChange(event: MediaQueryListEvent) {
-      setIsTagAnimationEnabled(event.matches);
-    }
-
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return function () {
-      mediaQuery.removeEventListener("change", handleViewportChange);
-    };
-  }, []);
 
   return (
     <ul className="mt-4 flex flex-wrap gap-x-[9.25px] gap-y-[17.25px]">

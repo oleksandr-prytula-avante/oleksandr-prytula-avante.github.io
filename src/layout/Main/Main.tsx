@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ReactNode } from "react";
 
 import { Header } from "../../components/Header";
@@ -12,6 +12,7 @@ import {
 } from "../../constants/mediaQueries";
 import { SECTION_NAV_ITEMS } from "../../constants/sections";
 import { useI18n } from "../../hooks/useI18n";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ETranslationKey } from "../../i18n/types";
 import { ESection, toSectionHash } from "../../utils/sections";
 import { About } from "../About";
@@ -33,33 +34,10 @@ export function Main() {
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [isHeroPrintingInProgress, setIsHeroPrintingInProgress] =
     useState(true);
-  const [isRevealAnimationEnabled, setIsRevealAnimationEnabled] = useState(
-    function () {
-      if (typeof window === "undefined") {
-        return true;
-      }
-
-      return window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY).matches;
-    },
+  const isRevealAnimationEnabled = useMediaQuery(
+    MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
+    true,
   );
-
-  useEffect(function () {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY);
-
-    function handleViewportChange(event: MediaQueryListEvent) {
-      setIsRevealAnimationEnabled(event.matches);
-    }
-
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return function () {
-      mediaQuery.removeEventListener("change", handleViewportChange);
-    };
-  }, []);
 
   function handleSkillLeave() {
     setHoveredSkill(null);
@@ -98,7 +76,12 @@ export function Main() {
 
   function renderSectionContent(href: string) {
     const sectionRenderer = sectionRendererByHash[href];
-    return sectionRenderer ? sectionRenderer() : null;
+
+    if (!sectionRenderer) {
+      return null;
+    }
+
+    return sectionRenderer();
   }
 
   function getSectionTitleKey(sectionId: ESection): ETranslationKey {
@@ -197,7 +180,8 @@ export function Main() {
                       className="w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-8"
                     >
                       <SectionHeading
-                        className="mb-4 hidden max-[1024px]:flex"
+                        className="mb-6 hidden max-[1024px]:flex"
+                        lineClassName="ml-6 inline-block h-[2px] flex-1 origin-left bg-[color:var(--color-accent)]/70 transition-transform duration-500 ease-out"
                         animateLine
                         isLineVisible={
                           isSecondaryContentVisible || !isRevealAnimationEnabled

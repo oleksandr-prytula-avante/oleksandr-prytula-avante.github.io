@@ -12,9 +12,9 @@ import {
   TAG_REVEAL_STAGGER_MS,
 } from "../components/Tags/Tags";
 import { useI18n } from "../hooks/useI18n";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
-import { SectionHeading } from "../components/SectionHeading";
 
 const ORANGE_LINE_REVEAL_DURATION_MS = 500;
 const NAME_TYPING_START_EXTRA_DELAY_MS = 20;
@@ -31,6 +31,8 @@ const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
 const DEFAULT_CHAR_COUNT = 0;
 const ENABLED_TAB_INDEX = 0;
 const DISABLED_TAB_INDEX = -1;
+const SCALE_X_VISIBLE = "scaleX(1)";
+const SCALE_X_HIDDEN = "scaleX(0)";
 const ENGINEERING_TOOLKIT_EMPTY_LENGTH = 0;
 const NAME_TYPING_START_DELAY_MS =
   ORANGE_LINE_REVEAL_DURATION_MS + NAME_TYPING_START_EXTRA_DELAY_MS;
@@ -75,22 +77,12 @@ export function Info(props: InfoProps) {
     useState(DEFAULT_CHAR_COUNT);
   const [isCvDownloadTypingStarted, setIsCvDownloadTypingStarted] =
     useState(false);
-  const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(
-    function () {
-      if (typeof window === "undefined") {
-        return true;
-      }
-
-      return window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY).matches;
-    },
+  const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(true);
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
+  const isAnimationViewport = useMediaQuery(
+    MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
+    true,
   );
-  const [isDesktopViewport, setIsDesktopViewport] = useState(function () {
-    if (typeof window === "undefined") {
-      return true;
-    }
-
-    return window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY).matches;
-  });
 
   const hiText = i18n.t(ETranslationKey.HeroHiIm);
   const nameText = i18n.t(ETranslationKey.HeroName);
@@ -185,43 +177,14 @@ export function Info(props: InfoProps) {
     [isHeroPrintingInProgress, onHeroPrintingStateChange],
   );
 
-  useEffect(function () {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(MIN_ANIMATED_VIEWPORT_MEDIA_QUERY);
-
-    function handleViewportChange(event: MediaQueryListEvent) {
-      if (!event.matches) {
+  useEffect(
+    function () {
+      if (!isAnimationViewport) {
         setShouldPlayHeroAnimation(false);
       }
-    }
-
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return function () {
-      mediaQuery.removeEventListener("change", handleViewportChange);
-    };
-  }, []);
-
-  useEffect(function () {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
-
-    function handleViewportChange(event: MediaQueryListEvent) {
-      setIsDesktopViewport(event.matches);
-    }
-
-    mediaQuery.addEventListener("change", handleViewportChange);
-
-    return function () {
-      mediaQuery.removeEventListener("change", handleViewportChange);
-    };
-  }, []);
+    },
+    [isAnimationViewport],
+  );
 
   useEffect(
     function () {
@@ -515,17 +478,18 @@ export function Info(props: InfoProps) {
 
   return (
     <div className="flex h-full flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
-      <SectionHeading
-        className="mb-4"
-        animateLine
-        isLineVisible={isLineVisible}
-        title={
-          <>
-            {hiText.slice(0, visibleHiChars)}
-            {hiTypingCursor}
-          </>
-        }
-      />
+      <div className="mb-4 flex items-center">
+        <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
+          {hiText.slice(0, visibleHiChars)}
+          {hiTypingCursor}
+        </span>
+        <span
+          className="ml-6 inline-block h-[4px] flex-1 origin-left bg-[color:var(--color-accent)] transition-transform duration-500 ease-out"
+          style={{
+            transform: isLineVisible ? SCALE_X_VISIBLE : SCALE_X_HIDDEN,
+          }}
+        />
+      </div>
 
       <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl max-[1024px]:whitespace-nowrap max-[639px]:whitespace-normal">
         <span className="block max-[1024px]:inline max-[639px]:block">

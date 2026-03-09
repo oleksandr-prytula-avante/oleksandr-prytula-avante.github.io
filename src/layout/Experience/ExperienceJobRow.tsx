@@ -2,7 +2,8 @@ import { getExperienceTextKeys } from "../../utils/experience";
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
-import { PipeSeparatedText } from "../../components/PipeSeparatedText";
+import { PipeSeparator } from "../../components/PipeSeparator";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
 import { buildPeriodLabel } from "../../utils/time";
 
@@ -22,16 +23,19 @@ export function ExperienceJobRow<TItem extends TimelineDataItem>(
     i18n.t(ETranslationKey.ExperiencePresent),
     String(i18n.locale),
   );
-  const detailsText = `${i18n.t(textKeys.jobTitle)} | ${periodLabel.dateRange} | ${periodLabel.duration}`;
+  const jobTitle = i18n.t(textKeys.jobTitle);
 
   return (
-    <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
-      <ExperienceJobTitleIcon className="h-5 w-5 shrink-0 text-white" />
-      <PipeSeparatedText
-        hideLastPartOnMobile
-        value={detailsText}
-        className="inline-flex min-w-0 max-w-full items-center gap-2 truncate"
-      />
-    </div>
+    <TimelineRow
+      icon={<ExperienceJobTitleIcon className="h-5 w-5 shrink-0 text-white" />}
+    >
+      <span className="inline-flex min-w-0 max-w-full items-center gap-2 truncate">
+        <span className="truncate">{jobTitle}</span>
+        <PipeSeparator className="text-white/60" />
+        <span className="truncate">{periodLabel.dateRange}</span>
+        <PipeSeparator className="text-white/60 max-[768px]:hidden" />
+        <span className="truncate max-[768px]:hidden">{periodLabel.duration}</span>
+      </span>
+    </TimelineRow>
   );
 }

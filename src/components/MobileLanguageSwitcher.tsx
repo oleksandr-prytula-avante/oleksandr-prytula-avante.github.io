@@ -10,7 +10,7 @@ export function MobileLanguageSwitcher(props: MobileLanguageSwitcherProps) {
   const i18n = useI18n();
 
   return (
-    <div className="mt-8 flex flex-wrap items-center gap-3">
+    <div className="mt-8 flex w-full flex-wrap items-center justify-center gap-3">
       {i18n.languageOptions.map(function (nextLocale) {
         const isActiveLocale = nextLocale === i18n.locale;
 

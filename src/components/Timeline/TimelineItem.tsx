@@ -39,7 +39,6 @@ type TimelineItemProps<TItem extends TimelineDataItem> = {
   isExpanded: boolean;
   isFocused: boolean;
   isDimmed: boolean;
-  isInFocusedMode: boolean;
   itemIndex: number;
   focusShiftPx: number;
   animationDelayMs: number;
@@ -64,7 +63,6 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     isExpanded,
     isFocused,
     isDimmed,
-    isInFocusedMode,
     itemIndex,
     focusShiftPx,
     animationDelayMs,
@@ -78,11 +76,30 @@ export function TimelineItem<TItem extends TimelineDataItem>(
       : INACTIVE_ITEM_Z_INDEX
     : undefined;
   const itemHeightClass = showToggle
-    ? isInFocusedMode
+    ? isFocused
       ? "h-full"
       : "h-[25%] max-[1024px]:h-auto"
     : "h-auto";
   const contentAlignmentClass = isFocused ? "justify-center" : "justify-start";
+  const contentVisibilityClass = shouldHideRightContent
+    ? "pointer-events-none invisible opacity-0 transition-none"
+    : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out";
+  const timelineItemClassName = [
+    "timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-24",
+    itemHeightClass,
+    isFocused ? "timeline-item--focused" : "",
+    isDimmed ? "timeline-item--hidden" : "",
+    isExpanded ? "timeline-item--expanded" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const contentClassName = [
+    "flex h-full min-h-0 flex-col text-sm text-white/95 max-[1024px]:h-auto",
+    contentAlignmentClass,
+    contentVisibilityClass,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const isEducationItem = item.id.startsWith("education-");
   let companyName: string;
@@ -114,6 +131,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
       return leftIsCommon ? SORT_LEFT_FIRST : SORT_RIGHT_FIRST;
     });
+    
   let localizedHighlightsList = null;
 
   if (localizedHighlights.length > 0) {
@@ -166,8 +184,9 @@ export function TimelineItem<TItem extends TimelineDataItem>(
   }
 
   let expandedContent = null;
+  let toggleButton = null;
 
-  if (isExpanded) {
+  if (isExpanded && showToggle) {
     expandedContent = (
       <div
         id={descriptionId}
@@ -179,9 +198,35 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     );
   }
 
+  if (showToggle) {
+    toggleButton = (
+      <button
+        type="button"
+        onClick={onToggle}
+        disabled={isToggleDisabled}
+        aria-expanded={isExpanded}
+        aria-controls={descriptionId}
+        className={`inline-flex items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
+          isToggleDisabled
+            ? "cursor-not-allowed opacity-60"
+            : "cursor-pointer hover:text-white"
+        } max-[640px]:hidden`}
+      >
+        <span>
+          {isExpanded
+            ? i18n.t(ETranslationKey.TimelineHideDetails)
+            : i18n.t(ETranslationKey.TimelineExpandDetails)}
+        </span>
+        <TimelineExpandIcon
+          className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
+        />
+      </button>
+    );
+  }
+
   return (
     <li
-      className={`timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-22 ${itemHeightClass} ${isFocused ? "timeline-item--focused" : ""} ${isDimmed ? "timeline-item--hidden" : ""} ${isExpanded ? "timeline-item--expanded" : ""}`}
+      className={timelineItemClassName}
       data-timeline-item-id={item.id}
       style={
         {
@@ -208,13 +253,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         />
       </a>
 
-      <div
-        className={`flex h-full min-h-0 flex-col ${contentAlignmentClass} pb-8 text-sm text-white/95 max-[1024px]:h-auto ${
-          shouldHideRightContent
-            ? "pointer-events-none invisible opacity-0 transition-none"
-            : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out"
-        }`}
-      >
+      <div className={contentClassName}>
         <div className="shrink-0 space-y-2">
           <FirstRowComponent item={item} />
 
@@ -222,34 +261,10 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
           <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
             <ThirdRowComponent item={item} />
-
-            {showToggle ? (
-              <button
-                type="button"
-                onClick={onToggle}
-                disabled={isToggleDisabled}
-                aria-expanded={isExpanded}
-                aria-controls={descriptionId}
-                className={`inline-flex items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
-                  isToggleDisabled
-                    ? "cursor-not-allowed opacity-60"
-                    : "cursor-pointer hover:text-white"
-                } max-[640px]:hidden`}
-              >
-                <span>
-                  {isExpanded
-                    ? i18n.t(ETranslationKey.TimelineHideDetails)
-                    : i18n.t(ETranslationKey.TimelineExpandDetails)}
-                </span>
-                <TimelineExpandIcon
-                  className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
-                />
-              </button>
-            ) : null}
+            {toggleButton}
           </div>
         </div>
-
-        {showToggle ? expandedContent : null}
+        {expandedContent}
       </div>
     </li>
   );
