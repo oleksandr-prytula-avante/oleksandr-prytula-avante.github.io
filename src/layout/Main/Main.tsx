@@ -11,8 +11,11 @@ import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries"
 import { SECTION_NAV_ITEMS } from "../../constants/sections";
 import { useI18n } from "../../hooks/useI18n";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { ETranslationKey } from "../../i18n/types";
-import { ESection, toSectionHash } from "../../utils/sections";
+import {
+  ESection,
+  getSectionTitleTranslationKey,
+  toSectionHash,
+} from "../../utils/sections";
 import { About } from "../About";
 import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
@@ -26,6 +29,37 @@ const SECTION_IDS_IN_ORDER = [
   ESection.Education,
   ESection.Projects,
 ] as const;
+
+function getDesktopSectionRevealClassName(
+  isRevealAnimationEnabled: boolean,
+  isSecondaryContentVisible: boolean,
+): string {
+  if (!isRevealAnimationEnabled) {
+    return isSecondaryContentVisible
+      ? "flex h-full min-h-0 flex-col opacity-100"
+      : "flex h-full min-h-0 flex-col pointer-events-none opacity-0";
+  }
+
+  return isSecondaryContentVisible
+    ? "flex h-full min-h-0 flex-col transition-all duration-500 ease-out translate-y-0 opacity-100"
+    : "flex h-full min-h-0 flex-col transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0";
+}
+
+function getMobileSectionRevealClassName(
+  isRevealAnimationEnabled: boolean,
+  isSecondaryContentVisible: boolean,
+): string {
+  if (!isRevealAnimationEnabled) {
+    return isSecondaryContentVisible
+      ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 opacity-100"
+      : "flex w-full flex-col gap-10 max-[1024px]:gap-0 pointer-events-none opacity-0";
+  }
+
+  return isSecondaryContentVisible
+    ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out translate-y-0 opacity-100"
+    : "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0";
+}
+
 export function Main() {
   const i18n = useI18n();
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -45,6 +79,7 @@ export function Main() {
     onSkillEnter: setHoveredSkill,
     onSkillLeave: handleSkillLeave,
   };
+
   const aboutHash = toSectionHash(ESection.About);
   const experienceHash = toSectionHash(ESection.Experience);
   const educationHash = toSectionHash(ESection.Education);
@@ -56,8 +91,7 @@ export function Main() {
         <About
           key={aboutHash}
           hoveredSkill={hoveredSkill}
-          onSkillEnter={setHoveredSkill}
-          onSkillLeave={handleSkillLeave}
+          {...timelineSkillHandlers}
         />
       );
     },
@@ -82,22 +116,6 @@ export function Main() {
     return sectionRenderer();
   }
 
-  function getSectionTitleKey(sectionId: ESection): ETranslationKey {
-    if (sectionId === ESection.About) {
-      return ETranslationKey.NavAbout;
-    }
-
-    if (sectionId === ESection.Experience) {
-      return ETranslationKey.NavExperience;
-    }
-
-    if (sectionId === ESection.Education) {
-      return ETranslationKey.NavEducation;
-    }
-
-    return ETranslationKey.NavProjects;
-  }
-
   const infoContent = (
     <Info
       hoveredSkill={hoveredSkill}
@@ -108,20 +126,14 @@ export function Main() {
     />
   );
   const isSecondaryContentVisible = showSecondaryContent;
-  const sectionRevealClassName = isRevealAnimationEnabled
-    ? isSecondaryContentVisible
-      ? "flex h-full min-h-0 flex-col transition-all duration-500 ease-out translate-y-0 opacity-100"
-      : "flex h-full min-h-0 flex-col transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0"
-    : isSecondaryContentVisible
-      ? "flex h-full min-h-0 flex-col opacity-100"
-      : "flex h-full min-h-0 flex-col pointer-events-none opacity-0";
-  const mobileSectionRevealClassName = isRevealAnimationEnabled
-    ? isSecondaryContentVisible
-      ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out translate-y-0 opacity-100"
-      : "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0"
-    : isSecondaryContentVisible
-      ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 opacity-100"
-      : "flex w-full flex-col gap-10 max-[1024px]:gap-0 pointer-events-none opacity-0";
+  const sectionRevealClassName = getDesktopSectionRevealClassName(
+    isRevealAnimationEnabled,
+    isSecondaryContentVisible,
+  );
+  const mobileSectionRevealClassName = getMobileSectionRevealClassName(
+    isRevealAnimationEnabled,
+    isSecondaryContentVisible,
+  );
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1024px]:overflow-y-auto max-[1024px]:px-18 max-[1024px]:pb-10 max-[768px]:px-12 max-[640px]:px-8">
@@ -180,7 +192,7 @@ export function Main() {
                         isLineVisible={
                           isSecondaryContentVisible || !isRevealAnimationEnabled
                         }
-                        title={i18n.t(getSectionTitleKey(sectionId))}
+                        title={i18n.t(getSectionTitleTranslationKey(sectionId))}
                       />
                       {section}
                     </section>

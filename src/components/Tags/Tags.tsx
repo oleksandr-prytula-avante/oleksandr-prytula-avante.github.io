@@ -11,6 +11,7 @@ import "./Tags.css";
 
 export const TAG_REVEAL_STAGGER_MS = 140;
 export const TAG_REVEAL_DURATION_MS = 640;
+
 type TagsProps = {
   hoveredSkill?: string | null;
   onSkillEnter: (skill: string) => void;
