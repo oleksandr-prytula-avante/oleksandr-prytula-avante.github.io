@@ -28,7 +28,9 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
                 : "inline-flex w-full cursor-pointer py-2 no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
           }
           href={isItemDisabled ? undefined : href}
-          aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
+          aria-current={
+            isItemDisabled ? undefined : isActive ? "page" : undefined
+          }
           aria-disabled={isItemDisabled || undefined}
           tabIndex={isItemDisabled ? -1 : undefined}
           onClick={onItemClick}
@@ -49,7 +51,9 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
               : "group inline-flex w-[8rem] cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
         }
         href={isItemDisabled ? undefined : href}
-        aria-current={isItemDisabled ? undefined : isActive ? "page" : undefined}
+        aria-current={
+          isItemDisabled ? undefined : isActive ? "page" : undefined
+        }
         aria-disabled={isItemDisabled || undefined}
         tabIndex={isItemDisabled ? -1 : undefined}
       >

@@ -34,13 +34,14 @@ export function Tags(props: TagsProps) {
           <li
             key={label}
             className={isTagAnimationEnabled ? "tag-reveal" : undefined}
-            style=
-              {isTagAnimationEnabled
+            style={
+              isTagAnimationEnabled
                 ? {
                     animationDelay: `${index * TAG_REVEAL_STAGGER_MS}ms`,
                     animationDuration: `${TAG_REVEAL_DURATION_MS}ms`,
                   }
-                : undefined}
+                : undefined
+            }
           >
             <Tag
               label={label}

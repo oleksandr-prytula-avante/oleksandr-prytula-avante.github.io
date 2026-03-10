@@ -47,7 +47,9 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
         return (
           <Fragment key={`${part}-${index}`}>
             {separator}
-            <span className={shouldHideOnMobile ? "max-[768px]:hidden" : undefined}>
+            <span
+              className={shouldHideOnMobile ? "max-[768px]:hidden" : undefined}
+            >
               {part}
             </span>
           </Fragment>

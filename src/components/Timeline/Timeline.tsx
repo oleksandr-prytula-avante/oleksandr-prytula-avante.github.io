@@ -369,7 +369,7 @@ export function Timeline<TItem extends TimelineDataItem>(
         : focusPhase === EFocusPhase.Exiting
           ? `timeline-list--focus-exiting ${isFocusExitActive ? "timeline-list--focus-exit-active" : ""}`
           : "";
-          
+
   const isFocusedPhase = focusPhase === EFocusPhase.Focused;
   const isTargetFocusPhase =
     focusPhase === EFocusPhase.Preparing ||

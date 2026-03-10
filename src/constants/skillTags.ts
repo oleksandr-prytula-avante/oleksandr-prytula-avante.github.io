@@ -114,13 +114,22 @@ export const ALL_SKILL_TAGS = [
   { label: "Heroku", href: "https://www.heroku.com" },
   { label: "Firebase", href: "https://firebase.google.com" },
   { label: "OpenGL", href: "https://www.opengl.org" },
-  { label: "WebGL", href: "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API" },
+  {
+    label: "WebGL",
+    href: "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API",
+  },
   { label: "C++", href: "https://isocpp.org" },
   { label: "C#", href: "https://learn.microsoft.com/en-us/dotnet/csharp/" },
   { label: "PHP", href: "https://www.php.net" },
   { label: "Qt", href: "https://www.qt.io" },
-  { label: "MFC", href: "https://learn.microsoft.com/en-us/cpp/mfc/mfc-desktop-applications" },
-  { label: "Windows Forms", href: "https://learn.microsoft.com/en-us/dotnet/desktop/winforms/" },
+  {
+    label: "MFC",
+    href: "https://learn.microsoft.com/en-us/cpp/mfc/mfc-desktop-applications",
+  },
+  {
+    label: "Windows Forms",
+    href: "https://learn.microsoft.com/en-us/dotnet/desktop/winforms/",
+  },
   { label: "Raphael.js", href: "https://dmitrybaranovskiy.github.io/raphael/" },
   {
     label: "Javascript (ES2015)",

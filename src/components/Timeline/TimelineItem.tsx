@@ -131,7 +131,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
       return leftIsCommon ? SORT_LEFT_FIRST : SORT_RIGHT_FIRST;
     });
-    
+
   let localizedHighlightsList = null;
 
   if (localizedHighlights.length > 0) {

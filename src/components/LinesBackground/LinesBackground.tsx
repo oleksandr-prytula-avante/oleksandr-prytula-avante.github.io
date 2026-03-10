@@ -67,7 +67,7 @@ export function LinesBackground() {
     },
     [isDesktopViewport],
   );
-  
+
   const horizontalLines = useMemo(
     function () {
       return isDesktopViewport ? generateHorizontalLineStyles() : [];

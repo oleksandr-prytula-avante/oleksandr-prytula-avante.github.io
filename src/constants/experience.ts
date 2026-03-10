@@ -43,7 +43,10 @@ export const OMNORA_EXPERIENCE_TEXT_KEYS: ExperienceTextKeys = {
   ],
 };
 
-export const EXPERIENCE_TEXT_KEYS_BY_ID: Record<EExperience, ExperienceTextKeys> = {
+export const EXPERIENCE_TEXT_KEYS_BY_ID: Record<
+  EExperience,
+  ExperienceTextKeys
+> = {
   [EExperience.Omnora]: OMNORA_EXPERIENCE_TEXT_KEYS,
   [EExperience.Digitalsuits]: {
     companyName: ETranslationKey.ExperienceDigitalsuitsCompanyName,

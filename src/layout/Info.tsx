@@ -496,8 +496,8 @@ export function Info(props: InfoProps) {
       <div className="mt-2 flex items-start gap-6 max-[639px]:gap-4">
         <img
           src={profilePhotoSrc}
-            alt="Profile photo"
-            className={`h-[calc(7.75rem)] w-[calc(7.75rem)] shrink-0 rounded-full border-2 border-[color:var(--color-accent)] object-cover transition-all duration-400 ease-out will-change-transform will-change-opacity max-[1366px]:h-[calc(6.25rem)] max-[1366px]:w-[calc(6.25rem)] max-[1023px]:hidden ${isProfilePhotoVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}
+          alt="Profile photo"
+          className={`h-[calc(7.75rem)] w-[calc(7.75rem)] shrink-0 rounded-full border-2 border-[color:var(--color-accent)] object-cover transition-all duration-400 ease-out will-change-transform will-change-opacity max-[1366px]:h-[calc(6.25rem)] max-[1366px]:w-[calc(6.25rem)] max-[1023px]:hidden ${isProfilePhotoVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}
           loading="eager"
         />
 

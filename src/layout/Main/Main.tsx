@@ -7,9 +7,7 @@ import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
 import { SectionDots } from "../../components/SectionDots";
 import { SectionHeading } from "../../components/SectionHeading";
-import {
-  MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
-} from "../../constants/mediaQueries";
+import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { SECTION_NAV_ITEMS } from "../../constants/sections";
 import { useI18n } from "../../hooks/useI18n";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -139,14 +137,10 @@ export function Main() {
               <Links />
             </section>
 
-            <section className="relative min-h-[472px]">
-              {infoContent}
-            </section>
+            <section className="relative min-h-[472px]">{infoContent}</section>
 
             <section className="relative min-h-0">
-              <div
-                className={sectionRevealClassName}
-              >
+              <div className={sectionRevealClassName}>
                 <SectionCarousel>
                   {SECTION_NAV_ITEMS.map(function ({ href }) {
                     return renderSectionContent(href);
@@ -163,11 +157,11 @@ export function Main() {
             </section>
 
             <section className="relative w-full">
-              <div
-                className={mobileSectionRevealClassName}
-              >
+              <div className={mobileSectionRevealClassName}>
                 {SECTION_IDS_IN_ORDER.map(function (sectionId) {
-                  const section = renderSectionContent(toSectionHash(sectionId));
+                  const section = renderSectionContent(
+                    toSectionHash(sectionId),
+                  );
 
                   if (!section) {
                     return null;

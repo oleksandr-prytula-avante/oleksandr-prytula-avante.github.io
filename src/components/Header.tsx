@@ -24,10 +24,7 @@ type HeaderProps = {
 };
 
 export function Header(props: HeaderProps) {
-  const {
-    isLanguageDisabled = false,
-    isNavigationDisabled = false,
-  } = props;
+  const { isLanguageDisabled = false, isNavigationDisabled = false } = props;
   const i18n = useI18n();
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

@@ -34,7 +34,9 @@ export function ExperienceJobRow<TItem extends TimelineDataItem>(
         <PipeSeparator className="text-white/60" />
         <span className="truncate">{periodLabel.dateRange}</span>
         <PipeSeparator className="text-white/60 max-[768px]:hidden" />
-        <span className="truncate max-[768px]:hidden">{periodLabel.duration}</span>
+        <span className="truncate max-[768px]:hidden">
+          {periodLabel.duration}
+        </span>
       </span>
     </TimelineRow>
   );
