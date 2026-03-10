@@ -11,14 +11,18 @@ function isLocale(value: string | null): value is ELocale {
   return value !== null && ELOCALE_VALUES.includes(value as ELocale);
 }
 
-function getInitialLocale(): ELocale {
-  const stored = localStorage.getItem(STORAGE_KEY);
+function getPreferredBrowserLocale(): ELocale {
+  if (typeof window === "undefined") {
+    return ELocale.En;
+  }
+
+  const stored = window.localStorage.getItem(STORAGE_KEY);
 
   if (isLocale(stored)) {
     return stored;
   }
 
-  const lang = navigator.language.toLowerCase();
+  const lang = window.navigator.language.toLowerCase();
 
   const matchedBrowserLocale = ELOCALE_VALUES.find(function (locale) {
     return lang.startsWith(locale);
@@ -31,19 +35,27 @@ function getInitialLocale(): ELocale {
   return ELocale.En;
 }
 
-export function useLocale() {
-  const [locale, setLocale] = useState<ELocale>(function () {
+export function useLocale(initialLocale: ELocale = ELocale.En) {
+  const [locale, setLocale] = useState<ELocale>(initialLocale);
+
+  useEffect(function () {
     try {
-      return getInitialLocale();
+      const browserLocale = getPreferredBrowserLocale();
+
+      setLocale(function (currentLocale) {
+        return currentLocale === browserLocale ? currentLocale : browserLocale;
+      });
     } catch {
-      return ELocale.En;
+      // ignore
     }
-  });
+  }, []);
 
   useEffect(
     function () {
       try {
-        localStorage.setItem(STORAGE_KEY, locale);
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(STORAGE_KEY, locale);
+        }
       } catch {
         // ignore
       }
