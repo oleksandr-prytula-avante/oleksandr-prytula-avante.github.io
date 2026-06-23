@@ -16,8 +16,6 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
 import { PipeSeparator } from "../components/PipeSeparator";
-import profilePhotoSrc from "../assets/images/profile.webp";
-
 const ORANGE_LINE_REVEAL_DURATION_MS = 500;
 const NAME_TYPING_START_EXTRA_DELAY_MS = 20;
 const HI_TYPING_INTERVAL_MS = 70;
@@ -137,8 +135,6 @@ export function Info(props: InfoProps) {
   const isSecondaryContentReady = isDesktopViewport
     ? isDesktopSecondaryContentReady
     : isMobileSecondaryContentReady;
-  const isProfilePhotoVisible = !shouldPlayHeroAnimation || isNameTypingStarted;
-
   function setHeroTypingState(isCompleted: boolean) {
     setVisibleHiChars(isCompleted ? hiText.length : DEFAULT_CHAR_COUNT);
     setIsLineVisible(isCompleted);
@@ -499,26 +495,19 @@ export function Info(props: InfoProps) {
       </div>
 
       <div className="mt-2 flex items-start gap-6 max-[639px]:gap-4">
-        <img
-          src={profilePhotoSrc}
-          alt="Profile photo"
-          className={`h-[calc(7.75rem)] w-[calc(7.75rem)] shrink-0 rounded-full border-2 border-[color:var(--color-accent)] object-cover transition-all duration-400 ease-out will-change-transform will-change-opacity max-[1366px]:h-[calc(6.25rem)] max-[1366px]:w-[calc(6.25rem)] max-[1023px]:hidden ${isProfilePhotoVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}
-          loading="eager"
-        />
-
-        <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl max-[1024px]:whitespace-nowrap max-[639px]:whitespace-normal">
-          <span className="block max-[1024px]:inline max-[639px]:block">
+        <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-baseline min-[640px]:max-[1024px]:gap-3">
+          <span className="block">
             {visibleName}
             {nameTypingCursor}
           </span>
-          <span className="mt-1 block max-[1024px]:mt-0 max-[1024px]:ml-3 max-[1024px]:inline max-[639px]:mt-4 max-[639px]:ml-0 max-[639px]:block">
+          <span className="mt-1 block max-[639px]:mt-4">
             {visibleSurname}
             {surnameTypingCursor}
           </span>
         </h1>
       </div>
 
-      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.75rem] flex flex-row items-center gap-2 max-[1024px]:flex-col max-[1024px]:items-start max-[1024px]:gap-0">
+      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[768px]:text-[1.458rem] flex flex-row items-center gap-2 max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-0">
         {(() => {
           const isPrimaryComplete = visibleRoleChars >= rolePrimaryText.length;
           const primarySlice = rolePrimaryText.slice(0, visibleRoleChars);
@@ -531,7 +520,7 @@ export function Info(props: InfoProps) {
               <span>{primarySlice}{!isPrimaryComplete && roleTypingCursor}</span>
               {isPrimaryComplete && (
                 <>
-                  <PipeSeparator className="text-[color:var(--color-accent)] max-[1024px]:hidden" />
+                  <PipeSeparator className="text-[color:var(--color-accent)] max-[767px]:hidden" />
                   <span>{secondarySlice}{roleTypingCursor}</span>
                 </>
               )}
