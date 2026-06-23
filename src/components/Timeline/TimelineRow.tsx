@@ -6,6 +6,10 @@ type TimelineRowProps = {
   className?: string;
 };
 
+export const TIMELINE_ROW_ICON_CLASS = "h-5 w-5 shrink-0 text-white";
+export const TIMELINE_ROW_INLINE_CONTENT_CLASS =
+  "inline-flex min-w-0 max-w-full items-center gap-2 truncate";
+
 const DEFAULT_ROW_CLASS_NAME =
   "flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden max-[640px]:items-start";
 

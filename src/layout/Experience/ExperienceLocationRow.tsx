@@ -2,7 +2,11 @@ import { getExperienceTextKeys } from "../../utils/experience";
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { useI18n } from "../../hooks/useI18n";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
-import { TimelineRow } from "../../components/Timeline/TimelineRow";
+import {
+  TimelineRow,
+  TIMELINE_ROW_ICON_CLASS,
+  TIMELINE_ROW_INLINE_CONTENT_CLASS,
+} from "../../components/Timeline/TimelineRow";
 import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocationIcon";
 
 type ExperienceLocationRowProps<TItem extends TimelineDataItem> = {
@@ -19,13 +23,13 @@ export function ExperienceLocationRow<TItem extends TimelineDataItem>(
 
   return (
     <TimelineRow
-      icon={<ExperienceLocationIcon className="h-5 w-5 shrink-0 text-white" />}
+      icon={<ExperienceLocationIcon className={TIMELINE_ROW_ICON_CLASS} />}
     >
       <PipeSeparatedText
         value={locationText}
         hideLastPartOnMobile
         stackOnMobile
-        className="inline-flex min-w-0 max-w-full items-center gap-2 truncate"
+        className={TIMELINE_ROW_INLINE_CONTENT_CLASS}
       />
     </TimelineRow>
   );

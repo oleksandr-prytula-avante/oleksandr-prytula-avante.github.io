@@ -14,6 +14,12 @@ const PIPE_TEXT_DELIMITER = "|";
 const FIRST_PART_INDEX = 0;
 const MIN_PART_LENGTH = 0;
 
+export const MOBILE_STACK_CONTAINER_SUFFIX =
+  "max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal";
+export const MOBILE_STACK_ITEM_CLASS =
+  "truncate max-[640px]:overflow-visible max-[640px]:whitespace-normal";
+export const MOBILE_STACK_SEPARATOR_CLASS = "max-[640px]:hidden";
+
 export function PipeSeparatedText(props: PipeSeparatedTextProps) {
   const {
     value,
@@ -22,9 +28,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
     hideLastPartOnMobile = false,
     stackOnMobile = false,
   } = props;
-  const mobileStackClass = stackOnMobile
-    ? "max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal"
-    : "";
+  const mobileStackClass = stackOnMobile ? MOBILE_STACK_CONTAINER_SUFFIX : "";
   const parts = value
     .split(PIPE_TEXT_DELIMITER)
     .map(function (part) {
@@ -44,7 +48,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
         if (index > FIRST_PART_INDEX) {
           separator = (
             <PipeSeparator
-              className={`${separatorClassName ?? ""} ${shouldHideOnMobile ? "max-[768px]:hidden" : ""} ${stackOnMobile ? "max-[640px]:hidden" : ""}`.trim()}
+              className={`${separatorClassName ?? ""} ${shouldHideOnMobile ? "max-[768px]:hidden" : ""} ${stackOnMobile ? MOBILE_STACK_SEPARATOR_CLASS : ""}`.trim()}
             />
           );
         }

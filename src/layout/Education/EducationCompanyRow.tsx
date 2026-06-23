@@ -1,5 +1,8 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
-import { TimelineRow } from "../../components/Timeline/TimelineRow";
+import {
+  TimelineRow,
+  TIMELINE_ROW_ICON_CLASS,
+} from "../../components/Timeline/TimelineRow";
 import { getEducationTextKeys } from "../../utils/education";
 import { useI18n } from "../../hooks/useI18n";
 import { EducationCompanyIcon } from "../../components/icons/EducationCompanyIcon";
@@ -17,7 +20,7 @@ export function EducationCompanyRow<TItem extends TimelineDataItem>(
 
   return (
     <TimelineRow
-      icon={<EducationCompanyIcon className="h-5 w-5 shrink-0 text-white" />}
+      icon={<EducationCompanyIcon className={TIMELINE_ROW_ICON_CLASS} />}
     >
       <a
         href={item.companyUrl}

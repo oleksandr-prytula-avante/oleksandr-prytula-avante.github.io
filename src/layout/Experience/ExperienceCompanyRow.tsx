@@ -2,7 +2,10 @@ import { getExperienceTextKeys } from "../../utils/experience";
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { useI18n } from "../../hooks/useI18n";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
-import { TimelineRow } from "../../components/Timeline/TimelineRow";
+import {
+  TimelineRow,
+  TIMELINE_ROW_ICON_CLASS,
+} from "../../components/Timeline/TimelineRow";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
 
 type ExperienceCompanyRowProps<TItem extends TimelineDataItem> = {
@@ -19,7 +22,7 @@ export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
 
   return (
     <TimelineRow
-      icon={<ExperienceCompanyIcon className="h-5 w-5 shrink-0 text-white" />}
+      icon={<ExperienceCompanyIcon className={TIMELINE_ROW_ICON_CLASS} />}
     >
       <a
         href={item.companyUrl}

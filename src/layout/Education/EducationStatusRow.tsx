@@ -1,6 +1,15 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { PipeSeparator } from "../../components/PipeSeparator";
-import { TimelineRow } from "../../components/Timeline/TimelineRow";
+import {
+  TimelineRow,
+  TIMELINE_ROW_ICON_CLASS,
+  TIMELINE_ROW_INLINE_CONTENT_CLASS,
+} from "../../components/Timeline/TimelineRow";
+import {
+  MOBILE_STACK_ITEM_CLASS,
+  MOBILE_STACK_SEPARATOR_CLASS,
+  MOBILE_STACK_CONTAINER_SUFFIX,
+} from "../../components/PipeSeparatedText";
 import { EducationStatusIcon } from "../../components/icons/EducationStatusIcon";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
@@ -24,12 +33,12 @@ export function EducationStatusRow<TItem extends TimelineDataItem>(
 
   return (
     <TimelineRow
-      icon={<EducationStatusIcon className="h-5 w-5 shrink-0 text-white" />}
+      icon={<EducationStatusIcon className={TIMELINE_ROW_ICON_CLASS} />}
     >
-      <span className="inline-flex min-w-0 max-w-full items-center gap-2 truncate max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal">
-        <span className="truncate max-[640px]:overflow-visible max-[640px]:whitespace-normal">{periodLabel.dateRange}</span>
-        <PipeSeparator className="text-white/60 max-[640px]:hidden" />
-        <span className="truncate max-[640px]:overflow-visible max-[640px]:whitespace-normal">{periodLabel.duration}</span>
+      <span className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}>
+        <span className={MOBILE_STACK_ITEM_CLASS}>{periodLabel.dateRange}</span>
+        <PipeSeparator className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS}`} />
+        <span className={MOBILE_STACK_ITEM_CLASS}>{periodLabel.duration}</span>
       </span>
     </TimelineRow>
   );
