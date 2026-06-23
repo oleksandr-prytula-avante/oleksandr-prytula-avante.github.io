@@ -85,7 +85,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     ? "pointer-events-none invisible opacity-0 transition-none"
     : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out";
   const timelineItemClassName = [
-    "timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-24 mb-4 last:mb-0",
+    "timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-24 max-[1024px]:mb-4 max-[1024px]:last:mb-0",
     itemHeightClass,
     isFocused ? "timeline-item--focused" : "",
     isDimmed ? "timeline-item--hidden" : "",
