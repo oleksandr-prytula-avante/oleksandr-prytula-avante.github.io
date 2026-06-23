@@ -183,7 +183,7 @@ export function Main() {
                     <section
                       key={sectionId}
                       id={sectionId}
-                      className="w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-8"
+                      className="w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-4"
                     >
                       <SectionHeading
                         className="mb-6 hidden max-[1024px]:flex"

@@ -85,7 +85,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     ? "pointer-events-none invisible opacity-0 transition-none"
     : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out";
   const timelineItemClassName = [
-    "timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-24",
+    "timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-24 mb-4 last:mb-0",
     itemHeightClass,
     isFocused ? "timeline-item--focused" : "",
     isDimmed ? "timeline-item--hidden" : "",
@@ -141,11 +141,11 @@ export function TimelineItem<TItem extends TimelineDataItem>(
           return (
             <li
               key={`${item.id}-highlight-${highlightIndex}`}
-              className="relative pl-4"
+              className="relative pl-4 max-[640px]:pl-0"
             >
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[color:var(--color-accent)]"
+                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[color:var(--color-accent)] max-[640px]:hidden"
               />
               <span>
                 <TextWithLinks value={highlight} />
@@ -254,7 +254,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
       </a>
 
       <div className={contentClassName}>
-        <div className="shrink-0 space-y-2">
+        <div className="shrink-0 flex flex-col gap-3">
           <FirstRowComponent item={item} />
 
           <SecondRowComponent item={item} />

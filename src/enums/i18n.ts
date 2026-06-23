@@ -29,6 +29,8 @@ export const enum ETranslationKey {
   HeroName = "hero.name",
   HeroSurname = "hero.surname",
   HeroRole = "hero.role",
+  HeroRolePrimary = "hero.role.primary",
+  HeroRoleSecondary = "hero.role.secondary",
   HeroEngineeringToolkit = "hero.engineeringToolkit",
   HeroNeedMoreDetails = "hero.needMoreDetails",
   HeroCvDownload = "hero.cvDownload",

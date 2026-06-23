@@ -15,6 +15,7 @@ import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
+import { PipeSeparator } from "../components/PipeSeparator";
 import profilePhotoSrc from "../assets/images/profile.webp";
 
 const ORANGE_LINE_REVEAL_DURATION_MS = 500;
@@ -97,7 +98,9 @@ export function Info(props: InfoProps) {
     0,
     Math.max(visibleNameChars - nameText.length, DEFAULT_CHAR_COUNT),
   );
-  const roleText = i18n.t(ETranslationKey.HeroRole);
+  const rolePrimaryText = i18n.t(ETranslationKey.HeroRolePrimary);
+  const roleSecondaryText = i18n.t(ETranslationKey.HeroRoleSecondary);
+  const roleTotalLength = rolePrimaryText.length + roleSecondaryText.length;
   const engineeringToolkitText = i18n.t(ETranslationKey.HeroEngineeringToolkit);
   const engineeringToolkitBaseText = engineeringToolkitText.endsWith(":")
     ? engineeringToolkitText.slice(0, ENGINEERING_TOOLKIT_COLON_TRIM_INDEX)
@@ -118,7 +121,7 @@ export function Info(props: InfoProps) {
   const isRoleTyping =
     !isHiTyping &&
     visibleNameChars >= fullNameLength &&
-    visibleRoleChars < roleText.length;
+    visibleRoleChars < roleTotalLength;
   const isEngineeringToolkitTyping =
     isEngineeringToolkitTypingStarted &&
     visibleEngineeringToolkitChars < engineeringToolkitTotalLength;
@@ -141,7 +144,7 @@ export function Info(props: InfoProps) {
     setIsLineVisible(isCompleted);
     setVisibleNameChars(isCompleted ? fullNameLength : DEFAULT_CHAR_COUNT);
     setIsNameTypingStarted(isCompleted);
-    setVisibleRoleChars(isCompleted ? roleText.length : DEFAULT_CHAR_COUNT);
+    setVisibleRoleChars(isCompleted ? roleTotalLength : DEFAULT_CHAR_COUNT);
     setVisibleEngineeringToolkitChars(
       isCompleted ? engineeringToolkitTotalLength : DEFAULT_CHAR_COUNT,
     );
@@ -206,10 +209,10 @@ export function Info(props: InfoProps) {
           setVisibleRoleChars(function (currentValue) {
             const nextValue = Math.min(
               currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
-              roleText.length,
+              roleTotalLength,
             );
 
-            if (nextValue >= roleText.length) {
+            if (nextValue >= roleTotalLength) {
               window.clearInterval(roleIntervalId);
 
               if (
@@ -312,7 +315,9 @@ export function Info(props: InfoProps) {
       fullNameLength,
       hiText,
       needMoreDetailsText.length,
-      roleText,
+      rolePrimaryText,
+      roleSecondaryText,
+      roleTotalLength,
       engineeringToolkitTotalLength,
       shouldPlayHeroAnimation,
     ],
@@ -513,9 +518,26 @@ export function Info(props: InfoProps) {
         </h1>
       </div>
 
-      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.75rem]">
-        {roleText.slice(0, visibleRoleChars)}
-        {roleTypingCursor}
+      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.75rem] flex flex-row items-center gap-2 max-[1024px]:flex-col max-[1024px]:items-start max-[1024px]:gap-0">
+        {(() => {
+          const isPrimaryComplete = visibleRoleChars >= rolePrimaryText.length;
+          const primarySlice = rolePrimaryText.slice(0, visibleRoleChars);
+          const secondarySlice = isPrimaryComplete
+            ? roleSecondaryText.slice(0, visibleRoleChars - rolePrimaryText.length)
+            : "";
+            
+          return (
+            <>
+              <span>{primarySlice}{!isPrimaryComplete && roleTypingCursor}</span>
+              {isPrimaryComplete && (
+                <>
+                  <PipeSeparator className="text-[color:var(--color-accent)] max-[1024px]:hidden" />
+                  <span>{secondarySlice}{roleTypingCursor}</span>
+                </>
+              )}
+            </>
+          );
+        })()}
       </p>
 
       <p className="mt-4 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1024px]:text-[0.9375rem]">
