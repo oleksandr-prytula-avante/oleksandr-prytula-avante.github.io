@@ -7,6 +7,7 @@ type PipeSeparatedTextProps = {
   className?: string;
   separatorClassName?: string;
   hideLastPartOnMobile?: boolean;
+  stackOnMobile?: boolean;
 };
 
 const PIPE_TEXT_DELIMITER = "|";
@@ -19,7 +20,11 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
     className,
     separatorClassName,
     hideLastPartOnMobile = false,
+    stackOnMobile = false,
   } = props;
+  const mobileStackClass = stackOnMobile
+    ? "max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal"
+    : "";
   const parts = value
     .split(PIPE_TEXT_DELIMITER)
     .map(function (part) {
@@ -30,7 +35,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
     });
 
   return (
-    <span className={className}>
+    <span className={`${className ?? ""} ${mobileStackClass}`.trim()}>
       {parts.map(function (part, index) {
         const isLastPart = index === parts.length - 1;
         const shouldHideOnMobile = hideLastPartOnMobile && isLastPart;
@@ -39,7 +44,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
         if (index > FIRST_PART_INDEX) {
           separator = (
             <PipeSeparator
-              className={`${separatorClassName ?? ""} ${shouldHideOnMobile ? "max-[768px]:hidden" : ""}`.trim()}
+              className={`${separatorClassName ?? ""} ${shouldHideOnMobile ? "max-[768px]:hidden" : ""} ${stackOnMobile ? "max-[640px]:hidden" : ""}`.trim()}
             />
           );
         }
@@ -48,7 +53,10 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
           <Fragment key={`${part}-${index}`}>
             {separator}
             <span
-              className={shouldHideOnMobile ? "max-[768px]:hidden" : undefined}
+              className={[
+                shouldHideOnMobile ? "max-[768px]:hidden" : "",
+                stackOnMobile ? "max-[640px]:overflow-visible max-[640px]:whitespace-normal" : "",
+              ].filter(Boolean).join(" ") || undefined}
             >
               {part}
             </span>

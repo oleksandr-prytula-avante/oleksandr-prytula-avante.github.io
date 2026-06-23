@@ -13,7 +13,6 @@ export type EducationTimelineItem = {
   companyLogoSrc: string;
   startDate: string;
   endDate: string | null;
-  grade?: number;
   technologyTags: SkillTagLabel[];
 };
 
@@ -70,7 +69,6 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
     companyLogoSrc: duetLogoUrl,
     startDate: "2022-09",
     endDate: "2024-01",
-    grade: 5,
     technologyTags: [
       "TypeScript",
       "Webpack",
@@ -124,7 +122,6 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
     companyLogoSrc: knuLogoUrl,
     startDate: "2012-09",
     endDate: "2016-06",
-    grade: 4.74,
     technologyTags: [
       "C++",
       "MFC",

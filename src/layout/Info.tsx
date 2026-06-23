@@ -511,7 +511,7 @@ export function Info(props: InfoProps) {
             {visibleName}
             {nameTypingCursor}
           </span>
-          <span className="mt-1 block max-[1024px]:mt-0 max-[1024px]:ml-3 max-[1024px]:inline max-[639px]:mt-1 max-[639px]:ml-0 max-[639px]:block">
+          <span className="mt-1 block max-[1024px]:mt-0 max-[1024px]:ml-3 max-[1024px]:inline max-[639px]:mt-4 max-[639px]:ml-0 max-[639px]:block">
             {visibleSurname}
             {surnameTypingCursor}
           </span>

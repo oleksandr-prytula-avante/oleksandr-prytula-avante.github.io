@@ -24,6 +24,7 @@ export function ExperienceLocationRow<TItem extends TimelineDataItem>(
       <PipeSeparatedText
         value={locationText}
         hideLastPartOnMobile
+        stackOnMobile
         className="inline-flex min-w-0 max-w-full items-center gap-2 truncate"
       />
     </TimelineRow>

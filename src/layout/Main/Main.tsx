@@ -143,7 +143,7 @@ export function Main() {
           isLanguageDisabled={isHeroPrintingInProgress}
           isNavigationDisabled={!isSecondaryContentVisible}
         />
-        <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible">
+        <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible max-[1024px]:pb-8">
           <div className="hidden h-full min-h-0 min-[1025px]:grid min-[1025px]:grid-cols-[5%_40%_55%]">
             <section className="relative">
               <Links />

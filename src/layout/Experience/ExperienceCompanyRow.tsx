@@ -32,6 +32,7 @@ export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
           className="whitespace-nowrap"
           separatorClassName="mx-2 text-white/60"
           hideLastPartOnMobile
+          stackOnMobile
         />
       </a>
     </TimelineRow>

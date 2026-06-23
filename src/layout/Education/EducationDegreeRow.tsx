@@ -23,6 +23,7 @@ export function EducationDegreeRow<TItem extends TimelineDataItem>(
       <PipeSeparatedText
         value={i18n.t(textKeys.program)}
         className="inline-flex min-w-0 max-w-full items-center gap-2 truncate"
+        stackOnMobile
       />
     </TimelineRow>
   );

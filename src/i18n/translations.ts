@@ -28,7 +28,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroNeedMoreDetails]: "Need more details?",
   [ETranslationKey.HeroCvDownload]: "Download CV (PDF)",
   [ETranslationKey.AboutParagraph1]:
-    "I’m a Software Engineer with over 10 years of hands-on experience in WEB development across next domains: e-Learning, e-Commerce / Marketplaces, Trading, Insurance and Health Care. I’ve contributed to products in various delivery models - from out-staffing to startups - adapting quickly to diverse workflows, business goals, and team dynamics. I’ve worked both independently and in teams of 3 to 20 engineers, often within international, distributed environments.",
+    "I'm a Software Engineer with over 10 years of hands-on experience in WEB development across next domains: e-Learning, e-Commerce / Marketplaces, Trading, Insurance and Health Care. I've contributed to products in various delivery models — from out-staffing to startups — adapting quickly to diverse workflows, business goals, and team dynamics. I've worked both independently and in teams of 3 to 20 engineers, often within international, distributed environments.",
   [ETranslationKey.AboutParagraph2]:
     "As a Full-Stack WEB Developer, I deliver solutions from Front-End interfaces to Back-End services and infrastructure. I’m experienced with monolithic and microservice architectures, REST / GraphQL APIs, databases like SQL (MySQL, SQLite and PostgreSQL) and MongoDB. I actively use Docker and implement CI / CD pipelines for automated deployment. Additionally, I use testing frameworks such as Playwright and Jest to ensure high code quality and reliability.",
   [ETranslationKey.AboutParagraph3]:
@@ -36,7 +36,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutParagraph4]:
     "I’m committed to continuous learning and staying current with evolving technologies. I continue applying and expanding this knowledge through challenging production engineering tasks. I regularly solve complex programming and system design problems to sharpen my algorithmic thinking and technical skills.",
   [ETranslationKey.AboutParagraph5]:
-    "Also I actively integrate AI-powered tools - such as automated code generation, intelligent testing frameworks, and performance optimization utilities - into my development workflows to boost productivity, reduce manual effort, and improve application scalability.",
+    "Also I actively integrate AI-powered tools — such as automated code generation, intelligent testing frameworks, and performance optimization utilities — into my development workflows to boost productivity, reduce manual effort, and improve application scalability.",
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]:
@@ -84,7 +84,6 @@ const EN_TRANSLATIONS: Translations = {
     "Participated in local student programming competitions and IT olympiads, developing problem-solving and algorithmic thinking skills.",
   [ETranslationKey.EducationKnuHighlight7]:
     "Studied practical aspects of enterprise software systems, including work with 1C platforms and business applications.",
-  [ETranslationKey.EducationGradeLabel]: "Grade",
   [ETranslationKey.ExperiencePresent]: "Present",
   [ETranslationKey.TimelineExpandDetails]: "Show more",
   [ETranslationKey.TimelineHideDetails]: "Show less",
@@ -253,7 +252,6 @@ const RU_TRANSLATIONS: Translations = {
     "Участвовал в локальных студенческих соревнованиях по программированию и IT-олимпиадах, развивая навыки решения задач и алгоритмическое мышление.",
   [ETranslationKey.EducationKnuHighlight7]:
     "Изучал практические аспекты корпоративных программных систем, включая работу с платформами 1C и бизнес-приложениями.",
-  [ETranslationKey.EducationGradeLabel]: "Оценка",
   [ETranslationKey.ExperiencePresent]: "Настоящее время",
   [ETranslationKey.TimelineExpandDetails]: "Показать больше",
   [ETranslationKey.TimelineHideDetails]: "Скрыть",
@@ -416,7 +414,6 @@ const SP_TRANSLATIONS: Translations = {
     "Participé en competiciones locales estudiantiles de programación y olimpiadas de TI, desarrollando habilidades de resolución de problemas y pensamiento algorítmico.",
   [ETranslationKey.EducationKnuHighlight7]:
     "Estudié aspectos prácticos de sistemas de software empresariales, incluyendo trabajo con plataformas 1C y aplicaciones de negocio.",
-  [ETranslationKey.EducationGradeLabel]: "Calificación",
   [ETranslationKey.ExperiencePresent]: "Presente",
   [ETranslationKey.TimelineExpandDetails]: "Mostrar más",
   [ETranslationKey.TimelineHideDetails]: "Mostrar menos",
@@ -528,7 +525,6 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroEngineeringToolkit]: "Mein Engineering-Toolkit",
   [ETranslationKey.HeroNeedMoreDetails]: "MEHR DETAILS NÖTIG?",
   [ETranslationKey.HeroCvDownload]: "CV (PDF) herunterladen",
-  [ETranslationKey.EducationGradeLabel]: "Note",
   [ETranslationKey.AboutParagraph1]:
     "Ich bin Softwareingenieur mit über 10 Jahren praktischer Erfahrung in der WEB-Entwicklung in folgenden Domänen: e-Learning, e-Commerce / Marketplaces, Trading, Insurance und Health Care. Ich habe zu Produkten in verschiedenen Delivery-Modellen beigetragen — von Outstaffing bis zu Startups — und mich schnell an unterschiedliche Arbeitsabläufe, Geschäftsziele und Teamdynamiken angepasst. Ich habe sowohl eigenständig als auch in Teams von 3 bis 20 Ingenieuren gearbeitet, häufig in internationalen, verteilten Umgebungen.",
   [ETranslationKey.AboutParagraph2]:

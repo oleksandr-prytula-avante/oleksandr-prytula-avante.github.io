@@ -7,7 +7,7 @@ type TimelineRowProps = {
 };
 
 const DEFAULT_ROW_CLASS_NAME =
-  "flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden";
+  "flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden max-[640px]:items-start";
 
 export function TimelineRow(props: TimelineRowProps) {
   const { icon, children, className } = props;
