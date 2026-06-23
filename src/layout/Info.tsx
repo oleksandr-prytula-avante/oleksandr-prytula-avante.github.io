@@ -495,12 +495,12 @@ export function Info(props: InfoProps) {
       </div>
 
       <div className="mt-2 flex items-start gap-6 max-[639px]:gap-4">
-        <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-baseline min-[640px]:max-[1024px]:gap-3">
+        <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-end min-[640px]:max-[1024px]:gap-3">
           <span className="block">
             {visibleName}
             {nameTypingCursor}
           </span>
-          <span className="mt-1 block max-[639px]:mt-4">
+          <span className="mt-1 block min-[640px]:mt-0 max-[639px]:mt-4">
             {visibleSurname}
             {surnameTypingCursor}
           </span>

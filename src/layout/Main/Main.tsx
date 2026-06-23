@@ -164,7 +164,7 @@ export function Main() {
           </div>
 
           <div className="flex w-full flex-col gap-8 max-[1024px]:gap-0 max-[768px]:gap-4 min-[1025px]:hidden">
-            <section className="relative w-full min-h-[472px] max-[1024px]:min-h-0">
+            <section className="relative w-full min-h-[472px] max-[1024px]:min-h-0 max-[1024px]:pb-4">
               {infoContent}
             </section>
 
