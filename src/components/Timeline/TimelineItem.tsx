@@ -210,7 +210,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
-        } max-[1024px]:hidden`}
+        } min-w-[110px] max-[1024px]:hidden`}
       >
         <span>
           {isExpanded
