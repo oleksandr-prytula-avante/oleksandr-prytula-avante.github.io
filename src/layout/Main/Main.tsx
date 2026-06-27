@@ -148,8 +148,10 @@ export function Main() {
             <section className="relative">
               <Links />
             </section>
-          
-            <section className="relative min-h-[472px] flex flex-col justify-center">{infoContent}</section>
+
+            <section className="relative min-h-[472px] flex flex-col justify-center">
+              {infoContent}
+            </section>
 
             <section className="relative">
               <div className={sectionRevealClassName}>

@@ -504,16 +504,25 @@ export function Info(props: InfoProps) {
           const isPrimaryComplete = visibleRoleChars >= rolePrimaryText.length;
           const primarySlice = rolePrimaryText.slice(0, visibleRoleChars);
           const secondarySlice = isPrimaryComplete
-            ? roleSecondaryText.slice(0, visibleRoleChars - rolePrimaryText.length)
+            ? roleSecondaryText.slice(
+                0,
+                visibleRoleChars - rolePrimaryText.length,
+              )
             : "";
-            
+
           return (
             <>
-              <span>{primarySlice}{!isPrimaryComplete && roleTypingCursor}</span>
+              <span>
+                {primarySlice}
+                {!isPrimaryComplete && roleTypingCursor}
+              </span>
               {isPrimaryComplete && (
                 <>
                   <PipeSeparator className="text-[color:var(--color-accent)] max-[767px]:hidden" />
-                  <span>{secondarySlice}{roleTypingCursor}</span>
+                  <span>
+                    {secondarySlice}
+                    {roleTypingCursor}
+                  </span>
                 </>
               )}
             </>

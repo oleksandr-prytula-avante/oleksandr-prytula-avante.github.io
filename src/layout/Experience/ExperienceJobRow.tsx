@@ -38,9 +38,13 @@ export function ExperienceJobRow<TItem extends TimelineDataItem>(
     <TimelineRow
       icon={<ExperienceJobTitleIcon className={TIMELINE_ROW_ICON_CLASS} />}
     >
-      <span className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}>
+      <span
+        className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}
+      >
         <span className={MOBILE_STACK_ITEM_CLASS}>{jobTitle}</span>
-        <PipeSeparator className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS}`} />
+        <PipeSeparator
+          className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS}`}
+        />
         <span className={MOBILE_STACK_ITEM_CLASS}>{periodLabel.dateRange}</span>
         <PipeSeparator className="text-white/60 max-[768px]:hidden" />
         <span className="truncate max-[768px]:hidden">

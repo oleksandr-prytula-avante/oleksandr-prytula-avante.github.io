@@ -57,10 +57,16 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
           <Fragment key={`${part}-${index}`}>
             {separator}
             <span
-              className={[
-                shouldHideOnMobile ? "max-[768px]:hidden" : "",
-                stackOnMobile ? "max-[640px]:overflow-visible max-[640px]:whitespace-normal" : "",
-              ].filter(Boolean).join(" ") || undefined}
+              className={
+                [
+                  shouldHideOnMobile ? "max-[768px]:hidden" : "",
+                  stackOnMobile
+                    ? "max-[640px]:overflow-visible max-[640px]:whitespace-normal"
+                    : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ") || undefined
+              }
             >
               {part}
             </span>
