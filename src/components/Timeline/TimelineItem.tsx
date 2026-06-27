@@ -80,7 +80,6 @@ export function TimelineItem<TItem extends TimelineDataItem>(
       ? "h-full"
       : "h-[25%] max-[1024px]:h-auto"
     : "h-auto";
-  const contentAlignmentClass = isFocused ? "justify-center" : "justify-start";
   const contentVisibilityClass = shouldHideRightContent
     ? "pointer-events-none invisible opacity-0 transition-none"
     : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out";
@@ -94,8 +93,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     .filter(Boolean)
     .join(" ");
   const contentClassName = [
-    "flex h-full min-h-0 flex-col text-sm text-white/95 max-[1024px]:h-auto",
-    contentAlignmentClass,
+    "flex h-full min-h-0 flex-col text-sm text-white/95 max-[1024px]:h-auto justify-start",
     contentVisibilityClass,
   ]
     .filter(Boolean)
