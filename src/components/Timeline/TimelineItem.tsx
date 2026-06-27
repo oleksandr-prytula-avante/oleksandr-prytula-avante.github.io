@@ -190,7 +190,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     expandedContent = (
       <div
         id={descriptionId}
-        className="mt-3 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90 max-[1024px]:overflow-visible max-[1024px]:pr-0"
+        className="mt-3 max-h-[calc(100vh_-_320px)] min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90 max-[1024px]:overflow-visible max-[1024px]:pr-0"
       >
         {localizedHighlightsList}
         {technologyTagsList}
