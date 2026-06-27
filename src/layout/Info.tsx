@@ -126,8 +126,6 @@ export function Info(props: InfoProps) {
   const isNeedMoreDetailsPrinted =
     visibleNeedMoreDetailsChars >= needMoreDetailsText.length;
   const isCvDownloadPrinted = visibleCvDownloadChars >= cvDownloadText.length;
-  const isHeroPrintingInProgress =
-    !showSecondaryContent || !isNeedMoreDetailsPrinted || !isCvDownloadPrinted;
   const isDesktopSecondaryContentReady =
     isEngineeringToolkitTypingStarted || showSecondaryContent;
   const isMobileSecondaryContentReady =
@@ -166,16 +164,10 @@ export function Info(props: InfoProps) {
 
   useEffect(
     function () {
+      onHeroPrintingStateChange(!isSecondaryContentReady);
       onSecondaryContentVisibilityChange(isSecondaryContentReady);
     },
     [isSecondaryContentReady, onSecondaryContentVisibilityChange],
-  );
-
-  useEffect(
-    function () {
-      onHeroPrintingStateChange(isHeroPrintingInProgress);
-    },
-    [isHeroPrintingInProgress, onHeroPrintingStateChange],
   );
 
   useEffect(
@@ -480,7 +472,7 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="flex h-full flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
+    <div className="flex min-[1025px]:min-h-[672px] flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
       <div className="mb-4 flex items-center">
         <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
           {hiText.slice(0, visibleHiChars)}

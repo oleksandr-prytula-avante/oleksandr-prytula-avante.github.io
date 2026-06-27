@@ -136,7 +136,7 @@ export function Main() {
   );
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1024px]:overflow-y-auto max-[1024px]:px-18 max-[1024px]:pb-10 max-[768px]:px-12 max-[640px]:px-8">
+    <div className="relative flex max-w-[1920px] mx-auto h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1024px]:overflow-y-auto max-[1024px]:px-18 max-[1024px]:pb-10 max-[768px]:px-12 max-[640px]:px-8">
       <LinesBackground />
       <div className="relative z-10 flex h-full min-h-screen min-h-0 flex-col max-[1024px]:pt-24">
         <Header
@@ -148,10 +148,10 @@ export function Main() {
             <section className="relative">
               <Links />
             </section>
+          
+            <section className="relative min-h-[472px] flex flex-col justify-center">{infoContent}</section>
 
-            <section className="relative min-h-[472px]">{infoContent}</section>
-
-            <section className="relative min-h-0">
+            <section className="relative">
               <div className={sectionRevealClassName}>
                 <SectionCarousel>
                   {SECTION_NAV_ITEMS.map(function ({ href }) {
