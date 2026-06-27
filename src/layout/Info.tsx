@@ -472,7 +472,7 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="flex min-[1025px]:min-h-[675px] flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
+    <div className="flex min-[1025px]:min-h-[735px] flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
       <div className="mb-4 flex items-center">
         <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
           {hiText.slice(0, visibleHiChars)}
@@ -486,13 +486,13 @@ export function Info(props: InfoProps) {
         />
       </div>
 
-      <div className="mt-2 flex items-start gap-6 max-[639px]:gap-4">
+      <div className="mt-2 flex items-start gap-6 max-[640px]:gap-4">
         <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-end min-[640px]:max-[1024px]:gap-3">
           <span className="block">
             {visibleName}
             {nameTypingCursor}
           </span>
-          <span className="mt-1 block min-[640px]:mt-0 max-[639px]:mt-4">
+          <span className="mt-1 block min-[640px]:mt-0 max-[640px]:mt-4">
             {visibleSurname}
             {surnameTypingCursor}
           </span>
