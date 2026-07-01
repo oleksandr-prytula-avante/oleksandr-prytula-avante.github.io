@@ -208,9 +208,9 @@ export function TimelineItem<TItem extends TimelineDataItem>(
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
-        } min-w-[110px] max-[1024px]:hidden`}
+        } min-w-[110px] timeline-button-between-1024-1440 max-[1024px]:hidden`}
       >
-        <span>
+        <span className="timeline-hide-between-1024-1440">
           {isExpanded
             ? i18n.t(ETranslationKey.TimelineHideDetails)
             : i18n.t(ETranslationKey.TimelineExpandDetails)}
@@ -257,7 +257,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
           <SecondRowComponent item={item} />
 
-          <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden timeline-third-row-container-between-1024-1440">
+          <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
             <ThirdRowComponent item={item} />
             {toggleButton}
           </div>

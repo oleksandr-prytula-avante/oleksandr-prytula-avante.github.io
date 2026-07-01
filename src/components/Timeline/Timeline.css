@@ -80,12 +80,11 @@
     display: none !important;
   }
 
-  .timeline-third-row-container-between-1024-1440 {
-    flex-direction: column !important;
-    align-items: flex-start !important;
+  .timeline-button-between-1024-1440 {
+    min-width: unset !important;
   }
 
   .timeline-description-max-height-between-1024-1440 {
-    max-height: calc(100vh - 400px) !important;
+    max-height: calc(100vh - 350px) !important;
   }
 }
