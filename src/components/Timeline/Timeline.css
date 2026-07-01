@@ -84,4 +84,8 @@
     flex-direction: column !important;
     align-items: flex-start !important;
   }
+
+  .timeline-description-max-height-between-1024-1440 {
+    max-height: calc(100vh - 400px) !important;
+  }
 }
