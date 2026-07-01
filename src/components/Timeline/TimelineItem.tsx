@@ -258,7 +258,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
           <SecondRowComponent item={item} />
 
           <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
-            <div className="min-w-0 flex-1">
+            <div className="min-w-0">
               <ThirdRowComponent item={item} />
             </div>
             {toggleButton}
