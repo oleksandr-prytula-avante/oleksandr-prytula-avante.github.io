@@ -9,6 +9,7 @@ import {
   TIMELINE_ROW_INLINE_CONTENT_CLASS,
 } from "../../components/Timeline/TimelineRow";
 import {
+  PipeSeparatedText,
   MOBILE_STACK_ITEM_CLASS,
   MOBILE_STACK_SEPARATOR_CLASS,
   MOBILE_STACK_CONTAINER_SUFFIX,
@@ -41,13 +42,21 @@ export function ExperienceJobRow<TItem extends TimelineDataItem>(
       <span
         className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}
       >
-        <span className={MOBILE_STACK_ITEM_CLASS}>{jobTitle}</span>
-        <PipeSeparator
-          className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS}`}
+        <PipeSeparatedText
+          value={jobTitle}
+          className={MOBILE_STACK_ITEM_CLASS}
+          stackOnMobile
         />
-        <span className={MOBILE_STACK_ITEM_CLASS}>{periodLabel.dateRange}</span>
-        <PipeSeparator className="text-white/60 max-[768px]:hidden" />
-        <span className="truncate max-[768px]:hidden">
+        <PipeSeparator
+          className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS} timeline-hide-between-1024-1440`}
+        />
+        <span
+          className={`${MOBILE_STACK_ITEM_CLASS} timeline-hide-between-1024-1440`}
+        >
+          {periodLabel.dateRange}
+        </span>
+        <PipeSeparator className="text-white/60 max-[768px]:hidden timeline-hide-between-1024-1440" />
+        <span className="max-[768px]:hidden timeline-hide-between-1024-1440">
           {periodLabel.duration}
         </span>
       </span>

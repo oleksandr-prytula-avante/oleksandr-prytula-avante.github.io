@@ -74,3 +74,14 @@
 .timeline-item.timeline-item--focused {
   z-index: 20;
 }
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .timeline-hide-between-1024-1440 {
+    display: none !important;
+  }
+
+  .timeline-third-row-container-between-1024-1440 {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}

@@ -188,7 +188,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     expandedContent = (
       <div
         id={descriptionId}
-        className="mt-3 min-[1025px]:max-h-[calc(100vh_-_320px)] min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90 max-[1024px]:overflow-visible max-[1024px]:pr-0"
+        className="mt-3 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90 max-[1024px]:overflow-visible max-[1024px]:pr-0"
       >
         {localizedHighlightsList}
         {technologyTagsList}
@@ -257,7 +257,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
           <SecondRowComponent item={item} />
 
-          <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
+          <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden timeline-third-row-container-between-1024-1440">
             <ThirdRowComponent item={item} />
             {toggleButton}
           </div>

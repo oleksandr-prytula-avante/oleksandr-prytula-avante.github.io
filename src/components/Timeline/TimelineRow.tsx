@@ -8,10 +8,10 @@ type TimelineRowProps = {
 
 export const TIMELINE_ROW_ICON_CLASS = "h-5 w-5 shrink-0 text-white";
 export const TIMELINE_ROW_INLINE_CONTENT_CLASS =
-  "inline-flex min-w-0 max-w-full items-center gap-2 truncate";
+  "inline-flex min-w-0 max-w-full flex-wrap items-center gap-x-2 gap-y-1";
 
 const DEFAULT_ROW_CLASS_NAME =
-  "flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden max-[640px]:items-start";
+  "flex min-w-0 flex-nowrap items-start gap-2 overflow-hidden";
 
 export function TimelineRow(props: TimelineRowProps) {
   const { icon, children, className } = props;

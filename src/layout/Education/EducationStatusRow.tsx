@@ -40,9 +40,13 @@ export function EducationStatusRow<TItem extends TimelineDataItem>(
       >
         <span className={MOBILE_STACK_ITEM_CLASS}>{periodLabel.dateRange}</span>
         <PipeSeparator
-          className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS}`}
+          className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS} timeline-hide-between-1024-1440`}
         />
-        <span className={MOBILE_STACK_ITEM_CLASS}>{periodLabel.duration}</span>
+        <span
+          className={`${MOBILE_STACK_ITEM_CLASS} timeline-hide-between-1024-1440`}
+        >
+          {periodLabel.duration}
+        </span>
       </span>
     </TimelineRow>
   );

@@ -52,7 +52,7 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
   );
 
   return (
-    <div className="flex h-full min-h-0 flex-col px-10">
+    <div className="flex h-full min-h-0 flex-col px-10 min-[1025px]:max-[1439px]:px-0">
       <div className="relative h-full min-h-0 overflow-hidden">
         <div
           className={`flex h-full min-h-0 ${isCarouselAnimationEnabled ? "transition-transform duration-500 ease-in-out" : ""}`}
