@@ -11,7 +11,7 @@ export const TIMELINE_ROW_INLINE_CONTENT_CLASS =
   "inline-flex min-w-0 max-w-full items-center gap-2 truncate";
 
 const DEFAULT_ROW_CLASS_NAME =
-  "flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden max-[640px]:items-start";
+  "flex min-w-0 flex-nowrap items-start gap-2 overflow-hidden";
 
 export function TimelineRow(props: TimelineRowProps) {
   const { icon, children, className } = props;
