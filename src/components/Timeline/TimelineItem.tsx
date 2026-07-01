@@ -204,7 +204,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         disabled={isToggleDisabled}
         aria-expanded={isExpanded}
         aria-controls={descriptionId}
-        className={`inline-flex items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
+        className={`inline-flex shrink-0 items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
@@ -258,7 +258,9 @@ export function TimelineItem<TItem extends TimelineDataItem>(
           <SecondRowComponent item={item} />
 
           <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
-            <ThirdRowComponent item={item} />
+            <div className="min-w-0 flex-1">
+              <ThirdRowComponent item={item} />
+            </div>
             {toggleButton}
           </div>
         </div>
