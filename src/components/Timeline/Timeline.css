@@ -58,7 +58,7 @@
   padding-bottom: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .timeline-list.timeline-list--focused .timeline-item.timeline-item--hidden {
     height: 0;
     min-height: 0;
@@ -75,7 +75,7 @@
   z-index: 20;
 }
 
-@media (min-width: 1024px) and (max-width: 1440px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
   .timeline-hide-between-1024-1440 {
     display: none !important;
   }

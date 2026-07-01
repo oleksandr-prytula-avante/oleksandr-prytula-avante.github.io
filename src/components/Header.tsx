@@ -47,6 +47,7 @@ export function Header(props: HeaderProps) {
 
   useEffect(
     function () {
+      /* eslint-disable-next-line react-hooks/set-state-in-effect */
       setIsMobileMenuOpen(false);
     },
     [activeHash],

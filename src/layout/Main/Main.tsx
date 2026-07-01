@@ -144,16 +144,16 @@ export function Main() {
           isNavigationDisabled={!isSecondaryContentVisible}
         />
         <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible max-[1024px]:pb-8">
-          <div className="hidden h-full min-h-0 min-[1025px]:grid min-[1175px]:grid-cols-[5%_40%_55%] min-[1025px]:max-[1175px]:grid-cols-[5%_50%_50%]">
-            <section className="relative">
+          <div className="hidden h-full min-h-0 min-[1025px]:grid min-[1175px]:grid-cols-[5%_40%_55%] min-[1025px]:max-[1175px]:grid-cols-[5%_45%_50%]">
+            <section className="relative h-full min-h-0">
               <Links />
             </section>
 
-            <section className="relative flex flex-col justify-center">
+            <section className="relative flex h-full min-h-0 flex-col justify-center">
               {infoContent}
             </section>
 
-            <section className="relative">
+            <section className="relative h-full min-h-0">
               <div className={sectionRevealClassName}>
                 <SectionCarousel>
                   {SECTION_NAV_ITEMS.map(function ({ href }) {
