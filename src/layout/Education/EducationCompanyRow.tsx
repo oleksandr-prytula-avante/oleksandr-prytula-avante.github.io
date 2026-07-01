@@ -26,7 +26,7 @@ export function EducationCompanyRow<TItem extends TimelineDataItem>(
         href={item.companyUrl}
         target="_blank"
         rel="noreferrer"
-        className="block min-w-0 flex-1 text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] max-[640px]:text-sm"
+        className="truncate text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] max-[640px]:text-sm max-[640px]:overflow-visible max-[640px]:whitespace-normal"
       >
         {i18n.t(textKeys.institution)}
       </a>
