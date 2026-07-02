@@ -1,14 +1,11 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { PipeSeparator } from "../../components/PipeSeparator";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import {
-  TimelineRow,
-  TIMELINE_ROW_ICON_CLASS,
   TIMELINE_ROW_INLINE_CONTENT_CLASS,
-} from "../../components/Timeline/TimelineRow";
-import {
   MOBILE_STACK_ITEM_CLASS,
   MOBILE_STACK_CONTAINER_SUFFIX,
-} from "../../components/PipeSeparatedText";
+} from "../../constants/ui";
 import { EducationStatusIcon } from "../../components/icons/EducationStatusIcon";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
@@ -31,9 +28,7 @@ export function EducationStatusRow<TItem extends TimelineDataItem>(
   );
 
   return (
-    <TimelineRow
-      icon={<EducationStatusIcon className={TIMELINE_ROW_ICON_CLASS} />}
-    >
+    <TimelineRow icon={<EducationStatusIcon />}>
       <span
         className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}
       >

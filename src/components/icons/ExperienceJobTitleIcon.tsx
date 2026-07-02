@@ -1,10 +1,12 @@
 import * as React from "react";
 
-export function ExperienceJobTitleIcon(
-  props: React.SVGProps<SVGSVGElement>,
-): React.ReactElement {
+export function ExperienceJobTitleIcon(): React.ReactElement {
   return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
+    <svg
+      className="h-5 w-5 shrink-0 text-white"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <rect
         x="3"
         y="6"

@@ -2,10 +2,7 @@ import { getExperienceTextKeys } from "../../utils/experience";
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { useI18n } from "../../hooks/useI18n";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
-import {
-  TimelineRow,
-  TIMELINE_ROW_ICON_CLASS,
-} from "../../components/Timeline/TimelineRow";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocationIcon";
 
 type ExperienceLocationRowProps<TItem extends TimelineDataItem> = {
@@ -21,9 +18,7 @@ export function ExperienceLocationRow<TItem extends TimelineDataItem>(
   const locationText = i18n.t(textKeys.location);
 
   return (
-    <TimelineRow
-      icon={<ExperienceLocationIcon className={TIMELINE_ROW_ICON_CLASS} />}
-    >
+    <TimelineRow icon={<ExperienceLocationIcon />}>
       <PipeSeparatedText
         value={locationText}
         hideLastPartOnMobile

@@ -8,7 +8,7 @@ import { GithubIcon } from "./icons/GithubIcon";
 import { ELink, LINKS } from "../constants/links";
 import { useI18n } from "../hooks/useI18n";
 
-const ICON_BY_LINK_ID: Record<ELink, ComponentType<{ className?: string }>> = {
+const ICON_BY_LINK_ID: Record<ELink, ComponentType<{ isLarge?: boolean }>> = {
   [ELink.Gmail]: GmailIcon,
   [ELink.Github]: GithubIcon,
   [ELink.LinkedIn]: LinkedInIcon,
@@ -46,7 +46,7 @@ export function Links({ size = "default" }: LinksProps) {
               target="_blank"
               rel="noreferrer"
             >
-              <IconComponent className={isLarge ? "h-8 w-8" : "h-6 w-6"} />
+              <IconComponent isLarge={isLarge} />
             </a>
           </Tooltip>
         );

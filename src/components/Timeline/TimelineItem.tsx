@@ -215,9 +215,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
             ? i18n.t(ETranslationKey.TimelineHideDetails)
             : i18n.t(ETranslationKey.TimelineExpandDetails)}
         </span>
-        <TimelineExpandIcon
-          className={`h-5 w-5 transition-transform duration-200 ease-out ${isExpanded ? "rotate-180" : "rotate-0"}`}
-        />
+        <TimelineExpandIcon isExpanded={isExpanded} />
       </button>
     );
   }

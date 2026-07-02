@@ -1,9 +1,6 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
-import {
-  TimelineRow,
-  TIMELINE_ROW_ICON_CLASS,
-} from "../../components/Timeline/TimelineRow";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { getEducationTextKeys } from "../../utils/education";
 import { useI18n } from "../../hooks/useI18n";
 import { EducationDegreeIcon } from "../../components/icons/EducationDegreeIcon";
@@ -20,9 +17,7 @@ export function EducationDegreeRow<TItem extends TimelineDataItem>(
   const textKeys = getEducationTextKeys(item.id);
 
   return (
-    <TimelineRow
-      icon={<EducationDegreeIcon className={TIMELINE_ROW_ICON_CLASS} />}
-    >
+    <TimelineRow icon={<EducationDegreeIcon />}>
       <PipeSeparatedText
         value={i18n.t(textKeys.program)}
         stackOnMobile

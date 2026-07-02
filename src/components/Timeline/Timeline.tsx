@@ -227,6 +227,7 @@ export function Timeline<TItem extends TimelineDataItem>(
       measureFocusShiftFromLayout();
 
       let secondRafId = TIMELINE_EMPTY_STATE_VALUE;
+
       const firstRafId = window.requestAnimationFrame(function () {
         measureFocusShiftFromLayout();
         secondRafId = window.requestAnimationFrame(function () {
@@ -266,6 +267,7 @@ export function Timeline<TItem extends TimelineDataItem>(
       }
 
       setIsFocusExitActive(false);
+
       const rafId = window.requestAnimationFrame(function () {
         setIsFocusExitActive(true);
       });
@@ -295,6 +297,7 @@ export function Timeline<TItem extends TimelineDataItem>(
 
       measureFocusShiftFromLayout();
       const rafId = window.requestAnimationFrame(measureFocusShiftFromLayout);
+
       let previousViewportHeight = window.innerHeight;
 
       function handleVerticalResize() {
@@ -324,6 +327,7 @@ export function Timeline<TItem extends TimelineDataItem>(
 
       if (!listElement) {
         setLineHeight(TIMELINE_EMPTY_STATE_VALUE);
+
         return;
       }
 
@@ -338,6 +342,7 @@ export function Timeline<TItem extends TimelineDataItem>(
       measureLineGeometry();
 
       const rafId = window.requestAnimationFrame(measureLineGeometry);
+
       let previousViewportHeight = window.innerHeight;
 
       function handleVerticalResize() {

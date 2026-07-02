@@ -5,12 +5,13 @@ import {
   SKILL_HREF_BY_LABEL,
 } from "../../constants/skillTags";
 import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries";
+import {
+  TAG_REVEAL_STAGGER_MS,
+  TAG_REVEAL_DURATION_MS,
+} from "../../constants/ui";
 import { Tag } from "./Tag";
 
 import "./Tags.css";
-
-export const TAG_REVEAL_STAGGER_MS = 140;
-export const TAG_REVEAL_DURATION_MS = 640;
 
 type TagsProps = {
   hoveredSkill?: string | null;

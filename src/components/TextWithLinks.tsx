@@ -1,5 +1,3 @@
-import { ExternalLink } from "./ExternalLink";
-
 type TextWithLinksProps = {
   value: string;
   linkClassName?: string;
@@ -16,13 +14,15 @@ export function TextWithLinks(props: TextWithLinksProps) {
   return value.split(URL_SPLIT_REGEX).map(function (part, index) {
     if (URL_MATCH_REGEX.test(part)) {
       return (
-        <ExternalLink
+        <a
           key={`link-${part}-${index}`}
           href={part}
+          target="_blank"
+          rel="noreferrer"
           className={linkClassName}
         >
           {part}
-        </ExternalLink>
+        </a>
       );
     }
 

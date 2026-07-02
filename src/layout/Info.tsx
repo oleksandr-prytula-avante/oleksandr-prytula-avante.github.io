@@ -7,10 +7,7 @@ import {
   MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
 } from "../constants/mediaQueries";
 import { COMMON_SKILL_TAGS } from "../constants/skillTags";
-import {
-  TAG_REVEAL_DURATION_MS,
-  TAG_REVEAL_STAGGER_MS,
-} from "../components/Tags/Tags";
+import { TAG_REVEAL_DURATION_MS, TAG_REVEAL_STAGGER_MS } from "../constants/ui";
 import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";

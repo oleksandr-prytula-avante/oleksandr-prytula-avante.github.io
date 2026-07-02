@@ -1,10 +1,12 @@
 import * as React from "react";
 
-export function ExperienceCompanyIcon(
-  props: React.SVGProps<SVGSVGElement>,
-): React.ReactElement {
+export function ExperienceCompanyIcon(): React.ReactElement {
   return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
+    <svg
+      className="h-5 w-5 shrink-0 text-white"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <path
         d="M3 20h18M5 20V9l7-4 7 4v11M9 20v-5h6v5"
         stroke="currentColor"

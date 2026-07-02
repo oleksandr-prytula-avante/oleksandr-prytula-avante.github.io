@@ -3,16 +3,13 @@ import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
 import { PipeSeparator } from "../../components/PipeSeparator";
+import { TimelineRow } from "../../components/Timeline/TimelineRow";
+import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import {
-  TimelineRow,
-  TIMELINE_ROW_ICON_CLASS,
   TIMELINE_ROW_INLINE_CONTENT_CLASS,
-} from "../../components/Timeline/TimelineRow";
-import {
-  PipeSeparatedText,
   MOBILE_STACK_ITEM_CLASS,
   MOBILE_STACK_CONTAINER_SUFFIX,
-} from "../../components/PipeSeparatedText";
+} from "../../constants/ui";
 import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
 import { buildPeriodLabel } from "../../utils/time";
 
@@ -35,9 +32,7 @@ export function ExperienceJobRow<TItem extends TimelineDataItem>(
   const jobTitle = i18n.t(textKeys.jobTitle);
 
   return (
-    <TimelineRow
-      icon={<ExperienceJobTitleIcon className={TIMELINE_ROW_ICON_CLASS} />}
-    >
+    <TimelineRow icon={<ExperienceJobTitleIcon />}>
       <span
         className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}
       >

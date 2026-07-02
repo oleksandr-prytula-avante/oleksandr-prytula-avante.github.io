@@ -3,7 +3,6 @@ import {
   SKILL_REGEX,
   TERM_TO_TAG_MAP,
 } from "../constants/skillTags";
-import { ExternalLink } from "./ExternalLink";
 
 type SkillHighlightsProps = {
   value: string;
@@ -37,7 +36,7 @@ export function SkillHighlights(props: SkillHighlightsProps) {
     const href = SKILL_HREF_BY_LABEL[tag];
 
     return (
-      <ExternalLink
+      <a
         key={`${part}-${index}`}
         className={
           isActive
@@ -45,11 +44,13 @@ export function SkillHighlights(props: SkillHighlightsProps) {
             : "hover:text-[color:var(--color-accent)]"
         }
         href={href}
+        target="_blank"
+        rel="noreferrer"
         onMouseEnter={onHighlightedTermMouseEnter(tag)}
         onMouseLeave={onHighlightedTermMouseLeave}
       >
         {part}
-      </ExternalLink>
+      </a>
     );
   });
 }

@@ -1,4 +1,3 @@
-import { ExternalLink } from "../ExternalLink";
 import { SKILL_HREF_BY_LABEL } from "../../constants/skillTags";
 
 type TagProps = {
@@ -6,7 +5,6 @@ type TagProps = {
   href?: string;
   isActive?: boolean;
   variant?: "default" | "experience";
-  className?: string;
   onSelectSkill: (skill: string) => void;
   onClearSkill: () => void;
 };
@@ -17,7 +15,6 @@ export function Tag(props: TagProps) {
     href,
     isActive = false,
     variant = "default",
-    className,
     onSelectSkill,
     onClearSkill,
   } = props;
@@ -48,14 +45,16 @@ export function Tag(props: TagProps) {
   }
 
   return (
-    <ExternalLink
+    <a
       href={resolvedHref}
-      className={`${baseClassName} ${isActive ? activeClassName : inactiveClassName} ${className ?? ""}`}
+      target="_blank"
+      rel="noreferrer"
+      className={`${baseClassName} ${isActive ? activeClassName : inactiveClassName}`}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       #{label}
-    </ExternalLink>
+    </a>
   );
 }
