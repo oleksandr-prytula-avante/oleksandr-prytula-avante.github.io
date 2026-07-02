@@ -5,7 +5,6 @@ import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import {
   TimelineRow,
   TIMELINE_ROW_ICON_CLASS,
-  TIMELINE_ROW_INLINE_CONTENT_CLASS,
 } from "../../components/Timeline/TimelineRow";
 import { ExperienceLocationIcon } from "../../components/icons/ExperienceLocationIcon";
 
@@ -29,7 +28,7 @@ export function ExperienceLocationRow<TItem extends TimelineDataItem>(
         value={locationText}
         hideLastPartOnMobile
         stackOnMobile
-        className={TIMELINE_ROW_INLINE_CONTENT_CLASS}
+        inlineContent
       />
     </TimelineRow>
   );

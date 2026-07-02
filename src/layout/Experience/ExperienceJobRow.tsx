@@ -11,7 +11,6 @@ import {
 import {
   PipeSeparatedText,
   MOBILE_STACK_ITEM_CLASS,
-  MOBILE_STACK_SEPARATOR_CLASS,
   MOBILE_STACK_CONTAINER_SUFFIX,
 } from "../../components/PipeSeparatedText";
 import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
@@ -42,20 +41,14 @@ export function ExperienceJobRow<TItem extends TimelineDataItem>(
       <span
         className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}
       >
-        <PipeSeparatedText
-          value={jobTitle}
-          className={MOBILE_STACK_ITEM_CLASS}
-          stackOnMobile
-        />
-        <PipeSeparator
-          className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS} timeline-hide-between-1024-1440`}
-        />
+        <PipeSeparatedText value={jobTitle} stackOnMobile />
+        <PipeSeparator hideOnMobileStack hideBetween1024And1440 />
         <span
           className={`${MOBILE_STACK_ITEM_CLASS} timeline-hide-between-1024-1440`}
         >
           {periodLabel.dateRange}
         </span>
-        <PipeSeparator className="text-white/60 max-[768px]:hidden timeline-hide-between-1024-1440" />
+        <PipeSeparator hideOnMobile hideBetween1024And1440 />
         <span className="max-[768px]:hidden timeline-hide-between-1024-1440">
           {periodLabel.duration}
         </span>

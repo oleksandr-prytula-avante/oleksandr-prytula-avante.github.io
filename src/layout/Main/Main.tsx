@@ -188,8 +188,7 @@ export function Main() {
                       className="w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-4"
                     >
                       <SectionHeading
-                        className="mb-6 hidden max-[1024px]:flex"
-                        lineClassName="ml-6 inline-block h-[2px] flex-1 origin-left bg-[color:var(--color-accent)]/70 transition-transform duration-500 ease-out"
+                        layout="mobile"
                         animateLine
                         isLineVisible={
                           isSecondaryContentVisible || !isRevealAnimationEnabled

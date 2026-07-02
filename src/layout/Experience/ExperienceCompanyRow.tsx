@@ -32,7 +32,7 @@ export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
       >
         <PipeSeparatedText
           value={companyName}
-          separatorClassName="mx-2 text-white/60"
+          hasSeparatorMargin
           hideLastPartOnMobile
           stackOnMobile
         />

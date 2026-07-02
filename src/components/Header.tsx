@@ -99,10 +99,7 @@ export function Header(props: HeaderProps) {
           />
         </nav>
 
-        <Links
-          className="mt-auto flex w-full items-center justify-center gap-6 pb-2"
-          size="large"
-        />
+        <Links size="large" />
       </div>
     );
   }

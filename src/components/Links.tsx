@@ -16,16 +16,19 @@ const ICON_BY_LINK_ID: Record<ELink, ComponentType<{ className?: string }>> = {
 };
 
 type LinksProps = {
-  className?: string;
   size?: "default" | "large";
 };
 
-export function Links({ className, size = "default" }: LinksProps) {
+export function Links({ size = "default" }: LinksProps) {
   const i18n = useI18n();
   const isLarge = size === "large";
 
+  const containerClassName = isLarge
+    ? "mt-auto flex w-full items-center justify-center gap-6 pb-2"
+    : "absolute bottom-11 flex flex-col gap-4";
+
   return (
-    <div className={className ?? "absolute bottom-11 flex flex-col gap-4"}>
+    <div className={containerClassName}>
       {LINKS.map(function ({ id, href, labelKey }) {
         const text = i18n.t(labelKey);
         const IconComponent = ICON_BY_LINK_ID[id];

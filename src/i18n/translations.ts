@@ -85,8 +85,8 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationKnuHighlight7]:
     "Studied practical aspects of enterprise software systems, including work with 1C platforms and business applications.",
   [ETranslationKey.ExperiencePresent]: "Present",
-  [ETranslationKey.TimelineExpandDetails]: "Show more",
-  [ETranslationKey.TimelineHideDetails]: "Show less",
+  [ETranslationKey.TimelineExpandDetails]: "More",
+  [ETranslationKey.TimelineHideDetails]: "Less",
   [ETranslationKey.ExperienceToolsAndTechnologies]: "Tools and technologies",
 
   [ETranslationKey.ExperienceOmnoraCompanyName]:

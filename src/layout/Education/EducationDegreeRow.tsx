@@ -3,7 +3,6 @@ import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import {
   TimelineRow,
   TIMELINE_ROW_ICON_CLASS,
-  TIMELINE_ROW_INLINE_CONTENT_CLASS,
 } from "../../components/Timeline/TimelineRow";
 import { getEducationTextKeys } from "../../utils/education";
 import { useI18n } from "../../hooks/useI18n";
@@ -26,8 +25,8 @@ export function EducationDegreeRow<TItem extends TimelineDataItem>(
     >
       <PipeSeparatedText
         value={i18n.t(textKeys.program)}
-        className={TIMELINE_ROW_INLINE_CONTENT_CLASS}
         stackOnMobile
+        inlineContent
       />
     </TimelineRow>
   );

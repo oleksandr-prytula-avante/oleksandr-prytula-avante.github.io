@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 
 import { PipeSeparator } from "./PipeSeparator";
+import { TIMELINE_ROW_INLINE_CONTENT_CLASS } from "./Timeline/TimelineRow";
 
 type PipeSeparatedTextProps = {
   value: string;
-  className?: string;
-  separatorClassName?: string;
+  inlineContent?: boolean;
+  hasSeparatorMargin?: boolean;
   hideLastPartOnMobile?: boolean;
   stackOnMobile?: boolean;
 };
@@ -18,17 +19,19 @@ export const MOBILE_STACK_CONTAINER_SUFFIX =
   "max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal";
 export const MOBILE_STACK_ITEM_CLASS =
   "max-[640px]:overflow-visible max-[640px]:whitespace-normal";
-export const MOBILE_STACK_SEPARATOR_CLASS = "max-[640px]:hidden";
 
 export function PipeSeparatedText(props: PipeSeparatedTextProps) {
   const {
     value,
-    className,
-    separatorClassName = "text-white/60",
+    inlineContent = false,
+    hasSeparatorMargin = false,
     hideLastPartOnMobile = false,
     stackOnMobile = false,
   } = props;
   const mobileStackClass = stackOnMobile ? MOBILE_STACK_CONTAINER_SUFFIX : "";
+  const inlineContentClass = inlineContent
+    ? TIMELINE_ROW_INLINE_CONTENT_CLASS
+    : "";
   const parts = value
     .split(PIPE_TEXT_DELIMITER)
     .map(function (part) {
@@ -38,8 +41,12 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
       return part.length > MIN_PART_LENGTH;
     });
 
+  const containerClassName = [inlineContentClass, mobileStackClass]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <span className={`${className ?? ""} ${mobileStackClass}`.trim()}>
+    <span className={containerClassName || undefined}>
       {parts.map(function (part, index) {
         const isLastPart = index === parts.length - 1;
         const shouldHideOnMobile = hideLastPartOnMobile && isLastPart;
@@ -48,7 +55,10 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
         if (index > FIRST_PART_INDEX) {
           separator = (
             <PipeSeparator
-              className={`${separatorClassName ?? ""} ${shouldHideOnMobile ? "max-[768px]:hidden" : ""} ${stackOnMobile ? MOBILE_STACK_SEPARATOR_CLASS : ""} timeline-hide-between-1024-1440`.trim()}
+              hasMargin={hasSeparatorMargin}
+              hideOnMobile={shouldHideOnMobile}
+              hideOnMobileStack={stackOnMobile}
+              hideBetween1024And1440
             />
           );
         }

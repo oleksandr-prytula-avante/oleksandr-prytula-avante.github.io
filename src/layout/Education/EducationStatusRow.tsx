@@ -7,7 +7,6 @@ import {
 } from "../../components/Timeline/TimelineRow";
 import {
   MOBILE_STACK_ITEM_CLASS,
-  MOBILE_STACK_SEPARATOR_CLASS,
   MOBILE_STACK_CONTAINER_SUFFIX,
 } from "../../components/PipeSeparatedText";
 import { EducationStatusIcon } from "../../components/icons/EducationStatusIcon";
@@ -39,9 +38,7 @@ export function EducationStatusRow<TItem extends TimelineDataItem>(
         className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}
       >
         <span className={MOBILE_STACK_ITEM_CLASS}>{periodLabel.dateRange}</span>
-        <PipeSeparator
-          className={`text-white/60 ${MOBILE_STACK_SEPARATOR_CLASS} timeline-hide-between-1024-1440`}
-        />
+        <PipeSeparator hideOnMobileStack hideBetween1024And1440 />
         <span
           className={`${MOBILE_STACK_ITEM_CLASS} timeline-hide-between-1024-1440`}
         >

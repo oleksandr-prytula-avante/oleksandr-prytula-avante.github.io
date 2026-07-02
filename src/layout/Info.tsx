@@ -518,7 +518,7 @@ export function Info(props: InfoProps) {
               </span>
               {isPrimaryComplete && (
                 <>
-                  <PipeSeparator className="text-[color:var(--color-accent)] max-[767px]:hidden" />
+                  <PipeSeparator variant="accent" hideOnMobile />
                   <span>
                     {secondarySlice}
                     {roleTypingCursor}
