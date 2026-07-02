@@ -1,5 +1,3 @@
-import type { MouseEvent } from "react";
-
 import {
   SKILL_HREF_BY_LABEL,
   SKILL_REGEX,
@@ -19,7 +17,7 @@ export function SkillHighlights(props: SkillHighlightsProps) {
   const parts = value.split(SKILL_REGEX);
 
   function onHighlightedTermMouseEnter(tag: string) {
-    return function (_event: MouseEvent<HTMLAnchorElement>) {
+    return function () {
       onSkillEnter(tag);
     };
   }

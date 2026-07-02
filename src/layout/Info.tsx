@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Tags } from "../components/Tags/Tags";
-import { ATS_CV_PATH } from "../constants/paths";
+import { CV_PATH } from "../constants/paths";
 import {
   DESKTOP_MIN_WIDTH_MEDIA_QUERY,
   MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
@@ -16,6 +16,7 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
 import { PipeSeparator } from "../components/PipeSeparator";
+
 const ORANGE_LINE_REVEAL_DURATION_MS = 500;
 const NAME_TYPING_START_EXTRA_DELAY_MS = 20;
 const HI_TYPING_INTERVAL_MS = 70;
@@ -450,7 +451,7 @@ export function Info(props: InfoProps) {
           </p>
           <a
             className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
-            href={ATS_CV_PATH}
+            href={CV_PATH}
             target="_blank"
             rel="noreferrer"
             aria-hidden={!isCvDownloadTypingStarted}

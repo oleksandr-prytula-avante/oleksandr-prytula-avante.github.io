@@ -1,1 +1,1 @@
-export const ATS_CV_PATH = "/assets/pdf/ats-cv.pdf";
+export const CV_PATH = "/assets/pdf/cv.pdf";
