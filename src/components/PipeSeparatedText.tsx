@@ -1,10 +1,11 @@
 import { Fragment } from "react";
 
 import { PipeSeparator } from "./PipeSeparator";
-import {
-  TIMELINE_ROW_INLINE_CONTENT_CLASS,
-  MOBILE_STACK_CONTAINER_SUFFIX,
-} from "../constants/ui";
+
+const TIMELINE_ROW_INLINE_CONTENT_CLASS =
+  "inline-flex min-w-0 max-w-full items-center gap-x-2 gap-y-0 truncate";
+const MOBILE_STACK_CONTAINER_SUFFIX =
+  "max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal";
 
 type PipeSeparatedTextProps = {
   value: string;

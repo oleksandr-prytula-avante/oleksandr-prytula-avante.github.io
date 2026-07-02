@@ -8,7 +8,7 @@ import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries"
 import {
   TAG_REVEAL_STAGGER_MS,
   TAG_REVEAL_DURATION_MS,
-} from "../../constants/ui";
+} from "../../constants/animations";
 import { Tag } from "./Tag";
 
 import "./Tags.css";

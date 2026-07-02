@@ -7,23 +7,26 @@ import {
   MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
 } from "../constants/mediaQueries";
 import { COMMON_SKILL_TAGS } from "../constants/skillTags";
-import { TAG_REVEAL_DURATION_MS, TAG_REVEAL_STAGGER_MS } from "../constants/ui";
+import {
+  TAG_REVEAL_DURATION_MS,
+  TAG_REVEAL_STAGGER_MS,
+  ORANGE_LINE_REVEAL_DURATION_MS,
+  NAME_TYPING_START_EXTRA_DELAY_MS,
+  HI_TYPING_INTERVAL_MS,
+  ROLE_TYPING_INTERVAL_MS,
+  ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS,
+  NAME_TYPING_INTERVAL_MS,
+  NEED_MORE_DETAILS_TYPING_INTERVAL_MS,
+  CV_DOWNLOAD_TYPING_INTERVAL_MS,
+  HERO_TYPING_STEP_SINGLE_CHAR,
+  HERO_TYPING_STEP_DOUBLE_CHARS,
+} from "../constants/animations";
 import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
 import { PipeSeparator } from "../components/PipeSeparator";
 
-const ORANGE_LINE_REVEAL_DURATION_MS = 500;
-const NAME_TYPING_START_EXTRA_DELAY_MS = 20;
-const HI_TYPING_INTERVAL_MS = 70;
-const ROLE_TYPING_INTERVAL_MS = 70;
-const ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS = 45;
-const NAME_TYPING_INTERVAL_MS = 75;
-const NEED_MORE_DETAILS_TYPING_INTERVAL_MS = 45;
-const CV_DOWNLOAD_TYPING_INTERVAL_MS = 38;
-const HERO_TYPING_STEP_SINGLE_CHAR = 1;
-const HERO_TYPING_STEP_DOUBLE_CHARS = 2;
 const ENGINEERING_TOOLKIT_COLON_TRIM_INDEX = -1;
 const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
 const DEFAULT_CHAR_COUNT = 0;

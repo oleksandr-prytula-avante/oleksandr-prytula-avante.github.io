@@ -1,15 +1,17 @@
 import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
 import { PipeSeparator } from "../../components/PipeSeparator";
 import { TimelineRow } from "../../components/Timeline/TimelineRow";
-import {
-  TIMELINE_ROW_INLINE_CONTENT_CLASS,
-  MOBILE_STACK_ITEM_CLASS,
-  MOBILE_STACK_CONTAINER_SUFFIX,
-} from "../../constants/ui";
 import { EducationStatusIcon } from "../../components/icons/EducationStatusIcon";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
 import { buildPeriodLabel } from "../../utils/time";
+
+const TIMELINE_ROW_INLINE_CONTENT_CLASS =
+  "inline-flex min-w-0 max-w-full items-center gap-x-2 gap-y-0 truncate";
+const MOBILE_STACK_CONTAINER_SUFFIX =
+  "max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal";
+const MOBILE_STACK_ITEM_CLASS =
+  "max-[640px]:overflow-visible max-[640px]:whitespace-normal";
 
 type EducationStatusRowProps<TItem extends TimelineDataItem> = {
   item: TItem;

@@ -5,17 +5,20 @@ import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ESection, toSectionHash } from "../../utils/sections";
+import {
+  TIMELINE_REVEAL_STAGGER_MS,
+  TIMELINE_REVEAL_DURATION_MS,
+  TIMELINE_FOCUS_TRANSITION_MS,
+} from "../../constants/animations";
+import {
+  TIMELINE_VISIBILITY_OPACITY_THRESHOLD,
+  TIMELINE_EMPTY_STATE_VALUE,
+  TIMELINE_FIRST_ITEM_INDEX,
+} from "../../constants/timeline";
 import { TimelineItem } from "./TimelineItem";
 import type { TimelineDataItem } from "./TimelineItem";
 
 import "./Timeline.css";
-
-const TIMELINE_REVEAL_STAGGER_MS = 240;
-const TIMELINE_REVEAL_DURATION_MS = 460;
-const TIMELINE_FOCUS_TRANSITION_MS = 460;
-const TIMELINE_VISIBILITY_OPACITY_THRESHOLD = 0.35;
-const TIMELINE_EMPTY_STATE_VALUE = 0;
-const TIMELINE_FIRST_ITEM_INDEX = 0;
 
 type TimelineProps<TItem extends TimelineDataItem> = {
   items: TItem[];
