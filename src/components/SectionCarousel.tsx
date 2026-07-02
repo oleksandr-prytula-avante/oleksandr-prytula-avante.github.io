@@ -1,7 +1,12 @@
 import { Children, useMemo } from "react";
 import type { ReactNode } from "react";
 
-import { SECTION_NAV_ITEMS } from "../constants/sections";
+import {
+  SECTION_NAV_ITEMS,
+  NOT_FOUND_INDEX,
+  FIRST_SLIDE_INDEX,
+  SLIDE_WIDTH_PERCENT,
+} from "../constants/sections";
 import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../constants/mediaQueries";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useMediaQuery } from "../hooks/useMediaQuery";
@@ -11,9 +16,6 @@ type SectionCarouselProps = {
   children: ReactNode;
 };
 
-const NOT_FOUND_INDEX = -1;
-const FIRST_SLIDE_INDEX = 0;
-const SLIDE_WIDTH_PERCENT = 100;
 export function SectionCarousel({ children }: SectionCarouselProps) {
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const isCarouselAnimationEnabled = useMediaQuery(

@@ -83,6 +83,7 @@ export function Timeline<TItem extends TimelineDataItem>(
 
     if (!listElement) {
       setFocusShiftById(null);
+
       return;
     }
 
@@ -109,6 +110,7 @@ export function Timeline<TItem extends TimelineDataItem>(
       }
 
       const itemTop = itemElement.getBoundingClientRect().top;
+
       nextShiftById[itemId] = Math.round(itemTop - firstTop);
     });
 
@@ -123,6 +125,7 @@ export function Timeline<TItem extends TimelineDataItem>(
     function () {
       if (!isTimelineActive) {
         resetFocusState();
+
         return;
       }
 
@@ -130,12 +133,14 @@ export function Timeline<TItem extends TimelineDataItem>(
 
       if (!listElement) {
         resetFocusState();
+
         return;
       }
 
       if (hasPlayedInitialReveal) {
         setShouldRevealItems(true);
         setIsInitialRevealComplete(true);
+
         return;
       }
 

@@ -1,14 +1,13 @@
 import type { ReactNode } from "react";
 
+import { SCALE_X_VISIBLE, SCALE_X_HIDDEN } from "../constants/sections";
+
 type SectionHeadingProps = {
   title: ReactNode;
   layout?: "default" | "mobile";
   animateLine?: boolean;
   isLineVisible?: boolean;
 };
-
-const SCALE_X_VISIBLE = "scaleX(1)";
-const SCALE_X_HIDDEN = "scaleX(0)";
 
 export function SectionHeading(props: SectionHeadingProps) {
   const {

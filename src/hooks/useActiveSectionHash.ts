@@ -2,13 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { ESection, toSectionHash } from "../utils/sections";
 import type { SectionHash } from "../utils/sections";
-
-const VALID_HASHES = [
-  toSectionHash(ESection.About),
-  toSectionHash(ESection.Experience),
-  toSectionHash(ESection.Education),
-  toSectionHash(ESection.Projects),
-];
+import { VALID_HASHES } from "../constants/sections";
 
 function isSectionHash(value: string): value is SectionHash {
   return (VALID_HASHES as readonly string[]).includes(value);

@@ -1,0 +1,11 @@
+export const VERTICAL_LINE_POSITIONS = [5, 21, 37, 53, 69, 85];
+export const HORIZONTAL_LINE_POSITIONS = [10, 26, 42, 58, 74, 90];
+export const VERTICAL_LINE_TOP_MIN = 5;
+export const VERTICAL_LINE_TOP_MAX = 55;
+export const MIN_LINE_PERCENT = 1;
+export const LINE_PERCENT_CAP = 90;
+export const VERTICAL_LINE_HEIGHT_MIN = 35;
+export const HORIZONTAL_LINE_LEFT_MIN = 0;
+export const HORIZONTAL_LINE_LEFT_MAX = 70;
+export const HORIZONTAL_LINE_WIDTH_MIN = 20;
+export const LINE_THICKNESS_PX = "2px";

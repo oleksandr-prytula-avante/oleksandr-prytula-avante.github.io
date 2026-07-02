@@ -1,16 +1,18 @@
+import {
+  MIN_MONTH,
+  MAX_MONTH,
+  ZERO_DURATION_MONTHS,
+  ZERO_MONTHS_LABEL,
+  MONTHS_PER_YEAR,
+  DURATION_PARTS_SEPARATOR,
+  INCLUSIVE_MONTH_OFFSET,
+  SINGULAR_DURATION_UNIT_COUNT,
+} from "../constants/time";
+
 type YearMonth = {
   year: number;
   month: number;
 };
-
-const MIN_MONTH = 1;
-const MAX_MONTH = 12;
-const ZERO_DURATION_MONTHS = 0;
-const ZERO_MONTHS_LABEL = "0 mos";
-const MONTHS_PER_YEAR = 12;
-const DURATION_PARTS_SEPARATOR = " ";
-const INCLUSIVE_MONTH_OFFSET = 1;
-const SINGULAR_DURATION_UNIT_COUNT = 1;
 
 function parseYearMonth(value: string): YearMonth {
   const [yearPart, monthPart] = value.split("-");

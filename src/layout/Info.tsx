@@ -21,6 +21,7 @@ import {
   HERO_TYPING_STEP_SINGLE_CHAR,
   HERO_TYPING_STEP_DOUBLE_CHARS,
 } from "../constants/animations";
+import { SCALE_X_VISIBLE, SCALE_X_HIDDEN } from "../constants/sections";
 import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
@@ -32,8 +33,6 @@ const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
 const DEFAULT_CHAR_COUNT = 0;
 const ENABLED_TAB_INDEX = 0;
 const DISABLED_TAB_INDEX = -1;
-const SCALE_X_VISIBLE = "scaleX(1)";
-const SCALE_X_HIDDEN = "scaleX(0)";
 const ENGINEERING_TOOLKIT_EMPTY_LENGTH = 0;
 const NAME_TYPING_START_DELAY_MS =
   ORANGE_LINE_REVEAL_DURATION_MS + NAME_TYPING_START_EXTRA_DELAY_MS;

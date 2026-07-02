@@ -1,11 +1,12 @@
 import { EPaletteColor } from "../enums/palette";
-
-const HEX_PREFIX = "#";
-const HEX_PREFIX_LENGTH = 1;
-const HEX_COLOR_LENGTH = 6;
-const HEX_CHANNEL_LENGTH = 2;
-const HEX_RADIX = 16;
-const PALETTE_STYLE_ID = "app-palette-vars";
+import {
+  HEX_PREFIX,
+  HEX_PREFIX_LENGTH,
+  HEX_COLOR_LENGTH,
+  HEX_CHANNEL_LENGTH,
+  HEX_RADIX,
+  PALETTE_STYLE_ID,
+} from "../constants/palette";
 
 function hexToRgbChannels(hex: string): string {
   const normalized = hex.startsWith(HEX_PREFIX)

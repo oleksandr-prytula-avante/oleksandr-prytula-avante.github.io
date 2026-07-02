@@ -1,6 +1,13 @@
 import type { CSSProperties } from "react";
 
 import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
+import {
+  ACTIVE_ITEM_Z_INDEX,
+  INACTIVE_ITEM_Z_INDEX,
+  SORT_EQUAL,
+  SORT_LEFT_FIRST,
+  SORT_RIGHT_FIRST,
+} from "../../constants/timeline";
 import { getEducationTextKeys } from "../../utils/education";
 import { getExperienceTextKeys } from "../../utils/experience";
 import { TextWithLinks } from "../TextWithLinks";
@@ -10,11 +17,6 @@ import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
 
 const COMMON_SKILL_TAG_SET = new Set<string>(COMMON_SKILL_TAGS);
-const ACTIVE_ITEM_Z_INDEX = 30;
-const INACTIVE_ITEM_Z_INDEX = 0;
-const SORT_EQUAL = 0;
-const SORT_LEFT_FIRST = -1;
-const SORT_RIGHT_FIRST = 1;
 
 export type TimelineDataItem = {
   id: string;
