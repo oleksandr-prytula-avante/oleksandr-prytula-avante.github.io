@@ -105,6 +105,7 @@ export const ALL_SKILL_TAGS = [
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
   },
   { label: "Vue.js", href: "https://vuejs.org" },
+  { label: "LeetCode", href: "https://leetcode.com" },
   {
     label: "Front-end Development",
     href: "https://en.wikipedia.org/wiki/Front-end_web_development",
@@ -175,17 +176,29 @@ export const SKILL_HREF_BY_LABEL = ALL_SKILL_TAGS.reduce(
   {} as Record<string, string>,
 );
 
+const SKILL_TERM_ALIASES: Record<string, SkillTagLabel> = {
+  Vue: "Vue.js",
+  "continuous integration and deployment": "CI / CD",
+  "непрерывной интеграции и развертывания": "CI / CD",
+  "integración y despliegue continuos": "CI / CD",
+  "kontinuierliche Integration und kontinuierliches Deployment": "CI / CD",
+  "веб-разработки": "Web Development",
+  "desarrollo web": "Web Development",
+  Webentwicklung: "Web Development",
+};
+
 export const SKILL_HIGHLIGHT_TERMS = Array.from(
-  new Set(
-    ALL_SKILL_TAGS.map(function ({ label }) {
+  new Set([
+    ...ALL_SKILL_TAGS.map(function ({ label }) {
       return label;
     }),
-  ),
+    ...Object.keys(SKILL_TERM_ALIASES),
+  ]),
 );
 
 export const TERM_TO_TAG_MAP = new Map(
   SKILL_HIGHLIGHT_TERMS.map(function (term) {
-    return [term.toLowerCase(), term];
+    return [term.toLowerCase(), SKILL_TERM_ALIASES[term] ?? term];
   }),
 );
 

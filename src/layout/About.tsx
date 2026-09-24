@@ -19,7 +19,6 @@ export function About(props: AboutProps) {
     ETranslationKey.AboutParagraph2,
     ETranslationKey.AboutParagraph3,
     ETranslationKey.AboutParagraph4,
-    ETranslationKey.AboutParagraph5,
   ];
 
   const paragraphValues = useMemo(
