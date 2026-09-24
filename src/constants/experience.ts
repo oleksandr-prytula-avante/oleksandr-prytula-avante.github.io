@@ -89,7 +89,6 @@ export const EXPERIENCE_TEXT_KEYS_BY_ID: Record<
       ETranslationKey.ExperienceLanarsHighlight3,
       ETranslationKey.ExperienceLanarsHighlight4,
       ETranslationKey.ExperienceLanarsHighlight5,
-      ETranslationKey.ExperienceLanarsHighlight6,
     ],
   },
 };

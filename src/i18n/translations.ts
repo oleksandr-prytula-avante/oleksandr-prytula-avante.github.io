@@ -40,17 +40,17 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationDuetDegree]:
     "Master's degree, Computer Software Engineering",
   [ETranslationKey.EducationDuetHighlight1]:
-    "Advanced study of mathematical modeling tools and algorithm design, focusing on computational problem-solving and applied modeling techniques.",
+    "Undertook advanced study of mathematical modeling tools and algorithm design, with a focus on computational problem-solving and applied modeling techniques.",
   [ETranslationKey.EducationDuetHighlight2]:
-    "Gained deeper experience with 3D graphics technologies (OpenGL) for the development of scientific and high-performance software applications.",
+    "Developed deeper expertise in 3D graphics technologies, including OpenGL, for scientific and high-performance software applications.",
   [ETranslationKey.EducationDuetHighlight3]:
     "Completed coursework in Scientific Research Methodology, covering research design, academic writing, and analytical methods.",
   [ETranslationKey.EducationDuetHighlight4]:
-    "Studied IT Law, including legal aspects of software development, digital technologies, and intellectual property.",
+    "Studied IT Law, including the legal aspects of software development, digital technologies, and intellectual property.",
   [ETranslationKey.EducationDuetHighlight5]:
-    "Mentored fellow students, providing academic and technical guidance in programming and related subjects.",
+    "Mentored fellow students by providing academic and technical guidance in programming and related disciplines.",
   [ETranslationKey.EducationDuetHighlight6]:
-    "Participated in student governance, contributing to academic initiatives and student community activities.",
+    "Participated in student governance, contributing to academic initiatives and broader student community activities.",
   [ETranslationKey.EducationBinaryStudioTitle]: "Binary Studio Academy",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "JS Full-Stack Developer Bootcamp & Internship",
@@ -69,19 +69,19 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationKnuDegree]:
     "Bachelor's degree, Computer Software Engineering",
   [ETranslationKey.EducationKnuHighlight1]:
-    "Studied fundamentals of software development, including programming principles, algorithms, and data structures.",
+    "Studied core software development concepts, including programming principles, algorithms, and data structures.",
   [ETranslationKey.EducationKnuHighlight2]:
-    "Gained knowledge in systems programming concepts, computer architecture basics, and low-level software interaction.",
+    "Developed a solid understanding of systems programming, computer architecture, and low-level software interaction.",
   [ETranslationKey.EducationKnuHighlight3]:
-    "Learned web development fundamentals, including client-server architecture and building web applications.",
+    "Learned the fundamentals of web development, including client-server architecture and the development of web applications.",
   [ETranslationKey.EducationKnuHighlight4]:
     "Worked with database systems, covering relational databases, data modeling, and query design.",
   [ETranslationKey.EducationKnuHighlight5]:
-    "Explored 3D graphics libraries and tools for developing interactive applications and web-based graphical solutions.",
+    "Explored 3D graphics libraries and development tools for building interactive applications and web-based graphical solutions.",
   [ETranslationKey.EducationKnuHighlight6]:
-    "Participated in local student programming competitions and IT olympiads, developing problem-solving and algorithmic thinking skills.",
+    "Participated in local student programming competitions and IT olympiads, strengthening problem-solving abilities and algorithmic thinking.",
   [ETranslationKey.EducationKnuHighlight7]:
-    "Studied practical aspects of enterprise software systems, including work with 1C platforms and business applications.",
+    "Studied practical aspects of enterprise software systems, including work with 1C platforms and business-oriented applications.",
   [ETranslationKey.ExperiencePresent]: "Present",
   [ETranslationKey.TimelineExpandDetails]: "More",
   [ETranslationKey.TimelineHideDetails]: "Less",
@@ -97,21 +97,21 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraHighlight1]:
     "Took part in building the portal that serves over 650 companies in the German market, delivering interactive content with seamless LMS integration.",
   [ETranslationKey.ExperienceOmnoraHighlight2]:
-    "Contributed to the development of an enterprise-grade learning platform as part of a cross-functional team of 20 engineers, collaborating with designers, product managers, and QA specialists.",
+    "Contributed to the development of an enterprise-grade learning platform as part of a cross-functional team of 20 engineers, collaborating with designers, product managers and QA specialists.",
   [ETranslationKey.ExperienceOmnoraHighlight3]:
     "Played a key role in building a custom multimedia player using Canvas API and WebRTC, enabling real-time streaming, multi-layer annotations, and embedding into third-party platforms.",
   [ETranslationKey.ExperienceOmnoraHighlight4]:
-    "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks, add overlays, and generate training content directly in the browser.",
+    "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks add overlays and generate training content directly in the browser.",
   [ETranslationKey.ExperienceOmnoraHighlight5]:
     "Led implementation of SCORM and xAPI standards for detailed tracking of learner progress and interactions within external LMS platforms, ensuring e-learning compliance.",
   [ETranslationKey.ExperienceOmnoraHighlight6]:
     "Integrated AI APIs to enable features such as AI avatars, text-to-speech, and interactive video generation, improving automation and personalization.",
   [ETranslationKey.ExperienceOmnoraHighlight7]:
-    "Directed FE modernization by refactoring the codebase into a reactive programming architecture and upgrading to the latest React and TypeScript, improving maintainability and performance.",
+    "Directed FE modernization by refactoring the codebase into a reactive programming architecture using reactive approach and upgrading to the latest React and TypeScript, improving maintainability and performance.",
   [ETranslationKey.ExperienceOmnoraHighlight8]:
     "Enhanced testing by increasing unit test coverage and adding automated tests integrated into CI/CD pipelines for reliable, faster releases.",
   [ETranslationKey.ExperienceOmnoraHighlight9]:
-    "Mentored junior developers, supported onboarding, and promoted best practices within the team.",
+    "Mentored junior developers, supported onboarding and promoted best practices within the team.",
   [ETranslationKey.ExperienceDigitalsuitsCompanyName]:
     "DigitalSuits | Outsource / Dedicated Team",
   [ETranslationKey.ExperienceDigitalsuitsJobTitle]:
@@ -142,17 +142,17 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceCodeAndCareDescription]:
     "WEB & Mobile Developer | Outstaff. Full-time.",
   [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-    "Designed and developed web and mobile applications from scratch, covering architecture on FE and BE parts.",
+    "Designed and developed web and mobile applications from the ground up, covering both frontend and backend architecture.",
   [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-    "Participated in application complexity assessment, effort estimation and architectural planning to ensure scalable and maintainable solutions.",
+    "Contributed to application complexity assessments, effort estimation, and architectural planning to support the development of scalable, maintainable solutions.",
   [ETranslationKey.ExperienceCodeAndCareHighlight3]:
-    "Acted as a mentor for junior developers, supporting their growth through code reviews, technical guidance and onboarding sessions.",
+    "Mentored junior developers through code reviews, technical guidance, and onboarding sessions, supporting their professional development.",
   [ETranslationKey.ExperienceCodeAndCareHighlight4]:
-    "Created a real-time monitoring platform for medical sensors for French market, enabling continuous tracking and alerting based on live data streams.",
+    "Developed a real-time medical sensor monitoring platform for the French market, enabling continuous tracking and alerts based on live data streams.",
   [ETranslationKey.ExperienceCodeAndCareHighlight5]:
-    "Built and maintained cryptocurrency platforms and wallets, with a strong focus on security, performance and scalability.",
+    "Built and maintained cryptocurrency platforms and wallets, prioritizing security, performance, and scalability.",
   [ETranslationKey.ExperienceCodeAndCareHighlight6]:
-    "Closely collaborated with core teams of crypto platform Bitfinex (https://www.bitfinex.com/) to deliver high-impact features, implement landing pages and mobile applications and ensure protocol compliance.",
+    "Collaborated closely with core teams at Bitfinex to deliver key features, develop landing pages and mobile applications, and ensure adherence to protocol requirements.",
   [ETranslationKey.ExperienceLanarsCompanyName]:
     "LANARS | Outsource / Dedicated team",
   [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
@@ -161,17 +161,15 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceLanarsDescription]:
     "WEB Developer | Outsource / Dedicated team. Full-time.",
   [ETranslationKey.ExperienceLanarsHighlight1]:
-    "Worked as a Full-Stack Developer, delivering both FE and BE solutions across several commercial projects.",
+    "Contributed to project planning and effort estimation, providing detailed assessments of the development time required for implementation.",
   [ETranslationKey.ExperienceLanarsHighlight2]:
-    "Participated in project planning and estimation, providing accurate assessments of required development hours.",
+    "Participated in technical discussions with team members and stakeholders, helping break down features into clearly defined development tasks.",
   [ETranslationKey.ExperienceLanarsHighlight3]:
-    "Took part in technical discussions and feature breakdowns with team members and stakeholders.",
+    "Developed responsive landing pages for a range of products, prioritizing performance and maintainability.",
   [ETranslationKey.ExperienceLanarsHighlight4]:
-    "Built responsive landing pages for various products with a focus on performance and maintainability.",
+    "Built backend APIs for mobile applications, including a pet-walking service and a marketplace platform.",
   [ETranslationKey.ExperienceLanarsHighlight5]:
-    "Developed backend APIs for mobile applications, including a pet walking service and a marketplace platform.",
-  [ETranslationKey.ExperienceLanarsHighlight6]:
-    "Implemented an admin panel for a marketplace and a CRM system for a gaming company, enabling operational teams to manage content, users and workflows.",
+    "Implemented a marketplace administration panel and a customer relationship management system for a gaming company, enabling operational teams to manage content, users, and workflows.",
 };
 
 const RU_TRANSLATIONS: Translations = {
@@ -196,7 +194,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutParagraph1]:
     "Я инженер-программист с более чем 10-летним опытом full-stack веб-разработки в сферах электронного обучения, электронной коммерции, маркетплейсов, трейдинга, страхования и здравоохранения. Мой опыт охватывает проекты разного масштаба, включая работу в стартапах и в формате аутстаффинга. Этот разнообразный опыт укрепил мою способность адаптироваться к различным структурам команд, инженерным практикам и меняющимся бизнес-приоритетам, сохраняя постоянное внимание к качеству программного обеспечения и созданию решений, отвечающих потребностям бизнеса.",
   [ETranslationKey.AboutParagraph2]:
-    "Мой опыт full-stack разработки охватывает фронтенд-приложения, бэкенд-сервисы, базы данных и инфраструктуру развертывания. Я разрабатываю веб-интерфейсы с использованием React, Vue и Angular. На бэкенде я использую Go, Python и Node.js для реализации сервисов, API и фоновой обработки. У меня есть опыт работы с монолитной и микросервисной архитектурой, REST и GraphQL API, а также с такими базами данных, как MySQL и MongoDB. Я использую Docker для контейнеризации, Kubernetes для оркестрации и брокеры сообщений для асинхронного взаимодействия между сервисами. Я также настраиваю конвейеры непрерывной интеграции и развертывания для автоматизации доставки программного обеспечения. Автоматизированное тестирование с Playwright и Jest — неотъемлемая часть моего подхода к качеству кода, удобству сопровождения и надежности систем. Я включаю инструменты разработки с поддержкой ИИ в свой рабочий процесс для помощи в реализации, отладке и рефакторинге, при этом критически проверяя сгенерированный код.",
+    "Мой опыт охватывает фронтенд-приложения, бэкенд-сервисы, базы данных и инфраструктуру развертывания. Я разрабатываю веб-интерфейсы с использованием React, Vue и Angular. На бэкенде я использую Go, Python и Node.js для реализации сервисов, API и фоновой обработки. У меня есть опыт работы с монолитной и микросервисной архитектурой, REST и GraphQL API, а также с такими базами данных, как MySQL и MongoDB. Я использую Docker для контейнеризации, Kubernetes для оркестрации и брокеры сообщений для асинхронного взаимодействия между сервисами. Я также настраиваю конвейеры непрерывной интеграции и развертывания для автоматизации доставки программного обеспечения. Автоматизированное тестирование с Playwright и Jest — неотъемлемая часть моего подхода к качеству кода, удобству сопровождения и надежности систем. Я включаю инструменты разработки с поддержкой ИИ в свой рабочий процесс для помощи в реализации, отладке и рефакторинге, при этом критически проверяя сгенерированный код.",
   [ETranslationKey.AboutParagraph3]:
     "На протяжении карьеры я работал в инженерных командах численностью от 3 до 20 человек, часто в международной и распределенной среде. Английский — мой основной рабочий язык для технических обсуждений и общения с клиентами. Я привык взаимодействовать с разными командами, уточнять бизнес-требования и объяснять технические аспекты как коллегам-инженерам, так и нетехническим заинтересованным сторонам. Я также наставляю начинающих разработчиков, предоставляя технические рекомендации, делясь знаниями и поддерживая их профессиональное развитие.",
   [ETranslationKey.AboutParagraph4]:
@@ -206,17 +204,17 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationDuetDegree]:
     "Магистр, инженерия программного обеспечения",
   [ETranslationKey.EducationDuetHighlight1]:
-    "Углубленно изучал инструменты математического моделирования и проектирование алгоритмов с фокусом на вычислительное решение задач и прикладные методы моделирования.",
+    "Углубленно изучал инструменты математического моделирования и проектирование алгоритмов, уделяя особое внимание решению вычислительных задач и прикладным методам моделирования.",
   [ETranslationKey.EducationDuetHighlight2]:
-    "Получил более глубокий опыт работы с технологиями 3D-графики (OpenGL) для разработки научных и высокопроизводительных программных приложений.",
+    "Углубил знания в области технологий трехмерной графики, включая OpenGL, для научных и высокопроизводительных программных приложений.",
   [ETranslationKey.EducationDuetHighlight3]:
-    "Прошел курс по методологии научных исследований, включая дизайн исследования, академическое письмо и аналитические методы.",
+    "Прошел курс по методологии научных исследований, охватывающий планирование исследований, академическое письмо и аналитические методы.",
   [ETranslationKey.EducationDuetHighlight4]:
-    "Изучал IT-право, включая правовые аспекты разработки ПО, цифровых технологий и интеллектуальной собственности.",
+    "Изучал IT-право, включая правовые аспекты разработки программного обеспечения, цифровых технологий и интеллектуальной собственности.",
   [ETranslationKey.EducationDuetHighlight5]:
-    "Менторил одногруппников, предоставляя академическую и техническую поддержку по программированию и смежным дисциплинам.",
+    "Выступал наставником для других студентов, предоставляя академические и технические рекомендации по программированию и смежным дисциплинам.",
   [ETranslationKey.EducationDuetHighlight6]:
-    "Участвовал в студенческом самоуправлении, внося вклад в академические инициативы и деятельность студенческого сообщества.",
+    "Участвовал в студенческом самоуправлении, внося вклад в академические инициативы и более широкий круг мероприятий студенческого сообщества.",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "Буткемп JS Full-Stack разработчика и стажировка",
   [ETranslationKey.EducationBinaryStudioHighlight1]:
@@ -234,19 +232,19 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationKnuDegree]:
     "Бакалавр, инженерия программного обеспечения",
   [ETranslationKey.EducationKnuHighlight1]:
-    "Изучал основы разработки программного обеспечения, включая принципы программирования, алгоритмы и структуры данных.",
+    "Изучал ключевые концепции разработки программного обеспечения, включая принципы программирования, алгоритмы и структуры данных.",
   [ETranslationKey.EducationKnuHighlight2]:
-    "Получил знания по системному программированию, базам компьютерной архитектуры и взаимодействию с ПО на низком уровне.",
+    "Сформировал прочное понимание системного программирования, архитектуры компьютеров и низкоуровневого взаимодействия программного обеспечения.",
   [ETranslationKey.EducationKnuHighlight3]:
-    "Освоил основы веб-разработки, включая клиент-серверную архитектуру и создание веб-приложений.",
+    "Освоил основы веб-разработки, включая клиент-серверную архитектуру и разработку веб-приложений.",
   [ETranslationKey.EducationKnuHighlight4]:
-    "Работал с системами баз данных: реляционные БД, моделирование данных и проектирование запросов.",
+    "Работал с системами баз данных, изучая реляционные базы данных, моделирование данных и проектирование запросов.",
   [ETranslationKey.EducationKnuHighlight5]:
-    "Изучал библиотеки и инструменты 3D-графики для разработки интерактивных приложений и web-решений с графикой.",
+    "Изучал библиотеки трехмерной графики и инструменты разработки для создания интерактивных приложений и графических веб-решений.",
   [ETranslationKey.EducationKnuHighlight6]:
-    "Участвовал в локальных студенческих соревнованиях по программированию и IT-олимпиадах, развивая навыки решения задач и алгоритмическое мышление.",
+    "Участвовал в местных студенческих соревнованиях по программированию и IT-олимпиадах, развивая навыки решения задач и алгоритмическое мышление.",
   [ETranslationKey.EducationKnuHighlight7]:
-    "Изучал практические аспекты корпоративных программных систем, включая работу с платформами 1C и бизнес-приложениями.",
+    "Изучал практические аспекты корпоративных программных систем, включая работу с платформами 1C и приложениями для бизнеса.",
   [ETranslationKey.ExperiencePresent]: "Настоящее время",
   [ETranslationKey.TimelineExpandDetails]: "Показать больше",
   [ETranslationKey.TimelineHideDetails]: "Скрыть",
@@ -271,7 +269,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraHighlight6]:
     "Интегрировал AI API для реализации функций AI-аватаров, преобразования текста в речь и генерации интерактивного видео, повышая автоматизацию и персонализацию.",
   [ETranslationKey.ExperienceOmnoraHighlight7]:
-    "Курировал модернизацию frontend-части: рефакторинг кодовой базы к реактивной архитектуре и обновление до актуальных React и TypeScript, что повысило поддерживаемость и производительность.",
+    "Руководил модернизацией frontend-части, выполнив рефакторинг кодовой базы с переходом на архитектуру реактивного программирования с использованием реактивного подхода и обновив React и TypeScript до последних версий, что улучшило поддерживаемость и производительность.",
   [ETranslationKey.ExperienceOmnoraHighlight8]:
     "Улучшил качество тестирования, повысив покрытие unit-тестами и добавив автотесты в CI/CD пайплайны для более надежных и быстрых релизов.",
   [ETranslationKey.ExperienceOmnoraHighlight9]:
@@ -284,21 +282,21 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceDigitalsuitsDescription]:
     "WEB-разработчик и технический тимлид | Аутсорс / Выделенная команда. Полная занятость.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-    "Разработал админ-панель для управления интерактивными чат-ботами (до активного внедрения AI-агентов) в B2B страховых приложениях: настройка сценариев, мониторинг взаимодействий и управление коммуникацией с клиентами.",
+    "Разработал административную панель для управления интерактивными чат-ботами (до активного внедрения AI-агентов), используемыми в B2B-приложениях для страхования, предоставив бизнес-пользователям возможность настраивать процессы, отслеживать взаимодействия и управлять сценариями общения с клиентами.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
-    "Разработал платформу недвижимости для рынка Великобритании с инструментами управления объявлениями, поиска и взаимодействия с клиентами, с фокусом на масштабируемость, производительность и соответствие требованиям.",
+    "Разработал платформу недвижимости для рынка Великобритании с инструментами управления объявлениями о недвижимости, поиска и взаимодействия с клиентами, уделяя особое внимание масштабируемости, производительности и соблюдению нормативных требований.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
-    "Возглавил разработку нескольких веб-приложений с нуля в кросс-функциональной команде из 5 инженеров в тесной связке с product management и DevOps для стабильной поставки и соответствия бизнес-целям.",
+    "Возглавил разработку нескольких веб-приложений с нуля в кросс-функциональной команде из 5 инженеров, тесно сотрудничая с командой управления продуктом и DevOps-инженерами для обеспечения бесперебойной поставки, готовности инфраструктуры и соответствия бизнес-приоритетам.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight4]:
-    "Определил и внедрил эффективные процессы команды: декомпозиция задач, приоритизация, code review и планирование релизов.",
+    "Определил и внедрил эффективные рабочие процессы команды, включая декомпозицию задач, расстановку приоритетов, процессы проверки кода и планирование релизов.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight5]:
-    "Проводил оценку трудозатрат по фичам и всему проектному скоупу, балансируя сроки поставки и техническую реализуемость.",
+    "Оценивал трудозатраты на реализацию функциональности и всего объема проекта, согласовывая сроки поставки с технической реализуемостью.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight6]:
-    "Спроектировал общую архитектуру приложений, выбрал технологический стек и отвечал за ключевые технические решения на всем жизненном цикле проекта.",
+    "Спроектировал общую архитектуру приложений, выбрал технологический стек и отвечал за ключевые технические решения на протяжении всего жизненного цикла проекта.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight7]:
-    "Поддерживал ежедневную коммуникацию с бизнес-стейкхолдерами, обеспечивая соответствие между технической реализацией и продуктовыми целями.",
+    "Ежедневно общался с представителями бизнеса, обеспечивая согласованность технической реализации с целями продукта.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight8]:
-    "Оказывал техническое менторство с сильным фокусом на качестве frontend-кода, помогая коллегам улучшать поддерживаемость, производительность и консистентность UI.",
+    "Оказывал техническое наставничество с особым акцентом на качество frontend-разработки, помогая коллегам улучшать поддерживаемость кода, производительность и единообразие пользовательского интерфейса.",
   [ETranslationKey.ExperienceCodeAndCareCompanyName]: "Code & Care | Аутстафф",
   [ETranslationKey.ExperienceCodeAndCareJobTitle]:
     "WEB- и мобильный разработчик",
@@ -306,17 +304,17 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceCodeAndCareDescription]:
     "WEB- и мобильный разработчик | Аутстафф. Полная занятость.",
   [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-    "Проектировал и разрабатывал веб- и мобильные приложения с нуля, включая архитектуру frontend и backend частей.",
+    "Проектировал и разрабатывал веб- и мобильные приложения с нуля, охватывая архитектуру как frontend-, так и backend-части.",
   [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-    "Участвовал в оценке сложности приложений, расчете трудозатрат и архитектурном планировании для обеспечения масштабируемых и поддерживаемых решений.",
+    "Участвовал в оценке сложности приложений, оценке трудозатрат и архитектурном планировании для создания масштабируемых и удобных в сопровождении решений.",
   [ETranslationKey.ExperienceCodeAndCareHighlight3]:
-    "Выступал ментором для junior-разработчиков, поддерживая их рост через code review, техническое наставничество и онбординг.",
+    "Наставлял начинающих разработчиков, проводя проверки кода, предоставляя технические рекомендации и помогая с адаптацией, поддерживая их профессиональное развитие.",
   [ETranslationKey.ExperienceCodeAndCareHighlight4]:
-    "Создал платформу мониторинга медицинских сенсоров в реальном времени для французского рынка, обеспечив непрерывное отслеживание и алертинг на основе потоковых данных.",
+    "Разработал платформу мониторинга медицинских датчиков в реальном времени для французского рынка, обеспечивающую непрерывное отслеживание показателей и оповещения на основе потоковых данных.",
   [ETranslationKey.ExperienceCodeAndCareHighlight5]:
-    "Разрабатывал и поддерживал криптовалютные платформы и кошельки с акцентом на безопасность, производительность и масштабируемость.",
+    "Создавал и поддерживал криптовалютные платформы и кошельки, уделяя первостепенное внимание безопасности, производительности и масштабируемости.",
   [ETranslationKey.ExperienceCodeAndCareHighlight6]:
-    "Тесно сотрудничал с core-командами криптоплатформы Bitfinex (https://www.bitfinex.com/), реализуя ключевые функции, landing pages и мобильные приложения, а также обеспечивая соответствие протоколам.",
+    "Тесно сотрудничал с основными командами Bitfinex, реализуя ключевые функции, разрабатывая лендинги и мобильные приложения и обеспечивая соблюдение требований протоколов.",
   [ETranslationKey.ExperienceLanarsCompanyName]:
     "LANARS | Аутсорс / Выделенная команда",
   [ETranslationKey.ExperienceLanarsJobTitle]: "WEB-разработчик",
@@ -324,17 +322,15 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceLanarsDescription]:
     "WEB-разработчик | Аутсорс / Выделенная команда. Полная занятость.",
   [ETranslationKey.ExperienceLanarsHighlight1]:
-    "Работал Full-Stack разработчиком, реализуя frontend и backend решения в нескольких коммерческих проектах.",
+    "Участвовал в планировании проектов и оценке трудозатрат, предоставляя подробные оценки времени разработки, необходимого для реализации.",
   [ETranslationKey.ExperienceLanarsHighlight2]:
-    "Участвовал в планировании и оценке проектов, предоставляя точные оценки необходимых часов разработки.",
+    "Участвовал в технических обсуждениях с членами команды и заинтересованными сторонами, помогая разбивать функциональность на четко определенные задачи разработки.",
   [ETranslationKey.ExperienceLanarsHighlight3]:
-    "Принимал участие в технических обсуждениях и декомпозиции фич с командой и стейкхолдерами.",
+    "Разрабатывал адаптивные лендинги для различных продуктов, уделяя первостепенное внимание производительности и удобству сопровождения.",
   [ETranslationKey.ExperienceLanarsHighlight4]:
-    "Разрабатывал адаптивные landing pages для различных продуктов с фокусом на производительность и поддерживаемость.",
+    "Создавал backend API для мобильных приложений, включая сервис выгула домашних животных и платформу маркетплейса.",
   [ETranslationKey.ExperienceLanarsHighlight5]:
-    "Разрабатывал backend API для мобильных приложений, включая сервис выгула домашних животных и платформу маркетплейса.",
-  [ETranslationKey.ExperienceLanarsHighlight6]:
-    "Реализовал админ-панель для маркетплейса и CRM-систему для игровой компании, что позволило операционным командам управлять контентом, пользователями и рабочими процессами.",
+    "Реализовал административную панель маркетплейса и систему управления взаимоотношениями с клиентами для игровой компании, предоставив операционным командам возможность управлять контентом, пользователями и рабочими процессами.",
 };
 
 const SP_TRANSLATIONS: Translations = {
@@ -357,7 +353,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutParagraph1]:
     "Soy ingeniero de software con más de 10 años de experiencia en desarrollo web full-stack en los sectores de aprendizaje en línea, comercio electrónico, marketplaces, trading, seguros y salud. Mi trayectoria abarca proyectos de distintas escalas, incluido el trabajo en startups y en modalidades de outstaffing. Esta diversidad de experiencias ha reforzado mi capacidad para adaptarme a diferentes estructuras de equipo, prácticas de ingeniería y prioridades empresariales en evolución, manteniendo un enfoque constante en la calidad del software y en la entrega de soluciones que satisfagan las necesidades del negocio.",
   [ETranslationKey.AboutParagraph2]:
-    "Mi experiencia full-stack abarca aplicaciones frontend, servicios backend, bases de datos e infraestructura de despliegue. Desarrollo interfaces web con React, Vue y Angular. En el backend, utilizo Go, Python y Node.js para implementar servicios, API y procesamiento en segundo plano. Tengo experiencia con arquitecturas monolíticas y de microservicios, API REST y GraphQL, y bases de datos como MySQL y MongoDB. Utilizo Docker para la contenerización, Kubernetes para la orquestación y brokers de mensajes para la comunicación asíncrona entre servicios. También configuro pipelines de integración y despliegue continuos para automatizar la entrega de software. Las pruebas automatizadas con Playwright y Jest son una parte integral de mi enfoque de calidad del código, mantenibilidad y fiabilidad de los sistemas. Incorporo herramientas de desarrollo asistidas por IA en mi flujo de trabajo para apoyar la implementación, la depuración y la refactorización, revisando críticamente el código generado.",
+    "Mi experiencia abarca aplicaciones frontend, servicios backend, bases de datos e infraestructura de despliegue. Desarrollo interfaces web con React, Vue y Angular. En el backend, utilizo Go, Python y Node.js para implementar servicios, API y procesamiento en segundo plano. Tengo experiencia con arquitecturas monolíticas y de microservicios, API REST y GraphQL, y bases de datos como MySQL y MongoDB. Utilizo Docker para la contenerización, Kubernetes para la orquestación y brokers de mensajes para la comunicación asíncrona entre servicios. También configuro pipelines de integración y despliegue continuos para automatizar la entrega de software. Las pruebas automatizadas con Playwright y Jest son una parte integral de mi enfoque de calidad del código, mantenibilidad y fiabilidad de los sistemas. Incorporo herramientas de desarrollo asistidas por IA en mi flujo de trabajo para apoyar la implementación, la depuración y la refactorización, revisando críticamente el código generado.",
   [ETranslationKey.AboutParagraph3]:
     "A lo largo de mi carrera, he trabajado en equipos de ingeniería de entre 3 y 20 integrantes, frecuentemente en entornos internacionales y distribuidos. El inglés es mi principal idioma de trabajo para las discusiones técnicas y la comunicación con clientes. Estoy acostumbrado a colaborar entre equipos, aclarar requisitos de negocio y comunicar consideraciones técnicas tanto a colegas de ingeniería como a las partes interesadas sin perfil técnico. También mentorizo a desarrolladores júnior, ofreciendo orientación técnica, compartiendo conocimientos y apoyando su desarrollo profesional.",
   [ETranslationKey.AboutParagraph4]:
@@ -366,17 +362,17 @@ const SP_TRANSLATIONS: Translations = {
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Máster, Ingeniería de Software",
   [ETranslationKey.EducationDuetHighlight1]:
-    "Realicé un estudio avanzado de herramientas de modelado matemático y diseño de algoritmos, con enfoque en resolución computacional de problemas y técnicas de modelado aplicado.",
+    "Realicé estudios avanzados de herramientas de modelado matemático y diseño de algoritmos, con especial atención a la resolución de problemas computacionales y las técnicas de modelado aplicado.",
   [ETranslationKey.EducationDuetHighlight2]:
-    "Adquirí experiencia más profunda con tecnologías de gráficos 3D (OpenGL) para el desarrollo de aplicaciones de software científicas y de alto rendimiento.",
+    "Profundicé mis conocimientos en tecnologías de gráficos 3D, incluido OpenGL, para aplicaciones de software científicas y de alto rendimiento.",
   [ETranslationKey.EducationDuetHighlight3]:
-    "Completé cursos de Metodología de Investigación Científica, cubriendo diseño de investigación, redacción académica y métodos analíticos.",
+    "Completé estudios de Metodología de la Investigación Científica, que abarcaron el diseño de investigaciones, la escritura académica y los métodos analíticos.",
   [ETranslationKey.EducationDuetHighlight4]:
-    "Estudié Derecho Informático, incluyendo aspectos legales del desarrollo de software, tecnologías digitales y propiedad intelectual.",
+    "Estudié Derecho Informático, incluidos los aspectos legales del desarrollo de software, las tecnologías digitales y la propiedad intelectual.",
   [ETranslationKey.EducationDuetHighlight5]:
-    "Mentoricé a compañeros de estudios, brindando orientación académica y técnica en programación y materias relacionadas.",
+    "Mentoricé a otros estudiantes, proporcionando orientación académica y técnica en programación y disciplinas afines.",
   [ETranslationKey.EducationDuetHighlight6]:
-    "Participé en el gobierno estudiantil, contribuyendo a iniciativas académicas y actividades de la comunidad estudiantil.",
+    "Participé en órganos de representación estudiantil, contribuyendo a iniciativas académicas y a actividades más amplias de la comunidad estudiantil.",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "Bootcamp de Desarrollador Full-Stack JS y prácticas",
   [ETranslationKey.EducationBinaryStudioHighlight1]:
@@ -393,19 +389,19 @@ const SP_TRANSLATIONS: Translations = {
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Grado, Ingeniería de Software",
   [ETranslationKey.EducationKnuHighlight1]:
-    "Estudié los fundamentos del desarrollo de software, incluidos principios de programación, algoritmos y estructuras de datos.",
+    "Estudié conceptos fundamentales del desarrollo de software, incluidos los principios de programación, los algoritmos y las estructuras de datos.",
   [ETranslationKey.EducationKnuHighlight2]:
-    "Adquirí conocimientos sobre conceptos de programación de sistemas, bases de arquitectura de computadoras e interacción de software a bajo nivel.",
+    "Desarrollé una comprensión sólida de la programación de sistemas, la arquitectura de computadores y la interacción del software a bajo nivel.",
   [ETranslationKey.EducationKnuHighlight3]:
-    "Aprendí fundamentos de desarrollo web, incluyendo arquitectura cliente-servidor y construcción de aplicaciones web.",
+    "Aprendí los fundamentos del desarrollo web, incluida la arquitectura cliente-servidor y el desarrollo de aplicaciones web.",
   [ETranslationKey.EducationKnuHighlight4]:
-    "Trabajé con sistemas de bases de datos, cubriendo bases de datos relacionales, modelado de datos y diseño de consultas.",
+    "Trabajé con sistemas de bases de datos, abarcando bases de datos relacionales, modelado de datos y diseño de consultas.",
   [ETranslationKey.EducationKnuHighlight5]:
-    "Exploré bibliotecas y herramientas de gráficos 3D para desarrollar aplicaciones interactivas y soluciones gráficas basadas en web.",
+    "Exploré bibliotecas de gráficos 3D y herramientas de desarrollo para crear aplicaciones interactivas y soluciones gráficas basadas en la web.",
   [ETranslationKey.EducationKnuHighlight6]:
-    "Participé en competiciones locales estudiantiles de programación y olimpiadas de TI, desarrollando habilidades de resolución de problemas y pensamiento algorítmico.",
+    "Participé en competiciones locales de programación para estudiantes y olimpiadas de informática, fortaleciendo mis habilidades de resolución de problemas y mi pensamiento algorítmico.",
   [ETranslationKey.EducationKnuHighlight7]:
-    "Estudié aspectos prácticos de sistemas de software empresariales, incluyendo trabajo con plataformas 1C y aplicaciones de negocio.",
+    "Estudié aspectos prácticos de los sistemas de software empresarial, incluido el trabajo con plataformas 1C y aplicaciones orientadas al negocio.",
   [ETranslationKey.ExperiencePresent]: "Presente",
   [ETranslationKey.TimelineExpandDetails]: "Mostrar más",
   [ETranslationKey.TimelineHideDetails]: "Mostrar menos",
@@ -431,7 +427,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraHighlight6]:
     "Integré APIs de IA para habilitar funciones como avatares de IA, texto a voz y generación de video interactivo, mejorando la automatización y la personalización.",
   [ETranslationKey.ExperienceOmnoraHighlight7]:
-    "Dirigí la modernización del frontend mediante el refactor de la base de código hacia una arquitectura reactiva y la actualización a React y TypeScript actuales, mejorando mantenibilidad y rendimiento.",
+    "Dirigí la modernización del frontend mediante la refactorización de la base de código hacia una arquitectura de programación reactiva con un enfoque reactivo y la actualización a las últimas versiones de React y TypeScript, mejorando la mantenibilidad y el rendimiento.",
   [ETranslationKey.ExperienceOmnoraHighlight8]:
     "Mejoré la estrategia de testing aumentando la cobertura de pruebas unitarias e incorporando pruebas automáticas en pipelines de CI/CD para lanzamientos más rápidos y fiables.",
   [ETranslationKey.ExperienceOmnoraHighlight9]:
@@ -445,21 +441,21 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceDigitalsuitsDescription]:
     "Desarrollador WEB y Líder Técnico | Outsource / Equipo dedicado. Tiempo completo.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-    "Desarrollé un panel de administración para gestionar chatbots interactivos (antes de la integración activa de agentes de IA) usados en aplicaciones B2B de seguros, permitiendo configurar flujos, monitorizar interacciones y gestionar escenarios de comunicación con clientes.",
+    "Desarrollé un panel de administración para gestionar chatbots interactivos (antes de la integración activa de agentes de IA) utilizados en aplicaciones B2B de seguros, permitiendo a los usuarios de negocio configurar flujos, supervisar interacciones y gestionar escenarios de comunicación con clientes.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
-    "Desarrollé una plataforma inmobiliaria orientada al mercado del Reino Unido, con herramientas para gestión de propiedades, búsqueda e interacción con clientes, enfocada en escalabilidad, rendimiento y cumplimiento normativo.",
+    "Desarrollé una plataforma inmobiliaria adaptada al mercado del Reino Unido, con herramientas para gestionar anuncios de propiedades, realizar búsquedas e interactuar con clientes, con especial atención a la escalabilidad, el rendimiento y el cumplimiento normativo.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
-    "Lideré el desarrollo desde cero de varias aplicaciones web en un equipo multidisciplinar de 5 ingenieros, colaborando estrechamente con product management y DevOps para asegurar entregas fluidas y alineación con prioridades de negocio.",
+    "Lideré el desarrollo desde cero de varias aplicaciones web en un equipo multidisciplinar de 5 ingenieros, colaborando estrechamente con el equipo de gestión de producto y los ingenieros de DevOps para garantizar una entrega fluida, la preparación de la infraestructura y la alineación con las prioridades del negocio.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight4]:
-    "Definí e implementé flujos de trabajo eficaces del equipo, incluyendo descomposición de tareas, priorización, revisiones de código y planificación de releases.",
+    "Definí e implementé flujos de trabajo eficaces para el equipo, incluida la descomposición de tareas, la priorización, los procesos de revisión de código y la planificación de lanzamientos.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight5]:
-    "Realicé estimaciones de esfuerzo para funcionalidades y alcance global del proyecto, equilibrando plazos de entrega con viabilidad técnica.",
+    "Realicé estimaciones de esfuerzo para las funcionalidades y el alcance global del proyecto, equilibrando los plazos de entrega con la viabilidad técnica.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight6]:
-    "Diseñé la arquitectura general de las aplicaciones, seleccioné el stack tecnológico y asumí decisiones técnicas clave durante todo el ciclo de vida del proyecto.",
+    "Diseñé la arquitectura general de las aplicaciones, seleccioné las tecnologías y asumí la responsabilidad de las decisiones técnicas clave durante todo el ciclo de vida del proyecto.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight7]:
-    "Mantuve comunicación diaria con stakeholders del negocio para asegurar la alineación entre implementación técnica y objetivos del producto.",
+    "Mantuve una comunicación diaria con las partes interesadas del negocio, asegurando la alineación entre la implementación técnica y los objetivos del producto.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight8]:
-    "Brindé mentoría técnica con fuerte foco en la calidad frontend, ayudando al equipo a mejorar mantenibilidad del código, rendimiento y consistencia de UI.",
+    "Proporcioné mentoría técnica con especial atención a la calidad del frontend, ayudando a mis compañeros a mejorar la mantenibilidad del código, el rendimiento y la coherencia de la interfaz de usuario.",
   [ETranslationKey.ExperienceCodeAndCareCompanyName]: "Code & Care | Outstaff",
   [ETranslationKey.ExperienceCodeAndCareJobTitle]: "Desarrollador WEB y Móvil",
   [ETranslationKey.ExperienceCodeAndCareLocation]:
@@ -467,17 +463,17 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceCodeAndCareDescription]:
     "Desarrollador WEB y Móvil | Outstaff. Tiempo completo.",
   [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-    "Diseñé y desarrollé aplicaciones web y móviles desde cero, cubriendo la arquitectura de frontend y backend.",
+    "Diseñé y desarrollé aplicaciones web y móviles desde cero, abarcando tanto la arquitectura frontend como la backend.",
   [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-    "Participé en la evaluación de complejidad, estimación de esfuerzo y planificación arquitectónica para asegurar soluciones escalables y mantenibles.",
+    "Contribuí a la evaluación de la complejidad de las aplicaciones, la estimación de esfuerzo y la planificación arquitectónica para apoyar el desarrollo de soluciones escalables y mantenibles.",
   [ETranslationKey.ExperienceCodeAndCareHighlight3]:
-    "Actué como mentor de desarrolladores junior, apoyando su crecimiento mediante revisiones de código, guía técnica y sesiones de onboarding.",
+    "Mentoricé a desarrolladores júnior mediante revisiones de código, orientación técnica y sesiones de incorporación, apoyando su desarrollo profesional.",
   [ETranslationKey.ExperienceCodeAndCareHighlight4]:
-    "Creé una plataforma en tiempo real para monitorización de sensores médicos para el mercado francés, permitiendo seguimiento continuo y alertas basadas en flujos de datos en vivo.",
+    "Desarrollé una plataforma de monitorización de sensores médicos en tiempo real para el mercado francés, permitiendo un seguimiento continuo y alertas basadas en flujos de datos en vivo.",
   [ETranslationKey.ExperienceCodeAndCareHighlight5]:
-    "Desarrollé y mantuve plataformas y billeteras de criptomonedas con fuerte foco en seguridad, rendimiento y escalabilidad.",
+    "Creé y mantuve plataformas y monederos de criptomonedas, priorizando la seguridad, el rendimiento y la escalabilidad.",
   [ETranslationKey.ExperienceCodeAndCareHighlight6]:
-    "Colaboré estrechamente con equipos core de la plataforma cripto Bitfinex (https://www.bitfinex.com/) para entregar funcionalidades de alto impacto, implementar landing pages y aplicaciones móviles y asegurar cumplimiento de protocolos.",
+    "Colaboré estrechamente con los equipos principales de Bitfinex para implementar funcionalidades clave, desarrollar páginas de destino y aplicaciones móviles, y garantizar el cumplimiento de los requisitos de los protocolos.",
   [ETranslationKey.ExperienceLanarsCompanyName]:
     "LANARS | Outsource / Equipo dedicado",
   [ETranslationKey.ExperienceLanarsJobTitle]: "Desarrollador WEB",
@@ -486,17 +482,15 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceLanarsDescription]:
     "Desarrollador WEB | Outsource / Equipo dedicado. Tiempo completo.",
   [ETranslationKey.ExperienceLanarsHighlight1]:
-    "Trabajé como desarrollador Full-Stack, entregando soluciones frontend y backend en varios proyectos comerciales.",
+    "Contribuí a la planificación de proyectos y la estimación de esfuerzo, proporcionando evaluaciones detalladas del tiempo de desarrollo necesario para la implementación.",
   [ETranslationKey.ExperienceLanarsHighlight2]:
-    "Participé en la planificación y estimación de proyectos, proporcionando evaluaciones precisas de horas de desarrollo requeridas.",
+    "Participé en discusiones técnicas con miembros del equipo y partes interesadas, ayudando a descomponer las funcionalidades en tareas de desarrollo claramente definidas.",
   [ETranslationKey.ExperienceLanarsHighlight3]:
-    "Participé en discusiones técnicas y descomposición de funcionalidades con el equipo y stakeholders.",
+    "Desarrollé páginas de destino adaptables para diversos productos, priorizando el rendimiento y la mantenibilidad.",
   [ETranslationKey.ExperienceLanarsHighlight4]:
-    "Desarrollé landing pages responsive para distintos productos, con foco en rendimiento y mantenibilidad.",
+    "Creé API backend para aplicaciones móviles, incluido un servicio de paseo de mascotas y una plataforma de marketplace.",
   [ETranslationKey.ExperienceLanarsHighlight5]:
-    "Desarrollé APIs backend para aplicaciones móviles, incluyendo un servicio de paseo de mascotas y una plataforma marketplace.",
-  [ETranslationKey.ExperienceLanarsHighlight6]:
-    "Implementé un panel de administración para un marketplace y un sistema CRM para una empresa de videojuegos, permitiendo a los equipos operativos gestionar contenido, usuarios y flujos de trabajo.",
+    "Implementé un panel de administración de marketplace y un sistema de gestión de relaciones con clientes para una empresa de videojuegos, permitiendo a los equipos de operaciones gestionar contenido, usuarios y flujos de trabajo.",
 };
 
 const DE_TRANSLATIONS: Translations = {
@@ -519,7 +513,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutParagraph1]:
     "Ich bin Softwareingenieur mit über 10 Jahren Erfahrung in der Full-Stack-Webentwicklung in den Bereichen E-Learning, E-Commerce, Marktplätze, Handel, Versicherungen und Gesundheitswesen. Mein beruflicher Hintergrund umfasst Projekte unterschiedlicher Größenordnung, darunter Tätigkeiten in Startups und im Rahmen von Outstaffing-Einsätzen. Diese vielfältige Erfahrung hat meine Fähigkeit gestärkt, mich an unterschiedliche Teamstrukturen, Entwicklungspraktiken und sich wandelnde geschäftliche Prioritäten anzupassen, wobei ich stets auf Softwarequalität und die Bereitstellung von Lösungen achte, die den geschäftlichen Anforderungen entsprechen.",
   [ETranslationKey.AboutParagraph2]:
-    "Meine Full-Stack-Erfahrung umfasst Frontend-Anwendungen, Backend-Dienste, Datenbanken und Deployment-Infrastruktur. Ich entwickle Weboberflächen mit React, Vue und Angular. Im Backend nutze ich Go, Python und Node.js zur Implementierung von Diensten, APIs und Hintergrundverarbeitung. Ich habe Erfahrung mit monolithischen und Microservice-Architekturen, REST- und GraphQL-APIs sowie Datenbanken wie MySQL und MongoDB. Ich verwende Docker zur Containerisierung, Kubernetes zur Orchestrierung und Message Broker für die asynchrone Kommunikation zwischen Diensten. Außerdem konfiguriere ich Pipelines für kontinuierliche Integration und kontinuierliches Deployment, um die Softwarebereitstellung zu automatisieren. Automatisierte Tests mit Playwright und Jest sind ein wesentlicher Bestandteil meines Ansatzes für Codequalität, Wartbarkeit und Systemzuverlässigkeit. Ich integriere KI-gestützte Entwicklungswerkzeuge in meine Arbeitsabläufe, um Implementierung, Fehlersuche und Refactoring zu unterstützen, wobei ich den generierten Code kritisch prüfe.",
+    "Meine Erfahrung umfasst Frontend-Anwendungen, Backend-Dienste, Datenbanken und Deployment-Infrastruktur. Ich entwickle Weboberflächen mit React, Vue und Angular. Im Backend nutze ich Go, Python und Node.js zur Implementierung von Diensten, APIs und Hintergrundverarbeitung. Ich habe Erfahrung mit monolithischen und Microservice-Architekturen, REST- und GraphQL-APIs sowie Datenbanken wie MySQL und MongoDB. Ich verwende Docker zur Containerisierung, Kubernetes zur Orchestrierung und Message Broker für die asynchrone Kommunikation zwischen Diensten. Außerdem konfiguriere ich Pipelines für kontinuierliche Integration und kontinuierliches Deployment, um die Softwarebereitstellung zu automatisieren. Automatisierte Tests mit Playwright und Jest sind ein wesentlicher Bestandteil meines Ansatzes für Codequalität, Wartbarkeit und Systemzuverlässigkeit. Ich integriere KI-gestützte Entwicklungswerkzeuge in meine Arbeitsabläufe, um Implementierung, Fehlersuche und Refactoring zu unterstützen, wobei ich den generierten Code kritisch prüfe.",
   [ETranslationKey.AboutParagraph3]:
     "Im Laufe meiner Karriere habe ich in Entwicklungsteams mit 3 bis 20 Mitgliedern gearbeitet, häufig in internationalen und verteilten Umgebungen. Englisch ist meine primäre Arbeitssprache für technische Diskussionen und die Kommunikation mit Kunden. Ich bin es gewohnt, teamübergreifend zusammenzuarbeiten, geschäftliche Anforderungen zu klären und technische Aspekte sowohl mit Kollegen aus der Entwicklung als auch mit nichttechnischen Stakeholdern zu besprechen. Zudem betreue ich Junior-Entwickler, gebe technische Hilfestellung, teile Wissen und unterstütze ihre berufliche Entwicklung.",
   [ETranslationKey.AboutParagraph4]:
@@ -528,17 +522,17 @@ const DE_TRANSLATIONS: Translations = {
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Masterabschluss, Softwaretechnik",
   [ETranslationKey.EducationDuetHighlight1]:
-    "Ich absolvierte ein vertieftes Studium von Werkzeugen der mathematischen Modellierung und des Algorithmendesigns mit Fokus auf computergestützte Problemlösung und angewandte Modellierungstechniken.",
+    "Ich absolvierte ein vertieftes Studium von Werkzeugen der mathematischen Modellierung und des Algorithmendesigns mit Schwerpunkt auf computergestützter Problemlösung und angewandten Modellierungstechniken.",
   [ETranslationKey.EducationDuetHighlight2]:
-    "Ich sammelte tiefere Erfahrung mit 3D-Grafiktechnologien (OpenGL) für die Entwicklung wissenschaftlicher und hochperformanter Softwareanwendungen.",
+    "Ich vertiefte mein Fachwissen über 3D-Grafiktechnologien, einschließlich OpenGL, für wissenschaftliche und hochperformante Softwareanwendungen.",
   [ETranslationKey.EducationDuetHighlight3]:
-    "Ich absolvierte Lehrveranstaltungen zur Methodik wissenschaftlicher Forschung, einschließlich Forschungsdesign, akademischem Schreiben und analytischen Methoden.",
+    "Ich absolvierte Lehrveranstaltungen zur Methodik wissenschaftlicher Forschung, die Forschungsdesign, akademisches Schreiben und analytische Methoden umfassten.",
   [ETranslationKey.EducationDuetHighlight4]:
-    "Ich studierte IT-Recht, einschließlich rechtlicher Aspekte der Softwareentwicklung, digitaler Technologien und des geistigen Eigentums.",
+    "Ich studierte IT-Recht, einschließlich der rechtlichen Aspekte der Softwareentwicklung, digitaler Technologien und des geistigen Eigentums.",
   [ETranslationKey.EducationDuetHighlight5]:
-    "Ich mentorierte Mitstudierende und bot akademische sowie technische Unterstützung in Programmierung und verwandten Fachgebieten.",
+    "Ich betreute Mitstudierende und bot akademische sowie technische Unterstützung in Programmierung und verwandten Fachgebieten.",
   [ETranslationKey.EducationDuetHighlight6]:
-    "Ich beteiligte mich an der studentischen Selbstverwaltung und trug zu akademischen Initiativen sowie Aktivitäten der Studierendengemeinschaft bei.",
+    "Ich beteiligte mich an der studentischen Selbstverwaltung und trug zu akademischen Initiativen sowie zu weiteren Aktivitäten der Studierendengemeinschaft bei.",
   [ETranslationKey.EducationBinaryStudioProgram]:
     "JS Full-Stack Developer Bootcamp und Praktikum",
   [ETranslationKey.EducationBinaryStudioHighlight1]:
@@ -555,19 +549,19 @@ const DE_TRANSLATIONS: Translations = {
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Bachelorabschluss, Softwaretechnik",
   [ETranslationKey.EducationKnuHighlight1]:
-    "Ich studierte die Grundlagen der Softwareentwicklung, einschließlich Programmierprinzipien, Algorithmen und Datenstrukturen.",
+    "Ich studierte grundlegende Konzepte der Softwareentwicklung, einschließlich Programmierprinzipien, Algorithmen und Datenstrukturen.",
   [ETranslationKey.EducationKnuHighlight2]:
-    "Ich erwarb Kenntnisse in der Systemprogrammierung, den Grundlagen der Rechnerarchitektur und der Interaktion mit Software auf Low-Level-Ebene.",
+    "Ich entwickelte ein fundiertes Verständnis von Systemprogrammierung, Rechnerarchitektur und der Interaktion von Software auf niedriger Systemebene.",
   [ETranslationKey.EducationKnuHighlight3]:
-    "Ich lernte die Grundlagen der Webentwicklung, einschließlich Client-Server-Architektur und dem Aufbau von Webanwendungen.",
+    "Ich erlernte die Grundlagen der Webentwicklung, einschließlich der Client-Server-Architektur und der Entwicklung von Webanwendungen.",
   [ETranslationKey.EducationKnuHighlight4]:
-    "Ich arbeitete mit Datenbanksystemen und befasste mich mit relationalen Datenbanken, Datenmodellierung und Query-Design.",
+    "Ich arbeitete mit Datenbanksystemen und befasste mich dabei mit relationalen Datenbanken, Datenmodellierung und dem Entwurf von Abfragen.",
   [ETranslationKey.EducationKnuHighlight5]:
-    "Ich erkundete 3D-Grafikbibliotheken und Tools zur Entwicklung interaktiver Anwendungen und webbasierter grafischer Lösungen.",
+    "Ich erkundete 3D-Grafikbibliotheken und Entwicklungswerkzeuge zur Erstellung interaktiver Anwendungen und webbasierter Grafiklösungen.",
   [ETranslationKey.EducationKnuHighlight6]:
-    "Ich nahm an lokalen studentischen Programmierwettbewerben und IT-Olympiaden teil und entwickelte dabei Problemlösungsfähigkeiten sowie algorithmisches Denken.",
+    "Ich nahm an lokalen studentischen Programmierwettbewerben und Informatikolympiaden teil und stärkte dabei meine Problemlösungsfähigkeiten und mein algorithmisches Denken.",
   [ETranslationKey.EducationKnuHighlight7]:
-    "Ich studierte praktische Aspekte von Enterprise-Softwaresystemen, einschließlich der Arbeit mit 1C-Plattformen und Business-Anwendungen.",
+    "Ich studierte praktische Aspekte betrieblicher Softwaresysteme, einschließlich der Arbeit mit 1C-Plattformen und geschäftsorientierten Anwendungen.",
   [ETranslationKey.ExperiencePresent]: "Heute",
   [ETranslationKey.TimelineExpandDetails]: "Mehr anzeigen",
   [ETranslationKey.TimelineHideDetails]: "Weniger anzeigen",
@@ -592,7 +586,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraHighlight6]:
     "Ich integrierte KI-APIs für Funktionen wie KI-Avatare, Text-to-Speech und interaktive Videoerstellung, wodurch Automatisierung und Personalisierung verbessert wurden.",
   [ETranslationKey.ExperienceOmnoraHighlight7]:
-    "Ich verantwortete die Frontend-Modernisierung durch Refactoring auf eine reaktive Architektur und ein Upgrade auf aktuelle React- und TypeScript-Versionen, was Wartbarkeit und Performance erhöhte.",
+    "Ich leitete die Frontend-Modernisierung durch Refactoring der Codebasis hin zu einer Architektur für reaktive Programmierung unter Verwendung eines reaktiven Ansatzes und durch die Aktualisierung auf die neuesten Versionen von React und TypeScript, wodurch Wartbarkeit und Performance verbessert wurden.",
   [ETranslationKey.ExperienceOmnoraHighlight8]:
     "Ich verbesserte die Teststrategie durch höhere Unit-Test-Abdeckung und zusätzliche automatisierte Tests in CI/CD-Pipelines für schnellere und zuverlässigere Releases.",
   [ETranslationKey.ExperienceOmnoraHighlight9]:
@@ -606,21 +600,21 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceDigitalsuitsDescription]:
     "WEB-Entwickler und Technischer Teamleiter | Outsourcing / Dediziertes Team. Vollzeit.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-    "Ich entwickelte ein Admin-Panel zur Verwaltung interaktiver Chatbots (vor der aktiven Integration von KI-Agenten) für B2B-Versicherungsanwendungen, inklusive Flow-Konfiguration, Interaktionsmonitoring und Verwaltung von Kundenkommunikationsszenarien.",
+    "Ich entwickelte ein Admin-Panel zur Verwaltung interaktiver Chatbots (vor der aktiven Integration von KI-Agenten), die in B2B-Versicherungsanwendungen eingesetzt werden. Damit konnten Fachanwender Abläufe konfigurieren, Interaktionen überwachen und Szenarien für die Kundenkommunikation verwalten.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
-    "Ich entwickelte eine Immobilienplattform für den britischen Markt mit Funktionen für Objektverwaltung, Suche und Kundeninteraktion, mit Fokus auf Skalierbarkeit, Performance und regulatorische Compliance.",
+    "Ich entwickelte eine auf den britischen Markt zugeschnittene Immobilienplattform mit Werkzeugen zur Verwaltung von Immobilienanzeigen, zur Suche und zur Interaktion mit Kunden, mit Fokus auf Skalierbarkeit, Performance und die Einhaltung regulatorischer Vorgaben.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
-    "Ich leitete die Entwicklung mehrerer Webanwendungen von Grund auf in einem funktionsübergreifenden Team von 5 Ingenieuren und arbeitete eng mit Produktmanagement und DevOps zusammen, um stabile Delivery sicherzustellen.",
+    "Ich leitete die Entwicklung mehrerer Webanwendungen von Grund auf in einem funktionsübergreifenden Team aus 5 Ingenieuren und arbeitete eng mit dem Produktmanagement und DevOps-Ingenieuren zusammen, um eine reibungslose Bereitstellung, die Einsatzbereitschaft der Infrastruktur und die Ausrichtung auf geschäftliche Prioritäten sicherzustellen.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight4]:
-    "Ich definierte und implementierte effektive Teamprozesse, darunter Task-Breakdown, Priorisierung, Code-Review-Prozesse und Release-Planung.",
+    "Ich definierte und implementierte effektive Arbeitsabläufe im Team, einschließlich Aufgabenzerlegung, Priorisierung, Code-Review-Prozessen und Release-Planung.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight5]:
-    "Ich führte Aufwandsschätzungen für Features und den gesamten Projektscope durch und balancierte Liefertermine mit technischer Machbarkeit.",
+    "Ich schätzte den Aufwand für Funktionen und den gesamten Projektumfang und brachte dabei Liefertermine und technische Machbarkeit in Einklang.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight6]:
-    "Ich entwarf die Gesamtarchitektur der Anwendungen, wählte den Technologie-Stack aus und verantwortete zentrale technische Entscheidungen über den gesamten Projektlebenszyklus.",
+    "Ich entwarf die Gesamtarchitektur der Anwendungen, wählte den Technologie-Stack aus und verantwortete zentrale technische Entscheidungen während des gesamten Projektlebenszyklus.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight7]:
-    "Ich pflegte die tägliche Kommunikation mit Business-Stakeholdern, um die Ausrichtung zwischen technischer Umsetzung und Produktzielen sicherzustellen.",
+    "Ich kommunizierte täglich mit Stakeholdern aus den Fachbereichen und stellte sicher, dass die technische Umsetzung mit den Produktzielen übereinstimmte.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight8]:
-    "Ich leistete technisches Mentoring mit starkem Fokus auf Frontend-Qualität und half Kollegen, Wartbarkeit, Performance und UI-Konsistenz zu verbessern.",
+    "Ich bot technisches Mentoring mit besonderem Fokus auf Frontend-Qualität und half Kollegen, die Wartbarkeit des Codes, die Performance und die Konsistenz der Benutzeroberfläche zu verbessern.",
   [ETranslationKey.ExperienceCodeAndCareCompanyName]:
     "Code & Care | Outstaffing",
   [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB- und Mobile-Entwickler",
@@ -628,17 +622,17 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceCodeAndCareDescription]:
     "WEB- und Mobile-Entwickler | Outstaffing. Vollzeit.",
   [ETranslationKey.ExperienceCodeAndCareHighlight1]:
-    "Ich entwarf und entwickelte Web- und Mobile-Anwendungen von Grund auf und deckte dabei die Architektur von Frontend und Backend ab.",
+    "Ich entwarf und entwickelte Web- und Mobile-Anwendungen von Grund auf und deckte dabei sowohl die Frontend- als auch die Backend-Architektur ab.",
   [ETranslationKey.ExperienceCodeAndCareHighlight2]:
-    "Ich beteiligte mich an Komplexitätsbewertung, Aufwandsschätzung und Architekturplanung, um skalierbare und wartbare Lösungen sicherzustellen.",
+    "Ich beteiligte mich an der Bewertung der Anwendungskomplexität, der Aufwandsschätzung und der Architekturplanung, um die Entwicklung skalierbarer und wartbarer Lösungen zu unterstützen.",
   [ETranslationKey.ExperienceCodeAndCareHighlight3]:
-    "Ich war Mentor für Junior-Entwickler und unterstützte deren Wachstum durch Code-Reviews, technische Anleitung und Onboarding-Sessions.",
+    "Ich betreute Junior-Entwickler durch Code-Reviews, technische Anleitung und Onboarding-Sitzungen und unterstützte damit ihre berufliche Entwicklung.",
   [ETranslationKey.ExperienceCodeAndCareHighlight4]:
-    "Ich entwickelte eine Echtzeit-Monitoring-Plattform für medizinische Sensoren für den französischen Markt, inklusive kontinuierlichem Tracking und Alerting auf Basis von Live-Datenströmen.",
+    "Ich entwickelte eine Plattform zur Echtzeitüberwachung medizinischer Sensoren für den französischen Markt, die eine kontinuierliche Überwachung und Benachrichtigungen auf Basis von Live-Datenströmen ermöglicht.",
   [ETranslationKey.ExperienceCodeAndCareHighlight5]:
-    "Ich entwickelte und betreute Krypto-Plattformen und Wallets mit starkem Fokus auf Sicherheit, Performance und Skalierbarkeit.",
+    "Ich entwickelte und betreute Kryptowährungsplattformen und Wallets mit besonderem Augenmerk auf Sicherheit, Performance und Skalierbarkeit.",
   [ETranslationKey.ExperienceCodeAndCareHighlight6]:
-    "Ich arbeitete eng mit den Core-Teams der Krypto-Plattform Bitfinex (https://www.bitfinex.com/) zusammen, um wirkungsstarke Features, Landingpages und Mobile-Apps umzusetzen und Protokoll-Compliance sicherzustellen.",
+    "Ich arbeitete eng mit den Kernteams von Bitfinex zusammen, um zentrale Funktionen umzusetzen, Landingpages und Mobile-Anwendungen zu entwickeln und die Einhaltung der Protokollanforderungen sicherzustellen.",
   [ETranslationKey.ExperienceLanarsCompanyName]:
     "LANARS | Outsourcing / Dediziertes Team",
   [ETranslationKey.ExperienceLanarsJobTitle]: "WEB-Entwickler",
@@ -647,17 +641,15 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceLanarsDescription]:
     "WEB-Entwickler | Outsourcing / Dediziertes Team. Vollzeit.",
   [ETranslationKey.ExperienceLanarsHighlight1]:
-    "Ich arbeitete als Full-Stack-Entwickler und lieferte Frontend- und Backend-Lösungen in mehreren kommerziellen Projekten.",
+    "Ich beteiligte mich an der Projektplanung und Aufwandsschätzung und lieferte detaillierte Einschätzungen der für die Umsetzung erforderlichen Entwicklungszeit.",
   [ETranslationKey.ExperienceLanarsHighlight2]:
-    "Ich war an Projektplanung und Aufwandsschätzung beteiligt und lieferte präzise Einschätzungen der benötigten Entwicklungsstunden.",
+    "Ich nahm an technischen Diskussionen mit Teammitgliedern und Stakeholdern teil und half dabei, Funktionen in klar definierte Entwicklungsaufgaben zu zerlegen.",
   [ETranslationKey.ExperienceLanarsHighlight3]:
-    "Ich nahm an technischen Diskussionen und Feature-Breakdowns mit Teammitgliedern und Stakeholdern teil.",
+    "Ich entwickelte responsive Landingpages für verschiedene Produkte mit besonderem Augenmerk auf Performance und Wartbarkeit.",
   [ETranslationKey.ExperienceLanarsHighlight4]:
-    "Ich entwickelte responsive Landingpages für verschiedene Produkte mit Fokus auf Performance und Wartbarkeit.",
+    "Ich entwickelte Backend-APIs für Mobile-Anwendungen, darunter einen Gassi-Service für Haustiere und eine Marktplatzplattform.",
   [ETranslationKey.ExperienceLanarsHighlight5]:
-    "Ich entwickelte Backend-APIs für Mobile-Anwendungen, darunter einen Haustier-Spazierdienst und eine Marketplace-Plattform.",
-  [ETranslationKey.ExperienceLanarsHighlight6]:
-    "Ich implementierte ein Admin-Panel für einen Marketplace sowie ein CRM-System für ein Gaming-Unternehmen, wodurch operative Teams Inhalte, Nutzer und Workflows verwalten konnten.",
+    "Ich implementierte ein Administrationspanel für einen Marktplatz und ein Kundenbeziehungsmanagementsystem für ein Gaming-Unternehmen, sodass operative Teams Inhalte, Nutzer und Arbeitsabläufe verwalten konnten.",
 };
 
 export const TRANSLATIONS: Record<ELocale, Translations> = {

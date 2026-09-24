@@ -81,7 +81,6 @@ export const ALL_SKILL_TAGS = [
   { label: "Feathers", href: "https://feathersjs.com" },
   { label: "React Native", href: "https://reactnative.dev" },
   { label: "Redux", href: "https://redux.js.org" },
-  { label: "Flutter", href: "https://flutter.dev" },
   {
     label: "HTML5",
     href: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5",

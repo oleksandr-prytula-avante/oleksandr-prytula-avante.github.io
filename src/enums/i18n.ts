@@ -116,5 +116,4 @@ export const enum ETranslationKey {
   ExperienceLanarsHighlight3 = "experience.lanars.highlight3",
   ExperienceLanarsHighlight4 = "experience.lanars.highlight4",
   ExperienceLanarsHighlight5 = "experience.lanars.highlight5",
-  ExperienceLanarsHighlight6 = "experience.lanars.highlight6",
 }

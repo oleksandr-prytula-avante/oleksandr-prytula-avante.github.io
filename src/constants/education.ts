@@ -85,7 +85,6 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
       "Express.js",
       "NPM",
       "MySQL",
-      "Flutter",
       "Dart",
       "Heroku",
       "MATLAB",
