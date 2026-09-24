@@ -55,15 +55,15 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationBinaryStudioProgram]:
     "JS Full-Stack Developer Bootcamp & Internship",
   [ETranslationKey.EducationBinaryStudioHighlight1]:
-    "Successfully passed the competitive selection process for the internship program.",
+    "Successfully completed a competitive selection process for the internship program.",
   [ETranslationKey.EducationBinaryStudioHighlight2]:
-    "Attended technical lectures and completed practical assignments, consistently delivering strong results.",
+    "Attended technical lectures and completed practical assignments, consistently achieving strong results.",
   [ETranslationKey.EducationBinaryStudioHighlight3]:
-    "Collaborated with a team of interns on the development of an internal CRM system for HR corporate processes, under the guidance of experienced mentors.",
+    "Collaborated with a team of interns to develop an internal CRM system supporting corporate HR processes, under the guidance of experienced mentors.",
   [ETranslationKey.EducationBinaryStudioHighlight4]:
-    "Gained a solid foundation in software development practices, teamwork, and real-world project collaboration.",
+    "Built a solid foundation in software development practices, teamwork, and collaboration within a real-world project environment.",
   [ETranslationKey.EducationBinaryStudioHighlight5]:
-    "Received positive feedback and professional referrals, enabling the start of a professional career in the IT industry.",
+    "Received positive feedback and professional referrals, which supported the transition into a professional career in the IT industry.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]:
@@ -218,15 +218,15 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationBinaryStudioProgram]:
     "Буткемп JS Full-Stack разработчика и стажировка",
   [ETranslationKey.EducationBinaryStudioHighlight1]:
-    "Успешно прошел конкурентный отбор в программу стажировки.",
+    "Успешно прошел конкурсный отбор на программу стажировки.",
   [ETranslationKey.EducationBinaryStudioHighlight2]:
-    "Посещал технические лекции и выполнял практические задания, стабильно показывая сильные результаты.",
+    "Посещал технические лекции и выполнял практические задания, стабильно достигая высоких результатов.",
   [ETranslationKey.EducationBinaryStudioHighlight3]:
-    "Сотрудничал с командой стажеров над разработкой внутренней CRM-системы для корпоративных HR-процессов под руководством опытных менторов.",
+    "Совместно с командой стажеров разрабатывал внутреннюю CRM-систему для поддержки корпоративных HR-процессов под руководством опытных наставников.",
   [ETranslationKey.EducationBinaryStudioHighlight4]:
-    "Получил прочную базу в практиках разработки ПО, командной работе и взаимодействии в реальных проектах.",
+    "Сформировал прочную основу в практиках разработки программного обеспечения, командной работе и сотрудничестве в условиях реального проекта.",
   [ETranslationKey.EducationBinaryStudioHighlight5]:
-    "Получил позитивную обратную связь и профессиональные рекомендации, что позволило начать карьеру в IT-индустрии.",
+    "Получил положительные отзывы и профессиональные рекомендации, которые помогли начать профессиональную карьеру в IT-индустрии.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]:
@@ -376,15 +376,15 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationBinaryStudioProgram]:
     "Bootcamp de Desarrollador Full-Stack JS y prácticas",
   [ETranslationKey.EducationBinaryStudioHighlight1]:
-    "Superé con éxito el proceso de selección competitivo para el programa de prácticas.",
+    "Superé con éxito un proceso de selección competitivo para el programa de prácticas.",
   [ETranslationKey.EducationBinaryStudioHighlight2]:
-    "Asistí a conferencias técnicas y completé tareas prácticas, manteniendo resultados sólidos de forma constante.",
+    "Asistí a clases técnicas y completé tareas prácticas, obteniendo buenos resultados de forma constante.",
   [ETranslationKey.EducationBinaryStudioHighlight3]:
-    "Colaboré con un equipo de practicantes en el desarrollo de un sistema CRM interno para procesos corporativos de RR. HH., bajo la guía de mentores experimentados.",
+    "Colaboré con un equipo de estudiantes en prácticas para desarrollar un sistema CRM interno que apoyaba los procesos corporativos de recursos humanos, bajo la orientación de mentores experimentados.",
   [ETranslationKey.EducationBinaryStudioHighlight4]:
-    "Obtuve una base sólida en prácticas de desarrollo de software, trabajo en equipo y colaboración en proyectos reales.",
+    "Adquirí una base sólida en prácticas de desarrollo de software, trabajo en equipo y colaboración en el contexto de un proyecto real.",
   [ETranslationKey.EducationBinaryStudioHighlight5]:
-    "Recibí comentarios positivos y referencias profesionales, lo que permitió iniciar una carrera profesional en la industria de TI.",
+    "Recibí comentarios positivos y recomendaciones profesionales que facilitaron mi incorporación a una carrera profesional en el sector de las tecnologías de la información.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Grado, Ingeniería de Software",
@@ -536,15 +536,15 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.EducationBinaryStudioProgram]:
     "JS Full-Stack Developer Bootcamp und Praktikum",
   [ETranslationKey.EducationBinaryStudioHighlight1]:
-    "Ich habe den wettbewerbsintensiven Auswahlprozess für das Praktikumsprogramm erfolgreich bestanden.",
+    "Ich absolvierte erfolgreich ein wettbewerbsorientiertes Auswahlverfahren für das Praktikumsprogramm.",
   [ETranslationKey.EducationBinaryStudioHighlight2]:
-    "Ich besuchte technische Vorlesungen und absolvierte praktische Aufgaben mit durchgehend starken Ergebnissen.",
+    "Ich besuchte technische Vorlesungen und bearbeitete praktische Aufgaben, wobei ich durchgehend gute Ergebnisse erzielte.",
   [ETranslationKey.EducationBinaryStudioHighlight3]:
-    "Ich arbeitete mit einem Team von Praktikanten an der Entwicklung eines internen CRM-Systems für unternehmensweite HR-Prozesse, unter Anleitung erfahrener Mentoren.",
+    "Ich entwickelte gemeinsam mit einem Team von Praktikanten unter der Anleitung erfahrener Mentoren ein internes CRM-System zur Unterstützung betrieblicher HR-Prozesse.",
   [ETranslationKey.EducationBinaryStudioHighlight4]:
-    "Ich erwarb eine solide Grundlage in Softwareentwicklungspraktiken, Teamarbeit und der Zusammenarbeit an realen Projekten.",
+    "Ich erwarb eine solide Grundlage in Softwareentwicklungspraktiken, Teamarbeit und Zusammenarbeit im Rahmen eines realen Projekts.",
   [ETranslationKey.EducationBinaryStudioHighlight5]:
-    "Ich erhielt positives Feedback und professionelle Empfehlungen, die den Einstieg in eine berufliche Laufbahn in der IT-Branche ermöglichten.",
+    "Ich erhielt positives Feedback und berufliche Empfehlungen, die meinen Einstieg in eine professionelle Laufbahn in der IT-Branche unterstützten.",
   [ETranslationKey.EducationKnuUniversityName]:
     "Kryvyi Rih National University",
   [ETranslationKey.EducationKnuDegree]: "Bachelorabschluss, Softwaretechnik",
