@@ -2,6 +2,7 @@ export const ALL_SKILL_TAGS = [
   { label: "TypeScript", href: "https://www.typescriptlang.org", common: true },
   { label: "React", href: "https://react.dev", common: true },
   { label: "Angular", href: "https://angular.dev", common: true },
+  { label: "RxJS", href: "https://rxjs.dev", common: true },
   {
     label: "HTML",
     href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
@@ -13,6 +14,7 @@ export const ALL_SKILL_TAGS = [
     common: true,
   },
   { label: "Python", href: "https://www.python.org", common: true },
+  { label: "FastAPI", href: "https://fastapi.tiangolo.com", common: true },
   {
     label: "Django",
     href: "https://www.djangoproject.com",
@@ -55,7 +57,6 @@ export const ALL_SKILL_TAGS = [
     label: "WebSockets",
     href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
   },
-  { label: "RxJS", href: "https://rxjs.dev" },
   { label: "Webpack", href: "https://webpack.js.org" },
   { label: "Vite", href: "https://vite.dev" },
   { label: "Konva", href: "https://konvajs.org" },
