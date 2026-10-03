@@ -2,6 +2,7 @@ import { randomBetween } from "./random";
 import {
   VERTICAL_LINE_POSITIONS,
   HORIZONTAL_LINE_POSITIONS,
+  LINE_POSITION_VARIATION,
   VERTICAL_LINE_TOP_MIN,
   VERTICAL_LINE_TOP_MAX,
   MIN_LINE_PERCENT,
@@ -21,7 +22,11 @@ export type LineStyle = {
 };
 
 export function generateVerticalLineStyles(): LineStyle[] {
-  return VERTICAL_LINE_POSITIONS.map(function (left) {
+  return VERTICAL_LINE_POSITIONS.map(function (position) {
+    const left = randomBetween(
+      position - LINE_POSITION_VARIATION,
+      position + LINE_POSITION_VARIATION,
+    );
     const top = randomBetween(VERTICAL_LINE_TOP_MIN, VERTICAL_LINE_TOP_MAX);
     const maxHeight = Math.max(MIN_LINE_PERCENT, LINE_PERCENT_CAP - top);
     const height = randomBetween(VERTICAL_LINE_HEIGHT_MIN, maxHeight);
@@ -36,7 +41,11 @@ export function generateVerticalLineStyles(): LineStyle[] {
 }
 
 export function generateHorizontalLineStyles(): LineStyle[] {
-  return HORIZONTAL_LINE_POSITIONS.map(function (top) {
+  return HORIZONTAL_LINE_POSITIONS.map(function (position) {
+    const top = randomBetween(
+      position - LINE_POSITION_VARIATION,
+      position + LINE_POSITION_VARIATION,
+    );
     const left = randomBetween(
       HORIZONTAL_LINE_LEFT_MIN,
       HORIZONTAL_LINE_LEFT_MAX,
