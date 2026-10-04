@@ -17,7 +17,7 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
 
   return (
     <div className="mt-6 pb-2">
-      <div className="grid min-w-0 grid-cols-1 gap-5">
+      <div className="grid min-w-0 grid-cols-1 gap-3">
         {item.screenshots.map(function (screenshot) {
           const caption = i18n.t(screenshot.captionKey);
 

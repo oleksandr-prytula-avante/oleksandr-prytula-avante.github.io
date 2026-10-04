@@ -410,6 +410,16 @@ export function Timeline<TItem extends TimelineDataItem>(
         return;
       }
 
+      if (items.length === 1) {
+        if (isTargetItem) {
+          resetFocusState();
+        } else {
+          setFocusedItemId(itemId);
+          setFocusPhase(EFocusPhase.Focused);
+        }
+        return;
+      }
+
       if (focusPhase === EFocusPhase.Idle) {
         measureFocusShiftFromLayout();
         setFocusedItemId(itemId);
