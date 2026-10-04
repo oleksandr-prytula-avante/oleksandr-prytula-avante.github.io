@@ -97,6 +97,7 @@ export const enum ETranslationKey {
   ProjectsOmnoraPlayerControls = "projects.omnora.playerControls",
   ProjectsOmnoraSecurityProfiles = "projects.omnora.securityProfiles",
   ProjectsOmnoraAvatarSelection = "projects.omnora.avatarSelection",
+  ProjectsOmnoraSlideEditing = "projects.omnora.slideEditing",
 
   ExperienceOmnoraCompanyName = "experience.omnora.companyName",
   ExperienceOmnoraJobTitle = "experience.omnora.jobTitle",

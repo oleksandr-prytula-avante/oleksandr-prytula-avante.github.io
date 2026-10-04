@@ -22,6 +22,7 @@ import aiQuiz from "../assets/images/projects/omnora-authoring/ai-quiz.webp";
 import playerControls from "../assets/images/projects/omnora-authoring/player-controls.webp";
 import securityProfiles from "../assets/images/projects/omnora-authoring/security-profiles.webp";
 import avatarSelection from "../assets/images/projects/omnora-authoring/avatar-selection.webp";
+import slideEditing from "../assets/images/projects/omnora-authoring/slide-editing.webp";
 import type { TimelineDataItem } from "../components/Timeline/TimelineItem";
 import { ETranslationKey } from "../i18n/types";
 import { OMNORA_TECHNOLOGY_TAGS } from "./experience";
@@ -167,6 +168,12 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         captionKey: ETranslationKey.ProjectsOmnoraQuiz,
         width: 3456,
         height: 1814,
+      },
+      {
+        src: slideEditing,
+        captionKey: ETranslationKey.ProjectsOmnoraSlideEditing,
+        width: 3456,
+        height: 1788,
       },
       {
         src: videoPlayer,

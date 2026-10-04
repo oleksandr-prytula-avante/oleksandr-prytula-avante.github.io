@@ -41,6 +41,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraPlayerControls]: "Player controls settings",
   [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Security profiles",
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Avatar selection",
+  [ETranslationKey.ProjectsOmnoraSlideEditing]: "Slide editing",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "LMS export settings — xAPI / SCORM",
   [ETranslationKey.NavGithub]: "GitHub",
@@ -243,6 +244,7 @@ const RU_TRANSLATIONS: Translations = {
     "Настройки управления плеером",
   [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Профили безопасности",
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Выбор аватара",
+  [ETranslationKey.ProjectsOmnoraSlideEditing]: "Редактирование слайда",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "Настройки экспорта в LMS — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Логотип",
@@ -440,6 +442,7 @@ const SP_TRANSLATIONS: Translations = {
     "Configuración de los controles del reproductor",
   [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Perfiles de seguridad",
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Selección de avatar",
+  [ETranslationKey.ProjectsOmnoraSlideEditing]: "Edición de diapositivas",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "Exportación a LMS — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logotipo",
@@ -636,6 +639,7 @@ const DE_TRANSLATIONS: Translations = {
     "Einstellungen der Player-Steuerung",
   [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Sicherheitsprofile",
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Avatar-Auswahl",
+  [ETranslationKey.ProjectsOmnoraSlideEditing]: "Folienbearbeitung",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "LMS-Exporteinstellungen — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logo",
