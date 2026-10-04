@@ -428,7 +428,8 @@ export function Timeline<TItem extends TimelineDataItem>(
     const isFocused = isTargetFocusPhase && isTargetItem;
     const isExpanded = isFocusedPhase && isTargetItem;
     const isDimmed = isFocusedPhase && hasFocusedItem && !isTargetItem;
-    const isTargetItemMoving = isTargetItem && isTransitionPhase;
+    const isTargetItemMoving =
+      items.length > 1 && isTargetItem && isTransitionPhase;
     const shouldHideRightContent =
       (hasFocusedItem && !isTargetItem) || isTargetItemMoving;
     const isToggleLocked =

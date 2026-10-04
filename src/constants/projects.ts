@@ -91,12 +91,6 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         height: 1816,
       },
       {
-        src: notifications,
-        captionKey: ETranslationKey.ProjectsOmnoraNotifications,
-        width: 3456,
-        height: 1816,
-      },
-      {
         src: screenRecorder,
         captionKey: ETranslationKey.ProjectsOmnoraScreenRecorder,
         width: 3456,
@@ -131,6 +125,12 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         captionKey: ETranslationKey.ProjectsOmnoraAccountSettings,
         width: 3450,
         height: 1812,
+      },
+      {
+        src: notifications,
+        captionKey: ETranslationKey.ProjectsOmnoraNotifications,
+        width: 3456,
+        height: 1816,
       },
       {
         src: brandKit,

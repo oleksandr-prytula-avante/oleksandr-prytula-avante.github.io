@@ -41,7 +41,10 @@ function ProjectCategoryRow({ item }: ProjectRowProps) {
   const i18n = useI18n();
 
   return (
-    <TimelineRow icon={<ExperienceJobTitleIcon />}>
+    <TimelineRow
+      className="timeline-hide-between-1024-1440"
+      icon={<ExperienceJobTitleIcon />}
+    >
       <span className="min-w-0 min-[1025px]:max-h-[min(30vh,240px)] min-[1025px]:overflow-y-auto">
         {i18n.t(item.categoryKey)}
       </span>
