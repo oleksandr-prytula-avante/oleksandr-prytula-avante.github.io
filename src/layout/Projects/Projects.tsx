@@ -54,6 +54,7 @@ function ProjectScreenshotsRow({ item }: ProjectRowProps) {
 
   return (
     <TimelineRow
+      className="max-[1024px]:hidden"
       icon={
         <svg
           aria-hidden="true"
@@ -87,7 +88,6 @@ export function Projects(props: ProjectsProps) {
       SecondRowComponent={ProjectCategoryRow}
       ThirdRowComponent={ProjectScreenshotsRow}
       DetailsComponent={ProjectGallery}
-      showMobileToggle
       {...props}
     />
   );

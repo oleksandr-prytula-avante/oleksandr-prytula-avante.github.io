@@ -12,9 +12,10 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.NavProjects]: "Projects",
   [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
   [ETranslationKey.ProjectsOmnoraCategory]:
-    "Omnora Authoring Tool is a browser-based platform for creating corporate training videos with AI. It turns expert interviews, documents, presentations, and screen recordings into learning materials with voiceovers, AI avatars, subtitles, and quizzes. It supports translation into 140 languages, export to SCORM, xAPI, and MP4, and integration with LMS platforms and corporate portals. The platform helps accelerate training content creation, employee onboarding, and knowledge sharing within a company.",
+    "It is a browser-based platform for creating corporate training videos with AI. It turns expert interviews, documents, presentations, and screen recordings into learning materials with voiceovers, AI avatars, subtitles, and quizzes. It supports translation into 140 languages, export to SCORM, xAPI, and MP4, and integration with LMS platforms and corporate portals. The platform helps accelerate training content creation, employee onboarding, and knowledge sharing within a company.",
   [ETranslationKey.ProjectsScreenshots]: "Screenshots",
-  [ETranslationKey.ProjectsOpenScreenshot]: "Open screenshot in full size",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Open screenshot preview",
+  [ETranslationKey.ProjectsClosePreview]: "Close preview",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Notification settings",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Screen recorder",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -210,9 +211,10 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.NavProjects]: "Проекты",
   [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
   [ETranslationKey.ProjectsOmnoraCategory]:
-    "Omnora Authoring Tool — браузерная платформа для создания корпоративных обучающих видео с помощью ИИ. Она превращает интервью с экспертами, документы, презентации и записи экрана в учебные материалы с озвучкой, AI-аватарами, субтитрами и тестами. Поддерживает перевод на 140 языков, экспорт в SCORM, xAPI и MP4, а также интеграцию с LMS и корпоративными порталами. Платформа помогает ускорить подготовку обучения, адаптацию сотрудников и передачу знаний внутри компании.",
+    "Это браузерная платформа для создания корпоративных обучающих видео с помощью ИИ. Она превращает интервью с экспертами, документы, презентации и записи экрана в учебные материалы с озвучкой, AI-аватарами, субтитрами и тестами. Поддерживает перевод на 140 языков, экспорт в SCORM, xAPI и MP4, а также интеграцию с LMS и корпоративными порталами. Платформа помогает ускорить подготовку обучения, адаптацию сотрудников и передачу знаний внутри компании.",
   [ETranslationKey.ProjectsScreenshots]: "Скриншоты",
-  [ETranslationKey.ProjectsOpenScreenshot]: "Открыть скриншот в полном размере",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Открыть предпросмотр скриншота",
+  [ETranslationKey.ProjectsClosePreview]: "Закрыть предпросмотр",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Настройки уведомлений",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Запись экрана",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -402,9 +404,10 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.NavProjects]: "Proyectos",
   [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
   [ETranslationKey.ProjectsOmnoraCategory]:
-    "Omnora Authoring Tool es una plataforma en el navegador para crear vídeos de formación corporativa con IA. Convierte entrevistas con expertos, documentos, presentaciones y grabaciones de pantalla en materiales de aprendizaje con narración, avatares de IA, subtítulos y cuestionarios. Permite traducir a 140 idiomas, exportar a SCORM, xAPI y MP4 e integrarse con plataformas LMS y portales corporativos. La plataforma ayuda a agilizar la creación de contenidos formativos, la incorporación de empleados y la transferencia de conocimientos dentro de la empresa.",
+    "Es una plataforma en el navegador para crear vídeos de formación corporativa con IA. Convierte entrevistas con expertos, documentos, presentaciones y grabaciones de pantalla en materiales de aprendizaje con narración, avatares de IA, subtítulos y cuestionarios. Permite traducir a 140 idiomas, exportar a SCORM, xAPI y MP4 e integrarse con plataformas LMS y portales corporativos. La plataforma ayuda a agilizar la creación de contenidos formativos, la incorporación de empleados y la transferencia de conocimientos dentro de la empresa.",
   [ETranslationKey.ProjectsScreenshots]: "Capturas de pantalla",
-  [ETranslationKey.ProjectsOpenScreenshot]: "Abrir captura a tamaño completo",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Abrir vista previa de la captura",
+  [ETranslationKey.ProjectsClosePreview]: "Cerrar vista previa",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Ajustes de notificaciones",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Grabación de pantalla",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -595,9 +598,10 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.NavProjects]: "Projekte",
   [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
   [ETranslationKey.ProjectsOmnoraCategory]:
-    "Omnora Authoring Tool ist eine browserbasierte Plattform zur Erstellung betrieblicher Schulungsvideos mit KI. Sie verwandelt Experteninterviews, Dokumente, Präsentationen und Bildschirmaufnahmen in Lernmaterialien mit Vertonung, KI-Avataren, Untertiteln und Quizfragen. Sie unterstützt die Übersetzung in 140 Sprachen, den Export in SCORM, xAPI und MP4 sowie die Integration in LMS und Unternehmensportale. Die Plattform hilft dabei, die Erstellung von Schulungsinhalten, die Einarbeitung von Mitarbeitenden und den Wissenstransfer im Unternehmen zu beschleunigen.",
+    "Es ist eine browserbasierte Plattform zur Erstellung betrieblicher Schulungsvideos mit KI. Sie verwandelt Experteninterviews, Dokumente, Präsentationen und Bildschirmaufnahmen in Lernmaterialien mit Vertonung, KI-Avataren, Untertiteln und Quizfragen. Sie unterstützt die Übersetzung in 140 Sprachen, den Export in SCORM, xAPI und MP4 sowie die Integration in LMS und Unternehmensportale. Die Plattform hilft dabei, die Erstellung von Schulungsinhalten, die Einarbeitung von Mitarbeitenden und den Wissenstransfer im Unternehmen zu beschleunigen.",
   [ETranslationKey.ProjectsScreenshots]: "Screenshots",
-  [ETranslationKey.ProjectsOpenScreenshot]: "Screenshot in voller Größe öffnen",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Screenshot-Vorschau öffnen",
+  [ETranslationKey.ProjectsClosePreview]: "Vorschau schließen",
   [ETranslationKey.ProjectsOmnoraNotifications]:
     "Benachrichtigungseinstellungen",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Bildschirmaufnahme",

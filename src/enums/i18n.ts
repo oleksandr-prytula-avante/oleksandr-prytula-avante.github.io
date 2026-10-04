@@ -73,6 +73,7 @@ export const enum ETranslationKey {
   ProjectsOmnoraCategory = "projects.omnora.category",
   ProjectsScreenshots = "projects.screenshots",
   ProjectsOpenScreenshot = "projects.openScreenshot",
+  ProjectsClosePreview = "projects.closePreview",
   ProjectsOmnoraNotifications = "projects.omnora.notifications",
   ProjectsOmnoraScreenRecorder = "projects.omnora.screenRecorder",
   ProjectsOmnoraVideoRecorderSettings = "projects.omnora.videoRecorderSettings",

@@ -59,6 +59,12 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         height: 1822,
       },
       {
+        src: authoringHome,
+        captionKey: ETranslationKey.ProjectsOmnoraAuthoringHome,
+        width: 3456,
+        height: 1820,
+      },
+      {
         src: videoHub,
         captionKey: ETranslationKey.ProjectsOmnoraVideoHub,
         width: 3456,
@@ -129,12 +135,6 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         captionKey: ETranslationKey.ProjectsOmnoraBrandKit,
         width: 3454,
         height: 1814,
-      },
-      {
-        src: authoringHome,
-        captionKey: ETranslationKey.ProjectsOmnoraAuthoringHome,
-        width: 3456,
-        height: 1820,
       },
       {
         src: videoEditor,
