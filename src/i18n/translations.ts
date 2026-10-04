@@ -39,6 +39,8 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraInterviewWelcome]: "Interview welcome screen",
   [ETranslationKey.ProjectsOmnoraAiQuiz]: "AI quiz generation",
   [ETranslationKey.ProjectsOmnoraPlayerControls]: "Player controls settings",
+  [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Security profiles",
+  [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Avatar selection",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "LMS export settings — xAPI / SCORM",
   [ETranslationKey.NavGithub]: "GitHub",
@@ -239,6 +241,8 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraAiQuiz]: "Создание тестов с ИИ",
   [ETranslationKey.ProjectsOmnoraPlayerControls]:
     "Настройки управления плеером",
+  [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Профили безопасности",
+  [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Выбор аватара",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "Настройки экспорта в LMS — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Логотип",
@@ -434,6 +438,8 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraAiQuiz]: "Generación de cuestionarios con IA",
   [ETranslationKey.ProjectsOmnoraPlayerControls]:
     "Configuración de los controles del reproductor",
+  [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Perfiles de seguridad",
+  [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Selección de avatar",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "Exportación a LMS — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logotipo",
@@ -628,6 +634,8 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraAiQuiz]: "Quiz-Erstellung mit KI",
   [ETranslationKey.ProjectsOmnoraPlayerControls]:
     "Einstellungen der Player-Steuerung",
+  [ETranslationKey.ProjectsOmnoraSecurityProfiles]: "Sicherheitsprofile",
+  [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Avatar-Auswahl",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "LMS-Exporteinstellungen — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logo",

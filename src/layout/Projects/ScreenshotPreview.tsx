@@ -35,13 +35,13 @@ export function ScreenshotPreview({
           event.currentTarget.close();
         }
       }}
-      className="fixed inset-0 m-auto h-fit max-h-none w-fit max-w-none overflow-visible border-0 bg-transparent p-0 pt-12 text-white backdrop:bg-black/80"
+      className="fixed inset-0 m-auto h-fit max-h-none w-fit max-w-none overflow-hidden rounded-2xl border-0 bg-transparent p-0 text-white backdrop:bg-black/50 sm:rounded-[1.25rem]"
     >
       <button
         type="button"
         onClick={() => dialogRef.current?.close()}
         aria-label={i18n.t(ETranslationKey.ProjectsClosePreview)}
-        className="absolute top-0 right-0 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
+        className="absolute top-3 right-3 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-[color:var(--color-bg)] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)] focus-visible:border-[color:var(--color-accent)] focus-visible:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)]"
       >
         <svg
           aria-hidden="true"
@@ -61,7 +61,7 @@ export function ScreenshotPreview({
         alt={`${projectName} — ${caption}`}
         width={screenshot.width}
         height={screenshot.height}
-        className="block h-auto max-h-[calc(100dvh-6rem)] w-auto max-w-[calc(100vw-2rem)]"
+        className="block h-auto max-h-[calc(100dvh-2rem)] w-auto max-w-[calc(100vw-2rem)] scale-[1.006]"
       />
     </dialog>
   );

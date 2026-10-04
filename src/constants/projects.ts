@@ -20,6 +20,8 @@ import brandKit from "../assets/images/projects/omnora-authoring/brand-kit.webp"
 import interviewWelcome from "../assets/images/projects/omnora-authoring/interview-welcome.webp";
 import aiQuiz from "../assets/images/projects/omnora-authoring/ai-quiz.webp";
 import playerControls from "../assets/images/projects/omnora-authoring/player-controls.webp";
+import securityProfiles from "../assets/images/projects/omnora-authoring/security-profiles.webp";
+import avatarSelection from "../assets/images/projects/omnora-authoring/avatar-selection.webp";
 import type { TimelineDataItem } from "../components/Timeline/TimelineItem";
 import { ETranslationKey } from "../i18n/types";
 import { OMNORA_TECHNOLOGY_TAGS } from "./experience";
@@ -127,7 +129,7 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
       {
         src: accountSettings,
         captionKey: ETranslationKey.ProjectsOmnoraAccountSettings,
-        width: 3456,
+        width: 3450,
         height: 1812,
       },
       {
@@ -141,6 +143,12 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         captionKey: ETranslationKey.ProjectsOmnoraVideoEditor,
         width: 3440,
         height: 1794,
+      },
+      {
+        src: avatarSelection,
+        captionKey: ETranslationKey.ProjectsOmnoraAvatarSelection,
+        width: 3456,
+        height: 1818,
       },
       {
         src: sceneLayouts,
@@ -177,6 +185,12 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         captionKey: ETranslationKey.ProjectsOmnoraLmsSettings,
         width: 3456,
         height: 1820,
+      },
+      {
+        src: securityProfiles,
+        captionKey: ETranslationKey.ProjectsOmnoraSecurityProfiles,
+        width: 3452,
+        height: 1816,
       },
     ],
   },
