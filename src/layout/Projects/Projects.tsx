@@ -2,6 +2,7 @@ import { Timeline } from "../../components/Timeline/Timeline";
 import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
 import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
+import { ProjectScreenshotsIcon } from "../../components/icons/ProjectScreenshotsIcon";
 import {
   PROJECT_TIMELINE_ITEMS,
   type ProjectTimelineItem,
@@ -58,22 +59,7 @@ function ProjectScreenshotsRow({ item }: ProjectRowProps) {
   return (
     <TimelineRow
       className="max-[1024px]:hidden"
-      icon={
-        <svg
-          aria-hidden="true"
-          className="h-5 w-5 shrink-0 text-white"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <circle cx="8.5" cy="8.5" r="1.5" />
-          <path d="m21 15-5-5L5 21" />
-        </svg>
-      }
+      icon={<ProjectScreenshotsIcon />}
     >
       <span className="min-w-0 truncate">
         {`${i18n.t(ETranslationKey.ProjectsScreenshots)} (${item.screenshots.length})`}

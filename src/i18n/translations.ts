@@ -16,6 +16,8 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsScreenshots]: "Screenshots",
   [ETranslationKey.ProjectsOpenScreenshot]: "Open screenshot preview",
   [ETranslationKey.ProjectsClosePreview]: "Close preview",
+  [ETranslationKey.ProjectsPreviousScreenshot]: "Previous screenshot",
+  [ETranslationKey.ProjectsNextScreenshot]: "Next screenshot",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Notification settings",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Screen recorder",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -218,6 +220,8 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsScreenshots]: "Скриншоты",
   [ETranslationKey.ProjectsOpenScreenshot]: "Открыть предпросмотр скриншота",
   [ETranslationKey.ProjectsClosePreview]: "Закрыть предпросмотр",
+  [ETranslationKey.ProjectsPreviousScreenshot]: "Предыдущий скриншот",
+  [ETranslationKey.ProjectsNextScreenshot]: "Следующий скриншот",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Настройки уведомлений",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Запись экрана",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -414,6 +418,8 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsScreenshots]: "Capturas de pantalla",
   [ETranslationKey.ProjectsOpenScreenshot]: "Abrir vista previa de la captura",
   [ETranslationKey.ProjectsClosePreview]: "Cerrar vista previa",
+  [ETranslationKey.ProjectsPreviousScreenshot]: "Captura anterior",
+  [ETranslationKey.ProjectsNextScreenshot]: "Siguiente captura",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Ajustes de notificaciones",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Grabación de pantalla",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -611,6 +617,8 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsScreenshots]: "Screenshots",
   [ETranslationKey.ProjectsOpenScreenshot]: "Screenshot-Vorschau öffnen",
   [ETranslationKey.ProjectsClosePreview]: "Vorschau schließen",
+  [ETranslationKey.ProjectsPreviousScreenshot]: "Vorheriger Screenshot",
+  [ETranslationKey.ProjectsNextScreenshot]: "Nächster Screenshot",
   [ETranslationKey.ProjectsOmnoraNotifications]:
     "Benachrichtigungseinstellungen",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Bildschirmaufnahme",

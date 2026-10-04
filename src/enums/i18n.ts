@@ -74,6 +74,8 @@ export const enum ETranslationKey {
   ProjectsScreenshots = "projects.screenshots",
   ProjectsOpenScreenshot = "projects.openScreenshot",
   ProjectsClosePreview = "projects.closePreview",
+  ProjectsPreviousScreenshot = "projects.previousScreenshot",
+  ProjectsNextScreenshot = "projects.nextScreenshot",
   ProjectsOmnoraNotifications = "projects.omnora.notifications",
   ProjectsOmnoraScreenRecorder = "projects.omnora.screenRecorder",
   ProjectsOmnoraVideoRecorderSettings = "projects.omnora.videoRecorderSettings",
