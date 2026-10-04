@@ -109,16 +109,16 @@ export const PROJECT_TIMELINE_ITEMS: ProjectTimelineItem[] = [
         height: 1822,
       },
       {
-        src: interviewWelcome,
-        captionKey: ETranslationKey.ProjectsOmnoraInterviewWelcome,
-        width: 3456,
-        height: 1830,
-      },
-      {
         src: videoRecorderSettings,
         captionKey: ETranslationKey.ProjectsOmnoraVideoRecorderSettings,
         width: 3454,
         height: 1814,
+      },
+      {
+        src: interviewWelcome,
+        captionKey: ETranslationKey.ProjectsOmnoraInterviewWelcome,
+        width: 3456,
+        height: 1830,
       },
       {
         src: accountSettings,
