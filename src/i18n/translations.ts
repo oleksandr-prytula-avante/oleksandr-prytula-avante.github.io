@@ -10,6 +10,36 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.NavExperience]: "Experience",
   [ETranslationKey.NavEducation]: "Education",
   [ETranslationKey.NavProjects]: "Projects",
+  [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
+  [ETranslationKey.ProjectsOmnoraCategory]:
+    "Omnora Authoring Tool is a browser-based platform for creating corporate training videos with AI. It turns expert interviews, documents, presentations, and screen recordings into learning materials with voiceovers, AI avatars, subtitles, and quizzes. It supports translation into 140 languages, export to SCORM, xAPI, and MP4, and integration with LMS platforms and corporate portals. The platform helps accelerate training content creation, employee onboarding, and knowledge sharing within a company.",
+  [ETranslationKey.ProjectsScreenshots]: "Screenshots",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Open screenshot in full size",
+  [ETranslationKey.ProjectsOmnoraNotifications]: "Notification settings",
+  [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Screen recorder",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
+    "Video recorder settings",
+  [ETranslationKey.ProjectsOmnoraAccountSettings]: "Account settings",
+  [ETranslationKey.ProjectsOmnoraQuiz]: "Quiz editor",
+  [ETranslationKey.ProjectsOmnoraRecycleBin]: "Video recycle bin",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderBackground]:
+    "Recording backgrounds",
+  [ETranslationKey.ProjectsOmnoraAuthoringHome]: "Authoring dashboard",
+  [ETranslationKey.ProjectsOmnoraSlidesAvatarUpload]:
+    "Slide upload for AI avatars",
+  [ETranslationKey.ProjectsOmnoraVideoPlayer]: "Video player and sharing",
+  [ETranslationKey.ProjectsOmnoraVideoEditor]: "Video editor",
+  [ETranslationKey.ProjectsOmnoraSceneLayouts]: "Scene layouts",
+  [ETranslationKey.ProjectsOmnoraMediaLibrary]: "Media library",
+  [ETranslationKey.ProjectsOmnoraVideoHub]: "VideoHub",
+  [ETranslationKey.ProjectsOmnoraLogin]: "Sign in",
+  [ETranslationKey.ProjectsOmnoraInterviews]: "My interviews",
+  [ETranslationKey.ProjectsOmnoraBrandKit]: "Brand Kit",
+  [ETranslationKey.ProjectsOmnoraInterviewWelcome]: "Interview welcome screen",
+  [ETranslationKey.ProjectsOmnoraAiQuiz]: "AI quiz generation",
+  [ETranslationKey.ProjectsOmnoraPlayerControls]: "Player controls settings",
+  [ETranslationKey.ProjectsOmnoraLmsSettings]:
+    "LMS export settings — xAPI / SCORM",
   [ETranslationKey.NavGithub]: "GitHub",
   [ETranslationKey.NavLinkedIn]: "LinkedIn",
   [ETranslationKey.NavLeetCode]: "LeetCode",
@@ -178,6 +208,37 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.NavExperience]: "Опыт",
   [ETranslationKey.NavEducation]: "Образование",
   [ETranslationKey.NavProjects]: "Проекты",
+  [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
+  [ETranslationKey.ProjectsOmnoraCategory]:
+    "Omnora Authoring Tool — браузерная платформа для создания корпоративных обучающих видео с помощью ИИ. Она превращает интервью с экспертами, документы, презентации и записи экрана в учебные материалы с озвучкой, AI-аватарами, субтитрами и тестами. Поддерживает перевод на 140 языков, экспорт в SCORM, xAPI и MP4, а также интеграцию с LMS и корпоративными порталами. Платформа помогает ускорить подготовку обучения, адаптацию сотрудников и передачу знаний внутри компании.",
+  [ETranslationKey.ProjectsScreenshots]: "Скриншоты",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Открыть скриншот в полном размере",
+  [ETranslationKey.ProjectsOmnoraNotifications]: "Настройки уведомлений",
+  [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Запись экрана",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
+    "Настройки видеозаписи",
+  [ETranslationKey.ProjectsOmnoraAccountSettings]: "Настройки аккаунта",
+  [ETranslationKey.ProjectsOmnoraQuiz]: "Редактор тестов",
+  [ETranslationKey.ProjectsOmnoraRecycleBin]: "Корзина видео",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderBackground]:
+    "Фоны для видеозаписи",
+  [ETranslationKey.ProjectsOmnoraAuthoringHome]: "Главная страница редактора",
+  [ETranslationKey.ProjectsOmnoraSlidesAvatarUpload]:
+    "Загрузка слайдов для ИИ-аватаров",
+  [ETranslationKey.ProjectsOmnoraVideoPlayer]: "Видеоплеер и настройки доступа",
+  [ETranslationKey.ProjectsOmnoraVideoEditor]: "Видеоредактор",
+  [ETranslationKey.ProjectsOmnoraSceneLayouts]: "Макеты сцен",
+  [ETranslationKey.ProjectsOmnoraMediaLibrary]: "Медиатека",
+  [ETranslationKey.ProjectsOmnoraVideoHub]: "VideoHub",
+  [ETranslationKey.ProjectsOmnoraLogin]: "Вход",
+  [ETranslationKey.ProjectsOmnoraInterviews]: "Мои интервью",
+  [ETranslationKey.ProjectsOmnoraBrandKit]: "Фирменный стиль",
+  [ETranslationKey.ProjectsOmnoraInterviewWelcome]: "Стартовый экран интервью",
+  [ETranslationKey.ProjectsOmnoraAiQuiz]: "Создание тестов с ИИ",
+  [ETranslationKey.ProjectsOmnoraPlayerControls]:
+    "Настройки управления плеером",
+  [ETranslationKey.ProjectsOmnoraLmsSettings]:
+    "Настройки экспорта в LMS — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Логотип",
   [ETranslationKey.A11yOpenMenu]: "Открыть меню",
   [ETranslationKey.A11yCloseMenu]: "Закрыть меню",
@@ -339,6 +400,39 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.NavExperience]: "Experiencia",
   [ETranslationKey.NavEducation]: "Educación",
   [ETranslationKey.NavProjects]: "Proyectos",
+  [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
+  [ETranslationKey.ProjectsOmnoraCategory]:
+    "Omnora Authoring Tool es una plataforma en el navegador para crear vídeos de formación corporativa con IA. Convierte entrevistas con expertos, documentos, presentaciones y grabaciones de pantalla en materiales de aprendizaje con narración, avatares de IA, subtítulos y cuestionarios. Permite traducir a 140 idiomas, exportar a SCORM, xAPI y MP4 e integrarse con plataformas LMS y portales corporativos. La plataforma ayuda a agilizar la creación de contenidos formativos, la incorporación de empleados y la transferencia de conocimientos dentro de la empresa.",
+  [ETranslationKey.ProjectsScreenshots]: "Capturas de pantalla",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Abrir captura a tamaño completo",
+  [ETranslationKey.ProjectsOmnoraNotifications]: "Ajustes de notificaciones",
+  [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Grabación de pantalla",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
+    "Ajustes de grabación de vídeo",
+  [ETranslationKey.ProjectsOmnoraAccountSettings]: "Ajustes de la cuenta",
+  [ETranslationKey.ProjectsOmnoraQuiz]: "Editor de cuestionarios",
+  [ETranslationKey.ProjectsOmnoraRecycleBin]: "Papelera de vídeos",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderBackground]:
+    "Fondos de grabación",
+  [ETranslationKey.ProjectsOmnoraAuthoringHome]: "Panel de creación",
+  [ETranslationKey.ProjectsOmnoraSlidesAvatarUpload]:
+    "Carga de diapositivas para avatares de IA",
+  [ETranslationKey.ProjectsOmnoraVideoPlayer]:
+    "Reproducción y uso compartido de vídeos",
+  [ETranslationKey.ProjectsOmnoraVideoEditor]: "Editor de vídeo",
+  [ETranslationKey.ProjectsOmnoraSceneLayouts]: "Diseños de escenas",
+  [ETranslationKey.ProjectsOmnoraMediaLibrary]: "Biblioteca multimedia",
+  [ETranslationKey.ProjectsOmnoraVideoHub]: "VideoHub",
+  [ETranslationKey.ProjectsOmnoraLogin]: "Iniciar sesión",
+  [ETranslationKey.ProjectsOmnoraInterviews]: "Mis entrevistas",
+  [ETranslationKey.ProjectsOmnoraBrandKit]: "Kit de marca",
+  [ETranslationKey.ProjectsOmnoraInterviewWelcome]:
+    "Pantalla de bienvenida a la entrevista",
+  [ETranslationKey.ProjectsOmnoraAiQuiz]: "Generación de cuestionarios con IA",
+  [ETranslationKey.ProjectsOmnoraPlayerControls]:
+    "Configuración de los controles del reproductor",
+  [ETranslationKey.ProjectsOmnoraLmsSettings]:
+    "Exportación a LMS — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logotipo",
   [ETranslationKey.A11yOpenMenu]: "Abrir menú",
   [ETranslationKey.A11yCloseMenu]: "Cerrar menú",
@@ -499,6 +593,39 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.NavExperience]: "Erfahrung",
   [ETranslationKey.NavEducation]: "Ausbildung",
   [ETranslationKey.NavProjects]: "Projekte",
+  [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
+  [ETranslationKey.ProjectsOmnoraCategory]:
+    "Omnora Authoring Tool ist eine browserbasierte Plattform zur Erstellung betrieblicher Schulungsvideos mit KI. Sie verwandelt Experteninterviews, Dokumente, Präsentationen und Bildschirmaufnahmen in Lernmaterialien mit Vertonung, KI-Avataren, Untertiteln und Quizfragen. Sie unterstützt die Übersetzung in 140 Sprachen, den Export in SCORM, xAPI und MP4 sowie die Integration in LMS und Unternehmensportale. Die Plattform hilft dabei, die Erstellung von Schulungsinhalten, die Einarbeitung von Mitarbeitenden und den Wissenstransfer im Unternehmen zu beschleunigen.",
+  [ETranslationKey.ProjectsScreenshots]: "Screenshots",
+  [ETranslationKey.ProjectsOpenScreenshot]: "Screenshot in voller Größe öffnen",
+  [ETranslationKey.ProjectsOmnoraNotifications]:
+    "Benachrichtigungseinstellungen",
+  [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Bildschirmaufnahme",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
+    "Einstellungen zur Videoaufnahme",
+  [ETranslationKey.ProjectsOmnoraAccountSettings]: "Kontoeinstellungen",
+  [ETranslationKey.ProjectsOmnoraQuiz]: "Quiz-Editor",
+  [ETranslationKey.ProjectsOmnoraRecycleBin]: "Video-Papierkorb",
+  [ETranslationKey.ProjectsOmnoraVideoRecorderBackground]:
+    "Aufnahmehintergründe",
+  [ETranslationKey.ProjectsOmnoraAuthoringHome]: "Authoring-Startseite",
+  [ETranslationKey.ProjectsOmnoraSlidesAvatarUpload]:
+    "Folien-Upload für KI-Avatare",
+  [ETranslationKey.ProjectsOmnoraVideoPlayer]: "Videoplayer und Freigabe",
+  [ETranslationKey.ProjectsOmnoraVideoEditor]: "Videoeditor",
+  [ETranslationKey.ProjectsOmnoraSceneLayouts]: "Szenenlayouts",
+  [ETranslationKey.ProjectsOmnoraMediaLibrary]: "Medienbibliothek",
+  [ETranslationKey.ProjectsOmnoraVideoHub]: "VideoHub",
+  [ETranslationKey.ProjectsOmnoraLogin]: "Anmelden",
+  [ETranslationKey.ProjectsOmnoraInterviews]: "Meine Interviews",
+  [ETranslationKey.ProjectsOmnoraBrandKit]: "Markenkit",
+  [ETranslationKey.ProjectsOmnoraInterviewWelcome]:
+    "Begrüßungsseite des Interviews",
+  [ETranslationKey.ProjectsOmnoraAiQuiz]: "Quiz-Erstellung mit KI",
+  [ETranslationKey.ProjectsOmnoraPlayerControls]:
+    "Einstellungen der Player-Steuerung",
+  [ETranslationKey.ProjectsOmnoraLmsSettings]:
+    "LMS-Exporteinstellungen — xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logo",
   [ETranslationKey.A11yOpenMenu]: "Menu offnen",
   [ETranslationKey.A11yCloseMenu]: "Menu schliessen",

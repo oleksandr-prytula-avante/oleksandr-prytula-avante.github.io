@@ -11,8 +11,8 @@ export const SCALE_X_HIDDEN = "scaleX(0)";
 export const VALID_HASHES = [
   toSectionHash(ESection.About),
   toSectionHash(ESection.Experience),
-  toSectionHash(ESection.Education),
   toSectionHash(ESection.Projects),
+  toSectionHash(ESection.Education),
 ] as const;
 
 export const SECTION_NAV_ITEMS = [
@@ -27,13 +27,13 @@ export const SECTION_NAV_ITEMS = [
     isDisabled: false,
   },
   {
-    href: toSectionHash(ESection.Education),
-    labelKey: ETranslationKey.NavEducation,
+    href: toSectionHash(ESection.Projects),
+    labelKey: ETranslationKey.NavProjects,
     isDisabled: false,
   },
   {
-    href: toSectionHash(ESection.Projects),
-    labelKey: ETranslationKey.NavProjects,
-    isDisabled: true,
+    href: toSectionHash(ESection.Education),
+    labelKey: ETranslationKey.NavEducation,
+    isDisabled: false,
   },
 ] as const;

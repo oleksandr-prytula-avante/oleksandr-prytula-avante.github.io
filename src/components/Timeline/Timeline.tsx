@@ -26,7 +26,9 @@ type TimelineProps<TItem extends TimelineDataItem> = {
   FirstRowComponent: React.ComponentType<{ item: TItem }>;
   SecondRowComponent: React.ComponentType<{ item: TItem }>;
   ThirdRowComponent: React.ComponentType<{ item: TItem }>;
+  DetailsComponent?: React.ComponentType<{ item: TItem }>;
   showToggle?: boolean;
+  showMobileToggle?: boolean;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
 };
@@ -51,7 +53,9 @@ export function Timeline<TItem extends TimelineDataItem>(
     FirstRowComponent,
     SecondRowComponent,
     ThirdRowComponent,
+    DetailsComponent,
     showToggle = true,
+    showMobileToggle = false,
   } = props;
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
   const [focusPhase, setFocusPhase] = useState<EFocusPhase>(EFocusPhase.Idle);
@@ -350,6 +354,8 @@ export function Timeline<TItem extends TimelineDataItem>(
       measureLineGeometry();
 
       const rafId = window.requestAnimationFrame(measureLineGeometry);
+      const resizeObserver = new ResizeObserver(measureLineGeometry);
+      resizeObserver.observe(observedList);
 
       let previousViewportHeight = window.innerHeight;
 
@@ -368,6 +374,7 @@ export function Timeline<TItem extends TimelineDataItem>(
 
       return function () {
         window.cancelAnimationFrame(rafId);
+        resizeObserver.disconnect();
         window.removeEventListener("resize", handleVerticalResize);
       };
     },
@@ -449,7 +456,9 @@ export function Timeline<TItem extends TimelineDataItem>(
         FirstRowComponent={FirstRowComponent}
         SecondRowComponent={SecondRowComponent}
         ThirdRowComponent={ThirdRowComponent}
+        DetailsComponent={DetailsComponent}
         showToggle={showToggle}
+        showMobileToggle={showMobileToggle}
         onSkillEnter={onSkillEnter}
         onSkillLeave={onSkillLeave}
         shouldHideRightContent={itemState.shouldHideRightContent}

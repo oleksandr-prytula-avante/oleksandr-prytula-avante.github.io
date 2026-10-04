@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { useId, type CSSProperties } from "react";
 
 import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
 import {
@@ -22,9 +22,11 @@ export type TimelineDataItem = {
   id: string;
   companyUrl: string;
   companyLogoSrc: string;
-  startDate: string;
-  endDate: string | null;
   technologyTags: string[];
+  textKeys?: {
+    name: ETranslationKey;
+    highlights: ETranslationKey[];
+  };
 };
 
 type TimelineItemProps<TItem extends TimelineDataItem> = {
@@ -32,7 +34,9 @@ type TimelineItemProps<TItem extends TimelineDataItem> = {
   FirstRowComponent: React.ComponentType<{ item: TItem }>;
   SecondRowComponent: React.ComponentType<{ item: TItem }>;
   ThirdRowComponent: React.ComponentType<{ item: TItem }>;
+  DetailsComponent?: React.ComponentType<{ item: TItem }>;
   showToggle?: boolean;
+  showMobileToggle?: boolean;
   onSkillEnter: (skill: string) => void;
   onSkillLeave: () => void;
   shouldHideRightContent: boolean;
@@ -56,7 +60,9 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     FirstRowComponent,
     SecondRowComponent,
     ThirdRowComponent,
+    DetailsComponent,
     showToggle = true,
+    showMobileToggle = false,
     onSkillEnter,
     onSkillLeave,
     shouldHideRightContent,
@@ -72,6 +78,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     onToggle,
   } = props;
   const i18n = useI18n();
+  const instanceId = useId();
   const itemZIndex = hasActiveItem
     ? isActiveItem
       ? ACTIVE_ITEM_Z_INDEX
@@ -105,7 +112,10 @@ export function TimelineItem<TItem extends TimelineDataItem>(
   let companyName: string;
   let highlightKeys: ETranslationKey[];
 
-  if (isEducationItem) {
+  if (item.textKeys) {
+    companyName = i18n.t(item.textKeys.name);
+    highlightKeys = item.textKeys.highlights;
+  } else if (isEducationItem) {
     const educationTextKeys = getEducationTextKeys(item.id);
     companyName = i18n.t(educationTextKeys.institution);
     highlightKeys = educationTextKeys.highlights ?? [];
@@ -115,7 +125,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     highlightKeys = experienceTextKeys.highlights;
   }
 
-  const descriptionId = `${item.id}-description`;
+  const descriptionId = `${item.id}-${instanceId}-description`;
   const localizedHighlights = highlightKeys.map(function (highlightKey) {
     return i18n.t(highlightKey);
   });
@@ -193,6 +203,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         className="mt-3 min-[1025px]:max-h-[calc(100vh_-_320px)] timeline-description-max-height-between-1024-1440 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90 max-[1024px]:overflow-visible max-[1024px]:pr-0"
       >
         {localizedHighlightsList}
+        {DetailsComponent && <DetailsComponent item={item} />}
         {technologyTagsList}
       </div>
     );
@@ -206,11 +217,12 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         disabled={isToggleDisabled}
         aria-expanded={isExpanded}
         aria-controls={descriptionId}
+        aria-label={`${isExpanded ? i18n.t(ETranslationKey.TimelineHideDetails) : i18n.t(ETranslationKey.TimelineExpandDetails)}: ${companyName}`}
         className={`inline-flex shrink-0 items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
-        } min-w-[110px] timeline-button-between-1024-1440 max-[1024px]:hidden`}
+        } min-w-[110px] timeline-button-between-1024-1440 ${showMobileToggle ? "" : "max-[1024px]:hidden"}`}
       >
         <span className="timeline-hide-between-1024-1440">
           {isExpanded
@@ -257,7 +269,9 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
           <SecondRowComponent item={item} />
 
-          <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden">
+          <div
+            className={`flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden ${showMobileToggle ? "max-[1024px]:flex-wrap max-[1024px]:gap-y-3 max-[1024px]:overflow-visible" : ""}`}
+          >
             <div className="min-w-0">
               <ThirdRowComponent item={item} />
             </div>

@@ -1,5 +1,5 @@
 import { getExperienceTextKeys } from "../../utils/experience";
-import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
+import type { ExperienceTimelineItem } from "../../constants/experience";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
 import { PipeSeparator } from "../../components/PipeSeparator";
@@ -15,11 +15,11 @@ const MOBILE_STACK_CONTAINER_SUFFIX =
 const MOBILE_STACK_ITEM_CLASS =
   "max-[640px]:overflow-visible max-[640px]:whitespace-normal";
 
-type ExperienceJobRowProps<TItem extends TimelineDataItem> = {
+type ExperienceJobRowProps<TItem extends ExperienceTimelineItem> = {
   item: TItem;
 };
 
-export function ExperienceJobRow<TItem extends TimelineDataItem>(
+export function ExperienceJobRow<TItem extends ExperienceTimelineItem>(
   props: ExperienceJobRowProps<TItem>,
 ) {
   const { item } = props;

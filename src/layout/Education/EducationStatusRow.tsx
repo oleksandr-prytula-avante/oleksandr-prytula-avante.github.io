@@ -1,4 +1,4 @@
-import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
+import type { EducationTimelineItem } from "../../constants/education";
 import { PipeSeparator } from "../../components/PipeSeparator";
 import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { EducationStatusIcon } from "../../components/icons/EducationStatusIcon";
@@ -13,11 +13,11 @@ const MOBILE_STACK_CONTAINER_SUFFIX =
 const MOBILE_STACK_ITEM_CLASS =
   "max-[640px]:overflow-visible max-[640px]:whitespace-normal";
 
-type EducationStatusRowProps<TItem extends TimelineDataItem> = {
+type EducationStatusRowProps<TItem extends EducationTimelineItem> = {
   item: TItem;
 };
 
-export function EducationStatusRow<TItem extends TimelineDataItem>(
+export function EducationStatusRow<TItem extends EducationTimelineItem>(
   props: EducationStatusRowProps<TItem>,
 ) {
   const { item } = props;

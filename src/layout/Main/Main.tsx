@@ -20,14 +20,15 @@ import { About } from "../About";
 import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
 import { Info } from "../Info";
+import { Projects } from "../Projects/Projects";
 
 import "./Main.css";
 
 const SECTION_IDS_IN_ORDER = [
   ESection.About,
   ESection.Experience,
-  ESection.Education,
   ESection.Projects,
+  ESection.Education,
 ] as const;
 
 function getDesktopSectionRevealClassName(
@@ -102,7 +103,7 @@ export function Main() {
       return <Education key={educationHash} {...timelineSkillHandlers} />;
     },
     [projectsHash]: function () {
-      return null;
+      return <Projects key={projectsHash} {...timelineSkillHandlers} />;
     },
   };
 
