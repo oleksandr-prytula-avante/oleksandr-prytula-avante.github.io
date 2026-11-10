@@ -17,15 +17,20 @@ const ICON_BY_LINK_ID: Record<ELink, ComponentType<{ isLarge?: boolean }>> = {
 
 type LinksProps = {
   size?: "default" | "large";
+  isVisible?: boolean;
 };
 
-export function Links({ size = "default" }: LinksProps) {
+export function Links({ size = "default", isVisible = true }: LinksProps) {
   const i18n = useI18n();
   const isLarge = size === "large";
 
   const containerClassName = isLarge
     ? "mt-auto flex w-full items-center justify-center gap-6 pb-2"
-    : "absolute bottom-11 flex flex-col gap-4";
+    : `absolute bottom-11 flex flex-col gap-4 transition-all duration-500 ease-out ${
+        isVisible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-2 opacity-0"
+      }`;
 
   return (
     <div className={containerClassName}>
