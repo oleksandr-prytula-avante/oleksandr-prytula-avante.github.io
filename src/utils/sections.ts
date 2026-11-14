@@ -12,6 +12,10 @@ export function toSectionHash(sectionId: ESection): SectionHash {
 export function getSectionTitleTranslationKey(
   sectionId: ESection,
 ): ETranslationKey {
+  if (sectionId === ESection.Home) {
+    return ETranslationKey.NavHome;
+  }
+
   if (sectionId === ESection.About) {
     return ETranslationKey.NavAbout;
   }

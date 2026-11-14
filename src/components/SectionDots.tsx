@@ -2,11 +2,10 @@ import { SECTION_NAV_ITEMS } from "../constants/sections";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
 import { ETranslationKey } from "../i18n/types";
-import { ESection, toSectionHash } from "../utils/sections";
 
 export function SectionDots() {
   const i18n = useI18n();
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
+  const { activeHash } = useActiveSectionHash();
 
   return (
     <nav

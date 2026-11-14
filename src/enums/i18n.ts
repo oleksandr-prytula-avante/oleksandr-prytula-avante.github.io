@@ -11,6 +11,7 @@ export const enum ETranslationKey {
   LocaleSp = "locale.sp",
   LocaleDe = "locale.de",
 
+  NavHome = "nav.home",
   NavAbout = "nav.about",
   NavExperience = "nav.experience",
   NavEducation = "nav.education",

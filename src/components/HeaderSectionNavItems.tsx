@@ -1,4 +1,7 @@
-import { SECTION_NAV_ITEMS } from "../constants/sections";
+import {
+  MOBILE_SECTION_NAV_ITEMS,
+  SECTION_NAV_ITEMS,
+} from "../constants/sections";
 import { useI18n } from "../hooks/useI18n";
 
 type HeaderNavigationProps = {
@@ -11,7 +14,10 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
   const { layout, activeHash, onItemClick } = props;
   const i18n = useI18n();
 
-  return SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
+  const navItems =
+    layout === "mobile" ? MOBILE_SECTION_NAV_ITEMS : SECTION_NAV_ITEMS;
+
+  return navItems.map(function ({ href, labelKey, isDisabled }) {
     const label = i18n.t(labelKey);
     const isActive = href === activeHash;
     const isItemDisabled = isDisabled ?? false;

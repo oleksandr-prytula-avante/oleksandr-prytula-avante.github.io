@@ -4,7 +4,6 @@ import { EFocusPhase } from "../../enums/timeline";
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { ESection, toSectionHash } from "../../utils/sections";
 import {
   TIMELINE_REVEAL_STAGGER_MS,
   TIMELINE_REVEAL_DURATION_MS,
@@ -71,7 +70,7 @@ export function Timeline<TItem extends TimelineDataItem>(
   > | null>(null);
   const articleRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
+  const { activeHash } = useActiveSectionHash();
   const isTimelineActive =
     !isDesktopViewport || activeHash === activeSectionHash;
   const hasFocusedItem = focusedItemId !== null;

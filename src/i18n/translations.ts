@@ -6,6 +6,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.LocaleRu]: "RU",
   [ETranslationKey.LocaleSp]: "SP",
   [ETranslationKey.LocaleDe]: "DE",
+  [ETranslationKey.NavHome]: "Home",
   [ETranslationKey.NavAbout]: "About",
   [ETranslationKey.NavExperience]: "Experience",
   [ETranslationKey.NavEducation]: "Education",
@@ -210,6 +211,7 @@ const EN_TRANSLATIONS: Translations = {
 
 const RU_TRANSLATIONS: Translations = {
   ...EN_TRANSLATIONS,
+  [ETranslationKey.NavHome]: "Главная",
   [ETranslationKey.NavAbout]: "О себе",
   [ETranslationKey.NavExperience]: "Опыт",
   [ETranslationKey.NavEducation]: "Образование",
@@ -408,6 +410,7 @@ const RU_TRANSLATIONS: Translations = {
 
 const SP_TRANSLATIONS: Translations = {
   ...EN_TRANSLATIONS,
+  [ETranslationKey.NavHome]: "Inicio",
   [ETranslationKey.NavAbout]: "Sobre mí",
   [ETranslationKey.NavExperience]: "Experiencia",
   [ETranslationKey.NavEducation]: "Educación",
@@ -607,6 +610,7 @@ const SP_TRANSLATIONS: Translations = {
 
 const DE_TRANSLATIONS: Translations = {
   ...EN_TRANSLATIONS,
+  [ETranslationKey.NavHome]: "Startseite",
   [ETranslationKey.NavAbout]: "Über mich",
   [ETranslationKey.NavExperience]: "Erfahrung",
   [ETranslationKey.NavEducation]: "Ausbildung",

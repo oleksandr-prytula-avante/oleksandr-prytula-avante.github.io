@@ -5,23 +5,18 @@ import {
   SECTION_NAV_ITEMS,
   NOT_FOUND_INDEX,
   FIRST_SLIDE_INDEX,
-  SLIDE_WIDTH_PERCENT,
 } from "../constants/sections";
-import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../constants/mediaQueries";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ESection, toSectionHash } from "../utils/sections";
+
+import "./SectionCarousel.css";
 
 type SectionCarouselProps = {
   children: ReactNode;
 };
 
 export function SectionCarousel({ children }: SectionCarouselProps) {
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
-  const isCarouselAnimationEnabled = useMediaQuery(
-    MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
-    true,
-  );
+  const { activeHash } = useActiveSectionHash();
 
   const slideChildren = useMemo(
     function () {
@@ -54,28 +49,33 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
   );
 
   return (
-    <div className="flex h-full min-h-0 flex-col px-10">
-      <div className="relative h-full min-h-0 overflow-hidden">
-        <div
-          className={`flex h-full min-h-0 ${isCarouselAnimationEnabled ? "transition-transform duration-500 ease-in-out" : ""}`}
-          style={{
-            transform: `translateX(-${activeIndex * SLIDE_WIDTH_PERCENT}%)`,
-          }}
-        >
-          {slides.map(function ({ href, children }) {
-            const sectionClassName =
-              href === toSectionHash(ESection.About)
-                ? "h-full w-full shrink-0 overflow-y-hidden py-8 pb-12 px-2 max-[1366px]:px-0"
-                : "h-full w-full shrink-0 overflow-hidden py-8 px-2";
+    <div className="section-carousel">
+      {slides.map(function ({ href, children }, index) {
+        const isActive = index === activeIndex;
+        const position = isActive
+          ? "active"
+          : index < activeIndex
+            ? "before"
+            : "after";
+        const sectionClassName =
+          href === toSectionHash(ESection.Home)
+            ? "h-full w-full shrink-0 overflow-hidden"
+            : href === toSectionHash(ESection.About)
+              ? "h-full w-full shrink-0 overflow-y-hidden py-8 pb-12 px-12 max-[1366px]:px-10"
+              : "h-full w-full shrink-0 overflow-hidden py-8 px-12";
 
-            return (
-              <section key={href} className={sectionClassName}>
-                {children}
-              </section>
-            );
-          })}
-        </div>
-      </div>
+        return (
+          <section
+            key={href}
+            className={`section-carousel-slide ${sectionClassName}`}
+            data-position={position}
+            inert={!isActive}
+            aria-hidden={!isActive}
+          >
+            {children}
+          </section>
+        );
+      })}
     </div>
   );
 }

@@ -19,6 +19,7 @@ import {
 import { About } from "../About";
 import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
+import { Home } from "../Home";
 import { Info } from "../Info";
 import { Projects } from "../Projects/Projects";
 
@@ -81,12 +82,16 @@ export function Main() {
     onSkillLeave: handleSkillLeave,
   };
 
+  const homeHash = toSectionHash(ESection.Home);
   const aboutHash = toSectionHash(ESection.About);
   const experienceHash = toSectionHash(ESection.Experience);
   const educationHash = toSectionHash(ESection.Education);
   const projectsHash = toSectionHash(ESection.Projects);
 
   const sectionRendererByHash: Record<string, () => ReactNode> = {
+    [homeHash]: function () {
+      return <Home key={homeHash} />;
+    },
     [aboutHash]: function () {
       return (
         <About

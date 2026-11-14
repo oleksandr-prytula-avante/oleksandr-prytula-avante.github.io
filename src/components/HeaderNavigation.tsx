@@ -1,4 +1,7 @@
-import { SECTION_NAV_ITEMS } from "../constants/sections";
+import {
+  MOBILE_SECTION_NAV_ITEMS,
+  SECTION_NAV_ITEMS,
+} from "../constants/sections";
 import { useI18n } from "../hooks/useI18n";
 
 type HeaderNavigationProps = {
@@ -12,7 +15,10 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
   const { layout, activeHash, isAllItemsDisabled = false, onItemClick } = props;
   const i18n = useI18n();
 
-  return SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
+  const navItems =
+    layout === "mobile" ? MOBILE_SECTION_NAV_ITEMS : SECTION_NAV_ITEMS;
+
+  return navItems.map(function ({ href, labelKey, isDisabled }) {
     const label = i18n.t(labelKey);
     const isActive = href === activeHash;
     const isItemDisabled = isAllItemsDisabled || (isDisabled ?? false);
@@ -46,10 +52,10 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
         key={href}
         className={
           isItemDisabled
-            ? "inline-flex w-[8rem] cursor-not-allowed justify-center text-white/40 no-underline"
+            ? "inline-flex shrink-0 cursor-not-allowed justify-center text-white/40 no-underline"
             : isActive
-              ? "inline-flex w-[8rem] cursor-pointer justify-center no-underline"
-              : "group inline-flex w-[8rem] cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
+              ? "inline-flex shrink-0 cursor-pointer justify-center no-underline"
+              : "group inline-flex shrink-0 cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
         }
         href={isItemDisabled ? undefined : href}
         aria-current={

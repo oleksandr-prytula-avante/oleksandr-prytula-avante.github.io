@@ -3,12 +3,12 @@ import { ESection, toSectionHash } from "../utils/sections";
 
 export const NOT_FOUND_INDEX = -1;
 export const FIRST_SLIDE_INDEX = 0;
-export const SLIDE_WIDTH_PERCENT = 100;
 
 export const SCALE_X_VISIBLE = "scaleX(1)";
 export const SCALE_X_HIDDEN = "scaleX(0)";
 
 export const VALID_HASHES = [
+  toSectionHash(ESection.Home),
   toSectionHash(ESection.About),
   toSectionHash(ESection.Experience),
   toSectionHash(ESection.Projects),
@@ -16,6 +16,11 @@ export const VALID_HASHES = [
 ] as const;
 
 export const SECTION_NAV_ITEMS = [
+  {
+    href: toSectionHash(ESection.Home),
+    labelKey: ETranslationKey.NavHome,
+    isDisabled: false,
+  },
   {
     href: toSectionHash(ESection.About),
     labelKey: ETranslationKey.NavAbout,
@@ -37,3 +42,7 @@ export const SECTION_NAV_ITEMS = [
     isDisabled: false,
   },
 ] as const;
+
+export const MOBILE_SECTION_NAV_ITEMS = SECTION_NAV_ITEMS.filter(
+  ({ href }) => href !== toSectionHash(ESection.Home),
+);

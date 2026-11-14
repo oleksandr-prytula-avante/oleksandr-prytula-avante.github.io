@@ -26,7 +26,7 @@ type HeaderProps = {
 export function Header(props: HeaderProps) {
   const { isLanguageDisabled = false, isNavigationDisabled = false } = props;
   const i18n = useI18n();
-  const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
+  const { activeHash } = useActiveSectionHash();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(function () {
@@ -109,11 +109,29 @@ export function Header(props: HeaderProps) {
       <header
         className={`flex h-24 w-full items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 max-[1024px]:bg-[color:var(--color-bg)] ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
       >
-        <img
-          src={logoUrl}
-          alt={i18n.t(ETranslationKey.A11yLogo)}
-          className="h-16 w-auto"
-        />
+        <a
+          href={toSectionHash(ESection.Home)}
+          aria-label={i18n.t(ETranslationKey.NavHome)}
+          className="hidden min-[1025px]:block"
+        >
+          <img
+            src={logoUrl}
+            alt={i18n.t(ETranslationKey.A11yLogo)}
+            className="h-16 w-auto"
+          />
+        </a>
+
+        <a
+          href={toSectionHash(ESection.About)}
+          aria-label={i18n.t(ETranslationKey.NavAbout)}
+          className="min-[1025px]:hidden"
+        >
+          <img
+            src={logoUrl}
+            alt={i18n.t(ETranslationKey.A11yLogo)}
+            className="h-16 w-auto"
+          />
+        </a>
 
         <button
           type="button"
@@ -138,15 +156,15 @@ export function Header(props: HeaderProps) {
           />
         </button>
 
-        <div className="hidden items-center gap-1 whitespace-nowrap min-[1025px]:flex">
-          <nav className="flex items-center gap-1 text-[1.125rem] uppercase">
+        <div className="hidden items-center gap-[clamp(2rem,3.5vw,4rem)] whitespace-nowrap min-[1025px]:flex">
+          <nav className="flex items-center gap-[clamp(2rem,3.5vw,4rem)] text-[1.125rem] uppercase">
             <HeaderNavigation
               layout="desktop"
               activeHash={activeHash}
               isAllItemsDisabled={isNavigationDisabled}
             />
           </nav>
-          <div className="ml-12">
+          <div>
             <LanguageDropdown isDisabled={isLanguageDisabled} />
           </div>
         </div>
