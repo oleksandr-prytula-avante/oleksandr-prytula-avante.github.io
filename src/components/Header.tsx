@@ -11,8 +11,6 @@ import { Links } from "./Links";
 import { MobileLanguageSwitcher } from "./MobileLanguageSwitcher";
 import { HeaderNavigation } from "./HeaderNavigation";
 
-import logoUrl from "../assets/images/logo.webp";
-
 const MOBILE_HEADER_HORIZONTAL_PADDING_CLASS =
   "max-[1024px]:px-18 max-[768px]:px-12 max-[640px]:px-8";
 const MENU_ICON_BUTTON_CLASS =
@@ -71,12 +69,7 @@ export function Header(props: HeaderProps) {
         id="mobile-header-menu"
         className={`fixed inset-0 z-[100] flex h-dvh w-screen flex-col overflow-y-auto bg-[color:var(--color-bg)] px-24 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} pb-10 pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
       >
-        <div className="flex h-24 items-center justify-between">
-          <img
-            src={logoUrl}
-            alt={i18n.t(ETranslationKey.A11yLogo)}
-            className="h-16 w-auto"
-          />
+        <div className="mobile-menu-header relative flex h-24 shrink-0 items-center justify-end">
           <button
             type="button"
             className={MENU_ICON_BUTTON_CLASS}
@@ -107,14 +100,8 @@ export function Header(props: HeaderProps) {
   return (
     <>
       <header
-        className={`flex h-24 w-full items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 max-[1024px]:bg-[color:var(--color-bg)] ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
+        className={`site-header flex h-24 w-full shrink-0 items-center justify-end px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
       >
-        <img
-          src={logoUrl}
-          alt={i18n.t(ETranslationKey.A11yLogo)}
-          className="h-16 w-auto"
-        />
-
         <button
           type="button"
           className={`${MENU_ICON_BUTTON_CLASS} min-[1025px]:hidden`}

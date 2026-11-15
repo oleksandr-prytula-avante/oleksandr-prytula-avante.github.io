@@ -2,10 +2,8 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 
 import { Header } from "../../components/Header";
-import { LinesBackground } from "../../components/LinesBackground/LinesBackground";
 import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
-import { SectionDots } from "../../components/SectionDots";
 import { SectionHeading } from "../../components/SectionHeading";
 import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { SECTION_NAV_ITEMS } from "../../constants/sections";
@@ -137,9 +135,12 @@ export function Main() {
   );
 
   return (
-    <div className="relative flex max-w-[1920px] mx-auto h-full flex-col overflow-hidden px-24 pb-16 text-white max-[1024px]:overflow-y-auto max-[1024px]:px-18 max-[1024px]:pb-10 max-[768px]:px-12 max-[640px]:px-8">
-      <LinesBackground />
-      <div className="relative z-10 flex h-full min-h-screen min-h-0 flex-col max-[1024px]:pt-24">
+    <div className="resume-page relative flex h-full flex-col overflow-hidden text-white max-[1024px]:overflow-y-auto">
+      <div className="resume-content relative z-10 mx-auto flex h-full min-h-0 w-full max-w-[1920px] flex-col px-24 max-[1024px]:px-18 max-[1024px]:pt-24 max-[768px]:px-12 max-[640px]:px-8">
+        <div className="night-sky" aria-hidden="true">
+          <span className="night-sky__ufo" />
+        </div>
+        <div className="mountain-mist" aria-hidden="true" />
         <Header
           isLanguageDisabled={isHeroPrintingInProgress}
           isNavigationDisabled={!isSecondaryContentVisible}
@@ -161,7 +162,6 @@ export function Main() {
                     return renderSectionContent(href);
                   })}
                 </SectionCarousel>
-                <SectionDots />
               </div>
             </section>
           </div>
@@ -186,7 +186,7 @@ export function Main() {
                     <section
                       key={sectionId}
                       id={sectionId}
-                      className="w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-4"
+                      className="resume-mobile-section w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-4"
                     >
                       <SectionHeading
                         layout="mobile"

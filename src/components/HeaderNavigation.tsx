@@ -1,5 +1,9 @@
+import type { CSSProperties } from "react";
+
 import { SECTION_NAV_ITEMS } from "../constants/sections";
 import { useI18n } from "../hooks/useI18n";
+
+import "./SectionNavigation.css";
 
 type HeaderNavigationProps = {
   layout: "desktop" | "mobile";
@@ -12,7 +16,11 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
   const { layout, activeHash, isAllItemsDisabled = false, onItemClick } = props;
   const i18n = useI18n();
 
-  return SECTION_NAV_ITEMS.map(function ({ href, labelKey, isDisabled }) {
+  const items = SECTION_NAV_ITEMS.map(function ({
+    href,
+    labelKey,
+    isDisabled,
+  }) {
     const label = i18n.t(labelKey);
     const isActive = href === activeHash;
     const isItemDisabled = isAllItemsDisabled || (isDisabled ?? false);
@@ -44,13 +52,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
     return (
       <a
         key={href}
-        className={
-          isItemDisabled
-            ? "inline-flex w-[8rem] cursor-not-allowed justify-center text-white/40 no-underline"
-            : isActive
-              ? "inline-flex w-[8rem] cursor-pointer justify-center no-underline"
-              : "group inline-flex w-[8rem] cursor-pointer justify-center no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
-        }
+        className="section-navigation__link"
         href={isItemDisabled ? undefined : href}
         aria-current={
           isItemDisabled ? undefined : isActive ? "page" : undefined
@@ -58,18 +60,28 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
         aria-disabled={isItemDisabled || undefined}
         tabIndex={isItemDisabled ? -1 : undefined}
       >
-        <span
-          className={
-            isItemDisabled
-              ? "inline-flex border-b-[1.33px] border-transparent py-3"
-              : isActive
-                ? "inline-flex border-b-[1.33px] border-[color:var(--color-accent)] py-3"
-                : "inline-flex border-b-[1.33px] border-transparent py-3 transition-colors duration-200 ease-out group-hover:border-[color:rgb(var(--color-accent-rgb)/0.8)] group-focus-visible:border-[color:rgb(var(--color-accent-rgb)/0.8)]"
-          }
-        >
-          {label}
-        </span>
+        <span>{label}</span>
       </a>
     );
   });
+
+  if (layout === "mobile") {
+    return items;
+  }
+
+  const activeIndex = Math.max(
+    0,
+    SECTION_NAV_ITEMS.findIndex(({ href }) => href === activeHash),
+  );
+
+  return (
+    <div
+      className="section-navigation"
+      data-disabled={isAllItemsDisabled}
+      style={{ "--active-section": activeIndex } as CSSProperties}
+    >
+      {items}
+      <span className="section-navigation__indicator" aria-hidden="true" />
+    </div>
+  );
 }

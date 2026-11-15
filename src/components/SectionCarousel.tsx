@@ -1,16 +1,15 @@
 import { Children, useMemo } from "react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import {
   SECTION_NAV_ITEMS,
   NOT_FOUND_INDEX,
   FIRST_SLIDE_INDEX,
-  SLIDE_WIDTH_PERCENT,
 } from "../constants/sections";
-import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../constants/mediaQueries";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ESection, toSectionHash } from "../utils/sections";
+
+import "./SectionCarousel.css";
 
 type SectionCarouselProps = {
   children: ReactNode;
@@ -18,10 +17,6 @@ type SectionCarouselProps = {
 
 export function SectionCarousel({ children }: SectionCarouselProps) {
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
-  const isCarouselAnimationEnabled = useMediaQuery(
-    MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
-    true,
-  );
 
   const slideChildren = useMemo(
     function () {
@@ -54,27 +49,45 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
   );
 
   return (
-    <div className="flex h-full min-h-0 flex-col px-10">
-      <div className="relative h-full min-h-0 overflow-hidden">
-        <div
-          className={`flex h-full min-h-0 ${isCarouselAnimationEnabled ? "transition-transform duration-500 ease-in-out" : ""}`}
-          style={{
-            transform: `translateX(-${activeIndex * SLIDE_WIDTH_PERCENT}%)`,
-          }}
-        >
-          {slides.map(function ({ href, children }) {
-            const sectionClassName =
-              href === toSectionHash(ESection.About)
-                ? "h-full w-full shrink-0 overflow-y-hidden py-8 pb-12 px-2 max-[1366px]:px-0"
-                : "h-full w-full shrink-0 overflow-hidden py-8 px-2";
+    <div className="section-carousel relative flex h-full min-h-0 flex-col px-10">
+      <div className="section-carousel__meta" aria-hidden="true">
+        <span className="section-carousel__count">
+          {String(activeIndex + 1).padStart(2, "0")}
+          <span> / {String(slides.length).padStart(2, "0")}</span>
+        </span>
+        <span className="section-carousel__progress">
+          <span
+            style={{
+              transform: `scaleX(${(activeIndex + 1) / slides.length})`,
+            }}
+          />
+        </span>
+      </div>
+      <div className="section-carousel__stage">
+        {slides.map(function ({ href, children }, index) {
+          const isActive = index === activeIndex;
+          const sectionClassName =
+            href === toSectionHash(ESection.About)
+              ? "overflow-y-hidden py-8 pb-12 px-2 max-[1366px]:px-0"
+              : "overflow-hidden py-8 px-2";
 
-            return (
-              <section key={href} className={sectionClassName}>
-                {children}
-              </section>
-            );
-          })}
-        </div>
+          return (
+            <section
+              key={href}
+              className={`section-carousel__panel ${sectionClassName}`}
+              data-active={isActive}
+              aria-hidden={!isActive}
+              inert={!isActive}
+              style={
+                {
+                  "--section-direction": index < activeIndex ? -1 : 1,
+                } as CSSProperties
+              }
+            >
+              {children}
+            </section>
+          );
+        })}
       </div>
     </div>
   );

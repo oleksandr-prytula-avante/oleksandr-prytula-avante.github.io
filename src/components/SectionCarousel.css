@@ -1,0 +1,95 @@
+.section-carousel {
+  --section-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-carousel__meta {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  height: 28px;
+  margin: 0 8px;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-carousel__count {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.section-carousel__count > span {
+  color: rgb(255 255 255 / 28%);
+}
+
+.section-carousel__progress {
+  height: 1px;
+  flex: 1;
+  margin-left: 4px;
+  overflow: hidden;
+  background: var(--line-track-horizontal);
+}
+
+.section-carousel__progress > span {
+  display: block;
+  height: 100%;
+  background: var(--line-gradient-horizontal);
+  transform-origin: left;
+  transition: transform 680ms var(--section-ease);
+}
+
+.section-carousel__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.section-carousel__panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(
+    calc(var(--section-direction) * 28px),
+    calc(var(--section-direction) * 10px),
+    0
+  );
+  filter: blur(3px);
+  transition:
+    opacity 240ms ease,
+    transform 560ms var(--section-ease),
+    filter 280ms ease,
+    visibility 0s linear 560ms;
+}
+
+.section-carousel__panel[data-active="true"] {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+  transition:
+    opacity 420ms ease 90ms,
+    transform 680ms var(--section-ease) 40ms,
+    filter 520ms ease 40ms,
+    visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-carousel__panel,
+  .section-carousel__panel[data-active="true"],
+  .section-carousel__progress > span {
+    transition: none;
+    transform: none;
+    filter: none;
+  }
+}

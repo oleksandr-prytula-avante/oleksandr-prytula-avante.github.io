@@ -479,7 +479,7 @@ export function Info(props: InfoProps) {
           {hiTypingCursor}
         </span>
         <span
-          className="ml-6 inline-block h-[4px] flex-1 origin-left bg-[color:var(--color-accent)] transition-transform duration-500 ease-out"
+          className="accent-line ml-6 inline-block h-px flex-1 origin-left transition-transform duration-500 ease-out"
           style={{
             transform: isLineVisible ? SCALE_X_VISIBLE : SCALE_X_HIDDEN,
           }}

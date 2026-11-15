@@ -26,9 +26,8 @@ export function SectionHeading(props: SectionHeadingProps) {
   const titleClassName =
     "text-xl font-bold uppercase text-white max-[1366px]:text-base";
 
-  const lineClassName = isMobile
-    ? "ml-6 inline-block h-[2px] flex-1 origin-left bg-[color:var(--color-accent)]/70 transition-transform duration-500 ease-out"
-    : "ml-6 inline-block h-[4px] flex-1 origin-left bg-[color:var(--color-accent)] transition-transform duration-500 ease-out";
+  const lineClassName =
+    "accent-line ml-6 inline-block h-px flex-1 origin-left transition-transform duration-500 ease-out";
 
   const lineStyle = animateLine
     ? { transform: isLineVisible ? SCALE_X_VISIBLE : SCALE_X_HIDDEN }
