@@ -18,7 +18,7 @@ export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
   const companyName = i18n.t(textKeys.companyName);
 
   return (
-    <TimelineRow icon={<ExperienceCompanyIcon />}>
+    <TimelineRow variant="heading" icon={<ExperienceCompanyIcon />}>
       <a
         href={item.companyUrl}
         target="_blank"

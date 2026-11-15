@@ -18,7 +18,7 @@ export function ExperienceLocationRow<TItem extends TimelineDataItem>(
   const locationText = i18n.t(textKeys.location);
 
   return (
-    <TimelineRow icon={<ExperienceLocationIcon />}>
+    <TimelineRow variant="meta" icon={<ExperienceLocationIcon />}>
       <PipeSeparatedText
         value={locationText}
         hideLastPartOnMobile

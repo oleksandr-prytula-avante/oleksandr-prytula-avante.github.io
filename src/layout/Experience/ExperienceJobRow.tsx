@@ -41,12 +41,12 @@ export function ExperienceJobRow<TItem extends ExperienceTimelineItem>(
         <PipeSeparatedText value={jobTitle} stackOnMobile />
         <PipeSeparator hideOnMobileStack hideBetween1024And1440 />
         <span
-          className={`${MOBILE_STACK_ITEM_CLASS} timeline-hide-between-1024-1440`}
+          className={`timeline-period ${MOBILE_STACK_ITEM_CLASS} timeline-hide-between-1024-1440`}
         >
           {periodLabel.dateRange}
         </span>
         <PipeSeparator hideOnMobile hideBetween1024And1440 />
-        <span className="max-[768px]:hidden timeline-hide-between-1024-1440">
+        <span className="timeline-period max-[768px]:hidden timeline-hide-between-1024-1440">
           {periodLabel.duration}
         </span>
       </span>

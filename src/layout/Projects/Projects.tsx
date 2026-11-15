@@ -25,7 +25,7 @@ function ProjectNameRow({ item }: ProjectRowProps) {
   const i18n = useI18n();
 
   return (
-    <TimelineRow icon={<ExperienceCompanyIcon />}>
+    <TimelineRow variant="heading" icon={<ExperienceCompanyIcon />}>
       <a
         href={item.companyUrl}
         target="_blank"
@@ -58,6 +58,7 @@ function ProjectScreenshotsRow({ item }: ProjectRowProps) {
 
   return (
     <TimelineRow
+      variant="meta"
       className="max-[1024px]:hidden"
       icon={<ProjectScreenshotsIcon />}
     >

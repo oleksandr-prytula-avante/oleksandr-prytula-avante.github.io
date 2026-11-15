@@ -5,6 +5,8 @@ import type { ProjectTimelineItem } from "../../constants/projects";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
 
+import "./ProjectGallery.css";
+
 type ProjectGalleryProps = {
   item: ProjectTimelineItem;
 };
@@ -37,7 +39,7 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
                   className="block h-auto w-full"
                 />
               </button>
-              <figcaption className="pointer-events-none absolute bottom-2 left-2 max-w-[calc(100%-1rem)] rounded-md bg-[color:color-mix(in_srgb,var(--color-bg),white_10%)] px-3 py-1.5 text-xs leading-relaxed text-white max-[1366px]:bg-white max-[1366px]:text-[color:var(--color-bg)]">
+              <figcaption className="gradient-border project-gallery__caption">
                 {caption}
               </figcaption>
             </figure>

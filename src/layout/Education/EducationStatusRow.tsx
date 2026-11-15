@@ -30,7 +30,7 @@ export function EducationStatusRow<TItem extends EducationTimelineItem>(
   );
 
   return (
-    <TimelineRow icon={<EducationStatusIcon />}>
+    <TimelineRow variant="meta" icon={<EducationStatusIcon />}>
       <span
         className={`${TIMELINE_ROW_INLINE_CONTENT_CLASS} ${MOBILE_STACK_CONTAINER_SUFFIX}`}
       >

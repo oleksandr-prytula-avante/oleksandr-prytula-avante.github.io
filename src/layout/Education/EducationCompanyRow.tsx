@@ -16,7 +16,7 @@ export function EducationCompanyRow<TItem extends TimelineDataItem>(
   const textKeys = getEducationTextKeys(item.id);
 
   return (
-    <TimelineRow icon={<EducationCompanyIcon />}>
+    <TimelineRow variant="heading" icon={<EducationCompanyIcon />}>
       <a
         href={item.companyUrl}
         target="_blank"

@@ -1,0 +1,15 @@
+.project-gallery__caption {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  max-width: calc(100% - 16px);
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: rgb(39 39 39 / 92%);
+  backdrop-filter: blur(8px);
+  color: rgb(255 255 255 / 78%);
+  font-size: 11px;
+  line-height: 1.5;
+  pointer-events: none;
+}

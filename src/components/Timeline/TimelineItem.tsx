@@ -146,7 +146,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
   if (localizedHighlights.length > 0) {
     localizedHighlightsList = (
-      <ul className="mt-3 space-y-2 leading-relaxed">
+      <ul className="mt-3 space-y-3 leading-relaxed">
         {localizedHighlights.map(function (highlight, highlightIndex) {
           return (
             <li
@@ -172,7 +172,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
   if (item.technologyTags.length > 0) {
     technologyTagsList = (
       <>
-        <p className="mt-4 mb-4 text-[1rem] uppercase text-[color:var(--color-accent)] max-[1366px]:text-sm">
+        <p className="timeline-item__tools-label">
           {i18n.t(ETranslationKey.ExperienceToolsAndTechnologies)} :
         </p>
         <ul className="flex flex-wrap gap-x-2 gap-y-3">
@@ -200,7 +200,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     expandedContent = (
       <div
         id={descriptionId}
-        className="mt-3 min-[1025px]:max-h-[calc(100vh_-_320px)] timeline-description-max-height-between-1024-1440 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] text-[0.9625rem] text-white/90 max-[1024px]:overflow-visible max-[1024px]:pr-0"
+        className="timeline-item__details mt-3 min-[1025px]:max-h-[calc(100vh_-_320px)] timeline-description-max-height-between-1024-1440 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] max-[1024px]:overflow-visible max-[1024px]:pr-0"
       >
         {localizedHighlightsList}
         {DetailsComponent && <DetailsComponent item={item} />}
@@ -218,11 +218,11 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         aria-expanded={isExpanded}
         aria-controls={descriptionId}
         aria-label={`${isExpanded ? i18n.t(ETranslationKey.TimelineHideDetails) : i18n.t(ETranslationKey.TimelineExpandDetails)}: ${companyName}`}
-        className={`control-label inline-flex shrink-0 items-center gap-1 text-sm uppercase transition-colors duration-200 ease-out ${
+        className={`timeline-item__toggle control-label inline-flex shrink-0 items-center gap-1 text-sm uppercase transition-colors duration-200 ease-out ${
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
-        } min-w-[110px] timeline-button-between-1024-1440 ${showMobileToggle ? "" : "max-[1024px]:hidden"}`}
+        } ${showMobileToggle ? "" : "max-[1024px]:hidden"}`}
       >
         <span className="timeline-hide-between-1024-1440">
           {isExpanded
@@ -264,7 +264,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
       </a>
 
       <div className={contentClassName}>
-        <div className="shrink-0 flex flex-col gap-3">
+        <div className="timeline-item__header shrink-0 flex flex-col">
           <FirstRowComponent item={item} />
 
           <SecondRowComponent item={item} />
