@@ -74,9 +74,9 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
         role="listbox"
         aria-label={i18n.t(ETranslationKey.A11yLanguage)}
       >
-        <span className="pointer-events-none absolute left-1/2 top-0 h-0 w-0 -translate-x-1/2 border-x-[7.5px] border-x-transparent border-b-[9px] border-b-[color:var(--color-accent)]" />
+        <span className="gradient-pointer pointer-events-none absolute left-1/2 top-0 h-[9px] w-[15px] -translate-x-1/2" />
 
-        <div className="mt-[8px] overflow-hidden rounded-md border border-[color:var(--color-accent)] bg-[color:var(--color-bg)]">
+        <div className="gradient-border gradient-border--strong relative mt-[8px] overflow-hidden rounded-md border bg-[color:var(--color-bg)]">
           {i18n.languageOptions.map(function (nextLocale) {
             const isActive = nextLocale === i18n.locale;
 
@@ -89,8 +89,8 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
                 data-locale={nextLocale}
                 className={
                   isActive
-                    ? "flex h-10 w-full cursor-pointer items-center justify-center bg-white/12 text-center text-[0.875rem] text-white"
-                    : "flex h-10 w-full cursor-pointer items-center justify-center text-center text-[0.875rem] text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
+                    ? "control-label flex h-10 w-full cursor-pointer items-center justify-center bg-white/12 text-center text-[0.875rem] text-white"
+                    : "control-label flex h-10 w-full cursor-pointer items-center justify-center text-center text-[0.875rem] text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
                 }
                 onClick={handleLocaleOptionClick}
               >
@@ -112,10 +112,10 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
         type="button"
         className={
           isDisabled
-            ? "flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border border-white/10 bg-white/5 text-[0.875rem] text-white/50 outline-none"
+            ? "gradient-border control-label relative flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border bg-white/5 text-[0.875rem] text-white/50 outline-none"
             : languageMenu.isOpen
-              ? "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out"
-              : "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8"
+              ? "gradient-border control-label relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/8 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out"
+              : "gradient-border control-label relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/2 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out hover:bg-white/8 focus-visible:bg-white/8"
         }
         onClick={handleLanguageMenuToggle}
         aria-haspopup="listbox"

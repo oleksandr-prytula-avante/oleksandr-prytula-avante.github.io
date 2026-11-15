@@ -8,6 +8,7 @@
 }
 
 :root {
+  --color-control-text: rgb(255 255 255 / 58%);
   --color-accent-soft: #f1ac7e;
   --line-gradient-horizontal: linear-gradient(
     90deg,
@@ -32,6 +33,101 @@
 
 .accent-line--vertical {
   background-image: var(--line-gradient-vertical);
+}
+
+.control-label {
+  color: var(--color-control-text);
+  transition: color 200ms ease-out;
+}
+
+.control-label:is(
+  :hover,
+  :focus-visible,
+  [aria-expanded="true"],
+  [aria-pressed="true"],
+  [aria-selected="true"]
+) {
+  color: white;
+}
+
+.control-label[data-active="true"] {
+  color: var(--color-accent);
+}
+
+.control-label:is(:disabled, [aria-disabled="true"]) {
+  color: rgb(255 255 255 / 30%);
+}
+
+.gradient-border {
+  --gradient-border-width: 1px;
+  --gradient-border-opacity: 0.62;
+  isolation: isolate;
+  border-color: transparent;
+  background-clip: padding-box;
+}
+
+.gradient-border::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  padding: var(--gradient-border-width);
+  border-radius: inherit;
+  background: var(--line-gradient-horizontal);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: var(--gradient-border-opacity);
+  transition: opacity 200ms ease-out;
+  pointer-events: none;
+  content: "";
+}
+
+.gradient-border--strong {
+  --gradient-border-opacity: 1;
+}
+
+.gradient-border--thick {
+  --gradient-border-width: 2px;
+}
+
+.gradient-border:is(
+    :hover,
+    :focus-visible,
+    [data-active="true"],
+    [aria-expanded="true"],
+    [aria-pressed="true"]
+  )::before {
+  opacity: 1;
+}
+
+.gradient-border:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgb(var(--color-accent-rgb) / 20%);
+}
+
+.gradient-border:is(:disabled, [aria-disabled="true"])::before {
+  opacity: 0.2;
+}
+
+.gradient-pointer {
+  background: var(--line-gradient-horizontal);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+.gradient-pointer--left {
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control-label {
+    transition: none;
+  }
+
+  .gradient-border::before {
+    transition: none;
+  }
 }
 
 html,

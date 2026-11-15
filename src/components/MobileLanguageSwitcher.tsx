@@ -20,10 +20,10 @@ export function MobileLanguageSwitcher(props: MobileLanguageSwitcherProps) {
             type="button"
             className={
               isDisabled
-                ? "flex h-10 min-w-14 cursor-not-allowed items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 text-[0.95rem] text-white/50"
+                ? "gradient-border control-label relative flex h-10 min-w-14 cursor-not-allowed items-center justify-center rounded-full border bg-white/5 px-4 text-[0.95rem] text-white/50"
                 : isActiveLocale
-                  ? "flex h-10 min-w-14 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)] bg-white/8 px-4 text-[0.95rem] text-white"
-                  : "flex h-10 min-w-14 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-white/2 px-4 text-[0.95rem] text-white/80 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/8 hover:text-white focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/8 focus-visible:text-white"
+                  ? "gradient-border control-label relative flex h-10 min-w-14 cursor-pointer items-center justify-center rounded-full border bg-white/8 px-4 text-[0.95rem] text-white"
+                  : "gradient-border control-label relative flex h-10 min-w-14 cursor-pointer items-center justify-center rounded-full border bg-white/2 px-4 text-[0.95rem] text-white/80 transition-colors duration-200 ease-out hover:bg-white/8 hover:text-white focus-visible:bg-white/8 focus-visible:text-white"
             }
             onClick={function () {
               if (isDisabled) {

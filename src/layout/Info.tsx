@@ -26,7 +26,6 @@ import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
-import { PipeSeparator } from "../components/PipeSeparator";
 
 const ENGINEERING_TOOLKIT_COLON_TRIM_INDEX = -1;
 const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
@@ -96,9 +95,8 @@ export function Info(props: InfoProps) {
     0,
     Math.max(visibleNameChars - nameText.length, DEFAULT_CHAR_COUNT),
   );
-  const rolePrimaryText = i18n.t(ETranslationKey.HeroRolePrimary);
-  const roleSecondaryText = i18n.t(ETranslationKey.HeroRoleSecondary);
-  const roleTotalLength = rolePrimaryText.length + roleSecondaryText.length;
+  const roleText = i18n.t(ETranslationKey.HeroRole);
+  const roleTotalLength = roleText.length;
   const engineeringToolkitText = i18n.t(ETranslationKey.HeroEngineeringToolkit);
   const engineeringToolkitBaseText = engineeringToolkitText.endsWith(":")
     ? engineeringToolkitText.slice(0, ENGINEERING_TOOLKIT_COLON_TRIM_INDEX)
@@ -303,8 +301,7 @@ export function Info(props: InfoProps) {
       fullNameLength,
       hiText,
       needMoreDetailsText.length,
-      rolePrimaryText,
-      roleSecondaryText,
+      roleText,
       roleTotalLength,
       engineeringToolkitTotalLength,
       shouldPlayHeroAnimation,
@@ -449,7 +446,7 @@ export function Info(props: InfoProps) {
             {needMoreDetailsTypingCursor}
           </p>
           <a
-            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out hover:text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
+            className="control-label inline-flex cursor-pointer items-center py-1 text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
             href={CV_PATH}
             target="_blank"
             rel="noreferrer"
@@ -499,35 +496,9 @@ export function Info(props: InfoProps) {
         </h1>
       </div>
 
-      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[768px]:text-[1.458rem] flex flex-row items-center gap-2 max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-0">
-        {(() => {
-          const isPrimaryComplete = visibleRoleChars >= rolePrimaryText.length;
-          const primarySlice = rolePrimaryText.slice(0, visibleRoleChars);
-          const secondarySlice = isPrimaryComplete
-            ? roleSecondaryText.slice(
-                0,
-                visibleRoleChars - rolePrimaryText.length,
-              )
-            : "";
-
-          return (
-            <>
-              <span>
-                {primarySlice}
-                {!isPrimaryComplete && roleTypingCursor}
-              </span>
-              {isPrimaryComplete && (
-                <>
-                  <PipeSeparator variant="accent" hideOnMobile />
-                  <span>
-                    {secondarySlice}
-                    {roleTypingCursor}
-                  </span>
-                </>
-              )}
-            </>
-          );
-        })()}
+      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[768px]:text-[1.458rem]">
+        {roleText.slice(0, visibleRoleChars)}
+        {roleTypingCursor}
       </p>
 
       <p className="mt-4 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1024px]:text-[0.9375rem]">

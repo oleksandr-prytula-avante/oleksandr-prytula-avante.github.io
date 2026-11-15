@@ -2,11 +2,9 @@ import {
   MIN_MONTH,
   MAX_MONTH,
   ZERO_DURATION_MONTHS,
-  ZERO_MONTHS_LABEL,
   MONTHS_PER_YEAR,
   DURATION_PARTS_SEPARATOR,
   INCLUSIVE_MONTH_OFFSET,
-  SINGULAR_DURATION_UNIT_COUNT,
 } from "../constants/time";
 
 type YearMonth = {
@@ -39,9 +37,17 @@ function formatMonthYear(value: YearMonth, locale: string): string {
   }).format(date);
 }
 
-function formatDuration(totalMonths: number): string {
+function formatDuration(totalMonths: number, locale: string): string {
+  function formatUnit(value: number, unit: "year" | "month") {
+    return new Intl.NumberFormat(locale, {
+      style: "unit",
+      unit,
+      unitDisplay: "short",
+    }).format(value);
+  }
+
   if (totalMonths <= ZERO_DURATION_MONTHS) {
-    return ZERO_MONTHS_LABEL;
+    return formatUnit(0, "month");
   }
 
   const years = Math.floor(totalMonths / MONTHS_PER_YEAR);
@@ -49,15 +55,11 @@ function formatDuration(totalMonths: number): string {
   const parts: string[] = [];
 
   if (years > 0) {
-    parts.push(
-      `${years} ${years === SINGULAR_DURATION_UNIT_COUNT ? "yr" : "yrs"}`,
-    );
+    parts.push(formatUnit(years, "year"));
   }
 
   if (months > 0) {
-    parts.push(
-      `${months} ${months === SINGULAR_DURATION_UNIT_COUNT ? "mo" : "mos"}`,
-    );
+    parts.push(formatUnit(months, "month"));
   }
 
   return parts.join(DURATION_PARTS_SEPARATOR);
@@ -70,6 +72,7 @@ export function buildPeriodLabel(
   locale: string,
 ): { dateRange: string; duration: string } {
   const parsedStart = parseYearMonth(startDate);
+  const formattingLocale = locale === "sp" ? "es" : locale;
   const now = new Date();
 
   const parsedEnd: YearMonth =
@@ -86,12 +89,14 @@ export function buildPeriodLabel(
     INCLUSIVE_MONTH_OFFSET;
 
   const safeMonthDiff = Math.max(monthDiff, ZERO_DURATION_MONTHS);
-  const startLabel = formatMonthYear(parsedStart, locale);
+  const startLabel = formatMonthYear(parsedStart, formattingLocale);
   const endLabel =
-    endDate === null ? presentLabel : formatMonthYear(parsedEnd, locale);
+    endDate === null
+      ? presentLabel
+      : formatMonthYear(parsedEnd, formattingLocale);
 
   return {
     dateRange: `${startLabel} - ${endLabel}`,
-    duration: formatDuration(safeMonthDiff),
+    duration: formatDuration(safeMonthDiff, formattingLocale),
   };
 }

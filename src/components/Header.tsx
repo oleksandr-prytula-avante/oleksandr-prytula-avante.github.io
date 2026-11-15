@@ -14,7 +14,7 @@ import { HeaderNavigation } from "./HeaderNavigation";
 const MOBILE_HEADER_HORIZONTAL_PADDING_CLASS =
   "max-[1024px]:px-18 max-[768px]:px-12 max-[640px]:px-8";
 const MENU_ICON_BUTTON_CLASS =
-  "flex h-12 w-12 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/8 bg-white/4 transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-white/10 focus-visible:border-[color:var(--color-accent)] focus-visible:bg-white/10";
+  "gradient-border relative flex h-12 w-12 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border bg-white/4 transition-colors duration-200 ease-out hover:bg-white/10 focus-visible:bg-white/10";
 
 type HeaderProps = {
   isLanguageDisabled?: boolean;
@@ -24,6 +24,16 @@ type HeaderProps = {
 export function Header(props: HeaderProps) {
   const { isLanguageDisabled = false, isNavigationDisabled = false } = props;
   const i18n = useI18n();
+  const brandMark = (
+    <img
+      src="/assets/images/orbital-avatar.svg"
+      alt={`${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
+      width={512}
+      height={512}
+      decoding="async"
+      className="h-20 w-20 shrink-0 max-[640px]:h-16 max-[640px]:w-16"
+    />
+  );
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -69,15 +79,16 @@ export function Header(props: HeaderProps) {
         id="mobile-header-menu"
         className={`fixed inset-0 z-[100] flex h-dvh w-screen flex-col overflow-y-auto bg-[color:var(--color-bg)] px-24 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} pb-10 pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
       >
-        <div className="mobile-menu-header relative flex h-24 shrink-0 items-center justify-end">
+        <div className="mobile-menu-header relative flex h-24 shrink-0 items-center justify-between">
+          {brandMark}
           <button
             type="button"
             className={MENU_ICON_BUTTON_CLASS}
             onClick={handleMobileMenuClose}
             aria-label={i18n.t(ETranslationKey.A11yCloseMenu)}
           >
-            <span className="block h-[2px] w-6 translate-y-[4px] rotate-45 bg-white" />
-            <span className="block h-[2px] w-6 -translate-y-[4px] -rotate-45 bg-white" />
+            <span className="accent-line block h-[2px] w-6 translate-y-[4px] rotate-45" />
+            <span className="accent-line block h-[2px] w-6 -translate-y-[4px] -rotate-45" />
           </button>
         </div>
 
@@ -100,8 +111,9 @@ export function Header(props: HeaderProps) {
   return (
     <>
       <header
-        className={`site-header flex h-24 w-full shrink-0 items-center justify-end px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
+        className={`site-header flex h-24 w-full shrink-0 items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
       >
+        {brandMark}
         <button
           type="button"
           className={`${MENU_ICON_BUTTON_CLASS} min-[1025px]:hidden`}
@@ -115,13 +127,13 @@ export function Header(props: HeaderProps) {
           aria-controls="mobile-header-menu"
         >
           <span
-            className={`block h-[2px] w-6 bg-white transition-transform duration-200 ease-out ${isMobileMenuOpen ? "translate-y-[8px] rotate-45" : ""}`}
+            className={`accent-line block h-[2px] w-6 transition-transform duration-200 ease-out ${isMobileMenuOpen ? "translate-y-[8px] rotate-45" : ""}`}
           />
           <span
-            className={`block h-[2px] w-6 bg-white transition-opacity duration-200 ease-out ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
+            className={`accent-line block h-[2px] w-6 transition-opacity duration-200 ease-out ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
           />
           <span
-            className={`block h-[2px] w-6 bg-white transition-transform duration-200 ease-out ${isMobileMenuOpen ? "-translate-y-[8px] -rotate-45" : ""}`}
+            className={`accent-line block h-[2px] w-6 transition-transform duration-200 ease-out ${isMobileMenuOpen ? "-translate-y-[8px] -rotate-45" : ""}`}
           />
         </button>
 

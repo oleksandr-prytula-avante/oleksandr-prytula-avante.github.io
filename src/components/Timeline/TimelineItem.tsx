@@ -155,7 +155,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
             >
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[color:var(--color-accent)] max-[640px]:hidden"
+                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 accent-line rounded-full max-[640px]:hidden"
               />
               <span>
                 <TextWithLinks value={highlight} />
@@ -218,7 +218,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         aria-expanded={isExpanded}
         aria-controls={descriptionId}
         aria-label={`${isExpanded ? i18n.t(ETranslationKey.TimelineHideDetails) : i18n.t(ETranslationKey.TimelineExpandDetails)}: ${companyName}`}
-        className={`inline-flex shrink-0 items-center gap-1 text-sm uppercase text-[color:var(--color-accent)] transition-colors duration-200 ease-out ${
+        className={`control-label inline-flex shrink-0 items-center gap-1 text-sm uppercase transition-colors duration-200 ease-out ${
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
@@ -253,7 +253,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         rel="noreferrer"
         aria-label={`${companyName} website`}
         data-timeline-circle
-        className="absolute left-0 top-0 z-10 flex h-[100px] w-[100px] max-[640px]:h-[80px] max-[640px]:w-[80px] cursor-pointer items-center justify-center rounded-full border-2 border-[color:var(--color-accent)] bg-white"
+        className="gradient-border gradient-border--strong gradient-border--thick absolute left-0 top-0 z-10 flex h-[100px] w-[100px] max-[640px]:h-[80px] max-[640px]:w-[80px] cursor-pointer items-center justify-center rounded-full border-2 bg-white"
       >
         <img
           src={item.companyLogoSrc}

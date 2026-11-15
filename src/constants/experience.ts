@@ -131,7 +131,7 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
     companyUrl: "https://www.omnora.com/",
     companyLogoSrc: omnoraLogo,
     startDate: "2020-04",
-    endDate: null,
+    endDate: "2026-10",
     technologyTags: OMNORA_TECHNOLOGY_TAGS,
   },
   {

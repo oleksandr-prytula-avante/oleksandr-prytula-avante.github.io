@@ -68,7 +68,7 @@ export function SectionCarousel({ children }: SectionCarouselProps) {
           const isActive = index === activeIndex;
           const sectionClassName =
             href === toSectionHash(ESection.About)
-              ? "overflow-y-hidden py-8 pb-12 px-2 max-[1366px]:px-0"
+              ? "overflow-y-hidden pb-12 px-2 max-[1366px]:px-0"
               : "overflow-hidden py-8 px-2";
 
           return (

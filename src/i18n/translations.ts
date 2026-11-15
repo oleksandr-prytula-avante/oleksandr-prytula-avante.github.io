@@ -58,11 +58,22 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroHiIm]: "Hi, I'm",
   [ETranslationKey.HeroName]: "Oleksandr",
   [ETranslationKey.HeroSurname]: "Prytula",
-  [ETranslationKey.HeroRolePrimary]: "Software Engineer",
-  [ETranslationKey.HeroRoleSecondary]: "WEB Developer",
+  [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
   [ETranslationKey.HeroEngineeringToolkit]: "My Core Engineering Toolkit:",
   [ETranslationKey.HeroNeedMoreDetails]: "Need more details?",
   [ETranslationKey.HeroCvDownload]: "Download CV (PDF)",
+  [ETranslationKey.AboutSummary]:
+    "I’m a full-stack engineer. I build web interfaces and backend services, and work on the architecture, tests and deployment that keep a product running.",
+  [ETranslationKey.AboutExperienceLabel]: "Years in development",
+  [ETranslationKey.AboutTeamLabel]: "People in teams",
+  [ETranslationKey.AboutDegreeValue]: "MSc",
+  [ETranslationKey.AboutDegreeLabel]: "Software Engineering",
+  [ETranslationKey.AboutDomainsTitle]: "At Omnora",
+  [ETranslationKey.AboutDomainsSummary]:
+    "I helped build an e-learning portal serving 650+ companies, a browser-based video editor, a custom media player and LMS integrations.",
+  [ETranslationKey.AboutApproachTitle]: "Working with teams",
+  [ETranslationKey.AboutApproachSummary]:
+    "I’ve worked in product teams, startups and outstaffing. Alongside development, I help clarify requirements, review code and mentor junior developers. I use English with colleagues and clients.",
   [ETranslationKey.AboutParagraph1]:
     "I am a Software Engineer with over 10 years of experience in Full Stack WEB Development across E-Learning, E-Commerce, Marketplaces, Trading, Insurance, and Healthcare. My background encompasses projects of varying scale, including work in startup environments and outstaffing engagements. This breadth of experience has strengthened my ability to adapt to diverse team structures, engineering practices, and evolving business priorities while maintaining a consistent focus on software quality and delivering solutions that meet business needs.",
   [ETranslationKey.AboutParagraph2]:
@@ -259,11 +270,22 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroHiIm]: "Дратути!",
   [ETranslationKey.HeroName]: "Александр",
   [ETranslationKey.HeroSurname]: "Притула",
-  [ETranslationKey.HeroRolePrimary]: "Инженер-программист",
-  [ETranslationKey.HeroRoleSecondary]: "WEB-разработчик",
+  [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
   [ETranslationKey.HeroEngineeringToolkit]: "Мой инженерный стек:",
   [ETranslationKey.HeroNeedMoreDetails]: "НУЖНО БОЛЬШЕ ДЕТАЛЕЙ?",
   [ETranslationKey.HeroCvDownload]: "Скачать CV (PDF)",
+  [ETranslationKey.AboutSummary]:
+    "Я full-stack разработчик: создаю веб-интерфейсы и бэкенд-сервисы, участвую в проектировании архитектуры, пишу тесты и настраиваю развёртывание.",
+  [ETranslationKey.AboutExperienceLabel]: "Лет в разработке",
+  [ETranslationKey.AboutTeamLabel]: "Человек в командах",
+  [ETranslationKey.AboutDegreeValue]: "Магистр",
+  [ETranslationKey.AboutDegreeLabel]: "Разработка ПО",
+  [ETranslationKey.AboutDomainsTitle]: "Опыт в Omnora",
+  [ETranslationKey.AboutDomainsSummary]:
+    "Участвовал в разработке обучающего портала для 650+ компаний, видеоредактора в браузере, собственного медиаплеера и интеграций с LMS.",
+  [ETranslationKey.AboutApproachTitle]: "Работа в команде",
+  [ETranslationKey.AboutApproachSummary]:
+    "Работал в продуктовых командах, стартапах и на аутстаффе. Помимо разработки, уточняю требования, участвую в ревью кода и помогаю младшим разработчикам. С коллегами и заказчиками общаюсь на английском.",
   [ETranslationKey.AboutParagraph1]:
     "Я инженер-программист с более чем 10-летним опытом full-stack веб-разработки в сферах электронного обучения, электронной коммерции, маркетплейсов, трейдинга, страхования и здравоохранения. Мой опыт охватывает проекты разного масштаба, включая работу в стартапах и в формате аутстаффинга. Этот разнообразный опыт укрепил мою способность адаптироваться к различным структурам команд, инженерным практикам и меняющимся бизнес-приоритетам, сохраняя постоянное внимание к качеству программного обеспечения и созданию решений, отвечающих потребностям бизнеса.",
   [ETranslationKey.AboutParagraph2]:
@@ -457,11 +479,22 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.A11ySectionNavigation]: "Navegación por secciones",
   [ETranslationKey.A11yLanguage]: "Idioma",
   [ETranslationKey.HeroHiIm]: "HOLA!",
-  [ETranslationKey.HeroRolePrimary]: "Ingeniero de software",
-  [ETranslationKey.HeroRoleSecondary]: "Desarrollador WEB",
+  [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
   [ETranslationKey.HeroEngineeringToolkit]: "Mi stack de ingeniería:",
   [ETranslationKey.HeroNeedMoreDetails]: "¿NECESITAS MÁS DETALLES?",
   [ETranslationKey.HeroCvDownload]: "Descargar CV (PDF)",
+  [ETranslationKey.AboutSummary]:
+    "Soy ingeniero full-stack. Desarrollo interfaces web y servicios backend, y participo en la arquitectura, las pruebas y el despliegue necesarios para mantener un producto en funcionamiento.",
+  [ETranslationKey.AboutExperienceLabel]: "Años de desarrollo",
+  [ETranslationKey.AboutTeamLabel]: "Personas por equipo",
+  [ETranslationKey.AboutDegreeValue]: "Máster",
+  [ETranslationKey.AboutDegreeLabel]: "Ingeniería de Software",
+  [ETranslationKey.AboutDomainsTitle]: "En Omnora",
+  [ETranslationKey.AboutDomainsSummary]:
+    "Contribuí a un portal de formación para más de 650 empresas, un editor de vídeo en el navegador, un reproductor multimedia propio e integraciones con LMS.",
+  [ETranslationKey.AboutApproachTitle]: "Trabajo en equipo",
+  [ETranslationKey.AboutApproachSummary]:
+    "He trabajado en equipos de producto, startups y proyectos de outstaffing. Además de desarrollar, ayudo a concretar requisitos, revisar código y orientar a desarrolladores júnior. Uso el inglés con colegas y clientes.",
   [ETranslationKey.AboutParagraph1]:
     "Soy ingeniero de software con más de 10 años de experiencia en desarrollo web full-stack en los sectores de aprendizaje en línea, comercio electrónico, marketplaces, trading, seguros y salud. Mi trayectoria abarca proyectos de distintas escalas, incluido el trabajo en startups y en modalidades de outstaffing. Esta diversidad de experiencias ha reforzado mi capacidad para adaptarme a diferentes estructuras de equipo, prácticas de ingeniería y prioridades empresariales en evolución, manteniendo un enfoque constante en la calidad del software y en la entrega de soluciones que satisfagan las necesidades del negocio.",
   [ETranslationKey.AboutParagraph2]:
@@ -656,11 +689,22 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.A11ySectionNavigation]: "Bereichsnavigation",
   [ETranslationKey.A11yLanguage]: "Sprache",
   [ETranslationKey.HeroHiIm]: "Hallo!",
-  [ETranslationKey.HeroRolePrimary]: "Softwareingenieur",
-  [ETranslationKey.HeroRoleSecondary]: "WEB-Entwickler",
+  [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
   [ETranslationKey.HeroEngineeringToolkit]: "Mein Engineering-Toolkit",
   [ETranslationKey.HeroNeedMoreDetails]: "MEHR DETAILS NÖTIG?",
   [ETranslationKey.HeroCvDownload]: "CV (PDF) herunterladen",
+  [ETranslationKey.AboutSummary]:
+    "Ich bin Full-Stack-Entwickler. Ich entwickle Weboberflächen und Backend-Dienste und arbeite an Architektur, Tests und Deployment, damit ein Produkt zuverlässig betrieben werden kann.",
+  [ETranslationKey.AboutExperienceLabel]: "Jahre in der Entwicklung",
+  [ETranslationKey.AboutTeamLabel]: "Personen pro Team",
+  [ETranslationKey.AboutDegreeValue]: "M.Sc.",
+  [ETranslationKey.AboutDegreeLabel]: "Software Engineering",
+  [ETranslationKey.AboutDomainsTitle]: "Bei Omnora",
+  [ETranslationKey.AboutDomainsSummary]:
+    "Ich habe an einem Lernportal für über 650 Unternehmen, einem browserbasierten Videoeditor, einem eigenen Mediaplayer und LMS-Integrationen mitgearbeitet.",
+  [ETranslationKey.AboutApproachTitle]: "Zusammenarbeit im Team",
+  [ETranslationKey.AboutApproachSummary]:
+    "Ich habe in Produktteams, Startups und Outstaffing-Projekten gearbeitet. Neben der Entwicklung kläre ich Anforderungen, prüfe Code und unterstütze Junior-Entwickler. Mit Kollegen und Kunden kommuniziere ich auf Englisch.",
   [ETranslationKey.AboutParagraph1]:
     "Ich bin Softwareingenieur mit über 10 Jahren Erfahrung in der Full-Stack-Webentwicklung in den Bereichen E-Learning, E-Commerce, Marktplätze, Handel, Versicherungen und Gesundheitswesen. Mein beruflicher Hintergrund umfasst Projekte unterschiedlicher Größenordnung, darunter Tätigkeiten in Startups und im Rahmen von Outstaffing-Einsätzen. Diese vielfältige Erfahrung hat meine Fähigkeit gestärkt, mich an unterschiedliche Teamstrukturen, Entwicklungspraktiken und sich wandelnde geschäftliche Prioritäten anzupassen, wobei ich stets auf Softwarequalität und die Bereitstellung von Lösungen achte, die den geschäftlichen Anforderungen entsprechen.",
   [ETranslationKey.AboutParagraph2]:

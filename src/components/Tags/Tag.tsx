@@ -21,16 +21,8 @@ export function Tag(props: TagProps) {
   const resolvedHref = href ?? SKILL_HREF_BY_LABEL[label];
   const baseClassName =
     variant === "experience"
-      ? "my-1 rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out"
-      : "rounded-full border px-4 py-1.5 text-[0.875rem] uppercase transition-colors duration-200 ease-out";
-  const activeClassName =
-    variant === "experience"
-      ? "border-[color:var(--color-accent)] text-[color:var(--color-accent)]"
-      : "border-[color:var(--color-accent)] text-[color:var(--color-accent)]";
-  const inactiveClassName =
-    variant === "experience"
-      ? "border-white/40 text-white/90 hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
-      : "border-white/50 text-white hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]";
+      ? "gradient-border relative my-1 rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out"
+      : "gradient-border relative rounded-full border px-4 py-1.5 text-[0.875rem] uppercase transition-colors duration-200 ease-out";
 
   function handleClick() {
     onSelectSkill(label);
@@ -49,7 +41,8 @@ export function Tag(props: TagProps) {
       href={resolvedHref}
       target="_blank"
       rel="noreferrer"
-      className={`${baseClassName} ${isActive ? activeClassName : inactiveClassName}`}
+      className={`${baseClassName} control-label`}
+      data-active={isActive}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

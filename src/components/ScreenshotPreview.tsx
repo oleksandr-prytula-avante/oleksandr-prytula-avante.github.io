@@ -16,7 +16,7 @@ type ScreenshotPreviewProps = {
 };
 
 const CONTROL_CLASS_NAME =
-  "absolute z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/4 bg-[color:var(--color-bg)] text-white outline-none transition-colors duration-200 ease-out hover:border-[color:var(--color-accent)] hover:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)] focus-visible:border-[color:var(--color-accent)] focus-visible:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)]";
+  "gradient-border absolute z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-[color:var(--color-bg)] text-white outline-none transition-colors duration-200 ease-out hover:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)] focus-visible:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)]";
 
 export function ScreenshotPreview({
   screenshots,
@@ -68,7 +68,7 @@ export function ScreenshotPreview({
           event.currentTarget.close();
         }
       }}
-      className="fixed inset-0 m-auto h-fit max-h-none w-fit max-w-none overflow-hidden rounded-2xl border-0 bg-transparent p-0 text-white backdrop:bg-black/50 sm:rounded-[1.25rem]"
+      className="gradient-border gradient-border--strong fixed inset-0 m-auto h-fit max-h-none w-fit max-w-none overflow-hidden rounded-2xl border bg-transparent p-0 text-white backdrop:bg-black/50 sm:rounded-[1.25rem]"
     >
       <button
         type="button"
