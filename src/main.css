@@ -154,9 +154,39 @@
   border-color: rgb(255 255 255 / 8%);
 }
 
+.skill-tag.control-label {
+  display: inline-flex;
+  align-items: center;
+  transition:
+    color 200ms ease-out,
+    border-color 200ms ease-out;
+}
+
+.skill-tag.control-label:is(:hover, :focus-visible, [data-active="true"]) {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.skill-tag.control-label:focus-visible,
+.skill-highlight:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.skill-highlight {
+  color: inherit;
+  transition: color 200ms ease-out;
+}
+
+.skill-highlight:is(:hover, :focus-visible, [data-active="true"]) {
+  color: var(--color-accent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .control-label,
-  .subtle-border {
+  .subtle-border,
+  .skill-tag.control-label,
+  .skill-highlight {
     transition: none;
   }
 

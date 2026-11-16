@@ -38,16 +38,15 @@ export function SkillHighlights(props: SkillHighlightsProps) {
     return (
       <a
         key={`${part}-${index}`}
-        className={
-          isActive
-            ? "text-[color:var(--color-accent)]"
-            : "hover:text-[color:var(--color-accent)]"
-        }
+        className="skill-highlight"
+        data-active={isActive}
         href={href}
         target="_blank"
         rel="noreferrer"
         onMouseEnter={onHighlightedTermMouseEnter(tag)}
         onMouseLeave={onHighlightedTermMouseLeave}
+        onFocus={onHighlightedTermMouseEnter(tag)}
+        onBlur={onHighlightedTermMouseLeave}
       >
         {part}
       </a>

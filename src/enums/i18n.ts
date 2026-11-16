@@ -43,6 +43,8 @@ export const enum ETranslationKey {
   AboutDegreeValue = "about.degreeValue",
   AboutDegreeLabel = "about.degreeLabel",
   AboutDomainsTitle = "about.domainsTitle",
+  AboutStackTitle = "about.stackTitle",
+  AboutStackSummary = "about.stackSummary",
   AboutDomainsSummary = "about.domainsSummary",
   AboutApproachTitle = "about.approachTitle",
   AboutApproachSummary = "about.approachSummary",

@@ -107,9 +107,9 @@ export function About(props: AboutProps) {
           {i18n.t(ETranslationKey.AboutSummary)}
         </p>
 
-        <dl className="about-panel__facts">
+        <dl className="about-panel__credentials">
           {facts.map(({ value, label }) => (
-            <div key={label} className="about-panel__fact">
+            <div key={label}>
               <dt>{i18n.t(label)}</dt>
               <dd>{value}</dd>
             </div>
@@ -120,6 +120,17 @@ export function About(props: AboutProps) {
           <section>
             <h2>{i18n.t(ETranslationKey.AboutDomainsTitle)}</h2>
             <p>{i18n.t(ETranslationKey.AboutDomainsSummary)}</p>
+          </section>
+          <section>
+            <h2>{i18n.t(ETranslationKey.AboutStackTitle)}</h2>
+            <p>
+              <SkillHighlights
+                value={i18n.t(ETranslationKey.AboutStackSummary)}
+                hoveredSkill={hoveredSkill}
+                onSkillEnter={onSkillEnter}
+                onSkillLeave={onSkillLeave}
+              />
+            </p>
           </section>
           <section>
             <h2>{i18n.t(ETranslationKey.AboutApproachTitle)}</h2>

@@ -14,3 +14,27 @@
   opacity: 0;
   animation: tag-reveal 320ms ease-out forwards;
 }
+.skill-tags {
+  display: flex;
+  min-height: 0;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 9px;
+  margin-top: 16px;
+  padding: 4px;
+}
+
+@media (min-width: 1025px) {
+  .skill-tags {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag-reveal {
+    opacity: 1;
+    animation: none;
+  }
+}

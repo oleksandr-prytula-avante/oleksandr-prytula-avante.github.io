@@ -204,7 +204,7 @@ export function Info(props: InfoProps) {
           onSkillLeave={onSkillLeave}
         />
 
-        <div className="mt-8 flex items-center justify-end gap-2 max-[1024px]:justify-start max-[639px]:flex-col max-[639px]:items-start max-[639px]:gap-1">
+        <div className="mt-6 flex shrink-0 items-center justify-end gap-2 max-[1024px]:justify-start max-[639px]:flex-col max-[639px]:items-start max-[639px]:gap-1">
           <p className="text-[1.09375rem] uppercase text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
             {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
             {needMoreDetailsTypingCursor}
@@ -233,8 +233,8 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="flex min-[1025px]:min-h-[735px] flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
-      <div className="mb-4 flex items-center">
+    <div className="flex min-h-0 max-h-full flex-col px-10 py-6 max-[1024px]:max-h-none max-[1024px]:p-0">
+      <div className="mb-4 flex shrink-0 items-center">
         <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
           {hiText.slice(0, visibleHiChars)}
           {hiTypingCursor}
@@ -247,7 +247,7 @@ export function Info(props: InfoProps) {
         />
       </div>
 
-      <div className="mt-2 flex items-start gap-6 max-[640px]:gap-4">
+      <div className="mt-2 flex shrink-0 items-start gap-6 max-[640px]:gap-4">
         <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-end min-[640px]:max-[1024px]:gap-3">
           <span className="block">
             {visibleName}
@@ -260,12 +260,12 @@ export function Info(props: InfoProps) {
         </h1>
       </div>
 
-      <p className="mt-6 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[768px]:text-[1.458rem]">
+      <p className="mt-6 shrink-0 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[768px]:text-[1.458rem]">
         {roleText.slice(0, visibleRoleChars)}
         {roleTypingCursor}
       </p>
 
-      <p className="mt-4 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1024px]:text-[0.9375rem]">
+      <p className="mt-4 shrink-0 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1024px]:text-[0.9375rem]">
         {engineeringToolkitBaseText.slice(
           DEFAULT_CHAR_COUNT,
           visibleEngineeringToolkitBaseChars,

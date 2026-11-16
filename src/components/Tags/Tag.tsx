@@ -41,11 +41,13 @@ export function Tag(props: TagProps) {
       href={resolvedHref}
       target="_blank"
       rel="noreferrer"
-      className={`${baseClassName} control-label`}
+      className={`${baseClassName} control-label skill-tag`}
       data-active={isActive}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
     >
       #{label}
     </a>

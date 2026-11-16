@@ -27,7 +27,7 @@ export function Tags(props: TagsProps) {
   );
 
   return (
-    <ul className="mt-4 flex flex-wrap gap-x-[9.25px] gap-y-[17.25px]">
+    <ul className="skill-tags">
       {COMMON_SKILL_TAGS.map(function (label, index) {
         const isActive = hoveredSkill === label;
         const href = SKILL_HREF_BY_LABEL[label];
