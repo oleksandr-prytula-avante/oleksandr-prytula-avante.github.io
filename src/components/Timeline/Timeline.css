@@ -17,8 +17,7 @@
 
 .timeline-row > svg {
   margin-top: 1px;
-  color: inherit;
-  opacity: 0.6;
+  color: white;
 }
 
 .timeline-row--heading {

@@ -125,7 +125,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
             >
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 accent-line rounded-full max-[640px]:hidden"
+                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[color:var(--color-accent)] max-[640px]:hidden"
               />
               <span>
                 <TextWithLinks value={highlight} />
