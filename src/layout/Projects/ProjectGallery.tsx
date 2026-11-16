@@ -27,7 +27,7 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
                 type="button"
                 onClick={() => setPreviewIndex(index)}
                 aria-label={`${i18n.t(ETranslationKey.ProjectsOpenScreenshot)}: ${caption}`}
-                className="gradient-border relative block w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--color-accent)]"
+                className="subtle-border relative block w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--color-accent)]"
               >
                 <img
                   src={screenshot.src}

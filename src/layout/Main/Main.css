@@ -7,6 +7,13 @@
   padding-bottom: clamp(88px, 7vw, 136px);
 }
 
+.header-brand {
+  width: clamp(180px, calc(100vw - 824px), 320px);
+  height: auto;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
 .night-sky {
   position: absolute;
   z-index: -1;
@@ -48,6 +55,10 @@
 }
 
 @media (max-width: 1024px) {
+  .header-brand {
+    width: min(60vw, 280px);
+  }
+
   .resume-page {
     --scenery-height: 124px;
   }

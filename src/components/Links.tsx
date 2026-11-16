@@ -43,8 +43,8 @@ export function Links({ size = "default", isVisible = true }: LinksProps) {
             <a
               className={
                 isLarge
-                  ? "gradient-border relative flex h-[3rem] w-[3rem] items-center justify-center rounded-full border bg-white/2 transition-colors duration-200 ease-out hover:bg-white/8"
-                  : "gradient-border relative flex h-10 w-10 items-center justify-center rounded-full border bg-white/2 transition-colors duration-200 ease-out hover:bg-white/8"
+                  ? "subtle-border subtle-border--quiet relative flex h-[3rem] w-[3rem] items-center justify-center rounded-full border bg-white/2 transition-colors duration-200 ease-out hover:bg-white/8"
+                  : "subtle-border subtle-border--quiet relative flex h-10 w-10 items-center justify-center rounded-full border bg-white/2 transition-colors duration-200 ease-out hover:bg-white/8"
               }
               href={href}
               aria-label={text}

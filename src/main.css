@@ -120,8 +120,43 @@
   clip-path: polygon(100% 0, 0 50%, 100% 100%);
 }
 
+.subtle-border {
+  --subtle-border-opacity: 0.28;
+  border-color: rgb(255 255 255 / var(--subtle-border-opacity));
+  background-clip: padding-box;
+  transition:
+    color 200ms ease-out,
+    background-color 200ms ease-out,
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+.subtle-border--quiet {
+  --subtle-border-opacity: 0.12;
+}
+
+.subtle-border:is(
+  :hover,
+  :focus-visible,
+  [data-active="true"],
+  [aria-expanded="true"],
+  [aria-pressed="true"]
+) {
+  border-color: rgb(255 255 255 / 50%);
+}
+
+.subtle-border:focus-visible {
+  outline: 1px solid rgb(255 255 255 / 65%);
+  outline-offset: 3px;
+}
+
+.subtle-border:is(:disabled, [aria-disabled="true"]) {
+  border-color: rgb(255 255 255 / 8%);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .control-label {
+  .control-label,
+  .subtle-border {
     transition: none;
   }
 

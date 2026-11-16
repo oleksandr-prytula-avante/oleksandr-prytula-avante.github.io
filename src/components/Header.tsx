@@ -14,7 +14,7 @@ import { HeaderNavigation } from "./HeaderNavigation";
 const MOBILE_HEADER_HORIZONTAL_PADDING_CLASS =
   "max-[1024px]:px-18 max-[768px]:px-12 max-[640px]:px-8";
 const MENU_ICON_BUTTON_CLASS =
-  "gradient-border relative flex h-12 w-12 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border bg-white/4 transition-colors duration-200 ease-out hover:bg-white/10 focus-visible:bg-white/10";
+  "subtle-border subtle-border--quiet relative flex h-12 w-12 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border bg-white/4 transition-colors duration-200 ease-out hover:bg-white/10 focus-visible:bg-white/10";
 
 type HeaderProps = {
   isLanguageDisabled?: boolean;
@@ -26,12 +26,12 @@ export function Header(props: HeaderProps) {
   const i18n = useI18n();
   const brandMark = (
     <img
-      src="/assets/images/orbital-avatar.svg"
-      alt={`${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
-      width={512}
-      height={512}
+      src="/assets/images/portfolio-mark.svg"
+      alt={`Per Aspera Ad Astra — ${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
+      width={1828}
+      height={448}
       decoding="async"
-      className="h-20 w-20 shrink-0 max-[640px]:h-16 max-[640px]:w-16"
+      className="header-brand"
     />
   );
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));

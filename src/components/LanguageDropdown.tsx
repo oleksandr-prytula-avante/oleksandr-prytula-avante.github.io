@@ -112,10 +112,10 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
         type="button"
         className={
           isDisabled
-            ? "gradient-border control-label relative flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border bg-white/5 text-[0.875rem] text-white/50 outline-none"
+            ? "subtle-border subtle-border--quiet control-label relative flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border bg-white/5 text-[0.875rem] text-white/50 outline-none"
             : languageMenu.isOpen
-              ? "gradient-border control-label relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/8 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out"
-              : "gradient-border control-label relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/2 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out hover:bg-white/8 focus-visible:bg-white/8"
+              ? "subtle-border subtle-border--quiet control-label relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/8 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out"
+              : "subtle-border subtle-border--quiet control-label relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/2 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out hover:bg-white/8 focus-visible:bg-white/8"
         }
         onClick={handleLanguageMenuToggle}
         aria-haspopup="listbox"

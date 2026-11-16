@@ -16,7 +16,7 @@ type ScreenshotPreviewProps = {
 };
 
 const CONTROL_CLASS_NAME =
-  "gradient-border absolute z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-[color:var(--color-bg)] text-white outline-none transition-colors duration-200 ease-out hover:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)] focus-visible:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)]";
+  "subtle-border subtle-border--quiet absolute z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-[color:var(--color-bg)] text-white outline-none transition-colors duration-200 ease-out hover:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)] focus-visible:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)]";
 
 export function ScreenshotPreview({
   screenshots,
