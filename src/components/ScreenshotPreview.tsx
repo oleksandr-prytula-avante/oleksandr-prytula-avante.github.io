@@ -85,6 +85,7 @@ export function ScreenshotPreview({
 
   function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {
     if (!event.isPrimary || event.button !== 0) return;
+    if (event.pointerType === "mouse" && !isZoomed) return;
     const viewport = event.currentTarget;
     gestureRef.current = {
       x: event.clientX,
@@ -235,6 +236,9 @@ export function ScreenshotPreview({
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={() => {
+            gestureRef.current = null;
+          }}
+          onLostPointerCapture={() => {
             gestureRef.current = null;
           }}
         >

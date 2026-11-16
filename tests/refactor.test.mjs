@@ -10,6 +10,8 @@ let App;
 let sections;
 let items;
 let translations;
+let ScreenshotPreview;
+let I18nContext;
 
 before(async () => {
   server = await createServer({
@@ -20,6 +22,10 @@ before(async () => {
     "/src/utils/typingSequence.ts",
   ));
   ({ default: App } = await server.ssrLoadModule("/src/App.tsx"));
+  ({ ScreenshotPreview } = await server.ssrLoadModule(
+    "/src/components/ScreenshotPreview.tsx",
+  ));
+  ({ I18nContext } = await server.ssrLoadModule("/src/i18n/I18nContext.ts"));
   sections = await server.ssrLoadModule("/src/constants/sections.ts");
   const experience = await server.ssrLoadModule("/src/constants/experience.ts");
   const education = await server.ssrLoadModule("/src/constants/education.ts");
@@ -185,5 +191,65 @@ test("prerendered markup is stable at every viewport and contains one instance o
   } finally {
     if (previousWindow === undefined) delete globalThis.window;
     else globalThis.window = previousWindow;
+  }
+});
+
+test("screenshot viewer exposes the selected image and localized controls", () => {
+  const screenshots = items.find((item) => item.screenshots)?.screenshots;
+  assert.ok(screenshots?.length > 1);
+  for (const [locale, dictionary] of Object.entries(translations)) {
+    const value = {
+      locale,
+      t: (key) => dictionary[key],
+      setLocale() {},
+      languageOptions: Object.keys(translations),
+    };
+    for (const currentIndex of [0, screenshots.length - 1]) {
+      const html = renderToStaticMarkup(
+        createElement(
+          I18nContext.Provider,
+          { value },
+          createElement(ScreenshotPreview, {
+            screenshots,
+            currentIndex,
+            projectName: "Project",
+            onNavigate() {},
+            onClose() {},
+          }),
+        ),
+      );
+      const selected = screenshots[currentIndex];
+      assert.ok(html.includes(`src="${selected.src}" alt="Project — `));
+      assert.ok(html.includes(dictionary["projects.closePreview"]));
+      assert.ok(html.includes(dictionary["projects.zoomScreenshot"]));
+      assert.ok(html.includes(dictionary["projects.previousScreenshot"]));
+      assert.ok(html.includes(dictionary["projects.nextScreenshot"]));
+      assert.equal((html.match(/aria-current="true"/g) ?? []).length, 1);
+      assert.equal(
+        (
+          html.match(/class="subtle-border screenshot-preview__thumbnail"/g) ??
+          []
+        ).length,
+        screenshots.length,
+      );
+    }
+    const singleHtml = renderToStaticMarkup(
+      createElement(
+        I18nContext.Provider,
+        { value },
+        createElement(ScreenshotPreview, {
+          screenshots: screenshots.slice(0, 1),
+          currentIndex: 0,
+          projectName: "Project",
+          onNavigate() {},
+          onClose() {},
+        }),
+      ),
+    );
+    assert.equal(singleHtml.includes("screenshot-preview__rail"), false);
+    assert.equal(
+      singleHtml.includes(dictionary["projects.nextScreenshot"]),
+      false,
+    );
   }
 });
