@@ -64,22 +64,21 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroEngineeringToolkit]: "My Core Engineering Toolkit:",
   [ETranslationKey.HeroNeedMoreDetails]: "Need more details?",
   [ETranslationKey.HeroCvDownload]: "Download CV (PDF)",
-  [ETranslationKey.AboutSummary]:
-    "I’m a full-stack engineer. I build web interfaces and backend services, and work on the architecture, tests and deployment that keep a product running.",
+  [ETranslationKey.AboutSummary]: "I build web products across the full stack.",
   [ETranslationKey.AboutExperienceLabel]: "Years in development",
   [ETranslationKey.AboutTeamLabel]: "People in teams",
-  [ETranslationKey.AboutDegreeValue]: "MSc",
+  [ETranslationKey.AboutDegreeValue]: "Master of Science",
   [ETranslationKey.AboutDegreeLabel]: "Software Engineering",
-  [ETranslationKey.AboutDomainsTitle]: "At Omnora",
+  [ETranslationKey.AboutDomainsTitle]: "What I build",
   [ETranslationKey.AboutDomainsSummary]:
-    "I helped build an e-learning portal serving 650+ companies, a browser-based video editor, a custom media player and LMS integrations.",
-  [ETranslationKey.AboutApproachTitle]: "Working with teams",
+    "My experience includes browser-based video editing and recording tools, e-learning platforms and LMS integrations.",
+  [ETranslationKey.AboutApproachTitle]: "How I work",
   [ETranslationKey.AboutApproachSummary]:
-    "I’ve worked in product teams, startups and outstaffing. Alongside development, I help clarify requirements, review code and mentor junior developers. I use English with colleagues and clients.",
+    "I work across interfaces, backend services, data and deployment. Alongside development, I help clarify requirements, review code and mentor junior engineers in international teams.",
   [ETranslationKey.AboutParagraph1]:
-    "I am a Software Engineer with over 10 years of experience in Full Stack WEB Development across E-Learning, E-Commerce, Marketplaces, Trading, Insurance, and Healthcare. My background encompasses projects of varying scale, including work in startup environments and outstaffing engagements. This breadth of experience has strengthened my ability to adapt to diverse team structures, engineering practices, and evolving business priorities while maintaining a consistent focus on software quality and delivering solutions that meet business needs.",
+    "I am a Full-Stack Software Engineer with over ten years of experience in different domains across E-Learning, E-Commerce, Marketplaces, Trading, Insurance, and Healthcare. My background encompasses projects of varying scale, including work in startup environments and outstaffing engagements. This breadth of experience has strengthened my ability to adapt to diverse team structures, engineering practices, and evolving business priorities while maintaining a consistent focus on software quality and delivering solutions that meet business needs.",
   [ETranslationKey.AboutParagraph2]:
-    "My experience encompasses frontend applications, backend services, databases, and deployment infrastructure. I develop web interfaces with React, Vue, and Angular. On the backend, I use Go, Python, and Node.js to implement services, APIs, and background processing. I have experience with both monolithic and microservice architectures, REST and GraphQL APIs, and databases such as MySQL and MongoDB. I use Docker for containerization, Kubernetes for orchestration, and message brokers for asynchronous communication between services. I also configure continuous integration and deployment pipelines to automate software delivery. Automated testing with Playwright and Jest forms an integral part of my approach to code quality, maintainability, and system reliability. I incorporate AI-assisted development tools into my workflow to support implementation, debugging and refactoring, while critically reviewing generated code.",
+    "My full-stack experience encompasses frontend applications, backend services, databases, and deployment infrastructure. I develop web interfaces with React and Angular. On the backend, I use Go, Python, and Node.js to implement services, APIs, and background processing. I have experience with both monolithic and microservice architectures, REST and GraphQL APIs, and databases such as MySQL and MongoDB. I use Apache Kafka and RabbitMQ for asynchronous communication between services, event-driven architectures, and reliable message processing. I also work with Docker for containerization, Kubernetes for orchestration, and continuous integration and deployment pipelines to automate software delivery. Automated testing with Playwright and Jest forms an integral part of my approach to code quality, maintainability, and system reliability. I incorporate AI-assisted development tools into my workflow to support implementation, debugging, and refactoring while critically reviewing generated code.",
   [ETranslationKey.AboutParagraph3]:
     "Throughout my career, I have worked in engineering teams ranging from 3 to 20 members, frequently within international and distributed environments. English is my primary working language for technical discussions and client communication. I am accustomed to working across teams, clarifying business requirements, and communicating technical considerations to both engineering colleagues and non-technical stakeholders. I also mentor junior developers, providing technical guidance, sharing knowledge, and supporting their professional development.",
   [ETranslationKey.AboutParagraph4]:
@@ -279,21 +278,21 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroNeedMoreDetails]: "НУЖНО БОЛЬШЕ ДЕТАЛЕЙ?",
   [ETranslationKey.HeroCvDownload]: "Скачать CV (PDF)",
   [ETranslationKey.AboutSummary]:
-    "Я full-stack разработчик: создаю веб-интерфейсы и бэкенд-сервисы, участвую в проектировании архитектуры, пишу тесты и настраиваю развёртывание.",
+    "Создаю веб-продукты, работая со всеми уровнями стека.",
   [ETranslationKey.AboutExperienceLabel]: "Лет в разработке",
   [ETranslationKey.AboutTeamLabel]: "Человек в командах",
   [ETranslationKey.AboutDegreeValue]: "Магистр",
   [ETranslationKey.AboutDegreeLabel]: "Разработка ПО",
-  [ETranslationKey.AboutDomainsTitle]: "Опыт в Omnora",
+  [ETranslationKey.AboutDomainsTitle]: "Что я создаю",
   [ETranslationKey.AboutDomainsSummary]:
-    "Участвовал в разработке обучающего портала для 650+ компаний, видеоредактора в браузере, собственного медиаплеера и интеграций с LMS.",
-  [ETranslationKey.AboutApproachTitle]: "Работа в команде",
+    "Мой опыт включает инструменты для редактирования и записи видео в браузере, платформы электронного обучения и интеграции с LMS.",
+  [ETranslationKey.AboutApproachTitle]: "Как я работаю",
   [ETranslationKey.AboutApproachSummary]:
-    "Работал в продуктовых командах, стартапах и на аутстаффе. Помимо разработки, уточняю требования, участвую в ревью кода и помогаю младшим разработчикам. С коллегами и заказчиками общаюсь на английском.",
+    "Работаю с интерфейсами, бэкенд-сервисами, данными и развёртыванием. Помимо разработки, помогаю уточнять требования, провожу ревью кода и поддерживаю младших инженеров в международных командах.",
   [ETranslationKey.AboutParagraph1]:
-    "Я инженер-программист с более чем 10-летним опытом full-stack веб-разработки в сферах электронного обучения, электронной коммерции, маркетплейсов, трейдинга, страхования и здравоохранения. Мой опыт охватывает проекты разного масштаба, включая работу в стартапах и в формате аутстаффинга. Этот разнообразный опыт укрепил мою способность адаптироваться к различным структурам команд, инженерным практикам и меняющимся бизнес-приоритетам, сохраняя постоянное внимание к качеству программного обеспечения и созданию решений, отвечающих потребностям бизнеса.",
+    "Я full-stack инженер-программист с опытом более десяти лет в различных областях: электронном обучении, электронной коммерции, маркетплейсах, трейдинге, страховании и здравоохранении. Мой опыт охватывает проекты разного масштаба, включая работу в стартапах и в формате аутстаффинга. Этот разнообразный опыт укрепил мою способность адаптироваться к различным структурам команд, инженерным практикам и меняющимся бизнес-приоритетам, сохраняя постоянное внимание к качеству программного обеспечения и созданию решений, отвечающих потребностям бизнеса.",
   [ETranslationKey.AboutParagraph2]:
-    "Мой опыт охватывает фронтенд-приложения, бэкенд-сервисы, базы данных и инфраструктуру развертывания. Я разрабатываю веб-интерфейсы с использованием React, Vue и Angular. На бэкенде я использую Go, Python и Node.js для реализации сервисов, API и фоновой обработки. У меня есть опыт работы с монолитной и микросервисной архитектурой, REST и GraphQL API, а также с такими базами данных, как MySQL и MongoDB. Я использую Docker для контейнеризации, Kubernetes для оркестрации и брокеры сообщений для асинхронного взаимодействия между сервисами. Я также настраиваю конвейеры непрерывной интеграции и развертывания для автоматизации доставки программного обеспечения. Автоматизированное тестирование с Playwright и Jest — неотъемлемая часть моего подхода к качеству кода, удобству сопровождения и надежности систем. Я включаю инструменты разработки с поддержкой ИИ в свой рабочий процесс для помощи в реализации, отладке и рефакторинге, при этом критически проверяя сгенерированный код.",
+    "Мой опыт full-stack разработки охватывает фронтенд-приложения, бэкенд-сервисы, базы данных и инфраструктуру развёртывания. Я разрабатываю веб-интерфейсы с использованием React и Angular. На бэкенде я использую Go, Python и Node.js для реализации сервисов, API и фоновой обработки. У меня есть опыт работы с монолитной и микросервисной архитектурой, REST и GraphQL API, а также с такими базами данных, как MySQL и MongoDB. Я использую Apache Kafka и RabbitMQ для асинхронного взаимодействия между сервисами, построения событийно-ориентированных архитектур и надёжной обработки сообщений. Я также работаю с Docker для контейнеризации, Kubernetes для оркестрации и конвейерами непрерывной интеграции и развёртывания для автоматизации доставки программного обеспечения. Автоматизированное тестирование с Playwright и Jest — неотъемлемая часть моего подхода к качеству кода, удобству сопровождения и надёжности систем. Я включаю инструменты разработки с поддержкой ИИ в свой рабочий процесс для помощи в реализации, отладке и рефакторинге, при этом критически проверяя сгенерированный код.",
   [ETranslationKey.AboutParagraph3]:
     "На протяжении карьеры я работал в инженерных командах численностью от 3 до 20 человек, часто в международной и распределенной среде. Английский — мой основной рабочий язык для технических обсуждений и общения с клиентами. Я привык взаимодействовать с разными командами, уточнять бизнес-требования и объяснять технические аспекты как коллегам-инженерам, так и нетехническим заинтересованным сторонам. Я также наставляю начинающих разработчиков, предоставляя технические рекомендации, делясь знаниями и поддерживая их профессиональное развитие.",
   [ETranslationKey.AboutParagraph4]:
@@ -490,21 +489,21 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroNeedMoreDetails]: "¿NECESITAS MÁS DETALLES?",
   [ETranslationKey.HeroCvDownload]: "Descargar CV (PDF)",
   [ETranslationKey.AboutSummary]:
-    "Soy ingeniero full-stack. Desarrollo interfaces web y servicios backend, y participo en la arquitectura, las pruebas y el despliegue necesarios para mantener un producto en funcionamiento.",
+    "Desarrollo productos web a lo largo de todo el stack.",
   [ETranslationKey.AboutExperienceLabel]: "Años de desarrollo",
   [ETranslationKey.AboutTeamLabel]: "Personas por equipo",
   [ETranslationKey.AboutDegreeValue]: "Máster",
   [ETranslationKey.AboutDegreeLabel]: "Ingeniería de Software",
-  [ETranslationKey.AboutDomainsTitle]: "En Omnora",
+  [ETranslationKey.AboutDomainsTitle]: "Qué desarrollo",
   [ETranslationKey.AboutDomainsSummary]:
-    "Contribuí a un portal de formación para más de 650 empresas, un editor de vídeo en el navegador, un reproductor multimedia propio e integraciones con LMS.",
-  [ETranslationKey.AboutApproachTitle]: "Trabajo en equipo",
+    "Mi experiencia incluye herramientas de edición y grabación de vídeo en el navegador, plataformas de aprendizaje en línea e integraciones con LMS.",
+  [ETranslationKey.AboutApproachTitle]: "Cómo trabajo",
   [ETranslationKey.AboutApproachSummary]:
-    "He trabajado en equipos de producto, startups y proyectos de outstaffing. Además de desarrollar, ayudo a concretar requisitos, revisar código y orientar a desarrolladores júnior. Uso el inglés con colegas y clientes.",
+    "Trabajo con interfaces, servicios backend, datos y despliegue. Además de desarrollar, ayudo a aclarar requisitos, reviso código y mentorizo a ingenieros júnior en equipos internacionales.",
   [ETranslationKey.AboutParagraph1]:
-    "Soy ingeniero de software con más de 10 años de experiencia en desarrollo web full-stack en los sectores de aprendizaje en línea, comercio electrónico, marketplaces, trading, seguros y salud. Mi trayectoria abarca proyectos de distintas escalas, incluido el trabajo en startups y en modalidades de outstaffing. Esta diversidad de experiencias ha reforzado mi capacidad para adaptarme a diferentes estructuras de equipo, prácticas de ingeniería y prioridades empresariales en evolución, manteniendo un enfoque constante en la calidad del software y en la entrega de soluciones que satisfagan las necesidades del negocio.",
+    "Soy ingeniero de software full-stack con más de diez años de experiencia en distintos ámbitos de los sectores de aprendizaje en línea, comercio electrónico, marketplaces, trading, seguros y salud. Mi trayectoria abarca proyectos de distintas escalas, incluido el trabajo en startups y en modalidades de outstaffing. Esta diversidad de experiencias ha reforzado mi capacidad para adaptarme a diferentes estructuras de equipo, prácticas de ingeniería y prioridades empresariales en evolución, manteniendo un enfoque constante en la calidad del software y en la entrega de soluciones que satisfagan las necesidades del negocio.",
   [ETranslationKey.AboutParagraph2]:
-    "Mi experiencia abarca aplicaciones frontend, servicios backend, bases de datos e infraestructura de despliegue. Desarrollo interfaces web con React, Vue y Angular. En el backend, utilizo Go, Python y Node.js para implementar servicios, API y procesamiento en segundo plano. Tengo experiencia con arquitecturas monolíticas y de microservicios, API REST y GraphQL, y bases de datos como MySQL y MongoDB. Utilizo Docker para la contenerización, Kubernetes para la orquestación y brokers de mensajes para la comunicación asíncrona entre servicios. También configuro pipelines de integración y despliegue continuos para automatizar la entrega de software. Las pruebas automatizadas con Playwright y Jest son una parte integral de mi enfoque de calidad del código, mantenibilidad y fiabilidad de los sistemas. Incorporo herramientas de desarrollo asistidas por IA en mi flujo de trabajo para apoyar la implementación, la depuración y la refactorización, revisando críticamente el código generado.",
+    "Mi experiencia full-stack abarca aplicaciones frontend, servicios backend, bases de datos e infraestructura de despliegue. Desarrollo interfaces web con React y Angular. En el backend, utilizo Go, Python y Node.js para implementar servicios, API y procesamiento en segundo plano. Tengo experiencia con arquitecturas monolíticas y de microservicios, API REST y GraphQL, y bases de datos como MySQL y MongoDB. Utilizo Apache Kafka y RabbitMQ para la comunicación asíncrona entre servicios, las arquitecturas orientadas a eventos y el procesamiento fiable de mensajes. También trabajo con Docker para la contenerización, Kubernetes para la orquestación y pipelines de integración y despliegue continuos para automatizar la entrega de software. Las pruebas automatizadas con Playwright y Jest son una parte integral de mi enfoque de calidad del código, mantenibilidad y fiabilidad de los sistemas. Incorporo herramientas de desarrollo asistidas por IA en mi flujo de trabajo para apoyar la implementación, la depuración y la refactorización, revisando críticamente el código generado.",
   [ETranslationKey.AboutParagraph3]:
     "A lo largo de mi carrera, he trabajado en equipos de ingeniería de entre 3 y 20 integrantes, frecuentemente en entornos internacionales y distribuidos. El inglés es mi principal idioma de trabajo para las discusiones técnicas y la comunicación con clientes. Estoy acostumbrado a colaborar entre equipos, aclarar requisitos de negocio y comunicar consideraciones técnicas tanto a colegas de ingeniería como a las partes interesadas sin perfil técnico. También mentorizo a desarrolladores júnior, ofreciendo orientación técnica, compartiendo conocimientos y apoyando su desarrollo profesional.",
   [ETranslationKey.AboutParagraph4]:
@@ -702,21 +701,21 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroNeedMoreDetails]: "MEHR DETAILS NÖTIG?",
   [ETranslationKey.HeroCvDownload]: "CV (PDF) herunterladen",
   [ETranslationKey.AboutSummary]:
-    "Ich bin Full-Stack-Entwickler. Ich entwickle Weboberflächen und Backend-Dienste und arbeite an Architektur, Tests und Deployment, damit ein Produkt zuverlässig betrieben werden kann.",
+    "Ich entwickle Webprodukte über den gesamten Stack hinweg.",
   [ETranslationKey.AboutExperienceLabel]: "Jahre in der Entwicklung",
   [ETranslationKey.AboutTeamLabel]: "Personen pro Team",
-  [ETranslationKey.AboutDegreeValue]: "M.Sc.",
+  [ETranslationKey.AboutDegreeValue]: "Master of Science",
   [ETranslationKey.AboutDegreeLabel]: "Software Engineering",
-  [ETranslationKey.AboutDomainsTitle]: "Bei Omnora",
+  [ETranslationKey.AboutDomainsTitle]: "Was ich entwickle",
   [ETranslationKey.AboutDomainsSummary]:
-    "Ich habe an einem Lernportal für über 650 Unternehmen, einem browserbasierten Videoeditor, einem eigenen Mediaplayer und LMS-Integrationen mitgearbeitet.",
-  [ETranslationKey.AboutApproachTitle]: "Zusammenarbeit im Team",
+    "Meine Erfahrung umfasst browserbasierte Werkzeuge zur Videobearbeitung und -aufnahme, E-Learning-Plattformen und LMS-Integrationen.",
+  [ETranslationKey.AboutApproachTitle]: "Wie ich arbeite",
   [ETranslationKey.AboutApproachSummary]:
-    "Ich habe in Produktteams, Startups und Outstaffing-Projekten gearbeitet. Neben der Entwicklung kläre ich Anforderungen, prüfe Code und unterstütze Junior-Entwickler. Mit Kollegen und Kunden kommuniziere ich auf Englisch.",
+    "Ich arbeite an Benutzeroberflächen, Backend-Diensten, Daten und Deployment. Neben der Entwicklung helfe ich dabei, Anforderungen zu klären, prüfe Code und betreue Junior-Entwickler in internationalen Teams.",
   [ETranslationKey.AboutParagraph1]:
-    "Ich bin Softwareingenieur mit über 10 Jahren Erfahrung in der Full-Stack-Webentwicklung in den Bereichen E-Learning, E-Commerce, Marktplätze, Handel, Versicherungen und Gesundheitswesen. Mein beruflicher Hintergrund umfasst Projekte unterschiedlicher Größenordnung, darunter Tätigkeiten in Startups und im Rahmen von Outstaffing-Einsätzen. Diese vielfältige Erfahrung hat meine Fähigkeit gestärkt, mich an unterschiedliche Teamstrukturen, Entwicklungspraktiken und sich wandelnde geschäftliche Prioritäten anzupassen, wobei ich stets auf Softwarequalität und die Bereitstellung von Lösungen achte, die den geschäftlichen Anforderungen entsprechen.",
+    "Ich bin Full-Stack-Softwareingenieur mit über zehn Jahren Erfahrung in verschiedenen Bereichen, darunter E-Learning, E-Commerce, Marktplätze, Trading, Versicherungen und Gesundheitswesen. Mein beruflicher Hintergrund umfasst Projekte unterschiedlicher Größenordnung, darunter Tätigkeiten in Startups und im Rahmen von Outstaffing-Einsätzen. Diese vielfältige Erfahrung hat meine Fähigkeit gestärkt, mich an unterschiedliche Teamstrukturen, Entwicklungspraktiken und sich wandelnde geschäftliche Prioritäten anzupassen, wobei ich stets auf Softwarequalität und die Bereitstellung von Lösungen achte, die den geschäftlichen Anforderungen entsprechen.",
   [ETranslationKey.AboutParagraph2]:
-    "Meine Erfahrung umfasst Frontend-Anwendungen, Backend-Dienste, Datenbanken und Deployment-Infrastruktur. Ich entwickle Weboberflächen mit React, Vue und Angular. Im Backend nutze ich Go, Python und Node.js zur Implementierung von Diensten, APIs und Hintergrundverarbeitung. Ich habe Erfahrung mit monolithischen und Microservice-Architekturen, REST- und GraphQL-APIs sowie Datenbanken wie MySQL und MongoDB. Ich verwende Docker zur Containerisierung, Kubernetes zur Orchestrierung und Message Broker für die asynchrone Kommunikation zwischen Diensten. Außerdem konfiguriere ich Pipelines für kontinuierliche Integration und kontinuierliches Deployment, um die Softwarebereitstellung zu automatisieren. Automatisierte Tests mit Playwright und Jest sind ein wesentlicher Bestandteil meines Ansatzes für Codequalität, Wartbarkeit und Systemzuverlässigkeit. Ich integriere KI-gestützte Entwicklungswerkzeuge in meine Arbeitsabläufe, um Implementierung, Fehlersuche und Refactoring zu unterstützen, wobei ich den generierten Code kritisch prüfe.",
+    "Meine Full-Stack-Erfahrung umfasst Frontend-Anwendungen, Backend-Dienste, Datenbanken und Deployment-Infrastruktur. Ich entwickle Weboberflächen mit React und Angular. Im Backend nutze ich Go, Python und Node.js zur Implementierung von Diensten, APIs und Hintergrundverarbeitung. Ich habe Erfahrung mit monolithischen und Microservice-Architekturen, REST- und GraphQL-APIs sowie Datenbanken wie MySQL und MongoDB. Ich verwende Apache Kafka und RabbitMQ für die asynchrone Kommunikation zwischen Diensten, ereignisgesteuerte Architekturen und die zuverlässige Verarbeitung von Nachrichten. Außerdem arbeite ich mit Docker zur Containerisierung, Kubernetes zur Orchestrierung und Pipelines für kontinuierliche Integration und kontinuierliches Deployment, um die Softwarebereitstellung zu automatisieren. Automatisierte Tests mit Playwright und Jest sind ein wesentlicher Bestandteil meines Ansatzes für Codequalität, Wartbarkeit und Systemzuverlässigkeit. Ich integriere KI-gestützte Entwicklungswerkzeuge in meine Arbeitsabläufe, um Implementierung, Fehlersuche und Refactoring zu unterstützen, wobei ich den generierten Code kritisch prüfe.",
   [ETranslationKey.AboutParagraph3]:
     "Im Laufe meiner Karriere habe ich in Entwicklungsteams mit 3 bis 20 Mitgliedern gearbeitet, häufig in internationalen und verteilten Umgebungen. Englisch ist meine primäre Arbeitssprache für technische Diskussionen und die Kommunikation mit Kunden. Ich bin es gewohnt, teamübergreifend zusammenzuarbeiten, geschäftliche Anforderungen zu klären und technische Aspekte sowohl mit Kollegen aus der Entwicklung als auch mit nichttechnischen Stakeholdern zu besprechen. Zudem betreue ich Junior-Entwickler, gebe technische Hilfestellung, teile Wissen und unterstütze ihre berufliche Entwicklung.",
   [ETranslationKey.AboutParagraph4]:
