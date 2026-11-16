@@ -20,7 +20,7 @@ export function EducationCompanyRow<TItem extends EducationTimelineItem>(
         href={item.companyUrl}
         target="_blank"
         rel="noreferrer"
-        className="text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] max-[640px]:text-sm max-[640px]:overflow-visible max-[640px]:whitespace-normal"
+        className="timeline-item__title"
       >
         {i18n.t(textKeys.name)}
       </a>

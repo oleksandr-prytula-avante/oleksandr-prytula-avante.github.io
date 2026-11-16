@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import { EFocusPhase } from "../../enums/timeline";
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
@@ -51,9 +51,12 @@ export function Timeline<TItem extends TimelineDataItem>(
     ThirdRowComponent,
     DetailsComponent,
     showToggle = true,
-    showMobileToggle = false,
+    showMobileToggle = true,
   } = props;
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
+  const [mobileExpandedItemIds, setMobileExpandedItemIds] = useState<string[]>(
+    [],
+  );
   const [focusPhase, setFocusPhase] = useState<EFocusPhase>(EFocusPhase.Idle);
   const [isFocusExitActive, setIsFocusExitActive] = useState(false);
   const [shouldRevealItems, setShouldRevealItems] = useState(false);
@@ -404,6 +407,15 @@ export function Timeline<TItem extends TimelineDataItem>(
         return;
       }
 
+      if (!isDesktopViewport) {
+        setMobileExpandedItemIds((current) =>
+          current.includes(itemId)
+            ? current.filter((id) => id !== itemId)
+            : [...current, itemId],
+        );
+        return;
+      }
+
       if (items.length === 1) {
         if (isTargetItem) {
           resetFocusState();
@@ -416,6 +428,7 @@ export function Timeline<TItem extends TimelineDataItem>(
 
       if (focusPhase === EFocusPhase.Idle) {
         measureFocusShiftFromLayout();
+        articleRef.current?.scrollTo({ top: 0, behavior: "instant" });
         setFocusedItemId(itemId);
         setFocusPhase(EFocusPhase.Preparing);
         return;
@@ -428,6 +441,17 @@ export function Timeline<TItem extends TimelineDataItem>(
   }
 
   function getTimelineItemRenderState(itemId: string): TimelineItemRenderState {
+    if (!isDesktopViewport) {
+      return {
+        isTargetItem: false,
+        isFocused: false,
+        isExpanded: mobileExpandedItemIds.includes(itemId),
+        isDimmed: false,
+        shouldHideRightContent: false,
+        isToggleLocked: !isInitialRevealComplete,
+      };
+    }
+
     const isTargetItem = hasFocusedItem && focusedItemId === itemId;
     const isFocused = isTargetFocusPhase && isTargetItem;
     const isExpanded = isFocusedPhase && isTargetItem;
@@ -488,16 +512,17 @@ export function Timeline<TItem extends TimelineDataItem>(
   return (
     <article
       ref={articleRef}
-      className={`relative px-5 max-[1024px]:px-0 text-white ${isDesktopViewport ? "h-full overflow-hidden" : "h-auto"}`}
+      className={`timeline relative text-white ${isDesktopViewport ? "h-full overflow-hidden" : "h-auto"}`}
     >
       <span
-        className="accent-line--vertical pointer-events-none absolute top-0 left-[calc(70px+0.25rem)] max-[1024px]:left-[calc(50px+0.25rem)] max-[640px]:left-[calc(40px+0.25rem)] z-0 w-px opacity-70 min-[1025px]:h-full"
+        className="timeline__rail pointer-events-none absolute top-0 z-0 w-px min-[1025px]:h-full"
         style={!isDesktopViewport ? { height: `${lineHeight}px` } : undefined}
       />
 
       <ul
         ref={listRef}
-        className={`timeline-list relative z-10 px-1 pt-[25px] pb-[25px] ${isDesktopViewport ? "h-full" : "h-auto"} ${shouldRevealItems ? "timeline-list--active" : ""} ${focusListClass} flex flex-col justify-start max-[1024px]:gap-4`}
+        style={{ "--timeline-item-count": items.length } as CSSProperties}
+        className={`timeline-list relative z-10 ${isDesktopViewport ? "h-full" : "h-auto"} ${shouldRevealItems ? "timeline-list--active" : ""} ${focusListClass} flex flex-col justify-start`}
       >
         {items.map(renderTimelineItem)}
       </ul>

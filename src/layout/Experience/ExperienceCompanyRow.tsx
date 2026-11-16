@@ -1,6 +1,5 @@
 import type { ExperienceTimelineItem } from "../../constants/experience";
 import { useI18n } from "../../hooks/useI18n";
-import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
 
@@ -8,28 +7,26 @@ type ExperienceCompanyRowProps<TItem extends ExperienceTimelineItem> = {
   item: TItem;
 };
 
-export function ExperienceCompanyRow<TItem extends ExperienceTimelineItem>(
-  props: ExperienceCompanyRowProps<TItem>,
-) {
-  const { item } = props;
+export function ExperienceCompanyRow<TItem extends ExperienceTimelineItem>({
+  item,
+}: ExperienceCompanyRowProps<TItem>) {
   const i18n = useI18n();
-  const { textKeys } = item;
-  const companyName = i18n.t(textKeys.name);
-
+  const [company, engagement] = i18n
+    .t(item.textKeys.name)
+    .split("|")
+    .map((part) => part.trim());
   return (
     <TimelineRow variant="heading" icon={<ExperienceCompanyIcon />}>
       <a
         href={item.companyUrl}
         target="_blank"
         rel="noreferrer"
-        className="block min-w-0 flex-1 text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] max-[640px]:text-sm"
+        className="timeline-item__title"
       >
-        <PipeSeparatedText
-          value={companyName}
-          hasSeparatorMargin
-          hideLastPartOnMobile
-          stackOnMobile
-        />
+        <span>{company}</span>
+        {engagement && (
+          <span className="timeline-item__engagement">{engagement}</span>
+        )}
       </a>
     </TimelineRow>
   );

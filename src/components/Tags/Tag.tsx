@@ -22,7 +22,7 @@ export function Tag(props: TagProps) {
   const baseClassName =
     variant === "experience"
       ? "subtle-border relative my-1 rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out"
-      : "subtle-border relative rounded-full border px-4 py-1.5 text-[0.875rem] uppercase transition-colors duration-200 ease-out";
+      : "subtle-border relative rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out";
 
   function handleClick() {
     onSelectSkill(label);

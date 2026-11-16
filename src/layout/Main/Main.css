@@ -14,6 +14,42 @@
   flex-shrink: 1;
 }
 
+.typing-text {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.typing-text__reserve {
+  visibility: hidden;
+}
+
+.typing-text__visible {
+  position: absolute;
+  inset: 0;
+  /* Allow for subpixel differences between measuring and painting the text. */
+  min-width: calc(100% + 1px);
+}
+
+.typing-text .typing-cursor {
+  width: 0;
+  margin-left: 0;
+  transform: translateX(4px);
+}
+
+@media (min-width: 1025px) {
+  .hero-info {
+    height: 100%;
+    max-height: 100%;
+  }
+}
+
+@media (max-width: 389px) {
+  .hero-info h1 {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+}
+
 .night-sky {
   position: absolute;
   z-index: -1;

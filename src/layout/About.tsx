@@ -1,182 +1,149 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useState, type CSSProperties, type ReactNode } from "react";
 
-import { SkillHighlights } from "../components/SkillHighlights";
 import { TimelineExpandIcon } from "../components/icons/TimelineExpandIcon";
 import { useI18n } from "../hooks/useI18n";
 import { ETranslationKey } from "../i18n/types";
 
 import "./About.css";
 
-const ABOUT_PARAGRAPHS = [
-  ETranslationKey.AboutParagraph1,
-  ETranslationKey.AboutParagraph2,
-  ETranslationKey.AboutParagraph3,
-  ETranslationKey.AboutParagraph4,
-] as const;
-
-type AboutProps = {
-  hoveredSkill?: string | null;
-  onSkillEnter: (skill: string) => void;
-  onSkillLeave: () => void;
+type SummaryLine = {
+  content: ReactNode;
+  indent?: number;
 };
 
-export function About(props: AboutProps) {
-  const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
+export function About() {
   const i18n = useI18n();
   const [isExpanded, setIsExpanded] = useState(false);
   const detailsId = useId();
-  const articleRef = useRef<HTMLElement>(null);
-  const toggleRowRef = useRef<HTMLDivElement>(null);
-  const shouldScrollRef = useRef(false);
-  const scrollOriginRef = useRef<{
-    container: HTMLElement;
-    top: number;
-  } | null>(null);
-
-  function handleToggle() {
-    const article = articleRef.current;
-    if (!article) return;
-
-    if (!isExpanded) {
-      let container: HTMLElement | null = article;
-      while (
-        container &&
-        !/auto|scroll/.test(window.getComputedStyle(container).overflowY)
-      ) {
-        container = container.parentElement;
-      }
-      if (container) {
-        scrollOriginRef.current = { container, top: container.scrollTop };
-      }
-    }
-
-    shouldScrollRef.current = true;
-    setIsExpanded(!isExpanded);
-  }
-
-  useEffect(() => {
-    if (!shouldScrollRef.current) return;
-    shouldScrollRef.current = false;
-
-    const isReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    // Wait for the reveal to create its full scroll range before moving into it.
-    const scrollTimeout = window.setTimeout(
-      () => {
-        const origin = scrollOriginRef.current;
-        const toggleRow = toggleRowRef.current;
-        if (!origin || !toggleRow) return;
-
-        const { container } = origin;
-        const headerOffset =
-          container === articleRef.current
-            ? 0
-            : (document.querySelector(".site-header")?.getBoundingClientRect()
-                .height ?? 0);
-        const expandedTop =
-          container.scrollTop +
-          toggleRow.getBoundingClientRect().top -
-          container.getBoundingClientRect().top -
-          headerOffset;
-
-        container.scrollTo({
-          top: isExpanded ? expandedTop : origin.top,
-          behavior: isReducedMotion ? "instant" : "smooth",
-        });
-      },
-      isExpanded && !isReducedMotion ? 460 : 0,
-    );
-
-    return () => window.clearTimeout(scrollTimeout);
-  }, [isExpanded]);
-
-  const facts = [
-    { value: "10+", label: ETranslationKey.AboutExperienceLabel },
-    { value: "3–20", label: ETranslationKey.AboutTeamLabel },
+  const summary = {
+    name: "Oleksandr (Alex) Prytula",
+    location: i18n.t(ETranslationKey.AboutLocation),
+    job: i18n.t(ETranslationKey.HeroRole),
+    experience: i18n.t(ETranslationKey.AboutYearsExperience),
+    domains: i18n.t(ETranslationKey.AboutDomains),
+    teams: i18n.t(ETranslationKey.AboutTeams),
+    approach: i18n.t(ETranslationKey.AboutApproach),
+    education: i18n.t(ETranslationKey.AboutEducation),
+  };
+  const lines: SummaryLine[] = [
     {
-      value: i18n.t(ETranslationKey.AboutDegreeValue),
-      label: ETranslationKey.AboutDegreeLabel,
+      content: (
+        <>
+          <span className="summary-code__keyword">const</span>{" "}
+          <span className="summary-code__name">SUMMARY</span>
+          {" = {"}
+        </>
+      ),
     },
   ];
 
-  return (
-    <article ref={articleRef} className="about-panel">
-      <div className="about-panel__content">
-        <p className="about-panel__intro">
-          {i18n.t(ETranslationKey.AboutSummary)}
-        </p>
-
-        <dl className="about-panel__credentials">
-          {facts.map(({ value, label }) => (
-            <div key={label}>
-              <dt>{i18n.t(label)}</dt>
-              <dd>{value}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className="about-panel__highlights">
-          <section>
-            <h2>{i18n.t(ETranslationKey.AboutDomainsTitle)}</h2>
-            <p>{i18n.t(ETranslationKey.AboutDomainsSummary)}</p>
-          </section>
-          <section>
-            <h2>{i18n.t(ETranslationKey.AboutStackTitle)}</h2>
-            <p>
-              <SkillHighlights
-                value={i18n.t(ETranslationKey.AboutStackSummary)}
-                hoveredSkill={hoveredSkill}
-                onSkillEnter={onSkillEnter}
-                onSkillLeave={onSkillLeave}
-              />
-            </p>
-          </section>
-          <section>
-            <h2>{i18n.t(ETranslationKey.AboutApproachTitle)}</h2>
-            <p>{i18n.t(ETranslationKey.AboutApproachSummary)}</p>
-          </section>
-        </div>
-
-        <div className="about-panel__details">
-          <div ref={toggleRowRef} className="about-panel__toggle-row">
-            <button
-              type="button"
-              className="control-label about-panel__toggle"
-              aria-expanded={isExpanded}
-              aria-controls={detailsId}
-              onClick={handleToggle}
-            >
-              <span>
-                {i18n.t(
-                  isExpanded
-                    ? ETranslationKey.TimelineHideDetails
-                    : ETranslationKey.TimelineExpandDetails,
-                )}
+  for (const [key, value] of Object.entries(summary)) {
+    const property = <span className="summary-code__property">{key}</span>;
+    if (Array.isArray(value)) {
+      lines.push({
+        indent: 2,
+        content: (
+          <>
+            {property}
+            {": ["}
+          </>
+        ),
+      });
+      for (const entry of value) {
+        lines.push({
+          indent: 4,
+          content: (
+            <>
+              <span className="summary-code__string">
+                {JSON.stringify(entry)}
               </span>
-              <TimelineExpandIcon isExpanded={isExpanded} />
-            </button>
-          </div>
-          <div
-            id={detailsId}
-            className="about-panel__reveal"
-            data-expanded={isExpanded}
-            aria-hidden={!isExpanded}
-            inert={!isExpanded}
+              {","}
+            </>
+          ),
+        });
+      }
+      lines.push({ indent: 2, content: "]," });
+    } else {
+      lines.push({
+        indent: 2,
+        content: (
+          <>
+            {property}
+            {": "}
+            <span className="summary-code__string">
+              {JSON.stringify(value)}
+            </span>
+            {","}
+          </>
+        ),
+      });
+    }
+  }
+  lines.push({ content: "};" });
+
+  return (
+    <article className="about-panel">
+      <div className="summary-code">
+        <div className="summary-code__header" aria-hidden="true">
+          <span className="summary-code__file">
+            <span>TS</span> summary.ts
+          </span>
+          <span className="summary-code__language">TypeScript</span>
+        </div>
+        <pre className="summary-code__source">
+          <code>
+            {lines.map(({ content, indent = 0 }, index) => (
+              <span
+                className="summary-code__line"
+                key={index}
+                style={{ "--code-indent": `${indent}ch` } as CSSProperties}
+              >
+                <span className="summary-code__number" aria-hidden="true">
+                  {index + 1}
+                </span>
+                <span className="summary-code__text">
+                  {" ".repeat(indent)}
+                  {content}
+                  {index < lines.length - 1 ? "\n" : ""}
+                </span>
+              </span>
+            ))}
+          </code>
+        </pre>
+      </div>
+      <div className="about-panel__details">
+        <div className="about-panel__toggle-row">
+          <button
+            type="button"
+            className="control-label about-panel__toggle"
+            aria-expanded={isExpanded}
+            aria-controls={detailsId}
+            onClick={() => setIsExpanded(!isExpanded)}
           >
-            <div className="about-panel__clip">
-              <div className="about-panel__full-story">
-                {ABOUT_PARAGRAPHS.map((translationKey) => (
-                  <p key={translationKey}>
-                    <SkillHighlights
-                      value={i18n.t(translationKey)}
-                      hoveredSkill={hoveredSkill}
-                      onSkillEnter={onSkillEnter}
-                      onSkillLeave={onSkillLeave}
-                    />
-                  </p>
-                ))}
-              </div>
+            {i18n.t(
+              isExpanded
+                ? ETranslationKey.TimelineHideDetails
+                : ETranslationKey.TimelineExpandDetails,
+            )}
+            <TimelineExpandIcon isExpanded={isExpanded} />
+          </button>
+        </div>
+        <div
+          id={detailsId}
+          className="about-panel__reveal"
+          data-expanded={isExpanded}
+          aria-hidden={!isExpanded}
+          inert={!isExpanded}
+        >
+          <div className="about-panel__clip">
+            <div className="about-panel__full-story">
+              {[
+                ETranslationKey.AboutParagraph1,
+                ETranslationKey.AboutParagraph3,
+                ETranslationKey.AboutParagraph4,
+              ].map((key) => (
+                <p key={key}>{i18n.t(key)}</p>
+              ))}
             </div>
           </div>
         </div>

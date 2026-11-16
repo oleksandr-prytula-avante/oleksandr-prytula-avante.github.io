@@ -6,6 +6,8 @@
   grid-auto-flow: column;
   grid-auto-columns: var(--nav-width);
   gap: var(--nav-gap);
+  font-size: 13px;
+  letter-spacing: 0.08em;
 }
 
 .section-navigation__link {

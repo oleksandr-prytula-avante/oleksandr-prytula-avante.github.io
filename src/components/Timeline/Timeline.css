@@ -1,34 +1,111 @@
+.timeline {
+  --timeline-logo-size: 64px;
+  --timeline-content-gap: 24px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.timeline__rail {
+  left: calc(var(--timeline-logo-size) / 2);
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--color-accent-rgb) / 60%),
+    rgb(255 255 255 / 12%) 35%,
+    rgb(255 255 255 / 6%)
+  );
+}
+
+.timeline-list {
+  padding-block: 12px;
+}
+
 .timeline-item {
+  min-height: 156px;
+  padding-left: calc(var(--timeline-logo-size) + var(--timeline-content-gap));
+  padding-bottom: 24px;
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(18px);
   transition:
     opacity 460ms ease-out,
     transform 460ms ease-out,
     margin 460ms ease-out,
     padding 460ms ease-out;
   transition-delay: var(--timeline-delay, 0ms);
-  will-change: opacity, transform;
+}
+
+.timeline-item--compact {
+  height: calc(100% / var(--timeline-item-count));
+}
+
+.timeline-item__logo {
+  width: var(--timeline-logo-size);
+  height: var(--timeline-logo-size);
+  border-color: rgb(255 255 255 / 20%);
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+  transition:
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+.timeline-item__logo:is(:hover, :focus-visible) {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(var(--color-accent-rgb) / 12%);
+  outline: none;
+}
+
+.timeline-item__logo-image {
+  width: 36px;
+  height: 36px;
 }
 
 .timeline-row {
-  color: rgb(255 255 255 / 78%);
+  overflow: visible;
+  color: white;
   line-height: 1.55;
 }
 
 .timeline-row > svg {
-  margin-top: 1px;
-  color: white;
+  display: none;
 }
 
 .timeline-row--heading {
-  color: rgb(255 255 255 / 94%);
-  line-height: 1.45;
-  letter-spacing: 0.025em;
+  color: white;
+  line-height: 1.4;
+}
+
+.timeline-item__title {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+  transition: color 200ms ease-out;
+}
+
+.timeline-item__title:is(:hover, :focus-visible) {
+  color: var(--color-accent);
+}
+
+.timeline-item__title:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.timeline-item__engagement {
+  color: rgb(255 255 255 / 60%);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .timeline-row--meta,
 .timeline-period {
-  color: rgb(255 255 255 / 55%);
+  color: rgb(255 255 255 / 62%);
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -36,37 +113,139 @@
   gap: 8px;
 }
 
+.timeline-item__role-group {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.timeline-item__period-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+
+.timeline-item__footer > div {
+  flex-basis: 140px;
+}
+
+.timeline-item__footer .timeline-row > span {
+  white-space: normal;
+  text-overflow: clip;
+}
+
+.timeline-item__toggle {
+  min-height: 30px;
+  margin-left: auto;
+  padding: 4px 9px;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 7px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.timeline-item__toggle:is(:hover, :focus-visible, [aria-expanded="true"]) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.timeline-item__toggle svg {
+  width: 16px;
+  height: 16px;
+  color: inherit;
+}
+
+.timeline-item__toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.timeline-item__details {
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+  color: white;
+  font-size: 14px;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.timeline-item__highlights {
+  display: grid;
+  gap: 16px;
+  max-width: 68ch;
+}
+
+.timeline-item__bullet {
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent-soft);
+}
+
+.timeline-item__tools-label {
+  margin: 28px 0 14px;
+  color: rgb(255 255 255 / 65%);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.timeline-item__tags .skill-tag {
+  margin-block: 0;
+}
+
+.timeline-item__project-description {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+@media (max-width: 1024px) {
+  .timeline {
+    overflow: visible;
+    scrollbar-gutter: auto;
+  }
+
+  .timeline-item,
+  .timeline-item--compact {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 32px;
+  }
+
+  .timeline-item__toggle {
+    min-height: 36px;
+  }
+
+  .timeline-item__details {
+    flex: auto;
+  }
+}
+
 @media (max-width: 640px) {
+  .timeline {
+    --timeline-logo-size: 44px;
+    --timeline-content-gap: 16px;
+  }
+
+  .timeline-item__logo {
+    border-radius: 50%;
+  }
+
+  .timeline-item__logo-image {
+    width: 28px;
+    height: 28px;
+  }
+
+  .timeline-item__title {
+    font-size: 15px;
+  }
+
   .timeline-period {
     overflow: visible;
     white-space: normal;
   }
-}
-
-.timeline-item__toggle {
-  margin-left: auto;
-  padding-block: 2px;
-}
-
-.timeline-item__details {
-  padding-top: 12px;
-  background-image: var(--line-track-horizontal);
-  background-position: left top;
-  background-repeat: no-repeat;
-  background-size: 100% 1px;
-  color: rgb(255 255 255 / 68%);
-  font-size: 14px;
-  line-height: 1.65;
-  text-wrap: pretty;
-}
-
-.timeline-item__tools-label {
-  margin: 24px 0 12px;
-  color: rgb(255 255 255 / 55%);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .timeline-list.timeline-list--active .timeline-item {
@@ -122,9 +301,9 @@
     position: absolute;
     right: 0;
     bottom: 8px;
-    left: 8rem;
+    left: calc(var(--timeline-logo-size) + var(--timeline-content-gap));
     height: 1px;
-    background: var(--line-track-horizontal);
+    background: rgb(255 255 255 / 10%);
     opacity: 0.65;
     pointer-events: none;
     content: "";
@@ -155,8 +334,13 @@
   .timeline-hide-between-1024-1440 {
     display: none !important;
   }
+}
 
-  .timeline-description-max-height-between-1024-1440 {
-    max-height: calc(100vh - 350px) !important;
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item,
+  .timeline-item__logo,
+  .timeline-item__title,
+  .timeline-item__toggle {
+    transition: none;
   }
 }

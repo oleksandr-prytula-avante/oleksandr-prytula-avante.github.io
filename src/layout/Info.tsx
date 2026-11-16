@@ -26,6 +26,7 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useTypingSequence } from "../hooks/useTypingSequence";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
+import { TypingText } from "../components/TypingText";
 
 const ENGINEERING_TOOLKIT_COLON_TRIM_INDEX = -1;
 const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
@@ -190,7 +191,7 @@ export function Info(props: InfoProps) {
   let engineeringToolkitColon = null;
 
   if (isEngineeringToolkitColonVisible) {
-    engineeringToolkitColon = <span className="pl-1">:</span>;
+    engineeringToolkitColon = <span>:</span>;
   }
 
   let description = null;
@@ -206,8 +207,10 @@ export function Info(props: InfoProps) {
 
         <div className="mt-6 flex shrink-0 items-center justify-end gap-2 max-[1024px]:justify-start max-[639px]:flex-col max-[639px]:items-start max-[639px]:gap-1">
           <p className="text-[1.09375rem] uppercase text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
-            {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
-            {needMoreDetailsTypingCursor}
+            <TypingText text={needMoreDetailsText}>
+              {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
+              {needMoreDetailsTypingCursor}
+            </TypingText>
           </p>
           <a
             className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
@@ -233,11 +236,13 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="flex min-h-0 max-h-full flex-col px-10 py-6 max-[1024px]:max-h-none max-[1024px]:p-0">
+    <div className="hero-info flex min-h-0 flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
       <div className="mb-4 flex shrink-0 items-center">
         <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
-          {hiText.slice(0, visibleHiChars)}
-          {hiTypingCursor}
+          <TypingText text={hiText}>
+            {hiText.slice(0, visibleHiChars)}
+            {hiTypingCursor}
+          </TypingText>
         </span>
         <span
           className="accent-line ml-6 inline-block h-px flex-1 origin-left transition-transform duration-500 ease-out"
@@ -250,28 +255,36 @@ export function Info(props: InfoProps) {
       <div className="mt-2 flex shrink-0 items-start gap-6 max-[640px]:gap-4">
         <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-end min-[640px]:max-[1024px]:gap-3">
           <span className="block">
-            {visibleName}
-            {nameTypingCursor}
+            <TypingText text={nameText}>
+              {visibleName}
+              {nameTypingCursor}
+            </TypingText>
           </span>
           <span className="mt-1 block min-[640px]:mt-0 max-[640px]:mt-4">
-            {visibleSurname}
-            {surnameTypingCursor}
+            <TypingText text={surnameText}>
+              {visibleSurname}
+              {surnameTypingCursor}
+            </TypingText>
           </span>
         </h1>
       </div>
 
       <p className="mt-6 shrink-0 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[768px]:text-[1.458rem]">
-        {roleText.slice(0, visibleRoleChars)}
-        {roleTypingCursor}
+        <TypingText text={roleText}>
+          {roleText.slice(0, visibleRoleChars)}
+          {roleTypingCursor}
+        </TypingText>
       </p>
 
       <p className="mt-4 shrink-0 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1024px]:text-[0.9375rem]">
-        {engineeringToolkitBaseText.slice(
-          DEFAULT_CHAR_COUNT,
-          visibleEngineeringToolkitBaseChars,
-        )}
-        {engineeringToolkitColon}
-        {engineeringToolkitTypingCursor}
+        <TypingText text={`${engineeringToolkitBaseText}:`}>
+          {engineeringToolkitBaseText.slice(
+            DEFAULT_CHAR_COUNT,
+            visibleEngineeringToolkitBaseChars,
+          )}
+          {engineeringToolkitColon}
+          {engineeringToolkitTypingCursor}
+        </TypingText>
       </p>
 
       {description}

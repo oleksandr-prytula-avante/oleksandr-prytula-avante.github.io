@@ -71,13 +71,13 @@ export function TimelineItem<TItem extends TimelineDataItem>(
   const itemHeightClass = showToggle
     ? isFocused
       ? "h-full"
-      : "h-[25%] max-[1024px]:h-auto"
+      : "timeline-item--compact"
     : "h-auto";
   const contentVisibilityClass = shouldHideRightContent
     ? "pointer-events-none invisible opacity-0 transition-none"
     : "pointer-events-auto visible opacity-100 transition-opacity duration-200 ease-out";
   const timelineItemClassName = [
-    "timeline-item relative min-h-[100px] pl-32 max-[768px]:pl-30 max-[640px]:min-h-[80px] max-[640px]:pl-24 max-[1024px]:mb-4 max-[1024px]:last:mb-0",
+    "timeline-item relative",
     itemHeightClass,
     isFocused ? "timeline-item--focused" : "",
     isDimmed ? "timeline-item--hidden" : "",
@@ -86,7 +86,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     .filter(Boolean)
     .join(" ");
   const contentClassName = [
-    "flex h-full min-h-0 flex-col text-sm text-white/95 max-[1024px]:h-auto justify-start",
+    "timeline-item__content flex h-full min-h-0 flex-col text-sm text-white max-[1024px]:h-auto justify-start",
     contentVisibilityClass,
   ]
     .filter(Boolean)
@@ -116,16 +116,16 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
   if (localizedHighlights.length > 0) {
     localizedHighlightsList = (
-      <ul className="mt-3 space-y-3 leading-relaxed">
+      <ul className="timeline-item__highlights">
         {localizedHighlights.map(function (highlight, highlightIndex) {
           return (
             <li
               key={`${item.id}-highlight-${highlightIndex}`}
-              className="relative pl-4 max-[640px]:pl-0"
+              className="relative pl-4"
             >
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-[0.8125em] h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[color:var(--color-accent)] max-[640px]:hidden"
+                className="timeline-item__bullet absolute left-0 top-[0.8125em] -translate-y-1/2 rounded-full"
               />
               <span>
                 <TextWithLinks value={highlight} />
@@ -145,7 +145,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         <p className="timeline-item__tools-label">
           {i18n.t(ETranslationKey.ExperienceToolsAndTechnologies)} :
         </p>
-        <ul className="flex flex-wrap gap-x-2 gap-y-3">
+        <ul className="timeline-item__tags flex flex-wrap gap-2">
           {prioritizedTechnologyTags.map(function (tag) {
             return (
               <li key={`${item.id}-${tag}`}>
@@ -170,7 +170,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     expandedContent = (
       <div
         id={descriptionId}
-        className="timeline-item__details mt-3 min-[1025px]:max-h-[calc(100vh_-_320px)] timeline-description-max-height-between-1024-1440 min-h-0 flex-1 overflow-y-auto pr-4 [scrollbar-gutter:stable] max-[1024px]:overflow-visible max-[1024px]:pr-0"
+        className="timeline-item__details min-h-0 flex-1 overflow-y-auto pr-3 [scrollbar-gutter:stable] max-[1024px]:overflow-visible max-[1024px]:pr-0"
       >
         {localizedHighlightsList}
         {DetailsComponent && <DetailsComponent item={item} />}
@@ -188,13 +188,13 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         aria-expanded={isExpanded}
         aria-controls={descriptionId}
         aria-label={`${isExpanded ? i18n.t(ETranslationKey.TimelineHideDetails) : i18n.t(ETranslationKey.TimelineExpandDetails)}: ${companyName}`}
-        className={`timeline-item__toggle control-label inline-flex shrink-0 items-center gap-1 text-sm uppercase transition-colors duration-200 ease-out ${
+        className={`timeline-item__toggle control-label inline-flex shrink-0 items-center gap-1 transition-colors duration-200 ease-out ${
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
         } ${showMobileToggle ? "" : "max-[1024px]:hidden"}`}
       >
-        <span className="timeline-hide-between-1024-1440">
+        <span>
           {isExpanded
             ? i18n.t(ETranslationKey.TimelineHideDetails)
             : i18n.t(ETranslationKey.TimelineExpandDetails)}
@@ -223,12 +223,12 @@ export function TimelineItem<TItem extends TimelineDataItem>(
         rel="noreferrer"
         aria-label={`${companyName} website`}
         data-timeline-circle
-        className="gradient-border gradient-border--strong gradient-border--thick absolute left-0 top-0 z-10 flex h-[100px] w-[100px] max-[640px]:h-[80px] max-[640px]:w-[80px] cursor-pointer items-center justify-center rounded-full border-2 bg-white"
+        className="timeline-item__logo absolute left-0 top-0 z-10 flex cursor-pointer items-center justify-center border bg-white"
       >
         <img
           src={item.companyLogoSrc}
           alt={`${companyName} logo`}
-          className="h-12 w-12 max-[640px]:h-10 max-[640px]:w-10 object-contain"
+          className="timeline-item__logo-image object-contain"
           loading="lazy"
         />
       </a>
@@ -239,10 +239,8 @@ export function TimelineItem<TItem extends TimelineDataItem>(
 
           <SecondRowComponent item={item} />
 
-          <div
-            className={`flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden ${showMobileToggle ? "max-[1024px]:flex-wrap max-[1024px]:gap-y-3 max-[1024px]:overflow-visible" : ""}`}
-          >
-            <div className="min-w-0">
+          <div className="timeline-item__footer flex min-w-0 flex-wrap items-center gap-3">
+            <div className="min-w-0 flex-1">
               <ThirdRowComponent item={item} />
             </div>
             {toggleButton}

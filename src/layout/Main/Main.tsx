@@ -47,9 +47,7 @@ export function Main() {
   };
 
   const sectionContent: Record<ESection, ReactNode> = {
-    [ESection.About]: (
-      <About hoveredSkill={hoveredSkill} {...timelineSkillHandlers} />
-    ),
+    [ESection.About]: <About />,
     [ESection.Experience]: <Experience {...timelineSkillHandlers} />,
     [ESection.Projects]: <Projects {...timelineSkillHandlers} />,
     [ESection.Education]: <Education {...timelineSkillHandlers} />,

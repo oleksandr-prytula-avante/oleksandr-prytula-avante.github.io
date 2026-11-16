@@ -30,7 +30,7 @@ function ProjectNameRow({ item }: ProjectRowProps) {
         href={item.companyUrl}
         target="_blank"
         rel="noreferrer"
-        className="block min-w-0 flex-1 text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] max-[640px]:text-sm"
+        className="timeline-item__title"
       >
         {i18n.t(item.textKeys.name)}
       </a>
@@ -43,7 +43,7 @@ function ProjectCategoryRow({ item }: ProjectRowProps) {
 
   return (
     <TimelineRow
-      className="timeline-hide-between-1024-1440"
+      className="timeline-item__project-description"
       icon={<ProjectCodeIcon />}
     >
       <span className="min-w-0 min-[1025px]:max-h-[min(30vh,240px)] min-[1025px]:overflow-y-auto">

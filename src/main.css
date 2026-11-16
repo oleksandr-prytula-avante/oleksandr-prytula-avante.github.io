@@ -218,4 +218,16 @@ body {
   margin: 0;
   overflow: hidden;
   background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 24%) transparent;
+}
+
+::selection {
+  color: white;
+  background: rgb(var(--color-accent-rgb) / 40%);
 }
