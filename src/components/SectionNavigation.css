@@ -26,12 +26,11 @@
 .section-navigation__indicator {
   position: absolute;
   bottom: 4px;
-  left: calc((var(--nav-width) - 28px) / 2);
-  width: 28px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--line-gradient-horizontal);
-  box-shadow: 0 0 12px rgb(var(--color-accent-rgb) / 28%);
+  left: calc((var(--nav-width) - 5px) / 2);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
   transform: translateX(
     calc(var(--active-section) * (var(--nav-width) + var(--nav-gap)))
   );

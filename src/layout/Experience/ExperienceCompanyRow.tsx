@@ -1,21 +1,20 @@
-import { getExperienceTextKeys } from "../../utils/experience";
-import type { TimelineDataItem } from "../../components/Timeline/TimelineItem";
+import type { ExperienceTimelineItem } from "../../constants/experience";
 import { useI18n } from "../../hooks/useI18n";
 import { PipeSeparatedText } from "../../components/PipeSeparatedText";
 import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
 
-type ExperienceCompanyRowProps<TItem extends TimelineDataItem> = {
+type ExperienceCompanyRowProps<TItem extends ExperienceTimelineItem> = {
   item: TItem;
 };
 
-export function ExperienceCompanyRow<TItem extends TimelineDataItem>(
+export function ExperienceCompanyRow<TItem extends ExperienceTimelineItem>(
   props: ExperienceCompanyRowProps<TItem>,
 ) {
   const { item } = props;
   const i18n = useI18n();
-  const textKeys = getExperienceTextKeys(item.id);
-  const companyName = i18n.t(textKeys.companyName);
+  const { textKeys } = item;
+  const companyName = i18n.t(textKeys.name);
 
   return (
     <TimelineRow variant="heading" icon={<ExperienceCompanyIcon />}>

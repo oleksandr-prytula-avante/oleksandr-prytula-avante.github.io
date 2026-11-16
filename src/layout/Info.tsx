@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 
 import { Tags } from "../components/Tags/Tags";
 import { CV_PATH } from "../constants/paths";
@@ -18,12 +18,12 @@ import {
   NAME_TYPING_INTERVAL_MS,
   NEED_MORE_DETAILS_TYPING_INTERVAL_MS,
   CV_DOWNLOAD_TYPING_INTERVAL_MS,
-  HERO_TYPING_STEP_SINGLE_CHAR,
   HERO_TYPING_STEP_DOUBLE_CHARS,
 } from "../constants/animations";
 import { SCALE_X_VISIBLE, SCALE_X_HIDDEN } from "../constants/sections";
 import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { useTypingSequence } from "../hooks/useTypingSequence";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
 
@@ -32,7 +32,6 @@ const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
 const DEFAULT_CHAR_COUNT = 0;
 const ENABLED_TAB_INDEX = 0;
 const DISABLED_TAB_INDEX = -1;
-const ENGINEERING_TOOLKIT_EMPTY_LENGTH = 0;
 const NAME_TYPING_START_DELAY_MS =
   ORANGE_LINE_REVEAL_DURATION_MS + NAME_TYPING_START_EXTRA_DELAY_MS;
 const NEED_MORE_DETAILS_START_DELAY_MS =
@@ -56,27 +55,6 @@ export function Info(props: InfoProps) {
     onHeroPrintingStateChange,
   } = props;
   const i18n = useI18n();
-  const [visibleHiChars, setVisibleHiChars] = useState(DEFAULT_CHAR_COUNT);
-  const [isLineVisible, setIsLineVisible] = useState(false);
-  const [visibleNameChars, setVisibleNameChars] = useState(DEFAULT_CHAR_COUNT);
-  const [isNameTypingStarted, setIsNameTypingStarted] = useState(false);
-  const [visibleRoleChars, setVisibleRoleChars] = useState(DEFAULT_CHAR_COUNT);
-  const [visibleEngineeringToolkitChars, setVisibleEngineeringToolkitChars] =
-    useState(DEFAULT_CHAR_COUNT);
-  const [
-    isEngineeringToolkitTypingStarted,
-    setIsEngineeringToolkitTypingStarted,
-  ] = useState(false);
-  const [showSecondaryContent, setShowSecondaryContent] = useState(false);
-  const [visibleNeedMoreDetailsChars, setVisibleNeedMoreDetailsChars] =
-    useState(DEFAULT_CHAR_COUNT);
-  const [isNeedMoreDetailsTypingStarted, setIsNeedMoreDetailsTypingStarted] =
-    useState(false);
-  const [visibleCvDownloadChars, setVisibleCvDownloadChars] =
-    useState(DEFAULT_CHAR_COUNT);
-  const [isCvDownloadTypingStarted, setIsCvDownloadTypingStarted] =
-    useState(false);
-  const [shouldPlayHeroAnimation, setShouldPlayHeroAnimation] = useState(true);
   const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
   const isAnimationViewport = useMediaQuery(
     MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
@@ -87,70 +65,90 @@ export function Info(props: InfoProps) {
   const nameText = i18n.t(ETranslationKey.HeroName);
   const surnameText = i18n.t(ETranslationKey.HeroSurname);
   const fullNameLength = nameText.length + surnameText.length;
-  const visibleName = nameText.slice(
-    DEFAULT_CHAR_COUNT,
-    Math.min(visibleNameChars, nameText.length),
-  );
-  const visibleSurname = surnameText.slice(
-    0,
-    Math.max(visibleNameChars - nameText.length, DEFAULT_CHAR_COUNT),
-  );
   const roleText = i18n.t(ETranslationKey.HeroRole);
-  const roleTotalLength = roleText.length;
   const engineeringToolkitText = i18n.t(ETranslationKey.HeroEngineeringToolkit);
   const engineeringToolkitBaseText = engineeringToolkitText.endsWith(":")
     ? engineeringToolkitText.slice(0, ENGINEERING_TOOLKIT_COLON_TRIM_INDEX)
     : engineeringToolkitText;
   const engineeringToolkitTotalLength =
     engineeringToolkitBaseText.length + ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH;
+  const needMoreDetailsText = i18n.t(ETranslationKey.HeroNeedMoreDetails);
+  const cvDownloadText = i18n.t(ETranslationKey.HeroCvDownload);
+  const steps = useMemo(
+    () => [
+      {
+        length: hiText.length,
+        intervalMs: HI_TYPING_INTERVAL_MS,
+        charsPerTick: HERO_TYPING_STEP_DOUBLE_CHARS,
+      },
+      {
+        length: fullNameLength,
+        intervalMs: NAME_TYPING_INTERVAL_MS,
+        delayMs: NAME_TYPING_START_DELAY_MS,
+      },
+      { length: roleText.length, intervalMs: ROLE_TYPING_INTERVAL_MS },
+      {
+        length: engineeringToolkitTotalLength,
+        intervalMs: ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS,
+      },
+      {
+        length: needMoreDetailsText.length,
+        intervalMs: NEED_MORE_DETAILS_TYPING_INTERVAL_MS,
+        delayMs: NEED_MORE_DETAILS_START_DELAY_MS,
+      },
+      {
+        length: cvDownloadText.length,
+        intervalMs: CV_DOWNLOAD_TYPING_INTERVAL_MS,
+      },
+    ],
+    [
+      hiText,
+      fullNameLength,
+      roleText,
+      engineeringToolkitTotalLength,
+      needMoreDetailsText,
+      cvDownloadText,
+    ],
+  );
+  const typing = useTypingSequence(steps, isAnimationViewport);
+  const hi = typing.getStep(0);
+  const name = typing.getStep(1);
+  const role = typing.getStep(2);
+  const toolkit = typing.getStep(3);
+  const details = typing.getStep(4);
+  const cv = typing.getStep(5);
+  const visibleHiChars = hi.visibleChars;
+  const visibleNameChars = name.visibleChars;
+  const visibleRoleChars = role.visibleChars;
+  const visibleEngineeringToolkitChars = toolkit.visibleChars;
+  const visibleNeedMoreDetailsChars = details.visibleChars;
+  const visibleCvDownloadChars = cv.visibleChars;
+  const isCvDownloadTypingStarted = cv.isStarted;
+  const visibleName = nameText.slice(
+    0,
+    Math.min(visibleNameChars, nameText.length),
+  );
+  const visibleSurname = surnameText.slice(
+    0,
+    Math.max(visibleNameChars - nameText.length, 0),
+  );
   const visibleEngineeringToolkitBaseChars = Math.min(
     visibleEngineeringToolkitChars,
     engineeringToolkitBaseText.length,
   );
   const isEngineeringToolkitColonVisible =
     visibleEngineeringToolkitChars > engineeringToolkitBaseText.length;
-  const needMoreDetailsText = i18n.t(ETranslationKey.HeroNeedMoreDetails);
-  const cvDownloadText = i18n.t(ETranslationKey.HeroCvDownload);
-  const isHiTyping = visibleHiChars < hiText.length;
-  const isNameTyping = isNameTypingStarted && visibleNameChars < fullNameLength;
+  const isLineVisible = hi.isFinished;
+  const isHiTyping = hi.isStarted && !hi.isFinished;
+  const isNameTyping = name.isStarted && !name.isFinished;
   const isTypingNameRow = visibleNameChars < nameText.length;
-  const isRoleTyping =
-    !isHiTyping &&
-    visibleNameChars >= fullNameLength &&
-    visibleRoleChars < roleTotalLength;
-  const isEngineeringToolkitTyping =
-    isEngineeringToolkitTypingStarted &&
-    visibleEngineeringToolkitChars < engineeringToolkitTotalLength;
-  const isNeedMoreDetailsPrinted =
-    visibleNeedMoreDetailsChars >= needMoreDetailsText.length;
-  const isCvDownloadPrinted = visibleCvDownloadChars >= cvDownloadText.length;
-  const isDesktopSecondaryContentReady =
-    isEngineeringToolkitTypingStarted || showSecondaryContent;
-  const isMobileSecondaryContentReady =
-    showSecondaryContent && isCvDownloadPrinted;
+  const isRoleTyping = role.isStarted && !role.isFinished;
+  const isEngineeringToolkitTyping = toolkit.isStarted && !toolkit.isFinished;
+  const isNeedMoreDetailsTypingStarted = details.isStarted;
+  const showSecondaryContent = toolkit.isFinished;
   const isSecondaryContentReady = isDesktopViewport
-    ? isDesktopSecondaryContentReady
-    : isMobileSecondaryContentReady;
-  function setHeroTypingState(isCompleted: boolean) {
-    setVisibleHiChars(isCompleted ? hiText.length : DEFAULT_CHAR_COUNT);
-    setIsLineVisible(isCompleted);
-    setVisibleNameChars(isCompleted ? fullNameLength : DEFAULT_CHAR_COUNT);
-    setIsNameTypingStarted(isCompleted);
-    setVisibleRoleChars(isCompleted ? roleTotalLength : DEFAULT_CHAR_COUNT);
-    setVisibleEngineeringToolkitChars(
-      isCompleted ? engineeringToolkitTotalLength : DEFAULT_CHAR_COUNT,
-    );
-    setIsEngineeringToolkitTypingStarted(isCompleted);
-    setShowSecondaryContent(isCompleted);
-    setVisibleNeedMoreDetailsChars(
-      isCompleted ? needMoreDetailsText.length : DEFAULT_CHAR_COUNT,
-    );
-    setIsNeedMoreDetailsTypingStarted(isCompleted);
-    setVisibleCvDownloadChars(
-      isCompleted ? cvDownloadText.length : DEFAULT_CHAR_COUNT,
-    );
-    setIsCvDownloadTypingStarted(isCompleted);
-  }
+    ? toolkit.isStarted
+    : cv.isFinished;
 
   function renderTypingCursor(shouldRender: boolean, color?: string) {
     if (!shouldRender) {
@@ -160,248 +158,14 @@ export function Info(props: InfoProps) {
     return <TypingCursor color={color} />;
   }
 
-  useEffect(
-    function () {
-      onHeroPrintingStateChange(!isSecondaryContentReady);
-      onSecondaryContentVisibilityChange(isSecondaryContentReady);
-    },
-    [isSecondaryContentReady, onSecondaryContentVisibilityChange],
-  );
-
-  useEffect(
-    function () {
-      if (!isAnimationViewport) {
-        setShouldPlayHeroAnimation(false);
-      }
-    },
-    [isAnimationViewport],
-  );
-
-  useEffect(
-    function () {
-      if (!shouldPlayHeroAnimation) {
-        setHeroTypingState(true);
-
-        return;
-      }
-
-      setHeroTypingState(false);
-
-      const timeoutIds: number[] = [];
-      const intervalIds: number[] = [];
-
-      function typeRole() {
-        const roleIntervalId = window.setInterval(function () {
-          setVisibleRoleChars(function (currentValue) {
-            const nextValue = Math.min(
-              currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
-              roleTotalLength,
-            );
-
-            if (nextValue >= roleTotalLength) {
-              window.clearInterval(roleIntervalId);
-
-              if (
-                engineeringToolkitTotalLength ===
-                ENGINEERING_TOOLKIT_EMPTY_LENGTH
-              ) {
-                setShowSecondaryContent(true);
-              } else {
-                setIsEngineeringToolkitTypingStarted(true);
-
-                const engineeringToolkitIntervalId = window.setInterval(
-                  function () {
-                    setVisibleEngineeringToolkitChars(
-                      function (toolkitCurrentValue) {
-                        const toolkitNextValue = Math.min(
-                          toolkitCurrentValue + HERO_TYPING_STEP_SINGLE_CHAR,
-                          engineeringToolkitTotalLength,
-                        );
-
-                        if (toolkitNextValue >= engineeringToolkitTotalLength) {
-                          window.clearInterval(engineeringToolkitIntervalId);
-                          setShowSecondaryContent(true);
-                        }
-
-                        return toolkitNextValue;
-                      },
-                    );
-                  },
-                  ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS,
-                );
-
-                intervalIds.push(engineeringToolkitIntervalId);
-              }
-            }
-
-            return nextValue;
-          });
-        }, ROLE_TYPING_INTERVAL_MS);
-
-        intervalIds.push(roleIntervalId);
-      }
-
-      function typeName() {
-        const nameIntervalId = window.setInterval(function () {
-          setVisibleNameChars(function (currentValue) {
-            const nextValue = Math.min(
-              currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
-              fullNameLength,
-            );
-
-            if (nextValue >= fullNameLength) {
-              window.clearInterval(nameIntervalId);
-              typeRole();
-            }
-
-            return nextValue;
-          });
-        }, NAME_TYPING_INTERVAL_MS);
-
-        intervalIds.push(nameIntervalId);
-      }
-
-      const hiIntervalId = window.setInterval(function () {
-        setVisibleHiChars(function (currentValue) {
-          const nextValue = Math.min(
-            currentValue + HERO_TYPING_STEP_DOUBLE_CHARS,
-            hiText.length,
-          );
-
-          if (nextValue >= hiText.length) {
-            window.clearInterval(hiIntervalId);
-            setIsLineVisible(true);
-
-            const timeoutId = window.setTimeout(function () {
-              setIsNameTypingStarted(true);
-              typeName();
-            }, NAME_TYPING_START_DELAY_MS);
-
-            timeoutIds.push(timeoutId);
-          }
-
-          return nextValue;
-        });
-      }, HI_TYPING_INTERVAL_MS);
-
-      intervalIds.push(hiIntervalId);
-
-      return function () {
-        intervalIds.forEach(function (intervalId) {
-          window.clearInterval(intervalId);
-        });
-
-        timeoutIds.forEach(function (timeoutId) {
-          window.clearTimeout(timeoutId);
-        });
-      };
-    },
-    [
-      cvDownloadText.length,
-      fullNameLength,
-      hiText,
-      needMoreDetailsText.length,
-      roleText,
-      roleTotalLength,
-      engineeringToolkitTotalLength,
-      shouldPlayHeroAnimation,
-    ],
-  );
-
-  useEffect(
-    function () {
-      if (!shouldPlayHeroAnimation) {
-        return;
-      }
-
-      if (!showSecondaryContent) {
-        setVisibleNeedMoreDetailsChars(DEFAULT_CHAR_COUNT);
-        setIsNeedMoreDetailsTypingStarted(false);
-        setVisibleCvDownloadChars(DEFAULT_CHAR_COUNT);
-        setIsCvDownloadTypingStarted(false);
-        return;
-      }
-
-      setVisibleNeedMoreDetailsChars(DEFAULT_CHAR_COUNT);
-      setIsNeedMoreDetailsTypingStarted(false);
-
-      let typingIntervalId: number | undefined;
-
-      const typingStartTimeoutId = window.setTimeout(function () {
-        setIsNeedMoreDetailsTypingStarted(true);
-
-        typingIntervalId = window.setInterval(function () {
-          setVisibleNeedMoreDetailsChars(function (currentValue) {
-            const nextValue = Math.min(
-              currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
-              needMoreDetailsText.length,
-            );
-
-            if (
-              nextValue >= needMoreDetailsText.length &&
-              typingIntervalId !== undefined
-            ) {
-              window.clearInterval(typingIntervalId);
-            }
-
-            return nextValue;
-          });
-        }, NEED_MORE_DETAILS_TYPING_INTERVAL_MS);
-      }, NEED_MORE_DETAILS_START_DELAY_MS);
-
-      return function () {
-        window.clearTimeout(typingStartTimeoutId);
-
-        if (typingIntervalId !== undefined) {
-          window.clearInterval(typingIntervalId);
-        }
-      };
-    },
-    [needMoreDetailsText, shouldPlayHeroAnimation, showSecondaryContent],
-  );
-
-  useEffect(
-    function () {
-      if (!shouldPlayHeroAnimation) {
-        return;
-      }
-
-      if (!showSecondaryContent || !isNeedMoreDetailsPrinted) {
-        setVisibleCvDownloadChars(DEFAULT_CHAR_COUNT);
-        setIsCvDownloadTypingStarted(false);
-        return;
-      }
-
-      setVisibleCvDownloadChars(DEFAULT_CHAR_COUNT);
-      setIsCvDownloadTypingStarted(true);
-
-      const intervalId = window.setInterval(function () {
-        setVisibleCvDownloadChars(function (currentValue) {
-          const nextValue = Math.min(
-            currentValue + HERO_TYPING_STEP_SINGLE_CHAR,
-            cvDownloadText.length,
-          );
-
-          if (nextValue >= cvDownloadText.length) {
-            window.clearInterval(intervalId);
-            setShouldPlayHeroAnimation(false);
-          }
-
-          return nextValue;
-        });
-      }, CV_DOWNLOAD_TYPING_INTERVAL_MS);
-
-      return function () {
-        window.clearInterval(intervalId);
-      };
-    },
-    [
-      cvDownloadText,
-      isNeedMoreDetailsPrinted,
-      shouldPlayHeroAnimation,
-      showSecondaryContent,
-    ],
-  );
+  useEffect(() => {
+    onHeroPrintingStateChange(!isSecondaryContentReady);
+    onSecondaryContentVisibilityChange(isSecondaryContentReady);
+  }, [
+    isSecondaryContentReady,
+    onHeroPrintingStateChange,
+    onSecondaryContentVisibilityChange,
+  ]);
 
   const hiTypingCursor = renderTypingCursor(isHiTyping);
   const nameTypingCursor = renderTypingCursor(isNameTyping && isTypingNameRow);
@@ -446,7 +210,7 @@ export function Info(props: InfoProps) {
             {needMoreDetailsTypingCursor}
           </p>
           <a
-            className="control-label inline-flex cursor-pointer items-center py-1 text-[1.09375rem] uppercase transition-colors duration-200 ease-out hover:text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
+            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
             href={CV_PATH}
             target="_blank"
             rel="noreferrer"

@@ -1,35 +1,21 @@
-import { useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
 export function useMediaQuery(query: string, initialValue = true) {
-  const [matches, setMatches] = useState(function () {
-    if (typeof window === "undefined") {
-      return initialValue;
-    }
-
-    return window.matchMedia(query).matches;
-  });
-
-  useEffect(
-    function () {
-      if (typeof window === "undefined") {
-        return;
-      }
-
+  const subscribe = useCallback(
+    function (onChange: () => void) {
       const mediaQuery = window.matchMedia(query);
-
-      function handleViewportChange(event: MediaQueryListEvent) {
-        setMatches(event.matches);
-      }
-
-      setMatches(mediaQuery.matches);
-      mediaQuery.addEventListener("change", handleViewportChange);
+      mediaQuery.addEventListener("change", onChange);
 
       return function () {
-        mediaQuery.removeEventListener("change", handleViewportChange);
+        mediaQuery.removeEventListener("change", onChange);
       };
     },
     [query],
   );
 
-  return matches;
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(query).matches,
+    () => initialValue,
+  );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import type { ProjectTimelineItem } from "../constants/projects";
 import { useI18n } from "../hooks/useI18n";
@@ -6,6 +6,9 @@ import { ETranslationKey } from "../i18n/types";
 import { ChevronLeftIcon } from "./icons/ChevronLeftIcon";
 import { ChevronRightIcon } from "./icons/ChevronRightIcon";
 import { CloseIcon } from "./icons/CloseIcon";
+import { ZoomIcon } from "./icons/ZoomIcon";
+
+import "./ScreenshotPreview.css";
 
 type ScreenshotPreviewProps = {
   screenshots: ProjectTimelineItem["screenshots"];
@@ -15,8 +18,32 @@ type ScreenshotPreviewProps = {
   onClose: () => void;
 };
 
-const CONTROL_CLASS_NAME =
-  "subtle-border subtle-border--quiet absolute z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-[color:var(--color-bg)] text-white outline-none transition-colors duration-200 ease-out hover:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)] focus-visible:bg-[color:color-mix(in_srgb,var(--color-bg),white_8%)]";
+type PreviewControlProps = {
+  label: string;
+  children: ReactNode;
+  onClick: () => void;
+  isPressed?: boolean;
+};
+
+function PreviewControl({
+  label,
+  children,
+  onClick,
+  isPressed,
+}: PreviewControlProps) {
+  return (
+    <button
+      type="button"
+      className="subtle-border subtle-border--quiet control-label screenshot-preview__control"
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      aria-pressed={isPressed}
+    >
+      {children}
+    </button>
+  );
+}
 
 export function ScreenshotPreview({
   screenshots,
@@ -27,27 +54,113 @@ export function ScreenshotPreview({
 }: ScreenshotPreviewProps) {
   const i18n = useI18n();
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<HTMLDivElement>(null);
+  const activeThumbnailRef = useRef<HTMLButtonElement>(null);
+  const startedOnBackdropRef = useRef(false);
+  const gestureRef = useRef<{
+    x: number;
+    y: number;
+    left: number;
+    top: number;
+  } | null>(null);
+  const [isZoomed, setIsZoomed] = useState(false);
   const screenshot = screenshots[currentIndex];
   const caption = i18n.t(screenshot.captionKey);
   const hasNavigation = screenshots.length > 1;
+  const zoomLabel = i18n.t(
+    isZoomed
+      ? ETranslationKey.ProjectsFitScreenshot
+      : ETranslationKey.ProjectsZoomScreenshot,
+  );
+
+  function selectScreenshot(index: number) {
+    setIsZoomed(false);
+    onNavigate((index + screenshots.length) % screenshots.length);
+  }
 
   function navigate(direction: -1 | 1) {
-    onNavigate(
-      (currentIndex + direction + screenshots.length) % screenshots.length,
-    );
+    selectScreenshot(currentIndex + direction);
+  }
+
+  function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {
+    if (!event.isPrimary || event.button !== 0) return;
+    const viewport = event.currentTarget;
+    gestureRef.current = {
+      x: event.clientX,
+      y: event.clientY,
+      left: viewport.scrollLeft,
+      top: viewport.scrollTop,
+    };
+    if (isZoomed && event.pointerType === "mouse") {
+      event.preventDefault();
+      viewport.setPointerCapture(event.pointerId);
+    }
+  }
+
+  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
+    const gesture = gestureRef.current;
+    if (!gesture || !isZoomed || event.pointerType !== "mouse") return;
+    event.currentTarget.scrollLeft = gesture.left + gesture.x - event.clientX;
+    event.currentTarget.scrollTop = gesture.top + gesture.y - event.clientY;
+  }
+
+  function handlePointerUp(event: React.PointerEvent<HTMLDivElement>) {
+    const gesture = gestureRef.current;
+    gestureRef.current = null;
+    if (!gesture || isZoomed || !hasNavigation || event.pointerType !== "touch")
+      return;
+    const deltaX = event.clientX - gesture.x;
+    const deltaY = event.clientY - gesture.y;
+    if (Math.abs(deltaX) >= 48 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      navigate(deltaX < 0 ? 1 : -1);
+    }
   }
 
   useEffect(() => {
-    if (dialogRef.current && !dialogRef.current.open) {
+    if (dialogRef.current && !dialogRef.current.open)
       dialogRef.current.showModal();
-    }
   }, []);
+
+  useEffect(() => {
+    const rail = railRef.current;
+    const thumbnail = activeThumbnailRef.current;
+    if (!rail || !thumbnail) return;
+    const isReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    rail.scrollTo({
+      left:
+        thumbnail.offsetLeft - (rail.clientWidth - thumbnail.offsetWidth) / 2,
+      behavior: isReducedMotion ? "instant" : "smooth",
+    });
+  }, [currentIndex]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    viewport.scrollTo({
+      left: isZoomed ? (viewport.scrollWidth - viewport.clientWidth) / 2 : 0,
+      top: isZoomed ? (viewport.scrollHeight - viewport.clientHeight) / 2 : 0,
+    });
+  }, [isZoomed, currentIndex]);
 
   return (
     <dialog
       ref={dialogRef}
-      aria-label={`${projectName} — ${caption}`}
+      className="screenshot-preview"
+      aria-label={`${projectName} — ${i18n.t(ETranslationKey.ProjectsScreenshots)}`}
       onClose={onClose}
+      onPointerDown={(event) => {
+        startedOnBackdropRef.current = event.target === event.currentTarget;
+      }}
+      onClick={(event) => {
+        if (
+          event.target === event.currentTarget &&
+          startedOnBackdropRef.current
+        )
+          event.currentTarget.close();
+      }}
       onKeyDown={(event) => {
         if (
           !hasNavigation ||
@@ -55,61 +168,136 @@ export function ScreenshotPreview({
           event.ctrlKey ||
           event.metaKey ||
           event.shiftKey
-        ) {
+        )
           return;
-        }
         if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
           event.preventDefault();
           navigate(event.key === "ArrowLeft" ? -1 : 1);
         }
       }}
-      onClick={(event) => {
-        if (event.target === event.currentTarget) {
-          event.currentTarget.close();
-        }
-      }}
-      className="gradient-border gradient-border--strong fixed inset-0 m-auto h-fit max-h-none w-fit max-w-none overflow-hidden rounded-2xl border bg-transparent p-0 text-white backdrop:bg-black/50 sm:rounded-[1.25rem]"
     >
-      <button
-        type="button"
-        onClick={() => dialogRef.current?.close()}
-        aria-label={i18n.t(ETranslationKey.ProjectsClosePreview)}
-        className={`${CONTROL_CLASS_NAME} top-3 right-3`}
-      >
-        <CloseIcon />
-      </button>
-      {hasNavigation && (
-        <>
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            aria-label={i18n.t(ETranslationKey.ProjectsPreviousScreenshot)}
-            title={i18n.t(ETranslationKey.ProjectsPreviousScreenshot)}
-            className={`${CONTROL_CLASS_NAME} top-1/2 left-3 -translate-y-1/2`}
+      <div className="screenshot-preview__shell">
+        <header className="screenshot-preview__header">
+          <div className="screenshot-preview__identity">
+            <p className="screenshot-preview__project">{projectName}</p>
+            <div className="screenshot-preview__meta">
+              <span className="screenshot-preview__kind">
+                {i18n.t(ETranslationKey.ProjectsScreenshots)}
+              </span>
+              <span className="screenshot-preview__counter">
+                <span>{String(currentIndex + 1).padStart(2, "0")}</span> /{" "}
+                {String(screenshots.length).padStart(2, "0")}
+              </span>
+            </div>
+          </div>
+          <div className="screenshot-preview__controls">
+            {hasNavigation && (
+              <>
+                <PreviewControl
+                  label={i18n.t(ETranslationKey.ProjectsPreviousScreenshot)}
+                  onClick={() => navigate(-1)}
+                >
+                  <ChevronLeftIcon />
+                </PreviewControl>
+                <PreviewControl
+                  label={i18n.t(ETranslationKey.ProjectsNextScreenshot)}
+                  onClick={() => navigate(1)}
+                >
+                  <ChevronRightIcon />
+                </PreviewControl>
+                <span
+                  className="screenshot-preview__divider"
+                  aria-hidden="true"
+                />
+              </>
+            )}
+            <PreviewControl
+              label={zoomLabel}
+              isPressed={isZoomed}
+              onClick={() => setIsZoomed(!isZoomed)}
+            >
+              <ZoomIcon isZoomed={isZoomed} />
+            </PreviewControl>
+            <PreviewControl
+              label={i18n.t(ETranslationKey.ProjectsClosePreview)}
+              onClick={() => dialogRef.current?.close()}
+            >
+              <CloseIcon />
+            </PreviewControl>
+          </div>
+        </header>
+        <div
+          ref={viewportRef}
+          className="screenshot-preview__viewport"
+          data-zoomed={isZoomed}
+          onDoubleClick={() => setIsZoomed(!isZoomed)}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={() => {
+            gestureRef.current = null;
+          }}
+        >
+          <img
+            key={screenshot.src}
+            src={screenshot.src}
+            alt={`${projectName} — ${caption}`}
+            width={screenshot.width}
+            height={screenshot.height}
+            draggable={false}
+            className="screenshot-preview__image"
+          />
+        </div>
+        <footer className="screenshot-preview__footer">
+          <div
+            className="screenshot-preview__caption"
+            aria-live="polite"
+            aria-atomic="true"
           >
-            <ChevronLeftIcon />
-          </button>
-          <button
-            type="button"
-            onClick={() => navigate(1)}
-            aria-label={i18n.t(ETranslationKey.ProjectsNextScreenshot)}
-            title={i18n.t(ETranslationKey.ProjectsNextScreenshot)}
-            className={`${CONTROL_CLASS_NAME} top-1/2 right-3 -translate-y-1/2`}
-          >
-            <ChevronRightIcon />
-          </button>
-        </>
-      )}
-      <span className="sr-only" aria-live="polite" aria-atomic="true">
-        {`${currentIndex + 1} / ${screenshots.length} — ${caption}`}
-      </span>
-      <img
-        src={screenshot.src}
-        alt={`${projectName} — ${caption}`}
-        width={screenshot.width}
-        height={screenshot.height}
-        className="block h-auto max-h-[calc(100dvh-2rem)] w-auto max-w-[calc(100vw-2rem)] scale-[1.006]"
-      />
+            <p>{caption}</p>
+            <span>
+              {screenshot.width} × {screenshot.height}
+            </span>
+            <span className="sr-only">
+              {currentIndex + 1} / {screenshots.length}
+            </span>
+          </div>
+          {hasNavigation && (
+            <div ref={railRef} className="screenshot-preview__rail">
+              {screenshots.map((item, index) => {
+                const isCurrent = index === currentIndex;
+                const thumbnailCaption = i18n.t(item.captionKey);
+                return (
+                  <button
+                    key={item.src}
+                    ref={isCurrent ? activeThumbnailRef : undefined}
+                    type="button"
+                    className="subtle-border screenshot-preview__thumbnail"
+                    data-active={isCurrent}
+                    aria-current={isCurrent ? "true" : undefined}
+                    aria-label={`${i18n.t(ETranslationKey.ProjectsOpenScreenshot)}: ${thumbnailCaption}`}
+                    title={thumbnailCaption}
+                    onClick={() => selectScreenshot(index)}
+                  >
+                    <img
+                      src={item.src}
+                      alt=""
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                    <span aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </footer>
+      </div>
     </dialog>
   );
 }

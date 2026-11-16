@@ -37,6 +37,13 @@
   gap: 8px;
 }
 
+@media (max-width: 640px) {
+  .timeline-period {
+    overflow: visible;
+    white-space: normal;
+  }
+}
+
 .timeline-item__toggle {
   margin-left: auto;
   padding-block: 2px;

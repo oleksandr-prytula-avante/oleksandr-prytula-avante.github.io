@@ -4,25 +4,18 @@ import lanarsLogo from "../assets/images/companies/lanars.webp";
 import omnoraLogo from "../assets/images/companies/omnora.webp";
 import { EExperience } from "../enums/experience";
 import { ETranslationKey } from "../i18n/types";
+import type { DatedTimelineItem, TimelineTextKeys } from "../types/timeline";
 import type { SkillTagLabel } from "./skillTags";
 
 export { EExperience } from "../enums/experience";
 
-export type ExperienceTimelineItem = {
+export type ExperienceTimelineItem = DatedTimelineItem & {
   id: EExperience;
-  companyUrl: string;
-  companyLogoSrc: string;
-  startDate: string;
-  endDate: string | null;
-  technologyTags: SkillTagLabel[];
-};
-
-export type ExperienceTextKeys = {
-  companyName: ETranslationKey;
-  jobTitle: ETranslationKey;
-  location: ETranslationKey;
-  description: ETranslationKey;
-  highlights: ETranslationKey[];
+  textKeys: TimelineTextKeys & {
+    jobTitle: ETranslationKey;
+    location: ETranslationKey;
+    description: ETranslationKey;
+  };
 };
 
 export const OMNORA_TECHNOLOGY_TAGS: SkillTagLabel[] = [
@@ -57,77 +50,26 @@ export const OMNORA_TECHNOLOGY_TAGS: SkillTagLabel[] = [
   "Tesmo",
 ];
 
-export const OMNORA_EXPERIENCE_TEXT_KEYS: ExperienceTextKeys = {
-  companyName: ETranslationKey.ExperienceOmnoraCompanyName,
-  jobTitle: ETranslationKey.ExperienceOmnoraJobTitle,
-  location: ETranslationKey.ExperienceOmnoraLocation,
-  description: ETranslationKey.ExperienceOmnoraDescription,
-  highlights: [
-    ETranslationKey.ExperienceOmnoraHighlight1,
-    ETranslationKey.ExperienceOmnoraHighlight2,
-    ETranslationKey.ExperienceOmnoraHighlight3,
-    ETranslationKey.ExperienceOmnoraHighlight4,
-    ETranslationKey.ExperienceOmnoraHighlight5,
-    ETranslationKey.ExperienceOmnoraHighlight6,
-    ETranslationKey.ExperienceOmnoraHighlight7,
-    ETranslationKey.ExperienceOmnoraHighlight8,
-    ETranslationKey.ExperienceOmnoraHighlight9,
-  ],
-};
-
-export const EXPERIENCE_TEXT_KEYS_BY_ID: Record<
-  EExperience,
-  ExperienceTextKeys
-> = {
-  [EExperience.Omnora]: OMNORA_EXPERIENCE_TEXT_KEYS,
-  [EExperience.Digitalsuits]: {
-    companyName: ETranslationKey.ExperienceDigitalsuitsCompanyName,
-    jobTitle: ETranslationKey.ExperienceDigitalsuitsJobTitle,
-    location: ETranslationKey.ExperienceDigitalsuitsLocation,
-    description: ETranslationKey.ExperienceDigitalsuitsDescription,
-    highlights: [
-      ETranslationKey.ExperienceDigitalsuitsHighlight1,
-      ETranslationKey.ExperienceDigitalsuitsHighlight2,
-      ETranslationKey.ExperienceDigitalsuitsHighlight3,
-      ETranslationKey.ExperienceDigitalsuitsHighlight4,
-      ETranslationKey.ExperienceDigitalsuitsHighlight5,
-      ETranslationKey.ExperienceDigitalsuitsHighlight6,
-      ETranslationKey.ExperienceDigitalsuitsHighlight7,
-      ETranslationKey.ExperienceDigitalsuitsHighlight8,
-    ],
-  },
-  [EExperience.CodeAndCare]: {
-    companyName: ETranslationKey.ExperienceCodeAndCareCompanyName,
-    jobTitle: ETranslationKey.ExperienceCodeAndCareJobTitle,
-    location: ETranslationKey.ExperienceCodeAndCareLocation,
-    description: ETranslationKey.ExperienceCodeAndCareDescription,
-    highlights: [
-      ETranslationKey.ExperienceCodeAndCareHighlight1,
-      ETranslationKey.ExperienceCodeAndCareHighlight2,
-      ETranslationKey.ExperienceCodeAndCareHighlight3,
-      ETranslationKey.ExperienceCodeAndCareHighlight4,
-      ETranslationKey.ExperienceCodeAndCareHighlight5,
-      ETranslationKey.ExperienceCodeAndCareHighlight6,
-    ],
-  },
-  [EExperience.Lanars]: {
-    companyName: ETranslationKey.ExperienceLanarsCompanyName,
-    jobTitle: ETranslationKey.ExperienceLanarsJobTitle,
-    location: ETranslationKey.ExperienceLanarsLocation,
-    description: ETranslationKey.ExperienceLanarsDescription,
-    highlights: [
-      ETranslationKey.ExperienceLanarsHighlight1,
-      ETranslationKey.ExperienceLanarsHighlight2,
-      ETranslationKey.ExperienceLanarsHighlight3,
-      ETranslationKey.ExperienceLanarsHighlight4,
-      ETranslationKey.ExperienceLanarsHighlight5,
-    ],
-  },
-};
-
 export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
   {
     id: EExperience.Omnora,
+    textKeys: {
+      name: ETranslationKey.ExperienceOmnoraCompanyName,
+      jobTitle: ETranslationKey.ExperienceOmnoraJobTitle,
+      location: ETranslationKey.ExperienceOmnoraLocation,
+      description: ETranslationKey.ExperienceOmnoraDescription,
+      highlights: [
+        ETranslationKey.ExperienceOmnoraHighlight1,
+        ETranslationKey.ExperienceOmnoraHighlight2,
+        ETranslationKey.ExperienceOmnoraHighlight3,
+        ETranslationKey.ExperienceOmnoraHighlight4,
+        ETranslationKey.ExperienceOmnoraHighlight5,
+        ETranslationKey.ExperienceOmnoraHighlight6,
+        ETranslationKey.ExperienceOmnoraHighlight7,
+        ETranslationKey.ExperienceOmnoraHighlight8,
+        ETranslationKey.ExperienceOmnoraHighlight9,
+      ],
+    },
     companyUrl: "https://www.omnora.com/",
     companyLogoSrc: omnoraLogo,
     startDate: "2020-04",
@@ -136,6 +78,22 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
   },
   {
     id: EExperience.Digitalsuits,
+    textKeys: {
+      name: ETranslationKey.ExperienceDigitalsuitsCompanyName,
+      jobTitle: ETranslationKey.ExperienceDigitalsuitsJobTitle,
+      location: ETranslationKey.ExperienceDigitalsuitsLocation,
+      description: ETranslationKey.ExperienceDigitalsuitsDescription,
+      highlights: [
+        ETranslationKey.ExperienceDigitalsuitsHighlight1,
+        ETranslationKey.ExperienceDigitalsuitsHighlight2,
+        ETranslationKey.ExperienceDigitalsuitsHighlight3,
+        ETranslationKey.ExperienceDigitalsuitsHighlight4,
+        ETranslationKey.ExperienceDigitalsuitsHighlight5,
+        ETranslationKey.ExperienceDigitalsuitsHighlight6,
+        ETranslationKey.ExperienceDigitalsuitsHighlight7,
+        ETranslationKey.ExperienceDigitalsuitsHighlight8,
+      ],
+    },
     companyUrl: "https://digitalsuits.co/",
     companyLogoSrc: digitalsuitsLogo,
     startDate: "2019-04",
@@ -159,6 +117,20 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
   },
   {
     id: EExperience.CodeAndCare,
+    textKeys: {
+      name: ETranslationKey.ExperienceCodeAndCareCompanyName,
+      jobTitle: ETranslationKey.ExperienceCodeAndCareJobTitle,
+      location: ETranslationKey.ExperienceCodeAndCareLocation,
+      description: ETranslationKey.ExperienceCodeAndCareDescription,
+      highlights: [
+        ETranslationKey.ExperienceCodeAndCareHighlight1,
+        ETranslationKey.ExperienceCodeAndCareHighlight2,
+        ETranslationKey.ExperienceCodeAndCareHighlight3,
+        ETranslationKey.ExperienceCodeAndCareHighlight4,
+        ETranslationKey.ExperienceCodeAndCareHighlight5,
+        ETranslationKey.ExperienceCodeAndCareHighlight6,
+      ],
+    },
     companyUrl: "https://code-care.com/",
     companyLogoSrc: codeAndCareLogo,
     startDate: "2017-10",
@@ -182,6 +154,19 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
   },
   {
     id: EExperience.Lanars,
+    textKeys: {
+      name: ETranslationKey.ExperienceLanarsCompanyName,
+      jobTitle: ETranslationKey.ExperienceLanarsJobTitle,
+      location: ETranslationKey.ExperienceLanarsLocation,
+      description: ETranslationKey.ExperienceLanarsDescription,
+      highlights: [
+        ETranslationKey.ExperienceLanarsHighlight1,
+        ETranslationKey.ExperienceLanarsHighlight2,
+        ETranslationKey.ExperienceLanarsHighlight3,
+        ETranslationKey.ExperienceLanarsHighlight4,
+        ETranslationKey.ExperienceLanarsHighlight5,
+      ],
+    },
     companyUrl: "https://lanars.com/",
     companyLogoSrc: lanarsLogo,
     startDate: "2016-10",

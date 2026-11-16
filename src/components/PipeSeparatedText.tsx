@@ -1,11 +1,7 @@
 import { Fragment } from "react";
 
+import { InlineContent } from "./InlineContent";
 import { PipeSeparator } from "./PipeSeparator";
-
-const TIMELINE_ROW_INLINE_CONTENT_CLASS =
-  "inline-flex min-w-0 max-w-full items-center gap-x-2 gap-y-0 truncate";
-const MOBILE_STACK_CONTAINER_SUFFIX =
-  "max-[640px]:flex-col max-[640px]:items-start max-[640px]:overflow-visible max-[640px]:whitespace-normal";
 
 type PipeSeparatedTextProps = {
   value: string;
@@ -27,10 +23,6 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
     hideLastPartOnMobile = false,
     stackOnMobile = false,
   } = props;
-  const mobileStackClass = stackOnMobile ? MOBILE_STACK_CONTAINER_SUFFIX : "";
-  const inlineContentClass = inlineContent
-    ? TIMELINE_ROW_INLINE_CONTENT_CLASS
-    : "";
   const parts = value
     .split(PIPE_TEXT_DELIMITER)
     .map(function (part) {
@@ -40,12 +32,8 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
       return part.length > MIN_PART_LENGTH;
     });
 
-  const containerClassName = [inlineContentClass, mobileStackClass]
-    .filter(Boolean)
-    .join(" ");
-
   return (
-    <span className={containerClassName || undefined}>
+    <InlineContent inline={inlineContent} stackOnMobile={stackOnMobile}>
       {parts.map(function (part, index) {
         const isLastPart = index === parts.length - 1;
         const shouldHideOnMobile = hideLastPartOnMobile && isLastPart;
@@ -85,6 +73,6 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
           </Fragment>
         );
       })}
-    </span>
+    </InlineContent>
   );
 }

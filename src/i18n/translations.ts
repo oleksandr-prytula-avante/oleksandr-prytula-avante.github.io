@@ -18,6 +18,8 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsClosePreview]: "Close preview",
   [ETranslationKey.ProjectsPreviousScreenshot]: "Previous screenshot",
   [ETranslationKey.ProjectsNextScreenshot]: "Next screenshot",
+  [ETranslationKey.ProjectsZoomScreenshot]: "View at actual size",
+  [ETranslationKey.ProjectsFitScreenshot]: "Fit image to window",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Notification settings",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Screen recorder",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -233,6 +235,8 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsClosePreview]: "Закрыть предпросмотр",
   [ETranslationKey.ProjectsPreviousScreenshot]: "Предыдущий скриншот",
   [ETranslationKey.ProjectsNextScreenshot]: "Следующий скриншот",
+  [ETranslationKey.ProjectsZoomScreenshot]: "Открыть в масштабе 1:1",
+  [ETranslationKey.ProjectsFitScreenshot]: "Вписать в окно",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Настройки уведомлений",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Запись экрана",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -442,6 +446,8 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsClosePreview]: "Cerrar vista previa",
   [ETranslationKey.ProjectsPreviousScreenshot]: "Captura anterior",
   [ETranslationKey.ProjectsNextScreenshot]: "Siguiente captura",
+  [ETranslationKey.ProjectsZoomScreenshot]: "Ver a tamaño real",
+  [ETranslationKey.ProjectsFitScreenshot]: "Ajustar imagen a la ventana",
   [ETranslationKey.ProjectsOmnoraNotifications]: "Ajustes de notificaciones",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Grabación de pantalla",
   [ETranslationKey.ProjectsOmnoraVideoRecorderSettings]:
@@ -652,6 +658,8 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsClosePreview]: "Vorschau schließen",
   [ETranslationKey.ProjectsPreviousScreenshot]: "Vorheriger Screenshot",
   [ETranslationKey.ProjectsNextScreenshot]: "Nächster Screenshot",
+  [ETranslationKey.ProjectsZoomScreenshot]: "In Originalgröße anzeigen",
+  [ETranslationKey.ProjectsFitScreenshot]: "Bild an Fenster anpassen",
   [ETranslationKey.ProjectsOmnoraNotifications]:
     "Benachrichtigungseinstellungen",
   [ETranslationKey.ProjectsOmnoraScreenRecorder]: "Bildschirmaufnahme",

@@ -1,4 +1,8 @@
 import { useId, type CSSProperties } from "react";
+import type {
+  TimelineDataItem,
+  TimelineContentProps,
+} from "../../types/timeline";
 
 import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
 import {
@@ -8,8 +12,6 @@ import {
   SORT_LEFT_FIRST,
   SORT_RIGHT_FIRST,
 } from "../../constants/timeline";
-import { getEducationTextKeys } from "../../utils/education";
-import { getExperienceTextKeys } from "../../utils/experience";
 import { TextWithLinks } from "../TextWithLinks";
 import { Tag } from "../Tags/Tag";
 import { TimelineExpandIcon } from "../icons/TimelineExpandIcon";
@@ -18,39 +20,21 @@ import { ETranslationKey } from "../../i18n/types";
 
 const COMMON_SKILL_TAG_SET = new Set<string>(COMMON_SKILL_TAGS);
 
-export type TimelineDataItem = {
-  id: string;
-  companyUrl: string;
-  companyLogoSrc: string;
-  technologyTags: string[];
-  textKeys?: {
-    name: ETranslationKey;
-    highlights: ETranslationKey[];
+type TimelineItemProps<TItem extends TimelineDataItem> =
+  TimelineContentProps<TItem> & {
+    item: TItem;
+    shouldHideRightContent: boolean;
+    hasActiveItem: boolean;
+    isActiveItem: boolean;
+    isExpanded: boolean;
+    isFocused: boolean;
+    isDimmed: boolean;
+    itemIndex: number;
+    focusShiftPx: number;
+    animationDelayMs: number;
+    isToggleDisabled: boolean;
+    onToggle: () => void;
   };
-};
-
-type TimelineItemProps<TItem extends TimelineDataItem> = {
-  item: TItem;
-  FirstRowComponent: React.ComponentType<{ item: TItem }>;
-  SecondRowComponent: React.ComponentType<{ item: TItem }>;
-  ThirdRowComponent: React.ComponentType<{ item: TItem }>;
-  DetailsComponent?: React.ComponentType<{ item: TItem }>;
-  showToggle?: boolean;
-  showMobileToggle?: boolean;
-  onSkillEnter: (skill: string) => void;
-  onSkillLeave: () => void;
-  shouldHideRightContent: boolean;
-  hasActiveItem: boolean;
-  isActiveItem: boolean;
-  isExpanded: boolean;
-  isFocused: boolean;
-  isDimmed: boolean;
-  itemIndex: number;
-  focusShiftPx: number;
-  animationDelayMs: number;
-  isToggleDisabled: boolean;
-  onToggle: () => void;
-};
 
 export function TimelineItem<TItem extends TimelineDataItem>(
   props: TimelineItemProps<TItem>,
@@ -108,22 +92,8 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     .filter(Boolean)
     .join(" ");
 
-  const isEducationItem = item.id.startsWith("education-");
-  let companyName: string;
-  let highlightKeys: ETranslationKey[];
-
-  if (item.textKeys) {
-    companyName = i18n.t(item.textKeys.name);
-    highlightKeys = item.textKeys.highlights;
-  } else if (isEducationItem) {
-    const educationTextKeys = getEducationTextKeys(item.id);
-    companyName = i18n.t(educationTextKeys.institution);
-    highlightKeys = educationTextKeys.highlights ?? [];
-  } else {
-    const experienceTextKeys = getExperienceTextKeys(item.id);
-    companyName = i18n.t(experienceTextKeys.companyName);
-    highlightKeys = experienceTextKeys.highlights;
-  }
+  const companyName = i18n.t(item.textKeys.name);
+  const highlightKeys = item.textKeys.highlights;
 
   const descriptionId = `${item.id}-${instanceId}-description`;
   const localizedHighlights = highlightKeys.map(function (highlightKey) {

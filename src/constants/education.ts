@@ -3,29 +3,22 @@ import duetLogoUrl from "../assets/images/companies/duet.webp";
 import knuLogoUrl from "../assets/images/companies/knu.webp";
 import { EEducation } from "../enums/education";
 import { ETranslationKey } from "../i18n/types";
-import type { SkillTagLabel } from "./skillTags";
+import type { DatedTimelineItem, TimelineTextKeys } from "../types/timeline";
 
 export { EEducation } from "../enums/education";
 
-export type EducationTimelineItem = {
+export type EducationTimelineItem = DatedTimelineItem & {
   id: EEducation;
-  companyUrl: string;
-  companyLogoSrc: string;
-  startDate: string;
-  endDate: string | null;
-  technologyTags: SkillTagLabel[];
+  textKeys: TimelineTextKeys & {
+    program: ETranslationKey;
+  };
 };
 
-export type EducationTextKeys = {
-  institution: ETranslationKey;
-  program: ETranslationKey;
-  highlights?: ETranslationKey[];
-};
-
-export const EDUCATION_TEXT_KEYS_BY_ID: Record<EEducation, EducationTextKeys> =
+export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
   {
-    [EEducation.Duet]: {
-      institution: ETranslationKey.EducationDuetUniversityName,
+    id: EEducation.Duet,
+    textKeys: {
+      name: ETranslationKey.EducationDuetUniversityName,
       program: ETranslationKey.EducationDuetDegree,
       highlights: [
         ETranslationKey.EducationDuetHighlight1,
@@ -36,35 +29,6 @@ export const EDUCATION_TEXT_KEYS_BY_ID: Record<EEducation, EducationTextKeys> =
         ETranslationKey.EducationDuetHighlight6,
       ],
     },
-    [EEducation.BinaryStudio]: {
-      institution: ETranslationKey.EducationBinaryStudioTitle,
-      program: ETranslationKey.EducationBinaryStudioProgram,
-      highlights: [
-        ETranslationKey.EducationBinaryStudioHighlight1,
-        ETranslationKey.EducationBinaryStudioHighlight2,
-        ETranslationKey.EducationBinaryStudioHighlight3,
-        ETranslationKey.EducationBinaryStudioHighlight4,
-        ETranslationKey.EducationBinaryStudioHighlight5,
-      ],
-    },
-    [EEducation.Knu]: {
-      institution: ETranslationKey.EducationKnuUniversityName,
-      program: ETranslationKey.EducationKnuDegree,
-      highlights: [
-        ETranslationKey.EducationKnuHighlight1,
-        ETranslationKey.EducationKnuHighlight2,
-        ETranslationKey.EducationKnuHighlight3,
-        ETranslationKey.EducationKnuHighlight4,
-        ETranslationKey.EducationKnuHighlight5,
-        ETranslationKey.EducationKnuHighlight6,
-        ETranslationKey.EducationKnuHighlight7,
-      ],
-    },
-  };
-
-export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
-  {
-    id: EEducation.Duet,
     companyUrl: "https://www.duet.edu.ua/",
     companyLogoSrc: duetLogoUrl,
     startDate: "2022-09",
@@ -97,6 +61,17 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
   },
   {
     id: EEducation.BinaryStudio,
+    textKeys: {
+      name: ETranslationKey.EducationBinaryStudioTitle,
+      program: ETranslationKey.EducationBinaryStudioProgram,
+      highlights: [
+        ETranslationKey.EducationBinaryStudioHighlight1,
+        ETranslationKey.EducationBinaryStudioHighlight2,
+        ETranslationKey.EducationBinaryStudioHighlight3,
+        ETranslationKey.EducationBinaryStudioHighlight4,
+        ETranslationKey.EducationBinaryStudioHighlight5,
+      ],
+    },
     companyUrl: "https://academy.binary-studio.com/",
     companyLogoSrc: binaryStudioLogoUrl,
     startDate: "2016-07",
@@ -117,6 +92,19 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
   },
   {
     id: EEducation.Knu,
+    textKeys: {
+      name: ETranslationKey.EducationKnuUniversityName,
+      program: ETranslationKey.EducationKnuDegree,
+      highlights: [
+        ETranslationKey.EducationKnuHighlight1,
+        ETranslationKey.EducationKnuHighlight2,
+        ETranslationKey.EducationKnuHighlight3,
+        ETranslationKey.EducationKnuHighlight4,
+        ETranslationKey.EducationKnuHighlight5,
+        ETranslationKey.EducationKnuHighlight6,
+        ETranslationKey.EducationKnuHighlight7,
+      ],
+    },
     companyUrl: "https://www.knu.edu.ua/",
     companyLogoSrc: knuLogoUrl,
     startDate: "2012-09",

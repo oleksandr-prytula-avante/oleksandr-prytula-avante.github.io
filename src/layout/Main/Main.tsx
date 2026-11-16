@@ -4,16 +4,9 @@ import type { ReactNode } from "react";
 import { Header } from "../../components/Header";
 import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
-import { SectionHeading } from "../../components/SectionHeading";
 import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries";
-import { SECTION_NAV_ITEMS } from "../../constants/sections";
-import { useI18n } from "../../hooks/useI18n";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import {
-  ESection,
-  getSectionTitleTranslationKey,
-  toSectionHash,
-} from "../../utils/sections";
+import { ESection } from "../../utils/sections";
 import { About } from "../About";
 import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
@@ -22,45 +15,19 @@ import { Projects } from "../Projects/Projects";
 
 import "./Main.css";
 
-const SECTION_IDS_IN_ORDER = [
-  ESection.About,
-  ESection.Experience,
-  ESection.Projects,
-  ESection.Education,
-] as const;
-
-function getDesktopSectionRevealClassName(
-  isRevealAnimationEnabled: boolean,
-  isSecondaryContentVisible: boolean,
-): string {
-  if (!isRevealAnimationEnabled) {
-    return isSecondaryContentVisible
-      ? "flex h-full min-h-0 flex-col opacity-100"
-      : "flex h-full min-h-0 flex-col pointer-events-none opacity-0";
-  }
-
-  return isSecondaryContentVisible
-    ? "flex h-full min-h-0 flex-col transition-all duration-500 ease-out translate-y-0 opacity-100"
-    : "flex h-full min-h-0 flex-col transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0";
-}
-
-function getMobileSectionRevealClassName(
-  isRevealAnimationEnabled: boolean,
-  isSecondaryContentVisible: boolean,
-): string {
-  if (!isRevealAnimationEnabled) {
-    return isSecondaryContentVisible
-      ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 opacity-100"
-      : "flex w-full flex-col gap-10 max-[1024px]:gap-0 pointer-events-none opacity-0";
-  }
-
-  return isSecondaryContentVisible
-    ? "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out translate-y-0 opacity-100"
-    : "flex w-full flex-col gap-10 max-[1024px]:gap-0 transition-all duration-500 ease-out pointer-events-none translate-y-2 opacity-0";
+function getSectionRevealClassName(isAnimated: boolean, isVisible: boolean) {
+  return [
+    "flex h-full min-h-0 flex-col max-[1024px]:h-auto",
+    isAnimated ? "transition-all duration-500 ease-out" : "",
+    isVisible
+      ? "translate-y-0 opacity-100"
+      : `pointer-events-none opacity-0 ${isAnimated ? "translate-y-2" : ""}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
 }
 
 export function Main() {
-  const i18n = useI18n();
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [isHeroPrintingInProgress, setIsHeroPrintingInProgress] =
@@ -79,41 +46,14 @@ export function Main() {
     onSkillLeave: handleSkillLeave,
   };
 
-  const aboutHash = toSectionHash(ESection.About);
-  const experienceHash = toSectionHash(ESection.Experience);
-  const educationHash = toSectionHash(ESection.Education);
-  const projectsHash = toSectionHash(ESection.Projects);
-
-  const sectionRendererByHash: Record<string, () => ReactNode> = {
-    [aboutHash]: function () {
-      return (
-        <About
-          key={aboutHash}
-          hoveredSkill={hoveredSkill}
-          {...timelineSkillHandlers}
-        />
-      );
-    },
-    [experienceHash]: function () {
-      return <Experience key={experienceHash} {...timelineSkillHandlers} />;
-    },
-    [educationHash]: function () {
-      return <Education key={educationHash} {...timelineSkillHandlers} />;
-    },
-    [projectsHash]: function () {
-      return <Projects key={projectsHash} {...timelineSkillHandlers} />;
-    },
+  const sectionContent: Record<ESection, ReactNode> = {
+    [ESection.About]: (
+      <About hoveredSkill={hoveredSkill} {...timelineSkillHandlers} />
+    ),
+    [ESection.Experience]: <Experience {...timelineSkillHandlers} />,
+    [ESection.Projects]: <Projects {...timelineSkillHandlers} />,
+    [ESection.Education]: <Education {...timelineSkillHandlers} />,
   };
-
-  function renderSectionContent(href: string) {
-    const sectionRenderer = sectionRendererByHash[href];
-
-    if (!sectionRenderer) {
-      return null;
-    }
-
-    return sectionRenderer();
-  }
 
   const infoContent = (
     <Info
@@ -125,11 +65,7 @@ export function Main() {
     />
   );
   const isSecondaryContentVisible = showSecondaryContent;
-  const sectionRevealClassName = getDesktopSectionRevealClassName(
-    isRevealAnimationEnabled,
-    isSecondaryContentVisible,
-  );
-  const mobileSectionRevealClassName = getMobileSectionRevealClassName(
+  const sectionRevealClassName = getSectionRevealClassName(
     isRevealAnimationEnabled,
     isSecondaryContentVisible,
   );
@@ -146,60 +82,21 @@ export function Main() {
           isNavigationDisabled={!isSecondaryContentVisible}
         />
         <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible max-[1024px]:pb-8">
-          <div className="hidden h-full min-h-0 min-[1025px]:grid min-[1175px]:grid-cols-[5%_40%_55%] min-[1025px]:max-[1175px]:grid-cols-[5%_45%_50%]">
-            <section className="relative h-full min-h-0">
+          <div className="flex h-full min-h-0 flex-col max-[1024px]:h-auto max-[768px]:gap-4 min-[1025px]:grid min-[1175px]:grid-cols-[5%_40%_55%] min-[1025px]:max-[1175px]:grid-cols-[5%_45%_50%]">
+            <section className="relative hidden h-full min-h-0 min-[1025px]:block">
               <Links isVisible={isSecondaryContentVisible} />
             </section>
-
-            <section className="relative flex h-full min-h-0 flex-col justify-center">
+            <section className="relative flex min-h-0 flex-col max-[1024px]:pb-4 min-[1025px]:h-full min-[1025px]:justify-center">
               {infoContent}
             </section>
-
-            <section className="relative h-full min-h-0">
+            <section className="relative min-h-0 min-[1025px]:h-full">
               <div className={sectionRevealClassName}>
-                <SectionCarousel>
-                  {SECTION_NAV_ITEMS.map(function ({ href }) {
-                    return renderSectionContent(href);
-                  })}
-                </SectionCarousel>
-              </div>
-            </section>
-          </div>
-
-          <div className="flex w-full flex-col gap-8 max-[1024px]:gap-0 max-[768px]:gap-4 min-[1025px]:hidden">
-            <section className="relative w-full min-h-[472px] max-[1024px]:min-h-0 max-[1024px]:pb-4">
-              {infoContent}
-            </section>
-
-            <section className="relative w-full">
-              <div className={mobileSectionRevealClassName}>
-                {SECTION_IDS_IN_ORDER.map(function (sectionId) {
-                  const section = renderSectionContent(
-                    toSectionHash(sectionId),
-                  );
-
-                  if (!section) {
-                    return null;
+                <SectionCarousel
+                  sections={sectionContent}
+                  isLineVisible={
+                    isSecondaryContentVisible || !isRevealAnimationEnabled
                   }
-
-                  return (
-                    <section
-                      key={sectionId}
-                      id={sectionId}
-                      className="resume-mobile-section w-full max-[1024px]:scroll-mt-24 max-[1024px]:py-4"
-                    >
-                      <SectionHeading
-                        layout="mobile"
-                        animateLine
-                        isLineVisible={
-                          isSecondaryContentVisible || !isRevealAnimationEnabled
-                        }
-                        title={i18n.t(getSectionTitleTranslationKey(sectionId))}
-                      />
-                      {section}
-                    </section>
-                  );
-                })}
+                />
               </div>
             </section>
           </div>

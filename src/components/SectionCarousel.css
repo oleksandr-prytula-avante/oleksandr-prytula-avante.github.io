@@ -84,6 +84,29 @@
     visibility 0s;
 }
 
+@media (max-width: 1024px) {
+  .section-carousel__meta {
+    display: none;
+  }
+
+  .section-carousel__stage {
+    flex: auto;
+    overflow: visible;
+  }
+
+  .section-carousel__panel,
+  .section-carousel__panel[data-active="true"] {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-carousel__panel,
   .section-carousel__panel[data-active="true"],

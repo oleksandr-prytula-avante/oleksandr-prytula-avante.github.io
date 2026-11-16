@@ -16,22 +16,18 @@ import {
   TIMELINE_FIRST_ITEM_INDEX,
 } from "../../constants/timeline";
 import { TimelineItem } from "./TimelineItem";
-import type { TimelineDataItem } from "./TimelineItem";
+import type {
+  TimelineDataItem,
+  TimelineContentProps,
+} from "../../types/timeline";
 
 import "./Timeline.css";
 
-type TimelineProps<TItem extends TimelineDataItem> = {
-  items: TItem[];
-  activeSectionHash: string;
-  FirstRowComponent: React.ComponentType<{ item: TItem }>;
-  SecondRowComponent: React.ComponentType<{ item: TItem }>;
-  ThirdRowComponent: React.ComponentType<{ item: TItem }>;
-  DetailsComponent?: React.ComponentType<{ item: TItem }>;
-  showToggle?: boolean;
-  showMobileToggle?: boolean;
-  onSkillEnter: (skill: string) => void;
-  onSkillLeave: () => void;
-};
+type TimelineProps<TItem extends TimelineDataItem> =
+  TimelineContentProps<TItem> & {
+    items: TItem[];
+    activeSectionHash: string;
+  };
 
 type TimelineItemRenderState = {
   isTargetItem: boolean;
@@ -125,12 +121,25 @@ export function Timeline<TItem extends TimelineDataItem>(
     setFocusShiftById(nextShiftById);
   }
 
+  function measureLineGeometry() {
+    setLineHeight(
+      Math.max(
+        listRef.current?.scrollHeight ?? TIMELINE_EMPTY_STATE_VALUE,
+        TIMELINE_EMPTY_STATE_VALUE,
+      ),
+    );
+  }
+
   useEffect(
     function () {
       if (!isTimelineActive) {
         resetFocusState();
 
         return;
+      }
+
+      if (!isDesktopViewport && !showMobileToggle) {
+        resetFocusState();
       }
 
       const listElement = listRef.current;
@@ -203,7 +212,13 @@ export function Timeline<TItem extends TimelineDataItem>(
         window.cancelAnimationFrame(animationFrameId);
       };
     },
-    [activeSectionHash, hasPlayedInitialReveal, isTimelineActive],
+    [
+      activeSectionHash,
+      hasPlayedInitialReveal,
+      isTimelineActive,
+      isDesktopViewport,
+      showMobileToggle,
+    ],
   );
 
   useEffect(
@@ -321,6 +336,7 @@ export function Timeline<TItem extends TimelineDataItem>(
 
         previousViewportHeight = nextViewportHeight;
         measureFocusShiftFromLayout();
+        measureLineGeometry();
       }
 
       window.addEventListener("resize", handleVerticalResize);
@@ -345,37 +361,15 @@ export function Timeline<TItem extends TimelineDataItem>(
 
       const observedList = listElement;
 
-      function measureLineGeometry() {
-        setLineHeight(
-          Math.max(observedList.scrollHeight, TIMELINE_EMPTY_STATE_VALUE),
-        );
-      }
-
       measureLineGeometry();
 
       const rafId = window.requestAnimationFrame(measureLineGeometry);
       const resizeObserver = new ResizeObserver(measureLineGeometry);
       resizeObserver.observe(observedList);
 
-      let previousViewportHeight = window.innerHeight;
-
-      function handleVerticalResize() {
-        const nextViewportHeight = window.innerHeight;
-
-        if (nextViewportHeight === previousViewportHeight) {
-          return;
-        }
-
-        previousViewportHeight = nextViewportHeight;
-        measureLineGeometry();
-      }
-
-      window.addEventListener("resize", handleVerticalResize);
-
       return function () {
         window.cancelAnimationFrame(rafId);
         resizeObserver.disconnect();
-        window.removeEventListener("resize", handleVerticalResize);
       };
     },
     [focusedItemId, focusPhase, isDesktopViewport, shouldRevealItems],

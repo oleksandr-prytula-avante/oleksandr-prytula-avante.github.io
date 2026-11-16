@@ -35,7 +35,33 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
       return;
     }
 
+    if (
+      event.detail > 0 &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) {
+      languageMenu.open();
+      return;
+    }
+
     languageMenu.toggle();
+  }
+
+  function handlePointerEnter(event: React.PointerEvent<HTMLDivElement>) {
+    if (!isDisabled && event.pointerType === "mouse") {
+      languageMenu.open();
+    }
+  }
+
+  function handlePointerLeave(event: React.PointerEvent<HTMLDivElement>) {
+    if (event.pointerType === "mouse") {
+      languageMenu.close();
+    }
+  }
+
+  function handleBlur(event: React.FocusEvent<HTMLDivElement>) {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      languageMenu.close();
+    }
   }
 
   function handleLocaleOptionClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -107,6 +133,9 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
     <div
       className="relative border-b-[1.33px] border-transparent py-3"
       ref={languageMenu.containerRef}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onBlur={handleBlur}
     >
       <button
         type="button"
