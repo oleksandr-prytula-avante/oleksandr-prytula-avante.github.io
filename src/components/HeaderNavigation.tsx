@@ -1,5 +1,3 @@
-import type { CSSProperties } from "react";
-
 import { SECTION_NAV_ITEMS } from "../constants/sections";
 import { useI18n } from "../hooks/useI18n";
 
@@ -69,19 +67,5 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
     return items;
   }
 
-  const activeIndex = Math.max(
-    0,
-    SECTION_NAV_ITEMS.findIndex(({ href }) => href === activeHash),
-  );
-
-  return (
-    <div
-      className="section-navigation"
-      data-disabled={isAllItemsDisabled}
-      style={{ "--active-section": activeIndex } as CSSProperties}
-    >
-      {items}
-      <span className="section-navigation__indicator" aria-hidden="true" />
-    </div>
-  );
+  return <div className="section-navigation">{items}</div>;
 }

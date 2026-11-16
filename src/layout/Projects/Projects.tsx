@@ -1,7 +1,7 @@
 import { Timeline } from "../../components/Timeline/Timeline";
 import { TimelineRow } from "../../components/Timeline/TimelineRow";
-import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
-import { ExperienceJobTitleIcon } from "../../components/icons/ExperienceJobTitleIcon";
+import { ProjectAppIcon } from "../../components/icons/ProjectAppIcon";
+import { ProjectCodeIcon } from "../../components/icons/ProjectCodeIcon";
 import { ProjectScreenshotsIcon } from "../../components/icons/ProjectScreenshotsIcon";
 import {
   PROJECT_TIMELINE_ITEMS,
@@ -25,7 +25,7 @@ function ProjectNameRow({ item }: ProjectRowProps) {
   const i18n = useI18n();
 
   return (
-    <TimelineRow variant="heading" icon={<ExperienceCompanyIcon />}>
+    <TimelineRow variant="heading" icon={<ProjectAppIcon />}>
       <a
         href={item.companyUrl}
         target="_blank"
@@ -44,7 +44,7 @@ function ProjectCategoryRow({ item }: ProjectRowProps) {
   return (
     <TimelineRow
       className="timeline-hide-between-1024-1440"
-      icon={<ExperienceJobTitleIcon />}
+      icon={<ProjectCodeIcon />}
     >
       <span className="min-w-0 min-[1025px]:max-h-[min(30vh,240px)] min-[1025px]:overflow-y-auto">
         {i18n.t(item.categoryKey)}

@@ -1,20 +1,12 @@
-import * as React from "react";
+import { TimelineIcon } from "./TimelineIcon";
 
-export function ProjectScreenshotsIcon(): React.ReactElement {
+export function ProjectScreenshotsIcon() {
   return (
-    <svg
-      aria-hidden="true"
-      className="h-5 w-5 shrink-0 text-white"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <circle cx="8.5" cy="8.5" r="1.5" />
-      <path d="m21 15-5-5L5 21" />
-    </svg>
+    <TimelineIcon>
+      <path d="M17.5 3.5h-12a2 2 0 0 0-2 2v12" />
+      <rect x="6.5" y="6.5" width="15" height="15" rx="2.5" />
+      <circle cx="11" cy="11" r="1.25" />
+      <path d="m8.5 18 4-4 2.5 2.5 2-2 4.5 4.5" />
+    </TimelineIcon>
   );
 }

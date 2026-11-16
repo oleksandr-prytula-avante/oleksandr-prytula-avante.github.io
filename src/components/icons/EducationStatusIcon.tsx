@@ -1,34 +1,10 @@
-import * as React from "react";
+import { TimelineIcon } from "./TimelineIcon";
 
-export function EducationStatusIcon(): React.ReactElement {
+export function EducationStatusIcon() {
   return (
-    <svg
-      className="h-5 w-5 shrink-0 text-white"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
-      <rect
-        x="4"
-        y="4"
-        width="16"
-        height="16"
-        rx="3"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M8 2.5v3M16 2.5v3M7.5 9.5h9"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="m10 14 1.6 1.6 3-3.2"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <TimelineIcon>
+      <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
+      <path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M8 14h.01M12 14h.01M8 17h.01" />
+    </TimelineIcon>
   );
 }
