@@ -98,7 +98,7 @@
 }
 
 .timeline-item__engagement {
-  color: rgb(255 255 255 / 60%);
+  color: white;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0;
@@ -106,7 +106,7 @@
 
 .timeline-row--meta,
 .timeline-period {
-  color: rgb(255 255 255 / 62%);
+  color: white;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
