@@ -105,7 +105,7 @@ export function About() {
     <article className="about-panel">
       <div ref={summaryRef} className="summary-code">
         <div className="summary-code__header" aria-hidden="true">
-          <span className="summary-code__file">Profile</span>
+          <span className="summary-code__file">#Profile</span>
         </div>
         <pre className="summary-code__source">
           <code>
