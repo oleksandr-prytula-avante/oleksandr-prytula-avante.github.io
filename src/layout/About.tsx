@@ -32,12 +32,21 @@ export function About() {
   const isDetailsVisible = !isDesktopViewport || isExpanded;
   const detailsId = useId();
   const aboutPanelRef = useRef<HTMLElement | null>(null);
+  const aboutStoryClipRef = useRef<HTMLDivElement | null>(null);
 
-  function scrollToAboutTop(behavior: ScrollBehavior = "smooth") {
+  function scrollToAboutStory(behavior: ScrollBehavior = "smooth") {
     const panel = aboutPanelRef.current;
+    const storyClip = aboutStoryClipRef.current;
 
-    if (panel) {
-      panel.scrollTo({ top: 0, behavior });
+    if (panel && storyClip) {
+      const panelRect = panel.getBoundingClientRect();
+      const storyRect = storyClip.getBoundingClientRect();
+      const storyTop = Math.max(
+        0,
+        panel.scrollTop + storyRect.top - panelRect.top,
+      );
+
+      panel.scrollTo({ top: storyTop, behavior });
     }
   }
 
@@ -49,7 +58,11 @@ export function About() {
     let secondFrame = 0;
     const frame = requestAnimationFrame(() => {
       secondFrame = requestAnimationFrame(function () {
-        scrollToAboutTop("smooth");
+        if (isExpanded) {
+          scrollToAboutStory("smooth");
+        } else {
+          aboutPanelRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+        }
       });
     });
 
@@ -64,12 +77,12 @@ export function About() {
     setIsExpanded(nextExpanded);
 
     if (nextExpanded) {
-      // Reset the internal About scroller immediately, then repeat after the
-      // reveal has mounted so the animation always starts at the panel top.
-      scrollToAboutTop("instant");
+      // Wait for the reveal to mount, then scroll its first line to the panel
+      // top so the story visibly replaces the summary instead of appearing
+      // below it.
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          scrollToAboutTop("smooth");
+          scrollToAboutStory("smooth");
         });
       });
     }
@@ -232,7 +245,7 @@ export function About() {
           aria-hidden={!isDetailsVisible}
           inert={!isDetailsVisible}
         >
-          <div className="about-panel__clip">
+          <div ref={aboutStoryClipRef} className="about-panel__clip">
             <div
               key={isExpanded ? "about-story-open" : "about-story-closed"}
               className="about-panel__full-story"
