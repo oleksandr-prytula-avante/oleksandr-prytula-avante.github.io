@@ -30,7 +30,11 @@ export function About() {
       const panel = aboutPanelRef.current;
 
       if (panel) {
-        panel.scrollTo({ top: 0, behavior: "smooth" });
+        if (panel.scrollHeight > panel.clientHeight) {
+          panel.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          panel.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
         return;
       }
 

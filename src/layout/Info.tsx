@@ -213,7 +213,7 @@ export function Info(props: InfoProps) {
             </TypingText>
           </p>
           <a
-            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
+            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]"
             href={CV_PATH}
             target="_blank"
             rel="noreferrer"
@@ -269,7 +269,7 @@ export function Info(props: InfoProps) {
         </h1>
       </div>
 
-      <p className="mt-6 shrink-0 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[768px]:text-[1.458rem]">
+      <p className="mt-6 shrink-0 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.125rem]">
         <TypingText text={roleText}>
           {roleText.slice(0, visibleRoleChars)}
           {roleTypingCursor}

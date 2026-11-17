@@ -194,6 +194,14 @@
 }
 
 @media (max-width: 640px) {
+  .summary-code {
+    display: none;
+  }
+
+  .about-panel {
+    padding-top: 0;
+  }
+
   .summary-code__header {
     padding: 12px 14px;
   }
