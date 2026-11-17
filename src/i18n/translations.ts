@@ -87,11 +87,39 @@ const EN_TRANSLATIONS: Translations = {
     "Architecture, implementation, testing & delivery",
   [ETranslationKey.AboutEducation]: "Master’s Degree in Software Engineering",
   [ETranslationKey.AboutParagraph1]:
-    "I am a Full-Stack Software Engineer with over ten years of experience in different domains across E-Learning, E-Commerce, Marketplaces, Trading, Insurance, and Healthcare. My background encompasses projects of varying scale, including work in startup environments and outstaffing engagements. This breadth of experience has strengthened my ability to adapt to diverse team structures, engineering practices, and evolving business priorities while maintaining a consistent focus on software quality and delivering solutions that meet business needs.",
+    "I am a Full-Stack Software Engineer with over ten years of experience across e-learning, e-commerce, marketplaces, trading, insurance, and healthcare. My background spans product development, startups, outsourcing, and outstaffing engagements. This range of experience has strengthened my ability to adapt to different team structures, engineering practices, and changing business priorities while maintaining a consistent focus on quality and practical delivery.",
   [ETranslationKey.AboutParagraph3]:
-    "Throughout my career, I have worked in engineering teams ranging from 3 to 20 members, frequently within international and distributed environments. English is my primary working language for technical discussions and client communication. I am accustomed to working across teams, clarifying business requirements, and communicating technical considerations to both engineering colleagues and non-technical stakeholders. I also mentor junior developers, providing technical guidance, sharing knowledge, and supporting their professional development.",
+    "Throughout my career, I have worked in engineering teams ranging from 3 to 20 members, often in international and distributed environments. English is my primary working language for technical discussions and client communication. I am comfortable clarifying business requirements and translating technical considerations into practical decisions for both engineering colleagues and non-technical stakeholders.",
   [ETranslationKey.AboutParagraph4]:
-    "I hold a master’s degree in Software Engineering, which provided a solid foundation in software architecture, secure coding practices, algorithms, and systems thinking. I continue to expand my expertise by solving algorithmic problems on LeetCode, practicing system design, taking professional courses, pursuing certifications, and studying technical literature.",
+    "I hold a master’s degree in Software Engineering, which gave me a solid foundation in software architecture, secure coding practices, algorithms, and systems thinking. I continue to develop through algorithmic problem-solving on LeetCode, system design practice, professional courses, certifications, and technical literature.",
+  [ETranslationKey.AboutProfileTitle]: "Professional Profile",
+  [ETranslationKey.AboutLargeScaleTitle]: "Large-Scale Platform Development",
+  [ETranslationKey.AboutLargeScaleText]:
+    "I developed and maintained key functionality for large-scale, production-grade web platforms serving hundreds of companies and thousands of users across international markets, with a particular focus on products used in Germany.",
+  [ETranslationKey.AboutInteractiveTitle]:
+    "Interactive Systems and Integrations",
+  [ETranslationKey.AboutInteractiveText]:
+    "I designed and implemented complex interactive systems, including in-browser editors, streaming solutions, and data-driven dashboards. I also integrated e-learning standards, third-party APIs, and AI-powered features, ensuring compatibility with external platforms while prioritizing usability, performance, and extensibility.",
+  [ETranslationKey.AboutStakeholderTitle]: "Stakeholder Collaboration",
+  [ETranslationKey.AboutStakeholderText]:
+    "I developed and enhanced enterprise-grade applications in close collaboration with product managers, designers, QA specialists, and DevOps engineers. I also worked directly with business stakeholders and international partners to clarify requirements and align technical implementation with product objectives.",
+  [ETranslationKey.AboutQualityTitle]: "Quality and Release Reliability",
+  [ETranslationKey.AboutQualityText]:
+    "I improved product quality and release reliability by expanding automated test coverage and integrating tests into continuous integration and deployment pipelines. These efforts helped detect regressions earlier and made the release process more stable and predictable.",
+  [ETranslationKey.AboutMentoringTitle]: "Mentoring",
+  [ETranslationKey.AboutMentoringText]:
+    "I mentored junior developers, supported onboarding, and promoted engineering best practices to strengthen code quality and professional growth. Through code reviews and practical technical guidance, I helped colleagues evaluate implementation approaches and build confidence in solving complex engineering problems.",
+  [ETranslationKey.AboutEducationTitle]: "Education and Continuous Learning",
+  [ETranslationKey.AboutCareerTitle]: "Career Direction",
+  [ETranslationKey.AboutCareerText]:
+    "I am looking for a role where I can contribute to production-grade systems, participate in technical decision-making, and deepen my expertise through challenging work. I value clear agreements, reliable communication, and compensation paid on time according to the agreed terms.",
+  [ETranslationKey.AboutTechnicalFocusTitle]:
+    "Technical Focus and Engineering Approach",
+  [ETranslationKey.AboutTechnicalFocusText]:
+    "I prefer working with a modern technology stack, but I am also comfortable maintaining, refactoring, and modernizing legacy systems. I value clear business objectives, transparent communication, realistic timelines, and a collaborative culture that encourages knowledge sharing. My approach balances code quality and long-term maintainability with a pragmatic focus on delivery.",
+  [ETranslationKey.AboutProjectPreferencesTitle]: "Project Preferences",
+  [ETranslationKey.AboutProjectPreferencesText]:
+    "I have a strong background in product companies and particularly value working with a team to develop and refine a product over time. Long-term engagements are my preference, but I am also open to medium-term and one-off projects, including outsourcing and outstaffing opportunities as an individual contributor.",
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]:

@@ -20,6 +20,11 @@ type SummaryLine = {
   indent?: number;
 };
 
+type StoryBlock = {
+  titleKey: ETranslationKey;
+  bodyKey: ETranslationKey;
+};
+
 export function About() {
   const i18n = useI18n();
   const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
@@ -74,6 +79,48 @@ export function About() {
     education: i18n.t(ETranslationKey.AboutEducation),
     communication: i18n.t(ETranslationKey.AboutCommunication),
   };
+  const storyBlocks: StoryBlock[] = [
+    {
+      titleKey: ETranslationKey.AboutProfileTitle,
+      bodyKey: ETranslationKey.AboutParagraph1,
+    },
+    {
+      titleKey: ETranslationKey.AboutLargeScaleTitle,
+      bodyKey: ETranslationKey.AboutLargeScaleText,
+    },
+    {
+      titleKey: ETranslationKey.AboutInteractiveTitle,
+      bodyKey: ETranslationKey.AboutInteractiveText,
+    },
+    {
+      titleKey: ETranslationKey.AboutStakeholderTitle,
+      bodyKey: ETranslationKey.AboutStakeholderText,
+    },
+    {
+      titleKey: ETranslationKey.AboutQualityTitle,
+      bodyKey: ETranslationKey.AboutQualityText,
+    },
+    {
+      titleKey: ETranslationKey.AboutMentoringTitle,
+      bodyKey: ETranslationKey.AboutMentoringText,
+    },
+    {
+      titleKey: ETranslationKey.AboutEducationTitle,
+      bodyKey: ETranslationKey.AboutParagraph4,
+    },
+    {
+      titleKey: ETranslationKey.AboutCareerTitle,
+      bodyKey: ETranslationKey.AboutCareerText,
+    },
+    {
+      titleKey: ETranslationKey.AboutTechnicalFocusTitle,
+      bodyKey: ETranslationKey.AboutTechnicalFocusText,
+    },
+    {
+      titleKey: ETranslationKey.AboutProjectPreferencesTitle,
+      bodyKey: ETranslationKey.AboutProjectPreferencesText,
+    },
+  ];
   const lines: SummaryLine[] = [
     {
       content: (
@@ -179,12 +226,11 @@ export function About() {
         >
           <div className="about-panel__clip">
             <div className="about-panel__full-story">
-              {[
-                ETranslationKey.AboutParagraph1,
-                ETranslationKey.AboutParagraph3,
-                ETranslationKey.AboutParagraph4,
-              ].map((key) => (
-                <p key={key}>{i18n.t(key)}</p>
+              {storyBlocks.map(({ titleKey, bodyKey }) => (
+                <section className="about-panel__story-block" key={titleKey}>
+                  <h3>{i18n.t(titleKey)}</h3>
+                  <p>{i18n.t(bodyKey)}</p>
+                </section>
               ))}
             </div>
           </div>

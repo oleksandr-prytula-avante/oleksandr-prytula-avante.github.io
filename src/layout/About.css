@@ -175,6 +175,23 @@
   margin: 0;
 }
 
+.about-panel__story-block {
+  display: grid;
+  gap: 6px;
+}
+
+.about-panel__story-block h3,
+.about-panel__story-block p {
+  margin: 0;
+}
+
+.about-panel__story-block h3 {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .about-panel__reveal[data-expanded="true"] .about-panel__full-story {
   opacity: 1;
   transform: translateY(0);
