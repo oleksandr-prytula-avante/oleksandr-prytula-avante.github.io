@@ -8,6 +8,8 @@ import {
 } from "react";
 
 import { TimelineExpandIcon } from "../components/icons/TimelineExpandIcon";
+import { ABOUT_REVEAL_SCROLL_FALLBACK_MS } from "../constants/animations";
+import { ABOUT_STORY_BLOCKS } from "../constants/about";
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../constants/mediaQueries";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useI18n } from "../hooks/useI18n";
@@ -18,11 +20,6 @@ import "./About.css";
 type SummaryLine = {
   content: ReactNode;
   indent?: number;
-};
-
-type StoryBlock = {
-  titleKey: ETranslationKey;
-  bodyKey: ETranslationKey;
 };
 
 export function About() {
@@ -76,7 +73,10 @@ export function About() {
     }
 
     reveal?.addEventListener("transitionend", handleRevealTransitionEnd);
-    scrollTimeout = window.setTimeout(scrollAfterReveal, 420);
+    scrollTimeout = window.setTimeout(
+      scrollAfterReveal,
+      ABOUT_REVEAL_SCROLL_FALLBACK_MS,
+    );
 
     return () => {
       reveal?.removeEventListener("transitionend", handleRevealTransitionEnd);
@@ -101,48 +101,6 @@ export function About() {
     education: i18n.t(ETranslationKey.AboutEducation),
     communication: i18n.t(ETranslationKey.AboutCommunication),
   };
-  const storyBlocks: StoryBlock[] = [
-    {
-      titleKey: ETranslationKey.AboutProfileTitle,
-      bodyKey: ETranslationKey.AboutParagraph1,
-    },
-    {
-      titleKey: ETranslationKey.AboutLargeScaleTitle,
-      bodyKey: ETranslationKey.AboutLargeScaleText,
-    },
-    {
-      titleKey: ETranslationKey.AboutInteractiveTitle,
-      bodyKey: ETranslationKey.AboutInteractiveText,
-    },
-    {
-      titleKey: ETranslationKey.AboutStakeholderTitle,
-      bodyKey: ETranslationKey.AboutStakeholderText,
-    },
-    {
-      titleKey: ETranslationKey.AboutQualityTitle,
-      bodyKey: ETranslationKey.AboutQualityText,
-    },
-    {
-      titleKey: ETranslationKey.AboutMentoringTitle,
-      bodyKey: ETranslationKey.AboutMentoringText,
-    },
-    {
-      titleKey: ETranslationKey.AboutEducationTitle,
-      bodyKey: ETranslationKey.AboutParagraph4,
-    },
-    {
-      titleKey: ETranslationKey.AboutCareerTitle,
-      bodyKey: ETranslationKey.AboutCareerText,
-    },
-    {
-      titleKey: ETranslationKey.AboutTechnicalFocusTitle,
-      bodyKey: ETranslationKey.AboutTechnicalFocusText,
-    },
-    {
-      titleKey: ETranslationKey.AboutProjectPreferencesTitle,
-      bodyKey: ETranslationKey.AboutProjectPreferencesText,
-    },
-  ];
   const lines: SummaryLine[] = [
     {
       content: (
@@ -256,7 +214,7 @@ export function About() {
               key={isExpanded ? "about-story-open" : "about-story-closed"}
               className="about-panel__full-story"
             >
-              {storyBlocks.map(({ titleKey, bodyKey }) => (
+              {ABOUT_STORY_BLOCKS.map(({ titleKey, bodyKey }) => (
                 <section className="about-panel__story-block" key={titleKey}>
                   <h3>{i18n.t(titleKey)}</h3>
                   <p>{i18n.t(bodyKey)}</p>

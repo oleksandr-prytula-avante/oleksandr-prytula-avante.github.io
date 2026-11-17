@@ -1,6 +1,5 @@
 import mountainMistPath from "../components/illustrations/assets/mountain-mist.svg";
 import nightSkyPath from "../components/illustrations/assets/night-sky.svg";
-import orbitalAvatarPath from "../components/illustrations/assets/orbital-avatar.svg";
 import portfolioMarkPath from "../components/illustrations/assets/portfolio-mark.svg";
 import skyUfoPath from "../components/illustrations/assets/sky-ufo.svg";
 
@@ -53,7 +52,6 @@ export const PROJECT_SCREENSHOT_PATHS = {
 export const SVG_ASSET_PATHS = {
   mountainMist: mountainMistPath,
   nightSky: nightSkyPath,
-  orbitalAvatar: orbitalAvatarPath,
   portfolioMark: portfolioMarkPath,
   skyUfo: skyUfoPath,
 } as const;

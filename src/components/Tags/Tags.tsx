@@ -10,6 +10,7 @@ import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries"
 import {
   TAG_REVEAL_STAGGER_MS,
   TAG_REVEAL_DURATION_MS,
+  TAG_SCROLL_BOTTOM_INSET_PX,
 } from "../../constants/animations";
 import { Tag } from "./Tag";
 import type { SkillInteractionProps } from "../types/skills";
@@ -123,8 +124,8 @@ export function Tags(props: TagsProps) {
 
         const listRect = tagsList.getBoundingClientRect();
         const tagRect = tagElement.getBoundingClientRect();
-        const bottomInset = 8;
-        const scrollDelta = tagRect.bottom - (listRect.bottom - bottomInset);
+        const scrollDelta =
+          tagRect.bottom - (listRect.bottom - TAG_SCROLL_BOTTOM_INSET_PX);
 
         if (scrollDelta > 0) {
           tagsList.scrollBy({ top: scrollDelta, behavior: "smooth" });
