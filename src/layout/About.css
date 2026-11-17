@@ -4,6 +4,7 @@
   overflow-y: auto;
   padding-top: 16px;
   padding-right: 8px;
+  scroll-behavior: smooth;
   scrollbar-gutter: stable;
   color: white;
 }
@@ -162,7 +163,8 @@
 .about-panel__full-story {
   display: grid;
   gap: 20px;
-  max-width: 64ch;
+  width: 100%;
+  max-width: none;
   padding-block: 12px 24px;
   color: white;
   font-size: 14px;

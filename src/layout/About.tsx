@@ -21,11 +21,19 @@ export function About() {
   const i18n = useI18n();
   const [isExpanded, setIsExpanded] = useState(false);
   const detailsId = useId();
+  const aboutPanelRef = useRef<HTMLElement | null>(null);
   const summaryRef = useRef<HTMLDivElement | null>(null);
 
   function handleToggle() {
     setIsExpanded((current) => !current);
     requestAnimationFrame(() => {
+      const panel = aboutPanelRef.current;
+
+      if (panel) {
+        panel.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
       summaryRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -102,7 +110,7 @@ export function About() {
   lines.push({ content: "};" });
 
   return (
-    <article className="about-panel">
+    <article ref={aboutPanelRef} className="about-panel">
       <div ref={summaryRef} className="summary-code">
         <div className="summary-code__header" aria-hidden="true">
           <span className="summary-code__file">#Profile</span>
