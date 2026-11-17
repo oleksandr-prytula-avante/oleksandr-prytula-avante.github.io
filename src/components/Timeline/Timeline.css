@@ -112,7 +112,14 @@
 }
 
 .timeline-item__header {
+  width: 100%;
   gap: 8px;
+}
+
+.timeline-item__content,
+.timeline-item__details {
+  width: 100%;
+  max-width: none;
 }
 
 .timeline-item__role-group {

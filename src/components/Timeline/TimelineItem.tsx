@@ -170,7 +170,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     expandedContent = (
       <div
         id={descriptionId}
-        className="timeline-item__details min-h-0 flex-1 overflow-y-auto pr-3 [scrollbar-gutter:stable] max-[1024px]:overflow-visible max-[1024px]:pr-0"
+        className="timeline-item__details min-h-0 flex-1 overflow-y-auto [scrollbar-gutter:stable] max-[1024px]:overflow-visible"
       >
         {localizedHighlightsList}
         {DetailsComponent && <DetailsComponent item={item} />}
