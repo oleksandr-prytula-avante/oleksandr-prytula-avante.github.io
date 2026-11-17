@@ -5,7 +5,7 @@ import { ESection, toSectionHash } from "../../utils/sections";
 import { EducationCompanyRow } from "./EducationCompanyRow";
 import { EducationDegreeRow } from "./EducationDegreeRow";
 import { EducationStatusRow } from "./EducationStatusRow";
-import type { SkillInteractionProps } from "../../types/skills";
+import type { SkillInteractionProps } from "../../components/types/skills";
 
 export function Education(props: SkillInteractionProps) {
   return (

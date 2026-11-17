@@ -16,10 +16,7 @@ import {
   TIMELINE_FIRST_ITEM_INDEX,
 } from "../../constants/timeline";
 import { TimelineItem } from "./TimelineItem";
-import type {
-  TimelineDataItem,
-  TimelineContentProps,
-} from "../../types/timeline";
+import type { TimelineContentProps, TimelineDataItem } from "./types";
 
 import "./Timeline.css";
 

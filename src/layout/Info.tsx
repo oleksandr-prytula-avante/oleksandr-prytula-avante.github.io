@@ -31,7 +31,7 @@ import {
   NAME_TYPING_START_DELAY_MS,
   NEED_MORE_DETAILS_START_DELAY_MS,
 } from "../constants/hero";
-import type { SkillInteractionProps } from "../types/skills";
+import type { SkillInteractionProps } from "../components/types/skills";
 
 type InfoProps = SkillInteractionProps & {
   hoveredSkill?: string | null;

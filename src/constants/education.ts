@@ -3,7 +3,10 @@ import duetLogoUrl from "../assets/images/companies/duet.webp";
 import knuLogoUrl from "../assets/images/companies/knu.webp";
 import { EEducation } from "../enums/education";
 import { ETranslationKey } from "../i18n/types";
-import type { DatedTimelineItem, TimelineTextKeys } from "../types/timeline";
+import type {
+  DatedTimelineItem,
+  TimelineTextKeys,
+} from "../components/Timeline/types";
 
 export { EEducation } from "../enums/education";
 

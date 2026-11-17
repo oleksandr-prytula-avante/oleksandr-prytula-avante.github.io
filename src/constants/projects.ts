@@ -23,7 +23,7 @@ import playerControls from "../assets/images/projects/omnora-authoring/player-co
 import securityProfiles from "../assets/images/projects/omnora-authoring/security-profiles.webp";
 import avatarSelection from "../assets/images/projects/omnora-authoring/avatar-selection.webp";
 import slideEditing from "../assets/images/projects/omnora-authoring/slide-editing.webp";
-import type { TimelineDataItem } from "../types/timeline";
+import type { TimelineDataItem } from "../components/Timeline/types";
 import { ETranslationKey } from "../i18n/types";
 import { OMNORA_TECHNOLOGY_TAGS } from "./experience";
 

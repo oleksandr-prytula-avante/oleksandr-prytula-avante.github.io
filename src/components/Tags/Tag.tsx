@@ -1,5 +1,5 @@
 import { SKILL_HREF_BY_LABEL } from "../../constants/skillTags";
-import type { SkillInteractionProps } from "../../types/skills";
+import type { SkillInteractionProps } from "../types/skills";
 
 type TagProps = {
   label: string;

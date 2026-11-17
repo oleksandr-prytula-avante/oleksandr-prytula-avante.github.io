@@ -3,7 +3,7 @@ import {
   SKILL_REGEX,
   TERM_TO_TAG_MAP,
 } from "../constants/skillTags";
-import type { SkillInteractionProps } from "../types/skills";
+import type { SkillInteractionProps } from "./types/skills";
 
 type SkillHighlightsProps = SkillInteractionProps & {
   value: string;

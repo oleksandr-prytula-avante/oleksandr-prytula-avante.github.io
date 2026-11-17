@@ -12,7 +12,7 @@ import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
 import { Info } from "../Info";
 import { Projects } from "../Projects/Projects";
-import type { SkillInteractionProps } from "../../types/skills";
+import type { SkillInteractionProps } from "../../components/types/skills";
 import { getSectionRevealClassName } from "../../utils/sectionReveal";
 
 import "./Main.css";

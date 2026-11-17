@@ -10,7 +10,7 @@ import {
   TAG_REVEAL_DURATION_MS,
 } from "../../constants/animations";
 import { Tag } from "./Tag";
-import type { SkillInteractionProps } from "../../types/skills";
+import type { SkillInteractionProps } from "../types/skills";
 
 import "./Tags.css";
 

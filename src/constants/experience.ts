@@ -4,7 +4,10 @@ import lanarsLogo from "../assets/images/companies/lanars.webp";
 import omnoraLogo from "../assets/images/companies/omnora.webp";
 import { EExperience } from "../enums/experience";
 import { ETranslationKey } from "../i18n/types";
-import type { DatedTimelineItem, TimelineTextKeys } from "../types/timeline";
+import type {
+  DatedTimelineItem,
+  TimelineTextKeys,
+} from "../components/Timeline/types";
 import type { SkillTagLabel } from "./skillTags";
 
 export { EExperience } from "../enums/experience";

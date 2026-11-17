@@ -1,8 +1,8 @@
 import type { ComponentType } from "react";
 
-import type { SkillTagLabel } from "../constants/skillTags";
-import type { ETranslationKey } from "../i18n/types";
-import type { SkillInteractionProps } from "./skills";
+import type { SkillTagLabel } from "../../constants/skillTags";
+import type { ETranslationKey } from "../../i18n/types";
+import type { SkillInteractionProps } from "../types/skills";
 
 export type TimelineTextKeys = {
   name: ETranslationKey;

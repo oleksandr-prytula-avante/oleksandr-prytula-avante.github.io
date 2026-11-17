@@ -1,8 +1,5 @@
 import { useId, type CSSProperties } from "react";
-import type {
-  TimelineDataItem,
-  TimelineContentProps,
-} from "../../types/timeline";
+import type { TimelineContentProps, TimelineDataItem } from "./types";
 
 import { COMMON_SKILL_TAG_SET } from "../../constants/skillTags";
 import {

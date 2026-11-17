@@ -1,6 +1,6 @@
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
-import type { DatedTimelineItem } from "../../types/timeline";
+import type { DatedTimelineItem } from "./types";
 import { buildPeriodLabel } from "../../utils/time";
 import { PipeSeparator } from "../PipeSeparator";
 

@@ -4,7 +4,7 @@ import { ESection, toSectionHash } from "../../utils/sections";
 import { ExperienceCompanyRow } from "./ExperienceCompanyRow";
 import { ExperienceJobRow } from "./ExperienceJobRow";
 import { ExperienceLocationRow } from "./ExperienceLocationRow";
-import type { SkillInteractionProps } from "../../types/skills";
+import type { SkillInteractionProps } from "../../components/types/skills";
 
 export function Experience(props: SkillInteractionProps) {
   return (

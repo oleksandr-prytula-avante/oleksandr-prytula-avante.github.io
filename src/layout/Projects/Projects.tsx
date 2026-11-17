@@ -5,7 +5,7 @@ import { ProjectGallery } from "./ProjectGallery";
 import { ProjectCategoryRow } from "./ProjectCategoryRow";
 import { ProjectNameRow } from "./ProjectNameRow";
 import { ProjectScreenshotsRow } from "./ProjectScreenshotsRow";
-import type { SkillInteractionProps } from "../../types/skills";
+import type { SkillInteractionProps } from "../../components/types/skills";
 
 export function Projects(props: SkillInteractionProps) {
   return (
