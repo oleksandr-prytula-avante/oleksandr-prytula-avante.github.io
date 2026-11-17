@@ -1,12 +1,8 @@
-import * as React from "react";
-
 type GmailIconProps = {
   isLarge?: boolean;
 };
 
-export function GmailIcon({
-  isLarge = false,
-}: GmailIconProps): React.ReactElement {
+export function GmailIcon({ isLarge = false }: GmailIconProps) {
   const className = isLarge ? "h-8 w-8" : "h-6 w-6";
 
   return (

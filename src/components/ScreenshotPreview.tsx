@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 import type { ProjectTimelineItem } from "../constants/projects";
 import { useI18n } from "../hooks/useI18n";
@@ -57,7 +57,7 @@ export function ScreenshotPreview({
     selectScreenshot(currentIndex + direction);
   }
 
-  function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {
+  function handlePointerDown(event: PointerEvent<HTMLDivElement>) {
     if (!event.isPrimary || event.button !== 0) return;
     if (event.pointerType === "mouse" && !isZoomed) return;
     const viewport = event.currentTarget;
@@ -73,14 +73,14 @@ export function ScreenshotPreview({
     }
   }
 
-  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
+  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
     const gesture = gestureRef.current;
     if (!gesture || !isZoomed || event.pointerType !== "mouse") return;
     event.currentTarget.scrollLeft = gesture.left + gesture.x - event.clientX;
     event.currentTarget.scrollTop = gesture.top + gesture.y - event.clientY;
   }
 
-  function handlePointerUp(event: React.PointerEvent<HTMLDivElement>) {
+  function handlePointerUp(event: PointerEvent<HTMLDivElement>) {
     const gesture = gestureRef.current;
     gestureRef.current = null;
     if (!gesture || isZoomed || !hasNavigation || event.pointerType !== "touch")

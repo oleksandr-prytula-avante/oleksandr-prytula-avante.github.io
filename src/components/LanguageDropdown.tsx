@@ -1,4 +1,10 @@
-import { useEffect, useMemo } from "react";
+import {
+  useEffect,
+  useMemo,
+  type FocusEvent,
+  type MouseEvent,
+  type PointerEvent,
+} from "react";
 
 import { useI18n } from "../hooks/useI18n";
 import { useDropdownMenu } from "../hooks/useDropdownMenu";
@@ -26,9 +32,7 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
     languageMenu.close();
   }
 
-  function handleLanguageMenuToggle(
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) {
+  function handleLanguageMenuToggle(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
 
     if (isDisabled) {
@@ -46,25 +50,25 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
     languageMenu.toggle();
   }
 
-  function handlePointerEnter(event: React.PointerEvent<HTMLDivElement>) {
+  function handlePointerEnter(event: PointerEvent<HTMLDivElement>) {
     if (!isDisabled && event.pointerType === "mouse") {
       languageMenu.open();
     }
   }
 
-  function handlePointerLeave(event: React.PointerEvent<HTMLDivElement>) {
+  function handlePointerLeave(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType === "mouse") {
       languageMenu.close();
     }
   }
 
-  function handleBlur(event: React.FocusEvent<HTMLDivElement>) {
+  function handleBlur(event: FocusEvent<HTMLDivElement>) {
     if (!event.currentTarget.contains(event.relatedTarget)) {
       languageMenu.close();
     }
   }
 
-  function handleLocaleOptionClick(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleLocaleOptionClick(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
 
     if (isDisabled) {

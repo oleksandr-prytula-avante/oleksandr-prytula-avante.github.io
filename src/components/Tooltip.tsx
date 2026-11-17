@@ -1,11 +1,11 @@
-import * as React from "react";
+import type { ReactNode } from "react";
 
 type TooltipProps = {
   content: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-export function Tooltip(props: TooltipProps): React.ReactElement {
+export function Tooltip(props: TooltipProps) {
   const { content, children } = props;
 
   return (

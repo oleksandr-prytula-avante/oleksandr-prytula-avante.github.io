@@ -1,12 +1,8 @@
-import * as React from "react";
-
 type LeetCodeIconProps = {
   isLarge?: boolean;
 };
 
-export function LeetCodeIcon({
-  isLarge = false,
-}: LeetCodeIconProps): React.ReactElement {
+export function LeetCodeIcon({ isLarge = false }: LeetCodeIconProps) {
   const className = isLarge ? "h-8 w-8" : "h-6 w-6";
 
   return (

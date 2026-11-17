@@ -1,6 +1,4 @@
-import * as React from "react";
-
-export function CloseIcon(): React.ReactElement {
+export function CloseIcon() {
   return (
     <svg
       aria-hidden="true"

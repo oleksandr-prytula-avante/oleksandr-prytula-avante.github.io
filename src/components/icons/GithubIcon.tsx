@@ -1,12 +1,8 @@
-import * as React from "react";
-
 type GithubIconProps = {
   isLarge?: boolean;
 };
 
-export function GithubIcon({
-  isLarge = false,
-}: GithubIconProps): React.ReactElement {
+export function GithubIcon({ isLarge = false }: GithubIconProps) {
   const className = isLarge ? "h-8 w-8" : "h-6 w-6";
 
   return (

@@ -1,6 +1,4 @@
-import * as React from "react";
-
-export function ChevronRightIcon(): React.ReactElement {
+export function ChevronRightIcon() {
   return (
     <svg
       aria-hidden="true"

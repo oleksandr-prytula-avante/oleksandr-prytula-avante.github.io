@@ -1,12 +1,8 @@
-import * as React from "react";
-
 type LinkedInIconProps = {
   isLarge?: boolean;
 };
 
-export function LinkedInIcon({
-  isLarge = false,
-}: LinkedInIconProps): React.ReactElement {
+export function LinkedInIcon({ isLarge = false }: LinkedInIconProps) {
   const className = isLarge ? "h-8 w-8" : "h-6 w-6";
 
   return (
