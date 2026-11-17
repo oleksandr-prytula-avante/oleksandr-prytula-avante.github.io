@@ -114,7 +114,21 @@ export function Tags(props: TagsProps) {
         }
 
         const nextRowTop = nextTag.offsetTop;
-        const shouldScroll = isScrollable();
+        const nextRowElements = getRowElements(nextRowTop);
+        const nextRowBottom = nextRowElements.reduce(function (
+          bottom,
+          tagElement,
+        ) {
+          return Math.max(
+            bottom,
+            tagElement.offsetTop + tagElement.offsetHeight,
+          );
+        }, nextRowTop);
+        const visibleBottom =
+          tagsContainer.scrollTop +
+          tagsContainer.clientHeight -
+          TAG_SCROLL_BOTTOM_INSET_PX;
+        const shouldScroll = isScrollable() && nextRowBottom > visibleBottom;
 
         if (shouldScroll) {
           const maxScrollTop = Math.max(

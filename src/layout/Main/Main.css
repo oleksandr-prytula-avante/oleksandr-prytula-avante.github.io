@@ -167,6 +167,13 @@
   }
 }
 
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .night-sky__image {
+    transform: translateX(clamp(72px, 12vw, 168px));
+    opacity: 0.72;
+  }
+}
+
 @media (min-width: 1025px) and (max-height: 800px) {
   .resume-content {
     padding-bottom: 32px;
