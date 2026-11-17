@@ -194,6 +194,10 @@
 }
 
 @media (max-width: 1024px) {
+  .summary-code {
+    display: none;
+  }
+
   .about-panel {
     height: auto;
     overflow: visible;
@@ -220,10 +224,6 @@
 }
 
 @media (max-width: 640px) {
-  .summary-code {
-    display: none;
-  }
-
   .about-panel {
     padding-top: 0;
   }
