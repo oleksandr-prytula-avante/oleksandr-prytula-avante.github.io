@@ -178,7 +178,6 @@
 .timeline-item__highlights {
   display: grid;
   gap: 16px;
-  max-width: 68ch;
 }
 
 .timeline-item__bullet {
