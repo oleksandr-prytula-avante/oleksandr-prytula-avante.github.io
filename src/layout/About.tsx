@@ -159,7 +159,7 @@ export function About() {
     const property = <span className="summary-code__property">{key}</span>;
     if (Array.isArray(value)) {
       lines.push({
-        indent: 2,
+        indent: 1,
         content: (
           <>
             {property}
@@ -169,7 +169,7 @@ export function About() {
       });
       for (const entry of value) {
         lines.push({
-          indent: 4,
+          indent: 2,
           content: (
             <>
               <span className="summary-code__string">
@@ -180,7 +180,7 @@ export function About() {
           ),
         });
       }
-      lines.push({ indent: 2, content: "]," });
+      lines.push({ indent: 1, content: "]," });
     } else {
       lines.push({
         indent: 2,
@@ -211,13 +211,17 @@ export function About() {
               <span
                 className="summary-code__line"
                 key={index}
-                style={{ "--code-indent": `${indent}ch` } as CSSProperties}
+                style={
+                  {
+                    "--code-indent": `${indent * 2}ch`,
+                  } as CSSProperties
+                }
               >
                 <span className="summary-code__number" aria-hidden="true">
                   {index + 1}
                 </span>
                 <span className="summary-code__text">
-                  {" ".repeat(indent)}
+                  {"\t".repeat(indent)}
                   {content}
                   {index < lines.length - 1 ? "\n" : ""}
                 </span>
