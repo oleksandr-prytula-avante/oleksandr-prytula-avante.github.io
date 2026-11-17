@@ -32,20 +32,13 @@ export function About() {
   const isDetailsVisible = !isDesktopViewport || isExpanded;
   const detailsId = useId();
   const aboutPanelRef = useRef<HTMLElement | null>(null);
-  const summaryRef = useRef<HTMLDivElement | null>(null);
 
-  function scrollToAboutTop() {
+  function scrollToAboutTop(behavior: ScrollBehavior = "smooth") {
     const panel = aboutPanelRef.current;
 
     if (panel) {
-      panel.scrollTo({ top: 0, behavior: "smooth" });
+      panel.scrollTo({ top: 0, behavior });
     }
-
-    summaryRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
   }
 
   useEffect(() => {
@@ -55,7 +48,9 @@ export function About() {
 
     let secondFrame = 0;
     const frame = requestAnimationFrame(() => {
-      secondFrame = requestAnimationFrame(scrollToAboutTop);
+      secondFrame = requestAnimationFrame(function () {
+        scrollToAboutTop("smooth");
+      });
     });
 
     return () => {
@@ -69,10 +64,14 @@ export function About() {
     setIsExpanded(nextExpanded);
 
     if (nextExpanded) {
-      // Reset the internal About scroller immediately on click. The effect
-      // below repeats this after the reveal has mounted so the motion is
-      // reliable even when the panel was already scrolled down.
-      scrollToAboutTop();
+      // Reset the internal About scroller immediately, then repeat after the
+      // reveal has mounted so the animation always starts at the panel top.
+      scrollToAboutTop("instant");
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          scrollToAboutTop("smooth");
+        });
+      });
     }
   }
   const summary = {
@@ -188,7 +187,7 @@ export function About() {
 
   return (
     <article ref={aboutPanelRef} className="about-panel">
-      <div ref={summaryRef} className="summary-code">
+      <div className="summary-code">
         <div className="summary-code__header" aria-hidden="true">
           <span className="summary-code__file">#Profile</span>
         </div>
