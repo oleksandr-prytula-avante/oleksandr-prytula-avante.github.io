@@ -187,7 +187,7 @@ export function About() {
         content: (
           <>
             {property}
-            {": "}
+            {":  "}
             <span className="summary-code__string">
               {JSON.stringify(value)}
             </span>
