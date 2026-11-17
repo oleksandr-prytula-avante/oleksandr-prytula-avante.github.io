@@ -4,6 +4,7 @@ import {
   MENU_ICON_BUTTON_CLASS,
   MOBILE_HEADER_HORIZONTAL_PADDING_CLASS,
 } from "../constants/header";
+import { PORTFOLIO_MARK_PATH } from "../constants/assets";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
 import { ESection, toSectionHash } from "../utils/sections";
@@ -25,7 +26,7 @@ export function Header(props: HeaderProps) {
   const i18n = useI18n();
   const brandMark = (
     <img
-      src="/assets/images/portfolio-mark.svg"
+      src={PORTFOLIO_MARK_PATH}
       alt={`Per Aspera Ad Astra — ${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
       width={1828}
       height={448}

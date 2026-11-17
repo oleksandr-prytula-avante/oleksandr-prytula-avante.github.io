@@ -1,1 +1,1 @@
-export const CV_PATH = "/assets/pdf/cv.pdf";
+export { CV_ASSET_PATH as CV_PATH } from "./assets";

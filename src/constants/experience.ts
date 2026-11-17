@@ -1,7 +1,4 @@
-import codeAndCareLogo from "../assets/images/companies/code-and-care.webp";
-import digitalsuitsLogo from "../assets/images/companies/digitalsuits.webp";
-import lanarsLogo from "../assets/images/companies/lanars.webp";
-import omnoraLogo from "../assets/images/companies/omnora.webp";
+import { COMPANY_LOGO_PATHS } from "./assets";
 import { EExperience } from "../enums/experience";
 import { ETranslationKey } from "../i18n/types";
 import type {
@@ -74,7 +71,7 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
       ],
     },
     companyUrl: "https://www.omnora.com/",
-    companyLogoSrc: omnoraLogo,
+    companyLogoSrc: COMPANY_LOGO_PATHS.omnora,
     startDate: "2020-04",
     endDate: "2026-10",
     technologyTags: OMNORA_TECHNOLOGY_TAGS,
@@ -98,7 +95,7 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
       ],
     },
     companyUrl: "https://digitalsuits.co/",
-    companyLogoSrc: digitalsuitsLogo,
+    companyLogoSrc: COMPANY_LOGO_PATHS.digitalsuits,
     startDate: "2019-04",
     endDate: "2020-03",
     technologyTags: [
@@ -135,7 +132,7 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
       ],
     },
     companyUrl: "https://code-care.com/",
-    companyLogoSrc: codeAndCareLogo,
+    companyLogoSrc: COMPANY_LOGO_PATHS.codeAndCare,
     startDate: "2017-10",
     endDate: "2019-03",
     technologyTags: [
@@ -171,7 +168,7 @@ export const EXPERIENCE_TIMELINE_ITEMS: ExperienceTimelineItem[] = [
       ],
     },
     companyUrl: "https://lanars.com/",
-    companyLogoSrc: lanarsLogo,
+    companyLogoSrc: COMPANY_LOGO_PATHS.lanars,
     startDate: "2016-10",
     endDate: "2017-09",
     technologyTags: [

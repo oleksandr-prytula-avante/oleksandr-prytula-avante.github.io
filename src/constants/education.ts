@@ -1,6 +1,4 @@
-import binaryStudioLogoUrl from "../assets/images/companies/binary-studio.webp";
-import duetLogoUrl from "../assets/images/companies/duet.webp";
-import knuLogoUrl from "../assets/images/companies/knu.webp";
+import { COMPANY_LOGO_PATHS } from "./assets";
 import { EEducation } from "../enums/education";
 import { ETranslationKey } from "../i18n/types";
 import type {
@@ -33,7 +31,7 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
       ],
     },
     companyUrl: "https://www.duet.edu.ua/",
-    companyLogoSrc: duetLogoUrl,
+    companyLogoSrc: COMPANY_LOGO_PATHS.duet,
     startDate: "2022-09",
     endDate: "2024-01",
     technologyTags: [
@@ -76,7 +74,7 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
       ],
     },
     companyUrl: "https://academy.binary-studio.com/",
-    companyLogoSrc: binaryStudioLogoUrl,
+    companyLogoSrc: COMPANY_LOGO_PATHS.binaryStudio,
     startDate: "2016-07",
     endDate: "2016-09",
     technologyTags: [
@@ -109,7 +107,7 @@ export const EDUCATION_TIMELINE_ITEMS: EducationTimelineItem[] = [
       ],
     },
     companyUrl: "https://www.knu.edu.ua/",
-    companyLogoSrc: knuLogoUrl,
+    companyLogoSrc: COMPANY_LOGO_PATHS.knu,
     startDate: "2012-09",
     endDate: "2016-06",
     technologyTags: [
