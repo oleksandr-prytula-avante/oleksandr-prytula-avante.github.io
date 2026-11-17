@@ -19,9 +19,9 @@
   min-height: 0;
   flex-wrap: wrap;
   align-content: flex-start;
-  gap: 9px;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  gap: var(--space-control);
+  margin-top: var(--space-section);
+  margin-bottom: var(--space-control);
   padding: 4px;
   padding-bottom: 32px;
 }

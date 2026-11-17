@@ -198,14 +198,14 @@ export function Info(props: InfoProps) {
         />
 
         <div className="mt-6 flex shrink-0 flex-nowrap items-center justify-end gap-2 whitespace-nowrap min-[1025px]:mt-auto max-[1024px]:justify-start max-[639px]:gap-1">
-          <p className="shrink-0 text-[1.09375rem] uppercase leading-[1.4] text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[clamp(0.625rem,3.1vw,1rem)]">
+          <p className="shrink-0 text-base uppercase leading-[1.4] text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[clamp(0.625rem,3.1vw,1rem)]">
             <TypingText text={needMoreDetailsText}>
               {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
               {needMoreDetailsTypingCursor}
             </TypingText>
           </p>
           <a
-            className="inline-flex shrink-0 cursor-pointer items-center py-1 text-[1.09375rem] leading-[1.4] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[clamp(0.625rem,3.1vw,1rem)]"
+            className="inline-flex shrink-0 cursor-pointer items-center py-1 text-base leading-[1.4] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[clamp(0.625rem,3.1vw,1rem)]"
             href={CV_PATH}
             target="_blank"
             rel="noreferrer"

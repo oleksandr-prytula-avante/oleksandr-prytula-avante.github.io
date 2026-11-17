@@ -8,6 +8,13 @@
 }
 
 :root {
+  --font-size-caption: 0.6875rem;
+  --font-size-meta: 0.75rem;
+  --font-size-body: 0.875rem;
+  --font-size-title: 1rem;
+  --space-control: 8px;
+  --space-section: 16px;
+  --space-content: 24px;
   --color-control-text: rgb(255 255 255 / 58%);
   --color-accent-soft: #f1ac7e;
   --line-gradient-horizontal: linear-gradient(

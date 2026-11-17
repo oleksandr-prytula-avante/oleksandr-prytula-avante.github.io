@@ -25,7 +25,7 @@
   gap: 16px;
   padding: 14px 20px;
   border-bottom: 1px solid rgb(255 255 255 / 9%);
-  font-size: 12px;
+  font-size: var(--font-size-meta);
 }
 
 .summary-code__file {
@@ -112,7 +112,7 @@
   padding: 4px 9px;
   border: 1px solid rgb(255 255 255 / 16%);
   border-radius: 7px;
-  font-size: 11px;
+  font-size: var(--font-size-caption);
   line-height: 1.4;
   cursor: pointer;
   transition:
@@ -162,7 +162,7 @@
   max-width: none;
   padding: 20px clamp(12px, 2vw, 24px) 24px;
   color: white;
-  font-size: 14px;
+  font-size: var(--font-size-body);
   line-height: 1.8;
   text-wrap: pretty;
   opacity: 0;
@@ -192,7 +192,7 @@
   align-items: center;
   gap: 9px;
   color: var(--color-control-text);
-  font-size: 11px;
+  font-size: var(--font-size-caption);
   font-weight: 700;
   letter-spacing: 0.12em;
   line-height: 1.5;
