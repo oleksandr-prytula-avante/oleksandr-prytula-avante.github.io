@@ -1,4 +1,10 @@
-import { useId, useState, type CSSProperties, type ReactNode } from "react";
+import {
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 import { TimelineExpandIcon } from "../components/icons/TimelineExpandIcon";
 import { useI18n } from "../hooks/useI18n";
@@ -15,6 +21,17 @@ export function About() {
   const i18n = useI18n();
   const [isExpanded, setIsExpanded] = useState(false);
   const detailsId = useId();
+  const summaryRef = useRef<HTMLDivElement | null>(null);
+
+  function handleToggle() {
+    setIsExpanded((current) => !current);
+    requestAnimationFrame(() => {
+      summaryRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
   const summary = {
     name: "Oleksandr (Alex) Prytula",
     location: i18n.t(ETranslationKey.AboutLocation),
@@ -90,7 +107,7 @@ export function About() {
 
   return (
     <article className="about-panel">
-      <div className="summary-code">
+      <div ref={summaryRef} className="summary-code">
         <div className="summary-code__header" aria-hidden="true">
           <span className="summary-code__file">profile summary</span>
         </div>
@@ -122,7 +139,7 @@ export function About() {
             className="control-label about-panel__toggle"
             aria-expanded={isExpanded}
             aria-controls={detailsId}
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={handleToggle}
           >
             {i18n.t(ETranslationKey.AboutGetToKnow)}
             <TimelineExpandIcon isExpanded={isExpanded} />
