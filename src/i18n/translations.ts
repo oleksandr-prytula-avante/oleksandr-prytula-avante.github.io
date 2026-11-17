@@ -70,6 +70,14 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutCommunication]: "English — primary working language",
   [ETranslationKey.AboutLearning]:
     "System design, algorithms & continuous learning",
+  [ETranslationKey.AboutWorkStyle]: "Remote-first, international & distributed",
+  [ETranslationKey.AboutProjects]: "Startups, products & outstaffing",
+  [ETranslationKey.AboutScope]:
+    "Architecture, implementation, quality & technical leadership",
+  [ETranslationKey.AboutCollaboration]:
+    "Product, design, QA & DevOps collaboration",
+  [ETranslationKey.AboutMentoring]:
+    "Technical guidance and junior developer mentorship",
   [ETranslationKey.AboutDomains]:
     "E-learning, e-commerce, marketplaces, trading, insurance, healthcare",
   [ETranslationKey.AboutTeams]: "3–20 engineers, international & distributed",
@@ -282,6 +290,16 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutCommunication]: "Английский — основной рабочий язык",
   [ETranslationKey.AboutLearning]:
     "Системный дизайн, алгоритмы и постоянное развитие",
+  [ETranslationKey.AboutWorkStyle]:
+    "Удалённая работа, международные и распределённые команды",
+  [ETranslationKey.AboutProjects]:
+    "Стартапы, продуктовая разработка и аутстаффинг",
+  [ETranslationKey.AboutScope]:
+    "Архитектура, разработка, качество и техническое лидерство",
+  [ETranslationKey.AboutCollaboration]:
+    "Взаимодействие с product, design, QA и DevOps",
+  [ETranslationKey.AboutMentoring]:
+    "Техническое наставничество и развитие junior-разработчиков",
   [ETranslationKey.AboutDomains]:
     "Онлайн-обучение, e-commerce, маркетплейсы, трейдинг, страхование, медицина",
   [ETranslationKey.AboutTeams]:
@@ -492,6 +510,15 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutCommunication]: "Inglés — idioma principal de trabajo",
   [ETranslationKey.AboutLearning]:
     "Diseño de sistemas, algoritmos y aprendizaje continuo",
+  [ETranslationKey.AboutWorkStyle]:
+    "Trabajo remoto, equipos internacionales y distribuidos",
+  [ETranslationKey.AboutProjects]: "Startups, productos y outstaffing",
+  [ETranslationKey.AboutScope]:
+    "Arquitectura, implementación, calidad y liderazgo técnico",
+  [ETranslationKey.AboutCollaboration]:
+    "Colaboración con producto, diseño, QA y DevOps",
+  [ETranslationKey.AboutMentoring]:
+    "Orientación técnica y mentoría de desarrolladores júnior",
   [ETranslationKey.AboutDomains]:
     "E-learning, comercio electrónico, marketplaces, trading, seguros, salud",
   [ETranslationKey.AboutTeams]:
@@ -703,6 +730,15 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutCommunication]: "Englisch — wichtigste Arbeitssprache",
   [ETranslationKey.AboutLearning]:
     "Systemdesign, Algorithmen und kontinuierliches Lernen",
+  [ETranslationKey.AboutWorkStyle]:
+    "Remote-first, internationale und verteilte Teams",
+  [ETranslationKey.AboutProjects]: "Startups, Produkte und Outstaffing",
+  [ETranslationKey.AboutScope]:
+    "Architektur, Umsetzung, Qualität und technische Führung",
+  [ETranslationKey.AboutCollaboration]:
+    "Zusammenarbeit mit Product, Design, QA und DevOps",
+  [ETranslationKey.AboutMentoring]:
+    "Technische Unterstützung und Mentoring von Junior-Entwicklern",
   [ETranslationKey.AboutDomains]:
     "E-Learning, E-Commerce, Marktplätze, Trading, Versicherungen, Gesundheitswesen",
   [ETranslationKey.AboutTeams]:

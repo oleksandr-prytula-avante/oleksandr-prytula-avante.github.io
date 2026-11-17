@@ -26,6 +26,11 @@ export function About() {
     education: i18n.t(ETranslationKey.AboutEducation),
     communication: i18n.t(ETranslationKey.AboutCommunication),
     learning: i18n.t(ETranslationKey.AboutLearning),
+    workStyle: i18n.t(ETranslationKey.AboutWorkStyle),
+    projects: i18n.t(ETranslationKey.AboutProjects),
+    scope: i18n.t(ETranslationKey.AboutScope),
+    collaboration: i18n.t(ETranslationKey.AboutCollaboration),
+    mentoring: i18n.t(ETranslationKey.AboutMentoring),
   };
   const lines: SummaryLine[] = [
     {

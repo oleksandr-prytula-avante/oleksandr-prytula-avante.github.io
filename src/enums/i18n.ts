@@ -45,6 +45,11 @@ export const enum ETranslationKey {
   AboutGetToKnow = "about.getToKnow",
   AboutCommunication = "about.communication",
   AboutLearning = "about.learning",
+  AboutWorkStyle = "about.workStyle",
+  AboutProjects = "about.projects",
+  AboutScope = "about.scope",
+  AboutCollaboration = "about.collaboration",
+  AboutMentoring = "about.mentoring",
 
   EducationDuetUniversityName = "education.duet.universityName",
   EducationDuetDegree = "education.duet.degree",
