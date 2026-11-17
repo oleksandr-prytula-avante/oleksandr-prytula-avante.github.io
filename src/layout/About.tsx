@@ -34,19 +34,16 @@ export function About() {
   }
   const summary = {
     location: i18n.t(ETranslationKey.AboutLocation),
-    job: i18n.t(ETranslationKey.HeroRole),
+    role: i18n.t(ETranslationKey.HeroRole),
     experience: i18n.t(ETranslationKey.AboutYearsExperience),
     domains: i18n.t(ETranslationKey.AboutDomains),
+    background: i18n.t(ETranslationKey.AboutProjects),
     teams: i18n.t(ETranslationKey.AboutTeams),
-    approach: i18n.t(ETranslationKey.AboutApproach),
+    expertise: i18n.t(ETranslationKey.AboutScope),
+    ownership: i18n.t(ETranslationKey.AboutApproach),
+    collaboration: i18n.t(ETranslationKey.AboutCollaboration),
     education: i18n.t(ETranslationKey.AboutEducation),
     communication: i18n.t(ETranslationKey.AboutCommunication),
-    learning: i18n.t(ETranslationKey.AboutLearning),
-    workStyle: i18n.t(ETranslationKey.AboutWorkStyle),
-    projects: i18n.t(ETranslationKey.AboutProjects),
-    scope: i18n.t(ETranslationKey.AboutScope),
-    collaboration: i18n.t(ETranslationKey.AboutCollaboration),
-    mentoring: i18n.t(ETranslationKey.AboutMentoring),
   };
   const lines: SummaryLine[] = [
     {

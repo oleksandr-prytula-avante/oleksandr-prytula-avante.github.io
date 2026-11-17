@@ -64,26 +64,28 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroEngineeringToolkit]: "My Core Engineering Toolkit:",
   [ETranslationKey.HeroNeedMoreDetails]: "Need more details?",
   [ETranslationKey.HeroCvDownload]: "Download CV (PDF)",
-  [ETranslationKey.AboutLocation]: "Ukraine / Remote",
-  [ETranslationKey.AboutYearsExperience]: "10+ years",
+  [ETranslationKey.AboutLocation]: "Ukraine · Remote",
+  [ETranslationKey.AboutYearsExperience]: "10+ years in software engineering",
   [ETranslationKey.AboutGetToKnow]: "Or let’s get to know each other better…",
-  [ETranslationKey.AboutCommunication]: "English — primary working language",
+  [ETranslationKey.AboutCommunication]:
+    "English · Professional working proficiency",
   [ETranslationKey.AboutLearning]:
     "System design, algorithms & continuous learning",
   [ETranslationKey.AboutWorkStyle]: "Remote-first, international & distributed",
-  [ETranslationKey.AboutProjects]: "Startups, products & outstaffing",
+  [ETranslationKey.AboutProjects]:
+    "Product development, startups, outsourcing & outstaffing",
   [ETranslationKey.AboutScope]:
-    "Architecture, implementation, quality & technical leadership",
+    "Frontend, backend, APIs, microservices & system architecture",
   [ETranslationKey.AboutCollaboration]:
-    "Product, design, QA & DevOps collaboration",
+    "Cross-functional teams · Product, design, QA & DevOps",
   [ETranslationKey.AboutMentoring]:
     "Technical guidance and junior developer mentorship",
   [ETranslationKey.AboutDomains]:
-    "E-learning, e-commerce, marketplaces, trading, insurance, healthcare",
-  [ETranslationKey.AboutTeams]: "3–20 engineers, international & distributed",
+    "E-learning, e-commerce, marketplaces, trading, insurance & healthcare, etc",
+  [ETranslationKey.AboutTeams]: "3–20 engineers · International & distributed",
   [ETranslationKey.AboutApproach]:
-    "Product focus, maintainable code, mentoring & reliable delivery",
-  [ETranslationKey.AboutEducation]: "Master’s degree in Software Engineering",
+    "Architecture, implementation, testing & delivery",
+  [ETranslationKey.AboutEducation]: "Master’s Degree in Software Engineering",
   [ETranslationKey.AboutParagraph1]:
     "I am a Full-Stack Software Engineer with over ten years of experience in different domains across E-Learning, E-Commerce, Marketplaces, Trading, Insurance, and Healthcare. My background encompasses projects of varying scale, including work in startup environments and outstaffing engagements. This breadth of experience has strengthened my ability to adapt to diverse team structures, engineering practices, and evolving business priorities while maintaining a consistent focus on software quality and delivering solutions that meet business needs.",
   [ETranslationKey.AboutParagraph3]:
@@ -284,22 +286,27 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroEngineeringToolkit]: "Мой инженерный стек:",
   [ETranslationKey.HeroNeedMoreDetails]: "НУЖНО БОЛЬШЕ ДЕТАЛЕЙ?",
   [ETranslationKey.HeroCvDownload]: "Скачать CV (PDF)",
-  [ETranslationKey.AboutLocation]: "Украина / Удалённо",
-  [ETranslationKey.AboutYearsExperience]: "10+ лет",
+  [ETranslationKey.AboutLocation]: "Украина · Удалённо",
+  [ETranslationKey.AboutYearsExperience]: "10+ лет в разработке ПО",
   [ETranslationKey.AboutGetToKnow]: "Давайте познакомимся поближе…",
-  [ETranslationKey.AboutCommunication]: "Английский — рабочий язык",
+  [ETranslationKey.AboutCommunication]:
+    "Английский · Профессиональный рабочий уровень",
   [ETranslationKey.AboutLearning]: "Системный дизайн, алгоритмы, развитие",
   [ETranslationKey.AboutWorkStyle]: "Удалённо, международные команды",
-  [ETranslationKey.AboutProjects]: "Стартапы, продукты, аутстаффинг",
-  [ETranslationKey.AboutScope]: "Архитектура, код, качество, лидерство",
-  [ETranslationKey.AboutCollaboration]: "Product, design, QA, DevOps",
+  [ETranslationKey.AboutProjects]:
+    "Разработка продуктов, стартапы, аутсорсинг и аутстаффинг",
+  [ETranslationKey.AboutScope]:
+    "Фронтенд, бэкенд, API, микросервисы и системная архитектура",
+  [ETranslationKey.AboutCollaboration]:
+    "Кросс-функциональные команды · Product, design, QA и DevOps",
   [ETranslationKey.AboutMentoring]:
     "Наставничество и развитие junior-разработчиков",
   [ETranslationKey.AboutDomains]:
-    "E-learning, e-commerce, маркетплейсы, трейдинг, страхование, медицина",
-  [ETranslationKey.AboutTeams]: "3–20 инженеров, международные команды",
+    "E-learning, e-commerce, маркетплейсы, трейдинг, страхование и медицина, и др.",
+  [ETranslationKey.AboutTeams]:
+    "3–20 инженеров · Международные и распределённые",
   [ETranslationKey.AboutApproach]:
-    "Продукт, поддерживаемый код, менторство, релизы",
+    "Архитектура, разработка, тестирование и доставка",
   [ETranslationKey.AboutEducation]: "Магистр программной инженерии",
   [ETranslationKey.AboutParagraph1]:
     "Я full-stack инженер-программист с опытом более десяти лет в различных областях: электронном обучении, электронной коммерции, маркетплейсах, трейдинге, страховании и здравоохранении. Мой опыт охватывает проекты разного масштаба, включая работу в стартапах и в формате аутстаффинга. Этот разнообразный опыт укрепил мою способность адаптироваться к различным структурам команд, инженерным практикам и меняющимся бизнес-приоритетам, сохраняя постоянное внимание к качеству программного обеспечения и созданию решений, отвечающих потребностям бизнеса.",
@@ -498,27 +505,30 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroEngineeringToolkit]: "Mi stack de ingeniería:",
   [ETranslationKey.HeroNeedMoreDetails]: "¿NECESITAS MÁS DETALLES?",
   [ETranslationKey.HeroCvDownload]: "Descargar CV (PDF)",
-  [ETranslationKey.AboutLocation]: "Ucrania / Remoto",
-  [ETranslationKey.AboutYearsExperience]: "Más de 10 años",
+  [ETranslationKey.AboutLocation]: "Ucrania · Remoto",
+  [ETranslationKey.AboutYearsExperience]:
+    "Más de 10 años en ingeniería de software",
   [ETranslationKey.AboutGetToKnow]: "Conozcámonos un poco mejor…",
-  [ETranslationKey.AboutCommunication]: "Inglés — idioma principal de trabajo",
+  [ETranslationKey.AboutCommunication]:
+    "Inglés · Competencia profesional de trabajo",
   [ETranslationKey.AboutLearning]:
     "Diseño de sistemas, algoritmos y aprendizaje continuo",
   [ETranslationKey.AboutWorkStyle]:
     "Trabajo remoto, equipos internacionales y distribuidos",
-  [ETranslationKey.AboutProjects]: "Startups, productos y outstaffing",
+  [ETranslationKey.AboutProjects]:
+    "Desarrollo de productos, startups, outsourcing y outstaffing",
   [ETranslationKey.AboutScope]:
-    "Arquitectura, implementación, calidad y liderazgo técnico",
+    "Frontend, backend, APIs, microservicios y arquitectura de sistemas",
   [ETranslationKey.AboutCollaboration]:
-    "Colaboración con producto, diseño, QA y DevOps",
+    "Equipos multifuncionales · Producto, diseño, QA y DevOps",
   [ETranslationKey.AboutMentoring]:
     "Orientación técnica y mentoría de desarrolladores júnior",
   [ETranslationKey.AboutDomains]:
-    "E-learning, comercio electrónico, marketplaces, trading, seguros, salud",
+    "E-learning, comercio electrónico, marketplaces, trading, seguros y salud, etc.",
   [ETranslationKey.AboutTeams]:
-    "3–20 ingenieros, equipos internacionales y distribuidos",
+    "3–20 ingenieros · Internacionales y distribuidos",
   [ETranslationKey.AboutApproach]:
-    "Enfoque de producto, código mantenible, mentoría y entregas fiables",
+    "Arquitectura, implementación, pruebas y entrega",
   [ETranslationKey.AboutEducation]: "Máster en Ingeniería de Software",
   [ETranslationKey.AboutParagraph1]:
     "Soy ingeniero de software full-stack con más de diez años de experiencia en distintos ámbitos de los sectores de aprendizaje en línea, comercio electrónico, marketplaces, trading, seguros y salud. Mi trayectoria abarca proyectos de distintas escalas, incluido el trabajo en startups y en modalidades de outstaffing. Esta diversidad de experiencias ha reforzado mi capacidad para adaptarme a diferentes estructuras de equipo, prácticas de ingeniería y prioridades empresariales en evolución, manteniendo un enfoque constante en la calidad del software y en la entrega de soluciones que satisfagan las necesidades del negocio.",
@@ -718,27 +728,30 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroEngineeringToolkit]: "Mein Engineering-Toolkit",
   [ETranslationKey.HeroNeedMoreDetails]: "MEHR DETAILS NÖTIG?",
   [ETranslationKey.HeroCvDownload]: "CV (PDF) herunterladen",
-  [ETranslationKey.AboutLocation]: "Ukraine / Remote",
-  [ETranslationKey.AboutYearsExperience]: "10+ Jahre",
+  [ETranslationKey.AboutLocation]: "Ukraine · Remote",
+  [ETranslationKey.AboutYearsExperience]:
+    "10+ Jahre in der Softwareentwicklung",
   [ETranslationKey.AboutGetToKnow]: "Lernen wir uns besser kennen…",
-  [ETranslationKey.AboutCommunication]: "Englisch — wichtigste Arbeitssprache",
+  [ETranslationKey.AboutCommunication]:
+    "Englisch · Professionelle Arbeitskenntnisse",
   [ETranslationKey.AboutLearning]:
     "Systemdesign, Algorithmen und kontinuierliches Lernen",
   [ETranslationKey.AboutWorkStyle]:
     "Remote-first, internationale und verteilte Teams",
-  [ETranslationKey.AboutProjects]: "Startups, Produkte und Outstaffing",
+  [ETranslationKey.AboutProjects]:
+    "Produktentwicklung, Startups, Outsourcing und Outstaffing",
   [ETranslationKey.AboutScope]:
-    "Architektur, Umsetzung, Qualität und technische Führung",
+    "Frontend, Backend, APIs, Microservices und Systemarchitektur",
   [ETranslationKey.AboutCollaboration]:
-    "Zusammenarbeit mit Product, Design, QA und DevOps",
+    "Cross-funktionale Teams · Product, Design, QA und DevOps",
   [ETranslationKey.AboutMentoring]:
     "Technische Unterstützung und Mentoring von Junior-Entwicklern",
   [ETranslationKey.AboutDomains]:
-    "E-Learning, E-Commerce, Marktplätze, Trading, Versicherungen, Gesundheitswesen",
+    "E-Learning, E-Commerce, Marktplätze, Trading, Versicherungen und Gesundheitswesen usw.",
   [ETranslationKey.AboutTeams]:
-    "3–20 Entwickler, internationale und verteilte Teams",
+    "3–20 Entwickler · Internationale und verteilte Teams",
   [ETranslationKey.AboutApproach]:
-    "Produktfokus, wartbarer Code, Mentoring und zuverlässige Lieferung",
+    "Architektur, Implementierung, Tests und Auslieferung",
   [ETranslationKey.AboutEducation]: "Masterabschluss in Software Engineering",
   [ETranslationKey.AboutParagraph1]:
     "Ich bin Full-Stack-Softwareingenieur mit über zehn Jahren Erfahrung in verschiedenen Bereichen, darunter E-Learning, E-Commerce, Marktplätze, Trading, Versicherungen und Gesundheitswesen. Mein beruflicher Hintergrund umfasst Projekte unterschiedlicher Größenordnung, darunter Tätigkeiten in Startups und im Rahmen von Outstaffing-Einsätzen. Diese vielfältige Erfahrung hat meine Fähigkeit gestärkt, mich an unterschiedliche Teamstrukturen, Entwicklungspraktiken und sich wandelnde geschäftliche Prioritäten anzupassen, wobei ich stets auf Softwarequalität und die Bereitstellung von Lösungen achte, die den geschäftlichen Anforderungen entsprechen.",
