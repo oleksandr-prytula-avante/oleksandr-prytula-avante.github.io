@@ -213,7 +213,7 @@ export function Info(props: InfoProps) {
             </TypingText>
           </p>
           <a
-            className="hero-info__cv-link inline-flex cursor-pointer items-center text-[1.09375rem] uppercase min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
+            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.375rem]"
             href={CV_PATH}
             target="_blank"
             rel="noreferrer"
