@@ -195,3 +195,27 @@
   color: #fff;
   animation: cursor-blink 900ms steps(1, end) infinite;
 }
+
+.hero-info__cv-link {
+  min-height: 36px;
+  padding: 8px 14px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 4%);
+  color: white;
+  transition:
+    color 200ms ease-out,
+    border-color 200ms ease-out,
+    background-color 200ms ease-out;
+}
+
+.hero-info__cv-link:is(:hover, :focus-visible) {
+  border-color: var(--color-accent);
+  background: rgb(var(--color-accent-rgb) / 8%);
+  color: var(--color-accent);
+}
+
+.hero-info__cv-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
