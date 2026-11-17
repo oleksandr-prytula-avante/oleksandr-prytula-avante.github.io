@@ -105,34 +105,28 @@
 
 .about-panel__toggle {
   display: inline-flex;
-  min-height: 36px;
+  min-height: 30px;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
-  border: 1px solid rgb(255 255 255 / 24%);
-  border-radius: 999px;
-  background: rgb(255 255 255 / 4%);
-  color: white;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  text-align: center;
+  padding: 4px 9px;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 7px;
+  font-size: 11px;
+  line-height: 1.4;
   cursor: pointer;
   transition:
     color 200ms ease-out,
-    border-color 200ms ease-out,
-    background-color 200ms ease-out;
+    border-color 200ms ease-out;
 }
 
 .about-panel__toggle:is(:hover, :focus-visible, [aria-expanded="true"]) {
-  color: var(--color-accent);
   border-color: var(--color-accent);
-  background: rgb(var(--color-accent-rgb) / 8%);
+  color: var(--color-accent);
 }
 
 .about-panel__toggle:focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
 .about-panel__toggle svg {
@@ -145,14 +139,17 @@
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
+  transform: translateY(-8px);
   transition:
     grid-template-rows 360ms ease,
-    opacity 240ms ease;
+    opacity 240ms ease,
+    transform 360ms ease;
 }
 
 .about-panel__reveal[data-expanded="true"] {
   grid-template-rows: 1fr;
   opacity: 1;
+  transform: translateY(0);
 }
 
 .about-panel__clip {
@@ -186,6 +183,13 @@
 
   .about-panel__toggle-row {
     top: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-panel__reveal {
+    transform: none;
+    transition: none;
   }
 }
 
