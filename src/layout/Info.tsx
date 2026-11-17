@@ -205,7 +205,7 @@ export function Info(props: InfoProps) {
           onSkillLeave={onSkillLeave}
         />
 
-        <div className="mt-6 flex shrink-0 items-center justify-end gap-2 max-[1024px]:justify-start max-[639px]:flex-col max-[639px]:items-start max-[639px]:gap-1">
+        <div className="mt-6 flex shrink-0 items-center justify-end gap-2 min-[1025px]:mt-auto max-[1024px]:justify-start max-[639px]:flex-col max-[639px]:items-start max-[639px]:gap-1">
           <p className="text-[1.09375rem] uppercase text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
             <TypingText text={needMoreDetailsText}>
               {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
@@ -236,7 +236,7 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="hero-info flex min-h-0 flex-col px-10 pt-11 pb-12 max-[1024px]:p-0">
+    <div className="hero-info flex min-h-0 flex-col px-10 pt-11 pb-7 max-[1024px]:p-0">
       <div className="mb-4 flex shrink-0 items-center">
         <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
           <TypingText text={hiText}>
