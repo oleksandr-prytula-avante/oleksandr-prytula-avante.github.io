@@ -44,7 +44,15 @@
     overflow: hidden;
   }
 
-  .hero-info > .skill-tags {
+  .hero-info__secondary {
+    display: flex;
+    min-height: 0;
+    min-width: 0;
+    flex: 1 1 0%;
+    flex-direction: column;
+  }
+
+  .hero-info__secondary > .skill-tags {
     min-height: 0;
     flex: 1 1 0%;
   }
@@ -60,6 +68,17 @@
 
   .hero-info > :last-child {
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-info__secondary {
+    flex: none;
+  }
+
+  .hero-info__secondary > .skill-tags {
+    flex: none;
+    overflow: visible;
   }
 }
 

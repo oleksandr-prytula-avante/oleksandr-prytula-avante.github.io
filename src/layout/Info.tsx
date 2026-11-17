@@ -190,14 +190,14 @@ export function Info(props: InfoProps) {
 
   if (showSecondaryContent) {
     description = (
-      <>
+      <div className="hero-info__secondary">
         <Tags
           hoveredSkill={hoveredSkill}
           onSkillEnter={onSkillEnter}
           onSkillLeave={onSkillLeave}
         />
 
-        <div className="mt-6 flex shrink-0 flex-nowrap items-center justify-end gap-2 whitespace-nowrap min-[1025px]:mt-auto max-[1024px]:justify-start max-[639px]:gap-1">
+        <div className="hero-info__footer mt-6 flex shrink-0 flex-nowrap items-center justify-end gap-2 whitespace-nowrap max-[1024px]:justify-start max-[639px]:gap-1">
           <p className="shrink-0 text-base uppercase leading-[1.4] text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[clamp(0.625rem,3.1vw,1rem)]">
             <TypingText text={needMoreDetailsText}>
               {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
@@ -223,7 +223,7 @@ export function Info(props: InfoProps) {
             </span>
           </a>
         </div>
-      </>
+      </div>
     );
   }
 

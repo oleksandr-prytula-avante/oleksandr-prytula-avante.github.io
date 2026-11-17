@@ -23,6 +23,8 @@ type TagsProps = SkillInteractionProps & {
 export function Tags(props: TagsProps) {
   const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
   const tagsListRef = useRef<HTMLUListElement>(null);
+  const revealedTagsRef = useRef<string[]>([]);
+  const pendingScrollTagRef = useRef<string | null>(null);
   const [revealedTags, setRevealedTags] = useState<string[]>([]);
   const isTagAnimationEnabled = useMediaQuery(
     MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
@@ -58,6 +60,15 @@ export function Tags(props: TagsProps) {
             return;
           }
 
+          const newlyEnteredTags = enteredTags.filter(function (label) {
+            return !revealedTagsRef.current.includes(label);
+          });
+
+          if (newlyEnteredTags.length > 0) {
+            pendingScrollTagRef.current =
+              newlyEnteredTags[newlyEnteredTags.length - 1];
+          }
+
           setRevealedTags(function (currentTags) {
             const nextTags = [...currentTags];
 
@@ -66,6 +77,8 @@ export function Tags(props: TagsProps) {
                 nextTags.push(label);
               }
             });
+
+            revealedTagsRef.current = nextTags;
 
             return nextTags.length === currentTags.length
               ? currentTags
@@ -86,6 +99,43 @@ export function Tags(props: TagsProps) {
       };
     },
     [isTagAnimationEnabled],
+  );
+
+  useEffect(
+    function () {
+      const tagsList = tagsListRef.current;
+      const label = pendingScrollTagRef.current;
+
+      if (!tagsList || !label) {
+        return;
+      }
+
+      pendingScrollTagRef.current = null;
+
+      const frame = requestAnimationFrame(function () {
+        const tagElement = tagsList.querySelector<HTMLElement>(
+          `[data-tag-label="${CSS.escape(label)}"]`,
+        );
+
+        if (!tagElement) {
+          return;
+        }
+
+        const listRect = tagsList.getBoundingClientRect();
+        const tagRect = tagElement.getBoundingClientRect();
+        const bottomInset = 8;
+        const scrollDelta = tagRect.bottom - (listRect.bottom - bottomInset);
+
+        if (scrollDelta > 0) {
+          tagsList.scrollBy({ top: scrollDelta, behavior: "smooth" });
+        }
+      });
+
+      return function () {
+        cancelAnimationFrame(frame);
+      };
+    },
+    [revealedTags],
   );
 
   return (
