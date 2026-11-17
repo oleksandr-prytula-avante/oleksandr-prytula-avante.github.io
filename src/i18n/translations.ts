@@ -201,8 +201,7 @@ const EN_TRANSLATIONS: Translations = {
     "DigitalSuits | Outsource / Dedicated Team",
   [ETranslationKey.ExperienceDigitalsuitsJobTitle]:
     "Web Developer & Technical Team Lead",
-  [ETranslationKey.ExperienceDigitalsuitsLocation]:
-    "Kharkiv, Ukraine | On-site",
+  [ETranslationKey.ExperienceDigitalsuitsLocation]: "Kharkiv, Ukraine | Onsite",
   [ETranslationKey.ExperienceDigitalsuitsDescription]:
     "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
@@ -223,7 +222,7 @@ const EN_TRANSLATIONS: Translations = {
     "Provided technical mentorship, with a strong focus on FE quality, helping coworkers to improve code maintainability, performance and UI consistency.",
   [ETranslationKey.ExperienceCodeAndCareCompanyName]: "Code & Care | Outstaff",
   [ETranslationKey.ExperienceCodeAndCareJobTitle]: "WEB & Mobile Developer",
-  [ETranslationKey.ExperienceCodeAndCareLocation]: "Kharkiv, Ukraine | On-site",
+  [ETranslationKey.ExperienceCodeAndCareLocation]: "Kharkiv, Ukraine | Onsite",
   [ETranslationKey.ExperienceCodeAndCareDescription]:
     "WEB & Mobile Developer | Outstaff. Full-time.",
   [ETranslationKey.ExperienceCodeAndCareHighlight1]:
@@ -242,7 +241,7 @@ const EN_TRANSLATIONS: Translations = {
     "LANARS | Outsource / Dedicated team",
   [ETranslationKey.ExperienceLanarsJobTitle]: "WEB Developer",
   [ETranslationKey.ExperienceLanarsLocation]:
-    "Dnipropetrovsk, Ukraine | On-site",
+    "Dnipropetrovsk, Ukraine | Onsite",
   [ETranslationKey.ExperienceLanarsDescription]:
     "WEB Developer | Outsource / Dedicated team. Full-time.",
   [ETranslationKey.ExperienceLanarsHighlight1]:

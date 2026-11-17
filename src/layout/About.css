@@ -16,7 +16,6 @@
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 12px;
   background: rgb(255 255 255 / 2%);
-  text-transform: uppercase;
 }
 
 .summary-code__header {
@@ -35,6 +34,7 @@
   gap: 10px;
   color: var(--color-accent);
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .summary-code__profile-meta {
@@ -45,28 +45,6 @@
   font-size: var(--font-size-caption);
   font-weight: 700;
   letter-spacing: 0.08em;
-}
-
-.summary-code__linkedin {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: rgb(255 255 255 / 75%);
-  transition: color 200ms ease-out;
-}
-
-.summary-code__linkedin:is(:hover, :focus-visible) {
-  color: var(--color-accent);
-}
-
-.summary-code__linkedin:focus-visible {
-  outline: 1px solid var(--color-accent);
-  outline-offset: 4px;
-}
-
-.summary-code__linkedin svg {
-  width: 16px;
-  height: 16px;
 }
 
 .summary-code__file > span {

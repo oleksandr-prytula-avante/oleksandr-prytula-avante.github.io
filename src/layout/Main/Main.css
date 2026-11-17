@@ -118,9 +118,12 @@
   right: 46%;
   width: clamp(48px, 4vw, 66px);
   aspect-ratio: 128 / 58;
-  z-index: -1;
+  z-index: 1;
   object-fit: contain;
   opacity: 0.85;
+  transform-origin: center;
+  animation: ufo-flight 26s ease-in-out infinite;
+  will-change: transform;
 }
 
 .mountain-mist {
@@ -179,6 +182,9 @@
   aspect-ratio: 128 / 58;
   object-fit: contain;
   opacity: 0.75;
+  transform-origin: center;
+  animation: ufo-flight 26s ease-in-out infinite;
+  will-change: transform;
 }
 
 @media (max-width: 1024px) {
@@ -237,6 +243,31 @@
   }
 }
 
+@keyframes ufo-flight {
+  0%,
+  18% {
+    opacity: 0.75;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  40% {
+    opacity: 0.9;
+    transform: translate3d(72px, -5px, 0) rotate(2deg);
+  }
+
+  58%,
+  68% {
+    opacity: 0.85;
+    transform: translate3d(132px, 4px, 0) rotate(3deg);
+  }
+
+  88%,
+  100% {
+    opacity: 0.75;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
 @keyframes cursor-blink {
   0%,
   45% {
@@ -253,4 +284,11 @@
   display: inline-block;
   color: #fff;
   animation: cursor-blink 900ms steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .night-sky__ufo,
+  .header-scene__ufo {
+    animation: none;
+  }
 }
