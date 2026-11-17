@@ -41,6 +41,12 @@
   .hero-info {
     height: 100%;
     max-height: 100%;
+    overflow: hidden;
+  }
+
+  .hero-info > .skill-tags {
+    min-height: 0;
+    flex: 1 1 0%;
   }
 
   .hero-info > div:first-child {
