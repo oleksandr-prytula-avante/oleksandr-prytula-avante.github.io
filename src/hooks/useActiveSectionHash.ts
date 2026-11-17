@@ -1,27 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { ESection, toSectionHash } from "../utils/sections";
+import {
+  getCurrentHash,
+  isSectionHash,
+  ESection,
+  toSectionHash,
+} from "../utils/sections";
 import type { SectionHash } from "../utils/sections";
 import { VALID_HASHES } from "../constants/sections";
-
-function isSectionHash(value: string): value is SectionHash {
-  return (VALID_HASHES as readonly string[]).includes(value);
-}
-
-function getCurrentHash(): string {
-  if (typeof window === "undefined") {
-    return "";
-  }
-
-  return window.location.hash;
-}
 
 export function useActiveSectionHash(
   defaultHash: SectionHash = toSectionHash(ESection.About),
 ) {
   const [hash, setHash] = useState<SectionHash>(function () {
     const currentHash = getCurrentHash();
-    return isSectionHash(currentHash) ? currentHash : defaultHash;
+    return isSectionHash(currentHash, VALID_HASHES) ? currentHash : defaultHash;
   });
 
   useEffect(
@@ -29,7 +22,7 @@ export function useActiveSectionHash(
       function onHashChange() {
         const currentHash = getCurrentHash();
 
-        if (isSectionHash(currentHash)) {
+        if (isSectionHash(currentHash, VALID_HASHES)) {
           setHash(currentHash);
 
           return;
@@ -47,7 +40,7 @@ export function useActiveSectionHash(
 
       const currentHash = getCurrentHash();
 
-      if (!isSectionHash(currentHash)) {
+      if (!isSectionHash(currentHash, VALID_HASHES)) {
         try {
           const url = `${window.location.pathname}${window.location.search}${defaultHash}`;
 

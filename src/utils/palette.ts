@@ -1,14 +1,14 @@
-import { EPaletteColor } from "../enums/palette";
 import {
+  HEX_CHANNEL_LENGTH,
+  HEX_COLOR_LENGTH,
   HEX_PREFIX,
   HEX_PREFIX_LENGTH,
-  HEX_COLOR_LENGTH,
-  HEX_CHANNEL_LENGTH,
   HEX_RADIX,
   PALETTE_STYLE_ID,
 } from "../constants/palette";
+import { EPaletteColor } from "../enums/palette";
 
-function hexToRgbChannels(hex: string): string {
+export function hexToRgbChannels(hex: string): string {
   const normalized = hex.startsWith(HEX_PREFIX)
     ? hex.slice(HEX_PREFIX_LENGTH)
     : hex;
@@ -35,19 +35,15 @@ export function installPaletteCssVars() {
     return;
   }
 
-  const styleId = PALETTE_STYLE_ID;
-
-  if (document.getElementById(styleId)) {
+  if (document.getElementById(PALETTE_STYLE_ID)) {
     return;
   }
 
   const style = document.createElement("style");
-
-  style.id = styleId;
+  style.id = PALETTE_STYLE_ID;
 
   const accentRgb = hexToRgbChannels(EPaletteColor.Accent);
 
   style.textContent = `:root{--color-bg:${EPaletteColor.Background};--color-accent:${EPaletteColor.Accent};--color-accent-rgb:${accentRgb};}`;
-
   document.head.appendChild(style);
 }

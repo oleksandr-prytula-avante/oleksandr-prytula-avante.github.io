@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { ProjectTimelineItem } from "../constants/projects";
 import { useI18n } from "../hooks/useI18n";
@@ -7,6 +7,7 @@ import { ChevronLeftIcon } from "./icons/ChevronLeftIcon";
 import { ChevronRightIcon } from "./icons/ChevronRightIcon";
 import { CloseIcon } from "./icons/CloseIcon";
 import { ZoomIcon } from "./icons/ZoomIcon";
+import { ScreenshotPreviewControl } from "./ScreenshotPreviewControl";
 
 import "./ScreenshotPreview.css";
 
@@ -17,33 +18,6 @@ type ScreenshotPreviewProps = {
   projectName: string;
   onClose: () => void;
 };
-
-type PreviewControlProps = {
-  label: string;
-  children: ReactNode;
-  onClick: () => void;
-  isPressed?: boolean;
-};
-
-function PreviewControl({
-  label,
-  children,
-  onClick,
-  isPressed,
-}: PreviewControlProps) {
-  return (
-    <button
-      type="button"
-      className="subtle-border subtle-border--quiet control-label screenshot-preview__control"
-      onClick={onClick}
-      aria-label={label}
-      title={label}
-      aria-pressed={isPressed}
-    >
-      {children}
-    </button>
-  );
-}
 
 export function ScreenshotPreview({
   screenshots,
@@ -194,37 +168,37 @@ export function ScreenshotPreview({
           <div className="screenshot-preview__controls">
             {hasNavigation && (
               <>
-                <PreviewControl
+                <ScreenshotPreviewControl
                   label={i18n.t(ETranslationKey.ProjectsPreviousScreenshot)}
                   onClick={() => navigate(-1)}
                 >
                   <ChevronLeftIcon />
-                </PreviewControl>
-                <PreviewControl
+                </ScreenshotPreviewControl>
+                <ScreenshotPreviewControl
                   label={i18n.t(ETranslationKey.ProjectsNextScreenshot)}
                   onClick={() => navigate(1)}
                 >
                   <ChevronRightIcon />
-                </PreviewControl>
+                </ScreenshotPreviewControl>
                 <span
                   className="screenshot-preview__divider"
                   aria-hidden="true"
                 />
               </>
             )}
-            <PreviewControl
+            <ScreenshotPreviewControl
               label={zoomLabel}
               isPressed={isZoomed}
               onClick={() => setIsZoomed(!isZoomed)}
             >
               <ZoomIcon isZoomed={isZoomed} />
-            </PreviewControl>
-            <PreviewControl
+            </ScreenshotPreviewControl>
+            <ScreenshotPreviewControl
               label={i18n.t(ETranslationKey.ProjectsClosePreview)}
               onClick={() => dialogRef.current?.close()}
             >
               <CloseIcon />
-            </PreviewControl>
+            </ScreenshotPreviewControl>
           </div>
         </header>
         <div

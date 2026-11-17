@@ -4,7 +4,7 @@ import type {
   TimelineContentProps,
 } from "../../types/timeline";
 
-import { COMMON_SKILL_TAGS } from "../../constants/skillTags";
+import { COMMON_SKILL_TAG_SET } from "../../constants/skillTags";
 import {
   ACTIVE_ITEM_Z_INDEX,
   INACTIVE_ITEM_Z_INDEX,
@@ -17,8 +17,6 @@ import { Tag } from "../Tags/Tag";
 import { TimelineExpandIcon } from "../icons/TimelineExpandIcon";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
-
-const COMMON_SKILL_TAG_SET = new Set<string>(COMMON_SKILL_TAGS);
 
 type TimelineItemProps<TItem extends TimelineDataItem> =
   TimelineContentProps<TItem> & {

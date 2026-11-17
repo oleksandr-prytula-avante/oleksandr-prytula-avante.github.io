@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+import {
+  MENU_ICON_BUTTON_CLASS,
+  MOBILE_HEADER_HORIZONTAL_PADDING_CLASS,
+} from "../constants/header";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
 import { ESection, toSectionHash } from "../utils/sections";
@@ -10,11 +14,6 @@ import { LanguageDropdown } from "./LanguageDropdown";
 import { Links } from "./Links";
 import { MobileLanguageSwitcher } from "./MobileLanguageSwitcher";
 import { HeaderNavigation } from "./HeaderNavigation";
-
-const MOBILE_HEADER_HORIZONTAL_PADDING_CLASS =
-  "max-[1024px]:px-18 max-[768px]:px-12 max-[640px]:px-8";
-const MENU_ICON_BUTTON_CLASS =
-  "subtle-border subtle-border--quiet relative flex h-12 w-12 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border bg-white/4 transition-colors duration-200 ease-out hover:bg-white/10 focus-visible:bg-white/10";
 
 type HeaderProps = {
   isLanguageDisabled?: boolean;

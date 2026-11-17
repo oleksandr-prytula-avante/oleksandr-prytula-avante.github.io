@@ -1,19 +1,7 @@
-import type { ComponentType } from "react";
-
+import { LINK_ICON_BY_ID } from "../constants/linkIcons";
+import { LINKS } from "../constants/links";
 import { Tooltip } from "./Tooltip";
-import { GmailIcon } from "./icons/GmailIcon";
-import { LeetCodeIcon } from "./icons/LeetCodeIcon";
-import { LinkedInIcon } from "./icons/LinkedInIcon";
-import { GithubIcon } from "./icons/GithubIcon";
-import { ELink, LINKS } from "../constants/links";
 import { useI18n } from "../hooks/useI18n";
-
-const ICON_BY_LINK_ID: Record<ELink, ComponentType<{ isLarge?: boolean }>> = {
-  [ELink.Gmail]: GmailIcon,
-  [ELink.Github]: GithubIcon,
-  [ELink.LinkedIn]: LinkedInIcon,
-  [ELink.LeetCode]: LeetCodeIcon,
-};
 
 type LinksProps = {
   size?: "default" | "large";
@@ -36,7 +24,7 @@ export function Links({ size = "default", isVisible = true }: LinksProps) {
     <div className={containerClassName}>
       {LINKS.map(function ({ id, href, labelKey }) {
         const text = i18n.t(labelKey);
-        const IconComponent = ICON_BY_LINK_ID[id];
+        const IconComponent = LINK_ICON_BY_ID[id];
 
         return (
           <Tooltip key={href} content={text}>

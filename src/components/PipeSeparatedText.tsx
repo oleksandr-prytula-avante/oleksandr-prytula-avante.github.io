@@ -1,5 +1,10 @@
 import { Fragment } from "react";
 
+import {
+  FIRST_PART_INDEX,
+  MIN_PART_LENGTH,
+  PIPE_TEXT_DELIMITER,
+} from "../constants/text";
 import { InlineContent } from "./InlineContent";
 import { PipeSeparator } from "./PipeSeparator";
 
@@ -10,10 +15,6 @@ type PipeSeparatedTextProps = {
   hideLastPartOnMobile?: boolean;
   stackOnMobile?: boolean;
 };
-
-const PIPE_TEXT_DELIMITER = "|";
-const FIRST_PART_INDEX = 0;
-const MIN_PART_LENGTH = 0;
 
 export function PipeSeparatedText(props: PipeSeparatedTextProps) {
   const {

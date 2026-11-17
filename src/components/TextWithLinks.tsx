@@ -1,12 +1,13 @@
+import {
+  DEFAULT_LINK_CLASS_NAME,
+  URL_MATCH_REGEX,
+  URL_SPLIT_REGEX,
+} from "../constants/text";
+
 type TextWithLinksProps = {
   value: string;
   linkClassName?: string;
 };
-
-const URL_SPLIT_REGEX = /(https?:\/\/[^\s)]+)/g;
-const URL_MATCH_REGEX = /^https?:\/\/[^\s)]+$/;
-const DEFAULT_LINK_CLASS_NAME =
-  "underline decoration-white/40 underline-offset-4 transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] hover:decoration-[color:var(--color-accent)]";
 
 export function TextWithLinks(props: TextWithLinksProps) {
   const { value, linkClassName = DEFAULT_LINK_CLASS_NAME } = props;

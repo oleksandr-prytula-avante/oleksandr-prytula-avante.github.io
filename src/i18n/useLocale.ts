@@ -3,37 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 import { ELocale } from "./types";
 import type { ETranslationKey } from "./types";
 import { TRANSLATIONS } from "./translations";
-
-export const STORAGE_KEY = "locale";
-export const ELOCALE_VALUES = [ELocale.En, ELocale.De, ELocale.Ru, ELocale.Sp];
-
-function isLocale(value: string | null): value is ELocale {
-  return value !== null && ELOCALE_VALUES.includes(value as ELocale);
-}
-
-function getPreferredBrowserLocale(): ELocale {
-  if (typeof window === "undefined") {
-    return ELocale.En;
-  }
-
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-
-  if (isLocale(stored)) {
-    return stored;
-  }
-
-  const lang = window.navigator.language.toLowerCase();
-
-  const matchedBrowserLocale = ELOCALE_VALUES.find(function (locale) {
-    return lang.startsWith(locale);
-  });
-
-  if (matchedBrowserLocale) {
-    return matchedBrowserLocale;
-  }
-
-  return ELocale.En;
-}
+import { LOCALE_VALUES, LOCALE_STORAGE_KEY } from "../constants/locale";
+import { getPreferredBrowserLocale } from "../utils/locale";
 
 export function useLocale(initialLocale: ELocale = ELocale.En) {
   const [locale, setLocale] = useState<ELocale>(initialLocale);
@@ -54,7 +25,7 @@ export function useLocale(initialLocale: ELocale = ELocale.En) {
     function () {
       try {
         if (typeof window !== "undefined") {
-          window.localStorage.setItem(STORAGE_KEY, locale);
+          window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
         }
       } catch {
         // ignore
@@ -70,5 +41,5 @@ export function useLocale(initialLocale: ELocale = ELocale.En) {
     [locale],
   );
 
-  return { locale, setLocale, t, languageOptions: ELOCALE_VALUES };
+  return { locale, setLocale, t, languageOptions: LOCALE_VALUES };
 }

@@ -6,12 +6,7 @@ import {
   DESKTOP_MIN_WIDTH_MEDIA_QUERY,
   MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
 } from "../constants/mediaQueries";
-import { COMMON_SKILL_TAGS } from "../constants/skillTags";
 import {
-  TAG_REVEAL_DURATION_MS,
-  TAG_REVEAL_STAGGER_MS,
-  ORANGE_LINE_REVEAL_DURATION_MS,
-  NAME_TYPING_START_EXTRA_DELAY_MS,
   HI_TYPING_INTERVAL_MS,
   ROLE_TYPING_INTERVAL_MS,
   ENGINEERING_TOOLKIT_TYPING_INTERVAL_MS,
@@ -27,18 +22,16 @@ import { useTypingSequence } from "../hooks/useTypingSequence";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
 import { TypingText } from "../components/TypingText";
+import {
+  DEFAULT_CHAR_COUNT,
+  DISABLED_TAB_INDEX,
+  ENABLED_TAB_INDEX,
+  ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH,
+  ENGINEERING_TOOLKIT_COLON_TRIM_INDEX,
+  NAME_TYPING_START_DELAY_MS,
+  NEED_MORE_DETAILS_START_DELAY_MS,
+} from "../constants/hero";
 import type { SkillInteractionProps } from "../types/skills";
-
-const ENGINEERING_TOOLKIT_COLON_TRIM_INDEX = -1;
-const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
-const DEFAULT_CHAR_COUNT = 0;
-const ENABLED_TAB_INDEX = 0;
-const DISABLED_TAB_INDEX = -1;
-const NAME_TYPING_START_DELAY_MS =
-  ORANGE_LINE_REVEAL_DURATION_MS + NAME_TYPING_START_EXTRA_DELAY_MS;
-const NEED_MORE_DETAILS_START_DELAY_MS =
-  (COMMON_SKILL_TAGS.length - 1) * TAG_REVEAL_STAGGER_MS +
-  TAG_REVEAL_DURATION_MS;
 
 type InfoProps = SkillInteractionProps & {
   hoveredSkill?: string | null;

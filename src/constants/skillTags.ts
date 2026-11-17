@@ -205,6 +205,8 @@ export const COMMON_SKILL_TAGS: SkillTagLabel[] = ALL_SKILL_TAGS.filter(
   return label;
 });
 
+export const COMMON_SKILL_TAG_SET = new Set<string>(COMMON_SKILL_TAGS);
+
 export const SKILL_HREF_BY_LABEL = ALL_SKILL_TAGS.reduce(
   function (acc, skill) {
     acc[skill.label] = skill.href;
