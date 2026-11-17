@@ -21,6 +21,12 @@ type TagsProps = SkillInteractionProps & {
   hoveredSkill?: string | null;
 };
 
+const COMMON_SKILL_TAG_ORDER = new Map<string, number>(
+  COMMON_SKILL_TAGS.map(function (label, index) {
+    return [label, index];
+  }),
+);
+
 export function Tags(props: TagsProps) {
   const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
   const tagsListRef = useRef<HTMLUListElement>(null);
@@ -55,6 +61,12 @@ export function Tags(props: TagsProps) {
             })
             .filter(function (label): label is string {
               return Boolean(label);
+            })
+            .sort(function (leftLabel, rightLabel) {
+              return (
+                (COMMON_SKILL_TAG_ORDER.get(leftLabel) ?? 0) -
+                (COMMON_SKILL_TAG_ORDER.get(rightLabel) ?? 0)
+              );
             });
 
           if (enteredTags.length === 0) {
@@ -146,12 +158,17 @@ export function Tags(props: TagsProps) {
         const href = SKILL_HREF_BY_LABEL[label];
         const revealOrder = revealedTags.indexOf(label);
         const shouldAnimate = isTagAnimationEnabled && revealOrder !== -1;
+        const revealClassName = !isTagAnimationEnabled
+          ? undefined
+          : shouldAnimate
+            ? "tag-reveal"
+            : "tag-reveal-pending";
 
         return (
           <li
             key={label}
             data-tag-label={label}
-            className={shouldAnimate ? "tag-reveal" : undefined}
+            className={revealClassName}
             style={
               shouldAnimate
                 ? {
