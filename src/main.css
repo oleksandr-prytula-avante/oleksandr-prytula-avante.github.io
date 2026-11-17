@@ -157,6 +157,8 @@
 .skill-tag.control-label {
   display: inline-flex;
   align-items: center;
+  color: white;
+  border-color: rgb(255 255 255 / 50%);
   transition:
     color 200ms ease-out,
     border-color 200ms ease-out;
