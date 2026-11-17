@@ -327,6 +327,10 @@
 }
 
 @media (min-width: 1025px) {
+  .timeline {
+    padding-bottom: clamp(8px, 1vh, 16px);
+  }
+
   .timeline-item:not(:last-child)::after {
     position: absolute;
     right: 0;
