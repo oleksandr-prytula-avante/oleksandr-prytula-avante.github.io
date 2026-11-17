@@ -24,6 +24,8 @@ export function About() {
     teams: i18n.t(ETranslationKey.AboutTeams),
     approach: i18n.t(ETranslationKey.AboutApproach),
     education: i18n.t(ETranslationKey.AboutEducation),
+    communication: i18n.t(ETranslationKey.AboutCommunication),
+    learning: i18n.t(ETranslationKey.AboutLearning),
   };
   const lines: SummaryLine[] = [
     {
@@ -88,7 +90,6 @@ export function About() {
           <span className="summary-code__file">
             <span>TS</span> summary.ts
           </span>
-          <span className="summary-code__language">TypeScript</span>
         </div>
         <pre className="summary-code__source">
           <code>

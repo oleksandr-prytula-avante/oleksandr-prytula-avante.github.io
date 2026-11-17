@@ -67,6 +67,9 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutLocation]: "Ukraine / Remote",
   [ETranslationKey.AboutYearsExperience]: "10+ years",
   [ETranslationKey.AboutGetToKnow]: "Or let’s get to know each other better…",
+  [ETranslationKey.AboutCommunication]: "English — primary working language",
+  [ETranslationKey.AboutLearning]:
+    "System design, algorithms & continuous learning",
   [ETranslationKey.AboutDomains]:
     "E-learning, e-commerce, marketplaces, trading, insurance, healthcare",
   [ETranslationKey.AboutTeams]: "3–20 engineers, international & distributed",
@@ -276,6 +279,9 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutLocation]: "Украина / Удалённо",
   [ETranslationKey.AboutYearsExperience]: "10+ лет",
   [ETranslationKey.AboutGetToKnow]: "Давайте познакомимся поближе…",
+  [ETranslationKey.AboutCommunication]: "Английский — основной рабочий язык",
+  [ETranslationKey.AboutLearning]:
+    "Системный дизайн, алгоритмы и постоянное развитие",
   [ETranslationKey.AboutDomains]:
     "Онлайн-обучение, e-commerce, маркетплейсы, трейдинг, страхование, медицина",
   [ETranslationKey.AboutTeams]:
@@ -483,6 +489,9 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutLocation]: "Ucrania / Remoto",
   [ETranslationKey.AboutYearsExperience]: "Más de 10 años",
   [ETranslationKey.AboutGetToKnow]: "Conozcámonos un poco mejor…",
+  [ETranslationKey.AboutCommunication]: "Inglés — idioma principal de trabajo",
+  [ETranslationKey.AboutLearning]:
+    "Diseño de sistemas, algoritmos y aprendizaje continuo",
   [ETranslationKey.AboutDomains]:
     "E-learning, comercio electrónico, marketplaces, trading, seguros, salud",
   [ETranslationKey.AboutTeams]:
@@ -691,6 +700,9 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutLocation]: "Ukraine / Remote",
   [ETranslationKey.AboutYearsExperience]: "10+ Jahre",
   [ETranslationKey.AboutGetToKnow]: "Lernen wir uns besser kennen…",
+  [ETranslationKey.AboutCommunication]: "Englisch — wichtigste Arbeitssprache",
+  [ETranslationKey.AboutLearning]:
+    "Systemdesign, Algorithmen und kontinuierliches Lernen",
   [ETranslationKey.AboutDomains]:
     "E-Learning, E-Commerce, Marktplätze, Trading, Versicherungen, Gesundheitswesen",
   [ETranslationKey.AboutTeams]:
