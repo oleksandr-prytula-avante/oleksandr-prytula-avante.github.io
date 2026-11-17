@@ -77,7 +77,7 @@ export function Header(props: HeaderProps) {
     mobileMenu = (
       <div
         id="mobile-header-menu"
-        className={`fixed inset-0 z-[100] flex h-dvh w-screen flex-col overflow-y-auto bg-[color:var(--color-bg)] px-24 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} pb-10 pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
+        className={`fixed inset-0 z-[100] flex h-dvh min-h-dvh w-screen flex-col overflow-y-auto overscroll-contain bg-[color:var(--color-bg)] px-24 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} pb-[max(2.5rem,calc(2.5rem + env(safe-area-inset-bottom)))] pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
       >
         <div className="mobile-menu-header relative flex h-24 shrink-0 items-center justify-between">
           {brandMark}
