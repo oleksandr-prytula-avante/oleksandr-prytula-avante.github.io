@@ -31,7 +31,9 @@ export function Tags(props: TagsProps) {
   const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
   const tagsListRef = useRef<HTMLUListElement>(null);
   const revealedTagsRef = useRef<string[]>([]);
-  const pendingScrollTagRef = useRef<string | null>(null);
+  const autoScrollTimeoutRef = useRef<number | null>(null);
+  const nextRowRevealTimeoutRef = useRef<number | null>(null);
+  const revealDelayByLabelRef = useRef(new Map<string, number>());
   const [revealedTags, setRevealedTags] = useState<string[]>([]);
   const isTagAnimationEnabled = useMediaQuery(
     MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
@@ -50,55 +52,186 @@ export function Tags(props: TagsProps) {
         return;
       }
 
+      const tagsContainer = tagsList;
+
+      function getTagElements() {
+        return Array.from(
+          tagsContainer.querySelectorAll<HTMLElement>("[data-tag-label]"),
+        );
+      }
+
+      function isScrollable() {
+        return (
+          tagsContainer.scrollHeight > tagsContainer.clientHeight + 1 &&
+          window.getComputedStyle(tagsContainer).overflowY !== "visible"
+        );
+      }
+
+      function sortTagElements(tagElements: HTMLElement[]) {
+        return [...tagElements].sort(function (leftElement, rightElement) {
+          const topDifference = leftElement.offsetTop - rightElement.offsetTop;
+
+          if (topDifference !== 0) {
+            return topDifference;
+          }
+
+          return (
+            (COMMON_SKILL_TAG_ORDER.get(leftElement.dataset.tagLabel ?? "") ??
+              0) -
+            (COMMON_SKILL_TAG_ORDER.get(rightElement.dataset.tagLabel ?? "") ??
+              0)
+          );
+        });
+      }
+
+      function revealTagRow(tagElements: HTMLElement[]) {
+        const unrevealedElements = sortTagElements(tagElements).filter(
+          function (tagElement) {
+            const label = tagElement.dataset.tagLabel;
+
+            if (!label) {
+              return false;
+            }
+
+            return !revealedTagsRef.current.includes(label);
+          },
+        );
+
+        if (unrevealedElements.length === 0) {
+          return;
+        }
+
+        const newlyRevealedLabels = unrevealedElements
+          .map(function (tagElement) {
+            return tagElement.dataset.tagLabel;
+          })
+          .filter(function (label): label is string {
+            return Boolean(label);
+          });
+
+        newlyRevealedLabels.forEach(function (label, index) {
+          revealDelayByLabelRef.current.set(
+            label,
+            index * TAG_REVEAL_STAGGER_MS,
+          );
+        });
+
+        const nextTags = [...revealedTagsRef.current, ...newlyRevealedLabels];
+        revealedTagsRef.current = nextTags;
+        setRevealedTags(nextTags);
+
+        if (!isScrollable()) {
+          return;
+        }
+
+        if (autoScrollTimeoutRef.current !== null) {
+          window.clearTimeout(autoScrollTimeoutRef.current);
+        }
+
+        if (nextRowRevealTimeoutRef.current !== null) {
+          window.clearTimeout(nextRowRevealTimeoutRef.current);
+        }
+
+        const revealDelay =
+          TAG_REVEAL_DURATION_MS +
+          Math.max(0, newlyRevealedLabels.length - 1) * TAG_REVEAL_STAGGER_MS +
+          80;
+
+        autoScrollTimeoutRef.current = window.setTimeout(function () {
+          const nextLabel = COMMON_SKILL_TAGS.find(function (label) {
+            return !revealedTagsRef.current.includes(label);
+          });
+
+          if (!nextLabel) {
+            return;
+          }
+
+          const nextTag = getTagElements().find(function (tagElement) {
+            return tagElement.dataset.tagLabel === nextLabel;
+          });
+
+          if (!nextTag) {
+            return;
+          }
+
+          const maxScrollTop = Math.max(
+            0,
+            tagsContainer.scrollHeight - tagsContainer.clientHeight,
+          );
+          const targetScrollTop = Math.min(
+            maxScrollTop,
+            Math.max(
+              tagsContainer.scrollTop + TAG_SCROLL_BOTTOM_INSET_PX,
+              nextTag.offsetTop - TAG_SCROLL_BOTTOM_INSET_PX,
+            ),
+          );
+
+          if (targetScrollTop > tagsContainer.scrollTop + 1) {
+            tagsContainer.scrollTo({
+              top: targetScrollTop,
+              behavior: "smooth",
+            });
+          }
+
+          nextRowRevealTimeoutRef.current = window.setTimeout(function () {
+            const nextRowElements = getTagElements().filter(
+              function (tagElement) {
+                return (
+                  Math.abs(tagElement.offsetTop - nextTag.offsetTop) <= 1 &&
+                  !revealedTagsRef.current.includes(
+                    tagElement.dataset.tagLabel ?? "",
+                  )
+                );
+              },
+            );
+
+            revealTagRow(nextRowElements);
+          }, 220);
+        }, revealDelay);
+      }
+
       const observer = new IntersectionObserver(
         function (entries) {
-          const enteredTags = entries
+          const visibleTagElements = entries
             .filter(function (entry) {
               return entry.isIntersecting;
             })
             .map(function (entry) {
-              return (entry.target as HTMLElement).dataset.tagLabel;
+              return entry.target as HTMLElement;
             })
-            .filter(function (label): label is string {
-              return Boolean(label);
-            })
-            .sort(function (leftLabel, rightLabel) {
-              return (
-                (COMMON_SKILL_TAG_ORDER.get(leftLabel) ?? 0) -
-                (COMMON_SKILL_TAG_ORDER.get(rightLabel) ?? 0)
-              );
+            .filter(function (tagElement) {
+              const label = tagElement.dataset.tagLabel;
+
+              if (!label) {
+                return false;
+              }
+
+              return !revealedTagsRef.current.includes(label);
             });
 
-          if (enteredTags.length === 0) {
+          if (visibleTagElements.length === 0) {
             return;
           }
 
-          const newlyEnteredTags = enteredTags.filter(function (label) {
-            return !revealedTagsRef.current.includes(label);
-          });
-
-          if (newlyEnteredTags.length > 0) {
-            pendingScrollTagRef.current =
-              newlyEnteredTags[newlyEnteredTags.length - 1];
+          if (!isScrollable()) {
+            revealTagRow(visibleTagElements);
+            return;
           }
 
-          setRevealedTags(function (currentTags) {
-            const nextTags = [...currentTags];
+          const firstRowTop = Math.min.apply(
+            null,
+            visibleTagElements.map(function (tagElement) {
+              return tagElement.offsetTop;
+            }),
+          );
 
-            enteredTags.forEach(function (label) {
-              if (!nextTags.includes(label)) {
-                nextTags.push(label);
-              }
-            });
-
-            revealedTagsRef.current = nextTags;
-
-            return nextTags.length === currentTags.length
-              ? currentTags
-              : nextTags;
-          });
+          revealTagRow(
+            visibleTagElements.filter(function (tagElement) {
+              return Math.abs(tagElement.offsetTop - firstRowTop) <= 1;
+            }),
+          );
         },
-        { root: tagsList, threshold: 0.01 },
+        { root: tagsContainer, threshold: 0.01 },
       );
 
       tagsList
@@ -109,55 +242,29 @@ export function Tags(props: TagsProps) {
 
       return function () {
         observer.disconnect();
+        if (autoScrollTimeoutRef.current !== null) {
+          window.clearTimeout(autoScrollTimeoutRef.current);
+          autoScrollTimeoutRef.current = null;
+        }
+
+        if (nextRowRevealTimeoutRef.current !== null) {
+          window.clearTimeout(nextRowRevealTimeoutRef.current);
+          nextRowRevealTimeoutRef.current = null;
+        }
+
+        revealDelayByLabelRef.current.clear();
       };
     },
     [isTagAnimationEnabled],
   );
 
-  useEffect(
-    function () {
-      const tagsList = tagsListRef.current;
-      const label = pendingScrollTagRef.current;
-
-      if (!tagsList || !label) {
-        return;
-      }
-
-      pendingScrollTagRef.current = null;
-
-      const frame = requestAnimationFrame(function () {
-        const tagElement = tagsList.querySelector<HTMLElement>(
-          `[data-tag-label="${CSS.escape(label)}"]`,
-        );
-
-        if (!tagElement) {
-          return;
-        }
-
-        const listRect = tagsList.getBoundingClientRect();
-        const tagRect = tagElement.getBoundingClientRect();
-        const scrollDelta =
-          tagRect.bottom - (listRect.bottom - TAG_SCROLL_BOTTOM_INSET_PX);
-
-        if (scrollDelta > 0) {
-          tagsList.scrollBy({ top: scrollDelta, behavior: "smooth" });
-        }
-      });
-
-      return function () {
-        cancelAnimationFrame(frame);
-      };
-    },
-    [revealedTags],
-  );
-
   return (
     <ul ref={tagsListRef} className="skill-tags">
-      {COMMON_SKILL_TAGS.map(function (label, index) {
+      {COMMON_SKILL_TAGS.map(function (label) {
         const isActive = hoveredSkill === label;
         const href = SKILL_HREF_BY_LABEL[label];
-        const revealOrder = revealedTags.indexOf(label);
-        const shouldAnimate = isTagAnimationEnabled && revealOrder !== -1;
+        const shouldAnimate =
+          isTagAnimationEnabled && revealedTags.includes(label);
         const revealClassName = !isTagAnimationEnabled
           ? undefined
           : shouldAnimate
@@ -172,7 +279,7 @@ export function Tags(props: TagsProps) {
             style={
               shouldAnimate
                 ? {
-                    animationDelay: `${Math.min(revealOrder, index) * TAG_REVEAL_STAGGER_MS}ms`,
+                    animationDelay: `${revealDelayByLabelRef.current.get(label) ?? 0}ms`,
                     animationDuration: `${TAG_REVEAL_DURATION_MS}ms`,
                   }
                 : undefined

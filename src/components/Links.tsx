@@ -13,7 +13,7 @@ export function Links({ size = "default", isVisible = true }: LinksProps) {
   const isLarge = size === "large";
 
   const containerClassName = isLarge
-    ? "mt-auto flex w-full shrink-0 items-center justify-center gap-6 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+    ? "flex w-full shrink-0 items-center justify-center gap-6 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
     : `absolute bottom-6 flex flex-col gap-4 transition-all duration-500 ease-out ${
         isVisible
           ? "translate-y-0 opacity-100"

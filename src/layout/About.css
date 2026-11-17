@@ -97,6 +97,7 @@
 
 .summary-code__property {
   color: var(--color-accent-soft);
+  text-transform: capitalize;
 }
 
 .summary-code__string {

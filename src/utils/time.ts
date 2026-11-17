@@ -96,7 +96,7 @@ export function buildPeriodLabel(
       : formatMonthYear(parsedEnd, formattingLocale);
 
   return {
-    dateRange: `${startLabel} — ${endLabel}`,
+    dateRange: `${startLabel} - ${endLabel}`,
     duration: formatDuration(safeMonthDiff, formattingLocale),
   };
 }

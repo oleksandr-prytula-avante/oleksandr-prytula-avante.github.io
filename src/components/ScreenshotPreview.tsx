@@ -124,7 +124,7 @@ export function ScreenshotPreview({
     <dialog
       ref={dialogRef}
       className="screenshot-preview"
-      aria-label={`${projectName} — ${i18n.t(ETranslationKey.ProjectsScreenshots)}`}
+      aria-label={`${projectName} - ${i18n.t(ETranslationKey.ProjectsScreenshots)}`}
       onClose={onClose}
       onPointerDown={(event) => {
         startedOnBackdropRef.current = event.target === event.currentTarget;
@@ -219,7 +219,7 @@ export function ScreenshotPreview({
           <img
             key={screenshot.src}
             src={screenshot.src}
-            alt={`${projectName} — ${caption}`}
+            alt={`${projectName} - ${caption}`}
             width={screenshot.width}
             height={screenshot.height}
             draggable={false}

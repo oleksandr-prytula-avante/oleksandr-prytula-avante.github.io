@@ -1,6 +1,6 @@
-const SHORT_DASH = "-";
-const EM_DASH = "—";
+const EM_DASH = "\u2014";
+const SPACED_HYPHEN = " - ";
 
 export function toDisplayText(value: string): string {
-  return value.replaceAll(SHORT_DASH, EM_DASH);
+  return value.replaceAll(EM_DASH, SPACED_HYPHEN);
 }

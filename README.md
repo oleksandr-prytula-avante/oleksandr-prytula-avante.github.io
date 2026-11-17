@@ -2,6 +2,10 @@
 
 Minimal resume website built with React + Tailwind (Vite).
 
+## Project specification
+
+For the complete product context, architecture rules, responsive behavior, interaction contracts, and acceptance criteria, read [docs/SITE_SPECIFICATION.md](docs/SITE_SPECIFICATION.md) before making changes.
+
 ## Develop
 
 ```bash

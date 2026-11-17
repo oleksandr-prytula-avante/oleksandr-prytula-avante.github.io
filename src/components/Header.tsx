@@ -11,6 +11,7 @@ import { Links } from "./Links";
 import { MobileLanguageSwitcher } from "./MobileLanguageSwitcher";
 import { HeaderNavigation } from "./HeaderNavigation";
 import { HeaderScene } from "./illustrations/HeaderScene";
+import { MountainMist } from "./illustrations/MountainMist";
 import { PortfolioMark } from "./illustrations/PortfolioMark";
 
 const MOBILE_HEADER_HORIZONTAL_PADDING_CLASS =
@@ -28,7 +29,7 @@ export function Header(props: HeaderProps) {
   const i18n = useI18n();
   const brandMark = (
     <PortfolioMark
-      alt={`Per Aspera Ad Astra — ${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
+      alt={`Per Aspera Ad Astra - ${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
       className="header-brand"
     />
   );
@@ -102,7 +103,13 @@ export function Header(props: HeaderProps) {
           />
         </nav>
 
-        <Links size="large" />
+        <div className="mobile-menu-footer">
+          <div className="mobile-menu-footer-scene" aria-hidden="true">
+            <MountainMist />
+            <HeaderScene />
+          </div>
+          <Links size="large" />
+        </div>
       </div>
     );
   }
