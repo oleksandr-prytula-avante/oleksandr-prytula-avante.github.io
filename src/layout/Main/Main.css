@@ -47,6 +47,10 @@
     position: relative;
     top: -2.75rem;
   }
+
+  .hero-info > :not(:first-child) {
+    transform: translateY(10px);
+  }
 }
 
 @media (max-width: 389px) {
