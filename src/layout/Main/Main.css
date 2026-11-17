@@ -119,6 +119,12 @@
   height: auto;
 }
 
+@media (min-width: 1025px) and (max-height: 800px) {
+  .resume-content {
+    padding-bottom: 32px;
+  }
+}
+
 .header-scene {
   position: absolute;
   z-index: -1;
