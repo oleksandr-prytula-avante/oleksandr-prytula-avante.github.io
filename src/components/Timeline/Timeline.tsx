@@ -51,7 +51,7 @@ export function Timeline<TItem extends TimelineDataItem>(
     ThirdRowComponent,
     DetailsComponent,
     showToggle = true,
-    showMobileToggle = true,
+    showMobileToggle = false,
   } = props;
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
   const [mobileExpandedItemIds, setMobileExpandedItemIds] = useState<string[]>(

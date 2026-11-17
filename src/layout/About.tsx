@@ -8,6 +8,8 @@ import {
 } from "react";
 
 import { TimelineExpandIcon } from "../components/icons/TimelineExpandIcon";
+import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../constants/mediaQueries";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useI18n } from "../hooks/useI18n";
 import { ETranslationKey } from "../i18n/types";
 
@@ -20,12 +22,18 @@ type SummaryLine = {
 
 export function About() {
   const i18n = useI18n();
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
   const [isExpanded, setIsExpanded] = useState(false);
+  const isDetailsVisible = !isDesktopViewport || isExpanded;
   const detailsId = useId();
   const aboutPanelRef = useRef<HTMLElement | null>(null);
   const summaryRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (!isDesktopViewport) {
+      return;
+    }
+
     const frame = requestAnimationFrame(() => {
       const panel = aboutPanelRef.current;
 
@@ -45,7 +53,7 @@ export function About() {
     });
 
     return () => cancelAnimationFrame(frame);
-  }, [isExpanded]);
+  }, [isDesktopViewport, isExpanded]);
 
   function handleToggle() {
     setIsExpanded((current) => !current);
@@ -161,9 +169,9 @@ export function About() {
         <div
           id={detailsId}
           className="about-panel__reveal"
-          data-expanded={isExpanded}
-          aria-hidden={!isExpanded}
-          inert={!isExpanded}
+          data-expanded={isDetailsVisible}
+          aria-hidden={!isDetailsVisible}
+          inert={!isDetailsVisible}
         >
           <div className="about-panel__clip">
             <div className="about-panel__full-story">

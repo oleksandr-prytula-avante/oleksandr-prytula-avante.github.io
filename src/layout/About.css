@@ -198,6 +198,21 @@
     display: none;
   }
 
+  .about-panel__toggle-row {
+    display: none;
+  }
+
+  .about-panel__reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .about-panel__full-story {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
   .about-panel {
     height: auto;
     overflow: visible;
