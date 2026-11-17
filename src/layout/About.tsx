@@ -29,30 +29,34 @@ export function About() {
   const aboutPanelRef = useRef<HTMLElement | null>(null);
   const summaryRef = useRef<HTMLDivElement | null>(null);
 
+  function scrollToAboutTop() {
+    const panel = aboutPanelRef.current;
+
+    if (panel) {
+      panel.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    summaryRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
   useEffect(() => {
     if (!isDesktopViewport) {
       return;
     }
 
+    let secondFrame = 0;
     const frame = requestAnimationFrame(() => {
-      const panel = aboutPanelRef.current;
-
-      if (panel) {
-        if (panel.scrollHeight > panel.clientHeight) {
-          panel.scrollTo({ top: 0, behavior: "smooth" });
-        } else {
-          panel.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-        return;
-      }
-
-      summaryRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      secondFrame = requestAnimationFrame(scrollToAboutTop);
     });
 
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(secondFrame);
+    };
   }, [isDesktopViewport, isExpanded]);
 
   function handleToggle() {
