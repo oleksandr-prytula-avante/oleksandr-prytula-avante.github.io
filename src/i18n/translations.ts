@@ -68,7 +68,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutYearsExperience]: "10+ years in software engineering",
   [ETranslationKey.AboutGetToKnow]: "Or let’s get to know each other better…",
   [ETranslationKey.AboutCommunication]:
-    "English · Professional working proficiency",
+    "English · Advanced professional proficiency",
   [ETranslationKey.AboutLearning]:
     "System design, algorithms & continuous learning",
   [ETranslationKey.AboutWorkStyle]: "Remote-first, international & distributed",
