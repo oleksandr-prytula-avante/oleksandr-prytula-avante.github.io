@@ -47,7 +47,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Avatar selection",
   [ETranslationKey.ProjectsOmnoraSlideEditing]: "Slide editing",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
-    "LMS export settings - xAPI / SCORM",
+    "LMS export settings – xAPI / SCORM",
   [ETranslationKey.NavGithub]: "GitHub",
   [ETranslationKey.NavLinkedIn]: "LinkedIn",
   [ETranslationKey.NavLeetCode]: "LeetCode",
@@ -300,7 +300,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Выбор аватара",
   [ETranslationKey.ProjectsOmnoraSlideEditing]: "Редактирование слайда",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
-    "Настройки экспорта в LMS - xAPI / SCORM",
+    "Настройки экспорта в LMS – xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Логотип",
   [ETranslationKey.A11yOpenMenu]: "Открыть меню",
   [ETranslationKey.A11yCloseMenu]: "Закрыть меню",
@@ -338,7 +338,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutParagraph1]:
     "Я full-stack инженер-программист с опытом более десяти лет в различных областях: электронном обучении, электронной коммерции, маркетплейсах, трейдинге, страховании и здравоохранении. Мой опыт охватывает проекты разного масштаба, включая работу в стартапах и в формате аутстаффинга. Этот разнообразный опыт укрепил мою способность адаптироваться к различным структурам команд, инженерным практикам и меняющимся бизнес-приоритетам, сохраняя постоянное внимание к качеству программного обеспечения и созданию решений, отвечающих потребностям бизнеса.",
   [ETranslationKey.AboutParagraph3]:
-    "На протяжении карьеры я работал в инженерных командах численностью от 3 до 20 человек, часто в международной и распределенной среде. Английский - мой основной рабочий язык для технических обсуждений и общения с клиентами. Я привык взаимодействовать с разными командами, уточнять бизнес-требования и объяснять технические аспекты как коллегам-инженерам, так и нетехническим заинтересованным сторонам. Я также наставляю начинающих разработчиков, предоставляя технические рекомендации, делясь знаниями и поддерживая их профессиональное развитие.",
+    "На протяжении карьеры я работал в инженерных командах численностью от 3 до 20 человек, часто в международной и распределенной среде. Английский – мой основной рабочий язык для технических обсуждений и общения с клиентами. Я привык взаимодействовать с разными командами, уточнять бизнес-требования и объяснять технические аспекты как коллегам-инженерам, так и нетехническим заинтересованным сторонам. Я также наставляю начинающих разработчиков, предоставляя технические рекомендации, делясь знаниями и поддерживая их профессиональное развитие.",
   [ETranslationKey.AboutParagraph4]:
     "У меня есть степень магистра по программной инженерии, которая дала прочную основу в архитектуре программного обеспечения, безопасном программировании, алгоритмах и системном мышлении. Я продолжаю расширять свои знания, решая алгоритмические задачи на LeetCode, практикуясь в проектировании систем, проходя профессиональные курсы, готовясь к сертификациям и изучая техническую литературу.",
   [ETranslationKey.EducationDuetUniversityName]:
@@ -521,7 +521,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Selección de avatar",
   [ETranslationKey.ProjectsOmnoraSlideEditing]: "Edición de diapositivas",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
-    "Exportación a LMS - xAPI / SCORM",
+    "Exportación a LMS – xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logotipo",
   [ETranslationKey.A11yOpenMenu]: "Abrir menú",
   [ETranslationKey.A11yCloseMenu]: "Cerrar menú",
@@ -744,7 +744,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraAvatarSelection]: "Avatar-Auswahl",
   [ETranslationKey.ProjectsOmnoraSlideEditing]: "Folienbearbeitung",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
-    "LMS-Exporteinstellungen - xAPI / SCORM",
+    "LMS-Exporteinstellungen – xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logo",
   [ETranslationKey.A11yOpenMenu]: "Menu offnen",
   [ETranslationKey.A11yCloseMenu]: "Menu schliessen",

@@ -29,7 +29,7 @@ export function Header(props: HeaderProps) {
   const i18n = useI18n();
   const brandMark = (
     <PortfolioMark
-      alt={`Per Aspera Ad Astra - ${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
+      alt={`Per Aspera Ad Astra – ${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
       className="header-brand"
     />
   );
@@ -104,11 +104,13 @@ export function Header(props: HeaderProps) {
         </nav>
 
         <div className="mobile-menu-footer">
+          <div className="mobile-menu-footer__links">
+            <Links size="large" />
+          </div>
           <div className="mobile-menu-footer-scene" aria-hidden="true">
             <MountainMist />
             <HeaderScene />
           </div>
-          <Links size="large" />
         </div>
       </div>
     );

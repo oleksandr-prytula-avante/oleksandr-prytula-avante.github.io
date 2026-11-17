@@ -223,14 +223,26 @@
   margin-top: auto;
 }
 
+.mobile-menu-footer__links {
+  position: relative;
+  z-index: 2;
+  order: 1;
+}
+
 .mobile-menu-footer-scene {
   position: relative;
   isolation: isolate;
+  order: 2;
   width: 100vw;
   height: clamp(96px, 16vh, 140px);
+  flex-shrink: 0;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
   background: var(--color-bg);
+}
+
+.mobile-menu-footer-scene .mountain-mist {
+  mask-image: linear-gradient(to bottom, black 8%, black 100%);
 }
 
 .mobile-menu-footer-scene .header-scene__sky {

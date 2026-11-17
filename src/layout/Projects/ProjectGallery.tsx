@@ -31,7 +31,7 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
               >
                 <img
                   src={screenshot.src}
-                  alt={`${i18n.t(item.textKeys.name)} - ${caption}`}
+                  alt={`${i18n.t(item.textKeys.name)} – ${caption}`}
                   width={screenshot.width}
                   height={screenshot.height}
                   loading="lazy"

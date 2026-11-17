@@ -182,10 +182,10 @@ Do not use absolute source paths for new assets unless the path is intentionally
 ### Dashes and separators
 
 - Visible em dashes (`—`) are not part of the current display style.
-- Display separators use a regular hyphen with spaces: `-`.
+- Display separators use a spaced en dash: `–`.
 - Compound words such as `Full-Stack`, `E-learning`, and `client-server` retain their normal internal hyphen.
 - Numeric ranges may retain an en dash (`–`) when it is semantically a range, such as `3–20`.
-- `src/utils/text.ts` normalizes any runtime em dash to `-` and must not convert every ordinary hyphen into an em dash.
+- `src/utils/text.ts` normalizes any runtime em dash to `–` and must not convert every ordinary hyphen into an en dash.
 
 ## 5. Page layout and responsive contract
 
@@ -568,7 +568,7 @@ If white text overlaps a bright mist/nebula edge:
 - Keep accessibility labels translated.
 - Check long strings on narrow widths; do not assume English length.
 - Do not globally uppercase prose or summary values.
-- Use `-` for display separators where the source means a separator; retain ordinary internal hyphens in compound words.
+- Use `–` for display separators where the source means a separator; retain ordinary internal hyphens in compound words.
 
 ## 14. Accessibility contract
 
