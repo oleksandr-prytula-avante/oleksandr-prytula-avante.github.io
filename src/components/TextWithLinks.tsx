@@ -1,8 +1,7 @@
-import {
-  DEFAULT_LINK_CLASS_NAME,
-  URL_MATCH_REGEX,
-  URL_SPLIT_REGEX,
-} from "../constants/text";
+import { URL_MATCH_REGEX, URL_SPLIT_REGEX } from "../constants/text";
+
+const DEFAULT_LINK_CLASS_NAME =
+  "underline decoration-white/40 underline-offset-4 transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] hover:decoration-[color:var(--color-accent)]";
 
 type TextWithLinksProps = {
   value: string;

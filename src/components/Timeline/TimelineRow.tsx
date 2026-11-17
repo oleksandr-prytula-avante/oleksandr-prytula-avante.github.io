@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
-import { TIMELINE_ROW_CLASS_NAME } from "../../constants/timeline";
+const TIMELINE_ROW_CLASS_NAME =
+  "flex min-w-0 flex-nowrap items-start gap-x-2 overflow-hidden";
 
 type TimelineRowProps = {
   icon: ReactNode;

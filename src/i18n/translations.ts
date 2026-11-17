@@ -259,7 +259,7 @@ const EN_TRANSLATIONS: Translations = {
 
 const RU_TRANSLATIONS: Translations = {
   ...EN_TRANSLATIONS,
-  [ETranslationKey.NavAbout]: "О себе",
+  [ETranslationKey.NavAbout]: "Обо мне",
   [ETranslationKey.NavExperience]: "Опыт",
   [ETranslationKey.NavEducation]: "Образование",
   [ETranslationKey.NavProjects]: "Проекты",

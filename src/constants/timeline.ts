@@ -1,8 +1,6 @@
 export const TIMELINE_VISIBILITY_OPACITY_THRESHOLD = 0.35;
 export const TIMELINE_EMPTY_STATE_VALUE = 0;
 export const TIMELINE_FIRST_ITEM_INDEX = 0;
-export const TIMELINE_ROW_CLASS_NAME =
-  "flex min-w-0 flex-nowrap items-start gap-x-2 overflow-hidden";
 
 export const ACTIVE_ITEM_Z_INDEX = 30;
 export const INACTIVE_ITEM_Z_INDEX = 0;
