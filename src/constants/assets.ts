@@ -1,3 +1,9 @@
+import mountainMistPath from "../components/illustrations/assets/mountain-mist.svg";
+import nightSkyPath from "../components/illustrations/assets/night-sky.svg";
+import orbitalAvatarPath from "../components/illustrations/assets/orbital-avatar.svg";
+import portfolioMarkPath from "../components/illustrations/assets/portfolio-mark.svg";
+import skyUfoPath from "../components/illustrations/assets/sky-ufo.svg";
+
 export const COMPANY_LOGO_PATHS = {
   binaryStudio: "/assets/images/companies/binary-studio.webp",
   codeAndCare: "/assets/images/companies/code-and-care.webp",
@@ -44,5 +50,12 @@ export const PROJECT_SCREENSHOT_PATHS = {
     "/assets/images/projects/omnora-authoring/video-recorder-settings.webp",
 } as const;
 
-export const PORTFOLIO_MARK_PATH = "/assets/images/portfolio-mark.svg";
+export const SVG_ASSET_PATHS = {
+  mountainMist: mountainMistPath,
+  nightSky: nightSkyPath,
+  orbitalAvatar: orbitalAvatarPath,
+  portfolioMark: portfolioMarkPath,
+  skyUfo: skyUfoPath,
+} as const;
+
 export const CV_ASSET_PATH = "/assets/pdf/cv.pdf";

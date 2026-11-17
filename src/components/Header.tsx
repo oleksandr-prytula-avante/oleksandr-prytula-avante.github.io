@@ -4,7 +4,6 @@ import {
   MENU_ICON_BUTTON_CLASS,
   MOBILE_HEADER_HORIZONTAL_PADDING_CLASS,
 } from "../constants/header";
-import { PORTFOLIO_MARK_PATH } from "../constants/assets";
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
 import { ESection, toSectionHash } from "../utils/sections";
@@ -15,6 +14,8 @@ import { LanguageDropdown } from "./LanguageDropdown";
 import { Links } from "./Links";
 import { MobileLanguageSwitcher } from "./MobileLanguageSwitcher";
 import { HeaderNavigation } from "./HeaderNavigation";
+import { HeaderScene } from "./illustrations/HeaderScene";
+import { PortfolioMark } from "./illustrations/PortfolioMark";
 
 type HeaderProps = {
   isLanguageDisabled?: boolean;
@@ -25,12 +26,8 @@ export function Header(props: HeaderProps) {
   const { isLanguageDisabled = false, isNavigationDisabled = false } = props;
   const i18n = useI18n();
   const brandMark = (
-    <img
-      src={PORTFOLIO_MARK_PATH}
+    <PortfolioMark
       alt={`Per Aspera Ad Astra — ${i18n.t(ETranslationKey.HeroName)} ${i18n.t(ETranslationKey.HeroSurname)}`}
-      width={1828}
-      height={448}
-      decoding="async"
       className="header-brand"
     />
   );
@@ -80,6 +77,7 @@ export function Header(props: HeaderProps) {
         className={`fixed inset-0 z-[100] flex h-dvh min-h-dvh w-screen flex-col overflow-y-auto overscroll-contain bg-[color:var(--color-bg)] px-24 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} pb-[max(2.5rem,calc(2.5rem + env(safe-area-inset-bottom)))] pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
       >
         <div className="mobile-menu-header relative flex h-24 shrink-0 items-center justify-between">
+          <HeaderScene />
           {brandMark}
           <button
             type="button"
@@ -111,8 +109,9 @@ export function Header(props: HeaderProps) {
   return (
     <>
       <header
-        className={`site-header flex h-24 w-full shrink-0 items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
+        className={`site-header relative flex h-24 w-full shrink-0 items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
       >
+        <HeaderScene />
         {brandMark}
         <button
           type="button"

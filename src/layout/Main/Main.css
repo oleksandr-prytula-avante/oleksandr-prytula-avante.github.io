@@ -68,10 +68,19 @@
   height: var(--scenery-height);
   transform: translateX(-50%);
   pointer-events: none;
-  background: url("/assets/images/night-sky.svg") left top / auto 100% repeat-x;
-  /* Keep the mirrored half outside the viewport while preserving SVG proportions. */
-  background-size: max(200vw, calc(var(--scenery-height) * 15.2)) auto;
+  overflow: hidden;
   mask-image: linear-gradient(to bottom, black 38%, transparent);
+}
+
+.night-sky__image,
+.mountain-mist__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max(200vw, calc(var(--scenery-height) * 15.2));
+  max-width: none;
+  min-height: 100%;
+  height: auto;
 }
 
 .night-sky__ufo {
@@ -80,7 +89,8 @@
   right: 46%;
   width: clamp(48px, 4vw, 66px);
   aspect-ratio: 128 / 58;
-  background: url("/assets/images/sky-ufo.svg") center / contain no-repeat;
+  z-index: -1;
+  object-fit: contain;
   opacity: 0.85;
 }
 
@@ -93,10 +103,47 @@
   height: var(--scenery-height);
   transform: translateX(-50%);
   pointer-events: none;
-  background: url("/assets/images/mountain-mist.svg") left bottom / auto 100%
-    repeat-x;
-  background-size: max(200vw, calc(var(--scenery-height) * 22.612)) auto;
+  overflow: hidden;
   mask-image: linear-gradient(to bottom, transparent, black 35%);
+}
+
+.mountain-mist__image {
+  top: auto;
+  bottom: 0;
+  width: max(200vw, calc(var(--scenery-height) * 22.612));
+  min-height: 100%;
+  height: auto;
+}
+
+.header-scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  display: none;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.header-scene__sky {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: max(200vw, calc(var(--scenery-height) * 15.2));
+  max-width: none;
+  min-height: var(--scenery-height);
+  height: auto;
+  transform: translateX(-50%);
+  mask-image: linear-gradient(to bottom, black 25%, transparent);
+}
+
+.header-scene__ufo {
+  position: absolute;
+  top: 26px;
+  left: 40%;
+  width: 44px;
+  aspect-ratio: 128 / 58;
+  object-fit: contain;
+  opacity: 0.75;
 }
 
 @media (max-width: 1024px) {
@@ -114,35 +161,8 @@
     background: var(--color-bg);
   }
 
-  .site-header::before,
-  .mobile-menu-header::before {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 50%;
-    width: 100vw;
-    height: var(--scenery-height);
-    transform: translateX(-50%);
-    background: url("/assets/images/night-sky.svg") left top / auto 100%
-      repeat-x;
-    background-size: max(200vw, calc(var(--scenery-height) * 15.2)) auto;
-    mask-image: linear-gradient(to bottom, black 25%, transparent);
-    pointer-events: none;
-    content: "";
-  }
-
-  .site-header::after,
-  .mobile-menu-header::after {
-    position: absolute;
-    z-index: -1;
-    top: 26px;
-    left: 40%;
-    width: 44px;
-    aspect-ratio: 128 / 58;
-    background: url("/assets/images/sky-ufo.svg") center / contain no-repeat;
-    opacity: 0.75;
-    pointer-events: none;
-    content: "";
+  .header-scene {
+    display: block;
   }
 
   .resume-content {
@@ -153,6 +173,10 @@
   }
 
   .night-sky {
+    display: none;
+  }
+
+  .night-sky__ufo {
     display: none;
   }
 }
