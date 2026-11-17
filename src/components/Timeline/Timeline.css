@@ -1,5 +1,5 @@
 .timeline {
-  --timeline-logo-size: 64px;
+  --timeline-logo-size: 80px;
   --timeline-content-gap: 24px;
   overflow-y: auto;
   scrollbar-gutter: stable;
@@ -55,8 +55,8 @@
 }
 
 .timeline-item__logo-image {
-  width: 36px;
-  height: 36px;
+  width: 45px;
+  height: 45px;
 }
 
 .timeline-row {
@@ -235,7 +235,7 @@
 
 @media (max-width: 640px) {
   .timeline {
-    --timeline-logo-size: 44px;
+    --timeline-logo-size: 55px;
     --timeline-content-gap: 16px;
   }
 
@@ -244,8 +244,8 @@
   }
 
   .timeline-item__logo-image {
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
   }
 
   .timeline-item__title {

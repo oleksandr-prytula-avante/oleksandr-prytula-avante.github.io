@@ -206,14 +206,14 @@ export function Info(props: InfoProps) {
         />
 
         <div className="mt-6 flex shrink-0 items-center justify-end gap-2 min-[1025px]:mt-auto max-[1024px]:justify-start max-[639px]:flex-col max-[639px]:items-start max-[639px]:gap-1">
-          <p className="text-[1.09375rem] uppercase text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
+          <p className="text-[1.09375rem] uppercase leading-[1.4] text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]">
             <TypingText text={needMoreDetailsText}>
               {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
               {needMoreDetailsTypingCursor}
             </TypingText>
           </p>
           <a
-            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]"
+            className="inline-flex cursor-pointer items-center py-1 text-[1.09375rem] leading-[1.4] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1rem]"
             href={CV_PATH}
             target="_blank"
             rel="noreferrer"
