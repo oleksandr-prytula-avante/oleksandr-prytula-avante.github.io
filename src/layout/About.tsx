@@ -33,7 +33,6 @@ export function About() {
     });
   }
   const summary = {
-    name: "Oleksandr (Alex) Prytula",
     location: i18n.t(ETranslationKey.AboutLocation),
     job: i18n.t(ETranslationKey.HeroRole),
     experience: i18n.t(ETranslationKey.AboutYearsExperience),
