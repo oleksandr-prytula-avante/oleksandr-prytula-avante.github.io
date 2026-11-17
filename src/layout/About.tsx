@@ -179,7 +179,6 @@ export function About() {
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon />
-                <span>LinkedIn</span>
               </a>
             )}
           </div>
