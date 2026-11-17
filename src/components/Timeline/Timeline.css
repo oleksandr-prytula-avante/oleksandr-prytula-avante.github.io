@@ -85,6 +85,7 @@
   font-weight: 700;
   letter-spacing: -0.015em;
   text-wrap: pretty;
+  overflow-wrap: anywhere;
   transition: color 200ms ease-out;
 }
 
@@ -98,10 +99,12 @@
 }
 
 .timeline-item__engagement {
+  min-width: 0;
   color: white;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .timeline-row--meta,
@@ -128,6 +131,7 @@
   align-items: baseline;
   min-width: 0;
   gap: 4px 12px;
+  overflow-wrap: anywhere;
 }
 
 .timeline-item__period-row {
@@ -135,6 +139,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 4px 8px;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .timeline-item__footer > div {

@@ -31,7 +31,7 @@ export function SectionCarousel({
   const activeIndex = index === NOT_FOUND_INDEX ? FIRST_SLIDE_INDEX : index;
 
   return (
-    <div className="section-carousel relative flex h-full min-h-0 flex-col px-10 max-[1024px]:h-auto max-[1024px]:px-0">
+    <div className="section-carousel relative flex h-full min-h-0 min-w-0 flex-col px-10 max-[1024px]:h-auto max-[1024px]:px-0">
       <div className="section-carousel__meta" aria-hidden="true">
         <span className="section-carousel__count">
           {String(activeIndex + 1).padStart(2, "0")}

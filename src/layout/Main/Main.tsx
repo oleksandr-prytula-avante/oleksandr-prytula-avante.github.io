@@ -81,13 +81,13 @@ export function Main() {
         />
         <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible max-[1024px]:pb-8">
           <div className="flex h-full min-h-0 flex-col max-[1024px]:h-auto max-[768px]:gap-4 min-[1025px]:grid min-[1175px]:grid-cols-[5%_40%_55%] min-[1025px]:max-[1175px]:grid-cols-[5%_45%_50%]">
-            <section className="relative hidden h-full min-h-0 min-[1025px]:block">
+            <section className="relative hidden h-full min-h-0 min-w-0 min-[1025px]:block">
               <Links isVisible={isSecondaryContentVisible} />
             </section>
-            <section className="relative flex min-h-0 flex-col max-[1024px]:pb-4 min-[1025px]:h-full min-[1025px]:justify-center">
+            <section className="relative flex min-h-0 min-w-0 flex-col max-[1024px]:pb-4 min-[1025px]:h-full min-[1025px]:justify-center">
               {infoContent}
             </section>
-            <section className="relative min-h-0 min-[1025px]:h-full">
+            <section className="relative min-h-0 min-w-0 min-[1025px]:h-full">
               <div className={sectionRevealClassName}>
                 <SectionCarousel
                   sections={sectionContent}
