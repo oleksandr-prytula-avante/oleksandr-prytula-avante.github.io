@@ -95,25 +95,34 @@
   position: sticky;
   top: 0;
   z-index: 2;
+  display: flex;
+  justify-content: center;
   padding-block: 10px;
   background: var(--color-bg);
 }
 
 .about-panel__toggle {
   display: inline-flex;
-  min-height: 34px;
+  min-height: 36px;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
-  border: 1px solid rgb(255 255 255 / 18%);
-  border-radius: 7px;
-  font-size: 12px;
+  padding: 6px 4px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-align: center;
   cursor: pointer;
+  transition: color 200ms ease-out;
+}
+
+.about-panel__toggle:is(:hover, :focus-visible) {
+  color: var(--color-accent);
 }
 
 .about-panel__toggle:focus-visible {
-  outline: 1px solid var(--color-accent);
-  outline-offset: 3px;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
 }
 
 .about-panel__toggle svg {

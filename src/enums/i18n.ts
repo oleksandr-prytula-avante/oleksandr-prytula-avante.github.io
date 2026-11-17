@@ -42,6 +42,7 @@ export const enum ETranslationKey {
   AboutParagraph4 = "about.paragraph4",
   AboutLocation = "about.location",
   AboutYearsExperience = "about.yearsExperience",
+  AboutGetToKnow = "about.getToKnow",
 
   EducationDuetUniversityName = "education.duet.universityName",
   EducationDuetDegree = "education.duet.degree",

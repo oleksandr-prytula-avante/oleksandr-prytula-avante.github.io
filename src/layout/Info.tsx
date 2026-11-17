@@ -236,7 +236,7 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="hero-info flex min-h-0 flex-col px-10 pt-8 pb-12 max-[1024px]:p-0">
+    <div className="hero-info flex min-h-0 flex-col px-10 pt-11 pb-12 max-[1024px]:p-0">
       <div className="mb-4 flex shrink-0 items-center">
         <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
           <TypingText text={hiText}>

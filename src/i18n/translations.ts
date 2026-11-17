@@ -66,6 +66,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroCvDownload]: "Download CV (PDF)",
   [ETranslationKey.AboutLocation]: "Ukraine / Remote",
   [ETranslationKey.AboutYearsExperience]: "10+ years",
+  [ETranslationKey.AboutGetToKnow]: "Or let’s get to know each other better…",
   [ETranslationKey.AboutDomains]:
     "E-learning, e-commerce, marketplaces, trading, insurance, healthcare",
   [ETranslationKey.AboutTeams]: "3–20 engineers, international & distributed",
@@ -274,6 +275,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroCvDownload]: "Скачать CV (PDF)",
   [ETranslationKey.AboutLocation]: "Украина / Удалённо",
   [ETranslationKey.AboutYearsExperience]: "10+ лет",
+  [ETranslationKey.AboutGetToKnow]: "Давайте познакомимся поближе…",
   [ETranslationKey.AboutDomains]:
     "Онлайн-обучение, e-commerce, маркетплейсы, трейдинг, страхование, медицина",
   [ETranslationKey.AboutTeams]:
@@ -480,6 +482,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroCvDownload]: "Descargar CV (PDF)",
   [ETranslationKey.AboutLocation]: "Ucrania / Remoto",
   [ETranslationKey.AboutYearsExperience]: "Más de 10 años",
+  [ETranslationKey.AboutGetToKnow]: "Conozcámonos un poco mejor…",
   [ETranslationKey.AboutDomains]:
     "E-learning, comercio electrónico, marketplaces, trading, seguros, salud",
   [ETranslationKey.AboutTeams]:
@@ -687,6 +690,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroCvDownload]: "CV (PDF) herunterladen",
   [ETranslationKey.AboutLocation]: "Ukraine / Remote",
   [ETranslationKey.AboutYearsExperience]: "10+ Jahre",
+  [ETranslationKey.AboutGetToKnow]: "Lernen wir uns besser kennen…",
   [ETranslationKey.AboutDomains]:
     "E-Learning, E-Commerce, Marktplätze, Trading, Versicherungen, Gesundheitswesen",
   [ETranslationKey.AboutTeams]:

@@ -77,8 +77,10 @@
 .timeline-item__title {
   display: flex;
   min-width: 0;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -97,7 +99,7 @@
 
 .timeline-item__engagement {
   color: rgb(255 255 255 / 60%);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0;
 }
@@ -114,9 +116,11 @@
 }
 
 .timeline-item__role-group {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   min-width: 0;
-  gap: 4px;
+  gap: 4px 12px;
 }
 
 .timeline-item__period-row {
@@ -240,6 +244,10 @@
 
   .timeline-item__title {
     font-size: 15px;
+  }
+
+  .timeline-item__engagement {
+    font-size: 11px;
   }
 
   .timeline-period {

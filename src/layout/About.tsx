@@ -120,11 +120,7 @@ export function About() {
             aria-controls={detailsId}
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            {i18n.t(
-              isExpanded
-                ? ETranslationKey.TimelineHideDetails
-                : ETranslationKey.TimelineExpandDetails,
-            )}
+            {i18n.t(ETranslationKey.AboutGetToKnow)}
             <TimelineExpandIcon isExpanded={isExpanded} />
           </button>
         </div>
