@@ -16,18 +16,18 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
   return (
-    <div className="mt-6 pb-2">
-      <div className="grid min-w-0 grid-cols-1 gap-3">
+    <div className="project-gallery mt-6 pb-2">
+      <div className="project-gallery__grid">
         {item.screenshots.map(function (screenshot, index) {
           const caption = i18n.t(screenshot.captionKey);
 
           return (
-            <figure key={screenshot.src} className="relative min-w-0">
+            <figure key={screenshot.src} className="project-gallery__tile">
               <button
                 type="button"
                 onClick={() => setPreviewIndex(index)}
                 aria-label={`${i18n.t(ETranslationKey.ProjectsOpenScreenshot)}: ${caption}`}
-                className="subtle-border relative block w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--color-accent)]"
+                className="subtle-border project-gallery__preview relative block w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--color-accent)]"
               >
                 <img
                   src={screenshot.src}
@@ -36,12 +36,9 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
                   height={screenshot.height}
                   loading="lazy"
                   decoding="async"
-                  className="block h-auto w-full"
+                  className="project-gallery__image block h-full w-full object-cover"
                 />
               </button>
-              <figcaption className="gradient-border project-gallery__caption">
-                {caption}
-              </figcaption>
             </figure>
           );
         })}
