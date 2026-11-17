@@ -53,7 +53,7 @@
 
 .summary-code__source,
 .summary-code__source code {
-  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-family: var(--font-sans);
 }
 
 .summary-code__line {
