@@ -33,6 +33,7 @@ export function About() {
   const detailsId = useId();
   const aboutPanelRef = useRef<HTMLElement | null>(null);
   const aboutStoryClipRef = useRef<HTMLDivElement | null>(null);
+  const aboutRevealRef = useRef<HTMLDivElement | null>(null);
 
   function scrollToAboutStory(behavior: ScrollBehavior = "smooth") {
     const panel = aboutPanelRef.current;
@@ -55,37 +56,37 @@ export function About() {
       return;
     }
 
-    let secondFrame = 0;
-    const frame = requestAnimationFrame(() => {
-      secondFrame = requestAnimationFrame(function () {
-        if (isExpanded) {
-          scrollToAboutStory("smooth");
-        } else {
-          aboutPanelRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      });
-    });
+    if (!isExpanded) {
+      aboutPanelRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+
+      return;
+    }
+
+    const reveal = aboutRevealRef.current;
+    let scrollTimeout = 0;
+
+    const scrollAfterReveal = function () {
+      scrollToAboutStory("smooth");
+    };
+
+    function handleRevealTransitionEnd(event: TransitionEvent) {
+      if (event.propertyName === "grid-template-rows") {
+        scrollAfterReveal();
+      }
+    }
+
+    reveal?.addEventListener("transitionend", handleRevealTransitionEnd);
+    scrollTimeout = window.setTimeout(scrollAfterReveal, 420);
 
     return () => {
-      cancelAnimationFrame(frame);
-      cancelAnimationFrame(secondFrame);
+      reveal?.removeEventListener("transitionend", handleRevealTransitionEnd);
+      window.clearTimeout(scrollTimeout);
     };
   }, [isDesktopViewport, isExpanded]);
 
   function handleToggle() {
     const nextExpanded = !isExpanded;
     setIsExpanded(nextExpanded);
-
-    if (nextExpanded) {
-      // Wait for the reveal to mount, then scroll its first line to the panel
-      // top so the story visibly replaces the summary instead of appearing
-      // below it.
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          scrollToAboutStory("smooth");
-        });
-      });
-    }
   }
   const summary = {
     name: "Oleksandr (Alex) Prytula",
@@ -240,6 +241,7 @@ export function About() {
         </div>
         <div
           id={detailsId}
+          ref={aboutRevealRef}
           className="about-panel__reveal"
           data-expanded={isDetailsVisible}
           aria-hidden={!isDetailsVisible}
