@@ -112,6 +112,11 @@
   height: auto;
 }
 
+.night-sky__image {
+  left: clamp(120px, 16vw, 240px);
+  opacity: 0.72;
+}
+
 .night-sky__ufo {
   position: absolute;
   top: 27%;
@@ -164,13 +169,6 @@
 
   .resume-content > .mountain-mist {
     bottom: calc(-1 * clamp(40px, 3.5vw, 52px));
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1366px) {
-  .night-sky__image {
-    transform: translateX(clamp(72px, 12vw, 168px));
-    opacity: 0.72;
   }
 }
 

@@ -523,7 +523,7 @@ Current screenshot metadata is maintained in `src/constants/projects.ts`; do not
 - Scenery is pointer-events-free and must not block text or controls.
 - Decorative layers use page/header stacking contexts; do not solve clipping by assigning arbitrary positive z-index values to scenery over content.
 - White content must retain contrast against nebula and mist areas.
-- On narrow desktop/tablet widths (`1025–1366px`), the primary `NightSky` image is shifted to the right and slightly dimmed so the bright nebula does not sit behind the white hero copy.
+- The primary `NightSky` image is shifted to the right and slightly dimmed so the bright nebula does not sit behind the white hero copy. The shift is applied directly to the image layer and therefore must not depend on one narrow media-query range.
 - On mobile menu, upper sky is full-bleed and rendered once; lower scene uses mountains plus one UFO, not a second sky.
 - The lower mobile scene is full-bleed using the established `100vw`/negative-margin pattern.
 
