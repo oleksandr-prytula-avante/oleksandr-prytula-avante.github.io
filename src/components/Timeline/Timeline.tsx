@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- DOM measurement and animation phase synchronization require effect updates. */
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import { EFocusPhase } from "../../enums/timeline";

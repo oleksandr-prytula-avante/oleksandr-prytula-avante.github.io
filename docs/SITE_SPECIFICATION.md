@@ -120,6 +120,7 @@ Do not use absolute source paths for new assets unless the path is intentionally
 - `src/components/Links.tsx` — external contact/profile links.
 - `src/components/TypingText.tsx`, `TypingCursor.tsx` — stable-width typing presentation.
 - `src/components/illustrations/` — SVG-backed scenery and portfolio mark components.
+- `src/components/illustrations/Ufo.tsx` and `src/hooks/useUfoDeparture.ts` — shared UFO rendering and randomized departure behavior for all scenery variants.
 - `src/components/icons/` — inline React SVG icon components.
 
 ### Constants and data
@@ -149,6 +150,15 @@ Do not use absolute source paths for new assets unless the path is intentionally
 8. Prefer inferred component return types; explicit `React.ReactElement` annotations are not required.
 9. SVG icons and illustrations must be rendered through React components, not pasted as large inline SVG blobs inside layout files.
 10. Remove dead components/imports rather than preserving unused abstractions “just in case”.
+
+### Audit invariants
+
+- `ALL_SKILL_TAGS` is the single source for the hero toolkit, timeline tag links, and tag ordering metadata; timeline data may only reference labels from that catalog.
+- Timeline, tag, and About interaction timings are kept in `src/constants/animations.ts`; the UFO departure duration is shared between the hook and CSS through a component CSS variable.
+- Reusable behavior belongs in hooks/utils (`useUfoDeparture`, locale, time, text, typing, section, and reveal helpers); component files contain rendering and component-specific handlers.
+- Generic prop/data types stay next to their reusable component or in `src/components/types/`; layout-specific types stay with the layout.
+- Static import analysis must find no unreachable production component/module; the only intentional entry-only files are `src/entry-server.tsx` and `src/assets.d.ts`.
+- Non-English locales must localize all narrative About story blocks. English values may be inherited only for intentional brand names, product names, or technical terms.
 
 ## 4. Design system and visual invariants
 
@@ -357,7 +367,7 @@ const SUMMARY = {
     "E-learning, e-commerce, marketplaces, trading, insurance & healthcare, etc",
   background: "Product development, startups, outsourcing & outstaffing",
   teams: "3–20 engineers · International & distributed",
-  expertise: "Frontend, backend, APIs, microservices & system architecture",
+  expertise: "Frontend, Backend, APIs, Microservices & System Architecture",
   ownership: "Architecture, implementation, testing & delivery",
   collaboration: "Cross-functional teams · Product, design, QA & DevOps",
   education: "Master’s Degree in Software Engineering",
@@ -527,13 +537,15 @@ Current screenshot metadata is maintained in `src/constants/projects.ts`; do not
 - On desktop, the main mountain layer is fitted to the scenery container height with bottom alignment and without a vertical mask; the lighthouse, house, and mountain silhouettes must remain fully visible instead of being cropped by the viewport edge. Mobile footer scenery may keep its own mask and sizing rules.
 - On mobile menu, upper sky is full-bleed and rendered once; lower scene uses mountains plus one UFO, not a second sky.
 - The lower mobile scene is full-bleed using the established `100vw`/negative-margin pattern.
+- The mobile menu lower scene reuses the same mountain container height and image scale as the main mobile scenery, so opening or closing the menu does not change the mountain silhouette.
 
 ### UFO motion
 
 - The main desktop UFO uses a slow multi-phase drift with small vertical bob and rotation.
 - The header/mobile/footer UFO variants use distinct timing/trajectories so they do not move in lockstep.
+- Each UFO may occasionally make a randomized, short departure across the viewport and then return to its scene; this is intentional decorative motion, not a layout transition.
 - No opacity animation should make the UFO disappear unexpectedly.
-- Motion must be smooth at the endpoints; no abrupt direction changes or teleportation.
+- Normal drift must be smooth at the endpoints; the only abrupt movement is the explicit randomized departure.
 - `prefers-reduced-motion: reduce` disables decorative UFO animation.
 
 ### Mist contrast rule
@@ -594,6 +606,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 ### AC-001 — Build integrity
 
 - `npm run build` exits successfully.
+- `npm run lint` exits successfully without errors.
 - `npm run format:check` exits successfully.
 - `git diff --check` reports no whitespace errors.
 - No TypeScript errors or unused imports are introduced.
@@ -665,15 +678,25 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Narrow desktop/tablet hero text is not placed over the brightest `NightSky` nebula band.
 - Mobile menu upper sky is full-bleed and rendered once.
 - Mobile menu lower scene uses full-width mountains and one UFO.
+- Opening or closing the mobile menu preserves the mountain scene geometry; the lower mountains do not jump, rescale, or switch crop.
 - Mountains preserve a coherent scale relative to the sky and do not leave unintended side gutters.
 - Desktop mountain scenery keeps the lighthouse and house silhouettes visible; fitting the image to the container must not vertically crop those landmarks.
-- Decorative motion is smooth and disabled for reduced-motion users.
+- Decorative motion includes occasional intentional UFO departures, remains disabled for reduced-motion users, and does not affect layout.
 
 ### AC-011 — Internationalization
 
 - English, Russian, Spanish, and German controls render without missing-key fallbacks for the main UI.
 - Long translations wrap without clipping.
 - Accessible labels and dialog controls are localized.
+- Narrative About/Profile blocks are localized in all four supported locales; only intentional brand names and technical terms may remain unchanged.
+
+### AC-012 — Architecture and code health
+
+- Shared data has one canonical source: skill labels/links, timeline data, section order, asset paths, locale keys, and animation timings are not duplicated across components.
+- Reusable behavior is implemented through shared hooks/utils, while component-specific layout and event handlers remain local.
+- Reusable prop and timeline types remain typed and colocated; unnecessary `React.ReactElement` return annotations are not introduced.
+- Static source inspection finds no unused production components or imports.
+- Responsive behavior is verified at desktop, tablet, and mobile breakpoints; any unavailable visual verification is reported rather than assumed.
 
 ## 16. Manual QA matrix
 

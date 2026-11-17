@@ -243,7 +243,7 @@
   isolation: isolate;
   order: 2;
   width: 100vw;
-  height: clamp(96px, 16vh, 140px);
+  height: var(--scenery-height);
   flex-shrink: 0;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
@@ -267,11 +267,6 @@
   transform: translateX(-50%);
   animation: ufo-footer-drift 26s cubic-bezier(0.45, 0.05, 0.55, 0.95) -4s
     infinite alternate;
-}
-
-.mobile-menu-footer-scene .mountain-mist__image {
-  width: max(200vw, calc(var(--scenery-height) * 15.2));
-  min-height: 0;
 }
 
 .mobile-menu-header .header-scene__ufo {
@@ -421,6 +416,98 @@
   }
 }
 
+.ufo--departing {
+  animation-duration: var(--ufo-departure-duration) !important;
+  animation-iteration-count: 1 !important;
+  animation-direction: normal !important;
+  animation-fill-mode: forwards !important;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.night-sky__ufo.ufo--departing {
+  animation-name: ufo-departure-main !important;
+}
+
+.header-scene__ufo.ufo--departing {
+  animation-name: ufo-departure-header !important;
+}
+
+.mobile-menu-footer-scene .header-scene__ufo.ufo--departing {
+  animation-name: ufo-departure-footer !important;
+}
+
+@keyframes ufo-departure-main {
+  0%,
+  12% {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate3d(115vw, -12vh, 0) rotate(14deg);
+  }
+
+  68% {
+    transform: translate3d(115vw, -12vh, 0) rotate(14deg);
+  }
+
+  80% {
+    transform: translate3d(-110vw, 16vh, 0) rotate(-18deg);
+  }
+
+  94%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+}
+
+@keyframes ufo-departure-header {
+  0%,
+  12% {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+
+  20% {
+    transform: translate3d(-110vw, -10vh, 0) rotate(-16deg);
+  }
+
+  68% {
+    transform: translate3d(-110vw, -10vh, 0) rotate(-16deg);
+  }
+
+  80% {
+    transform: translate3d(110vw, 15vh, 0) rotate(18deg);
+  }
+
+  94%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+}
+
+@keyframes ufo-departure-footer {
+  0%,
+  12% {
+    transform: translate3d(-50%, 0, 0) rotate(-0.8deg);
+  }
+
+  20% {
+    transform: translate3d(calc(-50% + 110vw), -12vh, 0) rotate(16deg);
+  }
+
+  68% {
+    transform: translate3d(calc(-50% + 110vw), -12vh, 0) rotate(16deg);
+  }
+
+  80% {
+    transform: translate3d(calc(-50% - 110vw), 14vh, 0) rotate(-18deg);
+  }
+
+  94%,
+  100% {
+    transform: translate3d(-50%, 0, 0) rotate(-0.8deg);
+  }
+}
+
 @keyframes cursor-blink {
   0%,
   45% {
@@ -441,7 +528,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .night-sky__ufo,
-  .header-scene__ufo {
-    animation: none;
+  .header-scene__ufo,
+  .ufo--departing {
+    animation: none !important;
   }
 }

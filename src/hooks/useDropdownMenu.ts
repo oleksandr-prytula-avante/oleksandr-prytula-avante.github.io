@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useDropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,19 +32,19 @@ export function useDropdownMenu() {
     };
   }, []);
 
-  function open() {
+  const open = useCallback(function () {
     setIsOpen(true);
-  }
+  }, []);
 
-  function close() {
+  const close = useCallback(function () {
     setIsOpen(false);
-  }
+  }, []);
 
-  function toggle() {
+  const toggle = useCallback(function () {
     setIsOpen(function (prev) {
       return !prev;
     });
-  }
+  }, []);
 
   return {
     isOpen,

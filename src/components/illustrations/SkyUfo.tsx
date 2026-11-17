@@ -1,6 +1,5 @@
-import { SVG_ASSET_PATHS } from "../../constants/assets";
-import { SvgImage } from "../SvgImage";
+import { Ufo } from "./Ufo";
 
 export function SkyUfo() {
-  return <SvgImage src={SVG_ASSET_PATHS.skyUfo} className="night-sky__ufo" />;
+  return <Ufo className="night-sky__ufo" />;
 }

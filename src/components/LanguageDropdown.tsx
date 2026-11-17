@@ -1,6 +1,5 @@
 import {
   useEffect,
-  useMemo,
   type FocusEvent,
   type MouseEvent,
   type PointerEvent,
@@ -18,18 +17,13 @@ type LanguageDropdownProps = {
 export function LanguageDropdown(props: LanguageDropdownProps) {
   const { isDisabled = false } = props;
   const i18n = useI18n();
-  const languageMenu = useDropdownMenu();
+  const { isOpen, containerRef, open, close, toggle } = useDropdownMenu();
 
-  const currentLocaleLabel = useMemo(
-    function () {
-      return i18n.t(LOCALE_LABEL_KEYS[i18n.locale as ELocale]);
-    },
-    [i18n.locale],
-  );
+  const currentLocaleLabel = i18n.t(LOCALE_LABEL_KEYS[i18n.locale as ELocale]);
 
   function handleSelectLocale(nextLocale: ELocale) {
     i18n.setLocale(nextLocale);
-    languageMenu.close();
+    close();
   }
 
   function handleLanguageMenuToggle(event: MouseEvent<HTMLButtonElement>) {
@@ -43,28 +37,28 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
       event.detail > 0 &&
       window.matchMedia("(hover: hover) and (pointer: fine)").matches
     ) {
-      languageMenu.open();
+      open();
       return;
     }
 
-    languageMenu.toggle();
+    toggle();
   }
 
   function handlePointerEnter(event: PointerEvent<HTMLDivElement>) {
     if (!isDisabled && event.pointerType === "mouse") {
-      languageMenu.open();
+      open();
     }
   }
 
   function handlePointerLeave(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType === "mouse") {
-      languageMenu.close();
+      close();
     }
   }
 
   function handleBlur(event: FocusEvent<HTMLDivElement>) {
     if (!event.currentTarget.contains(event.relatedTarget)) {
-      languageMenu.close();
+      close();
     }
   }
 
@@ -89,15 +83,15 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
   useEffect(
     function () {
       if (isDisabled) {
-        languageMenu.close();
+        close();
       }
     },
-    [isDisabled],
+    [close, isDisabled],
   );
 
   let languageDropdown = null;
 
-  if (languageMenu.isOpen) {
+  if (isOpen) {
     languageDropdown = (
       <div
         className="absolute right-0 top-[calc(100%-1.33px)] z-20 w-10"
@@ -136,7 +130,7 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
   return (
     <div
       className="relative border-b-[1.33px] border-transparent py-3"
-      ref={languageMenu.containerRef}
+      ref={containerRef}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
       onBlur={handleBlur}
@@ -146,13 +140,13 @@ export function LanguageDropdown(props: LanguageDropdownProps) {
         className={
           isDisabled
             ? "subtle-border subtle-border--quiet control-label relative flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border bg-white/5 text-[0.875rem] text-white/50 outline-none"
-            : languageMenu.isOpen
+            : isOpen
               ? "subtle-border subtle-border--quiet relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/8 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out"
               : "subtle-border subtle-border--quiet relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white/2 text-[0.875rem] text-white outline-none transition-colors duration-200 ease-out hover:bg-white/8 focus-visible:bg-white/8"
         }
         onClick={handleLanguageMenuToggle}
         aria-haspopup="listbox"
-        aria-expanded={isDisabled ? false : languageMenu.isOpen}
+        aria-expanded={isDisabled ? false : isOpen}
         disabled={isDisabled}
       >
         <span className="text-center">{currentLocaleLabel}</span>

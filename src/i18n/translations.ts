@@ -75,7 +75,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutProjects]:
     "Product development, startups, outsourcing & outstaffing",
   [ETranslationKey.AboutScope]:
-    "Frontend, backend, APIs, microservices & system architecture",
+    "Frontend, Backend, APIs, Microservices & System Architecture",
   [ETranslationKey.AboutCollaboration]:
     "Cross-functional teams · Product, design, QA & DevOps",
   [ETranslationKey.AboutMentoring]:
@@ -186,13 +186,13 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraHighlight3]:
     "Played a key role in building a custom multimedia player using Canvas API and WebRTC, enabling real-time streaming, multi-layer annotations, and embedding into third-party platforms.",
   [ETranslationKey.ExperienceOmnoraHighlight4]:
-    "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks add overlays and generate training content directly in the browser.",
+    "Helped develop an interactive audio/video editor that allows users to edit multimedia tracks, add overlays, and generate training content directly in the browser.",
   [ETranslationKey.ExperienceOmnoraHighlight5]:
     "Led implementation of SCORM and xAPI standards for detailed tracking of learner progress and interactions within external LMS platforms, ensuring e-learning compliance.",
   [ETranslationKey.ExperienceOmnoraHighlight6]:
     "Integrated AI APIs to enable features such as AI avatars, text-to-speech, and interactive video generation, improving automation and personalization.",
   [ETranslationKey.ExperienceOmnoraHighlight7]:
-    "Directed FE modernization by refactoring the codebase into a reactive programming architecture using reactive approach and upgrading to the latest React and TypeScript, improving maintainability and performance.",
+    "Directed FE modernization by refactoring the codebase around reactive programming and upgrading to the latest React and TypeScript, improving maintainability and performance.",
   [ETranslationKey.ExperienceOmnoraHighlight8]:
     "Enhanced testing by increasing unit test coverage and adding automated tests integrated into CI/CD pipelines for reliable, faster releases.",
   [ETranslationKey.ExperienceOmnoraHighlight9]:
@@ -205,7 +205,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceDigitalsuitsDescription]:
     "Web Developer & Technical Team Lead | Outsource / Dedicated Team. Full-time.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight1]:
-    "Developed an admin panel for managing an interactive chatbots (before active AI agent integrations) used in B2B insurance applications, enabling business users to configure flows, monitor interactions and manage customer communication scenarios.",
+    "Developed an admin panel for managing interactive chatbots (before active AI agent integrations) used in B2B insurance applications, enabling business users to configure flows, monitor interactions, and manage customer communication scenarios.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight2]:
     "Developed a real estate platform tailored for the UK market, providing tools for property listing management, search and client interactions, with a focus on scalability, performance and regulatory compliance.",
   [ETranslationKey.ExperienceDigitalsuitsHighlight3]:
@@ -306,7 +306,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.A11yCloseMenu]: "Закрыть меню",
   [ETranslationKey.A11ySectionNavigation]: "Навигация по разделам",
   [ETranslationKey.A11yLanguage]: "Язык",
-  [ETranslationKey.HeroHiIm]: "Дратути!",
+  [ETranslationKey.HeroHiIm]: "Привет, я",
   [ETranslationKey.HeroName]: "Александр",
   [ETranslationKey.HeroSurname]: "Притула",
   [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
@@ -317,7 +317,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutYearsExperience]: "10+ лет в разработке ПО",
   [ETranslationKey.AboutGetToKnow]: "Давайте познакомимся поближе…",
   [ETranslationKey.AboutCommunication]:
-    "Английский · Профессиональный рабочий уровень",
+    "Английский · Продвинутый профессиональный уровень",
   [ETranslationKey.AboutLearning]: "Системный дизайн, алгоритмы, развитие",
   [ETranslationKey.AboutWorkStyle]: "Удалённо, международные команды",
   [ETranslationKey.AboutProjects]:
@@ -325,7 +325,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutScope]:
     "Фронтенд, бэкенд, API, микросервисы и системная архитектура",
   [ETranslationKey.AboutCollaboration]:
-    "Кросс-функциональные команды · Product, design, QA и DevOps",
+    "Кросс-функциональные команды · Продукт, дизайн, QA и DevOps",
   [ETranslationKey.AboutMentoring]:
     "Наставничество и развитие junior-разработчиков",
   [ETranslationKey.AboutDomains]:
@@ -341,6 +341,35 @@ const RU_TRANSLATIONS: Translations = {
     "На протяжении карьеры я работал в инженерных командах численностью от 3 до 20 человек, часто в международной и распределенной среде. Английский – мой основной рабочий язык для технических обсуждений и общения с клиентами. Я привык взаимодействовать с разными командами, уточнять бизнес-требования и объяснять технические аспекты как коллегам-инженерам, так и нетехническим заинтересованным сторонам. Я также наставляю начинающих разработчиков, предоставляя технические рекомендации, делясь знаниями и поддерживая их профессиональное развитие.",
   [ETranslationKey.AboutParagraph4]:
     "У меня есть степень магистра по программной инженерии, которая дала прочную основу в архитектуре программного обеспечения, безопасном программировании, алгоритмах и системном мышлении. Я продолжаю расширять свои знания, решая алгоритмические задачи на LeetCode, практикуясь в проектировании систем, проходя профессиональные курсы, готовясь к сертификациям и изучая техническую литературу.",
+  [ETranslationKey.AboutProfileTitle]: "Профессиональный профиль",
+  [ETranslationKey.AboutLargeScaleTitle]:
+    "Разработка крупномасштабных платформ",
+  [ETranslationKey.AboutLargeScaleText]:
+    "Я разрабатывал и поддерживал ключевую функциональность производственных веб-платформ, которыми пользуются сотни компаний и тысячи пользователей на международных рынках, с особым фокусом на продуктах для Германии.",
+  [ETranslationKey.AboutInteractiveTitle]: "Интерактивные системы и интеграции",
+  [ETranslationKey.AboutInteractiveText]:
+    "Я проектировал и реализовывал сложные интерактивные системы, включая браузерные редакторы, потоковые решения и дашборды на основе данных. Также я интегрировал стандарты электронного обучения, сторонние API и функции на базе ИИ, обеспечивая совместимость с внешними платформами и уделяя внимание удобству использования, производительности и расширяемости.",
+  [ETranslationKey.AboutStakeholderTitle]:
+    "Взаимодействие с заинтересованными сторонами",
+  [ETranslationKey.AboutStakeholderText]:
+    "Я разрабатывал и улучшал корпоративные приложения в тесном сотрудничестве с продакт-менеджерами, дизайнерами, специалистами по качеству и DevOps-инженерами. Также я напрямую взаимодействовал с представителями бизнеса и международными партнёрами, чтобы уточнять требования и согласовывать техническую реализацию с целями продукта.",
+  [ETranslationKey.AboutQualityTitle]: "Качество и надёжность релизов",
+  [ETranslationKey.AboutQualityText]:
+    "Я повышал качество продукта и надёжность релизов, расширяя покрытие автоматизированными тестами и интегрируя тесты в CI/CD-пайплайны. Это помогало раньше обнаруживать регрессии и делало процесс выпуска более стабильным и предсказуемым.",
+  [ETranslationKey.AboutMentoringTitle]: "Наставничество",
+  [ETranslationKey.AboutMentoringText]:
+    "Я наставлял начинающих разработчиков, помогал им адаптироваться и продвигал инженерные практики, повышающие качество кода и поддерживающие профессиональный рост. Благодаря код-ревью и практическим техническим рекомендациям я помогал коллегам оценивать варианты реализации и увереннее решать сложные инженерные задачи.",
+  [ETranslationKey.AboutEducationTitle]: "Образование и непрерывное развитие",
+  [ETranslationKey.AboutCareerTitle]: "Карьерные цели",
+  [ETranslationKey.AboutCareerText]:
+    "Я ищу роль, в которой смогу участвовать в разработке производственных систем, принимать технические решения и углублять экспертизу благодаря сложным задачам. Я ценю ясные договорённости, надёжную коммуникацию и своевременную оплату в соответствии с согласованными условиями.",
+  [ETranslationKey.AboutTechnicalFocusTitle]:
+    "Технический фокус и инженерный подход",
+  [ETranslationKey.AboutTechnicalFocusText]:
+    "Я предпочитаю работать с современным технологическим стеком, но также уверенно поддерживаю, рефакторю и модернизирую legacy-системы. Для меня важны чёткие бизнес-цели, прозрачная коммуникация, реалистичные сроки и культура сотрудничества, в которой поощряется обмен знаниями. Мой подход сочетает качество кода и долгосрочную поддерживаемость с прагматичным фокусом на результате.",
+  [ETranslationKey.AboutProjectPreferencesTitle]: "Предпочтения по проектам",
+  [ETranslationKey.AboutProjectPreferencesText]:
+    "У меня большой опыт работы в продуктовых компаниях, и я особенно ценю возможность вместе с командой развивать и улучшать продукт со временем. Я предпочитаю долгосрочные проекты, но также открыт к среднесрочным и разовым задачам, включая аутсорсинг и аутстаффинг в качестве индивидуального разработчика.",
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]:
@@ -527,7 +556,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.A11yCloseMenu]: "Cerrar menú",
   [ETranslationKey.A11ySectionNavigation]: "Navegación por secciones",
   [ETranslationKey.A11yLanguage]: "Idioma",
-  [ETranslationKey.HeroHiIm]: "HOLA!",
+  [ETranslationKey.HeroHiIm]: "¡Hola, soy",
   [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
   [ETranslationKey.HeroEngineeringToolkit]: "Mi stack de ingeniería:",
   [ETranslationKey.HeroNeedMoreDetails]: "¿NECESITAS MÁS DETALLES?",
@@ -537,7 +566,7 @@ const SP_TRANSLATIONS: Translations = {
     "Más de 10 años en ingeniería de software",
   [ETranslationKey.AboutGetToKnow]: "Conozcámonos un poco mejor…",
   [ETranslationKey.AboutCommunication]:
-    "Inglés · Competencia profesional de trabajo",
+    "Inglés · Competencia profesional avanzada",
   [ETranslationKey.AboutLearning]:
     "Diseño de sistemas, algoritmos y aprendizaje continuo",
   [ETranslationKey.AboutWorkStyle]:
@@ -563,6 +592,36 @@ const SP_TRANSLATIONS: Translations = {
     "A lo largo de mi carrera, he trabajado en equipos de ingeniería de entre 3 y 20 integrantes, frecuentemente en entornos internacionales y distribuidos. El inglés es mi principal idioma de trabajo para las discusiones técnicas y la comunicación con clientes. Estoy acostumbrado a colaborar entre equipos, aclarar requisitos de negocio y comunicar consideraciones técnicas tanto a colegas de ingeniería como a las partes interesadas sin perfil técnico. También mentorizo a desarrolladores júnior, ofreciendo orientación técnica, compartiendo conocimientos y apoyando su desarrollo profesional.",
   [ETranslationKey.AboutParagraph4]:
     "Tengo un máster en Ingeniería de Software, que me proporcionó una base sólida en arquitectura de software, prácticas de programación segura, algoritmos y pensamiento sistémico. Continúo ampliando mis conocimientos resolviendo problemas algorítmicos en LeetCode, practicando el diseño de sistemas, realizando cursos profesionales, preparándome para certificaciones y estudiando literatura técnica.",
+  [ETranslationKey.AboutProfileTitle]: "Perfil profesional",
+  [ETranslationKey.AboutLargeScaleTitle]:
+    "Desarrollo de plataformas a gran escala",
+  [ETranslationKey.AboutLargeScaleText]:
+    "Desarrollé y mantuve funcionalidades clave para plataformas web de producción a gran escala que prestan servicio a cientos de empresas y miles de usuarios en mercados internacionales, con especial atención a productos utilizados en Alemania.",
+  [ETranslationKey.AboutInteractiveTitle]:
+    "Sistemas interactivos e integraciones",
+  [ETranslationKey.AboutInteractiveText]:
+    "Diseñé e implementé sistemas interactivos complejos, incluidos editores en el navegador, soluciones de streaming y paneles basados en datos. También integré estándares de e-learning, API de terceros y funcionalidades basadas en IA, garantizando la compatibilidad con plataformas externas y priorizando la usabilidad, el rendimiento y la extensibilidad.",
+  [ETranslationKey.AboutStakeholderTitle]:
+    "Colaboración con las partes interesadas",
+  [ETranslationKey.AboutStakeholderText]:
+    "Desarrollé y mejoré aplicaciones empresariales en estrecha colaboración con responsables de producto, diseñadores, especialistas de QA e ingenieros de DevOps. También trabajé directamente con representantes de negocio y socios internacionales para aclarar requisitos y alinear la implementación técnica con los objetivos del producto.",
+  [ETranslationKey.AboutQualityTitle]: "Calidad y fiabilidad de las entregas",
+  [ETranslationKey.AboutQualityText]:
+    "Mejoré la calidad del producto y la fiabilidad de las entregas ampliando la cobertura de pruebas automatizadas e integrando las pruebas en los pipelines de integración y despliegue continuos. Esto ayudó a detectar las regresiones antes y a hacer el proceso de lanzamiento más estable y predecible.",
+  [ETranslationKey.AboutMentoringTitle]: "Mentoría",
+  [ETranslationKey.AboutMentoringText]:
+    "Mentoricé a desarrolladores júnior, apoyé su incorporación y promoví buenas prácticas de ingeniería para reforzar la calidad del código y el crecimiento profesional. Mediante revisiones de código y orientación técnica práctica, ayudé a mis compañeros a evaluar enfoques de implementación y a ganar confianza al resolver problemas complejos.",
+  [ETranslationKey.AboutEducationTitle]: "Formación y aprendizaje continuo",
+  [ETranslationKey.AboutCareerTitle]: "Orientación profesional",
+  [ETranslationKey.AboutCareerText]:
+    "Busco un puesto en el que pueda contribuir al desarrollo de sistemas de producción, participar en decisiones técnicas y profundizar mi experiencia mediante retos exigentes. Valoro los acuerdos claros, la comunicación fiable y una compensación pagada puntualmente según las condiciones acordadas.",
+  [ETranslationKey.AboutTechnicalFocusTitle]:
+    "Enfoque técnico y forma de trabajar",
+  [ETranslationKey.AboutTechnicalFocusText]:
+    "Prefiero trabajar con un stack tecnológico moderno, pero también me siento cómodo manteniendo, refactorizando y modernizando sistemas heredados. Valoro los objetivos de negocio claros, la comunicación transparente, los plazos realistas y una cultura colaborativa que fomente el intercambio de conocimientos. Mi enfoque equilibra la calidad del código y la mantenibilidad a largo plazo con una visión pragmática orientada a la entrega.",
+  [ETranslationKey.AboutProjectPreferencesTitle]: "Preferencias de proyectos",
+  [ETranslationKey.AboutProjectPreferencesText]:
+    "Tengo una sólida experiencia en empresas de producto y valoro especialmente trabajar con un equipo para desarrollar y perfeccionar un producto con el tiempo. Prefiero colaboraciones a largo plazo, pero también estoy abierto a proyectos de duración media y puntuales, incluidas oportunidades de outsourcing y outstaffing como colaborador individual.",
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Máster, Ingeniería de Software",
@@ -746,11 +805,11 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "LMS-Exporteinstellungen – xAPI / SCORM",
   [ETranslationKey.A11yLogo]: "Logo",
-  [ETranslationKey.A11yOpenMenu]: "Menu offnen",
-  [ETranslationKey.A11yCloseMenu]: "Menu schliessen",
+  [ETranslationKey.A11yOpenMenu]: "Menü öffnen",
+  [ETranslationKey.A11yCloseMenu]: "Menü schließen",
   [ETranslationKey.A11ySectionNavigation]: "Bereichsnavigation",
   [ETranslationKey.A11yLanguage]: "Sprache",
-  [ETranslationKey.HeroHiIm]: "Hallo!",
+  [ETranslationKey.HeroHiIm]: "Hallo, ich bin",
   [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
   [ETranslationKey.HeroEngineeringToolkit]: "Mein Engineering-Toolkit",
   [ETranslationKey.HeroNeedMoreDetails]: "MEHR DETAILS NÖTIG?",
@@ -760,7 +819,7 @@ const DE_TRANSLATIONS: Translations = {
     "10+ Jahre in der Softwareentwicklung",
   [ETranslationKey.AboutGetToKnow]: "Lernen wir uns besser kennen…",
   [ETranslationKey.AboutCommunication]:
-    "Englisch · Professionelle Arbeitskenntnisse",
+    "Englisch · Fortgeschrittene berufliche Sprachkenntnisse",
   [ETranslationKey.AboutLearning]:
     "Systemdesign, Algorithmen und kontinuierliches Lernen",
   [ETranslationKey.AboutWorkStyle]:
@@ -770,7 +829,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutScope]:
     "Frontend, Backend, APIs, Microservices und Systemarchitektur",
   [ETranslationKey.AboutCollaboration]:
-    "Cross-funktionale Teams · Product, Design, QA und DevOps",
+    "Funktionsübergreifende Teams · Produkt, Design, QA und DevOps",
   [ETranslationKey.AboutMentoring]:
     "Technische Unterstützung und Mentoring von Junior-Entwicklern",
   [ETranslationKey.AboutDomains]:
@@ -786,6 +845,36 @@ const DE_TRANSLATIONS: Translations = {
     "Im Laufe meiner Karriere habe ich in Entwicklungsteams mit 3 bis 20 Mitgliedern gearbeitet, häufig in internationalen und verteilten Umgebungen. Englisch ist meine primäre Arbeitssprache für technische Diskussionen und die Kommunikation mit Kunden. Ich bin es gewohnt, teamübergreifend zusammenzuarbeiten, geschäftliche Anforderungen zu klären und technische Aspekte sowohl mit Kollegen aus der Entwicklung als auch mit nichttechnischen Stakeholdern zu besprechen. Zudem betreue ich Junior-Entwickler, gebe technische Hilfestellung, teile Wissen und unterstütze ihre berufliche Entwicklung.",
   [ETranslationKey.AboutParagraph4]:
     "Ich habe einen Masterabschluss in Software Engineering, der mir eine solide Grundlage in Softwarearchitektur, sicheren Programmierpraktiken, Algorithmen und systemischem Denken vermittelt hat. Ich erweitere mein Fachwissen kontinuierlich, indem ich algorithmische Aufgaben auf LeetCode löse, Systemdesign übe, Fachkurse belege, Zertifizierungen anstrebe und Fachliteratur studiere.",
+  [ETranslationKey.AboutProfileTitle]: "Professionelles Profil",
+  [ETranslationKey.AboutLargeScaleTitle]:
+    "Entwicklung großskaliger Plattformen",
+  [ETranslationKey.AboutLargeScaleText]:
+    "Ich entwickelte und betreute zentrale Funktionen für großskalige, produktive Webplattformen, die Hunderte von Unternehmen und Tausende von Nutzern auf internationalen Märkten bedienen, mit besonderem Fokus auf Produkte für Deutschland.",
+  [ETranslationKey.AboutInteractiveTitle]:
+    "Interaktive Systeme und Integrationen",
+  [ETranslationKey.AboutInteractiveText]:
+    "Ich entwarf und implementierte komplexe interaktive Systeme, darunter browserbasierte Editoren, Streaming-Lösungen und datenbasierte Dashboards. Außerdem integrierte ich E-Learning-Standards, APIs von Drittanbietern und KI-gestützte Funktionen und stellte dabei Kompatibilität mit externen Plattformen sowie Benutzerfreundlichkeit, Performance und Erweiterbarkeit sicher.",
+  [ETranslationKey.AboutStakeholderTitle]: "Zusammenarbeit mit Stakeholdern",
+  [ETranslationKey.AboutStakeholderText]:
+    "Ich entwickelte und erweiterte Unternehmensanwendungen in enger Zusammenarbeit mit Produktmanagern, Designern, QA-Spezialisten und DevOps-Ingenieuren. Außerdem arbeitete ich direkt mit Fachverantwortlichen und internationalen Partnern zusammen, um Anforderungen zu klären und die technische Umsetzung an den Produktzielen auszurichten.",
+  [ETranslationKey.AboutQualityTitle]: "Qualität und Release-Zuverlässigkeit",
+  [ETranslationKey.AboutQualityText]:
+    "Ich verbesserte die Produktqualität und Release-Zuverlässigkeit durch eine höhere Abdeckung mit automatisierten Tests und deren Integration in CI/CD-Pipelines. Dadurch konnten Regressionen früher erkannt und der Release-Prozess stabiler und planbarer gestaltet werden.",
+  [ETranslationKey.AboutMentoringTitle]: "Mentoring",
+  [ETranslationKey.AboutMentoringText]:
+    "Ich betreute Junior-Entwickler, unterstützte beim Onboarding und förderte bewährte Engineering-Praktiken, um Codequalität und berufliche Entwicklung zu stärken. Durch Code-Reviews und praxisnahe technische Anleitung half ich Kollegen, Implementierungsansätze zu bewerten und komplexe technische Aufgaben sicherer zu lösen.",
+  [ETranslationKey.AboutEducationTitle]:
+    "Ausbildung und kontinuierliche Weiterentwicklung",
+  [ETranslationKey.AboutCareerTitle]: "Berufliche Ausrichtung",
+  [ETranslationKey.AboutCareerText]:
+    "Ich suche eine Rolle, in der ich zur Entwicklung produktiver Systeme beitragen, an technischen Entscheidungen mitwirken und meine Expertise durch anspruchsvolle Aufgaben vertiefen kann. Ich schätze klare Vereinbarungen, zuverlässige Kommunikation und eine pünktliche Vergütung gemäß den vereinbarten Bedingungen.",
+  [ETranslationKey.AboutTechnicalFocusTitle]:
+    "Technischer Fokus und Engineering-Ansatz",
+  [ETranslationKey.AboutTechnicalFocusText]:
+    "Ich arbeite bevorzugt mit einem modernen Technologiestack, bin aber auch mit der Wartung, dem Refactoring und der Modernisierung von Legacy-Systemen vertraut. Ich schätze klar definierte Geschäftsziele, transparente Kommunikation, realistische Zeitpläne und eine kollaborative Kultur, die Wissensaustausch fördert. Mein Ansatz verbindet Codequalität und langfristige Wartbarkeit mit einem pragmatischen Fokus auf die Umsetzung.",
+  [ETranslationKey.AboutProjectPreferencesTitle]: "Projektpräferenzen",
+  [ETranslationKey.AboutProjectPreferencesText]:
+    "Ich verfüge über umfangreiche Erfahrung in Produktunternehmen und schätze besonders die gemeinsame kontinuierliche Entwicklung und Verbesserung eines Produkts. Langfristige Engagements sind meine Präferenz, aber ich bin auch offen für mittel- und kurzfristige Projekte, einschließlich Outsourcing- und Outstaffing-Aufgaben als Individual Contributor.",
   [ETranslationKey.EducationDuetUniversityName]:
     "State University of Economics and Technology",
   [ETranslationKey.EducationDuetDegree]: "Masterabschluss, Softwaretechnik",

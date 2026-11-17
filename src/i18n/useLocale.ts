@@ -11,15 +11,25 @@ export function useLocale(initialLocale: ELocale = ELocale.En) {
   const [locale, setLocale] = useState<ELocale>(initialLocale);
 
   useEffect(function () {
+    let localeTimer = 0;
+
     try {
       const browserLocale = getPreferredBrowserLocale();
 
-      setLocale(function (currentLocale) {
-        return currentLocale === browserLocale ? currentLocale : browserLocale;
-      });
+      localeTimer = window.setTimeout(function () {
+        setLocale(function (currentLocale) {
+          return currentLocale === browserLocale
+            ? currentLocale
+            : browserLocale;
+        });
+      }, 0);
     } catch {
       // ignore
     }
+
+    return function () {
+      window.clearTimeout(localeTimer);
+    };
   }, []);
 
   useEffect(
