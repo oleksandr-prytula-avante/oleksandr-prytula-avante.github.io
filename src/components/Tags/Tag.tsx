@@ -1,4 +1,5 @@
 import { SKILL_HREF_BY_LABEL } from "../../constants/skillTags";
+import { toDisplayText } from "../../utils/text";
 import type { SkillInteractionProps } from "../types/skills";
 
 type TagProps = {
@@ -20,6 +21,7 @@ export function Tag(props: TagProps) {
     onClearSkill,
   } = props;
   const resolvedHref = href ?? SKILL_HREF_BY_LABEL[label];
+  const displayLabel = toDisplayText(label);
   const baseClassName = [
     "subtle-border relative rounded-full border px-3 py-1 text-[13px] uppercase tracking-normal transition-colors duration-200 ease-out",
     variant === "experience" ? "my-1" : "",
@@ -52,7 +54,7 @@ export function Tag(props: TagProps) {
       onFocus={handleMouseEnter}
       onBlur={handleMouseLeave}
     >
-      #{label}
+      #{displayLabel}
     </a>
   );
 }

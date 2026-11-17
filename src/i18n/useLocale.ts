@@ -5,6 +5,7 @@ import type { ETranslationKey } from "./types";
 import { TRANSLATIONS } from "./translations";
 import { LOCALE_VALUES, LOCALE_STORAGE_KEY } from "../constants/locale";
 import { getPreferredBrowserLocale } from "../utils/locale";
+import { toDisplayText } from "../utils/text";
 
 export function useLocale(initialLocale: ELocale = ELocale.En) {
   const [locale, setLocale] = useState<ELocale>(initialLocale);
@@ -36,7 +37,10 @@ export function useLocale(initialLocale: ELocale = ELocale.En) {
 
   const t = useCallback(
     function (key: ETranslationKey) {
-      return TRANSLATIONS[locale][key] ?? TRANSLATIONS[ELocale.En][key] ?? key;
+      const value =
+        TRANSLATIONS[locale][key] ?? TRANSLATIONS[ELocale.En][key] ?? key;
+
+      return toDisplayText(value);
     },
     [locale],
   );
