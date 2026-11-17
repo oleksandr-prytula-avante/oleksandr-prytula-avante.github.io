@@ -524,6 +524,7 @@ Current screenshot metadata is maintained in `src/constants/projects.ts`; do not
 - Decorative layers use page/header stacking contexts; do not solve clipping by assigning arbitrary positive z-index values to scenery over content.
 - White content must retain contrast against nebula and mist areas.
 - The primary `NightSky` image is shifted to the right and slightly dimmed so the bright nebula does not sit behind the white hero copy. The shift is applied directly to the image layer and therefore must not depend on one narrow media-query range.
+- On desktop, the main mountain layer is fitted to the scenery container height with bottom alignment and without a vertical mask; the lighthouse, house, and mountain silhouettes must remain fully visible instead of being cropped by the viewport edge. Mobile footer scenery may keep its own mask and sizing rules.
 - On mobile menu, upper sky is full-bleed and rendered once; lower scene uses mountains plus one UFO, not a second sky.
 - The lower mobile scene is full-bleed using the established `100vw`/negative-margin pattern.
 
@@ -665,6 +666,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Mobile menu upper sky is full-bleed and rendered once.
 - Mobile menu lower scene uses full-width mountains and one UFO.
 - Mountains preserve a coherent scale relative to the sky and do not leave unintended side gutters.
+- Desktop mountain scenery keeps the lighthouse and house silhouettes visible; fitting the image to the container must not vertically crop those landmarks.
 - Decorative motion is smooth and disabled for reduced-motion users.
 
 ### AC-011 — Internationalization
