@@ -41,7 +41,6 @@ export function About() {
     });
   }
   const summary = {
-    location: i18n.t(ETranslationKey.AboutLocation),
     role: i18n.t(ETranslationKey.HeroRole),
     experience: i18n.t(ETranslationKey.AboutYearsExperience),
     domains: i18n.t(ETranslationKey.AboutDomains),
