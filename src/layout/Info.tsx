@@ -252,7 +252,7 @@ export function Info(props: InfoProps) {
         />
       </div>
 
-      <div className="mt-2 flex shrink-0 items-start gap-6 max-[640px]:gap-4">
+      <div className="-mt-8 flex shrink-0 items-start gap-6 max-[1024px]:mt-2 max-[640px]:gap-4">
         <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-end min-[640px]:max-[1024px]:gap-3">
           <span className="block">
             <TypingText text={nameText}>
