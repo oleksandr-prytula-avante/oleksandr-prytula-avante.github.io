@@ -2,6 +2,7 @@ import {
   useId,
   useRef,
   useState,
+  useEffect,
   type CSSProperties,
   type ReactNode,
 } from "react";
@@ -24,9 +25,8 @@ export function About() {
   const aboutPanelRef = useRef<HTMLElement | null>(null);
   const summaryRef = useRef<HTMLDivElement | null>(null);
 
-  function handleToggle() {
-    setIsExpanded((current) => !current);
-    requestAnimationFrame(() => {
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
       const panel = aboutPanelRef.current;
 
       if (panel) {
@@ -43,6 +43,12 @@ export function About() {
         block: "start",
       });
     });
+
+    return () => cancelAnimationFrame(frame);
+  }, [isExpanded]);
+
+  function handleToggle() {
+    setIsExpanded((current) => !current);
   }
   const summary = {
     role: i18n.t(ETranslationKey.HeroRole),
