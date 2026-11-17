@@ -68,6 +68,7 @@ export function About() {
     setIsExpanded((current) => !current);
   }
   const summary = {
+    name: "Oleksandr (Alex) Prytula",
     role: i18n.t(ETranslationKey.HeroRole),
     experience: i18n.t(ETranslationKey.AboutYearsExperience),
     domains: i18n.t(ETranslationKey.AboutDomains),
