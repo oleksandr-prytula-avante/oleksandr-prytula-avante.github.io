@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { Header } from "../../components/Header";
 import { MountainMist } from "../../components/illustrations/MountainMist";
 import { NightSky } from "../../components/illustrations/NightSky";
-import { SkyUfo } from "../../components/illustrations/SkyUfo";
 import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
 import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries";
@@ -64,7 +63,6 @@ export function Main() {
     <div className="resume-page relative flex h-full flex-col overflow-hidden text-white max-[1024px]:overflow-y-auto">
       <div className="resume-content relative z-10 mx-auto flex h-full min-h-0 w-full max-w-[1920px] flex-col px-24 max-[1024px]:px-18 max-[1024px]:pt-24 max-[768px]:px-12 max-[640px]:px-8">
         <NightSky />
-        <SkyUfo />
         <MountainMist />
         <Header
           isLanguageDisabled={isHeroPrintingInProgress}
