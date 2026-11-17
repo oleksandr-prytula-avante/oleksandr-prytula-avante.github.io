@@ -95,9 +95,6 @@
 }
 
 .about-panel__toggle-row {
-  position: sticky;
-  top: 0;
-  z-index: 2;
   display: flex;
   justify-content: center;
   padding-block: 10px;
@@ -280,10 +277,6 @@
 
   .summary-code__source {
     font-size: 12px;
-  }
-
-  .about-panel__toggle-row {
-    top: 6rem;
   }
 }
 
