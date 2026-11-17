@@ -39,12 +39,12 @@ export function About() {
 
     if (panel) {
       panel.scrollTo({ top: 0, behavior: "smooth" });
-      return;
     }
 
     summaryRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
+      inline: "nearest",
     });
   }
 
@@ -65,7 +65,15 @@ export function About() {
   }, [isDesktopViewport, isExpanded]);
 
   function handleToggle() {
-    setIsExpanded((current) => !current);
+    const nextExpanded = !isExpanded;
+    setIsExpanded(nextExpanded);
+
+    if (nextExpanded) {
+      // Reset the internal About scroller immediately on click. The effect
+      // below repeats this after the reveal has mounted so the motion is
+      // reliable even when the panel was already scrolled down.
+      scrollToAboutTop();
+    }
   }
   const summary = {
     name: "Oleksandr (Alex) Prytula",
@@ -226,7 +234,10 @@ export function About() {
           inert={!isDetailsVisible}
         >
           <div className="about-panel__clip">
-            <div className="about-panel__full-story">
+            <div
+              key={isExpanded ? "about-story-open" : "about-story-closed"}
+              className="about-panel__full-story"
+            >
               {storyBlocks.map(({ titleKey, bodyKey }) => (
                 <section className="about-panel__story-block" key={titleKey}>
                   <h3>{i18n.t(titleKey)}</h3>
