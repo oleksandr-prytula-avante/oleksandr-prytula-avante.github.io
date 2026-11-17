@@ -9,12 +9,7 @@
   --timeline-rail-top: clamp(3.5rem, 6vh, 5rem);
   top: 0;
   left: calc(var(--timeline-logo-size) / 2);
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--color-accent-rgb) / 60%),
-    rgb(255 255 255 / 12%) 35%,
-    rgb(255 255 255 / 6%)
-  );
+  background: var(--line-gradient-vertical);
 }
 
 @media (min-width: 1025px) {
