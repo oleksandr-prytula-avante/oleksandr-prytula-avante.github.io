@@ -87,9 +87,7 @@ export function About() {
     <article className="about-panel">
       <div className="summary-code">
         <div className="summary-code__header" aria-hidden="true">
-          <span className="summary-code__file">
-            <span>TS</span> summary.ts
-          </span>
+          <span className="summary-code__file">profile summary</span>
         </div>
         <pre className="summary-code__source">
           <code>
