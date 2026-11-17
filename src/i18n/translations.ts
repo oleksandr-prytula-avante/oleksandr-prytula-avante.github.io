@@ -287,25 +287,19 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutLocation]: "Украина / Удалённо",
   [ETranslationKey.AboutYearsExperience]: "10+ лет",
   [ETranslationKey.AboutGetToKnow]: "Давайте познакомимся поближе…",
-  [ETranslationKey.AboutCommunication]: "Английский — основной рабочий язык",
-  [ETranslationKey.AboutLearning]:
-    "Системный дизайн, алгоритмы и постоянное развитие",
-  [ETranslationKey.AboutWorkStyle]:
-    "Удалённая работа, международные и распределённые команды",
-  [ETranslationKey.AboutProjects]:
-    "Стартапы, продуктовая разработка и аутстаффинг",
-  [ETranslationKey.AboutScope]:
-    "Архитектура, разработка, качество и техническое лидерство",
-  [ETranslationKey.AboutCollaboration]:
-    "Взаимодействие с product, design, QA и DevOps",
+  [ETranslationKey.AboutCommunication]: "Английский — рабочий язык",
+  [ETranslationKey.AboutLearning]: "Системный дизайн, алгоритмы, развитие",
+  [ETranslationKey.AboutWorkStyle]: "Удалённо, международные команды",
+  [ETranslationKey.AboutProjects]: "Стартапы, продукты, аутстаффинг",
+  [ETranslationKey.AboutScope]: "Архитектура, код, качество, лидерство",
+  [ETranslationKey.AboutCollaboration]: "Product, design, QA, DevOps",
   [ETranslationKey.AboutMentoring]:
-    "Техническое наставничество и развитие junior-разработчиков",
+    "Наставничество и развитие junior-разработчиков",
   [ETranslationKey.AboutDomains]:
-    "Онлайн-обучение, e-commerce, маркетплейсы, трейдинг, страхование, медицина",
-  [ETranslationKey.AboutTeams]:
-    "3–20 инженеров, международные распределённые команды",
+    "E-learning, e-commerce, маркетплейсы, трейдинг, страхование, медицина",
+  [ETranslationKey.AboutTeams]: "3–20 инженеров, международные команды",
   [ETranslationKey.AboutApproach]:
-    "Фокус на продукте, поддерживаемый код, менторство и надёжные релизы",
+    "Продукт, поддерживаемый код, менторство, релизы",
   [ETranslationKey.AboutEducation]: "Магистр программной инженерии",
   [ETranslationKey.AboutParagraph1]:
     "Я full-stack инженер-программист с опытом более десяти лет в различных областях: электронном обучении, электронной коммерции, маркетплейсах, трейдинге, страховании и здравоохранении. Мой опыт охватывает проекты разного масштаба, включая работу в стартапах и в формате аутстаффинга. Этот разнообразный опыт укрепил мою способность адаптироваться к различным структурам команд, инженерным практикам и меняющимся бизнес-приоритетам, сохраняя постоянное внимание к качеству программного обеспечения и созданию решений, отвечающих потребностям бизнеса.",
