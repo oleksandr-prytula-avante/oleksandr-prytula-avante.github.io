@@ -189,13 +189,13 @@
   border-top: 1px solid rgb(255 255 255 / 12%);
   color: white;
   font-size: var(--font-size-body);
-  line-height: 1.75;
+  line-height: 1.65;
   text-wrap: pretty;
 }
 
 .timeline-item__highlights {
   display: grid;
-  gap: 16px;
+  gap: var(--space-control);
 }
 
 .timeline-item__bullet {
