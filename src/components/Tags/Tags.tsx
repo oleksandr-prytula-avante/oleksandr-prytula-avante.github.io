@@ -31,9 +31,8 @@ export function Tags(props: TagsProps) {
   const { hoveredSkill, onSkillEnter, onSkillLeave } = props;
   const tagsListRef = useRef<HTMLUListElement>(null);
   const revealedTagsRef = useRef<string[]>([]);
-  const autoScrollTimeoutRef = useRef<number | null>(null);
-  const nextRowRevealTimeoutRef = useRef<number | null>(null);
-  const revealDelayByLabelRef = useRef(new Map<string, number>());
+  const revealSequenceTimeoutRef = useRef<number | null>(null);
+  const isRevealSequenceRunningRef = useRef(false);
   const [revealedTags, setRevealedTags] = useState<string[]>([]);
   const isTagAnimationEnabled = useMediaQuery(
     MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
@@ -48,11 +47,17 @@ export function Tags(props: TagsProps) {
 
       const tagsList = tagsListRef.current;
 
-      if (!tagsList || typeof IntersectionObserver === "undefined") {
+      if (!tagsList) {
         return;
       }
 
       const tagsContainer = tagsList;
+
+      if (typeof IntersectionObserver === "undefined") {
+        revealedTagsRef.current = [...COMMON_SKILL_TAGS];
+        setRevealedTags(revealedTagsRef.current);
+        return;
+      }
 
       function getTagElements() {
         return Array.from(
@@ -84,86 +89,45 @@ export function Tags(props: TagsProps) {
         });
       }
 
-      function revealTagRow(tagElements: HTMLElement[]) {
-        const unrevealedElements = sortTagElements(tagElements).filter(
-          function (tagElement) {
-            const label = tagElement.dataset.tagLabel;
-
-            if (!label) {
-              return false;
-            }
-
-            return !revealedTagsRef.current.includes(label);
-          },
+      function getRowElements(rowTop: number) {
+        return sortTagElements(
+          getTagElements().filter(function (tagElement) {
+            return Math.abs(tagElement.offsetTop - rowTop) <= 1;
+          }),
         );
+      }
 
-        if (unrevealedElements.length === 0) {
-          return;
-        }
-
-        const newlyRevealedLabels = unrevealedElements
-          .map(function (tagElement) {
-            return tagElement.dataset.tagLabel;
-          })
-          .filter(function (label): label is string {
-            return Boolean(label);
-          });
-
-        newlyRevealedLabels.forEach(function (label, index) {
-          revealDelayByLabelRef.current.set(
-            label,
-            index * TAG_REVEAL_STAGGER_MS,
+      function getNextUnrevealedElement() {
+        return getTagElements().find(function (tagElement) {
+          return !revealedTagsRef.current.includes(
+            tagElement.dataset.tagLabel ?? "",
           );
         });
+      }
 
-        const nextTags = [...revealedTagsRef.current, ...newlyRevealedLabels];
-        revealedTagsRef.current = nextTags;
-        setRevealedTags(nextTags);
+      function finishRow(rowTop: number) {
+        const nextTag = getNextUnrevealedElement();
 
-        if (!isScrollable()) {
+        if (!nextTag) {
+          isRevealSequenceRunningRef.current = false;
           return;
         }
 
-        if (autoScrollTimeoutRef.current !== null) {
-          window.clearTimeout(autoScrollTimeoutRef.current);
-        }
+        const nextRowTop = nextTag.offsetTop;
+        const shouldScroll = isScrollable();
 
-        if (nextRowRevealTimeoutRef.current !== null) {
-          window.clearTimeout(nextRowRevealTimeoutRef.current);
-        }
-
-        const revealDelay =
-          TAG_REVEAL_DURATION_MS +
-          Math.max(0, newlyRevealedLabels.length - 1) * TAG_REVEAL_STAGGER_MS +
-          80;
-
-        autoScrollTimeoutRef.current = window.setTimeout(function () {
-          const nextLabel = COMMON_SKILL_TAGS.find(function (label) {
-            return !revealedTagsRef.current.includes(label);
-          });
-
-          if (!nextLabel) {
-            return;
-          }
-
-          const nextTag = getTagElements().find(function (tagElement) {
-            return tagElement.dataset.tagLabel === nextLabel;
-          });
-
-          if (!nextTag) {
-            return;
-          }
-
+        if (shouldScroll) {
           const maxScrollTop = Math.max(
             0,
             tagsContainer.scrollHeight - tagsContainer.clientHeight,
           );
+          const rowDistance = Math.max(
+            TAG_SCROLL_BOTTOM_INSET_PX,
+            nextRowTop - rowTop,
+          );
           const targetScrollTop = Math.min(
             maxScrollTop,
-            Math.max(
-              tagsContainer.scrollTop + TAG_SCROLL_BOTTOM_INSET_PX,
-              nextTag.offsetTop - TAG_SCROLL_BOTTOM_INSET_PX,
-            ),
+            tagsContainer.scrollTop + rowDistance,
           );
 
           if (targetScrollTop > tagsContainer.scrollTop + 1) {
@@ -172,26 +136,59 @@ export function Tags(props: TagsProps) {
               behavior: "smooth",
             });
           }
+        }
 
-          nextRowRevealTimeoutRef.current = window.setTimeout(function () {
-            const nextRowElements = getTagElements().filter(
-              function (tagElement) {
-                return (
-                  Math.abs(tagElement.offsetTop - nextTag.offsetTop) <= 1 &&
-                  !revealedTagsRef.current.includes(
-                    tagElement.dataset.tagLabel ?? "",
-                  )
-                );
-              },
-            );
+        revealSequenceTimeoutRef.current = window.setTimeout(
+          function () {
+            revealNextTagInRow(nextRowTop);
+          },
+          shouldScroll ? 140 : TAG_REVEAL_STAGGER_MS,
+        );
+      }
 
-            revealTagRow(nextRowElements);
-          }, 220);
-        }, revealDelay);
+      function revealNextTagInRow(rowTop: number) {
+        const nextTag = getRowElements(rowTop).find(function (tagElement) {
+          return !revealedTagsRef.current.includes(
+            tagElement.dataset.tagLabel ?? "",
+          );
+        });
+
+        if (!nextTag) {
+          finishRow(rowTop);
+          return;
+        }
+
+        const label = nextTag.dataset.tagLabel;
+
+        if (!label) {
+          finishRow(rowTop);
+          return;
+        }
+
+        const nextTags = [...revealedTagsRef.current, label];
+        revealedTagsRef.current = nextTags;
+        setRevealedTags(nextTags);
+
+        revealSequenceTimeoutRef.current = window.setTimeout(function () {
+          revealNextTagInRow(rowTop);
+        }, TAG_REVEAL_STAGGER_MS);
+      }
+
+      function startRowReveal(rowTop: number) {
+        if (isRevealSequenceRunningRef.current) {
+          return;
+        }
+
+        isRevealSequenceRunningRef.current = true;
+        revealNextTagInRow(rowTop);
       }
 
       const observer = new IntersectionObserver(
         function (entries) {
+          if (isRevealSequenceRunningRef.current) {
+            return;
+          }
+
           const visibleTagElements = entries
             .filter(function (entry) {
               return entry.isIntersecting;
@@ -213,11 +210,6 @@ export function Tags(props: TagsProps) {
             return;
           }
 
-          if (!isScrollable()) {
-            revealTagRow(visibleTagElements);
-            return;
-          }
-
           const firstRowTop = Math.min.apply(
             null,
             visibleTagElements.map(function (tagElement) {
@@ -225,34 +217,24 @@ export function Tags(props: TagsProps) {
             }),
           );
 
-          revealTagRow(
-            visibleTagElements.filter(function (tagElement) {
-              return Math.abs(tagElement.offsetTop - firstRowTop) <= 1;
-            }),
-          );
+          startRowReveal(firstRowTop);
         },
         { root: tagsContainer, threshold: 0.01 },
       );
 
-      tagsList
-        .querySelectorAll<HTMLElement>("[data-tag-label]")
-        .forEach(function (tagElement) {
-          observer.observe(tagElement);
-        });
+      getTagElements().forEach(function (tagElement) {
+        observer.observe(tagElement);
+      });
 
       return function () {
         observer.disconnect();
-        if (autoScrollTimeoutRef.current !== null) {
-          window.clearTimeout(autoScrollTimeoutRef.current);
-          autoScrollTimeoutRef.current = null;
+
+        if (revealSequenceTimeoutRef.current !== null) {
+          window.clearTimeout(revealSequenceTimeoutRef.current);
+          revealSequenceTimeoutRef.current = null;
         }
 
-        if (nextRowRevealTimeoutRef.current !== null) {
-          window.clearTimeout(nextRowRevealTimeoutRef.current);
-          nextRowRevealTimeoutRef.current = null;
-        }
-
-        revealDelayByLabelRef.current.clear();
+        isRevealSequenceRunningRef.current = false;
       };
     },
     [isTagAnimationEnabled],
@@ -278,10 +260,7 @@ export function Tags(props: TagsProps) {
             className={revealClassName}
             style={
               shouldAnimate
-                ? {
-                    animationDelay: `${revealDelayByLabelRef.current.get(label) ?? 0}ms`,
-                    animationDuration: `${TAG_REVEAL_DURATION_MS}ms`,
-                  }
+                ? { animationDuration: `${TAG_REVEAL_DURATION_MS}ms` }
                 : undefined
             }
           >

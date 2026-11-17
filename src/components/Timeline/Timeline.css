@@ -18,6 +18,24 @@
     bottom: 0;
     height: auto;
   }
+
+  .timeline__rail::before,
+  .timeline__rail::after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: inherit;
+    content: "";
+  }
+
+  .timeline__rail::before {
+    top: calc(-1 * (var(--timeline-logo-size) / 2 + 8px));
+  }
+
+  .timeline__rail::after {
+    bottom: -8px;
+  }
 }
 
 .timeline-list {

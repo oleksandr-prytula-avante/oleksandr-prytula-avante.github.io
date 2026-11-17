@@ -266,7 +266,8 @@
 
   .site-header .header-scene__sky,
   .mobile-menu-header .header-scene__sky {
-    transform: translateX(calc(-50% + clamp(28px, 8vw, 72px)));
+    transform: translateX(calc(-50% + clamp(96px, 28vw, 240px)));
+    opacity: 0.68;
   }
 
   .mobile-menu-footer-scene .header-scene__sky {

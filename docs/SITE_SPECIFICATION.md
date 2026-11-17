@@ -330,11 +330,13 @@ The current common list covers JavaScript, TypeScript, React, Next.js, Angular, 
 
 On a scrollable desktop tag list:
 
-1. The first visible row reveals.
-2. Each later row is revealed as a separate batch.
-3. The list makes a short smooth scroll toward the next row instead of waiting for the entire tag wall.
-4. Per-row stagger delays are short and bounded.
-5. The process ends cleanly at the last row.
+1. The first visible row starts revealing one tag at a time in catalog order.
+2. Tags in the active row appear at a short, regular interval; the whole row must not pop in at once.
+3. When the row is complete, the list smoothly scrolls by one detected row distance.
+4. The next row starts revealing immediately after that short scroll; it must not wait for the entire tag wall or a long post-animation timeout.
+5. The process ends cleanly at the last row and never loops back to already revealed tags.
+
+The current implementation uses a short `TAG_REVEAL_STAGGER_MS` interval between individual tags, a shorter `TAG_REVEAL_DURATION_MS` for each tag’s visual entrance, and `offsetTop` row detection to calculate the one-row scroll distance. These values are implementation details, but the one-by-one/one-row interaction is a product requirement.
 
 On mobile/tablet, the tag list is not a fixed-height scroll box. Tags must remain available in page flow; animation may be sequential, but visibility cannot depend on an inaccessible internal scroll position.
 
@@ -636,7 +638,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 
 - Common tags are derived from the canonical skill catalog.
 - Hover/focus changes both text and border to orange.
-- Desktop tags reveal row-by-row with short scroll progression.
+- Desktop tags reveal one-by-one within each row, then scroll exactly one row before continuing.
 - Mobile tags remain in normal page flow and do not depend on an inaccessible internal scrollbar.
 - Reduced motion removes reveal animation while preserving visibility.
 

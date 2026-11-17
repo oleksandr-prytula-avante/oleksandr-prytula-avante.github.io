@@ -1,7 +1,7 @@
 @keyframes tag-reveal {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.98);
+    transform: translateY(6px) scale(0.99);
   }
 
   to {
