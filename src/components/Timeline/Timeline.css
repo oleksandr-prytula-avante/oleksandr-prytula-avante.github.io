@@ -342,6 +342,15 @@
 }
 
 @media (min-width: 1025px) {
+  .timeline {
+    padding-right: clamp(8px, 0.8vw, 14px);
+    scroll-padding-block: 8px;
+  }
+
+  .timeline-item__details {
+    padding-right: clamp(12px, 1vw, 18px);
+  }
+
   .timeline-item:last-child {
     padding-bottom: clamp(32px, 4vh, 48px);
   }

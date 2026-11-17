@@ -662,6 +662,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Timeline icons/logos are circular and aligned to the rail.
 - Rail uses the accent gradient and is not accidentally gray/inactive.
 - More buttons share one compact style and have visible focus states.
+- Desktop timeline scrollbars are inset from the content edge and do not cover the timeline rows, controls, or section boundary.
 - Desktop focus transitions do not create horizontal text jumps.
 - Mobile cards remain readable in normal flow.
 
