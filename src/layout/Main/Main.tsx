@@ -12,6 +12,7 @@ import { Education } from "../Education/Education";
 import { Experience } from "../Experience/Experience";
 import { Info } from "../Info";
 import { Projects } from "../Projects/Projects";
+import type { SkillInteractionProps } from "../../types/skills";
 
 import "./Main.css";
 
@@ -41,23 +42,22 @@ export function Main() {
     setHoveredSkill(null);
   }
 
-  const timelineSkillHandlers = {
+  const skillInteractionHandlers: SkillInteractionProps = {
     onSkillEnter: setHoveredSkill,
     onSkillLeave: handleSkillLeave,
   };
 
   const sectionContent: Record<ESection, ReactNode> = {
     [ESection.About]: <About />,
-    [ESection.Experience]: <Experience {...timelineSkillHandlers} />,
-    [ESection.Projects]: <Projects {...timelineSkillHandlers} />,
-    [ESection.Education]: <Education {...timelineSkillHandlers} />,
+    [ESection.Experience]: <Experience {...skillInteractionHandlers} />,
+    [ESection.Projects]: <Projects {...skillInteractionHandlers} />,
+    [ESection.Education]: <Education {...skillInteractionHandlers} />,
   };
 
   const infoContent = (
     <Info
       hoveredSkill={hoveredSkill}
-      onSkillEnter={setHoveredSkill}
-      onSkillLeave={handleSkillLeave}
+      {...skillInteractionHandlers}
       onSecondaryContentVisibilityChange={setShowSecondaryContent}
       onHeroPrintingStateChange={setIsHeroPrintingInProgress}
     />

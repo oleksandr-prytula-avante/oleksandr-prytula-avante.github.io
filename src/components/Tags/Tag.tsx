@@ -1,12 +1,13 @@
 import { SKILL_HREF_BY_LABEL } from "../../constants/skillTags";
+import type { SkillInteractionProps } from "../../types/skills";
 
 type TagProps = {
   label: string;
   href?: string;
   isActive?: boolean;
   variant?: "default" | "experience";
-  onSelectSkill: (skill: string) => void;
-  onClearSkill: () => void;
+  onSelectSkill: SkillInteractionProps["onSkillEnter"];
+  onClearSkill: SkillInteractionProps["onSkillLeave"];
 };
 
 export function Tag(props: TagProps) {
@@ -19,10 +20,12 @@ export function Tag(props: TagProps) {
     onClearSkill,
   } = props;
   const resolvedHref = href ?? SKILL_HREF_BY_LABEL[label];
-  const baseClassName =
-    variant === "experience"
-      ? "subtle-border relative my-1 rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out"
-      : "subtle-border relative rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out";
+  const baseClassName = [
+    "subtle-border relative rounded-full border px-3 py-1 text-[0.825rem] uppercase tracking-normal transition-colors duration-200 ease-out",
+    variant === "experience" ? "my-1" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   function handleClick() {
     onSelectSkill(label);

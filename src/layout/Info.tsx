@@ -27,6 +27,7 @@ import { useTypingSequence } from "../hooks/useTypingSequence";
 import { ETranslationKey } from "../i18n/types";
 import { TypingCursor } from "../components/TypingCursor";
 import { TypingText } from "../components/TypingText";
+import type { SkillInteractionProps } from "../types/skills";
 
 const ENGINEERING_TOOLKIT_COLON_TRIM_INDEX = -1;
 const ENGINEERING_TOOLKIT_COLON_EXTRA_LENGTH = 1;
@@ -39,10 +40,8 @@ const NEED_MORE_DETAILS_START_DELAY_MS =
   (COMMON_SKILL_TAGS.length - 1) * TAG_REVEAL_STAGGER_MS +
   TAG_REVEAL_DURATION_MS;
 
-type InfoProps = {
+type InfoProps = SkillInteractionProps & {
   hoveredSkill?: string | null;
-  onSkillEnter: (skill: string) => void;
-  onSkillLeave: () => void;
   onSecondaryContentVisibilityChange: (isVisible: boolean) => void;
   onHeroPrintingStateChange: (isPrinting: boolean) => void;
 };

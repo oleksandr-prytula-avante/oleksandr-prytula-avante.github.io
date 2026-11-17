@@ -11,11 +11,7 @@ import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
 import { ESection, toSectionHash } from "../../utils/sections";
 import { ProjectGallery } from "./ProjectGallery";
-
-type ProjectsProps = {
-  onSkillEnter: (skill: string) => void;
-  onSkillLeave: () => void;
-};
+import type { SkillInteractionProps } from "../../types/skills";
 
 type ProjectRowProps = {
   item: ProjectTimelineItem;
@@ -69,7 +65,7 @@ function ProjectScreenshotsRow({ item }: ProjectRowProps) {
   );
 }
 
-export function Projects(props: ProjectsProps) {
+export function Projects(props: SkillInteractionProps) {
   return (
     <Timeline
       items={PROJECT_TIMELINE_ITEMS}

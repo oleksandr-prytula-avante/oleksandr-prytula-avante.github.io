@@ -3,12 +3,11 @@ import {
   SKILL_REGEX,
   TERM_TO_TAG_MAP,
 } from "../constants/skillTags";
+import type { SkillInteractionProps } from "../types/skills";
 
-type SkillHighlightsProps = {
+type SkillHighlightsProps = SkillInteractionProps & {
   value: string;
   hoveredSkill?: string | null;
-  onSkillEnter: (skill: string) => void;
-  onSkillLeave: () => void;
 };
 
 export function SkillHighlights(props: SkillHighlightsProps) {

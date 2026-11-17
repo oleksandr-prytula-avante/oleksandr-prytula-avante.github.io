@@ -5,15 +5,9 @@ import { ESection, toSectionHash } from "../../utils/sections";
 import { EducationCompanyRow } from "./EducationCompanyRow";
 import { EducationDegreeRow } from "./EducationDegreeRow";
 import { EducationStatusRow } from "./EducationStatusRow";
+import type { SkillInteractionProps } from "../../types/skills";
 
-type EducationProps = {
-  onSkillEnter: (skill: string) => void;
-  onSkillLeave: () => void;
-};
-
-export function Education(props: EducationProps) {
-  const { onSkillEnter, onSkillLeave } = props;
-
+export function Education(props: SkillInteractionProps) {
   return (
     <Timeline
       items={EDUCATION_TIMELINE_ITEMS}
@@ -21,8 +15,7 @@ export function Education(props: EducationProps) {
       FirstRowComponent={EducationCompanyRow}
       SecondRowComponent={EducationDegreeRow}
       ThirdRowComponent={EducationStatusRow}
-      onSkillEnter={onSkillEnter}
-      onSkillLeave={onSkillLeave}
+      {...props}
     />
   );
 }
