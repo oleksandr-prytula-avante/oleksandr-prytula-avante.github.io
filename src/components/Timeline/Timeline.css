@@ -186,6 +186,7 @@
 .timeline-item__details {
   margin-top: 16px;
   padding-top: 20px;
+  padding-right: 8px;
   border-top: 1px solid rgb(255 255 255 / 12%);
   color: white;
   font-size: var(--font-size-body);
@@ -241,6 +242,7 @@
 
   .timeline-item__details {
     flex: auto;
+    padding-right: 0;
   }
 }
 

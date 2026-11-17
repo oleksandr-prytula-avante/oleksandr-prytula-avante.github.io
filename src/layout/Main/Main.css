@@ -122,7 +122,7 @@
   object-fit: contain;
   opacity: 0.85;
   transform-origin: center;
-  animation: ufo-flight 26s ease-in-out infinite;
+  animation: ufo-flight 24s ease-in-out infinite alternate;
   will-change: transform;
 }
 
@@ -183,7 +183,7 @@
   object-fit: contain;
   opacity: 0.75;
   transform-origin: center;
-  animation: ufo-flight 26s ease-in-out infinite;
+  animation: ufo-flight 24s ease-in-out infinite alternate;
   will-change: transform;
 }
 
@@ -244,27 +244,16 @@
 }
 
 @keyframes ufo-flight {
-  0%,
-  18% {
-    opacity: 0.75;
-    transform: translate3d(0, 0, 0) rotate(0deg);
+  from {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
   }
 
-  40% {
-    opacity: 0.9;
-    transform: translate3d(72px, -5px, 0) rotate(2deg);
+  50% {
+    transform: translate3d(30px, -3px, 0) rotate(0deg);
   }
 
-  58%,
-  68% {
-    opacity: 0.85;
-    transform: translate3d(132px, 4px, 0) rotate(3deg);
-  }
-
-  88%,
-  100% {
-    opacity: 0.75;
-    transform: translate3d(0, 0, 0) rotate(0deg);
+  to {
+    transform: translate3d(58px, 2px, 0) rotate(1deg);
   }
 }
 
