@@ -51,6 +51,10 @@
   .hero-info > :not(:first-child) {
     transform: translateY(10px);
   }
+
+  .hero-info > :last-child {
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 389px) {
