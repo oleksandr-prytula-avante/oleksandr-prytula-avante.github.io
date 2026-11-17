@@ -509,7 +509,7 @@ export function Timeline<TItem extends TimelineDataItem>(
   return (
     <article
       ref={articleRef}
-      className={`timeline relative min-w-0 text-white ${isDesktopViewport ? "h-full overflow-hidden" : "h-auto"}`}
+      className={`timeline relative min-w-0 text-white ${isDesktopViewport ? "h-full overflow-y-auto" : "h-auto"}`}
     >
       <span
         className="timeline__rail pointer-events-none absolute z-0 w-px"
