@@ -7,10 +7,13 @@ import {
   type ReactNode,
 } from "react";
 
+import { LinkedInIcon } from "../components/icons/LinkedInIcon";
 import { TimelineExpandIcon } from "../components/icons/TimelineExpandIcon";
 import { ABOUT_REVEAL_SCROLL_FALLBACK_MS } from "../constants/animations";
 import { ABOUT_STORY_BLOCKS } from "../constants/about";
+import { LINKS } from "../constants/links";
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../constants/mediaQueries";
+import { ELink } from "../enums/links";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useI18n } from "../hooks/useI18n";
 import { ETranslationKey } from "../i18n/types";
@@ -101,6 +104,9 @@ export function About() {
     education: i18n.t(ETranslationKey.AboutEducation),
     communication: i18n.t(ETranslationKey.AboutCommunication),
   };
+  const linkedIn = LINKS.find(function (link) {
+    return link.id === ELink.LinkedIn;
+  });
   const lines: SummaryLine[] = [
     {
       content: (
@@ -160,8 +166,23 @@ export function About() {
   return (
     <article ref={aboutPanelRef} className="about-panel">
       <div className="summary-code">
-        <div className="summary-code__header" aria-hidden="true">
+        <div className="summary-code__header">
           <span className="summary-code__file">#Profile</span>
+          <div className="summary-code__profile-meta">
+            <span className="summary-code__pronouns">he/him</span>
+            {linkedIn && (
+              <a
+                className="summary-code__linkedin"
+                href={linkedIn.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon />
+                <span>LinkedIn</span>
+              </a>
+            )}
+          </div>
         </div>
         <pre className="summary-code__source">
           <code>

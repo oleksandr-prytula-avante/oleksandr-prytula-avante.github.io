@@ -32,7 +32,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
               ? "inline-flex w-full cursor-not-allowed py-2 text-white/40 no-underline"
               : isActive
                 ? "inline-flex w-full cursor-pointer py-2 text-[color:var(--color-accent)] no-underline"
-                : "inline-flex w-full cursor-pointer py-2 no-underline transition-colors duration-200 ease-out hover:text-white/80 focus-visible:text-white/80"
+                : "inline-flex w-full cursor-pointer py-2 text-white no-underline transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)]"
           }
           href={isItemDisabled ? undefined : href}
           aria-current={

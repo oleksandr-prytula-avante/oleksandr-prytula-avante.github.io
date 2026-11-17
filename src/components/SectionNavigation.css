@@ -14,7 +14,7 @@
   display: inline-flex;
   justify-content: center;
   padding: 12px 0;
-  color: var(--color-control-text);
+  color: white;
   text-decoration: none;
   transition: color 240ms ease;
 }
@@ -22,7 +22,7 @@
 .section-navigation__link:hover,
 .section-navigation__link:focus-visible,
 .section-navigation__link[aria-current="page"] {
-  color: white;
+  color: var(--color-accent);
 }
 
 .section-navigation__link > span {
