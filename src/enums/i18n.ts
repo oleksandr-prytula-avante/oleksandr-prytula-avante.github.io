@@ -40,6 +40,8 @@ export const enum ETranslationKey {
   AboutParagraph1 = "about.paragraph1",
   AboutParagraph3 = "about.paragraph3",
   AboutParagraph4 = "about.paragraph4",
+  AboutProfileLabel = "about.profileLabel",
+  AboutPronouns = "about.pronouns",
   AboutProfileTitle = "about.profileTitle",
   AboutLargeScaleTitle = "about.largeScaleTitle",
   AboutLargeScaleText = "about.largeScaleText",

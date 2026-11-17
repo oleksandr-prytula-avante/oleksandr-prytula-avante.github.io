@@ -67,6 +67,8 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutLocation]: "Ukraine · Remote",
   [ETranslationKey.AboutYearsExperience]: "10+ years in software engineering",
   [ETranslationKey.AboutGetToKnow]: "Or let’s get to know each other better…",
+  [ETranslationKey.AboutProfileLabel]: "#Profile",
+  [ETranslationKey.AboutPronouns]: "he/him",
   [ETranslationKey.AboutCommunication]:
     "English · Advanced professional proficiency",
   [ETranslationKey.AboutLearning]:
@@ -309,13 +311,15 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.HeroHiIm]: "Привет, я",
   [ETranslationKey.HeroName]: "Александр",
   [ETranslationKey.HeroSurname]: "Притула",
-  [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
+  [ETranslationKey.HeroRole]: "Full-Stack инженер",
   [ETranslationKey.HeroEngineeringToolkit]: "Мой инженерный стек:",
   [ETranslationKey.HeroNeedMoreDetails]: "НУЖНО БОЛЬШЕ ДЕТАЛЕЙ?",
   [ETranslationKey.HeroCvDownload]: "Скачать CV (PDF)",
   [ETranslationKey.AboutLocation]: "Украина · Удалённо",
   [ETranslationKey.AboutYearsExperience]: "10+ лет в разработке ПО",
   [ETranslationKey.AboutGetToKnow]: "Давайте познакомимся поближе…",
+  [ETranslationKey.AboutProfileLabel]: "#Профиль",
+  [ETranslationKey.AboutPronouns]: "он/его",
   [ETranslationKey.AboutCommunication]:
     "Английский · Продвинутый профессиональный уровень",
   [ETranslationKey.AboutLearning]: "Системный дизайн, алгоритмы, развитие",
@@ -557,7 +561,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.A11ySectionNavigation]: "Navegación por secciones",
   [ETranslationKey.A11yLanguage]: "Idioma",
   [ETranslationKey.HeroHiIm]: "¡Hola, soy",
-  [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
+  [ETranslationKey.HeroRole]: "Ingeniero de Software Full-Stack",
   [ETranslationKey.HeroEngineeringToolkit]: "Mi stack de ingeniería:",
   [ETranslationKey.HeroNeedMoreDetails]: "¿NECESITAS MÁS DETALLES?",
   [ETranslationKey.HeroCvDownload]: "Descargar CV (PDF)",
@@ -565,6 +569,8 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutYearsExperience]:
     "Más de 10 años en ingeniería de software",
   [ETranslationKey.AboutGetToKnow]: "Conozcámonos un poco mejor…",
+  [ETranslationKey.AboutProfileLabel]: "#Perfil",
+  [ETranslationKey.AboutPronouns]: "él/lo",
   [ETranslationKey.AboutCommunication]:
     "Inglés · Competencia profesional avanzada",
   [ETranslationKey.AboutLearning]:
@@ -766,11 +772,12 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraName]: "Omnora Authoring Tool",
   [ETranslationKey.ProjectsOmnoraCategory]:
     "Es ist eine browserbasierte Plattform zur Erstellung von Schulungsvideos für Unternehmen mit KI. Experteninterviews, Dokumente, Präsentationen und Bildschirmaufnahmen werden in strukturierte Lernmaterialien mit Sprachaufnahmen, KI-Avataren, Untertiteln, Quizzen, gebrandeten visuellen Elementen und wiederverwendbaren Vorlagen umgewandelt. Teams können unterschiedliche Quellen kombinieren, Lektionen gemeinsam prüfen und überarbeiten sowie dieselben Inhalte für verschiedene Zielgruppen anpassen, ohne jedes Modul von Grund auf neu zu erstellen. Die Plattform unterstützt Übersetzungen in 140 Sprachen, den Export nach SCORM, xAPI und MP4 sowie die Integration in LMS-Plattformen und Unternehmensportale. Sie beschleunigt die Erstellung von Lerninhalten, das Onboarding und den Wissensaustausch und hält die Abläufe konsistent, leicht aktualisierbar und über Abteilungen hinweg skalierbar.",
-  [ETranslationKey.ProjectsScreenshots]: "Screenshots",
-  [ETranslationKey.ProjectsOpenScreenshot]: "Screenshot-Vorschau öffnen",
+  [ETranslationKey.ProjectsScreenshots]: "Bildschirmfotos",
+  [ETranslationKey.ProjectsOpenScreenshot]:
+    "Vorschau des Bildschirmfotos öffnen",
   [ETranslationKey.ProjectsClosePreview]: "Vorschau schließen",
-  [ETranslationKey.ProjectsPreviousScreenshot]: "Vorheriger Screenshot",
-  [ETranslationKey.ProjectsNextScreenshot]: "Nächster Screenshot",
+  [ETranslationKey.ProjectsPreviousScreenshot]: "Vorheriges Bildschirmfoto",
+  [ETranslationKey.ProjectsNextScreenshot]: "Nächstes Bildschirmfoto",
   [ETranslationKey.ProjectsZoomScreenshot]: "In Originalgröße anzeigen",
   [ETranslationKey.ProjectsFitScreenshot]: "Bild an Fenster anpassen",
   [ETranslationKey.ProjectsOmnoraNotifications]:
@@ -804,20 +811,22 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraSlideEditing]: "Folienbearbeitung",
   [ETranslationKey.ProjectsOmnoraLmsSettings]:
     "LMS-Exporteinstellungen – xAPI / SCORM",
-  [ETranslationKey.A11yLogo]: "Logo",
+  [ETranslationKey.A11yLogo]: "Portfolio-Logo",
   [ETranslationKey.A11yOpenMenu]: "Menü öffnen",
   [ETranslationKey.A11yCloseMenu]: "Menü schließen",
   [ETranslationKey.A11ySectionNavigation]: "Bereichsnavigation",
   [ETranslationKey.A11yLanguage]: "Sprache",
   [ETranslationKey.HeroHiIm]: "Hallo, ich bin",
-  [ETranslationKey.HeroRole]: "Full-Stack Software Engineer",
+  [ETranslationKey.HeroRole]: "Full-Stack-Softwareingenieur",
   [ETranslationKey.HeroEngineeringToolkit]: "Mein Engineering-Toolkit",
   [ETranslationKey.HeroNeedMoreDetails]: "MEHR DETAILS NÖTIG?",
   [ETranslationKey.HeroCvDownload]: "CV (PDF) herunterladen",
-  [ETranslationKey.AboutLocation]: "Ukraine · Remote",
+  [ETranslationKey.AboutLocation]: "Ukraine · Remote-Arbeit",
   [ETranslationKey.AboutYearsExperience]:
     "10+ Jahre in der Softwareentwicklung",
   [ETranslationKey.AboutGetToKnow]: "Lernen wir uns besser kennen…",
+  [ETranslationKey.AboutProfileLabel]: "#Profil",
+  [ETranslationKey.AboutPronouns]: "er/ihm",
   [ETranslationKey.AboutCommunication]:
     "Englisch · Fortgeschrittene berufliche Sprachkenntnisse",
   [ETranslationKey.AboutLearning]:
@@ -860,7 +869,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.AboutQualityTitle]: "Qualität und Release-Zuverlässigkeit",
   [ETranslationKey.AboutQualityText]:
     "Ich verbesserte die Produktqualität und Release-Zuverlässigkeit durch eine höhere Abdeckung mit automatisierten Tests und deren Integration in CI/CD-Pipelines. Dadurch konnten Regressionen früher erkannt und der Release-Prozess stabiler und planbarer gestaltet werden.",
-  [ETranslationKey.AboutMentoringTitle]: "Mentoring",
+  [ETranslationKey.AboutMentoringTitle]: "Nachwuchsförderung",
   [ETranslationKey.AboutMentoringText]:
     "Ich betreute Junior-Entwickler, unterstützte beim Onboarding und förderte bewährte Engineering-Praktiken, um Codequalität und berufliche Entwicklung zu stärken. Durch Code-Reviews und praxisnahe technische Anleitung half ich Kollegen, Implementierungsansätze zu bewerten und komplexe technische Aufgaben sicherer zu lösen.",
   [ETranslationKey.AboutEducationTitle]:
@@ -943,7 +952,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ExperienceOmnoraHighlight6]:
     "Ich integrierte KI-APIs für Funktionen wie KI-Avatare, Text-to-Speech und interaktive Videoerstellung, wodurch Automatisierung und Personalisierung verbessert wurden.",
   [ETranslationKey.ExperienceOmnoraHighlight7]:
-    "Ich leitete die Frontend-Modernisierung durch Refactoring der Codebasis hin zu einer Architektur für reaktive Programmierung unter Verwendung eines reaktiven Ansatzes und durch die Aktualisierung auf die neuesten Versionen von React und TypeScript, wodurch Wartbarkeit und Performance verbessert wurden.",
+    "Ich leitete die Frontend-Modernisierung durch Refactoring der Codebasis hin zu einer Architektur für reaktive Programmierung und durch die Aktualisierung auf die neuesten Versionen von React und TypeScript, wodurch Wartbarkeit und Performance verbessert wurden.",
   [ETranslationKey.ExperienceOmnoraHighlight8]:
     "Ich verbesserte die Teststrategie durch höhere Unit-Test-Abdeckung und zusätzliche automatisierte Tests in CI/CD-Pipelines für schnellere und zuverlässigere Releases.",
   [ETranslationKey.ExperienceOmnoraHighlight9]:

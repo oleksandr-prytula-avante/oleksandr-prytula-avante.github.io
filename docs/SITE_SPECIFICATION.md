@@ -690,6 +690,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Long translations wrap without clipping.
 - Accessible labels and dialog controls are localized.
 - Narrative About/Profile blocks are localized in all four supported locales; only intentional brand names and technical terms may remain unchanged.
+- No user-facing prose is hardcoded in JSX; permitted exceptions are symbols, code/editor notation, and personal metadata such as pronouns.
 
 ### AC-012 — Architecture and code health
 

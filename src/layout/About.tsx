@@ -161,9 +161,13 @@ export function About() {
     <article ref={aboutPanelRef} className="about-panel">
       <div className="summary-code">
         <div className="summary-code__header">
-          <span className="summary-code__file">#Profile</span>
+          <span className="summary-code__file">
+            {i18n.t(ETranslationKey.AboutProfileLabel)}
+          </span>
           <div className="summary-code__profile-meta">
-            <span className="summary-code__pronouns">he/him</span>
+            <span className="summary-code__pronouns">
+              {i18n.t(ETranslationKey.AboutPronouns)}
+            </span>
           </div>
         </div>
         <pre className="summary-code__source">
