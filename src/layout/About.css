@@ -90,9 +90,12 @@
   overflow-wrap: anywhere;
 }
 
-.summary-code__keyword,
-.summary-code__name {
+.summary-code__keyword {
   color: var(--color-accent);
+}
+
+.summary-code__name {
+  color: #ff9800; /* оранжевый цвет */
 }
 
 .summary-code__property {
