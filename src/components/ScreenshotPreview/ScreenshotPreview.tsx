@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 
-import type { ProjectTimelineItem } from "../constants/projects";
-import { useI18n } from "../hooks/useI18n";
-import { ETranslationKey } from "../i18n/types";
-import { ChevronLeftIcon } from "./icons/ChevronLeftIcon";
-import { ChevronRightIcon } from "./icons/ChevronRightIcon";
-import { CloseIcon } from "./icons/CloseIcon";
-import { ZoomIcon } from "./icons/ZoomIcon";
+import type { ProjectTimelineItem } from "../../constants/projects";
+import { useI18n } from "../../hooks/useI18n";
+import { ETranslationKey } from "../../i18n/types";
+import { ChevronLeftIcon } from "../icons/ChevronLeftIcon";
+import { ChevronRightIcon } from "../icons/ChevronRightIcon";
+import { CloseIcon } from "../icons/CloseIcon";
+import { ZoomIcon } from "../icons/ZoomIcon";
 import { ScreenshotPreviewControl } from "./ScreenshotPreviewControl";
 
 import "./ScreenshotPreview.css";

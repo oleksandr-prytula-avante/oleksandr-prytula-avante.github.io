@@ -1,10 +1,6 @@
 import { Fragment } from "react";
 
-import {
-  FIRST_PART_INDEX,
-  MIN_PART_LENGTH,
-  PIPE_TEXT_DELIMITER,
-} from "../constants/text";
+import { splitPipeSeparatedText } from "../utils/text";
 import { InlineContent } from "./InlineContent";
 import { PipeSeparator } from "./PipeSeparator";
 
@@ -24,14 +20,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
     hideLastPartOnMobile = false,
     stackOnMobile = false,
   } = props;
-  const parts = value
-    .split(PIPE_TEXT_DELIMITER)
-    .map(function (part) {
-      return part.trim();
-    })
-    .filter(function (part) {
-      return part.length > MIN_PART_LENGTH;
-    });
+  const parts = splitPipeSeparatedText(value);
 
   return (
     <InlineContent inline={inlineContent} stackOnMobile={stackOnMobile}>
@@ -40,7 +29,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
         const shouldHideOnMobile = hideLastPartOnMobile && isLastPart;
         let separator = null;
 
-        if (index > FIRST_PART_INDEX) {
+        if (index > 0) {
           separator = (
             <PipeSeparator
               hasMargin={hasSeparatorMargin}
@@ -61,9 +50,7 @@ export function PipeSeparatedText(props: PipeSeparatedTextProps) {
                   stackOnMobile
                     ? "max-[640px]:overflow-visible max-[640px]:whitespace-normal"
                     : "",
-                  index > FIRST_PART_INDEX
-                    ? "timeline-hide-between-1024-1440"
-                    : "",
+                  index > 0 ? "timeline-hide-between-1024-1440" : "",
                 ]
                   .filter(Boolean)
                   .join(" ") || undefined

@@ -1,7 +1,8 @@
+import { SvgIcon } from "./SvgIcon";
+
 export function ChevronRightIcon() {
   return (
-    <svg
-      aria-hidden="true"
+    <SvgIcon
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -12,6 +13,6 @@ export function ChevronRightIcon() {
       strokeLinejoin="round"
     >
       <path d="m9 6 6 6-6 6" />
-    </svg>
+    </SvgIcon>
   );
 }

@@ -5,14 +5,13 @@ import { EFocusPhase } from "../../enums/timeline";
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useTimelineReveal } from "../../hooks/useTimelineReveal";
 import { ESection, toSectionHash } from "../../utils/sections";
 import {
   TIMELINE_REVEAL_STAGGER_MS,
-  TIMELINE_REVEAL_DURATION_MS,
   TIMELINE_FOCUS_TRANSITION_MS,
 } from "../../constants/animations";
 import {
-  TIMELINE_VISIBILITY_OPACITY_THRESHOLD,
   TIMELINE_EMPTY_STATE_VALUE,
   TIMELINE_FIRST_ITEM_INDEX,
 } from "../../constants/timeline";
@@ -57,9 +56,6 @@ export function Timeline<TItem extends TimelineDataItem>(
   );
   const [focusPhase, setFocusPhase] = useState<EFocusPhase>(EFocusPhase.Idle);
   const [isFocusExitActive, setIsFocusExitActive] = useState(false);
-  const [shouldRevealItems, setShouldRevealItems] = useState(false);
-  const [isInitialRevealComplete, setIsInitialRevealComplete] = useState(false);
-  const [hasPlayedInitialReveal, setHasPlayedInitialReveal] = useState(false);
   const [lineHeight, setLineHeight] = useState(TIMELINE_EMPTY_STATE_VALUE);
   const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
   const [focusShiftById, setFocusShiftById] = useState<Record<
@@ -71,6 +67,10 @@ export function Timeline<TItem extends TimelineDataItem>(
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const isTimelineActive =
     !isDesktopViewport || activeHash === activeSectionHash;
+  const {
+    shouldReveal: shouldRevealItems,
+    isComplete: isInitialRevealComplete,
+  } = useTimelineReveal(listRef, isTimelineActive, items.length);
   const hasFocusedItem = focusedItemId !== null;
 
   function resetFocusState() {
@@ -142,108 +142,8 @@ export function Timeline<TItem extends TimelineDataItem>(
       if (!isDesktopViewport && !showMobileToggle) {
         resetFocusState();
       }
-
-      const listElement = listRef.current;
-
-      if (!listElement) {
-        resetFocusState();
-
-        return;
-      }
-
-      if (hasPlayedInitialReveal) {
-        setShouldRevealItems(true);
-        setIsInitialRevealComplete(true);
-
-        return;
-      }
-
-      const observedList = listElement;
-
-      function isActuallyVisible(element: HTMLElement): boolean {
-        const rect = element.getBoundingClientRect();
-
-        if (rect.width <= 0 || rect.height <= 0) {
-          return false;
-        }
-
-        let node: HTMLElement | null = element;
-
-        while (node) {
-          const style = window.getComputedStyle(node);
-          const opacity = Number(style.opacity);
-
-          if (
-            style.display === "none" ||
-            style.visibility === "hidden" ||
-            style.pointerEvents === "none" ||
-            Number.isNaN(opacity) ||
-            opacity < TIMELINE_VISIBILITY_OPACITY_THRESHOLD
-          ) {
-            return false;
-          }
-
-          node = node.parentElement;
-        }
-
-        return true;
-      }
-
-      let animationFrameId = TIMELINE_EMPTY_STATE_VALUE;
-      let isCancelled = false;
-
-      function waitUntilVisible() {
-        if (isCancelled || !observedList.isConnected) {
-          return;
-        }
-
-        if (isActuallyVisible(observedList)) {
-          setShouldRevealItems(true);
-          setHasPlayedInitialReveal(true);
-          return;
-        }
-
-        animationFrameId = window.requestAnimationFrame(waitUntilVisible);
-      }
-
-      animationFrameId = window.requestAnimationFrame(waitUntilVisible);
-
-      return function () {
-        isCancelled = true;
-        window.cancelAnimationFrame(animationFrameId);
-      };
     },
-    [
-      activeSectionHash,
-      hasPlayedInitialReveal,
-      isTimelineActive,
-      isDesktopViewport,
-      showMobileToggle,
-    ],
-  );
-
-  useEffect(
-    function () {
-      if (!shouldRevealItems) {
-        return;
-      }
-
-      if (isInitialRevealComplete) {
-        return;
-      }
-
-      const lastItemDelay = (items.length - 1) * TIMELINE_REVEAL_STAGGER_MS;
-      const totalRevealDuration = lastItemDelay + TIMELINE_REVEAL_DURATION_MS;
-
-      const timeoutId = window.setTimeout(function () {
-        setIsInitialRevealComplete(true);
-      }, totalRevealDuration);
-
-      return function () {
-        window.clearTimeout(timeoutId);
-      };
-    },
-    [isInitialRevealComplete, items.length, shouldRevealItems],
+    [isTimelineActive, isDesktopViewport, showMobileToggle],
   );
 
   useEffect(

@@ -1,7 +1,8 @@
+import { SvgIcon } from "./SvgIcon";
+
 export function CloseIcon() {
   return (
-    <svg
-      aria-hidden="true"
+    <SvgIcon
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -11,6 +12,6 @@ export function CloseIcon() {
       strokeLinecap="round"
     >
       <path d="m6 6 12 12M18 6 6 18" />
-    </svg>
+    </SvgIcon>
   );
 }

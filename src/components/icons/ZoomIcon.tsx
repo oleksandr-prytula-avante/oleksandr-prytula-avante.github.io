@@ -4,8 +4,7 @@ type ZoomIconProps = {
 
 export function ZoomIcon({ isZoomed }: ZoomIconProps) {
   return (
-    <svg
-      aria-hidden="true"
+    <SvgIcon
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -18,6 +17,7 @@ export function ZoomIcon({ isZoomed }: ZoomIconProps) {
       <circle cx="10.5" cy="10.5" r="6.5" />
       <path d="m16 16 4.5 4.5M7.5 10.5h6" />
       {!isZoomed && <path d="M10.5 7.5v6" />}
-    </svg>
+    </SvgIcon>
   );
 }
+import { SvgIcon } from "./SvgIcon";

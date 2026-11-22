@@ -1,7 +1,7 @@
-import { SECTION_NAV_ITEMS } from "../constants/sections";
-import { useI18n } from "../hooks/useI18n";
+import { SECTION_NAV_ITEMS } from "../../constants/sections";
+import { useI18n } from "../../hooks/useI18n";
 
-import "./SectionNavigation.css";
+import "./HeaderNavigation.css";
 
 type HeaderNavigationProps = {
   layout: "desktop" | "mobile";

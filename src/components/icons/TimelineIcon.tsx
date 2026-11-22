@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SvgIcon } from "./SvgIcon";
 
 type TimelineIconProps = {
   children: ReactNode;
@@ -7,9 +8,7 @@ type TimelineIconProps = {
 
 export function TimelineIcon({ children, className = "" }: TimelineIconProps) {
   return (
-    <svg
-      aria-hidden="true"
-      focusable="false"
+    <SvgIcon
       className={`h-5 w-5 shrink-0 text-white ${className}`.trim()}
       width="20"
       height="20"
@@ -21,6 +20,6 @@ export function TimelineIcon({ children, className = "" }: TimelineIconProps) {
       strokeLinejoin="round"
     >
       {children}
-    </svg>
+    </SvgIcon>
   );
 }

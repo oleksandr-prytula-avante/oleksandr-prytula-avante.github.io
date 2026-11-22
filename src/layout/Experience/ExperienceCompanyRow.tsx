@@ -2,6 +2,7 @@ import type { ExperienceTimelineItem } from "../../constants/experience";
 import { useI18n } from "../../hooks/useI18n";
 import { TimelineRow } from "../../components/Timeline/TimelineRow";
 import { ExperienceCompanyIcon } from "../../components/icons/ExperienceCompanyIcon";
+import { splitPipeSeparatedText } from "../../utils/text";
 
 type ExperienceCompanyRowProps<TItem extends ExperienceTimelineItem> = {
   item: TItem;
@@ -11,10 +12,9 @@ export function ExperienceCompanyRow<TItem extends ExperienceTimelineItem>({
   item,
 }: ExperienceCompanyRowProps<TItem>) {
   const i18n = useI18n();
-  const [company, engagement] = i18n
-    .t(item.textKeys.name)
-    .split("|")
-    .map((part) => part.trim());
+  const [company, engagement] = splitPipeSeparatedText(
+    i18n.t(item.textKeys.name),
+  );
   return (
     <TimelineRow variant="heading" icon={<ExperienceCompanyIcon />}>
       <a

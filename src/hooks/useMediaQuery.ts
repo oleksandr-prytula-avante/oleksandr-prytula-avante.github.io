@@ -1,9 +1,22 @@
 import { useCallback, useSyncExternalStore } from "react";
 
+const mediaQueryCache = new Map<string, MediaQueryList>();
+
+function getMediaQuery(query: string) {
+  let mediaQuery = mediaQueryCache.get(query);
+
+  if (!mediaQuery) {
+    mediaQuery = window.matchMedia(query);
+    mediaQueryCache.set(query, mediaQuery);
+  }
+
+  return mediaQuery;
+}
+
 export function useMediaQuery(query: string, initialValue = true) {
   const subscribe = useCallback(
     function (onChange: () => void) {
-      const mediaQuery = window.matchMedia(query);
+      const mediaQuery = getMediaQuery(query);
       mediaQuery.addEventListener("change", onChange);
 
       return function () {
@@ -12,10 +25,18 @@ export function useMediaQuery(query: string, initialValue = true) {
     },
     [query],
   );
-
-  return useSyncExternalStore(
-    subscribe,
-    () => window.matchMedia(query).matches,
-    () => initialValue,
+  const getSnapshot = useCallback(
+    function () {
+      return getMediaQuery(query).matches;
+    },
+    [query],
   );
+  const getServerSnapshot = useCallback(
+    function () {
+      return initialValue;
+    },
+    [initialValue],
+  );
+
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

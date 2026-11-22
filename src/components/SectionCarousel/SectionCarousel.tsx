@@ -4,14 +4,14 @@ import {
   SECTION_NAV_ITEMS,
   NOT_FOUND_INDEX,
   FIRST_SLIDE_INDEX,
-} from "../constants/sections";
-import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
-import { ESection, toSectionHash } from "../utils/sections";
+} from "../../constants/sections";
+import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
+import { ESection, toSectionHash } from "../../utils/sections";
 
-import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../constants/mediaQueries";
-import { useMediaQuery } from "../hooks/useMediaQuery";
-import { useI18n } from "../hooks/useI18n";
-import { SectionHeading } from "./SectionHeading";
+import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useI18n } from "../../hooks/useI18n";
+import { SectionHeading } from "../SectionHeading";
 
 import "./SectionCarousel.css";
 

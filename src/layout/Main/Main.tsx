@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
 import { Header } from "../../components/Header";
@@ -29,21 +29,27 @@ export function Main() {
     true,
   );
 
-  function handleSkillLeave() {
+  const handleSkillLeave = useCallback(function handleSkillLeave() {
     setHoveredSkill(null);
-  }
+  }, []);
 
-  const skillInteractionHandlers: SkillInteractionProps = {
-    onSkillEnter: setHoveredSkill,
-    onSkillLeave: handleSkillLeave,
-  };
+  const skillInteractionHandlers = useMemo<SkillInteractionProps>(
+    () => ({
+      onSkillEnter: setHoveredSkill,
+      onSkillLeave: handleSkillLeave,
+    }),
+    [handleSkillLeave],
+  );
 
-  const sectionContent: Record<ESection, ReactNode> = {
-    [ESection.About]: <About />,
-    [ESection.Experience]: <Experience {...skillInteractionHandlers} />,
-    [ESection.Projects]: <Projects {...skillInteractionHandlers} />,
-    [ESection.Education]: <Education {...skillInteractionHandlers} />,
-  };
+  const sectionContent = useMemo<Record<ESection, ReactNode>>(
+    () => ({
+      [ESection.About]: <About />,
+      [ESection.Experience]: <Experience {...skillInteractionHandlers} />,
+      [ESection.Projects]: <Projects {...skillInteractionHandlers} />,
+      [ESection.Education]: <Education {...skillInteractionHandlers} />,
+    }),
+    [skillInteractionHandlers],
+  );
 
   const infoContent = (
     <Info

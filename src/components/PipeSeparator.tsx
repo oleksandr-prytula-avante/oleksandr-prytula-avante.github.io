@@ -25,5 +25,9 @@ export function PipeSeparator(props: PipeSeparatorProps) {
     .filter(Boolean)
     .join(" ");
 
-  return <span className={classes || undefined}>|</span>;
+  return (
+    <span className={classes || undefined} aria-hidden="true">
+      |
+    </span>
+  );
 }
