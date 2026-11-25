@@ -84,7 +84,7 @@
     visibility 0s;
 }
 
-@media (max-width: 1024px) {
+@media (width < 1025px) {
   .section-carousel__meta {
     display: none;
   }

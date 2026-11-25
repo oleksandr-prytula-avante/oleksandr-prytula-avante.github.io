@@ -241,7 +241,7 @@
   line-height: 1.75;
 }
 
-@media (max-width: 1024px) {
+@media (width < 1025px) {
   .timeline {
     overflow: visible;
     scrollbar-gutter: auto;

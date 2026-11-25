@@ -223,11 +223,12 @@ At 1025px and wider:
 
 ### Mobile and tablet layout
 
-At 1024px and below:
+Below 1025px:
 
 - Sections are stacked in document flow; the carousel stage is not absolute/hidden.
 - The page itself scrolls vertically.
 - The header is fixed at the top.
+- The hero greeting and section headings use the same 1px accent rule. The rules end at the shared content edge.
 - The hamburger opens a full-viewport fixed menu with language controls, section links, and social links.
 - The mobile menu background scenery is full-bleed: it must ignore the menu’s horizontal content padding.
 - The upper menu scene contains the sky; the lower menu scene contains the mountain mist and one UFO. Do not render a second full sky at the bottom.
@@ -267,6 +268,7 @@ The source of truth is `SECTION_NAV_ITEMS` in `src/constants/sections.ts`. Never
 - Invalid or missing hashes are replaced with the About hash.
 - Desktop uses hash state to choose the active carousel panel.
 - Mobile assigns section IDs so native hash navigation and scroll positioning work.
+- Opening or reloading a valid mobile deep link scrolls to the target once the content is ready. A visit without a hash starts at the top.
 - Mobile section headings use `scroll-mt-24` to account for the fixed header.
 - Navigation labels are white by default and orange on hover, focus, and active state.
 - Disabled navigation items must have no usable `href`, `tabIndex={-1}`, `aria-disabled`, and a not-allowed cursor.
@@ -276,6 +278,7 @@ The source of truth is `SECTION_NAV_ITEMS` in `src/constants/sections.ts`. Never
 - Opening the menu creates a fixed `z-index: 100` full-viewport overlay.
 - The menu is vertically scrollable and respects safe-area bottom padding.
 - The close button is a circular icon control.
+- Opening the menu moves keyboard focus inside it. Escape closes the menu and returns focus to the hamburger button.
 - Selecting a valid section closes the menu.
 - A desktop media-query change closes the menu automatically.
 - The menu must not create horizontal overflow after full-bleed scene changes.
@@ -400,7 +403,7 @@ Content requirements:
 - Preserve the first-person professional voice.
 - Keep claims consistent with the CV and timeline.
 - Use translation keys, not hard-coded paragraphs in JSX.
-- Keep headings in the same editorial pattern as timeline section headings: small uppercase/letter-spaced label, orange bullet, subtle horizontal line.
+- Story subheadings use a small, letter-spaced uppercase label and an orange bullet. The horizontal rule appears only in the desktop layout (1025px and above).
 
 ### Toggle and scroll contract
 
@@ -494,8 +497,7 @@ The current project timeline contains the Omnora Authoring project.
 ### Gallery
 
 - Gallery is a compact tile grid.
-- Desktop/tablet target: three columns.
-- Small mobile target: two columns.
+- The gallery is available in the desktop layout (1025px and above) and uses three columns.
 - Tiles use 16:9 presentation even though source screenshots have slightly different native dimensions.
 - Images are lazy-loaded and decoded asynchronously.
 - Captions are not permanently overlaid on the tile; the accessible label and full preview provide the caption.
@@ -534,7 +536,7 @@ Current screenshot metadata is maintained in `src/constants/projects.ts`; do not
 - Decorative layers use page/header stacking contexts; do not solve clipping by assigning arbitrary positive z-index values to scenery over content.
 - White content must retain contrast against nebula and mist areas.
 - The primary `NightSky` image is shifted to the right and slightly dimmed so the bright nebula does not sit behind the white hero copy. The shift is applied directly to the image layer and therefore must not depend on one narrow media-query range.
-- On desktop, the main mountain layer is fitted to the scenery container height with bottom alignment and without a vertical mask; the lighthouse, house, and mountain silhouettes must remain fully visible instead of being cropped by the viewport edge. Mobile footer scenery may keep its own mask and sizing rules.
+- The mountain artwork renders at its original opacity on desktop, on mobile, and in the mobile menu. On desktop, the main mountain layer is fitted to the scenery container height with bottom alignment so the lighthouse, house, and mountain silhouettes remain visible.
 - On mobile menu, upper sky is full-bleed and rendered once; lower scene uses mountains plus one UFO, not a second sky.
 - The lower mobile scene is full-bleed using the established `100vw`/negative-margin pattern.
 - The mobile menu lower scene reuses the same mountain container height and image scale as the main mobile scenery, so opening or closing the menu does not change the mountain silhouette.
@@ -614,9 +616,9 @@ Do not use color alone to communicate the only state change when a semantic attr
 ### AC-002 — Responsive layout
 
 - At 1440px desktop, the three-column layout fits without horizontal page scrolling.
-- At 1024px and below, the page becomes a vertical flow and remains scrollable.
+- Below 1025px, the page uses a vertically scrollable layout with a fixed header and visible section headings. This includes exactly 1024px.
+- At 1025px, the desktop grid and desktop navigation become active.
 - At widths around 640px and below, no CTA, tag, timeline row, or heading is clipped.
-- At tablet widths, the fixed header does not cover section headings after hash navigation.
 - Mobile menu content can scroll vertically without horizontal overflow.
 
 ### AC-003 — Typography and theme
@@ -632,11 +634,18 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Active nav state, carousel panel, counter, and progress line agree.
 - Invalid/missing hashes resolve to About.
 - Desktop and mobile nav have correct hover/focus/active colors.
+- Opening or reloading a mobile deep link places its section heading below the fixed header. Verify with and without reduced motion.
+- Opening the mobile menu focuses its close button and keeps keyboard focus within the modal. Escape closes the menu and returns focus to the hamburger button.
+- Mobile section links are usable as soon as the menu opens, including during hero typing. Selecting a section reveals its content below the fixed header.
 
 ### AC-005 — Hero
 
 - Typing does not cause horizontal layout jumps.
+- With reduced motion enabled, hero text appears in full on initial load, without character-by-character typing or an animated accent rule.
+- In the mobile layout, the hero greeting and section headings have 1px accent rules that end at the same horizontal position after reveal.
 - `Need more details?` and `Download CV (PDF)` remain reachable and readable.
+- In desktop windows 500px tall or shorter, the hero column can scroll when needed so the CV link remains reachable by pointer and keyboard.
+- On narrow mobile screens, the two CV prompts share a line when they fit and wrap within the content edges otherwise. Verify all four languages at 280px and 320px.
 - The CV link opens the current PDF asset.
 - Hero scenery never intercepts pointer events.
 
@@ -646,7 +655,9 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Desktop property keys are visually capitalized.
 - Desktop toggle opens the full story with an upward reveal animation.
 - Opening the story scrolls the About panel to the newly revealed content.
+- With reduced motion enabled, the desktop story opens and scrolls into view instantly. Mobile story text is visible on load with no entrance animation.
 - Mobile/tablet hide the code summary and toggle, while showing readable story content directly.
+- Story subheadings retain their orange bullets at all widths. Their horizontal rules appear from 1025px.
 - Story blocks have no duplicated claims caused by accidental rendering.
 
 ### AC-007 — Tags
@@ -668,7 +679,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 
 ### AC-009 — Projects/gallery
 
-- Screenshot gallery is three columns on desktop/tablet and two columns on small mobile.
+- Screenshot gallery is available from 1025px and uses three columns. Below 1025px, the project card shows its summary and hides the screenshot count and gallery expansion control.
 - Tile layout remains 16:9 and does not overflow the timeline details panel.
 - Preview opens in a modal dialog, supports navigation/zoom/close, and exposes accessible labels.
 - Lazy-loaded thumbnails do not block the initial page.
@@ -679,7 +690,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Narrow desktop/tablet hero text is not placed over the brightest `NightSky` nebula band.
 - Mobile menu upper sky is full-bleed and rendered once.
 - Mobile menu lower scene uses full-width mountains and one UFO.
-- Opening or closing the mobile menu preserves the mountain scene geometry; the lower mountains do not jump, rescale, or switch crop.
+- The mobile page and menu use the same mountain image scale and crop. The lighthouse and its beam retain the brightness of the artwork in both scenes and on desktop.
 - Mountains preserve a coherent scale relative to the sky and do not leave unintended side gutters.
 - Desktop mountain scenery keeps the lighthouse and house silhouettes visible; fitting the image to the container must not vertically crop those landmarks.
 - Decorative motion includes occasional intentional UFO departures, remains disabled for reduced-motion users, and does not affect layout.
@@ -704,18 +715,19 @@ Do not use color alone to communicate the only state change when a semantic attr
 
 Before handing off a visual change, check at least:
 
-| Viewport                     | Required checks                                                                                      |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Desktop wide (1440px+)       | Hero alignment, carousel panel, timeline rail, About internal scroll, gallery columns, mist contrast |
-| Desktop narrow (1025–1366px) | Text wrapping, CTA row, timeline metadata hiding rules, scrollbar spacing                            |
-| Tablet landscape             | Fixed header, mobile menu, full-bleed sky/mountains, section scroll targets                          |
-| Tablet portrait              | Menu height/scroll, readable timeline, tags in page flow                                             |
-| Mobile wide                  | One-line CTA where possible, no duplicate sky, bottom links and mountain scene                       |
-| Mobile narrow (≤390px)       | Name wrapping, hero spacing, tag wrapping, timeline logo/content alignment                           |
-| Reduced motion               | No decorative typing/reveal/scene motion that violates user preference                               |
-| Keyboard-only                | Nav, language controls, About toggle, timeline More, gallery tiles, dialog controls                  |
+| Viewport                      | Required checks                                                                                      |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Desktop wide (1440px+)        | Hero alignment, carousel panel, timeline rail, About internal scroll, gallery columns, mist contrast |
+| Desktop narrow (1025–1366px)  | Text wrapping, CTA row, timeline metadata hiding rules, scrollbar spacing                            |
+| Layout boundary (1024/1025px) | Fixed header, aligned section rules and hidden gallery at 1024px, desktop grid and gallery at 1025px |
+| Tablet landscape              | Fixed header, mobile menu, full-bleed sky/mountains, section scroll targets                          |
+| Tablet portrait               | Menu height/scroll, readable timeline, tags in page flow                                             |
+| Mobile wide                   | One-line CTA where possible, one sky, bottom links, matching lighthouse crop and brightness          |
+| Mobile narrow (≤390px)        | Name wrapping, hero spacing, tag wrapping, timeline logo/content alignment                           |
+| Reduced motion                | Complete hero text on load, static accent rules, visible tags, stationary scenery                    |
+| Keyboard-only                 | Menu opening focus, Tab within menu, Escape and focus return, desktop toggles and gallery controls   |
 
-For visual changes, verify both an untouched reload and a hash/deep-link reload such as `#experience` or `#projects`.
+For visual changes, verify a load without a hash and a direct load or reload with `#experience` or `#projects`. On mobile, confirm the target heading clears the fixed header with reduced motion enabled and disabled.
 
 ## 17. Change protocol for future bots
 

@@ -6,7 +6,10 @@ import { MountainMist } from "../../components/illustrations/MountainMist";
 import { NightSky } from "../../components/illustrations/NightSky";
 import { Links } from "../../components/Links";
 import { SectionCarousel } from "../../components/SectionCarousel";
-import { MIN_ANIMATED_VIEWPORT_MEDIA_QUERY } from "../../constants/mediaQueries";
+import {
+  DESKTOP_MIN_WIDTH_MEDIA_QUERY,
+  MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
+} from "../../constants/mediaQueries";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ESection } from "../../utils/sections";
 import { About } from "../About";
@@ -28,6 +31,7 @@ export function Main() {
     MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
     true,
   );
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
 
   const handleSkillLeave = useCallback(function handleSkillLeave() {
     setHoveredSkill(null);
@@ -59,36 +63,34 @@ export function Main() {
       onHeroPrintingStateChange={setIsHeroPrintingInProgress}
     />
   );
-  const isSecondaryContentVisible = showSecondaryContent;
+  const areSectionsVisible = !isDesktopViewport || showSecondaryContent;
   const sectionRevealClassName = getSectionRevealClassName(
-    isRevealAnimationEnabled,
-    isSecondaryContentVisible,
+    isDesktopViewport && isRevealAnimationEnabled,
+    areSectionsVisible,
   );
 
   return (
-    <div className="resume-page relative flex h-full flex-col overflow-hidden text-white max-[1024px]:overflow-y-auto">
-      <div className="resume-content relative z-10 mx-auto flex h-full min-h-0 w-full max-w-[1920px] flex-col px-24 max-[1024px]:px-18 max-[1024px]:pt-24 max-[768px]:px-12 max-[640px]:px-8">
+    <div className="resume-page relative flex h-full flex-col overflow-hidden text-white max-[1025px]:overflow-y-auto">
+      <div className="resume-content relative z-10 mx-auto flex h-full min-h-0 w-full max-w-[1920px] flex-col px-24 max-[1025px]:px-18 max-[1025px]:pt-24 max-[768px]:px-12 max-[640px]:px-8">
         <NightSky />
         <MountainMist />
         <Header
           isLanguageDisabled={isHeroPrintingInProgress}
-          isNavigationDisabled={!isSecondaryContentVisible}
+          isNavigationDisabled={!areSectionsVisible}
         />
-        <main className="w-full min-h-0 flex-1 overflow-hidden max-[1024px]:overflow-visible max-[1024px]:pb-8">
-          <div className="flex h-full min-h-0 flex-col max-[1024px]:h-auto max-[768px]:gap-4 min-[1025px]:grid min-[1175px]:grid-cols-[5%_40%_55%] min-[1025px]:max-[1175px]:grid-cols-[5%_45%_50%]">
+        <main className="w-full min-h-0 flex-1 overflow-hidden max-[1025px]:overflow-visible max-[1025px]:pb-8">
+          <div className="flex h-full min-h-0 flex-col max-[1025px]:h-auto max-[768px]:gap-4 min-[1025px]:grid min-[1175px]:grid-cols-[5%_40%_55%] min-[1025px]:max-[1175px]:grid-cols-[5%_45%_50%]">
             <section className="relative hidden h-full min-h-0 min-w-0 min-[1025px]:block">
-              <Links isVisible={isSecondaryContentVisible} />
+              <Links isVisible={showSecondaryContent} />
             </section>
-            <section className="relative flex min-h-0 min-w-0 flex-col max-[1024px]:pb-4 min-[1025px]:h-full min-[1025px]:justify-center">
+            <section className="relative flex min-h-0 min-w-0 flex-col max-[1025px]:pb-4 min-[1025px]:h-full min-[1025px]:justify-center">
               {infoContent}
             </section>
             <section className="relative min-h-0 min-w-0 min-[1025px]:h-full">
               <div className={sectionRevealClassName}>
                 <SectionCarousel
                   sections={sectionContent}
-                  isLineVisible={
-                    isSecondaryContentVisible || !isRevealAnimationEnabled
-                  }
+                  isLineVisible={areSectionsVisible}
                 />
               </div>
             </section>

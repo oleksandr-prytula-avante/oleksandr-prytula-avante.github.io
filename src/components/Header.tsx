@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { useActiveSectionHash } from "../hooks/useActiveSectionHash";
 import { useI18n } from "../hooks/useI18n";
@@ -15,7 +15,7 @@ import { MountainMist } from "./illustrations/MountainMist";
 import { PortfolioMark } from "./illustrations/PortfolioMark";
 
 const MOBILE_HEADER_HORIZONTAL_PADDING_CLASS =
-  "max-[1024px]:px-18 max-[768px]:px-12 max-[640px]:px-8";
+  "max-[1025px]:px-18 max-[768px]:px-12 max-[640px]:px-8";
 const MENU_ICON_BUTTON_CLASS =
   "subtle-border subtle-border--quiet relative flex h-12 w-12 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border bg-white/4 transition-colors duration-200 ease-out hover:bg-white/10 focus-visible:bg-white/10";
 
@@ -35,12 +35,22 @@ export function Header(props: HeaderProps) {
   );
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDialogElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useLayoutEffect(() => {
+    const menu = mobileMenuRef.current;
+    if (isMobileMenuOpen && menu && !menu.open) {
+      menu.showModal();
+    }
+  }, [isMobileMenuOpen]);
 
   useEffect(function () {
     const mediaQuery = window.matchMedia(DESKTOP_MIN_WIDTH_MEDIA_QUERY);
 
     function handleViewportChange(event: MediaQueryListEvent) {
       if (event.matches) {
+        mobileMenuRef.current?.close();
         setIsMobileMenuOpen(false);
       }
     }
@@ -54,29 +64,32 @@ export function Header(props: HeaderProps) {
 
   useEffect(
     function () {
+      mobileMenuRef.current?.close();
       /* eslint-disable-next-line react-hooks/set-state-in-effect */
       setIsMobileMenuOpen(false);
     },
     [activeHash],
   );
 
-  function handleMobileMenuToggle() {
-    setIsMobileMenuOpen(function (currentValue) {
-      return !currentValue;
-    });
-  }
-
   function handleMobileMenuClose() {
+    mobileMenuRef.current?.close();
     setIsMobileMenuOpen(false);
+    mobileMenuButtonRef.current?.focus({ preventScroll: true });
   }
 
   let mobileMenu = null;
 
   if (isMobileMenuOpen) {
     mobileMenu = (
-      <div
+      <dialog
         id="mobile-header-menu"
-        className={`fixed inset-0 z-[100] flex h-dvh min-h-dvh w-screen flex-col overflow-y-auto overscroll-contain bg-[color:var(--color-bg)] px-24 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} pb-[max(2.5rem,calc(2.5rem + env(safe-area-inset-bottom)))] pt-0 landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
+        ref={mobileMenuRef}
+        aria-label={i18n.t(ETranslationKey.A11yOpenMenu)}
+        onCancel={(event) => {
+          event.preventDefault();
+          handleMobileMenuClose();
+        }}
+        className={`fixed inset-0 z-[100] m-0 h-dvh min-h-dvh max-h-none w-screen max-w-none flex-col overflow-x-hidden overflow-y-auto overscroll-contain bg-[color:var(--color-bg)] px-24 pb-[max(2.5rem,calc(2.5rem + env(safe-area-inset-bottom)))] pt-0 text-white open:flex ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
       >
         <div className="mobile-menu-header relative flex h-24 shrink-0 items-center justify-between">
           <HeaderScene />
@@ -112,21 +125,22 @@ export function Header(props: HeaderProps) {
             <HeaderScene />
           </div>
         </div>
-      </div>
+      </dialog>
     );
   }
 
   return (
     <>
       <header
-        className={`site-header relative flex h-24 w-full shrink-0 items-center justify-between px-0 max-[1024px]:fixed max-[1024px]:left-0 max-[1024px]:right-0 max-[1024px]:top-0 max-[1024px]:z-50 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
+        className={`site-header relative flex h-24 w-full shrink-0 items-center justify-between px-0 max-[1025px]:fixed max-[1025px]:left-0 max-[1025px]:right-0 max-[1025px]:top-0 max-[1025px]:z-50 ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
       >
         <HeaderScene />
         {brandMark}
         <button
+          ref={mobileMenuButtonRef}
           type="button"
           className={`${MENU_ICON_BUTTON_CLASS} min-[1025px]:hidden`}
-          onClick={handleMobileMenuToggle}
+          onClick={() => setIsMobileMenuOpen(true)}
           aria-label={
             isMobileMenuOpen
               ? i18n.t(ETranslationKey.A11yCloseMenu)

@@ -15,7 +15,7 @@ import {
   CV_DOWNLOAD_TYPING_INTERVAL_MS,
   HERO_TYPING_STEP_DOUBLE_CHARS,
 } from "../constants/animations";
-import { SCALE_X_VISIBLE, SCALE_X_HIDDEN } from "../constants/sections";
+import { SectionHeading } from "../components/SectionHeading";
 import { useI18n } from "../hooks/useI18n";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useTypingSequence } from "../hooks/useTypingSequence";
@@ -138,7 +138,7 @@ export function Info(props: InfoProps) {
   const isRoleTyping = role.isStarted && !role.isFinished;
   const isEngineeringToolkitTyping = toolkit.isStarted && !toolkit.isFinished;
   const isNeedMoreDetailsTypingStarted = details.isStarted;
-  const showSecondaryContent = toolkit.isFinished;
+  const showSecondaryContent = !isDesktopViewport || toolkit.isFinished;
   const isSecondaryContentReady = isDesktopViewport
     ? toolkit.isStarted
     : cv.isFinished;
@@ -197,15 +197,15 @@ export function Info(props: InfoProps) {
           onSkillLeave={onSkillLeave}
         />
 
-        <div className="hero-info__footer mt-6 flex shrink-0 flex-nowrap items-center justify-end gap-2 whitespace-nowrap max-[1024px]:justify-start max-[639px]:gap-1">
-          <p className="shrink-0 text-base uppercase leading-[1.4] text-white min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[clamp(0.625rem,3.1vw,1rem)]">
+        <div className="hero-info__footer mt-6 flex shrink-0 flex-nowrap items-center justify-end gap-2 whitespace-nowrap max-[1025px]:flex-wrap max-[1025px]:justify-start max-[639px]:gap-1">
+          <p className="shrink-0 text-base uppercase leading-[1.4] text-white min-[1025px]:max-[1366px]:text-sm max-[1025px]:text-[clamp(0.625rem,3.1vw,1rem)]">
             <TypingText text={needMoreDetailsText}>
               {needMoreDetailsText.slice(0, visibleNeedMoreDetailsChars)}
               {needMoreDetailsTypingCursor}
             </TypingText>
           </p>
           <a
-            className="inline-flex shrink-0 cursor-pointer items-center py-1 text-base leading-[1.4] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[clamp(0.625rem,3.1vw,1rem)]"
+            className="inline-flex shrink-0 cursor-pointer items-center py-1 text-base leading-[1.4] text-white uppercase transition-colors duration-200 ease-out hover:text-[color:var(--color-accent)] focus-visible:text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1025px]:text-[clamp(0.625rem,3.1vw,1rem)]"
             href={CV_PATH}
             target="_blank"
             rel="noreferrer"
@@ -228,24 +228,22 @@ export function Info(props: InfoProps) {
   }
 
   return (
-    <div className="hero-info flex min-h-0 min-w-0 flex-col px-10 pt-11 pb-7 max-[1024px]:p-0 min-[1025px]:max-[1174px]:px-4">
-      <div className="mb-4 flex shrink-0 items-center">
-        <span className="text-xl font-bold uppercase text-white max-[1366px]:text-base">
-          <TypingText text={hiText}>
-            {hiText.slice(0, visibleHiChars)}
-            {hiTypingCursor}
-          </TypingText>
-        </span>
-        <span
-          className="accent-line ml-6 inline-block h-px flex-1 origin-left transition-transform duration-500 ease-out"
-          style={{
-            transform: isLineVisible ? SCALE_X_VISIBLE : SCALE_X_HIDDEN,
-          }}
+    <div className="hero-info flex min-h-0 min-w-0 flex-col px-10 pt-11 pb-7 max-[1025px]:p-0 min-[1025px]:max-[1174px]:px-4">
+      <div className="mb-4 shrink-0">
+        <SectionHeading
+          animateLine
+          isLineVisible={isLineVisible}
+          title={
+            <TypingText text={hiText}>
+              {hiText.slice(0, visibleHiChars)}
+              {hiTypingCursor}
+            </TypingText>
+          }
         />
       </div>
 
-      <div className="-mt-[2.8125rem] flex shrink-0 items-start gap-6 min-[1367px]:-mt-[3.125rem] max-[1024px]:mt-2 max-[640px]:gap-4">
-        <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1024px]:flex min-[640px]:max-[1024px]:items-end min-[640px]:max-[1024px]:gap-3">
+      <div className="-mt-[2.8125rem] flex shrink-0 items-start gap-6 min-[1367px]:-mt-[3.125rem] max-[1025px]:mt-2 max-[640px]:gap-4">
+        <h1 className="text-6xl font-bold uppercase leading-none text-white max-[1366px]:text-5xl min-[640px]:max-[1025px]:flex min-[640px]:max-[1025px]:items-end min-[640px]:max-[1025px]:gap-3">
           <span className="block">
             <TypingText text={nameText}>
               {visibleName}
@@ -261,14 +259,14 @@ export function Info(props: InfoProps) {
         </h1>
       </div>
 
-      <p className="mt-6 shrink-0 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1024px]:text-[1.125rem]">
+      <p className="mt-6 shrink-0 text-[1.25rem] uppercase text-[color:var(--color-accent)] min-[1025px]:max-[1366px]:text-sm max-[1025px]:text-[1.125rem]">
         <TypingText text={roleText}>
           {roleText.slice(0, visibleRoleChars)}
           {roleTypingCursor}
         </TypingText>
       </p>
 
-      <p className="mt-4 shrink-0 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1024px]:text-[0.9375rem]">
+      <p className="mt-4 shrink-0 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1025px]:text-[0.9375rem]">
         <TypingText text={`${engineeringToolkitBaseText}:`}>
           {engineeringToolkitBaseText.slice(
             DEFAULT_CHAR_COUNT,

@@ -20,9 +20,13 @@ export function useAboutRevealScroll(
     if (!isDesktopViewport) return;
 
     const panel = panelRef.current;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const behavior = prefersReducedMotion ? "instant" : "smooth";
 
     if (!isExpanded) {
-      panel?.scrollTo({ top: 0, behavior: "smooth" });
+      panel?.scrollTo({ top: 0, behavior });
       return;
     }
 
@@ -36,8 +40,13 @@ export function useAboutRevealScroll(
 
       panel.scrollTo({
         top: Math.max(0, panel.scrollTop + storyRect.top - panelRect.top),
-        behavior: "smooth",
+        behavior,
       });
+    }
+
+    if (prefersReducedMotion) {
+      scrollToStory();
+      return;
     }
 
     function handleTransitionEnd(event: TransitionEvent) {

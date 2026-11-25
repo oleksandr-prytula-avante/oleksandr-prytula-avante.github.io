@@ -14,7 +14,7 @@ export function ProjectScreenshotsRow({ item }: ProjectScreenshotsRowProps) {
   return (
     <TimelineRow
       variant="meta"
-      className="max-[1024px]:hidden"
+      className="max-[1025px]:hidden"
       icon={<ProjectScreenshotsIcon />}
     >
       <span className="min-w-0 truncate">

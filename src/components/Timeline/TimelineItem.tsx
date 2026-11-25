@@ -81,7 +81,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     .filter(Boolean)
     .join(" ");
   const contentClassName = [
-    "timeline-item__content flex h-full min-h-0 flex-col text-sm text-white max-[1024px]:h-auto justify-start",
+    "timeline-item__content flex h-full min-h-0 flex-col text-sm text-white max-[1025px]:h-auto justify-start",
     contentVisibilityClass,
   ]
     .filter(Boolean)
@@ -165,7 +165,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
     expandedContent = (
       <div
         id={descriptionId}
-        className="timeline-item__details min-h-0 flex-1 overflow-y-auto [scrollbar-gutter:stable] max-[1024px]:overflow-visible"
+        className="timeline-item__details min-h-0 flex-1 overflow-y-auto [scrollbar-gutter:stable] max-[1025px]:overflow-visible"
       >
         {localizedHighlightsList}
         {DetailsComponent && <DetailsComponent item={item} />}
@@ -187,7 +187,7 @@ export function TimelineItem<TItem extends TimelineDataItem>(
           isToggleDisabled
             ? "cursor-not-allowed opacity-60"
             : "cursor-pointer hover:text-white"
-        } ${showMobileToggle ? "" : "max-[1024px]:hidden"}`}
+        } ${showMobileToggle ? "" : "max-[1025px]:hidden"}`}
       >
         <span>
           {isExpanded

@@ -1,12 +1,19 @@
 import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useRef } from "react";
 
 import {
   SECTION_NAV_ITEMS,
   NOT_FOUND_INDEX,
   FIRST_SLIDE_INDEX,
+  VALID_HASHES,
 } from "../../constants/sections";
 import { useActiveSectionHash } from "../../hooks/useActiveSectionHash";
-import { ESection, toSectionHash } from "../../utils/sections";
+import {
+  ESection,
+  getCurrentHash,
+  isSectionHash,
+  toSectionHash,
+} from "../../utils/sections";
 
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -27,11 +34,29 @@ export function SectionCarousel({
   const i18n = useI18n();
   const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
+  const initialHash = useRef(getCurrentHash());
   const index = SECTION_NAV_ITEMS.findIndex(({ href }) => href === activeHash);
   const activeIndex = index === NOT_FOUND_INDEX ? FIRST_SLIDE_INDEX : index;
 
+  useEffect(() => {
+    const hash = initialHash.current;
+    if (!isSectionHash(hash, VALID_HASHES)) return;
+    if (hash !== getCurrentHash()) {
+      initialHash.current = "";
+      return;
+    }
+    if (!isLineVisible) return;
+
+    if (!isDesktopViewport) {
+      document
+        .getElementById(hash.slice(1))
+        ?.scrollIntoView({ behavior: "instant" });
+    }
+    initialHash.current = "";
+  }, [activeHash, isDesktopViewport, isLineVisible]);
+
   return (
-    <div className="section-carousel relative flex h-full min-h-0 min-w-0 flex-col px-10 max-[1024px]:h-auto max-[1024px]:px-0">
+    <div className="section-carousel relative flex h-full min-h-0 min-w-0 flex-col px-10 max-[1025px]:h-auto max-[1025px]:px-0">
       <div className="section-carousel__meta" aria-hidden="true">
         <span className="section-carousel__count">
           {String(activeIndex + 1).padStart(2, "0")}
@@ -57,7 +82,7 @@ export function SectionCarousel({
             <section
               key={id}
               id={isDesktopViewport ? undefined : id}
-              className={`section-carousel__panel resume-mobile-section max-[1024px]:scroll-mt-24 max-[1024px]:py-4 ${sectionClassName}`}
+              className={`section-carousel__panel resume-mobile-section max-[1025px]:scroll-mt-24 max-[1025px]:py-4 ${sectionClassName}`}
               data-active={isActive}
               aria-hidden={isDesktopViewport && !isActive}
               inert={isDesktopViewport && !isActive}
