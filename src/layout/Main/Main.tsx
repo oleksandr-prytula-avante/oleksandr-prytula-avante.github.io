@@ -70,7 +70,7 @@ export function Main() {
   );
 
   return (
-    <div className="resume-page relative flex h-full flex-col overflow-hidden text-white max-[1025px]:overflow-y-auto">
+    <div className="resume-page relative flex h-full flex-col overflow-clip text-white max-[1025px]:overflow-y-auto">
       <div className="resume-content relative z-10 mx-auto flex h-full min-h-0 w-full max-w-[1920px] flex-col px-24 max-[1025px]:px-18 max-[1025px]:pt-24 max-[768px]:px-12 max-[640px]:px-8">
         <NightSky />
         <MountainMist />

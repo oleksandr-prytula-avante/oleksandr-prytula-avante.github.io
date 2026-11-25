@@ -104,6 +104,7 @@ export const enum ETranslationKey {
   ProjectsOmnoraName = "projects.omnora.name",
   ProjectsOmnoraCategory = "projects.omnora.category",
   ProjectsScreenshots = "projects.screenshots",
+  ProjectsComingSoon = "projects.comingSoon",
   ProjectsOpenScreenshot = "projects.openScreenshot",
   ProjectsClosePreview = "projects.closePreview",
   ProjectsPreviousScreenshot = "projects.previousScreenshot",

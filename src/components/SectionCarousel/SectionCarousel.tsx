@@ -47,12 +47,29 @@ export function SectionCarousel({
     }
     if (!isLineVisible) return;
 
-    if (!isDesktopViewport) {
-      document
-        .getElementById(hash.slice(1))
-        ?.scrollIntoView({ behavior: "instant" });
+    if (isDesktopViewport) {
+      initialHash.current = "";
+      return;
     }
-    initialHash.current = "";
+
+    let cancelled = false;
+    let frame = 0;
+    void document.fonts.ready.then(() => {
+      if (cancelled) return;
+      frame = window.requestAnimationFrame(() => {
+        if (hash === getCurrentHash()) {
+          document
+            .getElementById(hash.slice(1))
+            ?.scrollIntoView({ behavior: "instant" });
+        }
+        initialHash.current = "";
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+    };
   }, [activeHash, isDesktopViewport, isLineVisible]);
 
   return (

@@ -14,6 +14,7 @@ const EN_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraCategory]:
     "It is a browser-based platform for creating corporate training videos with AI. It turns expert interviews, documents, presentations, and screen recordings into structured learning materials with voiceovers, AI avatars, subtitles, quizzes, branded visuals, and reusable templates. Teams can combine different source formats, review and refine lessons together, and adapt the same content for different audiences without rebuilding every module from scratch. The platform supports translation into 140 languages, export to SCORM, xAPI, and MP4, and integration with LMS platforms and corporate portals. It helps organizations accelerate training content creation, employee onboarding, and knowledge sharing while keeping production workflows consistent, easy to update, and ready to scale across departments.",
   [ETranslationKey.ProjectsScreenshots]: "Screenshots",
+  [ETranslationKey.ProjectsComingSoon]: "More projects coming soon.",
   [ETranslationKey.ProjectsOpenScreenshot]: "Open screenshot preview",
   [ETranslationKey.ProjectsClosePreview]: "Close preview",
   [ETranslationKey.ProjectsPreviousScreenshot]: "Previous screenshot",
@@ -268,6 +269,7 @@ const RU_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraCategory]:
     "Это браузерная платформа для создания корпоративных обучающих видео с помощью ИИ. Она превращает интервью с экспертами, документы, презентации и записи экрана в структурированные учебные материалы с озвучкой, ИИ-аватарами, субтитрами, тестами, фирменным оформлением и многоразовыми шаблонами. Команды могут объединять разные источники, совместно проверять и дорабатывать уроки, а затем адаптировать один и тот же контент для разных аудиторий без пересборки каждого модуля с нуля. Платформа поддерживает перевод на 140 языков, экспорт в SCORM, xAPI и MP4, а также интеграцию с LMS и корпоративными порталами. Она ускоряет создание обучения, онбординг и обмен знаниями, сохраняя единый, удобный для обновления и масштабирования процесс.",
   [ETranslationKey.ProjectsScreenshots]: "Скриншоты",
+  [ETranslationKey.ProjectsComingSoon]: "Скоро здесь появятся новые проекты.",
   [ETranslationKey.ProjectsOpenScreenshot]: "Открыть предпросмотр скриншота",
   [ETranslationKey.ProjectsClosePreview]: "Закрыть предпросмотр",
   [ETranslationKey.ProjectsPreviousScreenshot]: "Предыдущий скриншот",
@@ -518,6 +520,7 @@ const SP_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraCategory]:
     "Es una plataforma basada en navegador para crear vídeos de formación corporativa con IA. Convierte entrevistas con expertos, documentos, presentaciones y grabaciones de pantalla en materiales de aprendizaje estructurados con locuciones, avatares de IA, subtítulos, cuestionarios, identidad visual y plantillas reutilizables. Los equipos pueden combinar distintas fuentes, revisar y mejorar las lecciones de forma colaborativa y adaptar el mismo contenido a diferentes audiencias sin reconstruir cada módulo desde cero. La plataforma admite traducciones a 140 idiomas, exportación a SCORM, xAPI y MP4, e integración con plataformas LMS y portales corporativos. Ayuda a acelerar la creación de contenidos, la incorporación de empleados y el intercambio de conocimiento, manteniendo procesos consistentes, fáciles de actualizar y preparados para crecer entre departamentos.",
   [ETranslationKey.ProjectsScreenshots]: "Capturas de pantalla",
+  [ETranslationKey.ProjectsComingSoon]: "Pronto habrá más proyectos.",
   [ETranslationKey.ProjectsOpenScreenshot]: "Abrir vista previa de la captura",
   [ETranslationKey.ProjectsClosePreview]: "Cerrar vista previa",
   [ETranslationKey.ProjectsPreviousScreenshot]: "Captura anterior",
@@ -773,6 +776,7 @@ const DE_TRANSLATIONS: Translations = {
   [ETranslationKey.ProjectsOmnoraCategory]:
     "Es ist eine browserbasierte Plattform zur Erstellung von Schulungsvideos für Unternehmen mit KI. Experteninterviews, Dokumente, Präsentationen und Bildschirmaufnahmen werden in strukturierte Lernmaterialien mit Sprachaufnahmen, KI-Avataren, Untertiteln, Quizzen, gebrandeten visuellen Elementen und wiederverwendbaren Vorlagen umgewandelt. Teams können unterschiedliche Quellen kombinieren, Lektionen gemeinsam prüfen und überarbeiten sowie dieselben Inhalte für verschiedene Zielgruppen anpassen, ohne jedes Modul von Grund auf neu zu erstellen. Die Plattform unterstützt Übersetzungen in 140 Sprachen, den Export nach SCORM, xAPI und MP4 sowie die Integration in LMS-Plattformen und Unternehmensportale. Sie beschleunigt die Erstellung von Lerninhalten, das Onboarding und den Wissensaustausch und hält die Abläufe konsistent, leicht aktualisierbar und über Abteilungen hinweg skalierbar.",
   [ETranslationKey.ProjectsScreenshots]: "Bildschirmfotos",
+  [ETranslationKey.ProjectsComingSoon]: "Weitere Projekte folgen in Kürze.",
   [ETranslationKey.ProjectsOpenScreenshot]:
     "Vorschau des Bildschirmfotos öffnen",
   [ETranslationKey.ProjectsClosePreview]: "Vorschau schließen",

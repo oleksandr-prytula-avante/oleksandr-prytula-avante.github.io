@@ -236,7 +236,7 @@ Below 1025px:
 - The About full story is visible without a More/Less toggle on mobile/tablet.
 - Timeline cards are in normal flow, with circular logos and optional mobile expansion controls.
 - Tags are not trapped in a fixed-height scroll container on mobile; they remain reachable in page flow.
-- Need more details and Download CV must fit on one line where the viewport permits; avoid clipping the lower CTA.
+- Below 640px, the CV link sits below the prompt. From 640px, they share a line when space allows.
 
 ### Full-bleed scenery rule
 
@@ -618,6 +618,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 - At 1440px desktop, the three-column layout fits without horizontal page scrolling.
 - Below 1025px, the page uses a vertically scrollable layout with a fixed header and visible section headings. This includes exactly 1024px.
 - At 1025px, the desktop grid and desktop navigation become active.
+- Resizing a scrolled mobile page to desktop keeps the header fully visible at the top and preserves the active section.
 - At widths around 640px and below, no CTA, tag, timeline row, or heading is clipped.
 - Mobile menu content can scroll vertically without horizontal overflow.
 
@@ -645,7 +646,7 @@ Do not use color alone to communicate the only state change when a semantic attr
 - In the mobile layout, the hero greeting and section headings have 1px accent rules that end at the same horizontal position after reveal.
 - `Need more details?` and `Download CV (PDF)` remain reachable and readable.
 - In desktop windows 500px tall or shorter, the hero column can scroll when needed so the CV link remains reachable by pointer and keyboard.
-- On narrow mobile screens, the two CV prompts share a line when they fit and wrap within the content edges otherwise. Verify all four languages at 280px and 320px.
+- Below 640px, the CV link sits on its own line under the prompt. Verify that both lines fit within the content edges in all four languages at 280px and 320px.
 - The CV link opens the current PDF asset.
 - Hero scenery never intercepts pointer events.
 
@@ -722,7 +723,7 @@ Before handing off a visual change, check at least:
 | Layout boundary (1024/1025px) | Fixed header, aligned section rules and hidden gallery at 1024px, desktop grid and gallery at 1025px |
 | Tablet landscape              | Fixed header, mobile menu, full-bleed sky/mountains, section scroll targets                          |
 | Tablet portrait               | Menu height/scroll, readable timeline, tags in page flow                                             |
-| Mobile wide                   | One-line CTA where possible, one sky, bottom links, matching lighthouse crop and brightness          |
+| Mobile wide                   | CV link below its prompt, one sky, bottom links, matching lighthouse crop and brightness             |
 | Mobile narrow (≤390px)        | Name wrapping, hero spacing, tag wrapping, timeline logo/content alignment                           |
 | Reduced motion                | Complete hero text on load, static accent rules, visible tags, stationary scenery                    |
 | Keyboard-only                 | Menu opening focus, Tab within menu, Escape and focus return, desktop toggles and gallery controls   |
