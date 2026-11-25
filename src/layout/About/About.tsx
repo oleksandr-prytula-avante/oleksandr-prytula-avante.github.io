@@ -103,17 +103,17 @@ export function About() {
 
   return (
     <article ref={aboutPanelRef} className="about-panel">
-      <SectionBanner
-        className="mb-4"
-        trailing={
-          <span className="shrink-0 text-[length:var(--font-size-caption)] font-bold text-white/55">
-            {i18n.t(ETranslationKey.AboutPronouns)}
-          </span>
-        }
-      >
-        {i18n.t(ETranslationKey.AboutProfileLabel)}
-      </SectionBanner>
       <div className="summary-code">
+        <SectionBanner
+          flushBottom
+          trailing={
+            <span className="shrink-0 pr-3 text-[length:var(--font-size-caption)] font-bold text-white/55">
+              {i18n.t(ETranslationKey.AboutPronouns)}
+            </span>
+          }
+        >
+          {i18n.t(ETranslationKey.AboutProfileLabel)}
+        </SectionBanner>
         <pre className="summary-code__source">
           <code>
             {lines.map(({ content, indent = 0 }, index) => (

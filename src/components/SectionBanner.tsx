@@ -3,17 +3,17 @@ import type { ReactNode } from "react";
 type SectionBannerProps = {
   children: ReactNode;
   trailing?: ReactNode;
-  className?: string;
+  flushBottom?: boolean;
 };
 
 export function SectionBanner({
   children,
   trailing,
-  className = "",
+  flushBottom = false,
 }: SectionBannerProps) {
   return (
     <div
-      className={`hidden min-w-0 items-center gap-3 bg-linear-to-r from-white/5 to-transparent py-2 pl-3 text-sm tracking-wide text-[color:var(--color-accent)] min-[1025px]:flex ${className}`}
+      className={`hidden min-w-0 items-center gap-3 rounded-tl-[12px] bg-linear-to-r from-white/5 to-transparent py-2 pl-3 text-sm tracking-wide text-[color:var(--color-accent)] min-[1025px]:flex ${flushBottom ? "" : "rounded-bl-[12px]"}`}
     >
       <span>{children}</span>
       <span
