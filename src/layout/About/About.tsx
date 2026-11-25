@@ -1,5 +1,6 @@
 import { useId, useState, type CSSProperties, type ReactNode } from "react";
 
+import { SectionBanner } from "../../components/SectionBanner";
 import { TimelineExpandIcon } from "../../components/icons/TimelineExpandIcon";
 import { ABOUT_STORY_BLOCKS } from "../../constants/about";
 import { DESKTOP_MIN_WIDTH_MEDIA_QUERY } from "../../constants/mediaQueries";
@@ -102,17 +103,17 @@ export function About() {
 
   return (
     <article ref={aboutPanelRef} className="about-panel">
-      <div className="summary-code">
-        <div className="summary-code__header">
-          <span className="summary-code__file">
-            {i18n.t(ETranslationKey.AboutProfileLabel)}
+      <SectionBanner
+        className="mb-4"
+        trailing={
+          <span className="shrink-0 text-[length:var(--font-size-caption)] font-bold text-white/55">
+            {i18n.t(ETranslationKey.AboutPronouns)}
           </span>
-          <div className="summary-code__profile-meta">
-            <span className="summary-code__pronouns">
-              {i18n.t(ETranslationKey.AboutPronouns)}
-            </span>
-          </div>
-        </div>
+        }
+      >
+        {i18n.t(ETranslationKey.AboutProfileLabel)}
+      </SectionBanner>
+      <div className="summary-code">
         <pre className="summary-code__source">
           <code>
             {lines.map(({ content, indent = 0 }, index) => (
