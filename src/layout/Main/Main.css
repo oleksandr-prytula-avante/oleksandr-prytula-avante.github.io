@@ -451,6 +451,7 @@
 
 .mobile-menu-footer-scene .header-scene__ufo.ufo--departing {
   animation-name: ufo-departure-footer !important;
+  animation-delay: 0s;
 }
 
 @keyframes ufo-departure-main {
@@ -508,15 +509,16 @@
   }
 
   20% {
-    transform: translate3d(calc(-50% + 110vw), -12vh, 0) rotate(16deg);
+    transform: translate3d(calc(-50% + 110vw), -12px, 0) rotate(16deg);
   }
 
   68% {
-    transform: translate3d(calc(-50% + 110vw), -12vh, 0) rotate(16deg);
+    transform: translate3d(calc(-50% + 110vw), -12px, 0) rotate(16deg);
+    animation-timing-function: step-end;
   }
 
   80% {
-    transform: translate3d(calc(-50% - 110vw), 14vh, 0) rotate(-18deg);
+    transform: translate3d(calc(-50% - 110vw), -12px, 0) rotate(-18deg);
   }
 
   94%,
@@ -546,7 +548,9 @@
 @media (prefers-reduced-motion: reduce) {
   .night-sky__ufo,
   .header-scene__ufo,
-  .ufo--departing {
+  .night-sky__ufo.ufo--departing,
+  .header-scene__ufo.ufo--departing,
+  .mobile-menu-footer-scene .header-scene__ufo.ufo--departing {
     animation: none !important;
   }
 }
