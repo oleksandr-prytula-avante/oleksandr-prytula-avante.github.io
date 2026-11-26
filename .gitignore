@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 output
+test-results
+playwright-report
+.lighthouseci
 
 # Editor directories and files
 .vscode/*

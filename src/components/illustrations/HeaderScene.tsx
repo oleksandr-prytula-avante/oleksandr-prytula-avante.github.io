@@ -1,11 +1,16 @@
-import { SVG_ASSET_PATHS } from "../../constants/assets";
-import { SvgImage } from "../SvgImage";
+import { OPTIMIZED_ILLUSTRATION_PATHS } from "../../constants/assets";
+import { ResponsiveImage } from "../ResponsiveImage";
 import { Ufo } from "./Ufo";
 
 export function HeaderScene() {
   return (
     <div className="header-scene" aria-hidden="true">
-      <SvgImage src={SVG_ASSET_PATHS.nightSky} className="header-scene__sky" />
+      <ResponsiveImage
+        avifSrc={OPTIMIZED_ILLUSTRATION_PATHS.nightSky.avif}
+        fallbackSrc={OPTIMIZED_ILLUSTRATION_PATHS.nightSky.fallback}
+        className="header-scene__sky"
+        fetchPriority="low"
+      />
       <Ufo className="header-scene__ufo" />
     </div>
   );

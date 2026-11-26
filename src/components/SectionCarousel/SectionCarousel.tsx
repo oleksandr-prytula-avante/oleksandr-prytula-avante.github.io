@@ -32,11 +32,12 @@ export function SectionCarousel({
   isLineVisible,
 }: SectionCarouselProps) {
   const i18n = useI18n();
-  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, false);
   const { activeHash } = useActiveSectionHash(toSectionHash(ESection.About));
   const initialHash = useRef(getCurrentHash());
   const index = SECTION_NAV_ITEMS.findIndex(({ href }) => href === activeHash);
   const activeIndex = index === NOT_FOUND_INDEX ? FIRST_SLIDE_INDEX : index;
+  const activeItem = SECTION_NAV_ITEMS[activeIndex];
 
   useEffect(() => {
     const hash = initialHash.current;
@@ -74,6 +75,9 @@ export function SectionCarousel({
 
   return (
     <div className="section-carousel relative flex h-full min-h-0 min-w-0 flex-col px-10 max-[1025px]:h-auto max-[1025px]:px-0">
+      <span className="sr-only" aria-live="polite" aria-atomic="true">
+        {activeItem ? i18n.t(activeItem.labelKey) : ""}
+      </span>
       <div className="section-carousel__meta" aria-hidden="true">
         <span className="section-carousel__count">
           {String(activeIndex + 1).padStart(2, "0")}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://opryavante.dev/?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://opryavante.dev/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://opryavante.dev/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://opryavante.dev/?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://opryavante.dev/?lang=sp" />
+  </url>
+</urlset>

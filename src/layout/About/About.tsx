@@ -18,7 +18,7 @@ type SummaryLine = {
 
 export function About() {
   const i18n = useI18n();
-  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, false);
   const [isExpanded, setIsExpanded] = useState(false);
   const isDetailsVisible = !isDesktopViewport || isExpanded;
   const detailsId = useId();

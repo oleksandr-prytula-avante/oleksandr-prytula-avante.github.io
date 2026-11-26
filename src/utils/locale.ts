@@ -10,6 +10,12 @@ export function getPreferredBrowserLocale(): ELocale {
     return ELocale.En;
   }
 
+  const queryLocale = new URLSearchParams(window.location.search).get("lang");
+
+  if (isLocale(queryLocale)) {
+    return queryLocale;
+  }
+
   const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
 
   if (isLocale(stored)) {

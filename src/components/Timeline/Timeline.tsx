@@ -57,7 +57,7 @@ export function Timeline<TItem extends TimelineDataItem>(
   const [focusPhase, setFocusPhase] = useState<EFocusPhase>(EFocusPhase.Idle);
   const [isFocusExitActive, setIsFocusExitActive] = useState(false);
   const [lineHeight, setLineHeight] = useState(TIMELINE_EMPTY_STATE_VALUE);
-  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, false);
   const [focusShiftById, setFocusShiftById] = useState<Record<
     string,
     number

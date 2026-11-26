@@ -1,5 +1,3 @@
-import mountainMistPath from "../components/illustrations/assets/mountain-mist.svg";
-import nightSkyPath from "../components/illustrations/assets/night-sky.svg";
 import portfolioMarkPath from "../components/illustrations/assets/portfolio-mark.svg";
 import skyUfoPath from "../components/illustrations/assets/sky-ufo.svg";
 
@@ -50,10 +48,29 @@ export const PROJECT_SCREENSHOT_PATHS = {
 } as const;
 
 export const SVG_ASSET_PATHS = {
-  mountainMist: mountainMistPath,
-  nightSky: nightSkyPath,
   portfolioMark: portfolioMarkPath,
   skyUfo: skyUfoPath,
 } as const;
+
+export const OPTIMIZED_ILLUSTRATION_PATHS = {
+  mountainMist: {
+    avif: "/assets/images/illustrations/mountain-mist.avif",
+    fallback: "/assets/images/illustrations/mountain-mist.png",
+  },
+  nightSky: {
+    avif: "/assets/images/illustrations/night-sky.avif",
+    fallback: "/assets/images/illustrations/night-sky.png",
+  },
+} as const;
+
+export function getProjectThumbnailPath(sourcePath: string) {
+  const filename = sourcePath
+    .split("/")
+    .at(-1)
+    ?.replace(/\.webp$/, ".avif");
+  return filename
+    ? `/assets/images/projects/omnora-authoring/thumbs/${filename}`
+    : sourcePath;
+}
 
 export const CV_ASSET_PATH = "/assets/pdf/cv.pdf";

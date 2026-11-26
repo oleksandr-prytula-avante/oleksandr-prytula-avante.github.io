@@ -18,10 +18,8 @@ export function useTypingSequence(
   });
 
   useEffect(() => {
-    if (isCompleted) return;
-    return startTypingSequence(isEnabled ? steps : [], setProgress, () =>
-      setIsCompleted(true),
-    );
+    if (!isEnabled || isCompleted) return;
+    return startTypingSequence(steps, setProgress, () => setIsCompleted(true));
   }, [isCompleted, isEnabled, steps]);
 
   function getStep(index: number) {

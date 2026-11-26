@@ -24,6 +24,7 @@ export const enum ETranslationKey {
   A11yCloseMenu = "a11y.closeMenu",
   A11ySectionNavigation = "a11y.sectionNavigation",
   A11yLanguage = "a11y.language",
+  A11ySkipToContent = "a11y.skipToContent",
 
   HeroHiIm = "hero.hiIm",
   HeroName = "hero.name",

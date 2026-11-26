@@ -107,7 +107,7 @@ export function Header(props: HeaderProps) {
 
         <MobileLanguageSwitcher isDisabled={isLanguageDisabled} />
 
-        <nav className="mt-10 flex flex-col items-center gap-2 text-[1.5rem] uppercase w-[30%] max-[767px]:w-[60%] mx-auto">
+        <nav className="mx-auto mt-10 flex w-full max-w-80 flex-col items-center gap-2 text-[1.5rem] uppercase">
           <HeaderNavigation
             layout="mobile"
             activeHash={activeHash}

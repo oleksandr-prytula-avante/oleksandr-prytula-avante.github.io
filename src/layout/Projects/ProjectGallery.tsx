@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 
-import { ScreenshotPreview } from "../../components/ScreenshotPreview";
+import { getProjectThumbnailPath } from "../../constants/assets";
 import type { ProjectTimelineItem } from "../../constants/projects";
 import { useI18n } from "../../hooks/useI18n";
 import { ETranslationKey } from "../../i18n/types";
 
 import "./ProjectGallery.css";
+
+const ScreenshotPreview = lazy(async () => {
+  const module = await import("../../components/ScreenshotPreview");
+  return { default: module.ScreenshotPreview };
+});
 
 type ProjectGalleryProps = {
   item: ProjectTimelineItem;
@@ -14,6 +19,7 @@ type ProjectGalleryProps = {
 export function ProjectGallery({ item }: ProjectGalleryProps) {
   const i18n = useI18n();
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
 
   return (
     <div className="project-gallery mt-6 pb-2">
@@ -25,12 +31,15 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
             <figure key={screenshot.src} className="project-gallery__tile">
               <button
                 type="button"
-                onClick={() => setPreviewIndex(index)}
+                onClick={(event) => {
+                  openerRef.current = event.currentTarget;
+                  setPreviewIndex(index);
+                }}
                 aria-label={`${i18n.t(ETranslationKey.ProjectsOpenScreenshot)}: ${caption}`}
                 className="subtle-border project-gallery__preview relative block w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--color-accent)]"
               >
                 <img
-                  src={screenshot.src}
+                  src={getProjectThumbnailPath(screenshot.src)}
                   alt={`${i18n.t(item.textKeys.name)} – ${caption}`}
                   width={screenshot.width}
                   height={screenshot.height}
@@ -44,13 +53,20 @@ export function ProjectGallery({ item }: ProjectGalleryProps) {
         })}
       </div>
       {previewIndex !== null && (
-        <ScreenshotPreview
-          screenshots={item.screenshots}
-          currentIndex={previewIndex}
-          onNavigate={setPreviewIndex}
-          projectName={i18n.t(item.textKeys.name)}
-          onClose={() => setPreviewIndex(null)}
-        />
+        <Suspense fallback={null}>
+          <ScreenshotPreview
+            screenshots={item.screenshots}
+            currentIndex={previewIndex}
+            onNavigate={setPreviewIndex}
+            projectName={i18n.t(item.textKeys.name)}
+            onClose={() => {
+              setPreviewIndex(null);
+              requestAnimationFrame(() =>
+                openerRef.current?.focus({ preventScroll: true }),
+              );
+            }}
+          />
+        </Suspense>
       )}
     </div>
   );

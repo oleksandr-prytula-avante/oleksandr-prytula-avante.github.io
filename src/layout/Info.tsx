@@ -48,10 +48,10 @@ export function Info(props: InfoProps) {
     onHeroPrintingStateChange,
   } = props;
   const i18n = useI18n();
-  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, true);
+  const isDesktopViewport = useMediaQuery(DESKTOP_MIN_WIDTH_MEDIA_QUERY, false);
   const isAnimationViewport = useMediaQuery(
     MIN_ANIMATED_VIEWPORT_MEDIA_QUERY,
-    true,
+    false,
   );
 
   const hiText = i18n.t(ETranslationKey.HeroHiIm);

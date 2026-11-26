@@ -62,11 +62,9 @@
     calc(var(--section-direction) * 10px),
     0
   );
-  filter: blur(3px);
   transition:
     opacity 240ms ease,
     transform 560ms var(--section-ease),
-    filter 280ms ease,
     visibility 0s linear 560ms;
 }
 
@@ -76,11 +74,9 @@
   visibility: visible;
   pointer-events: auto;
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
   transition:
     opacity 420ms ease 90ms,
     transform 680ms var(--section-ease) 40ms,
-    filter 520ms ease 40ms,
     visibility 0s;
 }
 
@@ -102,8 +98,9 @@
     visibility: visible;
     pointer-events: auto;
     transform: none;
-    filter: none;
     transition: none;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
   }
 }
 
@@ -113,6 +110,5 @@
   .section-carousel__progress > span {
     transition: none;
     transform: none;
-    filter: none;
   }
 }
