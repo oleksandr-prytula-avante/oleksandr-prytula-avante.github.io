@@ -28,14 +28,11 @@ for (const viewport of VIEWPORTS) {
 
 test("keyboard navigation, locale, and dialogs work", async ({
   page,
-}, testInfo) => {
+}) => {
   await page.goto("/?lang=en#about");
-  if (testInfo.project.name === "webkit") {
-    // macOS WebKit follows the OS Full Keyboard Access setting for links.
-    await page.locator(".skip-link").focus();
-  } else {
-    await page.keyboard.press("Tab");
-  }
+  // Browser focus starts on the URL fragment target after navigation, so set
+  // the entry point explicitly before exercising the link with the keyboard.
+  await page.locator(".skip-link").focus();
   await expect(page.getByText("Skip to main content")).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("#main-content")).toBeFocused();

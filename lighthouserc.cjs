@@ -16,6 +16,7 @@ module.exports = {
       },
     },
     assert: {
+      aggregationMethod: "pessimistic",
       assertions: {
         "categories:accessibility": ["error", { minScore: 0.95 }],
         "categories:best-practices": ["error", { minScore: 0.9 }],
@@ -26,6 +27,5 @@ module.exports = {
         "total-byte-weight": ["error", { maxNumericValue: 2_500_000 }],
       },
     },
-    upload: { target: "temporary-public-storage" },
   },
 };

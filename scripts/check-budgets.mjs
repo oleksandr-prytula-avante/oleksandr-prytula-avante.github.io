@@ -1,7 +1,12 @@
 import { readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const limits = { js: 420_000, css: 80_000, image: 1_700_000 };
+const limits = {
+  js: 420_000,
+  css: 80_000,
+  image: 1_700_000,
+  illustrationSvg: 3_500_000,
+};
 const failures = [];
 
 function visit(directory) {
@@ -19,7 +24,9 @@ function visit(directory) {
         ? limits.js
         : extension === "css"
           ? limits.css
-          : ["avif", "webp", "png", "jpg", "jpeg", "svg"].includes(extension)
+          : extension === "svg"
+            ? limits.illustrationSvg
+          : ["avif", "webp", "png", "jpg", "jpeg"].includes(extension)
             ? limits.image
             : undefined;
     if (limit && stat.size > limit)

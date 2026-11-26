@@ -148,8 +148,16 @@
 }
 
 .night-sky__image {
+  /* Keep the star field present at both viewport edges. */
+  z-index: 0;
   left: clamp(120px, 16vw, 240px);
   opacity: 0.72;
+}
+
+.night-sky__image--left {
+  left: calc(
+    clamp(120px, 16vw, 240px) - max(200vw, calc(var(--scenery-height) * 15.2))
+  );
 }
 
 .night-sky__ufo {
@@ -229,6 +237,9 @@
   min-height: var(--scenery-height);
   height: auto;
   transform: translateX(-50%);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
   mask-image: linear-gradient(to bottom, black 25%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent);
 }
@@ -301,11 +312,22 @@
 
   .site-header .header-scene,
   .mobile-menu-header .header-scene {
-    display: none;
+    right: auto;
+    left: calc(50% - 50vw);
+    width: 100vw;
   }
 
   .site-header .header-scene__sky,
   .mobile-menu-header .header-scene__sky {
+    width: 100vw;
+    min-height: 0;
+    height: 52px;
+    transform: translateX(calc(-50% + clamp(96px, 28vw, 240px)));
+    background-size: auto 96px;
+    opacity: 0.68;
+  }
+
+  .site-header .header-scene__sky {
     display: none;
   }
 
