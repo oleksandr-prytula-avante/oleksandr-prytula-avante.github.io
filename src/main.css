@@ -357,19 +357,19 @@ body {
   #root,
   .resume-page,
   .resume-content {
-    height: auto !important;
-    min-height: 0 !important;
-    overflow: visible !important;
-    background: white !important;
-    color: black !important;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background: white;
+    color: black;
   }
 
-  *,
-  *::before,
-  *::after {
-    box-shadow: none !important;
-    color: black !important;
-    text-shadow: none !important;
+  .resume-page *,
+  .resume-page *::before,
+  .resume-page *::after {
+    box-shadow: none;
+    color: black;
+    text-shadow: none;
   }
 
   .night-sky,
@@ -383,41 +383,41 @@ body {
   .project-gallery,
   .about-panel__toggle-row,
   .typing-cursor {
-    display: none !important;
+    display: none;
   }
 
   .resume-content {
-    max-width: none !important;
-    padding: 0 !important;
+    max-width: none;
+    padding: 0;
   }
 
   .header-brand {
-    width: 220px !important;
+    width: 220px;
     margin-block: 0 8mm;
   }
 
   .site-header {
-    height: auto !important;
-    position: static !important;
+    height: auto;
+    position: static;
   }
 
   .section-carousel,
   .section-carousel__stage,
   .section-carousel__panel,
   .about-panel {
-    display: block !important;
-    position: static !important;
-    height: auto !important;
-    min-height: 0 !important;
-    overflow: visible !important;
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
+    display: block;
+    position: static;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    opacity: 1;
+    transform: none;
+    visibility: visible;
   }
 
   .section-carousel__panel {
     break-before: page;
-    padding: 0 !important;
+    padding: 0;
   }
 
   .section-carousel__panel:first-child {
@@ -426,7 +426,7 @@ body {
 
   .section-carousel__panel [aria-hidden="true"],
   [inert] {
-    display: block !important;
+    display: block;
   }
 
   a[href]::after {

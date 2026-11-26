@@ -435,23 +435,23 @@
 }
 
 .ufo--departing {
-  animation-duration: var(--ufo-departure-duration) !important;
-  animation-iteration-count: 1 !important;
-  animation-direction: normal !important;
-  animation-fill-mode: forwards !important;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation-duration: var(--ufo-departure-duration);
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .night-sky__ufo.ufo--departing {
-  animation-name: ufo-departure-main !important;
+  animation-name: ufo-departure-main;
 }
 
 .header-scene__ufo.ufo--departing {
-  animation-name: ufo-departure-header !important;
+  animation-name: ufo-departure-header;
 }
 
 .mobile-menu-footer-scene .header-scene__ufo.ufo--departing {
-  animation-name: ufo-departure-footer !important;
+  animation-name: ufo-departure-footer;
   animation-delay: 0s;
 }
 
@@ -552,7 +552,7 @@
   .night-sky__ufo.ufo--departing,
   .header-scene__ufo.ufo--departing,
   .mobile-menu-footer-scene .header-scene__ufo.ufo--departing {
-    animation: none !important;
+    animation: none;
   }
 
   .typing-cursor {

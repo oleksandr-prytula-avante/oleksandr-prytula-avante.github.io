@@ -394,7 +394,7 @@
 
 @media (min-width: 1025px) and (max-width: 1440px) {
   .timeline-hide-between-1024-1440 {
-    display: none !important;
+    display: none;
   }
 }
 
