@@ -2,7 +2,7 @@
 
 **Status:** living source of truth for implementation work
 
-**Last verified against the repository:** 2026-11-17
+**Last verified against the repository:** 2026-11-26
 
 **Repository root:** `/Users/oleksandrprytula/Documents/resume`
 
@@ -57,6 +57,8 @@ The primary audience is a recruiter, hiring manager, technical client, or engine
 - Component-specific CSS files for complex layout and animation behavior.
 - `@fontsource/ubuntu` for the Ubuntu font family.
 - React DOM client entry and SSR/prerender entry.
+- Playwright visual/accessibility coverage for Chromium, Firefox, and WebKit.
+- Lighthouse CI, asset-reference checks, and production asset budgets.
 
 ### Runtime commands
 
@@ -71,13 +73,21 @@ npm run preview
 npm run lint
 npm run format:check
 npm test
+npm run test:e2e
+npm run test:e2e:update
+npm run check:assets
+npm run check:budgets
+npm run check:lighthouse
 ```
 
 `npm run dev` starts Vite. If the default local port is occupied, Vite may select the next available port.
 
 `npm run build` is the minimum required verification for a code change. For UI/CSS changes, also run `npm run format:check` and `git diff --check`.
 
-The current `test` script is `node --test`; there is no project test suite to treat as a replacement for manual responsive verification.
+`npm test` runs the unit suite. `npm run test:e2e` runs visual, keyboard,
+print, locale/zoom, and Axe checks at seven viewport sizes in Chromium,
+Firefox, and WebKit. Updating visual baselines is explicit via
+`npm run test:e2e:update`; it must only follow a reviewed visual change.
 
 ### Deployment
 
@@ -117,6 +127,8 @@ Do not use absolute source paths for new assets unless the path is intentionally
 - `src/components/Timeline/` — generic timeline engine, item, row, period, and types.
 - `src/components/Tags/` — skill tag wall and individual tag.
 - `src/components/ScreenshotPreview.tsx` — native `<dialog>` screenshot viewer.
+- `src/components/ResponsiveImage.tsx` is intentionally not used for scenery:
+  the night sky and mountain mist retain their original SVG source artwork.
 - `src/components/Links.tsx` — external contact/profile links.
 - `src/components/TypingText.tsx`, `TypingCursor.tsx` — stable-width typing presentation.
 - `src/components/illustrations/` — SVG-backed scenery and portfolio mark components.
@@ -220,6 +232,9 @@ At 1025px and wider:
 - About has an internal panel scroll area.
 - The summary code panel is visible; the long-form story is collapsed until the centered get-to-know button is activated.
 - The desktop scenery consists of the night sky at the top and mountain mist near the bottom; the UFO is decorative and must not affect layout or pointer interaction.
+- The original night-sky SVG is extended to the left on wide desktop only with a
+  stars-only crop. The nebula and comet must never be duplicated, mirrored, or
+  shifted to achieve this extension.
 
 ### Mobile and tablet layout
 
@@ -228,6 +243,11 @@ Below 1025px:
 - Sections are stacked in document flow; the carousel stage is not absolute/hidden.
 - The page itself scrolls vertically.
 - The header is fixed at the top.
+- The mobile sky is rendered inside and clipped by the header scene. Header
+  controls sit above that scene; the page-level sky and desktop-only left-star
+  extension must not create a second mobile layer.
+- The header has a stable 96px visual footprint. The mobile UFO stays in the
+  header scene near its top edge; it must not drift down due to scenery layout.
 - The hero greeting and section headings use the same 1px accent rule. The rules end at the shared content edge.
 - The hamburger opens a full-viewport fixed menu with language controls, section links, and social links.
 - The mobile menu background scenery is full-bleed: it must ignore the menu’s horizontal content padding.
@@ -689,7 +709,8 @@ Do not use color alone to communicate the only state change when a semantic attr
 
 - Desktop scenery does not reduce content contrast.
 - Narrow desktop/tablet hero text is not placed over the brightest `NightSky` nebula band.
-- Mobile menu upper sky is full-bleed and rendered once.
+- The mobile header sky is clipped to the header and rendered once. Its
+  foreground controls remain readable and do not overlap the scene.
 - Mobile menu lower scene uses full-width mountains and one UFO.
 - The mobile page and menu use the same mountain image scale and crop. The lighthouse and its beam retain the brightness of the artwork in both scenes and on desktop.
 - Mountains preserve a coherent scale relative to the sky and do not leave unintended side gutters.
@@ -751,7 +772,9 @@ For visual changes, verify a load without a hash and a direct load or reload wit
 - The tag reveal logic depends on `offsetTop`, `IntersectionObserver`, and scrollable desktop layout. Changes to flex wrapping, padding, or overflow can change row detection.
 - The About reveal scroll depends on the `grid-template-rows` transition and a fallback timeout. If animation duration changes, update the fallback constant.
 - Translation strings can change layout width and line wrapping. Always check at least English and Russian after content edits.
-- The app intentionally has no tests folder; do not recreate one merely to satisfy a generic convention unless the user asks for tests.
+- Playwright snapshots deliberately cover Chromium, Firefox, and WebKit.
+  Regenerate snapshots only after reviewing the rendered change at the
+  affected viewport.
 
 ## 19. Useful file map for targeted changes
 
@@ -768,6 +791,7 @@ For visual changes, verify a load without a hash and a direct load or reload wit
 | Scenery/UFO                | `src/components/illustrations/`, `src/layout/Main/Main.css`, `src/constants/assets.ts`                                                 |
 | Locale/content             | `src/enums/i18n.ts`, `src/i18n/types.ts`, `src/i18n/useLocale.ts`, `src/i18n/translations.ts`                                          |
 | Asset paths/CV             | `src/constants/assets.ts`, `src/constants/paths.ts`, `public/assets/`, `index.html`                                                    |
+| Quality gates              | `tests/`, `playwright.config.ts`, `lighthouserc.cjs`, `scripts/check-assets.mjs`, `scripts/check-budgets.mjs`                          |
 
 ## 20. Definition of done
 
@@ -777,6 +801,133 @@ A site change is complete when:
 - existing navigation, accessibility, localization, and reduced-motion behavior still work;
 - the change does not duplicate data or introduce an unused component/constant;
 - the visual result is checked at the relevant desktop, tablet, and mobile sizes;
-- `npm run format:check`, `npm run build`, and `git diff --check` pass;
+- `npm run format:check`, `npm run build:pages`, `npm test`, `npm run check:assets`, `npm run check:budgets`, and `git diff --check` pass;
 - any remaining visual limitation or unavailable verification tool is explicitly reported;
 - a commit/push is performed only when explicitly requested by the user.
+
+## 21. Responsive scenery and header contract
+
+This section is normative. The scenery/header system is the most fragile part
+of the product because it combines fixed positioning, full-bleed art, clipped
+SVGs, animation, and a breakpoint-dependent page layout. Do not make a visual
+"quick fix" to one layer without checking the whole contract below.
+
+### 21.1 One breakpoint source
+
+- `DESKTOP_MIN_WIDTH_MEDIA_QUERY` in `src/constants/mediaQueries.ts` is the
+  semantic source for the desktop/mobile layout boundary.
+- Any Tailwind arbitrary breakpoint and any CSS media query that changes
+  navigation, carousel, header, hero, gallery, or scenery behavior must use
+  the same value.
+- A change to this boundary is a coordinated responsive refactor, not a
+  one-file CSS edit. Update the TypeScript query, all Tailwind class breakpoints,
+  CSS media queries, visual snapshots, and this document together.
+- Browser zoom and docked DevTools change the available CSS viewport. The
+  relevant value for breakpoint behavior is CSS width, not physical screenshot
+  width. Test intermediate widths around the boundary as well as 1024/1025.
+
+### 21.2 Desktop scene
+
+- The desktop page has one `NightSky` instance at the top and one
+  `MountainMist` instance at the bottom.
+- `NightSky` uses the original vector source. The nebula, comet, and UFO are
+  part of the authored composition and must retain their original placement.
+- If the star field needs extension to the left, it may contain only stars
+  sampled from the source area immediately to the right of the nebula.
+  It must not duplicate, mirror, shift, crop into view, or create another
+  instance of the nebula, comet, logo, or UFO.
+- The extended left star field must have visually comparable density to the
+  right-of-nebula star field. Verify this at 1440px and 1920px before changing
+  a baseline.
+- Never solve density by hand-drawn CSS circles, rasterizing the source art,
+  or lowering opacity until a visible region disappears.
+- The mountain image remains a single original SVG. Its lighthouse, house,
+  beam, and silhouette must remain visible; it cannot be replaced with a
+  low-quality raster fallback.
+
+### 21.3 Mobile and tablet scene
+
+- Mobile/tablet has exactly one visible sky layer: the clipped header scene.
+  The page-level `NightSky` and every desktop-only star extension are hidden
+  below the layout boundary.
+- The mobile header scene is full viewport width but clipped by the fixed
+  header. Its sky must never extend into the document content, menu, or browser
+  overflow area.
+- Header foreground children (brand, navigation, language control, hamburger)
+  are explicitly above the sky scene. The scene itself must not receive pointer
+  events.
+- The header owns a stable 96px visual footprint. It must not change height
+  after font, SVG, or menu state changes, and the main content must start below
+  that footprint.
+- On mobile/tablet the header background remains the site background color;
+  scene placement is handled by its own stacking layer, not by making the
+  entire fixed header transparent.
+- The header UFO stays inside its clipped scene at a stable top position.
+  The main-sky UFO is hidden on mobile/tablet. The menu-footer UFO belongs only
+  to the menu-footer mountain scene.
+- The mobile menu has its own upper sky and lower mountain/UFO scenes. It does
+  not inherit the page-level desktop extension and must not show a second sky
+  in the lower scene.
+
+### 21.4 Layering model
+
+From back to front, the required order is:
+
+1. resume-page background;
+2. page-level desktop scenery (desktop only);
+3. header-scene artwork, clipped to its owner;
+4. header foreground controls and brand;
+5. mobile menu dialog when open;
+6. dialogs/previews and focus outlines.
+
+Rules:
+
+- A negative `z-index` scene may not escape an isolated parent.
+- A scene cannot be moved above controls merely to make it visible; fix the
+  parent stacking context instead.
+- `overflow: hidden` is applied to the owner that clips a scene, never to a
+  broad page container if it can clip scroll/focus content.
+- Every change to `position`, `isolation`, `overflow`, `z-index`, `transform`,
+  `mask-image`, or header height requires desktop and mobile visual review.
+
+### 21.5 SVG asset rules
+
+- The original `night-sky.svg`, `mountain-mist.svg`, and `portfolio-mark.svg`
+  are source-quality assets. Do not replace them with lossy AVIF/PNG versions
+  to satisfy a generic per-file limit.
+- Preserve the vector portfolio lettering and its bold appearance. Any SVG
+  optimization must be visually compared at 100% and 200% zoom before use.
+- Asset budgets distinguish large vector illustrations from raster content;
+  they are guardrails, not authorization to lower visual fidelity.
+- Decorative images use `aria-hidden` through their owner and empty image alt
+  text. They never convey product content.
+
+### 21.6 Required visual test matrix for scenery changes
+
+Do not update a snapshot until the rendered result has been inspected at:
+
+| Scenario          | Required assertion                                                                                 |
+| ----------------- | -------------------------------------------------------------------------------------------------- |
+| 390×844           | One clipped header sky; stable 96px header; no duplicate UFO or horizontal overflow.               |
+| 768×1024          | Header foreground remains above sky; long-form content begins below the fixed header.              |
+| 1024×768          | Boundary behavior is intentional; no desktop carousel/header leakage into the mobile stack.        |
+| 1025×768          | Desktop layout starts as a coherent whole, not a mixture of mobile and desktop rules.              |
+| 1440×900          | Nebula/comet unchanged; left/right star density is balanced; mountain landmarks are visible.       |
+| 1920×1080         | Scene remains full-width without stretching, duplicated celestial objects, or side gutters.        |
+| 200% browser zoom | CSS-width breakpoint transition remains coherent; fixed header and scenery do not overlap content. |
+
+In addition to the visual tests, run `npm run lint`, `npm test`,
+`npm run check:assets`, `npm run check:budgets`, and `npm run build:pages`.
+For performance-sensitive scenery changes run `npm run check:lighthouse`.
+
+### 21.7 Prohibited regressions
+
+- Do not add a second page-level sky to fix a missing mobile header sky.
+- Do not show a desktop star extension below the desktop breakpoint.
+- Do not use a fixed header with transparent page-level art behind it if that
+  makes content or controls appear to overlap.
+- Do not mirror the full night-sky SVG: it mirrors the comet and nebula too.
+- Do not add hand-authored stars that do not match the asset's authored dot
+  pattern.
+- Do not change a visual baseline merely because a broken layout produced a
+  new screenshot.
