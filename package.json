@@ -19,7 +19,8 @@
     "preview": "vite preview",
     "check:assets": "node scripts/check-assets.mjs",
     "check:budgets": "node scripts/check-budgets.mjs",
-    "check:lighthouse": "lhci autorun"
+    "check:lighthouse": "lhci autorun",
+    "prepare": "husky"
   },
   "dependencies": {
     "@fontsource/ubuntu": "^5.2.8",
@@ -40,6 +41,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.2.0",
     "tsx": "^4.23.15",
