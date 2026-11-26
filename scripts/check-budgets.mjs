@@ -26,9 +26,9 @@ function visit(directory) {
           ? limits.css
           : extension === "svg"
             ? limits.illustrationSvg
-          : ["avif", "webp", "png", "jpg", "jpeg"].includes(extension)
-            ? limits.image
-            : undefined;
+            : ["avif", "webp", "png", "jpg", "jpeg"].includes(extension)
+              ? limits.image
+              : undefined;
     if (limit && stat.size > limit)
       failures.push(`${path}: ${stat.size} > ${limit}`);
   }

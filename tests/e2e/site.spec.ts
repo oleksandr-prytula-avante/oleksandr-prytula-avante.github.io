@@ -26,9 +26,7 @@ for (const viewport of VIEWPORTS) {
   });
 }
 
-test("keyboard navigation, locale, and dialogs work", async ({
-  page,
-}) => {
+test("keyboard navigation, locale, and dialogs work", async ({ page }) => {
   await page.goto("/?lang=en#about");
   // Browser focus starts on the URL fragment target after navigation, so set
   // the entry point explicitly before exercising the link with the keyboard.
