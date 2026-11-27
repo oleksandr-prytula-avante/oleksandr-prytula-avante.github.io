@@ -959,6 +959,8 @@ In addition to the visual tests, run `npm run lint`, `npm test`,
 `npm run check:assets`, `npm run check:budgets`, and `npm run build:pages`.
 For performance-sensitive scenery changes run `npm run check:lighthouse`.
 
+Note: This portfolio site includes large artistic SVG illustrations (night-sky.svg and mountain-mist.svg) which are intentionally large for visual impact. These cause higher Lighthouse scores, particularly in Largest Contentful Paint (LCP), but are acceptable for this type of portfolio website.
+
 ### 21.7 Prohibited regressions
 
 - Do not add a second page-level sky to fix a missing mobile header sky.
