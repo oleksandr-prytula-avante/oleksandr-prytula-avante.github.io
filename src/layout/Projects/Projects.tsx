@@ -16,7 +16,7 @@ export function Projects(props: SkillInteractionProps) {
   return (
     <div className="min-[1025px]:grid min-[1025px]:h-full min-[1025px]:grid-rows-[auto_minmax(0,1fr)] min-[1025px]:gap-4">
       <SectionBanner>
-        <span aria-hidden="true" className="font-bold">
+        <span>
           #
         </span>
         {i18n.t(ETranslationKey.ProjectsComingSoon)}

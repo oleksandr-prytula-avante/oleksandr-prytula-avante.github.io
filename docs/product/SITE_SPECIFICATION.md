@@ -251,7 +251,12 @@ Below 1025px:
 - The hero greeting and section headings use the same 1px accent rule. The rules end at the shared content edge.
 - The hamburger opens a full-viewport fixed menu with language controls, section links, and social links.
 - The mobile menu background scenery is full-bleed: it must ignore the menu’s horizontal content padding.
-- The upper menu scene contains the sky; the lower menu scene contains the mountain mist and one UFO. Do not render a second full sky at the bottom.
+- Opening the mobile menu must not visually replace or move the header. The
+  brand, sky crop, comet, and UFO keep the same viewport-relative geometry in
+  the closed header and in the menu header.
+- The upper menu scene contains the one mobile sky and the one mobile UFO. The
+  lower menu scene contains mountain mist only. Do not render a second sky or
+  a second UFO at the bottom.
 - The About code-style summary is hidden on mobile/tablet.
 - The About full story is visible without a More/Less toggle on mobile/tablet.
 - Timeline cards are in normal flow, with circular logos and optional mobile expansion controls.
@@ -260,14 +265,19 @@ Below 1025px:
 
 ### Full-bleed scenery rule
 
-The mobile menu content has horizontal padding. Any decorative scene that must touch the viewport edges should use the established full-bleed pattern:
+The mobile menu content has horizontal padding. A decorative scene that must
+touch the viewport edges must be positioned relative to the viewport rather
+than inheriting that padding. For a scene inside the centered menu header, use:
 
 ```css
 width: 100vw;
-margin-left: calc(50% - 50vw);
+left: 50%;
+transform: translateX(-50%);
 ```
 
-Do not fix scenery width by adding arbitrary negative pixel offsets tied to one device size.
+The lower mountain container is already `100vw` and must remain aligned to the
+dialog viewport. Do not fix scenery width with arbitrary negative pixel offsets
+tied to one device size.
 
 ## 6. Navigation and URL behavior
 
@@ -557,14 +567,15 @@ Current screenshot metadata is maintained in `src/constants/projects.ts`; do not
 - White content must retain contrast against nebula and mist areas.
 - The primary `NightSky` image is shifted to the right and slightly dimmed so the bright nebula does not sit behind the white hero copy. The shift is applied directly to the image layer and therefore must not depend on one narrow media-query range.
 - The mountain artwork renders at its original opacity on desktop, on mobile, and in the mobile menu. On desktop, the main mountain layer is fitted to the scenery container height with bottom alignment so the lighthouse, house, and mountain silhouettes remain visible.
-- On mobile menu, upper sky is full-bleed and rendered once; lower scene uses mountains plus one UFO, not a second sky.
-- The lower mobile scene is full-bleed using the established `100vw`/negative-margin pattern.
+- On mobile menu, the upper sky and UFO are full-bleed and rendered once; the
+  lower scene uses mountains only.
+- The lower mobile scene is full-bleed and aligned to the dialog viewport.
 - The mobile menu lower scene reuses the same mountain container height and image scale as the main mobile scenery, so opening or closing the menu does not change the mountain silhouette.
 
 ### UFO motion
 
 - The main desktop UFO uses a slow multi-phase drift with small vertical bob and rotation.
-- The header/mobile/footer UFO variants use distinct timing/trajectories so they do not move in lockstep.
+- The desktop and mobile-header UFO variants use distinct timing/trajectories.
 - Each UFO may occasionally make a randomized, short departure across the viewport and then return to its scene; this is intentional decorative motion, not a layout transition.
 - No opacity animation should make the UFO disappear unexpectedly.
 - Normal drift must be smooth at the endpoints; the only abrupt movement is the explicit randomized departure.
@@ -711,7 +722,8 @@ Do not use color alone to communicate the only state change when a semantic attr
 - Narrow desktop/tablet hero text is not placed over the brightest `NightSky` nebula band.
 - The mobile header sky is clipped to the header and rendered once. Its
   foreground controls remain readable and do not overlap the scene.
-- Mobile menu lower scene uses full-width mountains and one UFO.
+- Mobile menu lower scene uses full-width mountains only. The single mobile UFO
+  remains in the upper header scene before and after the menu opens.
 - The mobile page and menu use the same mountain image scale and crop. The lighthouse and its beam retain the brightness of the artwork in both scenes and on desktop.
 - Mountains preserve a coherent scale relative to the sky and do not leave unintended side gutters.
 - Desktop mountain scenery keeps the lighthouse and house silhouettes visible; fitting the image to the container must not vertically crop those landmarks.
@@ -853,6 +865,10 @@ SVGs, animation, and a breakpoint-dependent page layout. Do not make a visual
 - The mobile header scene is full viewport width but clipped by the fixed
   header. Its sky must never extend into the document content, menu, or browser
   overflow area.
+- The mobile SVG crop must show only the authored half of `night-sky.svg`.
+  The mirrored seam-extension half must stay outside the viewport so the comet
+  is shown exactly once and in its original orientation. Do not correct this
+  with `scaleX(-1)` or by mirroring the whole background.
 - Header foreground children (brand, navigation, language control, hamburger)
   are explicitly above the sky scene. The scene itself must not receive pointer
   events.
@@ -862,12 +878,35 @@ SVGs, animation, and a breakpoint-dependent page layout. Do not make a visual
 - On mobile/tablet the header background remains the site background color;
   scene placement is handled by its own stacking layer, not by making the
   entire fixed header transparent.
-- The header UFO stays inside its clipped scene at a stable top position.
-  The main-sky UFO is hidden on mobile/tablet. The menu-footer UFO belongs only
-  to the menu-footer mountain scene.
-- The mobile menu has its own upper sky and lower mountain/UFO scenes. It does
-  not inherit the page-level desktop extension and must not show a second sky
-  in the lower scene.
+- The header UFO stays inside its clipped scene at a stable top position. The
+  main-sky UFO is hidden on mobile/tablet. Opening the menu keeps the single UFO
+  in the menu header at the same viewport-relative coordinates; no footer UFO
+  is rendered.
+- The mobile menu has its own upper sky/UFO scene and a lower mountain-only
+  scene. It does not inherit the page-level desktop extension and must not show
+  a second sky or UFO in the lower scene.
+
+### 21.3.1 Mobile menu parity contract
+
+Treat the closed mobile header and the open menu header as two renderings of
+one visual component. At the same viewport size:
+
+- `.site-header .header-brand` and `.mobile-menu-header .header-brand` have the
+  same `x`, `y`, width, and height;
+- `.site-header .header-scene__sky` and
+  `.mobile-menu-header .header-scene__sky` have the same viewport bounds,
+  `background-position`, and `background-size`;
+- `.site-header .header-scene__ufo` and
+  `.mobile-menu-header .header-scene__ufo` have the same base coordinates and
+  size when decorative animation is disabled;
+- the brand and controls remain above the scene in both states;
+- opening the dialog adds no landscape-only top padding and causes no
+  horizontal overflow;
+- exactly one comet and one UFO are visible in either state.
+
+Verify this contract at 390×844, 844×390, 768×1024, and 1024×768. Use
+`prefers-reduced-motion: reduce` when comparing UFO geometry so animation phase
+does not create a false mismatch.
 
 ### 21.4 Layering model
 

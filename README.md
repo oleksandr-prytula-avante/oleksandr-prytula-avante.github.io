@@ -1,10 +1,16 @@
-# Resume Website
+# Resume website
 
-Minimal resume website built with React + Tailwind (Vite).
+Responsive resume website built with React, TypeScript, Tailwind CSS, and Vite.
 
-## Project specification
+## Documentation
 
-For the complete product context, architecture rules, responsive behavior, interaction contracts, and acceptance criteria, read [docs/SITE_SPECIFICATION.md](docs/SITE_SPECIFICATION.md) before making changes.
+- [Documentation index](docs/README.md)
+- [Product and visual specification](docs/product/SITE_SPECIFICATION.md)
+- [Repository structure](docs/architecture/PROJECT_STRUCTURE.md)
+- [Shared AI-agent instructions](docs/agents/AI_INSTRUCTIONS.md)
+
+AI tools should enter through the root discovery file intended for them:
+`AGENTS.md`, `CLAUDE.md`, or `OLLAMA.md`.
 
 ## Develop
 
@@ -18,6 +24,15 @@ npm run dev
 ```bash
 npm run build
 npm run preview
+```
+
+## Verify
+
+```bash
+npm run lint
+npm test
+npm run build
+npm run test:e2e
 ```
 
 ## Deploy (GitHub Pages)

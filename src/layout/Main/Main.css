@@ -297,7 +297,7 @@
   width: 100vw;
   height: var(--scenery-height);
   flex-shrink: 0;
-  margin-left: calc(50% - 50vw);
+  margin-left: 0;
   overflow: hidden;
   background: var(--color-bg);
 }
@@ -317,10 +317,6 @@
     infinite alternate;
 }
 
-.mobile-menu-header .header-scene__ufo {
-  display: none;
-}
-
 @media (width < 1025px) {
   .header-brand {
     width: min(60vw, 280px);
@@ -330,8 +326,9 @@
   .mobile-menu-header .header-scene {
     z-index: 0;
     right: auto;
-    left: calc(50% - 50vw);
+    left: 50%;
     width: 100vw;
+    transform: translateX(-50%);
   }
 
   .site-header .header-scene__sky,
@@ -339,8 +336,12 @@
     width: 100vw;
     min-height: 0;
     height: 52px;
-    transform: translateX(calc(-50% + clamp(96px, 28vw, 240px)));
-    background-size: auto 96px;
+    left: 0;
+    transform: none;
+    /* Keep the authored half of the sky in view; the second half of the SVG is
+       a mirrored seam extension and would duplicate/reverse the comet. */
+    background-position: calc(100vw - max(100vw, 729.6px)) top;
+    background-size: max(200vw, 1459.2px) auto;
     opacity: 0.68;
   }
 
@@ -348,11 +349,13 @@
     display: block;
   }
 
-  .site-header .header-scene__ufo {
+  .site-header .header-scene__ufo,
+  .mobile-menu-header .header-scene__ufo {
     top: 12px;
   }
 
-  .site-header > :not(.header-scene) {
+  .site-header > :not(.header-scene),
+  .mobile-menu-header > :not(.header-scene) {
     position: relative;
     z-index: 1;
   }
@@ -371,7 +374,8 @@
   }
 
   .mobile-menu-footer-scene .header-scene__sky {
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
   }
 
   .resume-page {

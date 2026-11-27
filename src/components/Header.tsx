@@ -89,7 +89,7 @@ export function Header(props: HeaderProps) {
           event.preventDefault();
           handleMobileMenuClose();
         }}
-        className={`fixed inset-0 z-[100] m-0 h-dvh min-h-dvh max-h-none w-screen max-w-none flex-col overflow-x-hidden overflow-y-auto overscroll-contain bg-[color:var(--color-bg)] px-24 pb-[max(2.5rem,calc(2.5rem + env(safe-area-inset-bottom)))] pt-0 text-white open:flex ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS} landscape:pt-[calc(env(safe-area-inset-top)+1rem)]`}
+        className={`fixed inset-0 z-[100] m-0 h-dvh min-h-dvh max-h-none w-screen max-w-none flex-col overflow-x-hidden overflow-y-auto overscroll-contain bg-[color:var(--color-bg)] px-24 pb-[max(2.5rem,calc(2.5rem + env(safe-area-inset-bottom)))] pt-0 text-white open:flex ${MOBILE_HEADER_HORIZONTAL_PADDING_CLASS}`}
       >
         <div className="mobile-menu-header relative flex h-24 shrink-0 items-center justify-between">
           <HeaderScene />
@@ -122,7 +122,6 @@ export function Header(props: HeaderProps) {
           </div>
           <div className="mobile-menu-footer-scene" aria-hidden="true">
             <MountainMist />
-            <HeaderScene />
           </div>
         </div>
       </dialog>

@@ -266,7 +266,7 @@ export function Info(props: InfoProps) {
         </TypingText>
       </p>
 
-      <p className="mt-4 shrink-0 text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1025px]:text-[0.9375rem]">
+      <p className="hero-info__toolkit-heading mt-4 shrink-0 whitespace-nowrap text-[1rem] uppercase text-white min-[1025px]:max-[1366px]:text-[0.875rem] max-[1025px]:text-[0.9375rem]">
         <TypingText text={`${engineeringToolkitBaseText}:`}>
           {engineeringToolkitBaseText.slice(
             DEFAULT_CHAR_COUNT,
